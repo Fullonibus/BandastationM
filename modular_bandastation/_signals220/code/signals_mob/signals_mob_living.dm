@@ -12,5 +12,3 @@
 /mob/living/reset_pull_offsets(mob/living/pull_target, override)
 	. = ..()
 	SEND_SIGNAL(pull_target, COMSIG_LIVING_RESET_PULL_OFFSETS, override)
-
-//test
