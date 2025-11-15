@@ -1,6 +1,6 @@
 // MARK: Flora
 
-//Pine
+// Заснеженная ель
 /obj/structure/flora/tree/pine
 	name = "pine tree"
 	desc = "A coniferous pine tree."
@@ -29,7 +29,7 @@
 	icon = 'modular_bandastation/altam/icons/obj/flora/pinetrees.dmi'
 	icon_state = "pine_tree_stump"
 
-// Snowless Pine
+// Ель без снега
 /obj/structure/flora/tree/pine/snowless
 	icon_state = "snowlesspine_1"
 	icon_states = list("snowlesspine_1", "snowlesspine_2", "snowlesspine_3", "snowlesspine_4")
@@ -48,7 +48,7 @@
 	icon_state = "snowlesspine_[rand(1,4)]"
 	update_appearance()
 
-//Large Pine
+// Здоровая ель, я бы даже сказал сосна
 /obj/structure/flora/tree/large_pine
 	name = "large pine tree"
 	desc = "A coniferous large pine tree."
@@ -73,7 +73,7 @@
 /obj/structure/flora/tree/large_pine/style_snow
 	icon_state = "large_pine_1_snow"
 
-//Large Tree
+// Большое дерево
 /obj/structure/flora/tree/large_tree
 	name = "large dead tree"
 	desc = "A large dead tree."
@@ -99,7 +99,7 @@
 	icon = 'modular_bandastation/altam/icons/obj/flora/tall_trees.dmi'
 	icon_state = "large_tree_stump"
 
-// Snow Large Tree
+// Большое дерево белое
 /obj/structure/flora/tree/large_tree/snow
 	icon_state = "snow_large_tree_1"
 	icon_states = list("snow_large_tree_1", "snow_large_tree_2", "snow_large_tree_3")
@@ -119,7 +119,7 @@
 	icon = 'modular_bandastation/altam/icons/obj/flora/tall_trees.dmi'
 	icon_state = "snow_large_tree_stump"
 
-//Grass Sticks
+// Палки
 /obj/structure/flora/grass_sticks
 	name = "stick"
 	desc = "Watch your step."
@@ -141,7 +141,7 @@
 	icon_state = "stick_[rand(1, 4)]"
 	update_appearance()
 
-//Dry Grass
+// Сухая трава
 /obj/structure/flora/dry_grass
 	name = "dry grass"
 	desc = "Dead, dry grass."
@@ -157,7 +157,7 @@
 	icon_state = "dry_grass_[rand(1, 2)]"
 	update_appearance()
 
-//Tall Grass
+// Высокая трава
 /obj/structure/flora/tall_grass
 	name = "tall grass"
 	desc = "Thick clumps of grass."
@@ -173,7 +173,7 @@
 	icon_state = "tall_grass_[rand(1, 2)]"
 	update_appearance()
 
-// Dry Log
+// Бревно
 /obj/structure/flora/dry_log
 	name = "dry log"
 	icon_state = "dry_log"
