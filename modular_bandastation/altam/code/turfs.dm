@@ -56,7 +56,6 @@
 	icon_state = "hexacrete-0"
 	base_icon_state = "hexacrete"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	smoothing_groups = SMOOTH_GROUP_TURF_OPEN
-	canSmoothWith = null
+	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_TURF_CONCRETE
+	canSmoothWith = SMOOTH_GROUP_TURF_CONCRETE
 	tiled_dirt = FALSE
-	color = COLOR_WHITE

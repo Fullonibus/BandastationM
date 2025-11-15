@@ -139,8 +139,9 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_TURF_OPEN_CLIFF S_TURF(60) ///turf/open/cliff
 #define SMOOTH_GROUP_HIEROPHANT S_TURF(61) ///turf/closed/indestructible/riveted/hierophant
 #define SMOOTH_GROUP_PLASTINUM_WALLS S_TURF(62) ///turf/closed/indestructible/riveted/plastinum
+#define SMOOTH_GROUP_TURF_CONCRETE S_TURF(63) ///turf/open/floor/reinforced_concrete - MARK: ALTAM
 
-#define MAX_S_TURF 62 //Always match this value with the one above it.
+#define MAX_S_TURF 63 //Always match this value with the one above it. // 62->63 altam
 
 #define S_OBJ(num) ("-" + #num + ",")
 /* /obj included */
