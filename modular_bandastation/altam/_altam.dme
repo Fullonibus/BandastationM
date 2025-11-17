@@ -4,3 +4,4 @@
 #include "code/flora.dm"
 #include "code/statue.dm"
 #include "code/decal.dm"
+#include "code/lamppost.dm"
