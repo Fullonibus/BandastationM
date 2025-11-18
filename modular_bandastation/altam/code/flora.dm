@@ -190,3 +190,69 @@
 	can_uproot = FALSE
 	delete_on_harvest = TRUE
 
+// Деревья осень
+/obj/structure/flora/tree/jungle/small/autumn
+	desc = "It's seriously hampering your view of the forest."
+	pixel_y = 0
+	pixel_x = -32
+	icon = 'modular_bandastation/altam/icons/obj/flora/trees_autumn.dmi'
+	icon_state = "tree_autumn1"
+
+/obj/structure/flora/tree/jungle/small/autumn/style_2
+	icon_state = "tree_autumn2"
+
+/obj/structure/flora/tree/jungle/small/autumn/style_3
+	icon_state = "tree_autumn3"
+
+/obj/structure/flora/tree/jungle/small/autumn/style_4
+	icon_state = "tree_autumn4"
+
+/obj/structure/flora/tree/jungle/small/autumn/style_5
+	icon_state = "tree_autumn5"
+
+/obj/structure/flora/tree/jungle/small/autumn/style_6
+	icon_state = "tree_autumn6"
+
+/obj/structure/flora/tree/jungle/small/autumn/style_random/Initialize(mapload)
+	. = ..()
+	icon_state = "tree_autumn[rand(1, 6)]"
+	update_appearance()
+
+/obj/structure/flora/tree/jungle/small/dead
+	desc = "A dead tree."
+	pixel_y = 0
+	pixel_x = -32
+	icon = 'modular_bandastation/altam/icons/obj/flora/trees_autumn.dmi'
+	icon_state = "tree_dead_autumn1"
+
+/obj/structure/flora/tree/jungle/small/dead/style_2
+	icon_state = "tree_dead_autumn2"
+
+/obj/structure/flora/tree/jungle/small/dead/style_3
+	icon_state = "tree_dead_autumn3"
+
+/obj/structure/flora/tree/jungle/small/dead/style_4
+	icon_state = "tree_dead_autumn4"
+
+/obj/structure/flora/tree/jungle/small/dead/style_random/Initialize(mapload)
+	. = ..()
+	icon_state = "tree_autumn[rand(1, 4)]"
+	update_appearance()
+
+/obj/structure/flora/tree/jungle/small/birch
+	desc = "Ведает..."
+	pixel_y = 0
+	pixel_x = -32
+	icon = 'modular_bandastation/altam/icons/obj/flora/trees_autumn.dmi'
+	icon_state = "tree_birch1"
+
+/obj/structure/flora/tree/jungle/small/birch/style_2
+	icon_state = "tree_birch2"
+
+/obj/structure/flora/tree/jungle/small/birch/style_3
+	icon_state = "tree_birch3"
+
+/obj/structure/flora/tree/jungle/small/birch/style_random/Initialize(mapload)
+	. = ..()
+	icon_state = "tree_autumn[rand(1, 3)]"
+	update_appearance()

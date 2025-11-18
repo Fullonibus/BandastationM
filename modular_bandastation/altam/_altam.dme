@@ -5,3 +5,4 @@
 #include "code/statue.dm"
 #include "code/decal.dm"
 #include "code/lamppost.dm"
+#include "code/misc.dm"
