@@ -73,3 +73,11 @@
 	icon_state = "altamgrass"
 	base_icon_state = "altamgrass"
 	smooth_icon = 'modular_bandastation/altam/icons/turf/floors/altamgrass.dmi'
+
+/turf/open/floor/grass/altam
+	name = "altam grass"
+	desc = "Холодная и выцвевшая трава."
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/misc/dirt
+	icon = 'modular_bandastation/altam/icons/turf/floors/floors.dmi'
+	icon_state = "altamgrass"

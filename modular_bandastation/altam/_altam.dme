@@ -6,3 +6,4 @@
 #include "code/decal.dm"
 #include "code/lamppost.dm"
 #include "code/misc.dm"
+#include "code/barricade.dm"
