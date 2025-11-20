@@ -7,3 +7,5 @@
 #include "code/lamppost.dm"
 #include "code/misc.dm"
 #include "code/barricade.dm"
+#include "code/storage.dm"
+#include "code/old_signage.dm"
