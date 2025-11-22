@@ -29,6 +29,8 @@
 	icon = 'modular_bandastation/altam/icons/obj/misc/furniture.dmi'
 	icon_state = "empty_shelf_1"
 	density = TRUE
+	anchored = TRUE
+	max_integrity = 50
 
 /obj/structure/shelf/crates
 	desc = "A sturdy wooden shelf with a bunch of crates on it."

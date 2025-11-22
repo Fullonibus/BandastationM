@@ -1,6 +1,6 @@
 // MARK: Turfs
 
-// MARK: Бетон
+// Бетон
 /turf/open/floor/concrete
 	name = "concrete floor"
 	desc = "Cold, bare concrete flooring."
@@ -47,7 +47,7 @@
 	. = ..()
 	icon_state = "[base_icon_state]_[rand(1,4)]"
 
-// MARK: Укрепленный бетон
+// Укрепленный бетон
 /turf/open/floor/reinforced_concrete
 	name = "reinforced concrete floor"
 	desc = "A more durable variety of concrete."
@@ -58,12 +58,11 @@
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_TURF_CONCRETE
 	canSmoothWith = SMOOTH_GROUP_TURF_CONCRETE
-	tiled_dirt = FALSE
 
 /turf/open/floor/reinforced_concrete/broken_states()
 	return list("concdam_1", "concdam_2", "concdam_3", "concdam_4")
 
-// MARK: Трава
+// Трава
 /turf/open/misc/grass/altam
 	name = "altam grass"
 	desc = "Холодная и выцвевшая трава."
@@ -77,7 +76,21 @@
 /turf/open/floor/grass/altam
 	name = "altam grass"
 	desc = "Холодная и выцвевшая трава."
-	planetary_atmos = TRUE
-	baseturfs = /turf/open/misc/dirt
 	icon = 'modular_bandastation/altam/icons/turf/floors/floors.dmi'
 	icon_state = "altamgrass"
+	planetary_atmos = TRUE
+
+/turf/open/floor/grass/spawniconchange()
+	icon_state = "altamgrass[rand(0,3)]"
+
+// Грязючка
+/turf/open/misc/dirt/station/altam
+	damaged_dmi = 'icons/turf/damaged.dmi'
+	tiled_dirt = TRUE
+
+/turf/open/misc/dirt/station/altam/broken_states()
+	return list("floorscorched1", "floorscorched2")
+
+// Пробую сделать пол горелым
+/turf/open/floor/wood/burnt_states()
+	return list("floorscorched1", "floorscorched2")
