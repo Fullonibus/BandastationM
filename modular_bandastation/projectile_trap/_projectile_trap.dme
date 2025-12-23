@@ -1,0 +1,3 @@
+#include "_projectile_trap.dm"
+
+#include "code/projectile_trap.dm"
