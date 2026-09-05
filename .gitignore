@@ -1,14 +1,5 @@
 ###Files and folders specified here will never be tracked.
 
-# Kilo CLI config
-.kilo/
-
-# Project memory (local AI assistant context)
-AGENTS.md
-
-# AI assistant skills (local)
-.opencode/skills/
-
 # Local overrides--you can use this to change the config for your dev environment (like setting up SQL) without worrying about committing it
 /config/dev_overrides.txt
 /config/dev_preferences.json
