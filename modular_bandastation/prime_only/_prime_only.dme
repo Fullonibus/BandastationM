@@ -1,6 +1,7 @@
 #include "_prime_only.dm"
 
 #include "code/fishing_portal_generator.dm"
+#include "code/prime_vox.dm"
 
 #include "../_defines220/code/defines/bodycam.dm"
 #include "../~components/code/bodycam_camera.dm"

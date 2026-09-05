@@ -138,6 +138,10 @@
 	if(visuals_only)
 		return
 
+#ifndef DISABLE_PRIME_MODPACKS
+	H.tts_effects_add(list(/datum/singleton/sound_effect/centcom_vox))
+#endif
+
 	// skills
 	var/datum/action/cooldown/spell/dodge_mode/dodge = new()
 	dodge.Grant(H)
