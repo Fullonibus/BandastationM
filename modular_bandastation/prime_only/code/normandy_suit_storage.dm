@@ -2,7 +2,8 @@
 
 // The worn sprites are 32x40. The renderer already centers a 32x40 worn icon
 // against the 32x32 human icon; change this value when the sprite needs tuning.
-#define NORMANDY_WORN_Y_OFFSET 0
+#define NORMANDY_WORN_Y_OFFSET -4
+#define NORMANDY_CHARACTER_Y_OFFSET 8
 
 #define NORMANDY_ARMOR_TRAIT "normandy_suit_storage"
 
@@ -27,7 +28,19 @@
 	worn_x_dimension = 32
 	worn_y_dimension = 40
 	worn_y_offset = NORMANDY_WORN_Y_OFFSET
+	// The tall upper section of Wolf's Doom must render over its helmet.
+	alternate_worn_layer = HEAD_LAYER - 0.1
 	armor_type = /datum/armor/mod_theme_corporate
+
+/obj/item/clothing/suit/armor/normandy/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_attached_clothing,\
+		deployable_type = /obj/item/clothing/head/helmet/normandy,\
+		equipped_slot = ITEM_SLOT_HEAD,\
+		action_name = "Toggle Helmet",\
+		parent_icon_state_suffix = "",\
+		auto_deploy_on_outfit_equip = TRUE,\
+	)
 
 /obj/item/clothing/gloves/combat/normandy
 	name = "Wolf's Doom gloves"
@@ -88,6 +101,8 @@
 	worn_x_dimension = 32
 	worn_y_dimension = 40
 	worn_y_offset = NORMANDY_WORN_Y_OFFSET
+	// The cloak must render above the armor overlay.
+	alternate_worn_layer = HEAD_LAYER - 0.2
 	armor_type = /datum/armor/mod_theme_corporate
 
 /obj/item/clothing/neck/cloak/normandy/wolf
@@ -100,7 +115,6 @@
 	suit = /obj/item/clothing/suit/armor/normandy
 	gloves = /obj/item/clothing/gloves/combat/normandy
 	shoes = /obj/item/clothing/shoes/combat/normandy
-	head = /obj/item/clothing/head/helmet/normandy
 	neck = /obj/item/clothing/neck/cloak/normandy
 
 /datum/outfit/centcom/normandy/wolf
@@ -121,7 +135,7 @@
 	max_integrity = 250
 
 	// The machine sprite is 64x64 and is centered on its map tile.
-	SET_BASE_PIXEL(-4, -4)
+	SET_BASE_PIXEL(-4, 0)
 
 	/// Outfit path used when the unit finishes its cycle.
 	var/cloak_type = /obj/item/clothing/neck/cloak/normandy
@@ -136,6 +150,8 @@
 	var/mob/living/carbon/human/kit_wearer
 	/// Timer for the door-closing animation before dressing starts.
 	var/dressing_start_timer = TIMER_ID_NULL
+	/// Timer for restoring the machine layer after a door animation.
+	var/door_layer_reset_timer = TIMER_ID_NULL
 	/// TRUE while the occupant is being dressed or undressed.
 	var/is_dressing = FALSE
 	/// TRUE when the current cycle removes the stored set from its wearer.
@@ -150,7 +166,8 @@
 	stored_armor = new /obj/item/clothing/suit/armor/normandy(src)
 	stored_gloves = new /obj/item/clothing/gloves/combat/normandy(src)
 	stored_boots = new /obj/item/clothing/shoes/combat/normandy(src)
-	stored_helmet = new /obj/item/clothing/head/helmet/normandy(src)
+	var/datum/component/toggle_attached_clothing/helmet_component = stored_armor.GetComponent(/datum/component/toggle_attached_clothing)
+	stored_helmet = helmet_component.deployable
 	stored_cloak = new cloak_type(src)
 	kit_items = list(stored_armor, stored_gloves, stored_boots, stored_helmet, stored_cloak)
 	for(var/obj/item/kit_item as anything in kit_items)
@@ -159,6 +176,7 @@
 
 /obj/machinery/normandy_suit_storage/Destroy()
 	cancel_dressing_start_timer()
+	cancel_door_layer_reset_timer()
 	for(var/obj/item/kit_item as anything in kit_items)
 		REMOVE_TRAIT(kit_item, TRAIT_NODROP, NORMANDY_ARMOR_TRAIT)
 	return ..()
@@ -222,6 +240,7 @@
 	if(!occupant)
 		return .
 
+	start_door_animation()
 	flick(NORMANDY_STORAGE_STATE_CLOSING, src)
 	cancel_dressing_start_timer()
 	dressing_start_timer = addtimer(CALLBACK(src, PROC_REF(begin_dressing)), NORMANDY_DOOR_ANIMATION_TIME, TIMER_STOPPABLE)
@@ -231,6 +250,7 @@
 	cancel_dressing_start_timer()
 	is_dressing = FALSE
 	is_removing_kit = FALSE
+	start_door_animation()
 	flick(NORMANDY_STORAGE_STATE_OPENING, src)
 	return ..()
 
@@ -286,6 +306,21 @@
 	deltimer(dressing_start_timer)
 	dressing_start_timer = TIMER_ID_NULL
 
+/obj/machinery/normandy_suit_storage/proc/cancel_door_layer_reset_timer()
+	if(door_layer_reset_timer == TIMER_ID_NULL)
+		return
+	deltimer(door_layer_reset_timer)
+	door_layer_reset_timer = TIMER_ID_NULL
+
+/obj/machinery/normandy_suit_storage/proc/start_door_animation()
+	cancel_door_layer_reset_timer()
+	layer = ABOVE_MOB_LAYER
+	door_layer_reset_timer = addtimer(CALLBACK(src, PROC_REF(reset_door_animation_layer)), NORMANDY_DOOR_ANIMATION_TIME, TIMER_STOPPABLE)
+
+/obj/machinery/normandy_suit_storage/proc/reset_door_animation_layer()
+	door_layer_reset_timer = TIMER_ID_NULL
+	layer = initial(layer)
+
 /obj/machinery/normandy_suit_storage/proc/can_finish_cycle(mob/living/carbon/human/target)
 	return is_dressing && !state_open && is_operational && target == occupant && target.loc == src && target.stat != DEAD
 
@@ -322,6 +357,7 @@
 			cancel_dressing(target)
 			return
 		kit_wearer = target
+		target.set_base_pixel_y(target.base_pixel_y + NORMANDY_CHARACTER_Y_OFFSET)
 		balloon_alert(target, "броня «Волчья Погибель» надета")
 	is_dressing = FALSE
 	open_machine()
@@ -338,17 +374,24 @@
 	if(!length(kit_items))
 		return FALSE
 	for(var/obj/item/kit_item as anything in kit_items)
-		if(kit_item.loc != src)
-			return FALSE
+		if(kit_item.loc == src)
+			continue
+		if(kit_item == stored_helmet && stored_armor.loc == src && kit_item.loc == stored_armor)
+			continue
+		return FALSE
 	return TRUE
 
 /obj/machinery/normandy_suit_storage/proc/is_kit_worn_by(mob/living/carbon/human/target)
 	if(!target || !stored_armor || !stored_gloves || !stored_boots || !stored_helmet || !stored_cloak)
 		return FALSE
+	var/hidden_helmet = FALSE
+	var/datum/component/toggle_attached_clothing/helmet_component = stored_armor.GetComponent(/datum/component/toggle_attached_clothing)
+	if(helmet_component)
+		hidden_helmet = !helmet_component.currently_deployed && stored_helmet.loc == stored_armor
 	return target.wear_suit == stored_armor \
 		&& target.gloves == stored_gloves \
 		&& target.shoes == stored_boots \
-		&& target.head == stored_helmet \
+		&& (target.head == stored_helmet || hidden_helmet) \
 		&& target.wear_neck == stored_cloak
 
 /obj/machinery/normandy_suit_storage/proc/remove_conflicting_item(mob/living/carbon/human/target, slot)
@@ -370,10 +413,16 @@
 	if(!target.equip_to_slot_if_possible(stored_boots, ITEM_SLOT_FEET, disable_warning = TRUE, redraw_mob = FALSE, bypass_equip_delay_self = TRUE, indirect_action = TRUE))
 		store_kit_from(target)
 		return FALSE
-	if(!target.equip_to_slot_if_possible(stored_helmet, ITEM_SLOT_HEAD, disable_warning = TRUE, redraw_mob = FALSE, bypass_equip_delay_self = TRUE, indirect_action = TRUE))
+	if(!target.equip_to_slot_if_possible(stored_cloak, ITEM_SLOT_NECK, disable_warning = TRUE, redraw_mob = FALSE, bypass_equip_delay_self = TRUE, indirect_action = TRUE))
 		store_kit_from(target)
 		return FALSE
-	if(!target.equip_to_slot_if_possible(stored_cloak, ITEM_SLOT_NECK, disable_warning = TRUE, redraw_mob = FALSE, bypass_equip_delay_self = TRUE, indirect_action = TRUE))
+	var/datum/component/toggle_attached_clothing/component = stored_armor.GetComponent(/datum/component/toggle_attached_clothing)
+	if(!component)
+		store_kit_from(target)
+		return FALSE
+	if(!component.currently_deployed)
+		component.toggle_deployable()
+	if(target.head != stored_helmet)
 		store_kit_from(target)
 		return FALSE
 	return TRUE
@@ -390,6 +439,8 @@
 				return FALSE
 		kit_item.forceMove(src)
 
+	if(target == kit_wearer)
+		target.set_base_pixel_y(target.base_pixel_y - NORMANDY_CHARACTER_Y_OFFSET)
 	kit_wearer = null
 	return is_kit_stored()
 
