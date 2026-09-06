@@ -30,8 +30,6 @@
 	if(visuals_only)
 		return
 
-	H.tts_effects_add(list(/datum/singleton/sound_effect/centcom_vox))
-
 	// skills
 	var/datum/action/cooldown/spell/dodge_mode/dodge = new()
 	dodge.Grant(H)
