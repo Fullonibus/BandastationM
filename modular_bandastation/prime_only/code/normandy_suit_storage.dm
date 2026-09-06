@@ -1,4 +1,4 @@
-// Normandy armor and the dressing unit using it.
+// Wolf's Doom armor and the dressing unit using it.
 
 // The worn sprites are 32x40. The renderer already centers a 32x40 worn icon
 // against the 32x32 human icon; change this value when the sprite needs tuning.
@@ -18,7 +18,7 @@
 // Clothing uses the 32x40 DMI as the worn icon, while these regular 32x32
 // icons are only used when the item is on the floor or in an inventory slot.
 /obj/item/clothing/suit/armor/normandy
-	name = "Normandy armor"
+	name = "Wolf's Doom armor"
 	desc = "A heavy combat armor set with an unusually tall silhouette."
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	icon_state = "armor"
@@ -30,8 +30,8 @@
 	armor_type = /datum/armor/mod_theme_corporate
 
 /obj/item/clothing/gloves/combat/normandy
-	name = "Normandy gloves"
-	desc = "Armored combat gloves from the Normandy suit."
+	name = "Wolf's Doom gloves"
+	desc = "Armored combat gloves from the Wolf's Doom suit."
 	icon_state = "black"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/NormandySuit.dmi'
 	worn_icon_state = "gloves"
@@ -41,8 +41,8 @@
 	armor_type = /datum/armor/mod_theme_corporate
 
 /obj/item/clothing/shoes/combat/normandy
-	name = "Normandy boots"
-	desc = "Armored combat boots from the Normandy suit."
+	name = "Wolf's Doom boots"
+	desc = "Armored combat boots from the Wolf's Doom suit."
 	icon_state = "jackboots"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/NormandySuit.dmi'
 	worn_icon_state = "boots"
@@ -53,8 +53,8 @@
 	armor_type = /datum/armor/mod_theme_corporate
 
 /obj/item/clothing/head/helmet/normandy
-	name = "Normandy helmet"
-	desc = "A sealed combat helmet from the Normandy suit."
+	name = "Wolf's Doom helmet"
+	desc = "A sealed combat helmet from the Wolf's Doom suit."
 	icon_state = "helmet"
 	base_icon_state = "helmet"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/NormandySuit.dmi'
@@ -80,8 +80,8 @@
 	user.tts_effects_remove(list(/datum/singleton/sound_effect/centcom_vox))
 
 /obj/item/clothing/neck/cloak/normandy
-	name = "Normandy standard cloak"
-	desc = "A standard cloak bearing the Normandy colors."
+	name = "Wolf's Doom standard cloak"
+	desc = "A standard cloak bearing the Wolf's Doom colors."
 	icon_state = "qmcloak"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/NormandySuit.dmi'
 	worn_icon_state = "cloak_standart"
@@ -91,12 +91,12 @@
 	armor_type = /datum/armor/mod_theme_corporate
 
 /obj/item/clothing/neck/cloak/normandy/wolf
-	name = "Normandy wolf cloak"
-	desc = "A wolf-themed alternative cloak for the Normandy suit."
+	name = "Wolf's Doom wolf cloak"
+	desc = "A wolf-themed alternative cloak for the Wolf's Doom suit."
 	worn_icon_state = "cloak_wolf"
 
 /datum/outfit/centcom/normandy
-	name = "бронекостюм «Нормандия»"
+	name = "бронекостюм «Волчья Погибель»"
 	suit = /obj/item/clothing/suit/armor/normandy
 	gloves = /obj/item/clothing/gloves/combat/normandy
 	shoes = /obj/item/clothing/shoes/combat/normandy
@@ -104,12 +104,12 @@
 	neck = /obj/item/clothing/neck/cloak/normandy
 
 /datum/outfit/centcom/normandy/wolf
-	name = "бронекостюм «Нормандия» с волчьим плащом"
+	name = "бронекостюм «Волчья Погибель» с волчьим плащом"
 	neck = /obj/item/clothing/neck/cloak/normandy/wolf
 
 /obj/machinery/normandy_suit_storage
-	name = "Normandy suit storage unit"
-	desc = "A unit that seals around a person and equips the Normandy armor."
+	name = "Wolf's Doom suit storage unit"
+	desc = "A unit that seals around a person and equips the Wolf's Doom armor."
 	icon = 'modular_bandastation/prime_only/icons/centcom/SuitStorage.dmi'
 	icon_state = NORMANDY_STORAGE_STATE_OPEN
 	state_open = TRUE
@@ -142,7 +142,7 @@
 	var/is_removing_kit = FALSE
 
 /obj/machinery/normandy_suit_storage/wolf
-	name = "Normandy suit storage unit (wolf cloak)"
+	name = "Wolf's Doom suit storage unit (wolf cloak)"
 	cloak_type = /obj/item/clothing/neck/cloak/normandy/wolf
 
 /obj/machinery/normandy_suit_storage/Initialize(mapload)
@@ -315,14 +315,14 @@
 		if(!store_kit_from(target))
 			balloon_alert(target, "не удалось снять комплект")
 		else
-			balloon_alert(target, "броня «Нормандия» снята")
+			balloon_alert(target, "броня «Волчья Погибель» снята")
 	else
 		if(!equip_kit_on(target))
 			balloon_alert(target, "не удалось надеть комплект")
 			cancel_dressing(target)
 			return
 		kit_wearer = target
-		balloon_alert(target, "броня «Нормандия» надета")
+		balloon_alert(target, "броня «Волчья Погибель» надета")
 	is_dressing = FALSE
 	open_machine()
 
