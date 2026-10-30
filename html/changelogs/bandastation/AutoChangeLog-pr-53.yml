@@ -1,0 +1,4 @@
+author: "Fullonibus"
+delete-after: True
+changes:
+  - bugfix: "Окна TGUI больше не уезжают при изменении ползунков и переключении вкладок после Alt+Tab."
