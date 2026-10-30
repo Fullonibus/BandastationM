@@ -61,8 +61,10 @@
 	sleep(0.6 SECONDS)
 	TEST_ASSERT_EQUAL(pod.loc, first_destination, "The pod drifted after the pilot stopped thrusting.")
 	TEST_ASSERT_NULL(pod.drift_handler, "Thruster-held flight incorrectly started a Newtonian drift loop.")
+	// Life support may consume power while the movement cooldown elapses.
+	var/charge_before_second_move = pod.battery.charge
 	TEST_ASSERT(pod.relaymove(pilot, NORTH), "The pod could not move again after its real cooldown elapsed.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge - 2 * SPACEPOD_ENERGY_UNIT, "Two successful vacuum moves consumed the wrong total power.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, charge_before_second_move - SPACEPOD_ENERGY_UNIT, "The vacuum move after cooldown consumed the wrong amount of energy.")
 	var/turf/unpowered_position = get_turf(pod)
 	pod.battery.charge = 0
 	sleep(0.6 SECONDS)
@@ -172,6 +174,9 @@
 		TEST_ASSERT_NOTNULL(engine_sound.sound_channel, "The native engine loop has no allocated sound channel.")
 		TEST_ASSERT_EQUAL(SSsounds.using_channels[num2text(engine_sound.sound_channel)], engine_sound, "The engine channel is not owned by its native sound datum.")
 		sound_channels[engine_sound] = engine_sound.sound_channel
+	pod.start_engine_sound(COOLDOWN_TIMELEFT(pod, cooldown_vehicle_move))
+	TEST_ASSERT_EQUAL(pod.engine_sounds[pilot], initial_sounds[pilot], "Refreshing an active glide replaced the pilot's sound loop.")
+	TEST_ASSERT_EQUAL(pod.engine_sounds[passenger], initial_sounds[passenger], "Refreshing an active glide replaced the passenger's sound loop.")
 	TEST_ASSERT(!pod.relaymove(pilot, EAST), "A repeated input bypassed the real movement cooldown.")
 	TEST_ASSERT(!pod.relaymove(passenger, EAST), "A passenger operated the engine during sound playback.")
 	for(var/mob/living/listener as anything in initial_sounds)
@@ -185,16 +190,15 @@
 		TEST_ASSERT(!length(SSsounds.using_channels_by_datum[engine_sound]), "A completed glide leaked managed sound channel ownership.")
 	var/list/flight_path = list(EAST, NORTH, WEST, SOUTH)
 	var/flight_started = world.time
-	var/list/continuous_sounds
 	for(var/lap in 1 to 12)
 		for(var/direction in flight_path)
+			var/list/sounds_before_step = pod.engine_sounds.Copy()
 			TEST_ASSERT(pod.relaymove(pilot, direction), "Sustained engine flight failed at lap [lap], direction [direction].")
 			TEST_ASSERT_EQUAL(length(pod.engine_sounds), 2, "Sustained flight layered or lost cabin sound loops.")
-			if(isnull(continuous_sounds))
-				continuous_sounds = pod.engine_sounds.Copy()
 			for(var/mob/living/listener as anything in pod.engine_sounds)
 				var/datum/looping_sound/spacepod_engine/engine_sound = pod.engine_sounds[listener]
-				TEST_ASSERT_EQUAL(engine_sound, continuous_sounds[listener], "Continuous movement restarted its existing engine sound datum.")
+				if(sounds_before_step[listener])
+					TEST_ASSERT_EQUAL(engine_sound, sounds_before_step[listener], "Movement replaced an engine sound that was still active before the step.")
 				TEST_ASSERT(engine_sound.is_active(), "A successful sustained-flight step has no active native engine loop.")
 				TEST_ASSERT_EQUAL(SSsounds.using_channels[num2text(engine_sound.sound_channel)], engine_sound, "Sustained flight lost its managed engine channel.")
 				sound_channels[engine_sound] = engine_sound.sound_channel

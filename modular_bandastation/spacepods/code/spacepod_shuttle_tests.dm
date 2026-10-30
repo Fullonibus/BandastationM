@@ -105,6 +105,8 @@
 	source = locate(source.x, source.y, source.z)
 	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, source)
 	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(source, SOUTH))
+	// Keep breathing-driven life support out of the shuttle's power-use assertion.
+	ADD_TRAIT(pilot, TRAIT_NOBREATH, TRAIT_SOURCE_UNIT_TESTS)
 	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "The carried pod's pilot could not board.")
 	var/initial_integrity = pod.get_integrity()
 	var/initial_charge = pod.battery.charge
