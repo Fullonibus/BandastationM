@@ -1,3 +1,21 @@
+# Инструкции агентам BandaStation
+
+Не предполагай. Сомневайся. Ищи причины, а не симптомы. Общайся по-русски; выполняй разрешённую работу до проверяемого результата.
+
+Вноси только изменения по запрошенной задаче и непосредственно необходимые для её решения. Не делай попутные рефакторы, переименования, форматирование или исправления соседних проблем. Рефактор допустим по прямому запросу либо если без него задачу не решить; ограничь его необходимым минимумом. Отдельно найденные проблемы сообщай, не расширяя текущий diff.
+
+1. Прочитай актуальный запрос и проверь Git: `py -3 -B tools/agents/repo/inspect-repo.py status`. Сохраняй чужие изменения; установи владельца незавершённого merge/rebase до продолжения.
+2. Открой [контекст проекта](.AGENTS/PROJECT_CONTEXT.md). До правки проследи вход → include → вызовы → состояние → потребитель и побочные эффекты. Начинай с узкого `rg` или проектного MCP.
+3. Для многоэтапной работы выбери или создай [задачу](.AGENTS/TASK_STATE.md). Зафиксируй цель, владельца, пути записи, MUST/KEEP/REJECT/CHECK и следующий шаг. Для продолжения сначала читай TODO, затем проверяй актуальное дерево.
+4. Соблюдай [правила работы](.AGENTS/WORKFLOW_RULES.md): выбирай место изменения по текущей реализации и запросу, сохраняй контракты вызовов и жизненного цикла. Комментарии `SS220 EDIT` / `BANDASTATION EDIT` — legacy; в новых правках их не добавляй. Не добавляй комментарии об авторстве ИИ и обёртки начала/конца агентских правок; изменения отслеживаются через Git diff.
+5. Код-стайл: [STYLE](.github/guides/STYLE.md), [STANDARDS](.github/guides/STANDARDS.md), [AUTODOC](.github/guides/AUTODOC.md), [CONTRIBUTING](.github/CONTRIBUTING.md); TGUI: [README](tgui/README.md). Не рефактори соседний код вне задачи.
+6. Подбирай минимально достаточные проверки под изменённое поведение и его риски. Не добавляй и не расширяй тесты без конкретной необходимости; используй существующие проверки или точный ручной сценарий, если их достаточно. Обязательные проверки проекта сохраняются. При необходимости сборки запускай штатный [pipeline](tools/build/README.md). Различай compile, тесты, DM runtime и визуальную проверку; браузерный кадр не доказывает работу BYOND. Не повторяй тот же сбой без новых данных.
+7. Дополнительных агентов запускай по прямому разрешению пользователя или явной применимой инструкции. Назначай одного писателя общих файлов, разделяй области записи и запускай общие генераторы последовательно. Подробности — в [TASK_STATE](.AGENTS/TASK_STATE.md).
+8. Перед завершением обнови TODO/evidence, проверь весь diff к базе задачи, `git diff --check` и `tools/agents/repo/local-only.ps1 -Action check`. Добавляй в индекс только выбранные пути; сообщай фактические проверки и ограничения. Push и публикация требуют соответствующего запроса пользователя.
+
+Общие инструкции, шаблоны и `tools/agents/` версионируются. Машинный `.codex/`, рабочий `task_state/` и зависимости остаются локальными. Не выводи секреты и пользовательские runtime-данные; не обходи guard через `git add -f` или `--no-verify`.
+
+Установка двух MCP и команды проверки — [TOOLS](.AGENTS/TOOLS.md). Перенос набора — [PORTING](.AGENTS/PORTING.md). Глобальные модели, approvals, sandbox и авторизация принадлежат среде, проект их не перенастраивает.
 # AGENTS.md — BandaStation
 
 Use Russian language. Code, symbol names, paths, and commands stay in their original form.
@@ -29,22 +47,16 @@ Lazy about the solution, never about reading. The best code is the code never wr
 **Solution ladder.** The first rung that fully works wins:
 
 1. Does it need to exist? Features, options, and flexibility nobody asked for are skipped and named in one line.
-2. <!-- AI EDIT START - Require checking existing methods before adding equivalents -->
-   Search the checked-out build, including relevant fork modules, for an existing proc, component, element, trait, define, helper, TGUI component or pattern before adding one. Read its implementation and callers; reuse it when its inputs, results, side effects, validation, ownership and async behavior fit the task. A similar name alone is not a reason to reuse it.
-   <!-- AI EDIT END -->
+2. Search the checked-out build, including relevant fork modules, for an existing proc, component, element, trait, define, helper, TGUI component or pattern before adding one. Read its implementation and callers; reuse it when its inputs, results, side effects, validation, ownership and async behavior fit the task. A similar name alone is not a reason to reuse it.
 3. Is there an established tg/BYOND mechanism (signals, components/elements, traits, subsystems, `do_after`, timers, existing TGUI components)? It is used.
 4. Can it be a small local change in the existing structure? It is done that way.
-5. <!-- AI EDIT START - Require a concrete justification for new code -->
-   Only then: the minimum new code, in the structure the codebase already has. Briefly justify the addition at the level of the chosen solution: the required behavior it provides, the gap in existing methods, and why reuse or a small local change is insufficient. Do not require a separate justification for each line.
-   <!-- AI EDIT END -->
+5. Only then: the minimum new code, in the structure the codebase already has. Briefly justify the addition at the level of the chosen solution: the required behavior it provides, the gap in existing methods, and why reuse or a small local change is insufficient. Do not require a separate justification for each line.
 
 **Rules.**
 
 - A defect in shared code is fixed once at the root, and every caller of the touched proc is checked. A local workaround that leaves the cause in place is not a fix.
-- The shortest diff that reaches everything it must. A clever one-liner that needs decoding is not short.
-- <!-- AI EDIT START - Exclude unused additions and unjustified helpers -->
-  No speculative abstraction, wrapper, config option, subsystem, registry, or "for later" code. Leave no unused additions. A helper used once needs a concrete benefit, such as separating cohesive logic or providing a required override point; merely forwarding a call is insufficient. Deletion beats addition.
-  <!-- AI EDIT END -->
+- Change only the requested behavior and what is directly necessary to implement it. Do not refactor, rename, reformat or fix neighboring problems opportunistically. A refactor needs an explicit request or a concrete necessity for this task; keep it to that minimum. Report unrelated defects without adding them to the diff.
+- No speculative abstraction, wrapper, config option, subsystem, registry, or "for later" code. Leave no unused additions. A helper used once needs a concrete benefit, such as separating cohesive logic or providing a required override point; merely forwarding a call is insufficient. Deletion beats addition.
 - Moved or merged code keeps its validation and error handling.
 - Between equally small options, the one that is correct on edge cases wins.
 - Verification follows the changed behavior and its risks, not the number of new branches or functions. Choose existing checks, a focused regression test, or a precise manual scenario using [Testing and verification](#4-testing-and-verification).
@@ -89,9 +101,8 @@ Test commands and available facilities must match the current [build targets](to
 
 **Fork conventions observed in the code:**
 
-- Edits inside upstream files carry markers: `// BANDASTATION EDIT|ADDITION|REMOVAL - <reason>` on one line, or `... START` / `... END` blocks (over a thousand in `code/`). They keep upstream merges resolvable.
-- A modpack is `modular_bandastation/<name>/` with `_<name>.dm` (a `/datum/modpack/<name>` with name, desc, author) and `_<name>.dme` (its includes); `modular_bandastation/modular_bandastation.dme` includes every modpack. A new `.dm` file is compiled only when it is included there.
-- Modpacks contain both new types and overrides of upstream types (e.g. `/datum/objective/Destroy()` in `modular_bandastation/code/file.dm`). Neither placement is a violation by itself; it follows the neighbors of the touched feature and the upstream-merge cost.
+- `SS220` / `BANDASTATION` edit comments (`EDIT`, `ADDITION`, `REMOVAL`, including `START` / `END` blocks) are legacy. Do not add them to new changes or require them in review.
+- Existing modpacks live in `modular_bandastation/<name>/` with `_<name>.dm` metadata and `_<name>.dme` includes. This describes the current layout; extracting new logic into modpacks is not required. Choose the location from the task and the current implementation.
 - Fork code uses both `GetComponent()` and signals. Neither is mandatory; the choice follows ownership and coupling.
 - Item name translations: one `.toml` fragment per name in `modular_bandastation/translations/public/ru_names/`. `ru_names.toml` is generated and never edited by hand.
 - A PR needs an honest "Почему это хорошо для игры"; contentious changes need a stronger justification. Large or serious changes need prior approval from senior developers. Optimization claims need profiling. Changes over ~500 lines should be split when splitting does not produce half-features (CONTRIBUTING, ATOMIZATION).
@@ -99,7 +110,6 @@ Test commands and available facilities must match the current [build targets](to
 
 **Open policy questions.** Not guessed. Until a maintainer answers, these are questions, never violations:
 
-- the exact rule for `modular_bandastation/` versus direct upstream edits;
 - required merge checks beyond the completion gate;
 - feature-specific requirements for automated tests or manual testmerges beyond the documented rules and §4;
 - performance budgets for hot paths;
@@ -109,7 +119,7 @@ Test commands and available facilities must match the current [build targets](to
 
 ## 4. Testing and verification
 
-**A change needs appropriate verification, not automatically a new test.** Follow [CONTRIBUTING](.github/CONTRIBUTING.md#процесс-открытия-pull-request) and existing CI requirements. A new branch, loop, proc, or changed line is not by itself a reason to add a test. Coverage percentages and assertion counts are not the goal.
+**A change needs appropriate verification, not automatically a new test.** Follow [CONTRIBUTING](.github/CONTRIBUTING.md#процесс-открытия-pull-request) and existing CI requirements. Use the smallest sufficient check for the changed behavior and its concrete risks. Do not add or expand tests when existing checks or a precise manual scenario already verify it sufficiently. A new branch, loop, proc, or changed line is not by itself a reason to add a test. Coverage percentages and assertion counts are not the goal.
 
 ### Choose the smallest useful check
 
@@ -150,26 +160,18 @@ Report briefly: the risk checked, the existing or new test used (or why manual v
 - Review is read-only: no edits, commits, pushes, GitHub comments, or PR changes.
 - Implementation edits only the working tree. Commit, push, PR, or deploy happen only on explicit request. The user's uncommitted edits are never overwritten.
 - Generated files (`ru_names.toml`, built tgui bundles) are never edited by hand.
-
-<!-- AI EDIT START - Require visible boundaries for agent-authored changes -->
-### AI edit markers
-
-- Enclose agent-authored additions and modified blocks in repository text files with paired `AI EDIT START - <reason>` and `AI EDIT END` comments. Use comment syntax valid at that location: for example, `// AI EDIT START - <reason>` / `// AI EDIT END` in DM, or `<!-- AI EDIT START - <reason> -->` / `<!-- AI EDIT END -->` in Markdown.
-- Mark the smallest complete changed block, without claiming unchanged neighboring code or other contributors' work. Reuse an existing `AI EDIT` block rather than nesting another pair inside it.
-- `AI EDIT` markers supplement the required `BANDASTATION` markers in upstream files; preserve both conventions.
-- Keep generated files untouched. Do not insert markers into binary files or where the format, validator or required file structure forbids them; `.dmm` map checks reject arbitrary comments even though the syntax accepts them. Identify these unmarked paths and the reason in the report instead of breaking the file or its checks.
-<!-- AI EDIT END -->
+- Do not add comments identifying AI authorship or wrapping agent changes with start/end labels. Use Git history and diffs to track edits; comments explain code intent when needed.
 
 ---
 
 ## 6. Code Review Rules
 
-These rules hold for code being written and for code being reviewed. Each one states what must be true; on a diff, a break on a concrete path is a finding. Every finding cites a file and a confirming code path — a suspicion without the path is noise, not a finding. Rules apply to the diff; legacy code is context, not a target. The §3 open policy questions are never findings; the §3 fork conventions are enforced on the diff — `BANDASTATION` markers on upstream-file edits, translation fragments instead of `ru_names.toml` edits, attribution for new assets, untouched generated files, an honest "Почему это хорошо для игры", the ~500-line split threshold — and modpack-vs-upstream placement is not a violation by itself.
+These rules hold for code being written and for code being reviewed. Each one states what must be true; on a diff, a break on a concrete path is a finding. Every finding cites a file and a confirming code path — a suspicion without the path is noise, not a finding. Rules apply to the diff; legacy code is context, not a target. The §3 open policy questions are never findings; the §3 fork conventions are enforced on the diff — translation fragments instead of `ru_names.toml` edits, attribution for new assets, untouched generated files, an honest "Почему это хорошо для игры", the ~500-line split threshold.
 
 ### Diff scope
 
 - The diff does what the PR states and nothing else; unrelated changes are flagged.
-- A new `.dm` file is included in a `.dme` (the modpack's `_<name>.dme` or `modular_bandastation/modular_bandastation.dme`); an unincluded file does not compile. CI's ticked-file check does not cover `modular_bandastation/`, so this rule is the only defense there.
+- A new `.dm` file is included in the active `.dme` chain; an unincluded file does not compile. Check the actual include path, including areas outside CI's ticked-file check.
 
 ### Tests
 
