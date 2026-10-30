@@ -1,0 +1,4 @@
+author: "PhantornRU"
+delete-after: True
+changes:
+  - code_imp: "Добавлены агентские инструкции, инструменты и MCP."
