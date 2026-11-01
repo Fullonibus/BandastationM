@@ -30,6 +30,7 @@
 /datum/unit_test/spacepod_speech_bubbles/Run()
 	var/turf/origin = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
 	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, origin)
+	pod.setDir(NORTH)
 	var/mob/living/carbon/human/consistent/spacepod_speech_counter/pilot = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
 	var/mob/living/carbon/human/consistent/spacepod_speech_counter/passenger = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
 	var/mob/living/carbon/human/consistent/spacepod_speech_listener/listener = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
@@ -66,6 +67,9 @@
 	for(var/turf/footprint as anything in block(destination, locate(destination.x + 1, destination.y + 1, destination.z)))
 		TEST_ASSERT(isopenturf(footprint) && !footprint.is_blocked_turf(ignore_atoms = list(pod)), "The speech fixture's movement destination is blocked at [COORD(footprint)].")
 	TEST_ASSERT(pod.relaymove(pilot, NORTH), "The speech fixture could not perform a real piloted movement step.")
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	pod.flight.process(0.05)
+	TEST_ASSERT_EQUAL(pod.loc, destination, "The speech fixture did not actually move before speaking.")
 	for(var/mob/living/carbon/human/consistent/spacepod_speech_counter/occupant as anything in list(pilot, passenger))
 		var/bubbles_before = length(occupant.update_on_z)
 		last_heard_message = null

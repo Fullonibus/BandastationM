@@ -45,7 +45,10 @@
 	TEST_ASSERT(!pod.relaymove(passenger, EAST), "A passenger moved the pod.")
 	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge, "A rejected passenger input consumed energy.")
 	TEST_ASSERT(pod.relaymove(pilot, EAST), "The pilot could not move a powered pod across open floor.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge - SPACEPOD_ENERGY_UNIT, "One move did not consume one converted donor energy unit.")
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	pod.flight.process(0.05)
+	TEST_ASSERT(pod.battery.charge < initial_charge, "The accepted pilot thrust consumed no energy.")
+	TEST_ASSERT(pod.flight.velocity_x || pod.flight.velocity_y, "The accepted pilot thrust did not accelerate the cabin.")
 	ADD_TRAIT(pilot, TRAIT_RESTRAINED, TRAIT_SOURCE_UNIT_TESTS)
 	TEST_ASSERT(!pod.can_control(pilot), "A restrained pilot retained the controls.")
 	REMOVE_TRAIT(pilot, TRAIT_RESTRAINED, TRAIT_SOURCE_UNIT_TESTS)
@@ -238,6 +241,7 @@
 	var/turf/origin = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
 	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, origin)
 	pod.enter_delay = 0
+	pod.setDir(NORTH)
 	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
 	var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
 	TEST_ASSERT(pod.mob_try_enter(pilot), "The pilot could not board for the movement-lock test.")
@@ -247,14 +251,20 @@
 	var/keybind_result = SEND_SIGNAL(pilot, COMSIG_MOVABLE_KEYBIND_FACE_DIR, EAST)
 	TEST_ASSERT(!(keybind_result & COMSIG_IGNORE_MOVEMENT_LOCK), "Alt+direction incorrectly authorizes the client's movement branch.")
 	pilot.keybind_face_direction(EAST)
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	for(var/tick in 1 to 6)
+		pod.flight.process(0.05)
 	TEST_ASSERT_EQUAL(pod.loc, origin, "Turning with the native movement-lock signal moved the pod.")
 	TEST_ASSERT_EQUAL(pod.dir, EAST, "The movement-lock signal did not turn the cabin.")
 	TEST_ASSERT_EQUAL(pilot.dir, EAST, "Turning the cabin did not turn its pilot.")
 	TEST_ASSERT_EQUAL(passenger.dir, EAST, "Turning the cabin did not turn its passenger.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge, "Turning in place consumed flight energy.")
+	TEST_ASSERT(pod.battery.charge < initial_charge, "Powered turning in place consumed no flight energy.")
+	var/charge_after_turn = pod.battery.charge
 	TEST_ASSERT(pod.relaymove(pilot, NORTH), "Ordinary pilot movement stopped working after turning in place.")
-	TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "The first ordinary movement after turning ended at the wrong turf.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge - SPACEPOD_ENERGY_UNIT, "The first ordinary movement after turning consumed the wrong energy.")
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	pod.flight.process(0.05)
+	TEST_ASSERT_EQUAL(pod.loc, get_step(origin, EAST), "Forward thrust did not follow the newly aimed nose.")
+	TEST_ASSERT(pod.battery.charge < charge_after_turn, "Forward thrust after turning consumed no energy.")
 
 /datum/unit_test/spacepod_interaction
 	parent_type = /datum/unit_test/spacepod_vacuum

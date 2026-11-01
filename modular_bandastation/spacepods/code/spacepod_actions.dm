@@ -121,7 +121,7 @@
 	pod.aim_from_mouse(mob, params)
 
 /obj/vehicle/sealed/spacepod/proc/aim_from_mouse(mob/living/user, params)
-	if(!can_control(user) || !user.client || user.client.eye != src || has_gravity() || !istext(params))
+	if(!can_control(user) || !user.client || user.client.eye != src || !istext(params))
 		return FALSE
 	var/list/modifiers = params2list(params)
 	var/screen_position = modifiers[SCREEN_LOC]

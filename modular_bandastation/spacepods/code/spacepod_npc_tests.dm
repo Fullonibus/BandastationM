@@ -82,3 +82,105 @@
 		qdel(subject)
 		TEST_ASSERT(!(subject in GLOB.hostile_machines_by_z[origin.z]), "Deleting [subject_type] left an AI registry reference on its previous z-level.")
 		TEST_ASSERT(!(subject in GLOB.hostile_machines_by_z[vacuum_origin.z]), "Deleting [subject_type] left an AI registry reference on its final z-level.")
+
+/// Only the occupied hull enters the sensor field; hidden crew cannot wake the turret for it.
+/datum/unit_test/spacepod_turret_tracking
+	parent_type = /datum/unit_test/spacepod_vacuum
+
+/datum/unit_test/spacepod_turret_tracking/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not board the turret sensor fixture.")
+	var/turf/corner = vacuum_block.bottom_left_turfs[1]
+	var/turf/far_turf = locate(corner.x + 13, pod.y, pod.z)
+	pod.forceMove(far_turf)
+	var/obj/machinery/porta_turret/syndicate/energy/ruin/turret = allocate(__IMPLIED_TYPE__, locate(corner.x + 2, pod.y, pod.z))
+	TEST_ASSERT(!(turret.datum_flags & DF_ISPROCESSING), "A turret without anything in its sensor field started processing.")
+	for(var/step in 1 to 3)
+		TEST_ASSERT(pod.Move(get_step(pod, WEST), WEST, 0, FALSE), "The occupied hull could not enter the sensor field.")
+	TEST_ASSERT(pod in turret.tracker.tracking, "The turret sensor did not discover the occupied hull.")
+	TEST_ASSERT(turret.datum_flags & DF_ISPROCESSING, "The occupied hull did not wake the native turret processor.")
+	for(var/step in 1 to 3)
+		TEST_ASSERT(pod.Move(get_step(pod, EAST), EAST, 0, FALSE), "The occupied hull could not leave the sensor field.")
+	TEST_ASSERT(!(pod in turret.tracker.tracking), "The sensor retained a hull beyond its field.")
+	TEST_ASSERT(!(turret.datum_flags & DF_ISPROCESSING), "Leaving the sensor field did not stop turret processing.")
+	for(var/step in 1 to 3)
+		TEST_ASSERT(pod.Move(get_step(pod, WEST), WEST, 0, FALSE), "The occupied hull could not re-enter the sensor field.")
+	TEST_ASSERT(turret.datum_flags & DF_ISPROCESSING, "Returning the occupied hull did not wake the turret again.")
+	pod.pilot.set_faction(turret.get_faction())
+	qdel(pod)
+	TEST_ASSERT(!length(turret.tracker.tracking), "Deleting the hull left a stale sensor target.")
+	TEST_ASSERT(!(turret.datum_flags & DF_ISPROCESSING), "Deleting the last hull left turret processing active.")
+
+/// Observe real ruin-turret fire without replacing acquisition, shooting or projectile impacts.
+/datum/unit_test/spacepod_turret_targeting
+	parent_type = /datum/unit_test/spacepod_vacuum
+	/// Native shots observed in the current turret case.
+	var/shots = 0
+	/// Record identity without retaining a target beyond fixture teardown.
+	var/last_target_ref
+
+/datum/unit_test/spacepod_turret_targeting/proc/on_projectile(datum/source, obj/projectile/projectile)
+	SIGNAL_HANDLER
+	allocated |= projectile
+	shots++
+	last_target_ref = REF(projectile.original)
+
+/datum/unit_test/spacepod_turret_targeting/Run()
+	for(var/turret_type in list(/obj/machinery/porta_turret/syndicate/energy/ruin, /obj/machinery/porta_turret/syndicate/pod))
+		shots = 0
+		last_target_ref = null
+		var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, vacuum_origin)
+		STOP_PROCESSING(SSobj, pod)
+		var/obj/machinery/porta_turret/turret = allocate(turret_type, locate(pod.x + 4, pod.y, pod.z))
+		RegisterSignal(turret, COMSIG_PROJECTILE_FIRER_BEFORE_FIRE, PROC_REF(on_projectile))
+		var/ready_deadline = world.time + 3 SECONDS
+		while((!turret.raised || turret.last_fired + turret.shot_delay > world.time) && world.time < ready_deadline)
+			sleep(world.tick_lag)
+		TEST_ASSERT(turret.raised && turret.last_fired + turret.shot_delay <= world.time, "The native ruin turret did not finish its popup and initial cooldown.")
+		turret.end_processing()
+		turret.process()
+		TEST_ASSERT_EQUAL(shots, 0, "A ruin turret fired at an empty pod.")
+		var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(pod, SOUTH))
+		var/list/neutral_faction = pilot.get_faction()
+		neutral_faction = neutral_faction.Copy()
+		var/obj/item/clothing/under/color/grey/uniform = allocate(__IMPLIED_TYPE__)
+		TEST_ASSERT(pilot.equip_to_slot_if_possible(uniform, ITEM_SLOT_ICLOTHING), "Could not equip the pilot's uniform before attaching its ID.")
+		var/obj/item/card/id/advanced/id = allocate(__IMPLIED_TYPE__)
+		id.set_access(list(ACCESS_SYNDICATE), FORCE_ADD_ALL)
+		TEST_ASSERT(pilot.equip_to_slot_if_possible(id, ITEM_SLOT_ID), "Could not equip the ruin-access fixture card.")
+		pilot.set_faction(turret.get_faction())
+		TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "The friendly turret-test pilot could not board.")
+		turret.process()
+		TEST_ASSERT_EQUAL(shots, 0, "A ruin turret fired at its own faction inside a pod.")
+		pilot.set_faction(neutral_faction)
+		if(istype(turret, /obj/machinery/porta_turret/syndicate/energy/ruin))
+			turret.process()
+			TEST_ASSERT_EQUAL(shots, 0, "The ruin turret ignored a crew member's authorized access card.")
+		TEST_ASSERT(pilot.temporarilyRemoveItemFromInventory(id, force = TRUE), "Could not remove authorization before the dead-crew check.")
+		pilot.death()
+		turret.process()
+		TEST_ASSERT_EQUAL(shots, 0, "A dead crew member made the pod a turret target.")
+		qdel(pilot)
+		pilot = allocate(__IMPLIED_TYPE__, get_step(pod, SOUTH))
+		pilot.set_faction(turret.get_faction())
+		TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "The replacement friendly pilot could not board.")
+		var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, get_step(pod, SOUTH))
+		TEST_ASSERT(pod.mob_enter(passenger, silent = TRUE), "The hostile passenger could not board.")
+		var/initial_hull = pod.get_integrity()
+		var/pilot_health = pilot.health
+		var/passenger_health = passenger.health
+		turret.process()
+		turret.end_processing()
+		TEST_ASSERT_EQUAL(shots, 1, "The ruin turret did not fire exactly once at a pod with a hostile passenger.")
+		TEST_ASSERT_EQUAL(last_target_ref, REF(pod), "The ruin turret aimed at hidden crew instead of the real hull.")
+		var/hit_deadline = world.time + 3 SECONDS
+		while(pod.get_integrity() == initial_hull && world.time < hit_deadline)
+			sleep(world.tick_lag)
+		TEST_ASSERT(pod.get_integrity() < initial_hull, "The real ruin-turret projectile did not damage the hull.")
+		TEST_ASSERT_EQUAL(pilot.health, pilot_health, "The turret projectile bypassed the hull and hit the pilot.")
+		TEST_ASSERT_EQUAL(passenger.health, passenger_health, "The turret projectile bypassed the hull and hit the passenger.")
+		qdel(turret)
+		qdel(pod)
+		qdel(pilot)
+		qdel(passenger)
+		qdel(id)

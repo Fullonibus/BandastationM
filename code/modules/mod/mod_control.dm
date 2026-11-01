@@ -573,6 +573,8 @@
 	SIGNAL_HANDLER
 
 	if (LAZYACCESS(modifiers, CTRL_CLICK) && LAZYACCESS(modifiers, source.client?.prefs.read_preference(/datum/preference/choiced/mod_select) || MIDDLE_CLICK))
+		if(istype(source.loc, /obj/vehicle/sealed/spacepod))
+			return COMSIG_MOB_CANCEL_CLICKON
 		INVOKE_ASYNC(src, PROC_REF(quick_module), source, get_turf(A))
 		return COMSIG_MOB_CANCEL_CLICKON
 

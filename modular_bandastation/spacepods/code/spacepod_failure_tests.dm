@@ -107,6 +107,9 @@
 	while(!COOLDOWN_FINISHED(pod, cooldown_vehicle_move))
 		stoplag(1)
 	TEST_ASSERT(pod.relaymove(pilot, EAST), "The pod did not recover after its battery was recharged.")
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	pod.flight.process(0.05)
+	TEST_ASSERT(pod.loc != origin, "Recharging accepted input without restoring actual movement.")
 	var/turf/emp_origin = pod.loc
 	pod.emp_act(EMP_LIGHT)
 	TEST_ASSERT(!COOLDOWN_FINISHED(pod, cooldown_emp), "A real EMP did not start its movement lockout.")
@@ -119,6 +122,10 @@
 		stoplag(1)
 	TEST_ASSERT(COOLDOWN_FINISHED(pod, cooldown_emp), "The real light-EMP cooldown failed to expire.")
 	TEST_ASSERT(pod.relaymove(pilot, WEST), "The pod did not recover movement after the EMP naturally expired.")
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	var/charge_after_emp = cell.charge
+	pod.flight.process(0.05)
+	TEST_ASSERT(cell.charge < charge_after_emp, "The recovered pod accepted input without applying paid thrust.")
 	TEST_ASSERT(pod.mob_exit(pilot, silent = TRUE), "The recovered pilot could not leave the pod.")
 	pilot.forceMove(run_loc_floor_bottom_left)
 	var/old_lights = pod.lights

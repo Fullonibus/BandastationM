@@ -104,6 +104,7 @@
 	var/list/ore_types = list(/obj/item/stack/ore/iron, /obj/item/stack/ore/plasma, /obj/item/stack/ore/gold, /obj/item/stack/ore/silver)
 	for(var/scenario in list("loaded_ore", "empty_ore", "loaded_crate", "interrupted_ore"))
 		var/obj/vehicle/sealed/spacepod/pod = allocate(__IMPLIED_TYPE__, origin)
+		pod.setDir(NORTH)
 		var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
 		TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "The pilot could not board for ore collection [scenario].")
 		var/obj/item/spacepod_equipment/cargo/cargo = allocate(scenario == "loaded_crate" ? /obj/item/spacepod_equipment/cargo/crate : /obj/item/spacepod_equipment/cargo/ore, pod)
@@ -127,9 +128,11 @@
 		interrupted_cargo = scenario == "interrupted_ore" ? cargo : null
 		var/initial_charge = pod.battery.charge
 		TEST_ASSERT(pod.relaymove(pilot, EAST), "Real pilot movement failed for ore collection [scenario].")
+		STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+		pod.flight.process(0.05)
 		TEST_ASSERT_EQUAL(pod.loc, destination, "Ore collection [scenario] did not move exactly one tile east.")
 		TEST_ASSERT_EQUAL(length(pod.locs - footprint), 0, "Ore collection [scenario] used the wrong destination footprint.")
-		TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge - SPACEPOD_ENERGY_UNIT, "Ore collection [scenario] changed the ordinary movement energy cost.")
+		TEST_ASSERT(pod.battery.charge < initial_charge, "Ore collection [scenario] used thrust without paying for it.")
 		var/collected = 0
 		tile_index = 0
 		for(var/obj/item/stack/ore/ore as anything in ores)

@@ -19,6 +19,7 @@
 			/mob/living/simple_animal,
 			/obj/structure/blob,
 			/obj/vehicle/sealed/mecha,
+			/obj/vehicle/sealed/spacepod,
 		))
 
 /datum/proximity_monitor/advanced/turret_tracking/Destroy()

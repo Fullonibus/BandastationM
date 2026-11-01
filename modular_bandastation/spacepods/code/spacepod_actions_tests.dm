@@ -67,6 +67,67 @@
 	TEST_ASSERT(pod.flight.turbo, "Changing pilots unexpectedly cleared the enabled TURBO setting.")
 	TEST_ASSERT_EQUAL(replacement_turbo.button_icon_state, enabled_turbo_icon, "The replacement pilot's TURBO icon does not show the already enabled mode.")
 
+/// Replace only the radial UI boundary; native MOD click routing remains intact.
+/obj/item/mod/control/pre_equipped/engineering/spacepod_radial_test
+	/// Number of radial menu requests received by the UI boundary.
+	var/radial_requests = 0
+
+/obj/item/mod/control/pre_equipped/engineering/spacepod_radial_test/quick_module(mob/user, anchor_override = null)
+	radial_requests++
+
+/// The MOD hotkey cannot open its radial in a pod, and resumes working after exit.
+/datum/unit_test/spacepod_mod_radial/Run()
+	var/obj/vehicle/sealed/spacepod/pod = allocate(__IMPLIED_TYPE__)
+	var/mob/living/carbon/human/consistent/user = allocate(__IMPLIED_TYPE__, get_step(pod, SOUTH))
+	var/obj/item/mod/control/pre_equipped/engineering/spacepod_radial_test/mod = allocate(__IMPLIED_TYPE__)
+	STOP_PROCESSING(SSobj, mod)
+	TEST_ASSERT(user.equip_to_slot_if_possible(mod, ITEM_SLOT_BACK), "Could not equip the real MOD radial fixture.")
+	var/list/modifiers = list(CTRL_CLICK = TRUE, MIDDLE_CLICK = TRUE)
+	TEST_ASSERT(SEND_SIGNAL(user, COMSIG_MOB_CLICKON, pod, modifiers) & COMSIG_MOB_CANCEL_CLICKON, "The real MOD did not consume its hotkey outside the pod.")
+	TEST_ASSERT_EQUAL(mod.radial_requests, 1, "The outside MOD hotkey did not reach the radial UI.")
+	TEST_ASSERT(pod.mob_enter(user, silent = TRUE), "The MOD wearer could not board the pod.")
+	TEST_ASSERT(SEND_SIGNAL(user, COMSIG_MOB_CLICKON, pod, modifiers) & COMSIG_MOB_CANCEL_CLICKON, "The blocked MOD hotkey fell through to another click action.")
+	TEST_ASSERT_EQUAL(mod.radial_requests, 1, "The MOD hotkey opened a radial menu inside the pod.")
+	TEST_ASSERT(pod.mob_exit(user, silent = TRUE), "The MOD wearer could not leave the pod.")
+	SEND_SIGNAL(user, COMSIG_MOB_CLICKON, pod, modifiers)
+	TEST_ASSERT_EQUAL(mod.radial_requests, 2, "Leaving the pod did not restore the MOD hotkey.")
+
+/// Capture real tether projectiles without replacing the module's activation or firing path.
+/datum/unit_test/spacepod_mod_tether
+	/// Native projectile fire events observed during this fixture.
+	var/shots = 0
+
+/datum/unit_test/spacepod_mod_tether/proc/on_projectile(datum/source, obj/projectile/projectile)
+	SIGNAL_HANDLER
+	allocated |= projectile
+	shots++
+
+/datum/unit_test/spacepod_mod_tether/Run()
+	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__)
+	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(pod, SOUTH))
+	var/mob/living/carbon/human/consistent/user = allocate(__IMPLIED_TYPE__, get_step(pod, SOUTH))
+	var/obj/item/mod/control/pre_equipped/engineering/mod = allocate(__IMPLIED_TYPE__)
+	STOP_PROCESSING(SSobj, mod)
+	TEST_ASSERT(user.equip_to_slot_if_possible(mod, ITEM_SLOT_BACK), "Could not equip the real tether fixture.")
+	mod.quick_activation()
+	var/obj/item/mod/module/tether/tether = locate() in mod.modules
+	TEST_ASSERT_NOTNULL(tether, "The engineering MOD has no tether module.")
+	TEST_ASSERT(tether.activate(user), "The powered tether could not be selected before boarding.")
+	RegisterSignal(user, COMSIG_PROJECTILE_FIRER_BEFORE_FIRE, PROC_REF(on_projectile))
+	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE) && pod.mob_enter(user, silent = TRUE), "The MOD wearer could not board the passenger seat.")
+	var/charge_before = mod.get_charge()
+	var/atom/target = locate(pod.x + 3, pod.y + 2, pod.z)
+	TEST_ASSERT(!tether.on_select_use(target), "A preselected MOD tether fired from inside the pod.")
+	TEST_ASSERT_EQUAL(shots, 0, "The blocked tether created a real projectile.")
+	TEST_ASSERT_EQUAL(mod.get_charge(), charge_before, "The blocked tether consumed MOD charge.")
+	TEST_ASSERT(COOLDOWN_FINISHED(tether, cooldown_timer), "The blocked tether started its cooldown.")
+	TEST_ASSERT_EQUAL(mod.selected_module, tether, "Boarding discarded the selected MOD module.")
+	TEST_ASSERT(pod.mob_exit(user, silent = TRUE), "The MOD passenger could not leave the pod.")
+	TEST_ASSERT(tether.on_select_use(target), "Leaving the pod did not restore real tether firing.")
+	TEST_ASSERT_EQUAL(shots, 1, "The restored tether did not fire its actual projectile.")
+	TEST_ASSERT(mod.get_charge() < charge_before, "The restored tether fired without consuming power.")
+	UnregisterSignal(user, COMSIG_PROJECTILE_FIRER_BEFORE_FIRE)
+
 /// Real projectiles must leave the hull and damage a target in front of the muzzle.
 /datum/unit_test/spacepod_weapon_hits/Run()
 	var/turf/origin = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
