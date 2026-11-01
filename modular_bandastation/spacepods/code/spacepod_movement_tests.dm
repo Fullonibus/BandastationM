@@ -1,4 +1,4 @@
-/// Diagonal controls must keep the four-tile footprint and turn both occupants with the cabin.
+/// Diagonal thrust keeps the four-tile footprint and preserves the cabin and occupants' facing.
 /datum/unit_test/spacepod_diagonal_controls/Run()
 	var/turf/origin = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
 	for(var/direction in list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
@@ -7,18 +7,20 @@
 		var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
 		TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "Pilot could not board for diagonal [direction].")
 		TEST_ASSERT(pod.mob_enter(passenger, silent = TRUE), "Passenger could not board for diagonal [direction].")
+		pod.setDir(NORTH)
 		var/turf/destination = get_step(origin, direction)
 		var/diagonal_moved = pod.relaymove(pilot, direction)
+		STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+		pod.flight.process(0.05)
 		TEST_ASSERT(diagonal_moved, "Pilot controls could not complete open diagonal [direction]: origin=([origin.x],[origin.y],[origin.z]) destination=([destination.x],[destination.y],[destination.z]) actual=([pod.x],[pod.y],[pod.z]) control=[pod.can_control(pilot)] facing=[pod.dir] diagonal_state=[pod.moving_diagonally].")
 		TEST_ASSERT_EQUAL(pod.loc, destination, "Open diagonal [direction] ended at the wrong origin.")
 		var/list/expected_footprint = block(destination, locate(destination.x + 1, destination.y + 1, destination.z))
 		TEST_ASSERT_EQUAL(length(pod.locs), 4, "Diagonal [direction] added a phantom row or column.")
 		TEST_ASSERT_EQUAL(length(pod.locs - expected_footprint), 0, "Diagonal [direction] occupied a turf outside its actual 2x2 footprint.")
-		// Native diagonal movement finishes with its second cardinal step.
-		var/expected_facing = direction & EAST ? EAST : WEST
-		TEST_ASSERT_EQUAL(pod.dir, expected_facing, "Diagonal [direction] did not retain the native final-step facing.")
-		TEST_ASSERT_EQUAL(pilot.dir, pod.dir, "Diagonal [direction] did not turn the pilot with the cabin.")
-		TEST_ASSERT_EQUAL(passenger.dir, pod.dir, "Diagonal [direction] did not turn the passenger with the cabin.")
+		var/expected_facing = NORTH
+		TEST_ASSERT_EQUAL(pod.dir, expected_facing, "Diagonal thrust [direction] turned the nose toward the velocity vector.")
+		TEST_ASSERT_EQUAL(pilot.dir, pod.dir, "Diagonal [direction] changed the pilot's facing relative to the cabin.")
+		TEST_ASSERT_EQUAL(passenger.dir, pod.dir, "Diagonal [direction] changed the passenger's facing relative to the cabin.")
 		TEST_ASSERT_EQUAL(pilot.loc, pod, "Diagonal [direction] detached the pilot from the cabin.")
 		TEST_ASSERT_EQUAL(passenger.loc, pod, "Diagonal [direction] detached the passenger from the cabin.")
 		TEST_ASSERT_EQUAL(pod.moving_diagonally, 0, "Diagonal [direction] left the pod in an intermediate movement state.")

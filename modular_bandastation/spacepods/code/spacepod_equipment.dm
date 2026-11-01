@@ -168,7 +168,7 @@
 		var/turf/origin = get_turf(pod)
 		if(!origin)
 			break
-		var/firing_angle = pod.has_gravity() ? dir2angle(pod.dir) : pod.flight.heading
+		var/firing_angle = pod.flight.heading
 		var/forward_x = sin(firing_angle)
 		var/forward_y = cos(firing_angle)
 		var/center_x = ICON_SIZE_X + pod.pixel_x - pod.base_pixel_x

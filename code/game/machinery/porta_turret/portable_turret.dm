@@ -529,6 +529,16 @@ DEFINE_BITFIELD(turret_flags, list(
 					if(assess_perp(occupant) >= 4)
 						targets += mech
 
+	for(var/obj/vehicle/sealed/spacepod/pod as anything in GLOB.spacepods_list)
+		if(QDELETED(pod) || pod.invisibility > SEE_INVISIBLE_LIVING || get_dist(pod, base) >= scan_range || !can_see(base, pod, scan_range))
+			continue
+		for(var/mob/living/carbon/human/occupant in pod.occupants)
+			if(occupant.loc != pod || occupant.stat == DEAD || in_faction(occupant))
+				continue
+			if(assess_perp(occupant) >= 4)
+				targets += pod
+				break
+
 	if((turret_flags & TURRET_FLAG_SHOOT_ANOMALOUS) && GLOB.blobs.len && (mode == TURRET_LETHAL))
 		for(var/obj/structure/blob/B in view(scan_range, base))
 			targets += B

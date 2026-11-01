@@ -40,11 +40,11 @@
 	/// Paint is indexed by actual overlay state, avoiding an invalid selection index.
 	var/list/paint_colors = list()
 	var/melting_down = FALSE
-	/// Owns continuous zero-gravity flight independently of cabin life support.
+	/// Owns continuous flight independently of cabin life support.
 	var/datum/spacepod_flight/flight
 	/// An attached rear flame is visible only while the main thruster is firing.
 	var/thruster_flame_active = FALSE
-	/// Ground movement has a finite impulse instead of continuous flight ticks.
+	/// Optional expiry for a finite thruster pulse.
 	var/thruster_flame_timer
 	/// One native sound loop per cabin listener, so stopping it also cuts the current sample.
 	var/list/engine_sounds = list()
@@ -238,10 +238,7 @@
 /obj/vehicle/sealed/spacepod/proc/on_pilot_turn(mob/living/user, direction)
 	SIGNAL_HANDLER
 	if(can_control(user))
-		if(has_gravity())
-			setDir(direction)
-		else
-			flight.aim(dir2angle(direction))
+		flight.aim(dir2angle(direction))
 	// Keep the client's movement lock: the pod has no mech-style pivot step.
 	return NONE
 
@@ -425,10 +422,8 @@
 		set_thruster_flame(FALSE)
 		stop_engine_sound()
 		return FALSE
-	if(!has_gravity() && direction != UP && direction != DOWN)
+	if(direction != UP && direction != DOWN)
 		return flight.set_input(direction)
-	if(has_gravity() && animate_movement == NO_STEPS)
-		flight.reset_motion()
 	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
 		if(!battery?.charge || !COOLDOWN_FINISHED(src, cooldown_emp))
 			set_thruster_flame(FALSE)
@@ -449,25 +444,14 @@
 		return FALSE
 	var/turf/previous_turf = loc
 	var/movement_multiplier = flight.turbo ? 2 : 1
-	var/calculated_delay = (has_gravity() ? 0.4 SECONDS : 0.15 SECONDS) / movement_multiplier
-	if(direction == UP || direction == DOWN)
-		calculated_delay = 0.5 SECONDS / movement_multiplier
+	var/calculated_delay = 0.5 SECONDS / movement_multiplier
 	set_glide_size(DELAY_TO_GLIDE_SIZE(calculated_delay))
-	if(direction == UP || direction == DOWN)
-		. = try_step_multiz(direction)
-	else
-		var/turf/destination = get_step(src, direction)
-		if(destination)
-			. = Move(destination, direction)
-			if(ISDIAGONALDIR(direction) && loc == destination)
-				calculated_delay *= sqrt(2)
+	. = try_step_multiz(direction)
 	calculated_delay = CEILING(calculated_delay, world.tick_lag)
 	set_glide_size(DELAY_TO_GLIDE_SIZE(calculated_delay))
 	COOLDOWN_START(src, cooldown_vehicle_move, calculated_delay)
 	if(.)
 		emit_thrust_effect(previous_turf, calculated_delay)
-		if(!QDELETED(src) && has_gravity() && direction != UP && direction != DOWN)
-			set_thruster_flame(TRUE, calculated_delay)
 	else
 		set_thruster_flame(FALSE)
 		stop_engine_sound()
@@ -481,7 +465,7 @@
 	start_engine_sound(glide_duration)
 	return TRUE
 
-/// Flight ticks own the flame directly; ground steps expire it with the movement cooldown.
+/// Flight ticks own the flame directly; finite impulses may supply an expiry.
 /obj/vehicle/sealed/spacepod/proc/set_thruster_flame(active, duration = 0)
 	deltimer(thruster_flame_timer)
 	thruster_flame_timer = null

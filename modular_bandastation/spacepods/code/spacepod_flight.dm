@@ -1,8 +1,9 @@
 #define SPACEPOD_FLIGHT_MAX_SPEED (1 / 0.15)
+#define SPACEPOD_FLIGHT_GRAVITY_MAX_SPEED (1 / 0.4)
 #define SPACEPOD_FLIGHT_ANGULAR_SPEED 360
 #define SPACEPOD_FLIGHT_EPSILON 0.001
 #define SPACEPOD_FLIGHT_SAFE_IMPACT_SPEED 1
-#define SPACEPOD_FLIGHT_IMPACT_DAMAGE 2
+#define SPACEPOD_FLIGHT_IMPACT_DAMAGE 1
 
 /**
  * Pixel flight with relative thrusters, adapted from the Yogstation/Paradise spacepod physics.
@@ -61,7 +62,7 @@
 		direction &= ~(EAST|WEST)
 	if(!direction)
 		return TRUE
-	if(!can_thrust() || pod.has_gravity())
+	if(!can_thrust())
 		return FALSE
 	input_direction = direction
 	START_PROCESSING(SSnewtonian_movement, src)
@@ -72,7 +73,7 @@
 	if(isnull(angle))
 		desired_heading = null
 		return TRUE
-	if(!isnum(angle) || !can_thrust() || pod.has_gravity())
+	if(!isnum(angle) || !can_thrust())
 		return FALSE
 	desired_heading = WRAP(angle, 0, 360)
 	START_PROCESSING(SSnewtonian_movement, src)
@@ -93,7 +94,7 @@
 	turbo = !turbo
 	return TRUE
 
-/// Stop motion after landing or an external relocation, restoring ordinary movement rendering.
+/// Stop motion after an external relocation, restoring ordinary movement rendering.
 /datum/spacepod_flight/proc/reset_motion()
 	STOP_PROCESSING(SSnewtonian_movement, src)
 	velocity_x = 0
@@ -174,7 +175,7 @@
 			last_step_bumped = FALSE
 
 /datum/spacepod_flight/process(seconds_per_tick)
-	if(QDELETED(pod) || !isturf(pod.loc) || pod.has_gravity())
+	if(QDELETED(pod) || !isturf(pod.loc))
 		reset_motion()
 		return PROCESS_KILL
 	if(seconds_per_tick <= 0)
@@ -236,8 +237,10 @@
 		velocity_x += thrust_x * seconds_per_tick
 		velocity_y += thrust_y * seconds_per_tick
 	var/speed = sqrt(velocity_x ** 2 + velocity_y ** 2)
-	// Lowering the setting must not act as a free brake on a coasting cabin.
-	var/speed_limit = max(SPACEPOD_FLIGHT_MAX_SPEED * thrust_multiplier, previous_speed)
+	var/speed_limit = SPACEPOD_FLIGHT_GRAVITY_MAX_SPEED * thrust_multiplier
+	// Gravity limits incoming momentum; lowering turbo in space must not brake a coasting cabin.
+	if(!pod.has_gravity())
+		speed_limit = max(SPACEPOD_FLIGHT_MAX_SPEED * thrust_multiplier, previous_speed)
 	if(speed > speed_limit)
 		velocity_x *= speed_limit / speed
 		velocity_y *= speed_limit / speed
@@ -262,8 +265,6 @@
 				offset_x = 0
 		if(QDELETED(src) || QDELETED(pod))
 			return PROCESS_KILL
-		if(pod.has_gravity())
-			break
 		if(offset_y * velocity_y > 0 || (!velocity_y && abs(offset_y) > 0.5))
 			var/step_y = sign(offset_y)
 			if(step_hull(step_y > 0 ? NORTH : SOUTH))
@@ -276,8 +277,6 @@
 				offset_y = 0
 		if(QDELETED(src) || QDELETED(pod))
 			return PROCESS_KILL
-		if(pod.has_gravity())
-			break
 	// Combine corner contacts once; tangential speed does not contribute to the impact.
 	if(impact_speed_squared > SPACEPOD_FLIGHT_SAFE_IMPACT_SPEED ** 2)
 		var/atom/impact_location = pod.loc
@@ -287,9 +286,6 @@
 		if(pod.loc != impact_location || pod.melting_down)
 			reset_motion()
 			return PROCESS_KILL
-	if(pod.has_gravity())
-		reset_motion()
-		return PROCESS_KILL
 	if(!render(last_heading, last_offset_x, last_offset_y, seconds_per_tick))
 		return PROCESS_KILL
 	var/moving = velocity_x || velocity_y
@@ -334,6 +330,7 @@
 	return TRUE
 
 #undef SPACEPOD_FLIGHT_MAX_SPEED
+#undef SPACEPOD_FLIGHT_GRAVITY_MAX_SPEED
 #undef SPACEPOD_FLIGHT_ANGULAR_SPEED
 #undef SPACEPOD_FLIGHT_EPSILON
 #undef SPACEPOD_FLIGHT_SAFE_IMPACT_SPEED
