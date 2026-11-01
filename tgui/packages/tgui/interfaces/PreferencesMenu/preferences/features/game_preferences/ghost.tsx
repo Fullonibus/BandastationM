@@ -52,6 +52,10 @@ function GhostFormInput(
   }[] = [];
 
   for (const [name, displayName] of Object.entries(displayNames)) {
+    if (!data.content_unlocked && name !== 'ghost' && name !== 'ghost_static') {
+      continue;
+    }
+
     const displayText = (
       <Flex key={name}>
         <Flex.Item>
@@ -82,7 +86,6 @@ function GhostFormInput(
   return (
     <Dropdown
       autoScroll={false}
-      disabled={!data.content_unlocked}
       selected={props.value}
       placeholder={displayTexts[props.value]}
       onSelected={props.handleSetValue}
@@ -95,7 +98,8 @@ function GhostFormInput(
 export const ghost_form: FeatureChoiced = {
   name: 'Призрак: форма',
   category: 'Призрак',
-  description: 'Внешний вид вашего призрака. Нужна подписка BYOND.',
+  description:
+    'Персонаж — внешность тела или выбранного персонажа из меню. Можно выбрать обычного призрака. Остальные формы требуют подписку BYOND.',
   component: GhostFormInput,
 };
 
