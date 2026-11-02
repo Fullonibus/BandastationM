@@ -216,6 +216,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			message = uppertext(message)
 		var/list/message_data = treat_message(message, capitalize_message = index == 1)
 		message = message_data["message"]
+		if(!length(message))
+			continue
 		messages += message
 		tts_messages += message_data["tts_message"]
 		tts_filter |= message_data["tts_filter"]
@@ -232,6 +234,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		segments = processed_segments
 		message_mods[LANGUAGE_MESSAGE_SEGMENTS] = segments
 		if(!length(segments))
+			if(succumbed)
+				succumb()
 			return
 		var/list/first_segment = segments[1]
 		language = first_segment["language"]
@@ -259,6 +263,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		if(succumbed)
 			succumb()
 		return
+
+	if(segments)
+		SEND_SIGNAL(src, COMSIG_MOB_SAY_SEGMENTS_PROCESSED, args)
 
 	//Get which verb is prefixed to the message before radio but after most modifications
 	message_mods[SAY_MOD_VERB] ||= say_mod(message, message_mods)
@@ -450,9 +457,6 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	// BANDASTATION ADDITION START - TTS
 	if((hearflags & HEAR_HEARD) && !radio_freq)
 		var/message_to_tts = message_mods[LANGUAGE_MESSAGE_SEGMENTS] ? raw_message : (LAZYACCESS(message_mods, MODE_TTS_MESSAGE_OVERRIDE) || raw_message)
-		if(SStts.tts_enabled)
-			LAZYINITLIST(message_mods[MODE_TTS_LISTENER_MESSAGES])
-			message_mods[MODE_TTS_LISTENER_MESSAGES][REF(src)] = message_to_tts
 		speaker.cast_tts(
 			src,
 			message_to_tts,

@@ -7,6 +7,7 @@
 | DM include graph | `tgstation.dme` → `code/` и `modular_bandastation/modular_bandastation.dme` |
 | Модули | `modular_bandastation/<module>/_*.dme`, `_*.dm`, `code/`; [пример](../modular_bandastation/example/_example.dme) |
 | Штатный код | Игровая логика в `code/` |
+| Озвучка | Используется только TTS220: `SStts220`, [модуль и includes](../modular_bandastation/tts/_tts.dme). Legacy `SStts` не используется; не адаптировать без прямого запроса. |
 | Карты | `_maps/`, их конфиги/includes, [maplint](../tools/maplint/README.md), `tools/mapmerge2/` |
 | Ресурсы | `icons/`, `sound/`, модульные каталоги; проверяй DM binding и runtime |
 | TGUI | `tgui/packages/`, `tgui/package.json`, lock/config; [руководство](../tgui/README.md) |

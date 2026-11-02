@@ -152,6 +152,9 @@
 	#define SPEECH_SAYMODE 10
 	#define SPEECH_MODS 11
 
+/// From /mob/living/say(): (list/speech_args), once after all inline language fragments have been processed, before radio and local delivery.
+#define COMSIG_MOB_SAY_SEGMENTS_PROCESSED "mob_say_segments_processed"
+
 ///from /datum/component/speechmod/handle_speech(): ()
 #define COMSIG_TRY_MODIFY_SPEECH "try_modify_speech"
 	///Return value if we prevent speech from being modified

@@ -10,7 +10,7 @@
 
 /datum/component/marionette/Destroy()
 	if(grabber)
-		UnregisterSignal(grabber, list(COMSIG_MOVABLE_KEYBIND_FACE_DIR, COMSIG_MOB_SAY, COMSIG_QDELETING))
+		UnregisterSignal(grabber, list(COMSIG_MOVABLE_KEYBIND_FACE_DIR, COMSIG_MOB_SAY, COMSIG_MOB_SAY_SEGMENTS_PROCESSED, COMSIG_QDELETING))
 	grabber = null
 	return ..()
 
@@ -32,17 +32,17 @@
 	if(!puller || grabber == puller)
 		return
 	if(grabber)
-		UnregisterSignal(grabber, list(COMSIG_MOVABLE_KEYBIND_FACE_DIR, COMSIG_MOB_SAY, COMSIG_QDELETING))
+		UnregisterSignal(grabber, list(COMSIG_MOVABLE_KEYBIND_FACE_DIR, COMSIG_MOB_SAY, COMSIG_MOB_SAY_SEGMENTS_PROCESSED, COMSIG_QDELETING))
 	grabber = puller
 	RegisterSignal(grabber, COMSIG_MOVABLE_KEYBIND_FACE_DIR, PROC_REF(on_puller_turn))
-	RegisterSignal(grabber, COMSIG_MOB_SAY, PROC_REF(on_puller_speech))
+	RegisterSignals(grabber, list(COMSIG_MOB_SAY, COMSIG_MOB_SAY_SEGMENTS_PROCESSED), PROC_REF(on_puller_speech))
 	RegisterSignal(grabber, COMSIG_QDELETING, PROC_REF(on_puller_qdel))
 
 ///Stopped pulling, we clear out signals and references.
 /datum/component/marionette/proc/on_stop_pull(datum/source, atom/movable/was_pulling)
 	SIGNAL_HANDLER
 	if(grabber)
-		UnregisterSignal(grabber, list(COMSIG_MOVABLE_KEYBIND_FACE_DIR, COMSIG_MOB_SAY, COMSIG_QDELETING))
+		UnregisterSignal(grabber, list(COMSIG_MOVABLE_KEYBIND_FACE_DIR, COMSIG_MOB_SAY, COMSIG_MOB_SAY_SEGMENTS_PROCESSED, COMSIG_QDELETING))
 	grabber = null
 
 ///Callled when the person grabbin us turns, we rotate to match their direction.
@@ -57,7 +57,7 @@
 
 	if(HAS_TRAIT(grabber, TRAIT_SIGN_LANG))
 		return
-	if(speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENT] > 1)
+	if(speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENT])
 		return
 
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -68,11 +68,8 @@
 	var/list/segments = speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENTS]
 	if(length(segments))
 		var/list/relay_segments = list()
-		var/list/messages = list()
 		for(var/list/segment as anything in segments)
 			relay_segments += list(segment.Copy())
-			messages += segment["message"]
-		message = jointext(messages, " ")
 		relay_mods[LANGUAGE_MESSAGE_SEGMENTS] = relay_segments
 	var/atom/movable/movable_parent = parent
 	movable_parent.say(
