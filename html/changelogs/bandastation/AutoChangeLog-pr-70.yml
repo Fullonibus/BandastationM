@@ -1,0 +1,4 @@
+author: "Fullonibus"
+delete-after: True
+changes:
+  - code_imp: "Исправлена установка зависимостей BYOND из кэша CI при несовпадении версий системных пакетов."
