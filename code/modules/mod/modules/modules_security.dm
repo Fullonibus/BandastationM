@@ -174,9 +174,12 @@
 /obj/item/mod/module/megaphone/on_deactivation(mob/activator, display_message = TRUE, deleting = FALSE)
 	UnregisterSignal(mod.wearer, list(COMSIG_LIVING_TREAT_MESSAGE, COMSIG_MOB_SAY))
 
+/// Amplifies one utterance for one charge, including speech with multiple languages.
 /obj/item/mod/module/megaphone/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 
+	if(speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENT] > 1)
+		return
 	speech_args[SPEECH_SPANS] |= voicespan
 	LAZYADD(speech_args[SPEECH_MODS][MODE_TTS_FILTERS], /datum/singleton/sound_effect/megaphone) // Bandastation Addition
 	drain_power(use_energy_cost)

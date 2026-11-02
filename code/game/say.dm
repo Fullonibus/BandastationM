@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	SHOULD_BE_PURE(TRUE)
 	return !HAS_TRAIT(src, TRAIT_MUTE)
 
-/atom/movable/proc/do_tts_message(message, language, message_mods, list/tts_filter, list/hearers)
+/atom/movable/proc/do_tts_message(message, language, list/message_mods, list/tts_filter, list/hearers)
 	set waitfor = FALSE
 
 	if(!SStts.tts_enabled || !voice || HAS_TRAIT(src, TRAIT_SIGN_LANG) || HAS_TRAIT(src, TRAIT_UNKNOWN_VOICE) || message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
@@ -124,7 +124,15 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	if(length(tts_filter) > 0)
 		filter += tts_filter.Join(",")
 	var/list/special_filter = list()
-	INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(message), language, get_tts_voice(filter, special_filter), filter.Join(","), hearers, message_range = 7, pitch = pitch, special_filters = special_filter.Join("|"), blip_base = blip_base, blip_number = blip_number, identifier = message_mods[MODE_TTS_IDENTIFIER])
+	if(length(message_mods[LANGUAGE_MESSAGE_SEGMENTS]))
+		message_mods = message_mods.Copy()
+		var/list/tts_segments = list()
+		for(var/list/segment as anything in message_mods[LANGUAGE_MESSAGE_SEGMENTS])
+			var/list/tts_segment = segment.Copy()
+			tts_segment["message"] = segment["tts_message"] || segment["message"]
+			tts_segments += list(tts_segment)
+		message_mods[LANGUAGE_MESSAGE_SEGMENTS] = tts_segments
+	INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, message, language, get_tts_voice(filter, special_filter), filter.Join(","), hearers, message_range = 7, pitch = pitch, special_filters = special_filter.Join("|"), blip_base = blip_base, blip_number = blip_number, identifier = message_mods[MODE_TTS_IDENTIFIER], message_mods = message_mods)
 
 /atom/movable/proc/get_tts_voice(list/filter, list/special_filter)
 	. = voice
@@ -174,12 +182,17 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	// Language icon.
 	var/languageicon = ""
 	if(!message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
-		var/datum/language/dialect = GLOB.language_datum_instances[message_language]
-		var/dialect_icon_type = dialect?.display_icon_type(src, message_mods) || DISPLAY_LANGUAGE_ICON_NONE
-		if(dialect_icon_type != DISPLAY_LANGUAGE_ICON_NONE)
+		var/list/languages = list(message_language)
+		for(var/list/segment as anything in message_mods[LANGUAGE_MESSAGE_SEGMENTS])
+			languages |= segment["language"]
+		for(var/language in languages)
+			var/datum/language/dialect = GLOB.language_datum_instances[language]
+			var/dialect_icon_type = dialect?.display_icon_type(src, message_mods) || DISPLAY_LANGUAGE_ICON_NONE
+			if(dialect_icon_type == DISPLAY_LANGUAGE_ICON_NONE)
+				continue
 			var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
 			var/icon_tag = sheet.icon_tag("language-[dialect.icon_state][dialect_icon_type == DISPLAY_LANGUAGE_ICON_PARTIAL ? "-partial" : ""]")
-			languageicon = span_tooltip_subtle(dialect.name, icon_tag) + " "
+			languageicon += span_tooltip_subtle(dialect.name, icon_tag) + " "
 
 	// The actual message part.
 	var/messagepart = speaker.generate_messagepart(raw_message, spans, message_mods)
@@ -309,6 +322,24 @@ GLOBAL_LIST_INIT(emphasis_types, list(
 
 /// Modifies the message by comparing the languages of the speaker with the languages of the hearer. Called on the hearer.
 /atom/movable/proc/translate_language(atom/movable/speaker, datum/language/language, raw_message, list/spans, list/message_mods)
+	var/list/segments = message_mods?[LANGUAGE_MESSAGE_SEGMENTS]
+	if(length(segments))
+		var/list/original = list()
+		var/list/translated = list()
+		var/has_unknown_segment = FALSE
+		var/list/single_language_mods = message_mods.Copy()
+		single_language_mods -= LANGUAGE_MESSAGE_SEGMENTS
+		for(var/list/segment as anything in segments)
+			var/segment_language = segment["language"]
+			original += segment["message"]
+			var/translated_segment = translate_language(speaker, segment_language, segment["message"], spans, single_language_mods)
+			translated += translated_segment
+			if(!has_language(segment_language))
+				has_unknown_segment = TRUE
+		if(raw_message == jointext(original, " "))
+			return jointext(translated, " ")
+		// shortcut: damaged transmissions lose fragment boundaries; scramble the received text until telecomms preserves them.
+		return has_unknown_segment ? stars(raw_message, 100) : raw_message
 	if(!language)
 		return "makes a strange sound."
 
@@ -318,7 +349,7 @@ GLOBAL_LIST_INIT(emphasis_types, list(
 		var/list/partially_understood_languages = get_partially_understood_languages()
 		if(LAZYLEN(partially_understood_languages))
 			mutual_languages = partially_understood_languages.Copy()
-			for(var/bonus_language in message_mods[LANGUAGE_MUTUAL_BONUS])
+			for(var/bonus_language in message_mods?[LANGUAGE_MUTUAL_BONUS])
 				mutual_languages[bonus_language] = max(message_mods[LANGUAGE_MUTUAL_BONUS][bonus_language], mutual_languages[bonus_language])
 
 		var/datum/language/dialect = GLOB.language_datum_instances[language]

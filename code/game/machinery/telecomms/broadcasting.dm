@@ -208,6 +208,7 @@
 	if(SStts.tts_enabled && tts_radio_id && !should_do_modular_radio_tts && length(receive_radios))
 		SStts.queued_radio_messages[tts_radio_id] = receive_radios
 		SStts.queued_radio_messages_compression[tts_radio_id] = compression
+		SStts.queued_radio_message_context[tts_radio_id] = list("message" = message, "language" = language, "mods" = message_mods)
 	// BANDASTATION EDIT END: TTS listener lists store weakrefs
 
 	// Render the message and have everybody hear it.
@@ -232,7 +233,7 @@
 				if(!radio_listener)
 					continue
 				var/message_to_tts = isobserver(radio_listener) ? message : radio_listener.translate_language(virt, language, message, spans, message_mods)
-				if(message_to_tts == message)
+				if(message_to_tts == message && !LAZYACCESS(message_mods, LANGUAGE_MESSAGE_SEGMENTS))
 					message_to_tts = LAZYACCESS(message_mods, MODE_TTS_MESSAGE_OVERRIDE) || message_to_tts
 				LAZYADD(radio_listeners[message_to_tts], radio_listener)
 			for(var/message_to_tts in radio_listeners)

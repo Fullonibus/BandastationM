@@ -57,11 +57,23 @@
 
 	if(HAS_TRAIT(grabber, TRAIT_SIGN_LANG))
 		return
+	if(speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENT] > 1)
+		return
 
 	var/message = speech_args[SPEECH_MESSAGE]
 	var/list/spans = speech_args[SPEECH_SPANS]
 	var/language = speech_args[SPEECH_LANGUAGE]
 	var/saymode = speech_args[SPEECH_SAYMODE]
+	var/list/relay_mods = list(MODE_RELAY = TRUE)
+	var/list/segments = speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENTS]
+	if(length(segments))
+		var/list/relay_segments = list()
+		var/list/messages = list()
+		for(var/list/segment as anything in segments)
+			relay_segments += list(segment.Copy())
+			messages += segment["message"]
+		message = jointext(messages, " ")
+		relay_mods[LANGUAGE_MESSAGE_SEGMENTS] = relay_segments
 	var/atom/movable/movable_parent = parent
 	movable_parent.say(
 		message = message,
@@ -69,7 +81,7 @@
 		language = language,
 		forced = "[source]'s marionette",
 		saymode = saymode,
-		message_mods = list(MODE_RELAY = TRUE),
+		message_mods = relay_mods,
 	)
 	speech_args[SPEECH_RANGE] = WHISPER_RANGE
 

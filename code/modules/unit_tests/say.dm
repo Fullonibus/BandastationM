@@ -96,6 +96,170 @@
 	host_mob.grant_language(/datum/language/beachbum, ALL) // can now understand
 	TEST_ASSERT_EQUAL(surfer_quote, host_mob.translate_language(host_mob, /datum/language/beachbum, surfer_quote), "Language test failed. Mob was supposed NOT to understand: [surfer_quote]")
 
+/// Inline language switches respect knowledge and physical restrictions without losing ordinary text.
+/datum/unit_test/multilingual_speech/Run()
+	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/listener = allocate(/mob/living/carbon/human/consistent)
+	speaker.grant_language(/datum/language/draconic)
+	var/list/expected = list(
+		list("language" = /datum/language/common, "message" = "Привет"),
+		list("language" = /datum/language/draconic, "message" = "тайна"),
+		list("language" = /datum/language/common, "message" = "снова"),
+	)
+	var/list/segments = speaker.parse_language_segments("Привет ,o тайна ,0 снова", /datum/language/common)
+	TEST_ASSERT_EQUAL(json_encode(segments), json_encode(expected), "Mixed Cyrillic speech did not preserve its languages and text.")
+	TEST_ASSERT_NULL(speaker.parse_language_segments("Слово,o запятая,0 ,? текст", /datum/language/common), "Embedded and unknown markers must remain ordinary text.")
+	var/list/empty_segments = speaker.parse_language_segments(",o ,0", /datum/language/common)
+	TEST_ASSERT_NOTNULL(empty_segments, "An empty switched message must be distinguished from ordinary text.")
+	TEST_ASSERT_EQUAL(length(empty_segments), 0, "Language markers alone must not create spoken fragments.")
+	TEST_ASSERT_EQUAL(length(speaker.parse_language_segments("Привет ,o", /datum/language/common)), 1, "A trailing marker must not create an empty fragment.")
+	TEST_ASSERT_EQUAL(length(speaker.parse_language_segments(",o тайна ,o ещё", /datum/language/common)), 2, "Repeated switches must preserve both pieces of text.")
+
+	speaker.grant_language(/datum/language/xenocommon)
+	TEST_ASSERT(!speaker.can_speak_language(/datum/language/xenocommon), "The human tongue should not permit xenocommon.")
+	TEST_ASSERT_NULL(speaker.parse_language_segments("Привет ,4 тайна", /datum/language/common), "Knowing a language must not bypass tongue restrictions.")
+	var/list/unavailable_segments = speaker.parse_language_segments("Привет ,4 тайна ,0 снова", /datum/language/common)
+	var/list/unavailable_first = unavailable_segments?[1]
+	TEST_ASSERT_EQUAL(unavailable_first?["message"], "Привет ,4 тайна", "An unavailable marker must not discard text before a later valid switch.")
+	speaker.add_blocked_language(/datum/language/draconic, SPOKEN_LANGUAGE)
+	TEST_ASSERT_NULL(speaker.parse_language_segments("Привет ,o тайна", /datum/language/common), "Blocked languages must not be selected by an inline marker.")
+	var/mob/living/carbon/human/key_speaker = allocate(/mob/living/carbon/human/consistent)
+	key_speaker.grant_language(/datum/language/vox)
+	key_speaker.grant_language(/datum/language/voltaic)
+	var/datum/language_holder/key_holder = key_speaker.get_language_holder()
+	key_holder.omnitongue = TRUE
+	var/list/case_segments = key_speaker.parse_language_segments(",V птица ,v искра", /datum/language/common)
+	TEST_ASSERT_EQUAL(length(case_segments), 2, "Distinct uppercase and lowercase keys must both create fragments.")
+	var/list/upper_segment = case_segments?[1]
+	var/list/lower_segment = case_segments?[2]
+	TEST_ASSERT_EQUAL(upper_segment?["language"], /datum/language/vox, "Uppercase V must select Vox-pidgin.")
+	TEST_ASSERT_EQUAL(lower_segment?["language"], /datum/language/voltaic, "Lowercase v must select Voltaic independently of Vox-pidgin.")
+
+	listener.add_blocked_language(/datum/language/draconic, UNDERSTOOD_LANGUAGE)
+	var/list/mods = list(LANGUAGE_MESSAGE_SEGMENTS = segments)
+	var/raw_message = "Привет тайна снова"
+	var/unknown_piece = listener.translate_language(speaker, /datum/language/draconic, "тайна")
+	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, raw_message, message_mods = mods), "Привет [unknown_piece] снова", "Only the unknown language fragment should be scrambled.")
+	var/damaged_message = "Повреждённое сообщение"
+	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, damaged_message, message_mods = mods), stars(damaged_message, 100), "A changed transmission with unknown fragments must conceal all received text instead of restoring the original fragments.")
+	var/list/three_segments = segments.Copy()
+	three_segments += list(list("language" = /datum/language/voltaic, "message" = "третья"))
+	mods[LANGUAGE_MESSAGE_SEGMENTS] = three_segments
+	listener.grant_partial_language(/datum/language/voltaic, 100)
+	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, "Привет тайна снова третья", message_mods = mods), "Привет [unknown_piece] снова третья", "Full mutual understanding of one fragment must not reveal a different unknown language.")
+	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, damaged_message, message_mods = mods), stars(damaged_message, 100), "A final mutually understood fragment must not expose an unknown fragment in a damaged transmission.")
+	listener.remove_partial_language(/datum/language/voltaic)
+	mods[LANGUAGE_MESSAGE_SEGMENTS] = segments
+	listener.grant_partial_language(/datum/language/draconic, 100)
+	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, raw_message, message_mods = mods), raw_message, "Mutual understanding must still apply to individual fragments.")
+	listener.remove_partial_language(/datum/language/draconic)
+	listener.remove_blocked_language(/datum/language/draconic, UNDERSTOOD_LANGUAGE)
+	listener.grant_language(/datum/language/draconic)
+	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, raw_message, message_mods = mods), raw_message, "A listener knowing every language should understand the complete sentence.")
+	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, damaged_message, message_mods = mods), damaged_message, "Knowing every language must not undo transmission damage.")
+
+/// Accepts rendered speech without a network client so synthesis delivery can be observed.
+/mob/living/carbon/human/consistent/tts_listener/show_message(msg, type, alt_msg, alt_type, avoid_highlighting = FALSE)
+	return TRUE
+
+/// Mixed speech keeps native accents and travels as one message through speech, whispers and radio.
+/datum/unit_test/multilingual_speech_modifiers
+	/// Number of complete messages received during the current delivery scenario.
+	var/heard_count = 0
+	/// Last translated message captured at the listener.
+	var/heard_message
+	/// Voice synthesis must receive the same intelligible and scrambled text as the listener.
+	var/tts_message
+	/// The listener whose synthesis input is captured.
+	var/mob/tts_listener
+	/// Shared modifiers populated with the final legacy TTS text after hearing.
+	var/list/heard_mods
+	/// Restore the legacy subsystem gate even if an assertion ends the test early.
+	var/legacy_tts_enabled
+
+/datum/unit_test/multilingual_speech_modifiers/Destroy()
+	if(!isnull(legacy_tts_enabled))
+		SStts.tts_enabled = legacy_tts_enabled
+	return ..()
+
+/datum/unit_test/multilingual_speech_modifiers/proc/on_tts(datum/source, listener, message)
+	SIGNAL_HANDLER
+	if(listener == tts_listener)
+		tts_message = message
+
+/datum/unit_test/multilingual_speech_modifiers/proc/on_hear(datum/source, list/hearing_args)
+	SIGNAL_HANDLER
+	heard_count++
+	heard_message = hearing_args[HEARING_RAW_MESSAGE]
+	heard_mods = hearing_args[HEARING_MESSAGE_MODE]
+
+/datum/unit_test/multilingual_speech_modifiers/Run()
+	legacy_tts_enabled = SStts.tts_enabled
+	SStts.tts_enabled = TRUE
+	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
+	speaker.voice = null // Observe synthesis inputs without contacting an external voice service.
+	speaker.set_species(/datum/species/lizard)
+	speaker.set_active_language(/datum/language/common)
+	var/mob/living/carbon/human/listener = allocate(/mob/living/carbon/human/consistent/tts_listener)
+	listener.grant_language(/datum/language/draconic)
+	listener.mock_client = allocate(/datum/client_interface)
+	tts_listener = listener
+	speaker.forceMove(run_loc_floor_bottom_left)
+	listener.forceMove(get_step(run_loc_floor_bottom_left, EAST))
+	RegisterSignal(listener, COMSIG_MOVABLE_HEAR, PROC_REF(on_hear))
+	// TTS220's signal define is included after the core unit tests.
+	RegisterSignal(speaker, "atom_tts_cast", PROC_REF(on_tts))
+	var/input = "She is so sassy ,o She is so sassy ,0 She is so sassy"
+	var/expected = "SSShe isss ssso sssasssy She is so sassy SSShe isss ssso sssasssy"
+	speaker.say(input)
+	TEST_ASSERT_EQUAL(heard_count, 1, "Mixed speech must be delivered once.")
+	TEST_ASSERT_EQUAL(heard_message, expected, "The tongue must modify common fragments while leaving native draconic intact.")
+	TEST_ASSERT_EQUAL(tts_message, expected, "TTS must voice the complete sentence for a listener knowing every language.")
+	heard_count = 0
+	speaker.whisper(input, ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(heard_count, 1, "Mixed whispers must be delivered once.")
+	TEST_ASSERT_EQUAL(heard_message, expected, "Whispering must preserve all language fragments.")
+	listener.add_blocked_language(/datum/language/draconic, UNDERSTOOD_LANGUAGE)
+	var/unknown_piece = listener.translate_language(speaker, /datum/language/draconic, "She is so sassy")
+	var/unknown_expected = "SSShe isss ssso sssasssy [unknown_piece] SSShe isss ssso sssasssy"
+	heard_count = 0
+	speaker.say(input, ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(heard_count, 1, "A listener missing one language must still receive one sentence.")
+	TEST_ASSERT_EQUAL(heard_message, unknown_expected, "Ordinary speech must conceal only the unknown fragment.")
+	TEST_ASSERT_EQUAL(tts_message, unknown_expected, "TTS must voice scrambled syllables for unknown fragments instead of revealing their original text.")
+	heard_count = 0
+	speaker.whisper(input, ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(heard_count, 1, "An unknown-language whisper must still be delivered once.")
+	TEST_ASSERT_EQUAL(heard_message, unknown_expected, "Whispering must not expose the unknown fragment.")
+	TEST_ASSERT_EQUAL(tts_message, unknown_expected, "Whispered TTS must voice the listener's scrambled language fragments.")
+	listener.forceMove(locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z))
+	heard_count = 0
+	speaker.whisper(input, ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(heard_count, 1, "A listener in eavesdrop range must receive one obscured whisper.")
+	TEST_ASSERT(!findtext(heard_message, "She is so sassy"), "Eavesdropping must not restore the unknown language's original text.")
+	TEST_ASSERT_EQUAL(tts_message, heard_message, "Eavesdropped TTS must not undo the whisper's distance masking.")
+	TEST_ASSERT_EQUAL(heard_mods[MODE_TTS_LISTENER_MESSAGES][REF(listener)], heard_message, "Legacy TTS must receive the actual distance-masked whisper for this listener.")
+
+	listener.forceMove(locate(run_loc_floor_bottom_left.x + 10, run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z))
+	var/obj/item/radio/transmitter = allocate(/obj/item/radio)
+	var/obj/item/radio/receiver = allocate(/obj/item/radio)
+	transmitter.forceMove(speaker.loc)
+	receiver.forceMove(listener.loc)
+	transmitter.set_frequency(FREQ_CENTCOM)
+	transmitter.special_channels = RADIO_SPECIAL_CENTCOM
+	transmitter.set_broadcasting(TRUE)
+	receiver.set_frequency(FREQ_CENTCOM)
+	receiver.special_channels = RADIO_SPECIAL_CENTCOM
+	heard_count = 0
+	speaker.say(input, ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(heard_count, 1, "A distant listener must receive one mixed radio message.")
+	TEST_ASSERT_EQUAL(heard_message, unknown_expected, "Radio must conceal only the unknown fragment.")
+	listener.remove_blocked_language(/datum/language/draconic, UNDERSTOOD_LANGUAGE)
+	heard_count = 0
+	speaker.say(input, ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(heard_count, 1, "A listener knowing every language must receive one mixed radio message.")
+	TEST_ASSERT_EQUAL(heard_message, expected, "Radio must retain the language fragments and native accent processing.")
+
 /// This runs some simple speech tests on a speaker and listener and determines if a person can hear whispering or speaking as they are moved a distance away
 /datum/unit_test/speech
 	var/mob/living/carbon/human/speaker

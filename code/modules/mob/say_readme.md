@@ -1,5 +1,14 @@
 # Say code basics
 
+Language prefixes (`,key`, as shown in the language menu) can also appear after
+a space inside a message. Each prefix switches the language until the next one:
+`Hello ,o friend ,0 how are you?`. The speaker must be able to speak each language;
+listeners understand each fragment independently. Radio and whisper prefixes still
+go at the start of the message. Text before the first switch uses the selected language.
+Keys are case-sensitive: `,V` (Vox-pidgin) and `,v` (Voltaic) are different languages.
+TTS voices the whole sentence as heard by each listener, including scrambled syllables
+for unknown languages. Explicit "Blips Only" and volume preferences still apply.
+
 This document is a little dated but I believe it's accurate mostly (oranges 2019)
 
 # MIAUW'S SAY REWRITE

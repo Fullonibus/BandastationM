@@ -39,12 +39,15 @@
 
 	return mod * nearby_people * 12.5
 
+/// Rolls once per utterance to replace intended speech with an anxious hesitation.
 /datum/quirk/social_anxiety/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 
 	if(HAS_TRAIT(quirk_holder, TRAIT_FEARLESS))
 		return
 	if(HAS_TRAIT(source, TRAIT_SIGN_LANG)) // No modifiers for signers, so you're less anxious when you go non-verbal
+		return
+	if(speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENT] > 1)
 		return
 
 	// BANDASTATION EDIT START: Enhance social anxiety quirk
@@ -62,6 +65,10 @@
 				quirk_holder.set_silence_if_lower(6 SECONDS)
 
 		speech_args[SPEECH_MESSAGE] = pick("Э-э-эм.","Эмм.","Ам.", "Ммм.", "Х-э-эм.", "Ну.", "Ой.", "Простите.", "Извините.")
+		var/list/segments = speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENTS]
+		for(var/index = 2; index <= length(segments); index++)
+			var/list/segment = segments[index]
+			segment["message"] = ""
 	// BANDASTATION EDIT END: Enhance social anxiety quirk
 
 // small chance to make eye contact with inanimate objects/mindless mobs because of nerves

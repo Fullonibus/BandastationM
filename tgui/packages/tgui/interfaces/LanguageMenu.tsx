@@ -252,8 +252,8 @@ export const LanguageMenu = (props) => {
               <Table.Cell>Understand</Table.Cell>
               <Table.Cell>
                 <Tooltip
-                  content="Use this key in your message
-                  to speak in this language."
+                  content="Use ,key at the start or after a space to switch languages.
+                  You can switch several times in one message."
                 >
                   <Box
                     inline

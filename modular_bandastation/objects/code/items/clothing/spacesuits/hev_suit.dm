@@ -106,6 +106,7 @@
 	add_queue('modular_bandastation/objects/sounds/hev/death.ogg', 5 SECONDS, purge_queue=TRUE)
 
 //Mute
+/// Suppresses the entire utterance and gives one warning to the wearer.
 /obj/item/clothing/suit/space/hev/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 	var/static/list/cancel_messages = list(
@@ -115,6 +116,10 @@
 	)
 
 	speech_args[SPEECH_MESSAGE] = "..."
+	var/list/segments = speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENTS]
+	for(var/index = 2; index <= length(segments); index++)
+		var/list/segment = segments[index]
+		segment["message"] = ""
 	to_chat(source, span_warning(pick(cancel_messages)))
 
 //Fire

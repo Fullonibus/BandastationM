@@ -194,7 +194,22 @@
 	organ_flags = parent_type::organ_flags | ORGAN_UNREMOVABLE
 	modifies_speech = TRUE
 
+/// Relays an utterance through the detached head and suppresses speech from the body.
 /obj/item/organ/tongue/dullahan/handle_speech(datum/source, list/speech_args)
+	var/message = speech_args[SPEECH_MESSAGE]
+	var/list/message_mods = speech_args[SPEECH_MODS]
+	var/list/segments = message_mods[LANGUAGE_MESSAGE_SEGMENTS]
+	if(length(segments))
+		var/list/relay_segments = list()
+		var/list/messages = list()
+		for(var/list/segment as anything in segments)
+			relay_segments += list(segment.Copy())
+			messages += segment["message"]
+			segment["message"] = ""
+		message = jointext(messages, " ")
+		message_mods = message_mods.Copy()
+		message_mods[LANGUAGE_MESSAGE_SEGMENTS] = relay_segments
+		message_mods -= LANGUAGE_MESSAGE_SEGMENT
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human = owner
 		if(isdullahan(human))
@@ -203,7 +218,7 @@
 				var/obj/head = dullahan_species.my_head.loc
 				if(speech_args[SPEECH_MODS][WHISPER_MODE]) // whisper away
 					speech_args[SPEECH_SPANS] |= SPAN_ITALICS
-				head.say(speech_args[SPEECH_MESSAGE], spans = speech_args[SPEECH_SPANS], sanitize = FALSE, language = speech_args[SPEECH_LANGUAGE], message_range = speech_args[SPEECH_RANGE], message_mods = speech_args[SPEECH_MODS])
+				head.say(message, spans = speech_args[SPEECH_SPANS], sanitize = FALSE, language = speech_args[SPEECH_LANGUAGE], message_range = speech_args[SPEECH_RANGE], message_mods = message_mods)
 	speech_args[SPEECH_MESSAGE] = ""
 
 /obj/item/organ/ears/dullahan

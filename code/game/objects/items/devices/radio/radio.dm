@@ -404,6 +404,8 @@
 	if(radio_freq || !broadcasting || get_dist(src, speaker) > canhear_range || message_mods[MODE_RELAY])
 		return
 	var/list/filtered_mods = list()
+	if(message_mods[LANGUAGE_MESSAGE_SEGMENTS])
+		filtered_mods[LANGUAGE_MESSAGE_SEGMENTS] = message_mods[LANGUAGE_MESSAGE_SEGMENTS]
 
 	if (message_mods[MODE_SING])
 		filtered_mods[MODE_SING] = message_mods[MODE_SING]
