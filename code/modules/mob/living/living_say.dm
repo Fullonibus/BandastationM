@@ -222,6 +222,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		if(segments)
 			var/list/segment = segments[index]
 			segment["message"] = message
+			segment["tts_message"] = message_data["tts_message"]
 			segment["language"] = language
 			processed_segments += list(segment)
 	message_mods -= LANGUAGE_MESSAGE_SEGMENT
@@ -449,6 +450,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	// BANDASTATION ADDITION START - TTS
 	if((hearflags & HEAR_HEARD) && !radio_freq)
 		var/message_to_tts = message_mods[LANGUAGE_MESSAGE_SEGMENTS] ? raw_message : (LAZYACCESS(message_mods, MODE_TTS_MESSAGE_OVERRIDE) || raw_message)
+		if(SStts.tts_enabled)
+			LAZYINITLIST(message_mods[MODE_TTS_LISTENER_MESSAGES])
+			message_mods[MODE_TTS_LISTENER_MESSAGES][REF(src)] = message_to_tts
 		speaker.cast_tts(
 			src,
 			message_to_tts,

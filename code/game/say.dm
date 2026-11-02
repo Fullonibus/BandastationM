@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	SHOULD_BE_PURE(TRUE)
 	return !HAS_TRAIT(src, TRAIT_MUTE)
 
-/atom/movable/proc/do_tts_message(message, language, message_mods, list/tts_filter, list/hearers)
+/atom/movable/proc/do_tts_message(message, language, list/message_mods, list/tts_filter, list/hearers)
 	set waitfor = FALSE
 
 	if(!SStts.tts_enabled || !voice || HAS_TRAIT(src, TRAIT_SIGN_LANG) || HAS_TRAIT(src, TRAIT_UNKNOWN_VOICE) || message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
@@ -124,12 +124,15 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	if(length(tts_filter) > 0)
 		filter += tts_filter.Join(",")
 	var/list/special_filter = list()
-	// shortcut: legacy TTS has one language per audio clip; mixed speech uses blips until it supports fragments.
-	for(var/list/segment as anything in message_mods[LANGUAGE_MESSAGE_SEGMENTS])
-		if(segment["language"] != language)
-			language = null
-			break
-	INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(message), language, get_tts_voice(filter, special_filter), filter.Join(","), hearers, message_range = 7, pitch = pitch, special_filters = special_filter.Join("|"), blip_base = blip_base, blip_number = blip_number, identifier = message_mods[MODE_TTS_IDENTIFIER])
+	if(length(message_mods[LANGUAGE_MESSAGE_SEGMENTS]))
+		message_mods = message_mods.Copy()
+		var/list/tts_segments = list()
+		for(var/list/segment as anything in message_mods[LANGUAGE_MESSAGE_SEGMENTS])
+			var/list/tts_segment = segment.Copy()
+			tts_segment["message"] = segment["tts_message"] || segment["message"]
+			tts_segments += list(tts_segment)
+		message_mods[LANGUAGE_MESSAGE_SEGMENTS] = tts_segments
+	INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, message, language, get_tts_voice(filter, special_filter), filter.Join(","), hearers, message_range = 7, pitch = pitch, special_filters = special_filter.Join("|"), blip_base = blip_base, blip_number = blip_number, identifier = message_mods[MODE_TTS_IDENTIFIER], message_mods = message_mods)
 
 /atom/movable/proc/get_tts_voice(list/filter, list/special_filter)
 	. = voice

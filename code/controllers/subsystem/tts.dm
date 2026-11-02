@@ -30,6 +30,8 @@ SUBSYSTEM_DEF(tts)
 
 	/// List of radio TTS messages with compression, used for fixing radio TTS during ionosphere storms to conceal text.
 	var/list/list/queued_radio_messages_compression = list()
+	/// Received radio text and language modifiers, before any per-listener translation.
+	var/list/queued_radio_message_context = list()
 
 	/// A list of available speakers, which are string identifiers of the TTS voices that can be used to generate TTS messages.
 	var/list/available_speakers = list()
@@ -123,7 +125,7 @@ SUBSYSTEM_DEF(tts)
 		return SS_INIT_FAILURE
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/tts/proc/play_tts(datum/weakref/target, list/listeners, sound/audio, sound/audio_blips, datum/language/language, range = 7, volume_offset = 0, ignore_observers = FALSE, source_speaker = null, audio_length = 10 SECONDS, audio_length_blips = 10 SECONDS, volume_preference = /datum/preference/numeric/volume/sound_tts_volume, volume_signal = COMSIG_MOB_TTS_VOLUME_PREFERENCE_APPLIED)
+/datum/controller/subsystem/tts/proc/play_tts(datum/weakref/target, list/listeners, sound/audio, sound/audio_blips, datum/language/language, range = 7, volume_offset = 0, ignore_observers = FALSE, source_speaker = null, audio_length = 10 SECONDS, audio_length_blips = 10 SECONDS, volume_preference = /datum/preference/numeric/volume/sound_tts_volume, volume_signal = COMSIG_MOB_TTS_VOLUME_PREFERENCE_APPLIED, translated = FALSE)
 	var/atom/actual_target = target?.resolve()
 	var/turf/turf_source
 	if(actual_target)
@@ -164,13 +166,13 @@ SUBSYSTEM_DEF(tts)
 		sound_volume = sound_volume*volume_modifier
 		var/datum/language_holder/holder = listening_mob.get_language_holder()
 		var/sound/audio_to_use = (tts_pref == TTS_SOUND_BLIPS) ? audio_blips : audio
-		if(!holder.has_language(language))
+		if(!translated && !holder.has_language(language))
 			if (tts_pref == TTS_SOUND_OFF)
 				continue
 			else
 				audio_to_use = audio_blips
 		if(actual_target && get_dist(listening_mob, turf_source) <= range)
-			if(tts_pref == TTS_SOUND_BLIPS || !holder.has_language(language))
+			if(tts_pref == TTS_SOUND_BLIPS || (!translated && !holder.has_language(language)))
 				blips_hearers += listening_mob
 			else
 				voice_hearers += listening_mob
@@ -280,6 +282,7 @@ SUBSYSTEM_DEF(tts)
 		if(current_request.requests_errored())
 			queued_radio_messages -= identifier
 			queued_radio_messages_compression -= identifier
+			queued_radio_message_context -= identifier
 			current_request.timed_out = TRUE
 			log_tts("TTS HTTP request errored | Normal: [normal_response.error] | Blips: [blips_response.error] | Radio: [radio_response.error] | Radio Blips: [radio_blips_response.error] | Radio Gibberish [radio_gibberish_response.error]", list(
 				"normal" = normal_response,
@@ -343,6 +346,7 @@ SUBSYSTEM_DEF(tts)
 		if(timeout < world.time || current_target.timed_out)
 			queued_radio_messages -= current_target.identifier
 			queued_radio_messages_compression -= current_target.identifier
+			queued_radio_message_context -= current_target.identifier
 			SHIFT_DATA_ARRAY(queued_tts_messages, tts_target, data)
 			continue
 
@@ -363,21 +367,14 @@ SUBSYSTEM_DEF(tts)
 				SHIFT_DATA_ARRAY(queued_tts_messages, tts_target, data)
 
 			else if(current_target.when_to_play < world.time)
-				audio_file = new(current_target.audio_file)
-				audio_file_blips = new(current_target.audio_file_blips)
-				play_tts(
-					target = tts_target,
-					listeners = current_target.listeners,
-					audio = audio_file,
-					audio_blips = audio_file_blips,
-					language = current_target.language,
-					range = current_target.message_range,
-					volume_offset = current_target.volume_offset,
-					ignore_observers = FALSE,
-					source_speaker = null,
-					audio_length = current_target.audio_length,
-					audio_length_blips = current_target.audio_length_blips
-				)
+				var/playback_length = current_target.get_playback_length()
+				if(isnull(playback_length))
+					continue
+				play_tts_request(current_target, tts_target, current_target.listeners)
+				for(var/text in current_target.variants)
+					var/datum/tts_request/variant = current_target.variants[text]
+					if(variant && !variant.timed_out)
+						play_tts_request(variant, tts_target, variant.listeners)
 				completed_tts_messages[current_target.identifier] = list(
 					TTS_REQUEST_REF = current_target,
 					TTS_REQUEST_EXPIRE = world.time + 30 SECONDS,
@@ -385,12 +382,12 @@ SUBSYSTEM_DEF(tts)
 
 				if(length(data) != 1)
 					var/datum/tts_request/next_target = data[2]
-					next_target.when_to_play = world.time + current_target.audio_length
+					next_target.when_to_play = world.time + playback_length
 				else
 					// So that if the audio file is already playing whilst a new file comes in,
 					// it won't play in the middle of the audio file.
 					var/datum/tts_request/arbritrary_delay = new()
-					arbritrary_delay.when_to_play = world.time + current_target.audio_length
+					arbritrary_delay.when_to_play = world.time + playback_length
 					arbritrary_delay.audio_file = TTS_ARBRITRARY_DELAY
 					queued_tts_messages[tts_target] += arbritrary_delay
 				SHIFT_DATA_ARRAY(queued_tts_messages, tts_target, data)
@@ -410,29 +407,24 @@ SUBSYSTEM_DEF(tts)
 					continue
 
 			var/datum/tts_request/tts_request = completed_tts_messages[identifier][TTS_REQUEST_REF]
-			var/sound/audio_file = new( \
-				queued_radio_messages_compression[identifier] > COMPRESSION_REPLACE_CHARACTER_THRESHOLD \
-					? tts_request.audio_file_radio_gibberish \
-					: tts_request.audio_file_radio \
-			)
-			var/sound/audio_file_blips = new(tts_request.audio_file_blips_radio)
-			play_tts(
-				target = radio == TTS_GHOST_RADIO ? null : radio,
-				listeners = hearer_list,
-				audio = audio_file,
-				audio_blips = audio_file_blips,
-				language = tts_request.language,
-				range = INFINITY,
-				volume_offset = tts_request.volume_offset,
-				ignore_observers = TRUE,
-				source_speaker = tts_request.target,
-				audio_length = tts_request.audio_length_radio,
-				audio_length_blips = tts_request.audio_length_blips_radio,
-				volume_preference = /datum/preference/numeric/volume/sound_tts_radio_volume,
-				volume_signal = COMSIG_MOB_TTS_RADIO_VOLUME_PREFERENCE_APPLIED,
-			)
-
-		clear_radio_message(identifier)
+			var/list/groups = list()
+			var/list/radio_hearers = hearer_list
+			for(var/datum/weakref/listener_ref as anything in radio_hearers.Copy())
+				var/mob/listener = listener_ref.resolve()
+				var/datum/tts_request/variant = tts_request.translated ? get_tts_variant(tts_request, listener, queued_radio_message_context[identifier]) : tts_request
+				if(!listener || !variant || variant.timed_out)
+					hearer_list -= listener_ref
+					continue
+				if(!variant.audio_file)
+					continue
+				LAZYADD(groups[variant], listener_ref)
+				hearer_list -= listener_ref
+			for(var/datum/tts_request/variant as anything in groups)
+				play_tts_request(variant, radio == TTS_GHOST_RADIO ? null : radio, groups[variant], radio = TRUE, compressed = queued_radio_messages_compression[identifier] > COMPRESSION_REPLACE_CHARACTER_THRESHOLD)
+			if(!length(hearer_list))
+				radio_list -= radio
+		if(!length(radio_list))
+			clear_radio_message(identifier)
 
 	for(var/identifier, request in completed_tts_messages)
 		if (world.time < completed_tts_messages[identifier][TTS_REQUEST_EXPIRE])
@@ -442,7 +434,31 @@ SUBSYSTEM_DEF(tts)
 
 #undef TTS_ARBRITRARY_DELAY
 
-/datum/controller/subsystem/tts/proc/queue_tts_message(datum/target, message, datum/language/language, speaker, filter, list/listeners, local = FALSE, message_range = 7, volume_offset = 0, pitch = 0, special_filters = "", blip_base = "male", blip_number = "1", force_blips = FALSE, identifier = "invalid")
+/** Plays one already prepared listener group with the existing spatial, volume and blips preferences. */
+/datum/controller/subsystem/tts/proc/play_tts_request(datum/tts_request/request, datum/weakref/location, list/listeners, radio = FALSE, compressed = FALSE)
+	if(request.translated && !length(listeners))
+		return
+	if(location && !location.resolve())
+		return
+	var/audio_file = radio ? (compressed ? request.audio_file_radio_gibberish : request.audio_file_radio) : request.audio_file
+	play_tts(
+		target = location,
+		listeners = listeners,
+		audio = sound(audio_file),
+		audio_blips = sound(radio ? request.audio_file_blips_radio : request.audio_file_blips),
+		language = request.language,
+		range = radio ? INFINITY : request.message_range,
+		volume_offset = request.volume_offset,
+		ignore_observers = radio || request.translated,
+		source_speaker = radio ? request.target : null,
+		audio_length = radio ? request.audio_length_radio : request.audio_length,
+		audio_length_blips = radio ? request.audio_length_blips_radio : request.audio_length_blips,
+		volume_preference = radio ? /datum/preference/numeric/volume/sound_tts_radio_volume : /datum/preference/numeric/volume/sound_tts_volume,
+		volume_signal = radio ? COMSIG_MOB_TTS_RADIO_VOLUME_PREFERENCE_APPLIED : COMSIG_MOB_TTS_VOLUME_PREFERENCE_APPLIED,
+		translated = request.translated,
+	)
+
+/datum/controller/subsystem/tts/proc/queue_tts_message(datum/target, message, datum/language/language, speaker, filter, list/listeners, local = FALSE, message_range = 7, volume_offset = 0, pitch = 0, special_filters = "", blip_base = "male", blip_number = "1", force_blips = FALSE, identifier = "invalid", list/message_mods, datum/tts_request/parent_request)
 	if(!tts_enabled)
 		return
 
@@ -450,13 +466,13 @@ SUBSYSTEM_DEF(tts)
 	if(!fexists("tmp/tts/init.txt"))
 		rustg_file_write("rustg HTTP requests can't write to folders that don't exist, so we need to make it exist.", "tmp/tts/init.txt")
 
-	var/static/regex/contains_alphanumeric = regex("\[a-zA-Z0-9]")
+	var/static/regex/contains_alphanumeric = regex("\[a-zA-Zа-яА-ЯёЁ0-9]")
 	// If there is no alphanumeric char, the output will usually be static, so
 	// don't bother sending
 	if(contains_alphanumeric.Find(message) == 0)
 		return
 
-	var/shell_scrubbed_input = tts_speech_filter(message)
+	var/shell_scrubbed_input = tts_speech_filter(html_decode(message))
 	if(!(speaker in available_speakers))
 		return
 	var/list/listener_weakrefs = list()
@@ -481,22 +497,77 @@ SUBSYSTEM_DEF(tts)
 	request_blips_radio.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/tts_http_url)]/tts-blips-radio?voice=[speaker]&identifier=[identifier]&filter=[tts_filter_encode(filter, speaker, pitch, blips = TRUE)]&pitch=[pitch]&special_filters=[url_encode(special_filters)]&blip_base=[blip_base]&blip_number=[blip_number]", json_encode(list("text" = shell_scrubbed_input)), headers, file_name_blips_radio, timeout_seconds = CONFIG_GET(number/tts_http_timeout_seconds))
 	request_radio_gibberish.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/tts_http_url)]/tts-radio?voice=[speaker]&identifier=[identifier]&filter=[tts_filter_encode(filter, speaker, pitch)]&pitch=[pitch]&special_filters=[url_encode(special_filters)]", json_encode(list("raw_text" = shell_scrubbed_input, "gibberish_text" = shell_scrubbed_input)), headers, file_name_radio_gibberish, timeout_seconds = CONFIG_GET(number/tts_http_timeout_seconds))
 	var/datum/tts_request/current_request = new /datum/tts_request(identifier, request, request_blips, request_radio, request_blips_radio, request_radio_gibberish, shell_scrubbed_input, target, local, language, message_range, volume_offset, listener_weakrefs, pitch, force_blips)
-	var/list/player_queued_tts_messages = queued_tts_messages[WEAKREF(target)]
-	if(!player_queued_tts_messages)
-		player_queued_tts_messages = list()
-		queued_tts_messages[WEAKREF(target)] = player_queued_tts_messages
-	player_queued_tts_messages += current_request
+	current_request.raw_message = message
+	current_request.translated = !!parent_request || (!local && ismovable(target) && !isnull(message_mods))
+	current_request.message_mods = message_mods
+	if(!parent_request)
+		var/list/player_queued_tts_messages = queued_tts_messages[WEAKREF(target)]
+		if(!player_queued_tts_messages)
+			player_queued_tts_messages = list()
+			queued_tts_messages[WEAKREF(target)] = player_queued_tts_messages
+		player_queued_tts_messages += current_request
 	if(length(in_process_http_messages) < max_concurrent_requests)
 		current_request.start_requests()
 		in_process_http_messages += current_request
 	else
 		queued_http_messages.insert(current_request)
+	if(current_request.translated && !parent_request)
+		current_request.variant_args = list(
+			"target" = target, "language" = language, "speaker" = speaker, "filter" = filter,
+			"local" = local, "message_range" = message_range, "volume_offset" = volume_offset,
+			"pitch" = pitch, "special_filters" = special_filters, "blip_base" = blip_base,
+			"blip_number" = blip_number, "force_blips" = force_blips,
+		)
+		current_request.listeners = list()
+		var/list/nearby_listeners = listeners ? listeners.Copy() : list()
+		var/atom/movable/source = target
+		nearby_listeners |= SSmobs.dead_players_by_zlevel[source.z]
+		for(var/mob/listener in nearby_listeners)
+			var/datum/tts_request/variant = get_tts_variant(current_request, listener)
+			if(variant)
+				variant.listeners |= WEAKREF(listener)
+		for(var/radio, radio_listeners in queued_radio_messages[identifier])
+			for(var/datum/weakref/listener_ref as anything in radio_listeners)
+				var/mob/listener = listener_ref.resolve()
+				if(listener)
+					get_tts_variant(current_request, listener, queued_radio_message_context[identifier])
+	return current_request
+
+/** Reuses translated audio or requests a new variant without adding another utterance to the speaker's queue. */
+/datum/controller/subsystem/tts/proc/get_tts_variant(datum/tts_request/parent_request, mob/listener, list/radio_context)
+	var/atom/movable/source = parent_request.target
+	if(!source || QDELETED(source) || !listener || QDELETED(listener))
+		return null
+	listener = listener.get_listening_mob()
+	if(!listener || QDELETED(listener))
+		return null
+	var/message = radio_context ? radio_context["message"] : parent_request.raw_message
+	var/language = radio_context ? radio_context["language"] : parent_request.language
+	var/list/mods = radio_context ? radio_context["mods"] : parent_request.message_mods
+	var/list/heard_messages = parent_request.message_mods?[MODE_TTS_LISTENER_MESSAGES]
+	var/translation
+	if(!radio_context && (REF(listener) in heard_messages))
+		translation = heard_messages[REF(listener)]
+	else
+		translation = isobserver(listener) ? message : listener.translate_language(source, language, message, message_mods = mods)
+	if(translation == parent_request.raw_message)
+		return parent_request
+	if(translation in parent_request.variants)
+		return parent_request.variants[translation]
+	var/list/variant_args = parent_request.variant_args.Copy()
+	variant_args["message"] = translation
+	variant_args["identifier"] = "[parent_request.identifier]-[md5(translation)]"
+	variant_args["parent_request"] = parent_request
+	var/datum/tts_request/variant = queue_tts_message(arglist(variant_args))
+	parent_request.variants[translation] = variant
+	return variant
 
 /datum/controller/subsystem/tts/proc/clear_radio_message(identifier)
 	completed_tts_messages[identifier] -= TTS_REQUEST_REF // don't stick around
 	completed_tts_messages -= identifier
 	queued_radio_messages -= identifier
 	queued_radio_messages_compression -= identifier
+	queued_radio_message_context -= identifier
 
 /// Helper to get a random TTS voice for a certain gender. Passing no gender just results in a random voice.
 /datum/controller/subsystem/tts/proc/random_tts_voice(gender = NEUTER)
@@ -574,6 +645,29 @@ SUBSYSTEM_DEF(tts)
 	var/pitch = 0
 	/// Should we force play blips? Used for the blips preview.
 	var/force_blips = FALSE
+	/// Input text before filtering, retained for per-listener translation.
+	var/raw_message
+	/// Speech modifiers describing the language fragments of raw_message.
+	var/list/message_mods
+	/// Audio has already been translated for its intended listeners.
+	var/translated = FALSE
+	/// Translated text mapped to its audio request; null means the text cannot be synthesized.
+	var/list/variants = list()
+	/// Existing synthesis options reused by local and late radio variants.
+	var/list/variant_args
+
+/** Waits for the utterance's variants and returns their longest duration, so later speech keeps its order. */
+/datum/tts_request/proc/get_playback_length()
+	if(!audio_file)
+		return null
+	. = audio_length || 0
+	for(var/text in variants)
+		var/datum/tts_request/variant = variants[text]
+		if(!variant || variant.timed_out)
+			continue
+		if(!variant.audio_file)
+			return null
+		. = max(., variant.audio_length)
 
 
 /datum/tts_request/New(identifier, datum/http_request/request, datum/http_request/request_blips, datum/http_request/request_radio, datum/http_request/request_blips_radio, datum/http_request/request_radio_gibberish, message, target, local, datum/language/language, message_range, volume_offset, list/listeners, pitch, force_blips = FALSE)

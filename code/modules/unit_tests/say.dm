@@ -158,33 +158,63 @@
 	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, raw_message, message_mods = mods), raw_message, "A listener knowing every language should understand the complete sentence.")
 	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, damaged_message, message_mods = mods), damaged_message, "Knowing every language must not undo transmission damage.")
 
+/// Accepts rendered speech without a network client so synthesis delivery can be observed.
+/mob/living/carbon/human/consistent/tts_listener/show_message(msg, type, alt_msg, alt_type, avoid_highlighting = FALSE)
+	return TRUE
+
 /// Mixed speech keeps native accents and travels as one message through speech, whispers and radio.
 /datum/unit_test/multilingual_speech_modifiers
 	/// Number of complete messages received during the current delivery scenario.
 	var/heard_count = 0
 	/// Last translated message captured at the listener.
 	var/heard_message
+	/// Voice synthesis must receive the same intelligible and scrambled text as the listener.
+	var/tts_message
+	/// The listener whose synthesis input is captured.
+	var/mob/tts_listener
+	/// Shared modifiers populated with the final legacy TTS text after hearing.
+	var/list/heard_mods
+	/// Restore the legacy subsystem gate even if an assertion ends the test early.
+	var/legacy_tts_enabled
+
+/datum/unit_test/multilingual_speech_modifiers/Destroy()
+	if(!isnull(legacy_tts_enabled))
+		SStts.tts_enabled = legacy_tts_enabled
+	return ..()
+
+/datum/unit_test/multilingual_speech_modifiers/proc/on_tts(datum/source, listener, message)
+	SIGNAL_HANDLER
+	if(listener == tts_listener)
+		tts_message = message
 
 /datum/unit_test/multilingual_speech_modifiers/proc/on_hear(datum/source, list/hearing_args)
 	SIGNAL_HANDLER
 	heard_count++
 	heard_message = hearing_args[HEARING_RAW_MESSAGE]
+	heard_mods = hearing_args[HEARING_MESSAGE_MODE]
 
 /datum/unit_test/multilingual_speech_modifiers/Run()
+	legacy_tts_enabled = SStts.tts_enabled
+	SStts.tts_enabled = TRUE
 	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
+	speaker.voice = null // Observe synthesis inputs without contacting an external voice service.
 	speaker.set_species(/datum/species/lizard)
 	speaker.set_active_language(/datum/language/common)
-	var/mob/living/carbon/human/listener = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/listener = allocate(/mob/living/carbon/human/consistent/tts_listener)
 	listener.grant_language(/datum/language/draconic)
 	listener.mock_client = allocate(/datum/client_interface)
+	tts_listener = listener
 	speaker.forceMove(run_loc_floor_bottom_left)
 	listener.forceMove(get_step(run_loc_floor_bottom_left, EAST))
 	RegisterSignal(listener, COMSIG_MOVABLE_HEAR, PROC_REF(on_hear))
+	// TTS220's signal define is included after the core unit tests.
+	RegisterSignal(speaker, "atom_tts_cast", PROC_REF(on_tts))
 	var/input = "She is so sassy ,o She is so sassy ,0 She is so sassy"
 	var/expected = "SSShe isss ssso sssasssy She is so sassy SSShe isss ssso sssasssy"
 	speaker.say(input)
 	TEST_ASSERT_EQUAL(heard_count, 1, "Mixed speech must be delivered once.")
 	TEST_ASSERT_EQUAL(heard_message, expected, "The tongue must modify common fragments while leaving native draconic intact.")
+	TEST_ASSERT_EQUAL(tts_message, expected, "TTS must voice the complete sentence for a listener knowing every language.")
 	heard_count = 0
 	speaker.whisper(input, ignore_spam = TRUE)
 	TEST_ASSERT_EQUAL(heard_count, 1, "Mixed whispers must be delivered once.")
@@ -196,15 +226,19 @@
 	speaker.say(input, ignore_spam = TRUE)
 	TEST_ASSERT_EQUAL(heard_count, 1, "A listener missing one language must still receive one sentence.")
 	TEST_ASSERT_EQUAL(heard_message, unknown_expected, "Ordinary speech must conceal only the unknown fragment.")
+	TEST_ASSERT_EQUAL(tts_message, unknown_expected, "TTS must voice scrambled syllables for unknown fragments instead of revealing their original text.")
 	heard_count = 0
 	speaker.whisper(input, ignore_spam = TRUE)
 	TEST_ASSERT_EQUAL(heard_count, 1, "An unknown-language whisper must still be delivered once.")
 	TEST_ASSERT_EQUAL(heard_message, unknown_expected, "Whispering must not expose the unknown fragment.")
+	TEST_ASSERT_EQUAL(tts_message, unknown_expected, "Whispered TTS must voice the listener's scrambled language fragments.")
 	listener.forceMove(locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z))
 	heard_count = 0
 	speaker.whisper(input, ignore_spam = TRUE)
 	TEST_ASSERT_EQUAL(heard_count, 1, "A listener in eavesdrop range must receive one obscured whisper.")
 	TEST_ASSERT(!findtext(heard_message, "She is so sassy"), "Eavesdropping must not restore the unknown language's original text.")
+	TEST_ASSERT_EQUAL(tts_message, heard_message, "Eavesdropped TTS must not undo the whisper's distance masking.")
+	TEST_ASSERT_EQUAL(heard_mods[MODE_TTS_LISTENER_MESSAGES][REF(listener)], heard_message, "Legacy TTS must receive the actual distance-masked whisper for this listener.")
 
 	listener.forceMove(locate(run_loc_floor_bottom_left.x + 10, run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z))
 	var/obj/item/radio/transmitter = allocate(/obj/item/radio)
