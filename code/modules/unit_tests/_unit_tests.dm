@@ -298,7 +298,6 @@
 #include "mouse_bite_cable.dm"
 #include "move_pulled.dm"
 #include "movement_order_sanity.dm"
-#include "multilingual_tts.dm"
 #include "mutant_hands_consistency.dm"
 #include "mutant_organs.dm"
 #include "neurine_trauma_cleanup.dm"

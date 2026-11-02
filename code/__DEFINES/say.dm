@@ -91,8 +91,6 @@
 #define MODE_TTS_FILTERS "tts_filters"
 #define MODE_TTS_SEED_OVERRIDE "tts_seed_override"
 #define MODE_TTS_MESSAGE_OVERRIDE "tts_message_override"
-/// Actual heard text per listener ref, including language translation and whisper masking.
-#define MODE_TTS_LISTENER_MESSAGES "tts_listener_messages"
 // BANDASTATION ADDITION END - TTS
 
 //Spans. Robot speech, italics, etc. Applied in compose_message().

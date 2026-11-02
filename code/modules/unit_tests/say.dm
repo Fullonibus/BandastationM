@@ -152,11 +152,90 @@
 	mods[LANGUAGE_MESSAGE_SEGMENTS] = segments
 	listener.grant_partial_language(/datum/language/draconic, 100)
 	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, raw_message, message_mods = mods), raw_message, "Mutual understanding must still apply to individual fragments.")
+	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, damaged_message, message_mods = mods), damaged_message, "Full mutual understanding must preserve the received damaged text.")
 	listener.remove_partial_language(/datum/language/draconic)
 	listener.remove_blocked_language(/datum/language/draconic, UNDERSTOOD_LANGUAGE)
 	listener.grant_language(/datum/language/draconic)
 	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, raw_message, message_mods = mods), raw_message, "A listener knowing every language should understand the complete sentence.")
 	TEST_ASSERT_EQUAL(listener.translate_language(speaker, /datum/language/common, damaged_message, message_mods = mods), damaged_message, "Knowing every language must not undo transmission damage.")
+
+/// Suppressed fragments must not combine into an audible whitespace-only utterance.
+/datum/unit_test/multilingual_speech_suppressed
+	/// Physical utterances received by the nearby listener.
+	var/heard_count = 0
+
+/// Runs the real succumb body without the native verb's live-client input gate.
+/mob/living/carbon/human/consistent/last_words/succumb()
+	INVOKE_GAME_VERB(src, src, /mob/living, succumb)
+
+/datum/unit_test/multilingual_speech_suppressed/proc/suppress_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+	speech_args[SPEECH_MESSAGE] = ""
+
+/datum/unit_test/multilingual_speech_suppressed/proc/on_hear(datum/source, list/hearing_args)
+	SIGNAL_HANDLER
+	heard_count++
+
+/datum/unit_test/multilingual_speech_suppressed/Run()
+	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent/last_words)
+	var/mob/living/carbon/human/listener = allocate(/mob/living/carbon/human/consistent)
+	listener.mock_client = allocate(/datum/client_interface)
+	speaker.grant_language(/datum/language/draconic)
+	speaker.forceMove(run_loc_floor_bottom_left)
+	listener.forceMove(get_step(speaker, EAST))
+	RegisterSignal(listener, COMSIG_MOVABLE_HEAR, PROC_REF(on_hear))
+	speaker.say("Audible", ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(heard_count, 1, "The nearby listener must hear speech before it is suppressed.")
+	heard_count = 0
+	RegisterSignal(speaker, COMSIG_MOB_SAY, PROC_REF(suppress_speech))
+	speaker.say("Suppressed", ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(heard_count, 0, "Suppressed single-language speech must remain silent.")
+	speaker.say("Suppressed ,o also suppressed", ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(heard_count, 0, "Suppressing every language fragment must not emit a blank utterance.")
+	speaker.set_oxy_loss(speaker.maxHealth - ((speaker.hardcrit_threshold + speaker.dead_threshold) / 2), forced = TRUE)
+	TEST_ASSERT_EQUAL(speaker.stat, HARD_CRIT, "The speaker must be in hard critical condition before their last words.")
+	speaker.whisper("Suppressed ,o also suppressed", ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(speaker.stat, DEAD, "Suppressing mixed last words must still allow the speaker to succumb.")
+
+/// Marionettes must relay speech after earlier signal handlers have modified it.
+/datum/unit_test/multilingual_speech_marionette
+	/// The mannequin whose relayed speech is observed.
+	var/obj/structure/mannequin/puppet
+	/// Speech received from the mannequin, excluding the puller's own utterance.
+	var/list/relayed_messages = list()
+
+/datum/unit_test/multilingual_speech_marionette/proc/on_hear(datum/source, list/hearing_args)
+	SIGNAL_HANDLER
+	if(hearing_args[HEARING_SPEAKER] == puppet)
+		relayed_messages += hearing_args[HEARING_RAW_MESSAGE]
+
+/datum/unit_test/multilingual_speech_marionette/Run()
+	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/listener = allocate(/mob/living/carbon/human/consistent)
+	listener.mock_client = allocate(/datum/client_interface)
+	listener.grant_language(/datum/language/draconic)
+	speaker.grant_language(/datum/language/draconic)
+	speaker.forceMove(run_loc_floor_bottom_left)
+	listener.forceMove(get_step(speaker, EAST))
+	puppet = allocate(/obj/structure/mannequin, get_step(speaker, NORTH))
+	var/obj/item/clothing/mask/animal/pig/mask = allocate(/obj/item/clothing/mask/animal/pig)
+	mask.animal_sounds = list("Oink!")
+	mask.animal_sounds_alt_probability = 0
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(mask, ITEM_SLOT_MASK), "The speech-changing mask must be equipped before pulling.")
+	speaker.start_pulling(puppet)
+	TEST_ASSERT_EQUAL(speaker.pulling, puppet, "The speaker must pull the mannequin to relay speech.")
+	RegisterSignal(listener, COMSIG_MOVABLE_HEAR, PROC_REF(on_hear))
+	speaker.say("Secret ,o hidden", ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(length(relayed_messages), 1, "Mixed speech must be relayed exactly once.")
+	if(trim(relayed_messages[1]) != "Oink!")
+		TEST_FAIL("The mannequin must relay the mask's sound, never the original language fragment; received [relayed_messages[1]].")
+	mask.clothing_flags |= VOICEBOX_DISABLED
+	speaker.set_species(/datum/species/lizard)
+	speaker.set_active_language(/datum/language/common)
+	relayed_messages.Cut()
+	speaker.say("She is so sassy ,o She is so sassy ,0 She is so sassy", ignore_spam = TRUE)
+	TEST_ASSERT_EQUAL(length(relayed_messages), 1, "The mannequin must relay all processed language fragments together.")
+	TEST_ASSERT_EQUAL(relayed_messages[1], "SSShe isss ssso sssasssy She is so sassy SSShe isss ssso sssasssy", "The mannequin must preserve the tongue's changes to every fragment.")
 
 /// Accepts rendered speech without a network client so synthesis delivery can be observed.
 /mob/living/carbon/human/consistent/tts_listener/show_message(msg, type, alt_msg, alt_type, avoid_highlighting = FALSE)
@@ -172,8 +251,6 @@
 	var/tts_message
 	/// The listener whose synthesis input is captured.
 	var/mob/tts_listener
-	/// Shared modifiers populated with the final legacy TTS text after hearing.
-	var/list/heard_mods
 	/// Restore the legacy subsystem gate even if an assertion ends the test early.
 	var/legacy_tts_enabled
 
@@ -191,11 +268,10 @@
 	SIGNAL_HANDLER
 	heard_count++
 	heard_message = hearing_args[HEARING_RAW_MESSAGE]
-	heard_mods = hearing_args[HEARING_MESSAGE_MODE]
 
 /datum/unit_test/multilingual_speech_modifiers/Run()
 	legacy_tts_enabled = SStts.tts_enabled
-	SStts.tts_enabled = TRUE
+	SStts.tts_enabled = FALSE
 	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
 	speaker.voice = null // Observe synthesis inputs without contacting an external voice service.
 	speaker.set_species(/datum/species/lizard)
@@ -238,7 +314,6 @@
 	TEST_ASSERT_EQUAL(heard_count, 1, "A listener in eavesdrop range must receive one obscured whisper.")
 	TEST_ASSERT(!findtext(heard_message, "She is so sassy"), "Eavesdropping must not restore the unknown language's original text.")
 	TEST_ASSERT_EQUAL(tts_message, heard_message, "Eavesdropped TTS must not undo the whisper's distance masking.")
-	TEST_ASSERT_EQUAL(heard_mods[MODE_TTS_LISTENER_MESSAGES][REF(listener)], heard_message, "Legacy TTS must receive the actual distance-masked whisper for this listener.")
 
 	listener.forceMove(locate(run_loc_floor_bottom_left.x + 10, run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z))
 	var/obj/item/radio/transmitter = allocate(/obj/item/radio)
