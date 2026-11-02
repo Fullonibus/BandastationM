@@ -33,7 +33,7 @@
 
 	return ..(input)
 
-/// Determines the appearance of your ghost to others, when you are a BYOND member
+/// Selects the character snapshot or a static ghost form; extra static forms require BYOND membership.
 /datum/preference/choiced/ghost_form
 	savefile_key = "ghost_form"
 	savefile_identifier = PREFERENCE_PLAYER
@@ -42,7 +42,8 @@
 
 	var/static/list/ghost_forms = list(
 		"catghost" = "Cat",
-		"ghost" = "Default",
+		"ghost" = "Персонаж (по умолчанию)",
+		"ghost_static" = "Обычный призрак",
 		"ghost_black" = "Black",
 		"ghost_blazeit" = "Blaze it",
 		"ghost_blue" = "Blue",
@@ -74,7 +75,7 @@
 	return assoc_to_keys(ghost_forms)
 
 /datum/preference/choiced/ghost_form/icon_for(value)
-	return uni_icon('icons/mob/simple/mob.dmi', value)
+	return uni_icon('icons/mob/simple/mob.dmi', value == "ghost_static" ? "ghost" : value)
 
 /datum/preference/choiced/ghost_form/create_default_value()
 	return "ghost"
@@ -84,7 +85,7 @@
 	if (!istype(ghost))
 		return
 
-	if (!client.is_content_unlocked())
+	if (!(value in list("ghost", "ghost_static")) && !client.is_content_unlocked())
 		return
 
 	ghost.update_icon(ALL, value)

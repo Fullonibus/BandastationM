@@ -51,6 +51,10 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	var/facial_hairstyle
 	var/facial_hair_color
 	var/mutable_appearance/facial_hair_overlay
+	/// A snapshot of our former body, without its lighting or HUD overlays.
+	var/mutable_appearance/body_appearance
+	/// Selected form: the legacy "ghost" value now uses the character snapshot.
+	var/ghost_form = "ghost"
 
 	var/updatedir = 1 //Do we have to update our dir as the ghost moves around?
 	var/lastsetting = null //Stores the last setting that ghost_others was set to, for a little more efficiency when we update ghost images. Null means no update is necessary
@@ -105,19 +109,10 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 
 		mind = body.mind //we don't transfer the mind but we keep a reference to it.
+		set_body_appearance(body)
 
 		if(HAS_TRAIT_FROM_ONLY(body, TRAIT_SUICIDED, REF(body))) // transfer if the body was killed due to suicide
 			ADD_TRAIT(src, TRAIT_SUICIDED, REF(body))
-
-		if(ishuman(body))
-			var/mob/living/carbon/human/body_human = body
-			var/datum/species/human_species = body_human.dna.species
-			if(human_species.check_head_flags(HEAD_HAIR))
-				hairstyle = body_human.hairstyle
-				hair_color = ghostify_color(body_human.hair_color)
-			if(human_species.check_head_flags(HEAD_FACIAL_HAIR))
-				facial_hairstyle = body_human.facial_hairstyle
-				facial_hair_color = ghostify_color(body_human.facial_hair_color)
 
 	update_appearance()
 
@@ -178,10 +173,66 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	QDEL_NULL(spawners_menu)
 	QDEL_NULL(minigames_menu)
+	body_appearance = null
 	return ..()
 
-/*
- * This proc will update the icon of the ghost itself, with hair overlays, as well as the ghost image.
+/** Copies a body into a self-contained ghost appearance, or clears the snapshot when the body has no image. */
+/mob/dead/observer/proc/set_body_appearance(mob/body)
+	if(body_appearance)
+		cut_overlay(body_appearance)
+	hairstyle = null
+	facial_hairstyle = null
+	body_appearance = copy_appearance_filter_overlays(body.appearance)
+	if(!body_appearance.icon && !length(body_appearance.overlays) && !length(body_appearance.underlays))
+		body_appearance = null
+		return
+
+	body_appearance.plane = FLOAT_PLANE
+	body_appearance.layer = FLOAT_LAYER
+	body_appearance.dir = SOUTH
+	body_appearance.transform = matrix()
+	body_appearance.pixel_x = initial(body.pixel_x)
+	body_appearance.pixel_y = initial(body.pixel_y)
+	body_appearance.pixel_z = initial(body.pixel_z)
+	body_appearance.pixel_w = initial(body.pixel_w)
+	body_appearance.alpha = 127
+	body_appearance.invisibility = 0
+	body_appearance.render_target = null
+	body_appearance.render_source = null
+	body_appearance.appearance_flags = KEEP_TOGETHER
+
+	if(ishuman(body))
+		var/mob/living/carbon/human/body_human = body
+		var/obj/item/bodypart/head/body_head = body_human.get_bodypart(BODY_ZONE_HEAD)
+		var/obj/item/organ/eyes/body_eyes
+		if(body_head)
+			body_eyes = locate() in body_head
+		if(body_eyes && (body_head.head_flags & HEAD_EYECOLOR) && body_head.is_husked != HUSKED_ZOMBIE)
+			var/list/ghost_overlays = list()
+			for(var/mutable_appearance/body_overlay as anything in body_appearance.overlays)
+				// Blinking belongs to the body's vis_contents, not to the ghost.
+				if(body_overlay.render_source && (body_overlay.render_source == body_eyes.eyelid_left?.render_target || body_overlay.render_source == body_eyes.eyelid_right?.render_target))
+					continue
+				var/mutable_appearance/ghost_overlay = new(body_overlay)
+				// Dead bodies tint the eye sprites with skin color to represent closed eyelids.
+				if(ghost_overlay.icon == body_eyes.eye_icon)
+					if(ghost_overlay.icon_state == "[body_eyes.eye_icon_state]_l")
+						ghost_overlay.color = body_human.get_left_eye_color() || body_eyes.eye_color_left
+					else if(ghost_overlay.icon_state == "[body_eyes.eye_icon_state]_r")
+						ghost_overlay.color = body_human.get_right_eye_color() || body_eyes.eye_color_right
+				ghost_overlays += ghost_overlay
+			body_appearance.overlays = ghost_overlays
+
+		var/datum/species/human_species = body_human.dna.species
+		if(human_species.check_head_flags(HEAD_HAIR))
+			hairstyle = body_human.hairstyle
+			hair_color = ghostify_color(body_human.hair_color)
+		if(human_species.check_head_flags(HEAD_FACIAL_HAIR))
+			facial_hairstyle = body_human.facial_hairstyle
+			facial_hair_color = ghostify_color(body_human.facial_hair_color)
+
+/**
+ * Updates the ghost's body snapshot or chosen form and accessories, as well as its override image.
  * Please call update_icon(updates, icon_state) from now on when you want to update the icon_state of the ghost,
  * or you might end up with hair on a sprite that's not supposed to get it.
  * Hair will always update its dir, so if your sprite has no dirs the haircut will go all over the place.
@@ -203,12 +254,29 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		facial_hair_overlay = null
 
 
+	if(body_appearance)
+		cut_overlay(body_appearance)
+		icon = initial(icon)
+
 	if(new_form)
-		icon_state = new_form
+		ghost_form = new_form
+		icon_state = new_form == "ghost_static" ? "ghost" : new_form
 		if(icon_state in GLOB.ghost_forms_with_directions_list)
-			ghostimage_default.icon_state = new_form + "_nodir" //if this icon has dirs, the default ghostimage must use its nodir version or clients with the preference set to default sprites only will see the dirs
+			ghostimage_default.icon_state = icon_state + "_nodir" //if this icon has dirs, the default ghostimage must use its nodir version or clients with the preference set to default sprites only will see the dirs
 		else
-			ghostimage_default.icon_state = new_form
+			ghostimage_default.icon_state = icon_state
+
+	if(body_appearance && ghost_form == "ghost")
+		icon = null
+		// Empty body icon states must not inherit the observer's ghost sprite.
+		icon_state = ""
+		updatedir = TRUE
+		add_overlay(body_appearance)
+		return
+
+	if(ghost_form == "ghost")
+		icon = initial(icon)
+		icon_state = initial(icon_state)
 
 	if((ghost_accs == GHOST_ACCS_DIR || ghost_accs == GHOST_ACCS_FULL) && (icon_state in GLOB.ghost_forms_with_directions_list)) //if this icon has dirs AND the client wants to show them, we make sure we update the dir on movement
 		updatedir = 1
@@ -216,7 +284,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		updatedir = 0 //stop updating the dir in case we want to show accessories with dirs on a ghost sprite without dirs
 		setDir(2 )//reset the dir to its default so the sprites all properly align up
 
-	if(ghost_accs == GHOST_ACCS_FULL && (icon_state in GLOB.ghost_forms_with_accessories_list)) //check if this form supports accessories and if the client wants to show them
+	if(ghost_form != "ghost_static" && ghost_accs == GHOST_ACCS_FULL && (icon_state in GLOB.ghost_forms_with_accessories_list)) //check if this form supports accessories and if the client wants to show them
 		if(facial_hairstyle)
 			var/datum/sprite_accessory/S = SSaccessories.facial_hairstyles_list[facial_hairstyle]
 			if(S && S.icon_state != SPRITE_ACCESSORY_NONE)
@@ -826,18 +894,24 @@ GAME_VERB_HIDDEN(/mob/dead/observer, add_view_range, "Add View Range")
 	ghost_hud_flags &= ~GHOST_DATA_HUDS // only for safety, it should be unset already.
 	remove_traits(observer_hud_traits, REF(src))
 
+/** Restores the selected menu character using the same renderer as the preferences preview. */
 /mob/dead/observer/proc/set_ghost_appearance()
 	if(!client?.prefs)
 		return
 
-	client.prefs.apply_character_randomization_prefs()
+	var/mob/living/carbon/human/dummy/preview_body = new
+	preview_body.appearance = client.prefs.render_new_preview_appearance(preview_body)
+	set_body_appearance(preview_body)
+	qdel(preview_body)
 
+	// Silicon previews return before applying character preferences to the dummy.
 	var/species_type = client.prefs.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = GLOB.species_prototypes[species_type]
+	hairstyle = null
+	facial_hairstyle = null
 	if(species.check_head_flags(HEAD_HAIR))
 		hairstyle = client.prefs.read_preference(/datum/preference/choiced/hairstyle)
 		hair_color = ghostify_color(client.prefs.read_preference(/datum/preference/color/hair_color))
-
 	if(species.check_head_flags(HEAD_FACIAL_HAIR))
 		facial_hairstyle = client.prefs.read_preference(/datum/preference/choiced/facial_hairstyle)
 		facial_hair_color = ghostify_color(client.prefs.read_preference(/datum/preference/color/facial_hair_color))
