@@ -6,18 +6,23 @@
 /**
  * Component applied to a wall to progressively destroy it.
  * If component is applied to something which already has it, stage increases.
- * Wall is destroyed on third application.
+ * Wall is destroyed after three full-strength applications.
  * Can be fixed using a welder
  */
 /datum/component/torn_wall
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
+	/// Native tear damage minus the first full-strength hit; fractional blows share the same repair state.
 	var/current_stage = TORN_WALL_INITIAL
 
-/datum/component/torn_wall/Initialize(current_stage)
+/**
+ * Seed the native tear stage and apply the first blow.
+ * damage is the fraction of a normal tear, allowing resistant walls to take weaker impacts.
+ */
+/datum/component/torn_wall/Initialize(current_stage, damage = 1)
 	. = ..()
 	if (!isclosedturf(parent) || isindestructiblewall(parent))
 		return COMPONENT_INCOMPATIBLE
-	src.current_stage = current_stage || src.current_stage
+	src.current_stage = (current_stage || src.current_stage) + damage - 1
 
 /datum/component/torn_wall/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examined))
@@ -36,8 +41,8 @@
 	))
 	atom_parent.update_appearance(UPDATE_ICON)
 
-/datum/component/torn_wall/InheritComponent(datum/component/C, i_am_original)
-	increase_stage()
+/datum/component/torn_wall/InheritComponent(datum/component/C, i_am_original, current_stage, damage = 1)
+	increase_stage(damage)
 
 /// Play a fun animation and make our wall look damaged
 /datum/component/torn_wall/proc/apply_visuals()
@@ -47,9 +52,9 @@
 	atom_parent.Shake(shake_interval = 0.1 SECONDS, duration = 0.5 SECONDS)
 
 /// Make the effect more dramatic
-/datum/component/torn_wall/proc/increase_stage()
-	current_stage++
-	if (current_stage != TORN_WALL_RUINED)
+/datum/component/torn_wall/proc/increase_stage(damage = 1)
+	current_stage += damage
+	if (current_stage < TORN_WALL_RUINED)
 		apply_visuals()
 		return
 	var/turf/closed/wall/attached_wall = parent
@@ -75,7 +80,7 @@
 		source.balloon_alert(user, "interrupted!")
 		return
 	current_stage--
-	if (current_stage < TORN_WALL_INITIAL)
+	if (current_stage <= TORN_WALL_INITIAL - 1)
 		qdel(src)
 		return
 	source.update_appearance(UPDATE_ICON)
@@ -84,7 +89,7 @@
 /// Give them a hint
 /datum/component/torn_wall/proc/on_examined(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	var/intensity = (current_stage == TORN_WALL_INITIAL) ? "slightly" : "badly"
+	var/intensity = (current_stage < TORN_WALL_DAMAGED) ? "slightly" : "badly"
 	examine_list += span_notice("It looks [intensity] damaged.")
 	examine_list += span_info("You may be able to repair it using a welding tool.")
 
@@ -92,7 +97,7 @@
 /datum/component/torn_wall/proc/on_update_overlays(turf/source, list/overlays)
 	SIGNAL_HANDLER
 	var/mutable_appearance/crack = mutable_appearance('icons/turf/overlays.dmi', "explodable", source.layer + 0.1)
-	if (current_stage == TORN_WALL_INITIAL)
+	if (current_stage < TORN_WALL_DAMAGED)
 		crack.alpha *= 0.5
 	overlays += crack
 

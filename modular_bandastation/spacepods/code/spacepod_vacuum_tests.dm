@@ -181,7 +181,7 @@
 	advance_flight(pod)
 	TEST_ASSERT_EQUAL(pod.loc, origin, "Turbo speed clipped the cabin's far corner through an obstacle.")
 	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "A turbo collision retained velocity into the obstacle.")
-	TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - 176.8) < 0.001, "A turbo collision changed the existing impact-damage rule.")
+	TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - 168.8) < 0.001, "A turbo collision changed the existing impact-damage rule.")
 
 /// Stronger brakes stop short vectors exactly, and turbo cannot manufacture unpaid thrust.
 /datum/unit_test/spacepod_vacuum/turbo_brakes_and_power/Run()
@@ -256,24 +256,35 @@
 	var/list/impacts = list(
 		list("speed" = 0.5, "damage" = 0),
 		list("speed" = 1, "damage" = 0),
-		list("speed" = 2, "damage" = 3),
-		list("speed" = 4, "damage" = 15),
-		list("speed" = 1 / 0.15, "damage" = 43.4),
+		list("speed" = 2, "damage" = 0),
+		list("speed" = 2.5, "damage" = 0),
+		list("speed" = 3, "damage" = 0),
+		list("speed" = 3.1, "damage" = 0.6),
+		list("speed" = 4, "damage" = 7),
+		list("speed" = 1 / 0.15, "damage" = 35.4),
 	)
 	for(var/list/impact as anything in impacts)
 		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
 		TEST_ASSERT_NOTNULL(pod, "Could not prepare the [impact["speed"]]-tile/s collision fixture.")
-		var/mob/living/pilot = pod.pilot
+		var/mob/living/carbon/pilot = pod.pilot
 		var/obj/structure/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
 		blocker.density = TRUE
 		blocker.anchored = TRUE
 		pod.flight.velocity_y = impact["speed"]
+		if(impact["speed"] >= 5)
+			pilot.Unconscious(1 SECONDS)
 		var/turf/origin = pod.loc
 		var/initial_integrity = pod.get_integrity()
 		advance_flight(pod)
 		TEST_ASSERT_EQUAL(pod.loc, origin, "An impact clipped the cabin's far corner through its blocker.")
 		TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "An impact retained velocity into its blocker.")
 		TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - impact["damage"]) < 0.001, "Impact speed [impact["speed"]] caused [initial_integrity - pod.get_integrity()] hull damage, expected [impact["damage"]].")
+		TEST_ASSERT(abs(pilot.get_brute_loss() - impact["damage"] * 0.5) < 0.1, "The seated pilot did not receive half of the collision's hull damage.")
+		if(impact["speed"] >= 5)
+			TEST_ASSERT_EQUAL(length(pilot.all_wounds), 1, "A high-speed impact did not cause exactly one pilot injury.")
+			TEST_ASSERT(istype(pilot.all_wounds[1], /datum/wound/blunt/bone/severe), "A high-speed impact did not cause a closed fracture.")
+		else
+			TEST_ASSERT_EQUAL(length(pilot.all_wounds), 0, "A low-speed impact fractured the pilot.")
 		qdel(blocker)
 		qdel(pod)
 		qdel(pilot)
@@ -285,6 +296,7 @@
 	advance_flight(rejected_pod)
 	TEST_ASSERT_EQUAL(rejected_pod.flight.velocity_y, 0, "The movement-denial control did not reach the rejected step.")
 	TEST_ASSERT_EQUAL(rejected_pod.get_integrity(), initial_integrity, "A denied movement without a real collision damaged the hull.")
+	TEST_ASSERT_EQUAL(rejected_pod.pilot.get_brute_loss(), 0, "Movement denial without a collision injured the pilot.")
 	UnregisterSignal(rejected_pod, COMSIG_MOVABLE_PRE_MOVE)
 	qdel(rejected_pod.pilot)
 	qdel(rejected_pod)
@@ -313,9 +325,173 @@
 	SIGNAL_HANDLER
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
+/// A fast real hull step clears a full-width ordinary wall without bypassing stronger turfs.
+/datum/unit_test/spacepod_vacuum/collision_breach/Run()
+	var/list/cases = list(
+		list("wall" = /turf/closed/wall, "speed" = 4, "breach" = FALSE, "cracks" = TRUE),
+		list("wall" = /turf/closed/wall, "speed" = 5, "breach" = TRUE),
+		list("wall" = /turf/closed/wall/rust, "speed" = 5, "breach" = TRUE),
+		list("wall" = /turf/closed/wall/r_wall, "speed" = 5, "breach" = FALSE, "cracks" = TRUE),
+		list("wall" = /turf/closed/wall/r_wall/rust, "speed" = 5, "breach" = FALSE, "cracks" = TRUE),
+		list("wall" = /turf/closed/wall/r_wall/heretic_rust, "speed" = 5, "breach" = FALSE, "cracks" = TRUE),
+		list("wall" = /turf/closed/wall/r_wall/plastitanium/syndicate, "speed" = 5, "breach" = FALSE),
+		list("wall" = /turf/closed/indestructible, "speed" = 5, "breach" = FALSE),
+	)
+	for(var/list/scenario as anything in cases)
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the wall-breach fixture.")
+		var/mob/living/pilot = pod.pilot
+		var/turf/origin = pod.loc
+		var/turf/left_wall = locate(pod.x, pod.y + 2, pod.z)
+		var/turf/right_wall = locate(pod.x + 1, pod.y + 2, pod.z)
+		left_wall = left_wall.ChangeTurf(scenario["wall"])
+		right_wall = right_wall.ChangeTurf(scenario["wall"])
+		pod.flight.velocity_y = scenario["speed"]
+		var/initial_integrity = pod.get_integrity()
+		advance_flight(pod)
+		if(scenario["breach"])
+			TEST_ASSERT(!left_wall.density && !right_wall.density, "A high-speed collision did not clear both contacted normal wall tiles.")
+			TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "The pod failed to pass through its full-width breach using native movement.")
+			TEST_ASSERT_EQUAL(initial_integrity - pod.get_integrity(), 16, "Successful breach lost or duplicated the collision's hull damage.")
+		else
+			TEST_ASSERT(istype(left_wall, scenario["wall"]) && istype(right_wall, scenario["wall"]), "A low-speed or protected-wall collision destroyed a wall tile.")
+			TEST_ASSERT_EQUAL(pod.loc, origin, "The pod crossed an intact wall.")
+			TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "A protected or low-speed wall collision retained forward velocity.")
+			if(scenario["cracks"])
+				var/cracked_tiles = !!left_wall.GetComponent(/datum/component/torn_wall) + !!right_wall.GetComponent(/datum/component/torn_wall)
+				TEST_ASSERT_EQUAL(cracked_tiles, 1, "One stopped hull impact did not crack exactly its first contacted wall tile.")
+			else
+				TEST_ASSERT_NULL(left_wall.GetComponent(/datum/component/torn_wall), "A collision cracked a protected wall.")
+				TEST_ASSERT_NULL(right_wall.GetComponent(/datum/component/torn_wall), "A collision cracked the protected wall beneath the far corner.")
+		allocated |= left_wall.contents | right_wall.contents
+		qdel(pod)
+		qdel(pilot)
+		left_wall.ChangeTurf(/turf/open/space)
+		right_wall.ChangeTurf(/turf/open/space)
+
+/// Repeated real impacts progress dragon-style cracks once each, then open the checked hull step.
+/datum/unit_test/spacepod_vacuum/collision_wall_cracks/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the staged wall-impact fixture.")
+	var/turf/origin = pod.loc
+	var/turf/wall_turf = locate(pod.x + 1, pod.y + 2, pod.z)
+	wall_turf = wall_turf.ChangeTurf(/turf/closed/wall)
+	var/datum/component/torn_wall/cracks
+	for(var/impact in 1 to 3)
+		pod.flight.velocity_y = 4
+		var/initial_integrity = pod.get_integrity()
+		var/initial_pilot_brute = pod.pilot.get_brute_loss()
+		advance_flight(pod)
+		TEST_ASSERT_EQUAL(initial_integrity - pod.get_integrity(), 7, "A staged wall impact lost or duplicated its hull damage.")
+		TEST_ASSERT(abs(pod.pilot.get_brute_loss() - initial_pilot_brute - 3.5) < 0.1, "A staged wall impact lost or duplicated the pilot's damage.")
+		if(impact < 3)
+			TEST_ASSERT(wall_turf.density, "One medium-speed impact consumed multiple wall-damage stages.")
+			TEST_ASSERT_EQUAL(pod.loc, origin, "The pod crossed a wall before its final damage stage.")
+			TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "The intact cracked wall did not stop the hull.")
+			cracks = wall_turf.GetComponent(/datum/component/torn_wall)
+			TEST_ASSERT_NOTNULL(cracks, "A medium-speed collision did not apply native wall cracks.")
+			TEST_ASSERT_EQUAL(cracks.current_stage, impact - 1, "A wall contact advanced more than one native damage stage.")
+			if(impact == 1)
+				var/visible_crack = FALSE
+				for(var/mutable_appearance/overlay as anything in wall_turf.overlays)
+					if(overlay.icon_state == "explodable")
+						visible_crack = TRUE
+				TEST_ASSERT(visible_crack, "The damaged wall has no native crack overlay.")
+				for(var/tick in 1 to 10)
+					TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "Could not hold low-speed thrust against the cracked wall.")
+					advance_flight(pod)
+				TEST_ASSERT_EQUAL(cracks.current_stage, 0, "Holding thrust against a wall advanced its cracks without a new impact.")
+				TEST_ASSERT_EQUAL(pod.get_integrity(), initial_integrity - 7, "Holding thrust against the cracked wall repeatedly damaged the hull.")
+				TEST_ASSERT(abs(pod.pilot.get_brute_loss() - initial_pilot_brute - 3.5) < 0.1, "Holding thrust against the cracked wall repeatedly injured the pilot.")
+		else
+			TEST_ASSERT(!wall_turf.density && QDELETED(cracks), "The final impact did not destroy the wall and release its crack component.")
+			TEST_ASSERT_NULL(wall_turf.GetComponent(/datum/component/torn_wall), "The breached turf retained the old wall's crack component.")
+			TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "The native hull step did not pass through the final wall breach.")
+	allocated |= wall_turf.contents
+
+/// Reinforcement needs six real impacts instead of an instant breach or repeated work in one tick.
+/datum/unit_test/spacepod_vacuum/collision_reinforced_wall/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the reinforced-wall impact fixture.")
+	var/turf/origin = pod.loc
+	var/turf/wall_turf = locate(pod.x + 1, pod.y + 2, pod.z)
+	wall_turf = wall_turf.ChangeTurf(/turf/closed/wall/r_wall)
+	var/datum/component/torn_wall/cracks
+	for(var/impact in 1 to 6)
+		pod.flight.velocity_y = 4
+		var/initial_integrity = pod.get_integrity()
+		var/initial_pilot_brute = pod.pilot.get_brute_loss()
+		advance_flight(pod)
+		TEST_ASSERT_EQUAL(initial_integrity - pod.get_integrity(), 7, "A reinforced-wall impact lost or duplicated its hull damage.")
+		TEST_ASSERT(abs(pod.pilot.get_brute_loss() - initial_pilot_brute - 3.5) < 0.1, "A reinforced-wall impact lost or duplicated the pilot's damage.")
+		if(impact < 6)
+			TEST_ASSERT(wall_turf.density, "Reinforcement broke before six separate impacts.")
+			TEST_ASSERT_EQUAL(pod.loc, origin, "The pod crossed intact reinforcement.")
+			TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "The reinforced wall did not stop the hull.")
+			cracks = wall_turf.GetComponent(/datum/component/torn_wall)
+			TEST_ASSERT_NOTNULL(cracks, "A reinforced-wall impact did not apply native wall cracks.")
+			if(impact == 1)
+				var/stage_after_impact = cracks.current_stage
+				for(var/tick in 1 to 10)
+					TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "Could not hold thrust against the reinforced wall.")
+					advance_flight(pod)
+				TEST_ASSERT_EQUAL(cracks.current_stage, stage_after_impact, "Holding thrust advanced reinforced-wall damage without a new impact.")
+				TEST_ASSERT_EQUAL(pod.get_integrity(), initial_integrity - 7, "Holding thrust against reinforcement repeatedly damaged the hull.")
+				TEST_ASSERT(abs(pod.pilot.get_brute_loss() - initial_pilot_brute - 3.5) < 0.1, "Holding thrust against reinforcement repeatedly injured the pilot.")
+		else
+			TEST_ASSERT(!wall_turf.density && QDELETED(cracks), "The sixth impact did not destroy reinforcement and release its cracks.")
+			TEST_ASSERT_NULL(wall_turf.GetComponent(/datum/component/torn_wall), "The breached reinforced turf retained its crack component.")
+			TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "The native hull step did not pass through the reinforced-wall breach.")
+	allocated |= wall_turf.contents
+
+/// Glass uses native hull exit checks and reinforcement retains its ordinary integrity and armor.
+/datum/unit_test/spacepod_vacuum/collision_glass/Run()
+	var/list/cases = list(
+		list("window" = /obj/structure/window, "speed" = 4, "hull_damage" = 7, "window_damage" = 3.5),
+		list("window" = /obj/structure/window, "speed" = 5, "hull_damage" = 16, "breach" = TRUE),
+		list("window" = /obj/structure/window/reinforced, "speed" = 4, "hull_damage" = 7, "window_damage" = 0),
+		list("window" = /obj/structure/window/reinforced, "speed" = 5, "hull_damage" = 16, "window_damage" = 3.2),
+		list("window" = /obj/structure/window/reinforced/plasma, "speed" = 5, "hull_damage" = 16, "window_damage" = 0, "protected" = TRUE),
+		list("window" = /obj/structure/window/reinforced, "speed" = 5, "hull_damage" = 16, "window_damage" = 0, "protected" = TRUE, "indestructible" = TRUE),
+	)
+	for(var/list/scenario as anything in cases)
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the directional-glass collision fixture.")
+		var/mob/living/pilot = pod.pilot
+		var/turf/origin = pod.loc
+		var/turf/window_turf = locate(pod.x + 1, pod.y + 1, pod.z)
+		var/obj/structure/window/window = allocate(scenario["window"], window_turf)
+		window.setDir(NORTH)
+		if(scenario["indestructible"])
+			window.resistance_flags |= INDESTRUCTIBLE
+		pod.flight.velocity_y = scenario["speed"]
+		var/initial_integrity = pod.get_integrity()
+		var/initial_window_integrity = window.get_integrity()
+		advance_flight(pod)
+		if(scenario["breach"])
+			TEST_ASSERT(QDELETED(window), "A high-speed hull step did not shatter ordinary glass blocking exit.")
+			TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "Shattering the exit window did not let the real hull step complete.")
+		else
+			TEST_ASSERT(!QDELETED(window), "One impact unexpectedly destroyed the exit glass.")
+			TEST_ASSERT_EQUAL(pod.loc, origin, "The pod crossed an intact exit window.")
+			TEST_ASSERT(abs(initial_window_integrity - window.get_integrity() - scenario["window_damage"]) < 0.001, "The glass material or native armor did not preserve its expected collision resistance.")
+		TEST_ASSERT_EQUAL(initial_integrity - pod.get_integrity(), scenario["hull_damage"], "The exit-window contact lost or duplicated collision damage.")
+		if(scenario["window"] == /obj/structure/window/reinforced && scenario["speed"] == 5 && !scenario["protected"])
+			window.update_integrity(3)
+			pod.flight.velocity_y = 5
+			initial_integrity = pod.get_integrity()
+			advance_flight(pod)
+			TEST_ASSERT(QDELETED(window), "A real impact did not shatter already damaged reinforced glass.")
+			TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "Native movement did not continue through destroyed reinforced glass.")
+			TEST_ASSERT_EQUAL(initial_integrity - pod.get_integrity(), 16, "The reinforced-glass breach lost or duplicated collision damage.")
+		allocated |= window_turf.contents
+		qdel(window)
+		qdel(pod)
+		qdel(pilot)
+
 /// Tangential speed survives a glancing collision and does not increase its damage.
 /datum/unit_test/spacepod_vacuum/collision_glancing/Run()
-	for(var/list/impact as anything in list(list("normal" = 0.5, "damage" = 0), list("normal" = 2, "damage" = 3)))
+	for(var/list/impact as anything in list(list("normal" = 2, "damage" = 0), list("normal" = 4, "damage" = 7)))
 		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
 		TEST_ASSERT_NOTNULL(pod, "Could not prepare the glancing-impact fixture.")
 		var/mob/living/pilot = pod.pilot
@@ -333,6 +509,7 @@
 		TEST_ASSERT_EQUAL(pod.flight.velocity_x, 4, "A glancing collision removed tangential velocity.")
 		TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "A glancing collision retained normal velocity.")
 		TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - impact["damage"]) < 0.001, "Glancing damage included tangential speed or lost the normal impact.")
+		TEST_ASSERT(abs(pilot.get_brute_loss() - impact["damage"] * 0.5) < 0.1, "The pilot's glancing-impact damage included tangential speed or lost the normal impact.")
 		qdel(blocker)
 		qdel(pod)
 		qdel(pilot)
@@ -351,21 +528,24 @@
 	north_blocker.density = TRUE
 	east_blocker.anchored = TRUE
 	north_blocker.anchored = TRUE
-	pod.flight.velocity_x = 2
-	pod.flight.velocity_y = 2
+	pod.flight.velocity_x = 3
+	pod.flight.velocity_y = 3
 	RegisterSignal(pod, COMSIG_ATOM_TAKE_DAMAGE, PROC_REF(on_collision_damage))
 	var/initial_integrity = pod.get_integrity()
 	advance_flight(pod)
 	TEST_ASSERT_EQUAL(pod.flight.velocity_x, 0, "The corner did not stop eastward motion.")
 	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "The corner did not stop northward motion.")
 	TEST_ASSERT_EQUAL(damage_events, 1, "Two corner contacts applied more than one damage event in a physics tick.")
-	TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - 7) < 0.001, "The corner did not combine its two stopped velocity components into one impact.")
+	TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - 9) < 0.001, "The corner did not combine its two stopped velocity components into one impact.")
+	TEST_ASSERT(abs(pod.pilot.get_brute_loss() - 4.5) < 0.1, "The corner injured the pilot more than once or lost one collision axis.")
 	var/integrity_after_impact = pod.get_integrity()
+	var/pilot_brute_after_impact = pod.pilot.get_brute_loss()
 	for(var/tick in 1 to 20)
 		TEST_ASSERT(pod.relaymove(pod.pilot, NORTHEAST), "The intact cabin rejected thrust against its corner.")
 		advance_flight(pod)
 	TEST_ASSERT_EQUAL(pod.get_integrity(), integrity_after_impact, "Holding thrust against a wall repeatedly damaged the stopped cabin.")
 	TEST_ASSERT_EQUAL(damage_events, 1, "Low-speed thrust against the corner emitted additional damage events.")
+	TEST_ASSERT_EQUAL(pod.pilot.get_brute_loss(), pilot_brute_after_impact, "Holding thrust against a corner repeatedly injured the pilot.")
 	UnregisterSignal(pod, COMSIG_ATOM_TAKE_DAMAGE)
 
 /datum/unit_test/spacepod_vacuum/collision_corner/proc/on_collision_damage(datum/source)
@@ -930,3 +1110,152 @@
 	TEST_ASSERT_EQUAL(pod.get_integrity(), initial_hull, "The pod's own mining volley damaged its hull.")
 	TEST_ASSERT_EQUAL(pilot.get_brute_loss(), initial_pilot_brute, "The pod's own mining volley struck its pilot.")
 	TEST_ASSERT_EQUAL(pilot.loc, pod, "Mining ejected the pilot from the cabin.")
+
+/// The far leading hull corner hits standing people, with safe contact and speed-scaled injury.
+/datum/unit_test/spacepod_vacuum/runover_speed/Run()
+	for(var/list/impact as anything in list(list("speed" = 3, "damage" = 0), list("speed" = 4, "damage" = 7), list("speed" = 5, "damage" = 16)))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the run-over speed fixture.")
+		var/turf/origin = pod.loc
+		var/turf/victim_turf = locate(pod.x + 1, pod.y + 2, pod.z)
+		var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, victim_turf)
+		TEST_ASSERT(victim.density && victim.body_position == STANDING_UP, "The exterior victim was not standing in the hull's path.")
+		pod.flight.velocity_y = impact["speed"]
+		advance_flight(pod)
+		TEST_ASSERT(abs(victim.get_brute_loss() - impact["damage"]) < 0.4, "Speed [impact["speed"]] inflicted the wrong run-over damage.")
+		TEST_ASSERT_EQUAL(victim.loc, victim_turf, "The collision threw or relocated the exterior victim.")
+		if(impact["speed"] == 3)
+			TEST_ASSERT(!victim.IsKnockdown(), "Safe-speed contact knocked a person down.")
+			TEST_ASSERT_EQUAL(pod.loc, origin, "Safe-speed contact crossed a standing person.")
+		else
+			TEST_ASSERT(victim.IsKnockdown() && victim.body_position == LYING_DOWN, "A fast collision did not knock the exterior victim prone.")
+			TEST_ASSERT_EQUAL(victim.AmountKnockdown(), impact["speed"] == 4 ? 1 SECONDS : 2 SECONDS, "Run-over knockdown did not scale with impact speed.")
+			TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "The checked native hull step did not pass over the knocked-down victim.")
+		qdel(victim)
+		qdel(pod.pilot)
+		qdel(pod)
+
+/// Real clothing armor softens the impact, while native godmode prevents both injury and knockdown.
+/datum/unit_test/spacepod_vacuum/runover_protection/Run()
+	for(var/godmode in list(FALSE, TRUE))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the protected run-over fixture.")
+		var/turf/origin = pod.loc
+		var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
+		if(godmode)
+			ADD_TRAIT(victim, TRAIT_GODMODE, TRAIT_GENERIC)
+		else
+			var/obj/item/clothing/suit/armor/riot/suit = allocate(__IMPLIED_TYPE__, victim.loc)
+			var/obj/item/clothing/head/helmet/toggleable/riot/helmet = allocate(__IMPLIED_TYPE__, victim.loc)
+			TEST_ASSERT(victim.equip_to_slot_if_possible(suit, ITEM_SLOT_OCLOTHING), "Could not equip real riot body armor.")
+			TEST_ASSERT(victim.equip_to_slot_if_possible(helmet, ITEM_SLOT_HEAD), "Could not equip the real riot helmet.")
+			TEST_ASSERT_EQUAL(victim.getarmor(null, MELEE), 50, "The clothing fixture does not provide uniform melee protection.")
+		pod.flight.velocity_y = 5
+		advance_flight(pod)
+		if(godmode)
+			TEST_ASSERT_EQUAL(victim.get_brute_loss(), 0, "A run-over bypassed native godmode damage immunity.")
+			TEST_ASSERT(!victim.IsKnockdown() && victim.density, "A run-over bypassed native godmode knockdown immunity.")
+			TEST_ASSERT_EQUAL(pod.loc, origin, "The pod crossed a victim who remained standing.")
+		else
+			TEST_ASSERT(abs(victim.get_brute_loss() - 8) < 0.4, "The run-over ignored or applied melee armor more than once.")
+			TEST_ASSERT(victim.IsKnockdown(), "Armor incorrectly prevented the native collision knockdown.")
+			TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "The pod did not pass over the armored prone victim.")
+		qdel(victim)
+		qdel(pod.pilot)
+		qdel(pod)
+
+/datum/unit_test/spacepod_vacuum/runover_repeat
+	/// Count the real damage entry point without replacing or cancelling it.
+	var/damage_events = 0
+
+/// One resistant exterior victim can block both diagonal halves, but receives only one hit.
+/datum/unit_test/spacepod_vacuum/runover_repeat/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the repeated run-over fixture.")
+	// Isolate unrelated random pilot fractures from the later held-thrust check.
+	ADD_TRAIT(pod.pilot, TRAIT_NEVER_WOUNDED, TRAIT_GENERIC)
+	var/turf/origin = pod.loc
+	var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, get_step(origin, NORTHEAST))
+	victim.status_flags &= ~CANKNOCKDOWN
+	RegisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_victim_damage))
+	pod.flight.velocity_x = 4
+	pod.flight.velocity_y = 4
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(damage_events, 1, "Two cardinal halves applied multiple run-over hits to the same victim.")
+	TEST_ASSERT(abs(victim.get_brute_loss() - 7) < 0.4, "The resistant victim received duplicate or combined-axis damage.")
+	TEST_ASSERT(!victim.IsKnockdown() && victim.density, "The collision bypassed the victim's native knockdown resistance.")
+	TEST_ASSERT_EQUAL(pod.loc, origin, "The pod crossed a victim who remained dense.")
+	TEST_ASSERT_EQUAL(pod.flight.velocity_x, 0, "The resistant victim did not stop the first diagonal half.")
+	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "The resistant victim did not stop the second diagonal half.")
+	var/damage_after_impact = victim.get_brute_loss()
+	for(var/tick in 1 to 10)
+		TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "Could not hold low-speed thrust against the resistant victim.")
+		advance_flight(pod)
+	TEST_ASSERT_EQUAL(damage_events, 1, "Holding thrust repeatedly invoked run-over damage without a new impact.")
+	TEST_ASSERT_EQUAL(victim.get_brute_loss(), damage_after_impact, "Holding thrust repeatedly injured the resistant victim.")
+	UnregisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE)
+
+/datum/unit_test/spacepod_vacuum/runover_repeat/proc/on_victim_damage(datum/source)
+	SIGNAL_HANDLER
+	damage_events++
+
+/// Passing over prone or nondense people and movement denial without contact cannot injure them.
+/datum/unit_test/spacepod_vacuum/runover_noncontact/Run()
+	for(var/condition in list("prone", "nondense", "denied"))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the noncontact run-over fixture.")
+		var/turf/origin = pod.loc
+		var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
+		switch(condition)
+			if("prone")
+				victim.set_lying_down()
+			if("nondense")
+				ADD_TRAIT(victim, TRAIT_UNDENSE, TRAIT_GENERIC)
+			if("denied")
+				RegisterSignal(pod, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(block_without_collision))
+		pod.flight.velocity_y = 5
+		advance_flight(pod)
+		TEST_ASSERT_EQUAL(victim.get_brute_loss(), 0, "The [condition] control injured a person without a dense collision.")
+		TEST_ASSERT(!victim.IsKnockdown(), "The [condition] control applied collision knockdown without contact.")
+		TEST_ASSERT_EQUAL(pod.loc, condition == "denied" ? origin : get_step(origin, NORTH), "The [condition] control did not reach its real movement boundary.")
+		UnregisterSignal(pod, COMSIG_MOVABLE_PRE_MOVE)
+		qdel(victim)
+		qdel(pod.pilot)
+		qdel(pod)
+
+/datum/unit_test/spacepod_vacuum/runover_noncontact/proc/block_without_collision(datum/source)
+	SIGNAL_HANDLER
+	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+
+/datum/unit_test/spacepod_vacuum/runover_relocation
+	/// Only retained until teardown; the signal relocates this real hull during victim damage.
+	var/obj/vehicle/sealed/spacepod/collision_pod
+	/// A different, free turf inside the same private reservation.
+	var/turf/relocation_target
+
+/datum/unit_test/spacepod_vacuum/runover_relocation/Destroy()
+	collision_pod = null
+	relocation_target = null
+	return ..()
+
+/// A damage callback moving the hull aborts the old step before knockdown or cabin impact damage.
+/datum/unit_test/spacepod_vacuum/runover_relocation/Run()
+	collision_pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(collision_pod, "Could not prepare the relocation run-over fixture.")
+	relocation_target = locate(vacuum_origin.x + 3, vacuum_origin.y + 3, vacuum_origin.z)
+	var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, locate(collision_pod.x + 1, collision_pod.y + 2, collision_pod.z))
+	RegisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_victim_damage))
+	var/initial_integrity = collision_pod.get_integrity()
+	collision_pod.flight.velocity_y = 4
+	advance_flight(collision_pod)
+	TEST_ASSERT_EQUAL(collision_pod.loc, relocation_target, "The real victim damage callback did not relocate the hull.")
+	TEST_ASSERT(abs(victim.get_brute_loss() - 7) < 0.4, "Relocating the hull lost or duplicated the original victim injury.")
+	TEST_ASSERT(!victim.IsKnockdown() && victim.body_position == STANDING_UP, "The old collision knocked down a victim after hull relocation.")
+	TEST_ASSERT_EQUAL(collision_pod.get_integrity(), initial_integrity, "The old collision damaged the relocated hull.")
+	TEST_ASSERT_EQUAL(collision_pod.pilot.get_brute_loss(), 0, "The old collision injured the relocated pilot.")
+	TEST_ASSERT_EQUAL(collision_pod.flight.velocity_y, 0, "Hull relocation retained old collision momentum.")
+	UnregisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE)
+
+/datum/unit_test/spacepod_vacuum/runover_relocation/proc/on_victim_damage(datum/source)
+	SIGNAL_HANDLER
+	collision_pod.forceMove(relocation_target)

@@ -395,6 +395,7 @@
 #include "tgui_create_message.dm"
 #include "tile_replacement.dm"
 #include "timer_sanity.dm"
+#include "torn_wall.dm"
 #include "trait_addition_and_removal.dm"
 #include "traitor.dm"
 #include "traitor_mail_content_check.dm"

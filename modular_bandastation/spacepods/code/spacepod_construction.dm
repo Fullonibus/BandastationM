@@ -15,6 +15,15 @@
 	. = ..()
 	AddComponent(/datum/component/construction/spacepod)
 
+/// Construction clicks can reach any chassis tile while retaining normal border checks.
+/obj/structure/spacepod_frame/CheckReachableAdjacency(atom/movable/reacher, reacher_range)
+	if(!isturf(loc) || !isturf(reacher.loc))
+		return ..()
+	for(var/turf/frame_turf as anything in locs)
+		if(frame_turf.Adjacent(reacher, target = src, mover = reacher))
+			return TRUE
+	return ..()
+
 /// Use the native reversible construction component to keep refunds tied to completed steps.
 /datum/component/construction/spacepod
 	result = /obj/vehicle/sealed/spacepod/civilian
