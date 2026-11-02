@@ -168,7 +168,7 @@
 		last_step_obstacle = obstacle
 
 /// Run a checked cardinal move; null aborts the tick after a callback relocates or deletes the hull.
-/datum/spacepod_flight/proc/step_hull(direction, impact_speed)
+/datum/spacepod_flight/proc/step_hull(direction, impact_speed, list/rammed_mobs)
 	last_step_bumped = FALSE
 	if(QDELETED(pod) || !isturf(pod.loc))
 		return FALSE
@@ -187,7 +187,25 @@
 			return !!.
 		if(impact_speed <= SPACEPOD_FLIGHT_SAFE_IMPACT_SPEED || !obstacle?.density)
 			return !!.
-		if(obstacle.type == /turf/closed/wall || obstacle.type == /turf/closed/wall/rust || obstacle.type == /turf/closed/wall/heretic_rust)
+		if(isliving(obstacle))
+			var/mob/living/victim = obstacle
+			if(!isturf(victim.loc) || pod.is_occupant(victim) || (victim in rammed_mobs))
+				return !!.
+			rammed_mobs += victim
+			var/turf/victim_turf = victim.loc
+			var/atom/attacker = pod.pilot || pod
+			victim.visible_message(span_danger("[capitalize(pod.declent_ru(NOMINATIVE))] врезается в [victim.declent_ru(ACCUSATIVE)]!"), span_userdanger("[capitalize(pod.declent_ru(NOMINATIVE))] врезается в вас!"))
+			victim.apply_damage((impact_speed ** 2 - SPACEPOD_FLIGHT_SAFE_IMPACT_SPEED ** 2) * SPACEPOD_FLIGHT_IMPACT_DAMAGE, BRUTE, blocked = victim.run_armor_check(null, MELEE), spread_damage = TRUE, attack_direction = direction)
+			if(!QDELETED(attacker) && !QDELETED(victim))
+				log_combat(attacker, victim, "rammed", QDELETED(pod) ? null : pod, "(impact speed: [round(impact_speed, 0.1)] tiles/s)")
+			if(QDELETED(src) || QDELETED(pod))
+				return null
+			if(pod.loc != previous_location)
+				reset_motion()
+				return null
+			if(!QDELETED(victim) && victim.loc == victim_turf && !pod.is_occupant(victim))
+				victim.Knockdown(clamp(impact_speed - SPACEPOD_FLIGHT_SAFE_IMPACT_SPEED, 1, 5) SECONDS)
+		else if(obstacle.type == /turf/closed/wall || obstacle.type == /turf/closed/wall/rust || obstacle.type == /turf/closed/wall/heretic_rust)
 			var/turf/closed/wall/wall = obstacle
 			if(impact_speed >= SPACEPOD_FLIGHT_BREACH_SPEED)
 				wall.dismantle_wall(devastated = TRUE)
@@ -294,11 +312,14 @@
 	offset_x += velocity_x * seconds_per_tick
 	offset_y += velocity_y * seconds_per_tick
 	var/impact_speed_squared = 0
+	var/list/rammed_mobs
+	if(abs(velocity_x) > SPACEPOD_FLIGHT_SAFE_IMPACT_SPEED || abs(velocity_y) > SPACEPOD_FLIGHT_SAFE_IMPACT_SPEED)
+		rammed_mobs = list()
 	// Check the leading cells before drawing the cabin into them, including every tile at high speed.
 	while((offset_x * velocity_x > 0) || (offset_y * velocity_y > 0) || (!velocity_x && abs(offset_x) > 0.5) || (!velocity_y && abs(offset_y) > 0.5))
 		if(offset_x * velocity_x > 0 || (!velocity_x && abs(offset_x) > 0.5))
 			var/step_x = sign(offset_x)
-			var/moved_x = step_hull(step_x > 0 ? EAST : WEST, abs(velocity_x))
+			var/moved_x = step_hull(step_x > 0 ? EAST : WEST, abs(velocity_x), rammed_mobs)
 			if(isnull(moved_x))
 				return PROCESS_KILL
 			if(last_step_bumped)
@@ -313,7 +334,7 @@
 			return PROCESS_KILL
 		if(offset_y * velocity_y > 0 || (!velocity_y && abs(offset_y) > 0.5))
 			var/step_y = sign(offset_y)
-			var/moved_y = step_hull(step_y > 0 ? NORTH : SOUTH, abs(velocity_y))
+			var/moved_y = step_hull(step_y > 0 ? NORTH : SOUTH, abs(velocity_y), rammed_mobs)
 			if(isnull(moved_y))
 				return PROCESS_KILL
 			if(last_step_bumped)

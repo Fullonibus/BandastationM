@@ -1110,3 +1110,152 @@
 	TEST_ASSERT_EQUAL(pod.get_integrity(), initial_hull, "The pod's own mining volley damaged its hull.")
 	TEST_ASSERT_EQUAL(pilot.get_brute_loss(), initial_pilot_brute, "The pod's own mining volley struck its pilot.")
 	TEST_ASSERT_EQUAL(pilot.loc, pod, "Mining ejected the pilot from the cabin.")
+
+/// The far leading hull corner hits standing people, with safe contact and speed-scaled injury.
+/datum/unit_test/spacepod_vacuum/runover_speed/Run()
+	for(var/list/impact as anything in list(list("speed" = 3, "damage" = 0), list("speed" = 4, "damage" = 7), list("speed" = 5, "damage" = 16)))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the run-over speed fixture.")
+		var/turf/origin = pod.loc
+		var/turf/victim_turf = locate(pod.x + 1, pod.y + 2, pod.z)
+		var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, victim_turf)
+		TEST_ASSERT(victim.density && victim.body_position == STANDING_UP, "The exterior victim was not standing in the hull's path.")
+		pod.flight.velocity_y = impact["speed"]
+		advance_flight(pod)
+		TEST_ASSERT(abs(victim.get_brute_loss() - impact["damage"]) < 0.4, "Speed [impact["speed"]] inflicted the wrong run-over damage.")
+		TEST_ASSERT_EQUAL(victim.loc, victim_turf, "The collision threw or relocated the exterior victim.")
+		if(impact["speed"] == 3)
+			TEST_ASSERT(!victim.IsKnockdown(), "Safe-speed contact knocked a person down.")
+			TEST_ASSERT_EQUAL(pod.loc, origin, "Safe-speed contact crossed a standing person.")
+		else
+			TEST_ASSERT(victim.IsKnockdown() && victim.body_position == LYING_DOWN, "A fast collision did not knock the exterior victim prone.")
+			TEST_ASSERT_EQUAL(victim.AmountKnockdown(), impact["speed"] == 4 ? 1 SECONDS : 2 SECONDS, "Run-over knockdown did not scale with impact speed.")
+			TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "The checked native hull step did not pass over the knocked-down victim.")
+		qdel(victim)
+		qdel(pod.pilot)
+		qdel(pod)
+
+/// Real clothing armor softens the impact, while native godmode prevents both injury and knockdown.
+/datum/unit_test/spacepod_vacuum/runover_protection/Run()
+	for(var/godmode in list(FALSE, TRUE))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the protected run-over fixture.")
+		var/turf/origin = pod.loc
+		var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
+		if(godmode)
+			ADD_TRAIT(victim, TRAIT_GODMODE, TRAIT_GENERIC)
+		else
+			var/obj/item/clothing/suit/armor/riot/suit = allocate(__IMPLIED_TYPE__, victim.loc)
+			var/obj/item/clothing/head/helmet/toggleable/riot/helmet = allocate(__IMPLIED_TYPE__, victim.loc)
+			TEST_ASSERT(victim.equip_to_slot_if_possible(suit, ITEM_SLOT_OCLOTHING), "Could not equip real riot body armor.")
+			TEST_ASSERT(victim.equip_to_slot_if_possible(helmet, ITEM_SLOT_HEAD), "Could not equip the real riot helmet.")
+			TEST_ASSERT_EQUAL(victim.getarmor(null, MELEE), 50, "The clothing fixture does not provide uniform melee protection.")
+		pod.flight.velocity_y = 5
+		advance_flight(pod)
+		if(godmode)
+			TEST_ASSERT_EQUAL(victim.get_brute_loss(), 0, "A run-over bypassed native godmode damage immunity.")
+			TEST_ASSERT(!victim.IsKnockdown() && victim.density, "A run-over bypassed native godmode knockdown immunity.")
+			TEST_ASSERT_EQUAL(pod.loc, origin, "The pod crossed a victim who remained standing.")
+		else
+			TEST_ASSERT(abs(victim.get_brute_loss() - 8) < 0.4, "The run-over ignored or applied melee armor more than once.")
+			TEST_ASSERT(victim.IsKnockdown(), "Armor incorrectly prevented the native collision knockdown.")
+			TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "The pod did not pass over the armored prone victim.")
+		qdel(victim)
+		qdel(pod.pilot)
+		qdel(pod)
+
+/datum/unit_test/spacepod_vacuum/runover_repeat
+	/// Count the real damage entry point without replacing or cancelling it.
+	var/damage_events = 0
+
+/// One resistant exterior victim can block both diagonal halves, but receives only one hit.
+/datum/unit_test/spacepod_vacuum/runover_repeat/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the repeated run-over fixture.")
+	// Isolate unrelated random pilot fractures from the later held-thrust check.
+	ADD_TRAIT(pod.pilot, TRAIT_NEVER_WOUNDED, TRAIT_GENERIC)
+	var/turf/origin = pod.loc
+	var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, get_step(origin, NORTHEAST))
+	victim.status_flags &= ~CANKNOCKDOWN
+	RegisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_victim_damage))
+	pod.flight.velocity_x = 4
+	pod.flight.velocity_y = 4
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(damage_events, 1, "Two cardinal halves applied multiple run-over hits to the same victim.")
+	TEST_ASSERT(abs(victim.get_brute_loss() - 7) < 0.4, "The resistant victim received duplicate or combined-axis damage.")
+	TEST_ASSERT(!victim.IsKnockdown() && victim.density, "The collision bypassed the victim's native knockdown resistance.")
+	TEST_ASSERT_EQUAL(pod.loc, origin, "The pod crossed a victim who remained dense.")
+	TEST_ASSERT_EQUAL(pod.flight.velocity_x, 0, "The resistant victim did not stop the first diagonal half.")
+	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "The resistant victim did not stop the second diagonal half.")
+	var/damage_after_impact = victim.get_brute_loss()
+	for(var/tick in 1 to 10)
+		TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "Could not hold low-speed thrust against the resistant victim.")
+		advance_flight(pod)
+	TEST_ASSERT_EQUAL(damage_events, 1, "Holding thrust repeatedly invoked run-over damage without a new impact.")
+	TEST_ASSERT_EQUAL(victim.get_brute_loss(), damage_after_impact, "Holding thrust repeatedly injured the resistant victim.")
+	UnregisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE)
+
+/datum/unit_test/spacepod_vacuum/runover_repeat/proc/on_victim_damage(datum/source)
+	SIGNAL_HANDLER
+	damage_events++
+
+/// Passing over prone or nondense people and movement denial without contact cannot injure them.
+/datum/unit_test/spacepod_vacuum/runover_noncontact/Run()
+	for(var/condition in list("prone", "nondense", "denied"))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the noncontact run-over fixture.")
+		var/turf/origin = pod.loc
+		var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
+		switch(condition)
+			if("prone")
+				victim.set_lying_down()
+			if("nondense")
+				ADD_TRAIT(victim, TRAIT_UNDENSE, TRAIT_GENERIC)
+			if("denied")
+				RegisterSignal(pod, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(block_without_collision))
+		pod.flight.velocity_y = 5
+		advance_flight(pod)
+		TEST_ASSERT_EQUAL(victim.get_brute_loss(), 0, "The [condition] control injured a person without a dense collision.")
+		TEST_ASSERT(!victim.IsKnockdown(), "The [condition] control applied collision knockdown without contact.")
+		TEST_ASSERT_EQUAL(pod.loc, condition == "denied" ? origin : get_step(origin, NORTH), "The [condition] control did not reach its real movement boundary.")
+		UnregisterSignal(pod, COMSIG_MOVABLE_PRE_MOVE)
+		qdel(victim)
+		qdel(pod.pilot)
+		qdel(pod)
+
+/datum/unit_test/spacepod_vacuum/runover_noncontact/proc/block_without_collision(datum/source)
+	SIGNAL_HANDLER
+	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+
+/datum/unit_test/spacepod_vacuum/runover_relocation
+	/// Only retained until teardown; the signal relocates this real hull during victim damage.
+	var/obj/vehicle/sealed/spacepod/collision_pod
+	/// A different, free turf inside the same private reservation.
+	var/turf/relocation_target
+
+/datum/unit_test/spacepod_vacuum/runover_relocation/Destroy()
+	collision_pod = null
+	relocation_target = null
+	return ..()
+
+/// A damage callback moving the hull aborts the old step before knockdown or cabin impact damage.
+/datum/unit_test/spacepod_vacuum/runover_relocation/Run()
+	collision_pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(collision_pod, "Could not prepare the relocation run-over fixture.")
+	relocation_target = locate(vacuum_origin.x + 3, vacuum_origin.y + 3, vacuum_origin.z)
+	var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, locate(collision_pod.x + 1, collision_pod.y + 2, collision_pod.z))
+	RegisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_victim_damage))
+	var/initial_integrity = collision_pod.get_integrity()
+	collision_pod.flight.velocity_y = 4
+	advance_flight(collision_pod)
+	TEST_ASSERT_EQUAL(collision_pod.loc, relocation_target, "The real victim damage callback did not relocate the hull.")
+	TEST_ASSERT(abs(victim.get_brute_loss() - 7) < 0.4, "Relocating the hull lost or duplicated the original victim injury.")
+	TEST_ASSERT(!victim.IsKnockdown() && victim.body_position == STANDING_UP, "The old collision knocked down a victim after hull relocation.")
+	TEST_ASSERT_EQUAL(collision_pod.get_integrity(), initial_integrity, "The old collision damaged the relocated hull.")
+	TEST_ASSERT_EQUAL(collision_pod.pilot.get_brute_loss(), 0, "The old collision injured the relocated pilot.")
+	TEST_ASSERT_EQUAL(collision_pod.flight.velocity_y, 0, "Hull relocation retained old collision momentum.")
+	UnregisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE)
+
+/datum/unit_test/spacepod_vacuum/runover_relocation/proc/on_victim_damage(datum/source)
+	SIGNAL_HANDLER
+	collision_pod.forceMove(relocation_target)
