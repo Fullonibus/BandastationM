@@ -240,4 +240,36 @@ GAME_VERB(/mob, me_verb, VERB_ME, null)
 			return
 	return message
 
+/** Splits speech at speakable ,key prefixes, preserving the selected language before the first switch. */
+/mob/proc/parse_language_segments(message, datum/language/default_language)
+	var/static/regex/prefix = regex(@"(^|[ \t\n]),([^ \t\n])", "g")
+	var/list/segments
+	var/current_language = default_language
+	var/start = 1
+	var/search_from = 1
+	while(prefix.Find(message, search_from))
+		var/prefix_start = prefix.index + length(prefix.group[1])
+		var/prefix_end = prefix.next
+		var/key = prefix.group[2]
+		search_from = prefix_end
+		var/new_language
+		for(var/datum/language/language as anything in GLOB.all_languages)
+			if(language::key == key && can_speak_language(language))
+				new_language = language
+				break
+		if(!new_language)
+			continue
+		LAZYINITLIST(segments)
+		var/text = trim(copytext(message, start, prefix_start))
+		if(length(text))
+			segments += list(list("language" = current_language, "message" = text))
+		current_language = new_language
+		start = prefix_end
+	if(isnull(segments))
+		return null
+	var/text = trim(copytext(message, start))
+	if(length(text))
+		segments += list(list("language" = current_language, "message" = text))
+	return segments
+
 #undef MESSAGE_MODS_LENGTH

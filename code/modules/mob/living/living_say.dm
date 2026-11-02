@@ -193,15 +193,47 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	last_say_args_ref = REF(args)
 #endif
 
-	// Make sure the arglist is passed exactly - don't pass a copy of it. Say signal handlers will modify some of the parameters.
-	var/sigreturn = SEND_SIGNAL(src, COMSIG_MOB_SAY, args)
-	if(sigreturn & COMPONENT_UPPERCASE_SPEECH)
-		message = uppertext(message)
-
-	var/list/message_data = treat_message(message) // unfortunately we still need this
-	message = message_data["message"]
-	var/tts_message = message_data["tts_message"]
-	var/list/tts_filter = message_data["tts_filter"]
+	var/list/segments = message_mods[LANGUAGE_MESSAGE_SEGMENTS] || parse_language_segments(message, language)
+	if(!isnull(segments) && !length(segments))
+		return
+	if(segments)
+		message_mods[LANGUAGE_MESSAGE_SEGMENTS] = segments
+	var/list/messages = list()
+	var/list/tts_messages = list()
+	var/list/tts_filter = list()
+	var/list/processed_segments = list()
+	for(var/index in 1 to (segments ? length(segments) : 1))
+		if(segments)
+			var/list/segment = segments[index]
+			message = segment["message"]
+			language = segment["language"]
+			message_mods[LANGUAGE_MESSAGE_SEGMENT] = index
+			if(!length(message))
+				continue
+		// Handlers must receive the original arglist, including the current fragment's language.
+		var/sigreturn = SEND_SIGNAL(src, COMSIG_MOB_SAY, args)
+		if(sigreturn & COMPONENT_UPPERCASE_SPEECH)
+			message = uppertext(message)
+		var/list/message_data = treat_message(message, capitalize_message = index == 1)
+		message = message_data["message"]
+		messages += message
+		tts_messages += message_data["tts_message"]
+		tts_filter |= message_data["tts_filter"]
+		if(segments)
+			var/list/segment = segments[index]
+			segment["message"] = message
+			segment["language"] = language
+			processed_segments += list(segment)
+	message_mods -= LANGUAGE_MESSAGE_SEGMENT
+	message = jointext(messages, " ")
+	var/tts_message = jointext(tts_messages, " ")
+	if(segments)
+		segments = processed_segments
+		message_mods[LANGUAGE_MESSAGE_SEGMENTS] = segments
+		if(!length(segments))
+			return
+		var/list/first_segment = segments[1]
+		language = first_segment["language"]
 
 	spans |= speech_span
 
@@ -212,6 +244,11 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(message_mods[MODE_SING])
 		var/randomnote = pick("\u2669", "\u266A", "\u266B")
 		message = "[randomnote] [message] [randomnote]"
+		if(segments)
+			var/list/first_segment = segments[1]
+			var/list/last_segment = segments[length(segments)]
+			first_segment["message"] = "[randomnote] [first_segment["message"]]"
+			last_segment["message"] = "[last_segment["message"]] [randomnote]"
 		spans |= SPAN_SINGING
 
 	if(message_mods[WHISPER_MODE]) // whisper away
@@ -411,7 +448,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	// BANDASTATION ADDITION START - TTS
 	if((hearflags & HEAR_HEARD) && !radio_freq)
-		var/message_to_tts = LAZYACCESS(message_mods, MODE_TTS_MESSAGE_OVERRIDE) || raw_message
+		var/message_to_tts = message_mods[LANGUAGE_MESSAGE_SEGMENTS] ? raw_message : (LAZYACCESS(message_mods, MODE_TTS_MESSAGE_OVERRIDE) || raw_message)
 		speaker.cast_tts(
 			src,
 			message_to_tts,

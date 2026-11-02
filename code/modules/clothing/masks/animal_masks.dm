@@ -111,6 +111,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 				UnregisterSignal(M, COMSIG_MOB_SAY)
 			M.update_worn_mask()
 
+/// Replaces an utterance with one animal sound while the voicebox is enabled.
 /obj/item/clothing/mask/animal/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 
@@ -119,6 +120,10 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 	if(!modifies_speech || !LAZYLEN(animal_sounds))
 		return
 	speech_args[SPEECH_MESSAGE] = pick((prob(animal_sounds_alt_probability) && LAZYLEN(animal_sounds_alt)) ? animal_sounds_alt : animal_sounds)
+	var/list/segments = speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENTS]
+	for(var/index = 2; index <= length(segments); index++)
+		var/list/segment = segments[index]
+		segment["message"] = ""
 
 /obj/item/clothing/mask/animal/equipped(mob/user, slot)
 	if(!iscarbon(user))

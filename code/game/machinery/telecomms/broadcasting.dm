@@ -232,7 +232,7 @@
 				if(!radio_listener)
 					continue
 				var/message_to_tts = isobserver(radio_listener) ? message : radio_listener.translate_language(virt, language, message, spans, message_mods)
-				if(message_to_tts == message)
+				if(message_to_tts == message && !LAZYACCESS(message_mods, LANGUAGE_MESSAGE_SEGMENTS))
 					message_to_tts = LAZYACCESS(message_mods, MODE_TTS_MESSAGE_OVERRIDE) || message_to_tts
 				LAZYADD(radio_listeners[message_to_tts], radio_listener)
 			for(var/message_to_tts in radio_listeners)

@@ -5,6 +5,10 @@
 #define RADIO_EXTENSION "department specific"
 #define RADIO_KEY "department specific key"
 #define LANGUAGE_EXTENSION "language specific"
+/// Ordered language/text fragments of one utterance.
+#define LANGUAGE_MESSAGE_SEGMENTS "language message segments"
+/// One-based fragment currently passing through speech modifiers.
+#define LANGUAGE_MESSAGE_SEGMENT "language message segment"
 ///This is a mob that is forcing us to say something, so we can use the mob typing the text for bans rather than the one speaking.
 #define MANNEQUIN_CONTROLLED "mannequin controlled"
 /// Message mod which contains a list of bonus "mutual understanding" to allow arbitrary understanding of any speech

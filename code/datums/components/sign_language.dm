@@ -268,10 +268,20 @@
 
 	// The original message
 	var/message = speech_args[SPEECH_MESSAGE]
+	if(speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENT] > 1)
+		speech_args[SPEECH_MESSAGE] = sanitize_message(message)
+		return
+	var/tonal_message = message
+	var/list/segments = speech_args[SPEECH_MODS][LANGUAGE_MESSAGE_SEGMENTS]
+	if(length(segments))
+		var/list/messages = list()
+		for(var/list/segment as anything in segments)
+			messages += segment["message"]
+		tonal_message = jointext(messages, " ")
 	// Is there a !
-	var/exclamation_found = findtext(message, "!")
+	var/exclamation_found = findtext(tonal_message, "!")
 	// Is there a ?
-	var/question_found = findtext(message, "?")
+	var/question_found = findtext(tonal_message, "?")
 	var/emote_tone = TONE_NEUTRAL
 	if (exclamation_found && question_found)
 		emote_tone = TONE_INQUISITIVE_EMPHATIC
