@@ -176,11 +176,17 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	body_appearance = null
 	return ..()
 
-/** Copies a body into a self-contained ghost appearance, with open eyes and no corpse rotation. */
+/** Copies a body into a self-contained ghost appearance, or clears the snapshot when the body has no image. */
 /mob/dead/observer/proc/set_body_appearance(mob/body)
 	if(body_appearance)
 		cut_overlay(body_appearance)
+	hairstyle = null
+	facial_hairstyle = null
 	body_appearance = copy_appearance_filter_overlays(body.appearance)
+	if(!body_appearance.icon && !length(body_appearance.overlays) && !length(body_appearance.underlays))
+		body_appearance = null
+		return
+
 	body_appearance.plane = FLOAT_PLANE
 	body_appearance.layer = FLOAT_LAYER
 	body_appearance.dir = SOUTH
@@ -194,9 +200,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	body_appearance.render_target = null
 	body_appearance.render_source = null
 	body_appearance.appearance_flags = KEEP_TOGETHER
-
-	hairstyle = null
-	facial_hairstyle = null
 
 	if(ishuman(body))
 		var/mob/living/carbon/human/body_human = body
@@ -270,6 +273,10 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		updatedir = TRUE
 		add_overlay(body_appearance)
 		return
+
+	if(ghost_form == "ghost")
+		icon = initial(icon)
+		icon_state = initial(icon_state)
 
 	if((ghost_accs == GHOST_ACCS_DIR || ghost_accs == GHOST_ACCS_FULL) && (icon_state in GLOB.ghost_forms_with_directions_list)) //if this icon has dirs AND the client wants to show them, we make sure we update the dir on movement
 		updatedir = 1
@@ -896,6 +903,19 @@ GAME_VERB_HIDDEN(/mob/dead/observer, add_view_range, "Add View Range")
 	preview_body.appearance = client.prefs.render_new_preview_appearance(preview_body)
 	set_body_appearance(preview_body)
 	qdel(preview_body)
+
+	// Silicon previews return before applying character preferences to the dummy.
+	var/species_type = client.prefs.read_preference(/datum/preference/choiced/species)
+	var/datum/species/species = GLOB.species_prototypes[species_type]
+	hairstyle = null
+	facial_hairstyle = null
+	if(species.check_head_flags(HEAD_HAIR))
+		hairstyle = client.prefs.read_preference(/datum/preference/choiced/hairstyle)
+		hair_color = ghostify_color(client.prefs.read_preference(/datum/preference/color/hair_color))
+	if(species.check_head_flags(HEAD_FACIAL_HAIR))
+		facial_hairstyle = client.prefs.read_preference(/datum/preference/choiced/facial_hairstyle)
+		facial_hair_color = ghostify_color(client.prefs.read_preference(/datum/preference/color/facial_hair_color))
+
 	update_appearance()
 
 /mob/dead/observer/can_perform_action(atom/movable/target, action_bitflags)
