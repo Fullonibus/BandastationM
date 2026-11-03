@@ -76,7 +76,8 @@ GLOBAL_LIST_EMPTY(phoenix_population)
 	RegisterSignal(src, COMSIG_LIVING_HEALTHSCAN, PROC_REF(on_healthscan))
 	RegisterSignals(src, list(COMSIG_ATOM_ITEM_INTERACTION, COMSIG_ATOM_ITEM_INTERACTION_SECONDARY), PROC_REF(on_medical_interaction))
 	update_life_stage()
-	SSstation.get_station_goal(/datum/station_goal/phoenix)?.register_specimen(src)
+	var/datum/station_goal/phoenix/goal = SSstation.get_station_goal(/datum/station_goal/phoenix)
+	goal?.register_specimen(src)
 
 /mob/living/basic/phoenix_weaver/Destroy()
 	GLOB.phoenix_population -= population_reference

@@ -271,16 +271,14 @@
 	balloon_alert(user, "яйцо загружено")
 	return ITEM_INTERACT_SUCCESS
 
-/** Unload the physical sample and remove only this station's suspension source. */
-/obj/machinery/phoenix_research/proc/eject_egg(mob/living/user)
+/** Unload onto the floor and remove only this station's suspension source. */
+/obj/machinery/phoenix_research/proc/eject_egg()
 	var/obj/item/phoenix_egg/egg = loaded_egg
 	loaded_egg = null
 	if(QDELETED(egg))
 		return
 	REMOVE_TRAIT(egg, TRAIT_STASIS, REF(src))
 	egg.forceMove(drop_location())
-	if(!QDELETED(user) && user.Adjacent(src))
-		user.put_in_hands(egg)
 	return egg
 
 /obj/machinery/phoenix_research/ui_state(mob/user)
@@ -360,7 +358,9 @@
 		balloon_alert(user, "яйцо изменилось!")
 		return TRUE
 	if(action == "eject")
-		eject_egg(user)
+		var/obj/item/phoenix_egg/egg = eject_egg()
+		if(!QDELETED(egg))
+			user.put_in_hands(egg)
 		return TRUE
 	var/id = params["adaptation"]
 	if(!istext(id) || !(id in adaptation_options))
