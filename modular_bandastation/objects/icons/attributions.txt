@@ -1,0 +1,4 @@
+inferno.dmi (mob/clothing/under and obj/clothing/under)
+    Inferno/Helltaker legal department suits by axietheaxolotl.
+    Original source: https://github.com/Skyrat-SS13/Skyrat-tg/pull/10326
+    BandaStation port: https://github.com/ss220club/BandaStation/pull/2743
