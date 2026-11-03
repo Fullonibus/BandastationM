@@ -1,14 +1,24 @@
 /obj/item/reagent_containers/blood
 	name = "blood pack"
-	desc = "Contains blood used for transfusion. Must be attached to an IV drip."
+	desc = "Contains blood used for transfusion. Can be poured into open containers or attached to an IV drip."
 	icon = 'icons/obj/medical/bloodpack.dmi'
 	icon_state = "bloodpack"
 	volume = 200
+	initial_reagent_flags = DRAINABLE
 	fill_icon_thresholds = list(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
 	obj_flags = UNIQUE_RENAME | RENAME_NO_DESC
 	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 	var/datum/blood_type/blood_type
 	var/labeled = FALSE
+
+/// Pours blood into refillable containers using the selected transfer amount.
+/obj/item/reagent_containers/blood/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	. = ..()
+	if(. & ITEM_INTERACT_ANY_BLOCKER)
+		return .
+	if(!is_drainable() || !target.is_refillable())
+		return NONE
+	return try_refill(target, user)
 
 /obj/item/reagent_containers/blood/Initialize(mapload, vol)
 	. = ..()
