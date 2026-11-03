@@ -15,7 +15,9 @@ export function TechwebDesignDisk(props) {
     <>
       {blueprints.map((x, i) => (
         <Section key={i} title={`Slot ${i + 1}`}>
-          {(x === null && 'Empty') || (
+          {x === null ? (
+            'Empty'
+          ) : (
             <>
               Contains the design for <b>{design_cache[x].name}</b>:<br />
               <span
