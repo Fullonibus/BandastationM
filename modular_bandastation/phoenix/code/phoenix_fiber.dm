@@ -1,0 +1,35 @@
+/// A physical project-bound material; splitting must retain its provenance.
+/obj/item/stack/phoenix_fiber
+	name = "amber biofiber"
+	desc = "Биоволокно янтарного ткача. Принимается для проекта «Феникс» и закупается через карго. Из двух единиц волокна и 5 ед. стерилизина можно изготовить шесть гемостатических биоповязок через меню создания, раздел Chemistry."
+	icon = 'icons/obj/stack_objects.dmi'
+	icon_state = "sheet-cotton"
+	max_amount = 50
+	w_class = WEIGHT_CLASS_SMALL
+	/// Identifier of the project which actually produced this material.
+	var/project_id
+
+/obj/item/stack/phoenix_fiber/Initialize(mapload, new_amount = 1, source_project_id = "")
+	project_id = istext(source_project_id) ? source_project_id : ""
+	return ..(mapload, new_amount, FALSE)
+
+/obj/item/stack/phoenix_fiber/can_merge(obj/item/stack/check, inhand = FALSE)
+	if(!istype(check, /obj/item/stack/phoenix_fiber))
+		return FALSE
+	var/obj/item/stack/phoenix_fiber/other = check
+	return project_id == other.project_id && ..()
+
+/obj/item/stack/phoenix_fiber/split_stack(amount)
+	var/source_id = project_id
+	var/obj/item/stack/phoenix_fiber/result = ..()
+	if(result)
+		result.project_id = source_id
+	return result
+
+/// Nanotrasen maintains a standing purchase contract for the restored species' industrial output.
+/datum/export/stack/phoenix_fiber
+	cost = 150
+	unit_name = "unit"
+	message = "of amber biofiber"
+	export_types = list(/obj/item/stack/phoenix_fiber)
+	k_elasticity = 0

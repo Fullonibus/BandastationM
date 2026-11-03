@@ -78,6 +78,7 @@
 #include "outfits/_outfits.dme"
 #include "overrides/_overrides.dme"
 #include "paperwork/_paperwork.dme"
+#include "phoenix/_phoenix.dme"
 #include "pixel_shift/_pixel_shift.dme"
 #include "preferences/_preferences.dme"
 #include "quirks/_quirks.dme"
