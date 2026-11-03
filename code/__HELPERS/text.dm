@@ -377,18 +377,21 @@
 		text = copytext_char(text, 1, max_length)
 	return trimtext(text) || "" //users expect atleast an empty string
 
-//Returns a string with the first element of the string capitalized.
+/// Returns a string with its first character capitalized, preserving Unicode names and declensions.
 /proc/capitalize(t)
-	t = format_text(t) // BANDASTATION ADDITION - Declents
+	return capitalize_word(format_text(t))
+
+/// Returns a string with the first letter of each word capitalized.
+/proc/full_capitalize(input)
+	var/regex/first_letter = new(@"[^A-z]*?([A-z]*)", "g")
+	return replacetext(input, first_letter, /proc/capitalize_word)
+
+/// Capitalizes the first character. Use capitalize() to strip BYOND's proper/improper macros first.
+/proc/capitalize_word(t)
 	. = t
 	if(t)
 		. = t[1]
 		return uppertext(.) + copytext(t, 1 + length(.))
-
-///Returns a string with the first letter of each word capitialized
-/proc/full_capitalize(input)
-	var/regex/first_letter = new(@"[^A-z]*?([A-z]*)", "g")
-	return replacetext(input, first_letter, /proc/capitalize)
 
 /proc/stringmerge(text,compare,replace = "*")
 //This proc fills in all spaces with the "replace" var (* by default) with whatever

@@ -682,11 +682,21 @@
  * most of the time you want forceMove()
  */
 /atom/movable/proc/abstract_move(atom/new_loc)
-	RESOLVE_ACTIVE_MOVEMENT // This should NEVER happen, but, just in case...
+	RESOLVE_INTERRUPTED_MOVEMENT // This should NEVER happen, but, just in case...
 	var/atom/old_loc = loc
 	var/direction = get_dir(old_loc, new_loc)
 	loc = new_loc
 	Moved(old_loc, direction, TRUE, momentum_change = FALSE)
+
+/// Finishes a movement of ours that something in its callbacks interrupted with another one.
+/atom/movable/proc/finish_interrupted_movement()
+	var/list/movement = active_movement
+	active_movement = null
+	var/area/old_area = get_area(movement[ACTIVE_MOVEMENT_OLDLOC])
+	var/area/new_area = get_area(src)
+	if(old_area != new_area)
+		new_area?.Entered(src, old_area)
+	Moved(arglist(movement))
 
 ////////////////////////////////////////
 // Here's where we rewrite how byond handles movement except slightly different
@@ -698,7 +708,7 @@
 		return
 	SEND_SIGNAL(src, COMSIG_MOVABLE_ATTEMPTED_MOVE, newloc, direction)
 	// A mid-movement... movement... occurred, resolve that first.
-	RESOLVE_ACTIVE_MOVEMENT
+	RESOLVE_INTERRUPTED_MOVEMENT
 
 	if(!direction)
 		direction = get_dir(src, newloc)
@@ -750,13 +760,14 @@
 
 	. = TRUE
 
+	if(oldarea != newarea)
+		oldarea.Exited(src, direction)
+
 	if(old_locs) // This condition will only be true if it is a multi-tile object.
 		for(var/atom/exited_loc as anything in (old_locs - new_locs))
 			exited_loc.Exited(src, direction)
 	else // Else there's just one loc to be exited.
 		oldloc.Exited(src, direction)
-	if(oldarea != newarea)
-		oldarea.Exited(src, direction)
 
 	if(new_locs) // Same here, only if multi-tile.
 		for(var/atom/entered_loc as anything in (new_locs - old_locs))
@@ -764,9 +775,9 @@
 	else
 		newloc.Entered(src, oldloc, old_locs)
 	if(oldarea != newarea)
-		newarea.Entered(src, oldarea)
-
-	RESOLVE_ACTIVE_MOVEMENT
+		RESOLVE_ACTIVE_AREA_MOVEMENT(newarea, oldarea)
+	else
+		RESOLVE_ACTIVE_MOVEMENT
 
 ////////////////////////////////////////
 
@@ -1189,7 +1200,7 @@
 
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
-	RESOLVE_ACTIVE_MOVEMENT
+	RESOLVE_INTERRUPTED_MOVEMENT
 
 	var/atom/oldloc = loc
 	var/is_multi_tile = bound_width > ICON_SIZE_X || bound_height > ICON_SIZE_Y
@@ -1222,6 +1233,10 @@
 				stack_trace("Attempt to move [src] to [destination] was rejected by BYOND, possibly due to cyclic contents")
 				return FALSE
 
+			// Finish the area exit before turf callbacks can start another movement.
+			if(old_area && old_area != destarea)
+				old_area.Exited(src, movement_dir)
+
 			if(is_multi_tile && isturf(destination))
 				var/dx = destination.x
 				var/dy = destination.y
@@ -1232,8 +1247,6 @@
 					dx + round((bound_x + bound_width - 1) / ICON_SIZE_X), dy + round((bound_y + bound_height - 1) / ICON_SIZE_Y), dz
 				)
 				// BANDASTATION EDIT END - Match the inclusive block to the actual multi-tile bounds.
-				if(old_area && old_area != destarea)
-					old_area.Exited(src, movement_dir)
 				// BANDASTATION EDIT START - Compare with the saved footprint and preserve Entered arguments.
 				for(var/atom/left_loc as anything in old_locs - new_locs)
 					left_loc.Exited(src, movement_dir)
@@ -1242,16 +1255,12 @@
 					entering_loc.Entered(src, oldloc, old_locs)
 				// BANDASTATION EDIT END - Compare with the saved footprint and preserve Entered arguments.
 
-				if(old_area && old_area != destarea)
-					destarea.Entered(src, movement_dir)
 			else
-				if(oldloc)
-					oldloc.Exited(src, movement_dir)
-					if(old_area && old_area != destarea)
-						old_area.Exited(src, movement_dir)
+				oldloc?.Exited(src, movement_dir)
 				destination.Entered(src, oldloc)
-				if(destarea && old_area != destarea)
-					destarea.Entered(src, old_area)
+
+			if(destarea && old_area != destarea)
+				RESOLVE_ACTIVE_AREA_MOVEMENT(destarea, old_area)
 
 		. = TRUE
 
@@ -1262,14 +1271,12 @@
 		if (oldloc)
 			loc = null
 			var/area/old_area = get_area(oldloc)
+			old_area?.Exited(src, NONE)
 			if(is_multi_tile && isturf(oldloc))
 				for(var/atom/old_loc as anything in old_locs) // BANDASTATION EDIT - locs is empty after entering nullspace.
 					old_loc.Exited(src, NONE)
 			else
 				oldloc.Exited(src, NONE)
-
-			if(old_area)
-				old_area.Exited(src, NONE)
 
 	RESOLVE_ACTIVE_MOVEMENT
 
