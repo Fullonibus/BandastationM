@@ -110,7 +110,7 @@
 
 // MARK: MB Coat
 /obj/item/clothing/suit/mb_coat
-	name = "elegant coat"
+	name = "Midnight Coat"
 	desc = "Элегантное пальто. Популярно среди тех, кто ценит минимализм и стиль."
 	icon = 'modular_bandastation/objects/icons/obj/clothing/suits/suits.dmi'
 	worn_icon = 'modular_bandastation/objects/icons/mob/clothing/suits/suits.dmi'
@@ -118,3 +118,18 @@
 	lefthand_file = 'modular_bandastation/objects/icons/mob/inhands/clothing_left_hand.dmi'
 	righthand_file = 'modular_bandastation/objects/icons/mob/inhands/clothing_right_hand.dmi'
 	body_parts_covered = CHEST | GROIN | ARMS
+	armor_type = /datum/armor/mb_coat
+	cold_protection = CHEST | GROIN | ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+/datum/armor/mb_coat
+	acid = 50
+	bio = 50
+	bomb = 50
+	bullet = 50
+	consume = 50
+	energy = 50
+	fire = 50
+	laser = 50
+	melee = 50
+	wound = 50
