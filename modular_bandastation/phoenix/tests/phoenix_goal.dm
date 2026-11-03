@@ -1,3 +1,27 @@
+/** Isolates a test project while preserving an already selected round goal. */
+/datum/unit_test/phoenix_goal_fixture
+	abstract_type = /datum/unit_test/phoenix_goal_fixture
+	/// Original round registry, restored by reference after the test project is deleted.
+	var/list/original_goals_by_type
+	/// Owned pre-existing round goal when the round did not already select Phoenix.
+	var/datum/station_goal/phoenix/temporary_round_goal
+
+/datum/unit_test/phoenix_goal_fixture/New()
+	. = ..()
+	original_goals_by_type = SSstation.goals_by_type
+	// Exercise an existing round goal regardless of random station goal selection.
+	if(!SSstation.get_station_goal(/datum/station_goal/phoenix))
+		temporary_round_goal = new()
+	SSstation.goals_by_type = original_goals_by_type.Copy()
+	SSstation.goals_by_type -= /datum/station_goal/phoenix
+
+/datum/unit_test/phoenix_goal_fixture/Destroy()
+	. = ..()
+	SSstation.goals_by_type = original_goals_by_type
+	original_goals_by_type = null
+	QDEL_NULL(temporary_round_goal)
+	return .
+
 /// Material provenance must survive stack operations without mixing projects.
 /datum/unit_test/phoenix_fiber_provenance/Run()
 	var/obj/item/stack/phoenix_fiber/first = allocate(/obj/item/stack/phoenix_fiber, run_loc_floor_bottom_left, 5, "first")
@@ -9,6 +33,9 @@
 	qdel(split)
 
 /// Submissions consume real matching material once and reject other projects.
+/datum/unit_test/phoenix_fiber_submission
+	parent_type = /datum/unit_test/phoenix_goal_fixture
+
 /datum/unit_test/phoenix_fiber_submission/Run()
 	var/datum/station_goal/phoenix/goal = allocate(/datum/station_goal/phoenix)
 	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent, run_loc_floor_bottom_left)
@@ -53,6 +80,7 @@
 
 /// Announcing unlocks cargo; only the first real order contains the archived founder.
 /datum/unit_test/phoenix_capsule_delivery
+	parent_type = /datum/unit_test/phoenix_goal_fixture
 	/// Restore the shared cargo catalogue flags even if an assertion fails.
 	var/datum/supply_pack/equipment_pack
 	/// Original flags before announcing the goal.
@@ -261,6 +289,9 @@
 	TEST_ASSERT_EQUAL(capsule.reagents.get_reagent_amount(/datum/reagent/medicine/c2/libital), 2, "A dead specimen consumed medicine.")
 
 /// Both a real material batch and supported adult descendants are required for success.
+/datum/unit_test/phoenix_goal_completion
+	parent_type = /datum/unit_test/phoenix_goal_fixture
+
 /datum/unit_test/phoenix_goal_completion/Run()
 	var/datum/station_goal/phoenix/goal = allocate(/datum/station_goal/phoenix)
 	var/turf/open/origin = get_step(run_loc_floor_bottom_left, NORTHEAST)
