@@ -160,6 +160,10 @@ Before adding or changing a test, trace its setup and execution for failure sour
 
 ### Run and report
 
+**Before opening any PR, including documentation-only changes, run DreamChecker on the final tree.** Use the version pinned by `SPACEMAN_DMM_VERSION` in [dependencies.sh](dependencies.sh). From the repository root, run `dreamchecker --version` and `dreamchecker` (or the corresponding executable path), so [SpacemanDMM.toml](SpacemanDMM.toml) selects [tgstation.dme](tgstation.dme). Rerun after further changes to the tree.
+
+Require exit code 0 before publication: fix errors, review warnings, and record the version, command, exit code and diagnostics in task evidence and the PR verification report. DreamMaker compilation, unit tests and TGUI lint do not replace this check. If the CLI is unavailable, obtain the pinned version and run it; if that is blocked, report the reason and leave the PR unopened instead of silently skipping the check.
+
 Start with the affected check, then run the checks required for the touched area. For TGUI changes, follow the [full-build requirement](tgui/README.md#important-memo); `bin/tgui-build.cmd` runs build, lint, type checks and tests, while `bun tgui:build` alone does not. Do not rerun or broaden successful checks without new changes, failures or unresolved risks.
 
 Report briefly: the risk checked, the existing or new test used (or why manual verification is appropriate), the commands or manual actions actually performed, their result, and remaining gaps. A proposed scenario is not a passed test; compilation is not proof of gameplay behavior. An unavailable tool is a verification limit, not a reason to invent a substitute test of different behavior.
