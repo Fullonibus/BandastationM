@@ -1,11 +1,13 @@
 /// A physical project-bound material; splitting must retain its provenance.
 /obj/item/stack/phoenix_fiber
 	name = "amber biofiber"
+	singular_name = "amber biofiber bundle"
 	desc = "Биоволокно янтарного ткача. Принимается для проекта «Феникс» и закупается через карго. Из двух единиц волокна и 5 ед. стерилизина можно изготовить шесть гемостатических биоповязок через меню создания, раздел Chemistry."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "sheet-cotton"
 	max_amount = 50
 	w_class = WEIGHT_CLASS_SMALL
+	merge_type = /obj/item/stack/phoenix_fiber
 	/// Identifier of the project which actually produced this material.
 	var/project_id
 
