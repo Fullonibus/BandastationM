@@ -256,6 +256,7 @@
 /obj/structure/transmitter/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	handset?.check_tether()
+	handset?.update_beam()
 
 /obj/structure/transmitter/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(tool == handset)
