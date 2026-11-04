@@ -37,6 +37,8 @@ translate concepts between old and new tgui, read this
 - [Using TGUI and Byond API for custom HTML popups](docs/tgui-for-custom-html-popups.md)
 - [Chat Embedded Components](docs/chat-embedded-components.md)
 - [Writing Tests](docs/writing-tests.md)
+- [Browser Preview and Development Workflow](docs/preview.md) - Develop full
+  interfaces with fixture data without joining a game.
 
 ## Pre-requisites
 

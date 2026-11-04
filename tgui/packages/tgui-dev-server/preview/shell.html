@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TGUI browser preview</title>
+<style>
+:root { color-scheme: light; font: 14px/1.5 system-ui, sans-serif; color: #202833; background: #eef1f4; }
+* { box-sizing: border-box; } body { margin: 0; }
+header { padding: 16px 24px; background: #fff; border-bottom: 1px solid #c5cdd6; }
+h1 { margin: 0; font-size: 20px; } header p { margin: 4px 0 0; color: #4c5867; }
+main { display: grid; grid-template-columns: minmax(300px, 380px) minmax(0, 1fr); min-height: calc(100vh - 100px); }
+aside { padding: 20px 24px; background: #fff; border-right: 1px solid #c5cdd6; }
+label { display: block; font-weight: 600; margin-bottom: 6px; }
+input, select, textarea, button { font: inherit; }
+input, select, textarea { width: 100%; color: #202833; border: 1px solid #919dac; border-radius: 3px; background: #fff; padding: 7px 9px; }
+:focus-visible { outline: 3px solid #1769aa; outline-offset: 2px; }
+textarea { min-height: 300px; resize: vertical; font: 12px/1.5 ui-monospace, Consolas, monospace; tab-size: 2; }
+button { cursor: pointer; padding: 7px 14px; border: 1px solid #919dac; border-radius: 3px; background: #f2f5f8; color: #202833; }
+button:hover { background: #e2e8ee; } button[type="submit"] { background: #155b94; border-color: #155b94; color: #fff; } button[type="submit"]:hover { background: #104674; }
+.field { margin-bottom: 18px; } .dimensions { display: flex; gap: 12px; } .dimensions > div { flex: 1; }
+.help { display: block; font-size: 12px; color: #4c5867; margin-top: 5px; }
+#status { min-height: 24px; margin: 12px 0 0; overflow-wrap: anywhere; } #status[data-error="true"] { color: #a32320; }
+.workspace { min-width: 0; padding: 20px 24px; }
+.canvas { overflow: auto; padding: 16px; background: #dce2e8; border: 1px solid #bdc7d2; min-height: 240px; }
+iframe { display: block; border: 0; background: #222; }
+.log-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 24px; }
+h2 { margin: 0; font-size: 16px; }
+#log { margin-top: 10px; min-height: 100px; max-height: 280px; overflow: auto; padding: 12px; background: #fff; border: 1px solid #c5cdd6; white-space: pre-wrap; overflow-wrap: anywhere; font: 12px/1.6 ui-monospace, Consolas, monospace; }
+::selection { background: #bddbf5; }
+@media (max-width: 800px) { main { grid-template-columns: 1fr; } aside { border-right: 0; border-bottom: 1px solid #c5cdd6; } textarea { min-height: 180px; } }
+</style>
+</head>
+<body>
+<header><h1>TGUI browser preview</h1><p>Real frontend, supplied data. Actions are recorded; game logic does not run.</p></header>
+<main>
+<aside><form id="preview-form">
+<div class="field"><label for="interface">Interface</label><input id="interface" list="interfaces" placeholder="Select or enter an interface name" required /><datalist id="interfaces"></datalist></div>
+<div class="field"><label for="fixture">Saved fixture</label><select id="fixture"><option value="">Custom JSON</option></select></div>
+<div class="field"><label for="fixture-json">Fixture JSON</label><textarea id="fixture-json" spellcheck="false" aria-describedby="fixture-help">{ "data": {} }</textarea><span id="fixture-help" class="help">Envelope: config, data, static_data, shared. Each interface needs matching data.</span></div>
+<div class="field dimensions"><div><label for="width">Width (px)</label><input id="width" type="number" min="1" max="4096" step="1" value="600" required /></div><div><label for="height">Height (px)</label><input id="height" type="number" min="1" max="4096" step="1" value="600" required /></div></div>
+<button type="submit">Apply and reset UI</button><p id="status" role="status" aria-live="polite">Loading interfaces…</p>
+</form></aside>
+<section class="workspace" aria-label="Preview workspace"><div id="canvas" class="canvas"><p>Choose an interface and apply fixture data to open its preview.</p></div>
+<div class="log-heading"><h2>Actions and errors</h2><button id="clear-log" type="button">Clear log</button></div><pre id="log" aria-label="Actions and errors log">No actions recorded.</pre>
+<p class="help">Viewport controls set the iframe size. Native window sizing and game permissions require an in-game check.</p></section>
+</main>
+<script type="module" src="/client.js"></script>
+</body>
+</html>

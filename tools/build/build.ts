@@ -417,6 +417,11 @@ export const TguiDevTarget = new Juke.Target({
   executes: ({ args }) => bun('./tgui', 'tgui:dev', ...args),
 });
 
+export const TguiPreviewTarget = new Juke.Target({
+  dependsOn: [BunTarget, TgFontTarget],
+  executes: ({ args }) => bun('./tgui', 'tgui:preview', ...args),
+});
+
 export const TguiAnalyzeTarget = new Juke.Target({
   dependsOn: [BunTarget],
   executes: () => bun('./tgui', 'tgui:analyze'),
