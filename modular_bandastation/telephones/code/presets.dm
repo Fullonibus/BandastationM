@@ -24,7 +24,31 @@
 /obj/structure/transmitter/mounted/LateInitialize()
 	find_and_mount_on_atom(late_init = TRUE)
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/transmitter/mounted, 24)
+/// Side-view sprites sit at the tile edge, below the generic wall-mount offset threshold.
+/obj/structure/transmitter/mounted/get_turfs_to_mount_on()
+	if(pixel_x)
+		return list(get_step(src, pixel_x > 0 ? EAST : WEST), get_turf(src))
+	return ..()
+
+/// Map directions name the supporting wall; side-view sprites face back into the room.
+/obj/structure/transmitter/mounted/directional
+	abstract_type = /obj/structure/transmitter/mounted/directional
+
+/obj/structure/transmitter/mounted/directional/north
+	dir = NORTH
+	pixel_y = 24
+
+/obj/structure/transmitter/mounted/directional/south
+	dir = SOUTH
+	pixel_y = -24
+
+/obj/structure/transmitter/mounted/directional/east
+	dir = WEST
+	pixel_x = 16
+
+/obj/structure/transmitter/mounted/directional/west
+	dir = EAST
+	pixel_x = -16
 
 /// A private office line that can call public, command and bridge phones.
 /obj/structure/transmitter/command

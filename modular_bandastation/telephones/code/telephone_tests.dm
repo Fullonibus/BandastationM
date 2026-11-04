@@ -29,6 +29,35 @@
 	calling_user = null
 	receiving_user = null
 
+/// Side-facing sprites stay at the wall edge while mounting and cleanup follow the supporting side.
+/datum/unit_test/telephone/wall_mounting/Run()
+	var/turf/phone_turf = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
+	var/obj/structure/wall_support/east_support = allocate(/obj/structure/wall_support, get_step(phone_turf, EAST))
+	var/obj/structure/wall_support/west_support = allocate(/obj/structure/wall_support, get_step(phone_turf, WEST))
+	var/obj/structure/transmitter/mounted/directional/east/east_phone = allocate(/obj/structure/transmitter/mounted/directional/east, phone_turf)
+	var/obj/structure/transmitter/mounted/directional/west/west_phone = allocate(/obj/structure/transmitter/mounted/directional/west, phone_turf)
+	TEST_ASSERT_EQUAL(east_phone.dir, WEST, "A phone on the east wall must face into the room.")
+	TEST_ASSERT_EQUAL(west_phone.dir, EAST, "A phone on the west wall must face into the room.")
+	TEST_ASSERT_EQUAL(east_phone.pixel_x, 16, "The east phone must sit at the wall edge rather than inside the wall.")
+	TEST_ASSERT_EQUAL(west_phone.pixel_x, -16, "The west phone must sit at the wall edge rather than inside the wall.")
+	TEST_ASSERT(east_phone.find_and_mount_on_atom(), "A sixteen-pixel offset must still mount on the east support.")
+	TEST_ASSERT(west_phone.find_and_mount_on_atom(), "A sixteen-pixel offset must still mount on the west support.")
+	var/datum/component/atom_mounted/east_mount = east_phone.GetComponent(/datum/component/atom_mounted)
+	var/datum/component/atom_mounted/west_mount = west_phone.GetComponent(/datum/component/atom_mounted)
+	TEST_ASSERT_NOTNULL(east_mount, "Mounting must install the east phone's support component.")
+	TEST_ASSERT_NOTNULL(west_mount, "Mounting must install the west phone's support component.")
+	TEST_ASSERT_EQUAL(east_mount.hanging_support_atom, east_support, "The east phone must mount by wall side rather than its reversed sprite direction.")
+	TEST_ASSERT_EQUAL(west_mount.hanging_support_atom, west_support, "The west phone must mount by wall side rather than its reversed sprite direction.")
+	var/obj/item/telephone/east_handset = east_phone.handset
+	var/obj/item/telephone/west_handset = west_phone.handset
+	qdel(east_support)
+	TEST_ASSERT(QDELETED(east_phone), "Removing the east support must deconstruct its phone.")
+	TEST_ASSERT(QDELETED(east_handset), "Deconstructing the mounted phone must also delete its handset.")
+	TEST_ASSERT(!QDELETED(west_phone), "Removing one support must leave the opposite phone mounted.")
+	qdel(west_support)
+	TEST_ASSERT(QDELETED(west_phone), "Removing the west support must deconstruct its phone.")
+	TEST_ASSERT(QDELETED(west_handset), "Removing the west support must also clean up its handset.")
+
 /// A repeated or competing request cannot replace either end of an existing call.
 /datum/unit_test/telephone/call_pair/Run()
 	var/obj/structure/transmitter/third_phone = allocate(/obj/structure/transmitter)
