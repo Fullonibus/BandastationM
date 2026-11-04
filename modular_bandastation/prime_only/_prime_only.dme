@@ -6,6 +6,7 @@
 #include "code/normandy_suit_storage.dm"
 // AI EDIT START - Compile Prime regression tests only when their module and test harness are enabled.
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+#include "code/tests/khaaroot_hivemind_tests.dm"
 #include "code/tests/mod_delta_817_tests.dm"
 #include "code/tests/normandy_suit_storage_tests.dm"
 #endif

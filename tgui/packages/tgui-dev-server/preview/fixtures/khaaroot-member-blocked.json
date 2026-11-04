@@ -1,0 +1,32 @@
+{
+	"config": {
+		"interface": {
+			"name": "KhaarootHivemind"
+		},
+		"title": "Улей Кхаарут",
+		"window": {
+			"size": [620, 500]
+		}
+	},
+	"data": {
+		"can_manage": false,
+		"thralls": [
+			{
+				"name": "Элина Ветрова",
+				"ref": "[0x210001]",
+				"status": "Критическое",
+				"health": -32.5,
+				"location": "Заброшенная часть технических тоннелей за северо-восточным двигателем",
+				"objective": "Откройте запасной проход к двигательному отсеку.",
+				"has_mob": true,
+				"has_objective": true,
+				"objective_status": "blocked",
+				"objective_revision": 12,
+				"objective_reply": "Не могу добраться до шлюза: проход завален, а инструментов для разборки у меня нет. Нужна помощь другого участника."
+			}
+		],
+		"thrall_count": 1
+	},
+	"static_data": {},
+	"shared": {}
+}

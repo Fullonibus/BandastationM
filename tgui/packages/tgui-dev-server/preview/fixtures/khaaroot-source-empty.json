@@ -1,0 +1,19 @@
+{
+	"config": {
+		"interface": {
+			"name": "KhaarootHivemind"
+		},
+		"title": "Улей Кхаарут",
+		"window": {
+			"size": [620, 500]
+		}
+	},
+	"data": {
+		"can_manage": true,
+		"thralls": [],
+		"thrall_count": 0,
+		"events": []
+	},
+	"static_data": {},
+	"shared": {}
+}
