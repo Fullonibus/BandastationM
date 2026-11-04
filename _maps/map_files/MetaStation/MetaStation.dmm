@@ -2099,6 +2099,11 @@
 	pixel_y = -5;
 	pixel_x = 10
 	},
+/obj/structure/transmitter/command{
+	display_name = "КАР - Офис КМ";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/wood/large,
 /area/station/command/heads_quarters/qm)
 "aLZ" = (
@@ -5032,6 +5037,11 @@
 	},
 /obj/item/radio/off,
 /obj/effect/turf_decal/tile/red/fourcorners,
+/obj/structure/transmitter/security{
+	display_name = "СБ - Медблок";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/medical)
 "bKz" = (
@@ -5204,6 +5214,11 @@
 	},
 /obj/structure/table,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
+/obj/structure/transmitter/service{
+	display_name = "СЕР - Барная стойка";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/station/service/bar)
 "bNl" = (
@@ -5573,6 +5588,11 @@
 /obj/structure/table/wood,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/transmitter/service{
+	display_name = "СЕР - Церковь";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/funeral)
 "bVs" = (
@@ -6024,6 +6044,11 @@
 "cdS" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/transmitter/science{
+	display_name = "РНД - Пусковая";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/testlab)
 "cdX" = (
@@ -7831,6 +7856,17 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
+"cKb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/transmitter/mounted/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/primary/port)
 "cKd" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 4
@@ -9247,6 +9283,11 @@
 	},
 /obj/machinery/light/directional/east,
 /obj/structure/sign/warning/secure_area/directional/east,
+/obj/structure/transmitter/engineering{
+	display_name = "ИНЖ - Отсек СМ";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "djn" = (
@@ -10091,6 +10132,16 @@
 	},
 /turf/open/floor/plating,
 /area/station/science/lab)
+"dyA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/transmitter/mounted/directional/south,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "dzs" = (
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
@@ -11226,6 +11277,11 @@
 	},
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 4
+	},
+/obj/structure/transmitter/bridge{
+	display_name = "Мостик";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
@@ -12978,6 +13034,11 @@
 /obj/item/papercutter{
 	pixel_x = -4
 	},
+/obj/structure/transmitter/command{
+	display_name = "СЕР - Офис ГП";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "evD" = (
@@ -13153,6 +13214,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/circuit_workshop)
+"eyF" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/transmitter/mounted/directional/west,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/exit/departure_lounge)
 "eyK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -14628,6 +14699,11 @@
 /obj/item/surgicaldrill,
 /obj/item/toy/figure/paramedic,
 /obj/item/radio/intercom/directional/south,
+/obj/structure/transmitter/medbay{
+	display_name = "МЕД - Стойка";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/paramedic)
 "fad" = (
@@ -14780,6 +14856,11 @@
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/plating/airless,
 /area/station/science/ordnance/bomb)
+"fcU" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/transmitter/mounted/directional/east,
+/turf/open/floor/iron,
+/area/station/hallway/primary/aft)
 "fcV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer5,
@@ -16504,6 +16585,18 @@
 /obj/machinery/telecomms/server/presets/supply,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/tcommsat/server)
+"fIG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/transmitter/mounted/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/command)
 "fIR" = (
 /obj/structure/sign/warning/secure_area/directional/north,
 /turf/open/space/basic,
@@ -17644,6 +17737,11 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/structure/transmitter/command{
+	display_name = "СБ - Офис ГСБ";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hos)
 "gfU" = (
@@ -18525,6 +18623,16 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/iron,
 /area/station/science/explab)
+"gvY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/transmitter/mounted/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "gwc" = (
 /obj/structure/chair/stool/bar/directional/south,
 /obj/effect/turf_decal/siding/wood{
@@ -19224,6 +19332,11 @@
 /obj/structure/table,
 /obj/structure/extinguisher_cabinet/directional/east,
 /obj/effect/turf_decal/tile/bar,
+/obj/structure/transmitter/service{
+	display_name = "СЕР - Кухня";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "gIt" = (
@@ -19612,6 +19725,11 @@
 	dir = 1
 	},
 /obj/structure/sign/poster/random/directional/east,
+/obj/structure/transmitter/service{
+	display_name = "СЕР - Ботаника";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "gOp" = (
@@ -19701,6 +19819,11 @@
 /obj/structure/table/wood,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/transmitter/bridge{
+	display_name = "Офис капитана";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain/private)
 "gPT" = (
@@ -20775,6 +20898,11 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 4
 	},
+/obj/structure/transmitter/science{
+	display_name = "РНД - Ксенобиология";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/white,
 /area/station/science/cytology)
 "hjx" = (
@@ -20865,6 +20993,12 @@
 /obj/effect/turf_decal/tile/yellow/half/contrasted,
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
+"hkO" = (
+/obj/effect/spawner/random/entertainment/arcade,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/transmitter/mounted/directional/east,
+/turf/open/floor/iron/dark,
+/area/station/commons/fitness/recreation)
 "hkV" = (
 /obj/machinery/computer/libraryconsole/bookmanagement,
 /obj/structure/table,
@@ -26688,6 +26822,11 @@
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
+"jid" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/structure/transmitter/mounted/directional/east,
+/turf/open/floor/iron,
+/area/station/hallway/primary/aft)
 "jie" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/cyan/visible{
 	dir = 8
@@ -27532,6 +27671,11 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/directional/south,
+/obj/structure/transmitter/science{
+	display_name = "РНД - Токсинная";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
 "jwv" = (
@@ -28233,6 +28377,11 @@
 /obj/item/stamp/granted{
 	pixel_x = -9;
 	pixel_y = -1
+	},
+/obj/structure/transmitter/cargo{
+	display_name = "КАР - Главный холл";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/catwalk_floor/iron,
 /area/station/cargo/storage)
@@ -30469,6 +30618,15 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/command/gateway)
+"ksp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/transmitter/mounted/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/primary/port)
 "ksB" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/cup/beaker/cryoxadone{
@@ -30664,6 +30822,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/gateway)
+"kwv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/transmitter/mounted/directional/south,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "kwy" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -31548,6 +31714,11 @@
 /obj/structure/table,
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
 	dir = 4
+	},
+/obj/structure/transmitter/medbay{
+	display_name = "МЕД - Химзавод";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
@@ -33088,6 +33259,11 @@
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 8
 	},
+/obj/structure/transmitter/science{
+	display_name = "РНД - Стойка";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/station/science/lab)
 "lnv" = (
@@ -34170,6 +34346,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
+"lLg" = (
+/obj/machinery/central_telephone_exchange,
+/turf/open/floor/iron/dark/telecomms,
+/area/station/tcommsat/server)
 "lLh" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/white/corner{
@@ -36086,6 +36266,11 @@
 	},
 /obj/effect/mapping_helpers/requests_console/information,
 /obj/effect/mapping_helpers/requests_console/assistance,
+/obj/structure/transmitter/security{
+	display_name = "СБ - РНД";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
 "msN" = (
@@ -37380,6 +37565,18 @@
 /obj/structure/light_construct/directional/west,
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
+"mOj" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/structure/transmitter/mounted/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/primary/starboard)
 "mOl" = (
 /obj/structure/closet/boxinggloves,
 /obj/effect/landmark/start/hangover,
@@ -37461,6 +37658,11 @@
 /obj/item/stamp/head/ce,
 /obj/item/reagent_containers/applicator/patch/aiuri,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/structure/transmitter/command{
+	display_name = "ИНЖ - Офис СЕ";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
 "mPK" = (
@@ -38280,6 +38482,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit/departure_lounge)
+"ncZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/transmitter/mounted/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "ndj" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -38486,6 +38695,11 @@
 /obj/item/stamp/head/rd,
 /obj/item/toy/figure/rd{
 	pixel_y = 10
+	},
+/obj/structure/transmitter/command{
+	display_name = "РНД - Офис РД";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/rd)
@@ -38970,6 +39184,18 @@
 	},
 /turf/open/floor/wood,
 /area/station/commons/dorms)
+"noX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/transmitter/mounted/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/command)
 "npv" = (
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible{
 	dir = 4
@@ -40971,6 +41197,11 @@
 	},
 /obj/item/stack/wrapping_paper,
 /obj/effect/turf_decal/tile/brown/opposingcorners,
+/obj/structure/transmitter/cargo{
+	display_name = "КАР - Стойка";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
 "nZX" = (
@@ -41766,6 +41997,11 @@
 /area/station/science/xenobiology/hallway)
 "ooG" = (
 /obj/structure/table,
+/obj/structure/transmitter/security{
+	display_name = "СБ - Главный холл";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/office)
 "ooP" = (
@@ -42784,6 +43020,11 @@
 /obj/item/integrated_circuit/loaded/hello_world{
 	pixel_y = 2;
 	pixel_x = 3
+	},
+/obj/structure/transmitter/science{
+	display_name = "РНД - Исследовательская";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/iron,
 /area/station/science/explab)
@@ -44748,6 +44989,11 @@
 "ppG" = (
 /obj/structure/table/glass,
 /obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/structure/transmitter/medbay{
+	display_name = "МЕД - Главный холл";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "ppI" = (
@@ -47709,6 +47955,11 @@
 /obj/structure/table,
 /obj/item/flashlight/lamp,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/transmitter/security{
+	display_name = "Телефон Для Последнего Звонка (ТМ)";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/interrogation)
 "qoY" = (
@@ -47767,6 +48018,11 @@
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
 /obj/item/multitool{
 	pixel_y = 10
+	},
+/obj/structure/transmitter/engineering{
+	display_name = "ИНЖ - Атмосферный";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/engineering/atmos)
@@ -51743,6 +51999,11 @@
 	},
 /obj/item/disk/computer/medical,
 /obj/item/disk/computer/medical,
+/obj/structure/transmitter/command{
+	display_name = "МЕД - Офис СМО";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
 "rHz" = (
@@ -53445,6 +53706,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/transmitter/mounted/directional/east,
 /turf/open/floor/iron/white/corner,
 /area/station/hallway/secondary/entry)
 "slG" = (
@@ -53852,6 +54114,11 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
+"suv" = (
+/obj/structure/cable,
+/obj/structure/transmitter/mounted/directional/west,
+/turf/open/floor/iron,
+/area/station/construction/storage_wing)
 "suD" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -54279,6 +54546,11 @@
 /obj/item/pen{
 	pixel_x = -5;
 	pixel_y = 5
+	},
+/obj/structure/transmitter/engineering{
+	display_name = "ИНЖ - Комната отдыха";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
@@ -55505,6 +55777,11 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
+/obj/structure/transmitter/command{
+	display_name = "Переговорная";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/wood,
 /area/station/command/corporate_showroom)
 "sUD" = (
@@ -55596,6 +55873,11 @@
 /obj/item/reagent_containers/cup/beaker,
 /obj/item/reagent_containers/syringe,
 /obj/item/reagent_containers/dropper,
+/obj/structure/transmitter/medbay{
+	display_name = "МЕД - Вирусология";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
 "sWg" = (
@@ -56544,6 +56826,11 @@
 	},
 /turf/open/floor/wood,
 /area/station/service/library)
+"toB" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/transmitter/mounted/directional/south,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "toF" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -57128,6 +57415,13 @@
 "tyY" = (
 /turf/closed/wall,
 /area/station/command/heads_quarters/captain/private)
+"tze" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/transmitter/mounted/directional/west,
+/turf/open/floor/iron,
+/area/station/hallway/primary/fore)
 "tzg" = (
 /obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/grass,
@@ -60499,6 +60793,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
+"uEN" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/transmitter/mounted/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "uEP" = (
 /obj/effect/turf_decal/bot_white,
 /obj/effect/turf_decal/arrows/red{
@@ -61834,6 +62135,11 @@
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 4
 	},
+/obj/structure/transmitter/security{
+	display_name = "СБ - Отбытие";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
 "vbF" = (
@@ -62730,6 +63036,11 @@
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/red/half/contrasted,
 /obj/item/storage/fancy/donut_box,
+/obj/structure/transmitter/security{
+	display_name = "СБ - Прибытие";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/station/security/checkpoint/customs)
 "vsG" = (
@@ -68184,6 +68495,11 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
+/obj/structure/transmitter/science{
+	display_name = "РНД - Робототехника";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "xip" = (
@@ -68392,6 +68708,11 @@
 	},
 /obj/item/pen,
 /obj/item/pen/red,
+/obj/structure/transmitter{
+	display_name = "Юрист";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
 "xlv" = (
@@ -69793,6 +70114,11 @@
 	},
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
 	dir = 1
+	},
+/obj/structure/transmitter/medbay{
+	display_name = "МЕД - Химия";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
@@ -81015,7 +81341,7 @@ aaa
 lMJ
 qHs
 sCZ
-lGL
+toB
 wdr
 lMJ
 lMJ
@@ -82051,7 +82377,7 @@ aaa
 aaa
 aaa
 wdr
-sCZ
+ncZ
 rRt
 ddw
 aaa
@@ -87442,7 +87768,7 @@ dHc
 htE
 dHc
 dHc
-xXi
+cKb
 tsb
 yfq
 jzp
@@ -89234,7 +89560,7 @@ vKn
 fNz
 vQs
 vQs
-hyW
+ksp
 rEO
 xbd
 pOa
@@ -93069,7 +93395,7 @@ aEH
 aHt
 loR
 hTM
-aHt
+suv
 aHt
 aHt
 jMg
@@ -94393,7 +94719,7 @@ tOh
 tOh
 tOh
 tOh
-nNY
+gvY
 pJU
 ttV
 dYa
@@ -95394,7 +95720,7 @@ ihq
 uCq
 hZZ
 htd
-uoe
+kwv
 oIa
 nnq
 vnE
@@ -96438,7 +96764,7 @@ bIq
 pJR
 mQq
 wHr
-urA
+fIG
 pFG
 gBD
 dzX
@@ -96499,7 +96825,7 @@ jay
 mRy
 wBW
 eje
-eje
+eyF
 qTJ
 eAe
 mGy
@@ -98466,7 +98792,7 @@ rCo
 rrT
 dNX
 lKZ
-dNX
+tze
 iVA
 mlK
 vEO
@@ -99029,7 +99355,7 @@ jON
 kFK
 kFK
 rtD
-kFK
+jid
 kAc
 lTB
 cbi
@@ -99044,7 +99370,7 @@ ure
 dXQ
 gmt
 qsx
-gmt
+fcU
 wtD
 uzk
 gmt
@@ -99057,7 +99383,7 @@ xDz
 gmt
 rDM
 gmt
-gmt
+fcU
 gmt
 dXQ
 kSD
@@ -102606,7 +102932,7 @@ bmV
 syo
 syo
 syo
-lSz
+noX
 fbP
 tvE
 tvE
@@ -102847,7 +103173,7 @@ hWF
 rxc
 wEG
 htd
-qBC
+dyA
 syo
 xUx
 cRU
@@ -103131,7 +103457,7 @@ aKb
 aKb
 aKb
 aKb
-wpx
+uEN
 htd
 mrJ
 lvs
@@ -106449,7 +106775,7 @@ qXB
 qXB
 qXB
 qXB
-vFB
+mOj
 fRS
 mjs
 bvJ
@@ -106921,7 +107247,7 @@ rjl
 htk
 ubs
 cfy
-jlJ
+hkO
 eZN
 ewf
 ewf
@@ -125223,7 +125549,7 @@ giA
 jGr
 rrZ
 aWH
-tUA
+lLg
 fnf
 gfU
 gfU

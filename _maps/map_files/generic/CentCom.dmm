@@ -14467,6 +14467,11 @@
 	pixel_y = 6
 	},
 /obj/effect/turf_decal/siding/wood/end,
+/obj/structure/transmitter/centcom{
+	display_name = "Центральное Командование";
+	pixel_x = 0;
+	pixel_y = 6
+	},
 /turf/open/floor/wood,
 /area/centcom/central_command_areas/admin)
 "fHK" = (
@@ -16812,6 +16817,10 @@
 /obj/structure/light_fake/spot/directional/east,
 /obj/effect/turf_decal/siding/wood/end,
 /turf/open/floor/wood,
+/area/centcom/central_command_areas/admin)
+"kOz" = (
+/obj/machinery/central_telephone_exchange,
+/turf/open/floor/carpet/black,
 /area/centcom/central_command_areas/admin)
 "kPc" = (
 /obj/structure/statue/sandstone/venus/pure{
@@ -71695,7 +71704,7 @@ sgp
 sgp
 sgp
 sgp
-sgp
+kOz
 loM
 vhS
 odx

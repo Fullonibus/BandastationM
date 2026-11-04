@@ -447,6 +447,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/construction)
+"da" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/transmitter{
+	display_name = "Test";
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/turf/open/floor/iron,
+/area/station/construction)
 "db" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/hallway/secondary/entry)
@@ -603,6 +614,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
+/obj/structure/transmitter/mounted/directional/east,
 /turf/open/floor/iron,
 /area/station/construction)
 "dL" = (
@@ -1043,6 +1055,13 @@
 /obj/machinery/camera/autoname/directional/north,
 /turf/open/floor/iron,
 /area/station/security/brig)
+"gp" = (
+/obj/structure/transmitter/engineering{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/turf/open/floor/plating,
+/area/station/construction)
 "gv" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
@@ -1217,6 +1236,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"lO" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/transmitter/mounted/directional/east,
+/turf/open/floor/iron,
+/area/station/construction)
 "mb" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -1231,6 +1257,13 @@
 "mC" = (
 /turf/open/floor/iron/dark,
 /area/station/medical/medbay)
+"mT" = (
+/obj/structure/transmitter{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "nb" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1489,6 +1522,10 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
+"uK" = (
+/obj/machinery/central_telephone_exchange,
+/turf/open/floor/plating,
+/area/station/construction)
 "uL" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1873,6 +1910,13 @@
 /obj/structure/rack,
 /turf/open/floor/iron/dark,
 /area/station/science/explab)
+"Dz" = (
+/obj/structure/transmitter/bridge{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/turf/open/floor/plating,
+/area/station/construction)
 "DC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/stripes/corner,
@@ -2624,6 +2668,13 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
+"Wd" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/transmitter/mounted/directional/west,
+/turf/open/floor/iron,
+/area/station/construction)
 "We" = (
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/iron,
@@ -5987,7 +6038,7 @@ eh
 eF
 HW
 eh
-eh
+mT
 eh
 eh
 eh
@@ -6168,14 +6219,14 @@ bE
 cN
 Sg
 dm
-dy
+Wd
 ii
 dX
-dy
+da
 dy
 gG
 ii
-dy
+Wd
 dm
 dM
 cN
@@ -6447,7 +6498,7 @@ dn
 dn
 dn
 dn
-dn
+uK
 dn
 dn
 dn
@@ -6723,7 +6774,7 @@ qf
 dn
 dn
 dn
-dn
+gp
 dn
 dn
 dn
@@ -6815,7 +6866,7 @@ dn
 dn
 dn
 dn
-dn
+Dz
 dn
 dn
 dn
@@ -7180,7 +7231,7 @@ bE
 cN
 dK
 do
-dz
+lO
 EG
 gy
 dz
