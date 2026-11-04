@@ -463,6 +463,8 @@
 	var/datum/action/cooldown/khaaroot_hivemind_comm/comm_action
 	/// Source control panel action.
 	var/datum/action/cooldown/khaaroot_hivemind_panel/panel_action
+	/// Exact-role-owned full mutation set, rebound concealed on body transfer.
+	var/datum/khaaroot_mutations/mutations
 
 /datum/antagonist/khaaroot_source/create_team(datum/team/kh_team)
 	team = kh_team
@@ -470,14 +472,17 @@
 /datum/antagonist/khaaroot_source/get_team()
 	return team
 
+/** Release the exact source role's body effects and owned mutation controller. */
 /datum/antagonist/khaaroot_source/Destroy()
 	if(owner?.current)
 		remove_innate_effects(owner.current)
 	QDEL_NULL(comm_action)
 	QDEL_NULL(panel_action)
+	QDEL_NULL(mutations)
 	team = null
 	return ..()
 
+/** Recreate source actions on the current body, retaining its full role-owned mutation set. */
 /datum/antagonist/khaaroot_source/apply_innate_effects(mob/living/mob_override)
 	. = ..()
 	var/mob/living/target = mob_override || owner.current
@@ -489,9 +494,12 @@
 		comm_action.Grant(target)
 		panel_action = new(hivemind, src)
 		panel_action.Grant(target)
+		mutations ||= new(src)
+		mutations.bind(target)
 
 /// Remove body-bound source effects on both role removal and mind transfer.
 /datum/antagonist/khaaroot_source/remove_innate_effects(mob/living/mob_override)
+	mutations?.unbind()
 	var/mob/living/target = mob_override || owner?.current
 	if(target)
 		REMOVE_TRAIT(target, TRAIT_UNCONVERTABLE, REF(src))
@@ -542,6 +550,8 @@
 	var/datum/action/cooldown/khaaroot_hivemind_comm/comm_action
 	/// Self-only task panel action.
 	var/datum/action/cooldown/khaaroot_hivemind_panel/panel_action
+	/// Membership-owned mutations retain the chosen specialization across body transfers.
+	var/datum/khaaroot_mutations/mutations
 
 /datum/antagonist/khaaroot_thrall/create_team(datum/team/kh_team)
 	team = kh_team
@@ -553,6 +563,7 @@
 	var/datum/khaaroot_hivemind/hivemind = team?.hivemind_ref?.resolve()
 	hivemind?.detach_thrall(owner, silent_removal)
 	remove_innate_effects(owner?.current)
+	QDEL_NULL(mutations)
 	team = null
 	return ..()
 
@@ -572,9 +583,12 @@
 		comm_action.Grant(target)
 		panel_action = new(hivemind, src)
 		panel_action.Grant(target)
+		mutations ||= new(src)
+		mutations.bind(target)
 
 /// Release old-body subscriptions and actions before applying the role to another body.
 /datum/antagonist/khaaroot_thrall/remove_innate_effects(mob/living/mob_override)
+	mutations?.unbind()
 	if(execution_timer)
 		deltimer(execution_timer)
 		execution_timer = null
@@ -599,6 +613,7 @@
 /// Losing a body closes its actions but keeps the mind, task, and transfer subscription.
 /datum/antagonist/khaaroot_thrall/proc/on_body_deleted(mob/living/source)
 	SIGNAL_HANDLER
+	mutations?.unbind()
 	if(execution_timer)
 		deltimer(execution_timer)
 		execution_timer = null
