@@ -341,6 +341,7 @@
 	mid_sounds = list('modular_bandastation/telephones/sound/dialtone.ogg' = 1)
 	mid_length = 5 SECONDS
 	volume = 10
+	extra_range = 1 - SOUND_RANGE
 
 /datum/looping_sound/telephone/busy
 	mid_sounds = list('modular_bandastation/telephones/sound/phone_busy.ogg' = 1)
