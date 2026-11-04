@@ -104,7 +104,7 @@ GLOBAL_DATUM(the_one_and_only_punpun, /mob/living)
 		ancestor_name = json["ancestor_name"]
 		ancestor_chain = json["ancestor_chain"]
 		relic_hat = json["relic_hat"]
-		relic_mask = json["relic_hat"]
+		relic_mask = json["relic_mask"]
 
 /mob/living/carbon/human/species/monkey/punpun/Write_Memory(dead, gibbed)
 	. = ..()

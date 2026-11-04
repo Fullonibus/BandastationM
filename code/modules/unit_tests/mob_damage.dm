@@ -615,3 +615,26 @@
 	dummy_two.adjust_tox_loss(75)
 	var/datum/status_effect/tox_effect_two = dummy_two.has_status_effect(/datum/status_effect/tox_vomit)
 	TEST_ASSERT_NOTNULL(tox_effect_two, "Dummy didn't get tox_vomit status effect at [dummy_two.get_tox_loss()] toxin damage (METHOD: ADJUST)!")
+
+/// Heart Eater's perfect-heart reward must change damage at the real damage boundary and survive species changes.
+/datum/unit_test/heart_eater_resistance/Run()
+	var/mob/living/carbon/human/consistent/eater = allocate(__IMPLIED_TYPE__)
+	var/datum/component/heart_eater/perk = eater.AddComponent(/datum/component/heart_eater)
+	// Isolate the reward from the random perfect-heart selection; toxin damage cannot generate random wounds.
+	perk.perfect_heart(eater)
+	eater.apply_damage(10, TOX)
+	TEST_ASSERT_EQUAL(eater.get_tox_loss(), 9, "A perfect heart did not reduce incoming damage by ten percent.")
+	eater.set_tox_loss(0)
+	eater.set_species(/datum/species/lizard)
+	eater.apply_damage(10, TOX)
+	TEST_ASSERT_EQUAL(eater.get_tox_loss(), 9, "Changing species lost the perk's damage reduction.")
+	// Nine rewards in total reach the eight-heart cap and exercise one additional reward.
+	for(var/heart in 1 to 8)
+		perk.perfect_heart(eater)
+	eater.set_tox_loss(0)
+	eater.apply_damage(10, TOX)
+	TEST_ASSERT_EQUAL(round(eater.get_tox_loss(), 0.1), 2, "Repeated perfect hearts did not stop at eighty percent resistance.")
+	eater.set_tox_loss(0)
+	qdel(perk)
+	eater.apply_damage(10, TOX)
+	TEST_ASSERT_EQUAL(eater.get_tox_loss(), 10, "Removing Heart Eater left its damage modifier registered.")

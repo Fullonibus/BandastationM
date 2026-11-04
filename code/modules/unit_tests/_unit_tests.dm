@@ -478,6 +478,7 @@
 // AI EDIT END
 
 #include "../../../modular_bandastation/weapon/code/ranged/weapon_choice_tests.dm" // BANDASTATION ADDITION - HoS and Blueshield sidearms
+#include "../../../modular_bandastation/weapon/code/ranged/weapon_choice_ui_tests.dm"
 
 #include "../../../modular_bandastation/underclothing/code/tests.dm" // BANDASTATION ADDITION - Removable underclothing
 
