@@ -99,6 +99,60 @@
 	TEST_ASSERT_NULL(receiving_phone.current_call, "Deleting a held handset must disconnect its remote peer.")
 	TEST_ASSERT_EQUAL(calling_phone.call_timer, TIMER_ID_NULL, "Deleting the handset must cancel the ringing timeout.")
 
+/// Hanging up cancels audio already playing as well as callbacks waiting to play the next tone.
+/datum/unit_test/telephone/audio_cleanup/Run()
+	TEST_ASSERT(calling_user.put_in_hands(calling_phone.handset), "The caller must hold the handset.")
+	calling_phone.set_call_sound(/datum/looping_sound/telephone/dialtone)
+	var/datum/looping_sound/telephone/dialtone = calling_phone.call_sound
+	var/datum/sound_token/dialtone_token = dialtone.sound_token_instance
+	TEST_ASSERT_NOTNULL(dialtone_token, "The dialtone must own a stoppable sound token.")
+	var/dialtone_channel = dialtone_token.sound_channel
+	TEST_ASSERT(SSsounds.using_channels[num2text(dialtone_channel)], "The playing tone must reserve its own channel.")
+	calling_phone.recall_phone()
+	TEST_ASSERT_NULL(calling_phone.call_sound, "Docking must release the phone's sound loop.")
+	TEST_ASSERT(QDELETED(dialtone) && QDELETED(dialtone_token), "Docking must stop the sound already playing, not just cancel its next repetition.")
+	TEST_ASSERT_NULL(SSsounds.using_channels[num2text(dialtone_channel)], "Docking must release the dialtone channel immediately.")
+	TEST_ASSERT(!dialtone.is_active(), "A docked phone must not retain a callback that could restart its dialtone.")
+
+	TEST_ASSERT(calling_user.put_in_hands(calling_phone.handset), "The caller must lift its handset again.")
+	TEST_ASSERT(calling_phone.start_call(calling_user, receiving_phone.phone_id), "The call must begin before testing both ringing sounds.")
+	var/datum/looping_sound/telephone/outgoing = calling_phone.call_sound
+	var/datum/looping_sound/telephone/incoming = receiving_phone.call_sound
+	var/datum/sound_token/outgoing_token = outgoing.sound_token_instance
+	var/datum/sound_token/incoming_token = incoming.sound_token_instance
+	TEST_ASSERT_NOTNULL(outgoing_token, "The initial dialing sound must be stoppable before ringback begins.")
+	TEST_ASSERT_NOTNULL(incoming_token, "The receiving bell must own a stoppable sound token.")
+	TEST_ASSERT(outgoing.timer_id && !outgoing.loop_started, "The outgoing sound must still be waiting for its initial dialing delay.")
+	var/outgoing_channel = outgoing_token.sound_channel
+	var/incoming_channel = incoming_token.sound_channel
+	calling_phone.end_call()
+	TEST_ASSERT(QDELETED(outgoing_token) && QDELETED(incoming_token), "Ending a call must stop both sounds immediately.")
+	TEST_ASSERT_NULL(calling_phone.call_sound, "Ending a call must release the outgoing loop.")
+	TEST_ASSERT_NULL(receiving_phone.call_sound, "Ending a call must release the incoming loop.")
+	TEST_ASSERT(!outgoing.is_active() && !incoming.is_active(), "Ending a call must cancel both the delayed ringback and the repeated bell.")
+	TEST_ASSERT_NULL(SSsounds.using_channels[num2text(outgoing_channel)], "The outgoing channel must be freed at hangup.")
+	TEST_ASSERT_NULL(SSsounds.using_channels[num2text(incoming_channel)], "The incoming channel must be freed at hangup.")
+
+	calling_phone.set_call_sound(/datum/looping_sound/telephone/disconnected)
+	var/datum/looping_sound/telephone/disconnected = calling_phone.call_sound
+	var/datum/sound_token/disconnected_token = disconnected.sound_token_instance
+	TEST_ASSERT_NOTNULL(disconnected_token, "The three-beep sequence must own a stoppable sound token.")
+	var/disconnected_channel = disconnected_token.sound_channel
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(!disconnected.is_active() || world.time >= deadline)
+	TEST_ASSERT(!disconnected.is_active(), "The three-beep sequence must stop instead of repeating.")
+	TEST_ASSERT(QDELETED(disconnected_token), "Finishing the sequence must stop its audio token.")
+	TEST_ASSERT_NULL(SSsounds.using_channels[num2text(disconnected_channel)], "Finishing the sequence must release its channel.")
+
+	calling_phone.set_call_sound(/datum/looping_sound/telephone/disconnected)
+	disconnected = calling_phone.call_sound
+	disconnected_token = disconnected.sound_token_instance
+	TEST_ASSERT_NOTNULL(disconnected_token, "A new three-beep sequence must start normally.")
+	disconnected_channel = disconnected_token.sound_channel
+	calling_phone.recall_phone()
+	TEST_ASSERT(QDELETED(disconnected_token) && !disconnected.is_active(), "Docking must interrupt the three-beep sequence and cancel its callback immediately.")
+	TEST_ASSERT_NULL(SSsounds.using_channels[num2text(disconnected_channel)], "Interrupting the sequence must release its channel immediately.")
+
 /// Power changes and deletion use the same disconnection path for both participants.
 /datum/unit_test/telephone/exchange_cleanup/Run()
 	TEST_ASSERT(calling_user.put_in_hands(calling_phone.handset), "The caller must hold the handset.")

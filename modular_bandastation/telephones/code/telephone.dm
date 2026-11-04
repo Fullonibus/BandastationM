@@ -85,13 +85,13 @@
 	if(handset.loc == src)
 		if(!user.put_in_active_hand(handset))
 			return
-		playsound(src, 'modular_bandastation/telephones/sound/rtb_handset_1.ogg', 25, TRUE)
+		playsound(src, 'modular_bandastation/telephones/sound/remote_pickup.ogg', 40, FALSE)
 		if(status == PHONE_INCOMING)
 			answer_call()
 		else if(find_exchange())
 			set_call_sound(/datum/looping_sound/telephone/dialtone)
 		else
-			playsound(handset, 'modular_bandastation/telephones/sound/callstation_unavailable.ogg', 20, FALSE)
+			set_call_sound(/datum/looping_sound/telephone/unavailable)
 		update_appearance()
 	if(can_use_handset(user))
 		ui_interact(user)
@@ -127,7 +127,13 @@
 		if("call_phone")
 			start_call(usr, params["phone_id"])
 		if("hangup")
+			if(!current_call)
+				return FALSE
+			var/obj/structure/transmitter/other = current_call
 			end_call()
+			set_call_sound(/datum/looping_sound/telephone/disconnected)
+			if(other.handset?.holder)
+				other.set_call_sound(/datum/looping_sound/telephone/disconnected)
 		if("toggle_dnd")
 			do_not_disturb = !do_not_disturb
 			update_appearance()
@@ -180,9 +186,8 @@
 	if(!connection || !can_dial(target))
 		return FALSE
 	if(target.current_call || target.status != PHONE_IDLE || target.handset.loc != target)
-		set_call_sound(null)
 		to_chat(user, span_warning("Линия занята."))
-		playsound(handset, 'modular_bandastation/telephones/sound/phone_busy.ogg', 20, FALSE)
+		set_call_sound(/datum/looping_sound/telephone/busy)
 		return FALSE
 	current_call = target
 	target.current_call = src
@@ -213,7 +218,6 @@
 	calling_phone.is_paid = FALSE
 	set_call_sound(null)
 	calling_phone.set_call_sound(null)
-	playsound(handset, 'modular_bandastation/telephones/sound/remote_pickup.ogg', 20, FALSE)
 	update_appearance()
 	calling_phone.update_appearance()
 	return TRUE
@@ -230,14 +234,12 @@
 	set_call_sound(null)
 	if(!QDELETED(other) && other.current_call == src)
 		other.end_call()
-	if(other && handset?.holder)
-		playsound(handset, 'modular_bandastation/telephones/sound/remote_hangup.ogg', 20, FALSE)
 	update_appearance()
 	SStgui.update_uis(src)
 
 /// Returns the owned handset, ending any active or ringing call.
 /obj/structure/transmitter/proc/recall_phone()
-	if(recalling || QDELETED(handset))
+	if(recalling || QDELETED(handset) || handset.loc == src)
 		return
 	recalling = TRUE
 	end_call()
@@ -246,6 +248,7 @@
 		user.temporarilyRemoveItemFromInventory(handset, force = TRUE)
 	handset.clear_holder()
 	handset.forceMove(src)
+	playsound(src, 'modular_bandastation/telephones/sound/remote_hangup.ogg', 40, FALSE)
 	recalling = FALSE
 	SStgui.close_uis(src)
 	update_appearance()
@@ -257,7 +260,6 @@
 /obj/structure/transmitter/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(tool == handset)
 		recall_phone()
-		playsound(src, 'modular_bandastation/telephones/sound/rtb_handset_1.ogg', 25, TRUE)
 		return ITEM_INTERACT_SUCCESS
 	if(is_free)
 		return ..()
@@ -320,6 +322,8 @@
 /// Telephone tones follow the handset; the incoming bell follows the base while docked.
 /datum/looping_sound/telephone
 	volume = 20
+	use_sound_tokens = TRUE
+	never_native_repeat = TRUE
 
 /datum/looping_sound/telephone/outgoing
 	start_sound = 'modular_bandastation/telephones/sound/dial.ogg'
@@ -336,3 +340,22 @@
 	mid_sounds = list('modular_bandastation/telephones/sound/dialtone.ogg' = 1)
 	mid_length = 5 SECONDS
 	volume = 10
+
+/datum/looping_sound/telephone/busy
+	mid_sounds = list('modular_bandastation/telephones/sound/phone_busy.ogg' = 1)
+	mid_length = 5 SECONDS
+
+/datum/looping_sound/telephone/unavailable
+	parent_type = /datum/looping_sound/telephone/busy
+	start_sound = 'modular_bandastation/telephones/sound/callstation_unavailable.ogg'
+	start_length = 5.7 SECONDS
+
+/datum/looping_sound/telephone/disconnected
+	mid_sounds = list('modular_bandastation/telephones/sound/disconnected.ogg' = 1)
+	mid_length = 3 SECONDS
+
+/// Plays the three-tone sequence once, then stops its token instead of repeating.
+/datum/looping_sound/telephone/disconnected/start_sound_loop()
+	loop_started = TRUE
+	play(get_sound())
+	timer_id = addtimer(CALLBACK(src, PROC_REF(stop)), mid_length, TIMER_CLIENT_TIME | TIMER_STOPPABLE | TIMER_DELETE_ME, SSsound_loops)
