@@ -350,6 +350,13 @@
 		archive()
 		// We share 100% of our mix in this step. Let's jive
 		var/difference = our_air.share(enemy_mix, 1, 1)
+		// Already processed space skips the normal group setup, but a significant deferred share still needs one.
+		if(!our_excited_group && our_air.last_share > MINIMUM_MOLES_DELTA_TO_MOVE)
+			var/datum/excited_group/existing_group = enemy_tile.excited_group || new
+			existing_group.add_turf(src)
+			if(!enemy_tile.excited_group)
+				existing_group.add_turf(enemy_tile)
+			our_excited_group = excited_group
 		LAST_SHARE_CHECK
 		if(!difference)
 			continue
