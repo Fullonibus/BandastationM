@@ -22,6 +22,7 @@
 		"tgui:analyze": "rspack --analyze",
 		"tgui:build": "rspack build",
 		"tgui:dev": "bun --smol packages/tgui-dev-server/index.ts",
+		"tgui:preview": "bun --smol packages/tgui-dev-server/preview/index.ts",
 		"tgui:test": "bun test",
 		"tgui:tsc": "tsc"
 	},

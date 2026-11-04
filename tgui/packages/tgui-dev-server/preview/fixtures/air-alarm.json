@@ -1,0 +1,74 @@
+{
+  "config": {
+    "interface": { "name": "AirAlarm" },
+    "title": "Air Alarm",
+    "window": { "size": [475, 650] }
+  },
+  "data": {
+    "locked": 0,
+    "siliconUser": 0,
+    "emagged": 0,
+    "dangerLevel": 0,
+    "atmosAlarm": 0,
+    "fireAlarm": 0,
+    "faultStatus": 0,
+    "faultLocation": "",
+    "sensor": 0,
+    "allowLinkChange": 1,
+    "envData": [
+      { "name": "Pressure", "value": "101.33 kPa", "danger": 0 },
+      { "name": "Temperature", "value": "293.15 Kelvin / 20 Celcius", "danger": 0 },
+      { "name": "Oxygen", "value": "21.82 moles / 21 % / 21.28 kPa", "danger": 0 },
+      { "name": "Nitrogen", "value": "82.11 moles / 79 % / 80.05 kPa", "danger": 0 }
+    ],
+    "tlvSettings": [
+      {
+        "id": "pressure",
+        "name": "Pressure",
+        "unit": "kPa",
+        "hazard_min": 20,
+        "warning_min": 50,
+        "warning_max": 325,
+        "hazard_max": 550
+      },
+      {
+        "id": "/datum/gas/oxygen",
+        "name": "Oxygen",
+        "unit": "kPa",
+        "hazard_min": 16,
+        "warning_min": 19,
+        "warning_max": -1,
+        "hazard_max": -1
+      }
+    ],
+    "vents": [],
+    "scrubbers": [],
+    "selectedModePath": "/datum/air_alarm_mode/filtering",
+    "filteringPath": "/datum/air_alarm_mode/filtering",
+    "panicSiphonPath": "/datum/air_alarm_mode/panic_siphon",
+    "modes": [
+      {
+        "name": "Filtering",
+        "desc": "Scrubs out contaminants",
+        "danger": 0,
+        "path": "/datum/air_alarm_mode/filtering"
+      },
+      {
+        "name": "Panic Siphon",
+        "desc": "Siphons air out of the room quickly",
+        "danger": 1,
+        "path": "/datum/air_alarm_mode/panic_siphon"
+      }
+    ]
+  },
+  "static_data": {
+    "thresholdTypeMap": {
+      "warning_min": 1,
+      "hazard_min": 2,
+      "warning_max": 4,
+      "hazard_max": 8,
+      "all": 15
+    }
+  },
+  "shared": {}
+}
