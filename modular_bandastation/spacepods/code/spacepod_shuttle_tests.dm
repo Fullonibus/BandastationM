@@ -149,17 +149,34 @@
 	TEST_ASSERT_EQUAL(plain_cargo.loc, get_step(item_origin, NORTH), "The pod-specific impact changed native displacement of ordinary loose cargo.")
 
 /// Landing on an already destroyed cabin must not repeat its immediate core explosion.
+/datum/unit_test/spacepod_shuttle/pending_core
+	/// Retain the cabin's occupied turfs after its deletion to identify its blasts.
+	var/list/blast_footprint = list()
+	/// Real blasts centered within this cabin, independent of world activity.
+	var/subject_explosions = 0
+
+/datum/unit_test/spacepod_shuttle/pending_core/Destroy()
+	UnregisterSignal(SSdcs, COMSIG_GLOB_EXPLOSION)
+	blast_footprint.Cut()
+	return ..()
+
+/// A world-wide explosion counter can change during the observation window.
+/datum/unit_test/spacepod_shuttle/pending_core/proc/on_explosion(datum/source, turf/epicenter)
+	SIGNAL_HANDLER
+	if(epicenter in blast_footprint)
+		subject_explosions++
+
 /datum/unit_test/spacepod_shuttle/pending_core/Run()
 	TEST_ASSERT_NOTNULL(vacuum_origin, "Could not reserve the destroyed-core landing fixture.")
 	var/obj/docking_port/mobile/shuttle = make_port()
 	var/obj/vehicle/sealed/spacepod/pod = allocate(__IMPLIED_TYPE__, vacuum_origin)
-	var/list/turf/footprint = pod.locs.Copy()
-	var/explosions_before = SSexplosions.explosion_index
+	blast_footprint = pod.locs.Copy()
+	RegisterSignal(SSdcs, COMSIG_GLOB_EXPLOSION, PROC_REF(on_explosion))
 	pod.take_damage(pod.max_integrity + 1, BRUTE, MELEE, sound_effect = FALSE)
 	var/destroyed_immediately = QDELETED(pod)
-	var/immediate_explosions = SSexplosions.explosion_index
+	var/immediate_explosions = subject_explosions
 	var/turf/source = locate(vacuum_origin.x + 4, vacuum_origin.y, vacuum_origin.z)
-	for(var/turf/tile as anything in footprint)
+	for(var/turf/tile as anything in blast_footprint)
 		tile.toShuttleMove(source, MOVE_TURF, shuttle)
 	var/observe_until = world.time + 4 SECONDS
 	var/deadline = world.time + 8 SECONDS
@@ -167,8 +184,8 @@
 		stoplag(1)
 	TEST_ASSERT(!SSexplosions.is_exploding(), "The destroyed-core blast did not finish processing before cleanup.")
 	TEST_ASSERT(destroyed_immediately, "Lethal damage left the pod alive until the subsequent shuttle landing.")
-	TEST_ASSERT_EQUAL(immediate_explosions, explosions_before + 1, "Lethal damage did not immediately trigger the core explosion before landing.")
-	TEST_ASSERT_EQUAL(SSexplosions.explosion_index, explosions_before + 1, "Landing over the destroyed cabin or a delayed callback produced a second blast.")
+	TEST_ASSERT_EQUAL(immediate_explosions, 1, "Lethal damage did not immediately trigger the core explosion before landing.")
+	TEST_ASSERT_EQUAL(subject_explosions, 1, "Landing over the destroyed cabin or a delayed callback produced a second blast.")
 	while(length(get_wreckage()) < 4 && world.time < deadline)
 		stoplag(1)
 	var/list/debris = get_wreckage()
