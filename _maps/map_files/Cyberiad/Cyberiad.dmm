@@ -54942,8 +54942,7 @@
 /turf/open/floor/iron,
 /area/station/maintenance/fore)
 "noe" = (
-/obj/structure/rack,
-/obj/item/storage/box/lights/mixed,
+/obj/machinery/mecha_part_fabricator/spacepod,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -63318,7 +63317,8 @@
 /turf/open/floor/plating,
 /area/station/maintenance/ghetto/port)
 "poP" = (
-/obj/machinery/mecha_part_fabricator/spacepod,
+/obj/structure/rack,
+/obj/item/storage/box/lights/mixed,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
