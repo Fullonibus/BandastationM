@@ -207,7 +207,7 @@
 /// Connects only the matching reserved pair; payment is consumed when answered.
 /obj/structure/transmitter/proc/answer_call()
 	var/obj/structure/transmitter/calling_phone = current_call
-	if(status != PHONE_INCOMING || !calling_phone || calling_phone.current_call != src || calling_phone.status != PHONE_OUTGOING || !exchange?.is_operational || !can_use_handset(handset?.loc) || !calling_phone.can_use_handset(calling_phone.handset?.loc))
+	if(status != PHONE_INCOMING || !calling_phone || calling_phone.current_call != src || calling_phone.status != PHONE_OUTGOING || !exchange?.is_operational || !can_use_handset(handset?.loc) || QDELETED(calling_phone.handset) || calling_phone.handset.loc == calling_phone)
 		end_call()
 		return FALSE
 	if(calling_phone.call_timer != TIMER_ID_NULL)

@@ -14,7 +14,7 @@
 	var/mob/living/holder
 	/// Lowering the handset mutes both transmission and reception without hanging up.
 	var/raised = FALSE
-	/// The cord is drawn only while the handset is held.
+	/// The cord follows the holder or the handset lying on the floor.
 	var/datum/beam/telephone_beam
 
 /obj/item/telephone/Initialize(mapload, obj/structure/transmitter/base)
@@ -46,20 +46,20 @@
 	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, PROC_REF(on_holder_moved))
 	RegisterSignal(holder, COMSIG_QDELETING, PROC_REF(on_holder_deleted))
 	check_tether()
-	if(holder && attached_to)
-		telephone_beam = holder.Beam(attached_to, icon_state = "zipline_hook", time = INFINITY, maxdistance = PHONE_MAX_RANGE)
+	update_beam()
 
 /obj/item/telephone/dropped(mob/user, silent = FALSE)
 	. = ..()
 	clear_holder()
 	if(!QDELING(src))
-		attached_to?.recall_phone()
+		update_beam()
 
 /obj/item/telephone/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
-	if(attached_to && loc != attached_to && (!ismob(loc) || (holder && loc != holder)))
+	if(holder && loc != holder)
 		clear_holder()
-		attached_to?.recall_phone()
+	check_tether()
+	update_beam()
 
 /obj/item/telephone/attack_self(mob/user)
 	. = ..()
@@ -86,13 +86,19 @@
 	lose_hearing_sensitivity(ROUNDSTART_TRAIT)
 	QDEL_NULL(telephone_beam)
 
+/** Draws the cord while off-hook, including between holders during a handoff. */
+/obj/item/telephone/proc/update_beam()
+	QDEL_NULL(telephone_beam)
+	if(attached_to && loc != attached_to)
+		telephone_beam = attached_to.Beam(ismob(loc) ? loc : src, icon_state = "zipline_hook", time = INFINITY, maxdistance = PHONE_MAX_RANGE + 1)
+
 /** Recalls the handset when either end moves beyond the cord or into another z-level/container. */
 /obj/item/telephone/proc/check_tether()
-	if(!attached_to || !holder)
+	if(!attached_to || loc == attached_to)
 		return
 	var/turf/base_turf = get_turf(attached_to)
-	var/turf/holder_turf = get_turf(holder)
-	if(!base_turf || !holder_turf || !isturf(holder.loc) || base_turf.z != holder_turf.z || get_dist(base_turf, holder_turf) > PHONE_MAX_RANGE)
+	var/turf/handset_turf = get_turf(src)
+	if(!base_turf || !handset_turf || (!isturf(loc) && (!ismob(loc) || !isturf(loc.loc))) || base_turf.z != handset_turf.z || get_dist(base_turf, handset_turf) > PHONE_MAX_RANGE)
 		attached_to.recall_phone()
 
 /obj/item/telephone/proc/on_holder_moved()
