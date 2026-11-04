@@ -25,7 +25,10 @@ type Specimen = {
   stasis: BooleanLike;
 };
 
-type Candidate = Pick<Specimen, 'ref' | 'name' | 'generation' | 'stage' | 'alive'>;
+type Candidate = Pick<
+  Specimen,
+  'ref' | 'name' | 'generation' | 'stage' | 'alive'
+>;
 
 type TreatmentStatus =
   | 'empty'
@@ -49,14 +52,26 @@ type Data = {
   fiber_target: number;
 };
 
-const treatmentStates: Record<TreatmentStatus, { label: string; color: string }> = {
+const treatmentStates: Record<
+  TreatmentStatus,
+  { label: string; color: string }
+> = {
   empty: { label: 'Нет образца для лечения', color: 'label' },
-  dead: { label: 'Образец погиб — восстановление невозможно', color: 'bad' },
-  offline: { label: 'Капсула не работает — лечение приостановлено', color: 'bad' },
-  inactive: { label: 'Стазис не действует — лечение приостановлено', color: 'bad' },
-  healthy: { label: 'Образец здоров — лекарство не расходуется', color: 'good' },
-  no_medicine: { label: 'Нет либитала — лечение приостановлено', color: 'average' },
-  treating: { label: 'Идёт восстановление образца', color: 'good' },
+  dead: { label: 'Образец погиб. Восстановление невозможно.', color: 'bad' },
+  offline: {
+    label: 'Капсула не работает. Лечение приостановлено.',
+    color: 'bad',
+  },
+  inactive: {
+    label: 'Стазис не действует. Лечение приостановлено.',
+    color: 'bad',
+  },
+  healthy: { label: 'Образец здоров. Лечение не требуется.', color: 'good' },
+  no_medicine: {
+    label: 'Лечение приостановлено: добавьте либитал.',
+    color: 'average',
+  },
+  treating: { label: 'Идёт восстановление образца.', color: 'good' },
 };
 
 export const PhoenixCapsule = () => {
@@ -65,6 +80,8 @@ export const PhoenixCapsule = () => {
   const treatment = treatmentStates[data.treatment_status];
   const otherReagents = Math.max(0, data.total_volume - data.medicine_amount);
   const healthFraction = specimen ? specimen.health / specimen.max_health : 0;
+  const requiresReleaseConfirmation =
+    !!specimen?.alive && specimen.health < specimen.max_health;
   const healthColor =
     !specimen?.alive || healthFraction <= 0.3
       ? 'bad'
@@ -76,62 +93,96 @@ export const PhoenixCapsule = () => {
     <Window width={520} height={650}>
       <Window.Content scrollable>
         <Section
-          title="Архивный образец"
+          title="Образец"
           buttons={
-            specimen && (
+            specimen &&
+            (requiresReleaseConfirmation ? (
+              <Button.Confirm
+                key={specimen.ref}
+                icon="sign-out-alt"
+                confirmIcon="sign-out-alt"
+                confirmColor="average"
+                confirmContent="Прервать лечение и пробудить?"
+                disabled={!operational}
+                onClick={() => act('release', { specimen: specimen.ref })}
+              >
+                Пробудить
+              </Button.Confirm>
+            ) : (
               <Button
                 icon="sign-out-alt"
                 disabled={!operational}
-                tooltip="Перед пробуждением подготовьте безопасный вольер"
+                tooltip={
+                  specimen.alive
+                    ? 'Перед пробуждением подготовьте безопасный вольер'
+                    : undefined
+                }
                 onClick={() => act('release', { specimen: specimen.ref })}
               >
                 {specimen.alive ? 'Пробудить' : 'Извлечь'}
               </Button>
-            )
+            ))
           }
         >
           {specimen ? (
             <>
+              <Box bold fontSize="1.3em" mb={0.5}>
+                {specimen.name}
+              </Box>
+              <Box color="label" mb={1.5}>
+                {specimen.stage} ·{' '}
+                {specimen.generation === 0
+                  ? 'Архивный основатель'
+                  : `Поколение ${specimen.generation}`}
+              </Box>
+              <ProgressBar
+                value={specimen.health}
+                minValue={0}
+                maxValue={specimen.max_health}
+                color={healthColor}
+                height={2.5}
+                fontSize="1.25em"
+                mb={1}
+              >
+                Здоровье: {Math.round(Math.max(0, 100 * healthFraction))}%
+              </ProgressBar>
+              <ProgressBar
+                value={specimen.nutrition}
+                minValue={0}
+                maxValue={100}
+                color={specimen.nutrition < 25 ? 'average' : 'teal'}
+                height={1.5}
+                mb={1}
+              >
+                Питание: {Math.round(specimen.nutrition)}%
+                {specimen.nutrition < 25 && ' — низкий запас'}
+              </ProgressBar>
               <LabeledList>
-                <LabeledList.Item label="Особь">{specimen.name}</LabeledList.Item>
-                <LabeledList.Item label="Поколение">
-                  {specimen.generation === 0
-                    ? '0 — архивный основатель'
-                    : specimen.generation}
-                </LabeledList.Item>
-                <LabeledList.Item label="Стадия">{specimen.stage}</LabeledList.Item>
-                <LabeledList.Item label="Стазис" color={specimen.stasis ? 'good' : 'bad'}>
-                  {specimen.stasis ? 'Активен' : 'Не действует'}
-                </LabeledList.Item>
-                <LabeledList.Item label="Здоровье">
-                  <ProgressBar
-                    value={specimen.health}
-                    minValue={0}
-                    maxValue={specimen.max_health}
-                    color={healthColor}
-                  >
-                    {Math.round(Math.max(0, 100 * healthFraction))}%
-                  </ProgressBar>
-                </LabeledList.Item>
-                <LabeledList.Item label="Запас питания">
-                  <ProgressBar
-                    value={specimen.nutrition}
-                    minValue={0}
-                    maxValue={100}
-                    color={specimen.nutrition < 25 ? 'average' : 'good'}
-                  >
-                    {Math.round(specimen.nutrition)}%
-                  </ProgressBar>
+                <LabeledList.Item
+                  label="Стазис"
+                  color={specimen.stasis ? 'good' : 'bad'}
+                >
+                  {specimen.stasis
+                    ? 'Активен — развитие приостановлено'
+                    : 'Не действует'}
                 </LabeledList.Item>
               </LabeledList>
-              <Box color="label" mt={1}>
-                Стазис останавливает рост, размножение и производство волокна.
-                Лечение продолжает работать.
-              </Box>
+              <NoticeBox color={treatment.color} mt={1} mb={0}>
+                {treatment.label}
+              </NoticeBox>
+              {requiresReleaseConfirmation && (
+                <Box color="average" mt={1}>
+                  Пробуждение прекратит лечение. Подготовьте безопасный вольер.
+                </Box>
+              )}
             </>
           ) : (
             <>
-              <NoticeBox info>Капсула пуста</NoticeBox>
+              <NoticeBox color={operational ? 'label' : 'bad'}>
+                {operational
+                  ? 'Капсула пуста'
+                  : 'Капсула не работает — сохранение недоступно'}
+              </NoticeBox>
               <Box color="label" mb={1}>
                 Подведите ткача к капсуле и выберите особь для сохранения.
               </Box>
@@ -140,9 +191,9 @@ export const PhoenixCapsule = () => {
                   {candidates.map((candidate) => (
                     <Table.Row key={candidate.ref}>
                       <Table.Cell py={0.5}>
-                        <Box>{candidate.name}</Box>
+                        <Box bold>{candidate.name}</Box>
                         <Box color="label" fontSize="0.9em">
-                          Поколение {candidate.generation}
+                          {candidate.stage} · Поколение {candidate.generation}
                           {!candidate.alive && ' · погибшая особь'}
                         </Box>
                       </Table.Cell>
@@ -150,7 +201,9 @@ export const PhoenixCapsule = () => {
                         <Button
                           icon="snowflake"
                           disabled={!operational}
-                          onClick={() => act('preserve', { specimen: candidate.ref })}
+                          onClick={() =>
+                            act('preserve', { specimen: candidate.ref })
+                          }
                         >
                           Сохранить
                         </Button>
@@ -164,8 +217,7 @@ export const PhoenixCapsule = () => {
             </>
           )}
         </Section>
-        <Section title="Лечение и резервуар">
-          <NoticeBox color={treatment.color}>{treatment.label}</NoticeBox>
+        <Section title="Резервуар">
           <LabeledList>
             <LabeledList.Item label="Либитал">
               <Box bold color={data.medicine_amount > 0 ? 'good' : 'average'}>
@@ -185,14 +237,10 @@ export const PhoenixCapsule = () => {
           </LabeledList>
           {otherReagents > 0 && (
             <Box color="average" mt={1}>
-              Посторонний раствор: {toFixed(otherReagents, 1)} ед. Занимает место,
-              но не лечит образец.
+              Прочие растворы: {toFixed(otherReagents, 1)} ед. Занимают место,
+              но не лечат образец.
             </Box>
           )}
-          <Box color="label" mt={1}>
-            Залейте либитал из мензурки. Лечение начинается автоматически и
-            восстанавливает тяжёлые повреждения примерно за три минуты.
-          </Box>
         </Section>
         {!!data.goal_active && (
           <Section title="Биоволокно проекта">
@@ -202,11 +250,8 @@ export const PhoenixCapsule = () => {
               maxValue={data.fiber_target}
               color="yellow"
             >
-              Принято {data.fiber_delivered} / {data.fiber_target}
+              Принято {data.fiber_delivered} / {data.fiber_target} ед.
             </ProgressBar>
-            <Box color="label" mt={1}>
-              Сдайте собранное биоволокно в капсулу.
-            </Box>
           </Section>
         )}
       </Window.Content>
