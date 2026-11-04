@@ -98,9 +98,8 @@
 		if("weeaboo","kawaii")
 			new_bible = pick("Fanfiction Compendium","Japanese for Dummies","The Manganomicon","Establishing Your O.T.P")
 			holy_bible.deity_name = "Anime"
-		else
-			if(new_bible == DEFAULT_BIBLE)
-				new_bible = DEFAULT_BIBLE_REPLACE(new_bible)
+	if(new_bible == DEFAULT_BIBLE)
+		new_bible = DEFAULT_BIBLE_REPLACE(holy_bible.deity_name)
 
 	holy_bible.name = new_bible
 

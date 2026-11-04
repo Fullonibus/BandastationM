@@ -101,6 +101,7 @@
 #include "translations/_translations.dme"
 #include "underclothing/_underclothing.dme"
 #include "tts/_tts.dme"
+#include "telephones/_telephones.dme"
 #include "turfs/_turfs.dme"
 #include "uplink_items/_uplink_items.dme"
 #include "vampire/_vampire.dme"

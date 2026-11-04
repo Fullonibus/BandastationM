@@ -1,0 +1,23 @@
+{
+  "config": {
+    "interface": { "name": "Radio" },
+    "title": "Handheld Radio",
+    "window": { "size": [330, 210] }
+  },
+  "data": {
+    "freqlock": 0,
+    "frequency": 1459,
+    "minFrequency": 1441,
+    "maxFrequency": 1489,
+    "listening": 1,
+    "broadcasting": 0,
+    "command": 0,
+    "useCommand": 0,
+    "subspace": 0,
+    "subspaceSwitchable": 1,
+    "channels": {},
+    "headset": 0
+  },
+  "static_data": {},
+  "shared": {}
+}

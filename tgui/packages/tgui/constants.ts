@@ -22,7 +22,9 @@ export const UI_CLOSE = -1;
 export const COLORS = {
   // Department colors
   department: {
-    captain: '#c06616',
+    captain: '#2654b8',
+    representation: '#7292c5',
+    justice: '#d81f6c',
     security: '#e74c3c',
     medbay: '#3498db',
     science: '#9b59b6',

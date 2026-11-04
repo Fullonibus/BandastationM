@@ -7,3 +7,7 @@ Imported from [BandaStation #2461](https://github.com/ss220club/BandaStation/pul
 - **Liar** sprites (`lz_dualsaber0`, `lz_dualsaberliar1` in the same DMI files): **author not yet identified**. Attribution must be completed before this draft is merged.
 
 The known credits above were confirmed by Fullonibus on 2026-10-30. The source PR did not record the Liar sprite author.
+
+# Legacy display revolvers
+
+The `anaconda` and `rsh12` sprites in `icons/ranged/ballistic.dmi`, and the added revolver states in `icons/ranged/inhands/ballistic/{lefthand,righthand}.dmi`, were imported from [BandaStation #2756](https://github.com/ss220club/BandaStation/pull/2756), commit `f1089abd748be433a1ebc8cb826673c86f4a29e9` by Ingakem. The source PR is the asset provenance; these resources follow BandaStation's CC BY-SA 3.0 asset license.

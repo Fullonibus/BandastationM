@@ -6,14 +6,17 @@ ADMIN_VERB(get_current_logs, R_ADMIN, "Get Current Logs", "View or retrieve logf
 
 /client/proc/browseserverlogs(current=FALSE)
 	var/path = browse_files(current ? BROWSE_ROOT_CURRENT_LOGS : BROWSE_ROOT_ALL_LOGS)
-	if(!path)
+	if(!path || !check_rights_for(src, R_ADMIN))
 		return
 
 	if(file_spam_check())
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	switch(tgui_alert(usr,"View (in game), Open (in your system's text editor), or Download?", path, list("View", "Open", "Download")))
+	var/action = tgui_alert(src,"View (in game), Open (in your system's text editor), or Download?", path, list("View", "Open", "Download"))
+	if(!check_rights_for(src, R_ADMIN))
+		return
+	switch(action)
 		if ("View")
 			src << browse(HTML_SKELETON("<pre style='word-wrap: break-word;'>[html_encode(file2text(file(path)))]</pre>"), list2params(list("window" = "viewfile.[path]")))
 		if ("Open")

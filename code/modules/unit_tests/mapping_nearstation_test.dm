@@ -19,6 +19,11 @@
 		/area/station/holodeck,
 	))
 
+	// Departure restores underlying areas before cleanup scrapes the shuttle turfs, and can yield between them.
+	var/shuttle_deadline = world.time + 30 SECONDS
+	UNTIL(SSshuttle.state == SS_IDLE || SSshuttle.state == SS_QUEUED || world.time >= shuttle_deadline)
+	TEST_ASSERT(SSshuttle.state == SS_IDLE || SSshuttle.state == SS_QUEUED, "Shuttle movement did not finish before mapping validation.")
+
 	for(var/station_z in SSmapping.levels_by_trait(ZTRAIT_STATION))
 		var/list/turfs_to_check = Z_TURFS(station_z)
 		for(var/turf/station_turf as anything in turfs_to_check)

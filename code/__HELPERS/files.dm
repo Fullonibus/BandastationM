@@ -7,12 +7,16 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 
 /client/proc/browse_files(root_type=BROWSE_ROOT_ALL_LOGS, max_iterations=10, list/valid_extensions=list("txt","log","htm", "html", "gz", "json"))
 	// wow why was this ever a parameter
-	var/root = "data/logis_logs/" // BANDASTATION EDIT - Logis: ("data/logis_logs/")
+	var/format_choice = input(src, "Pick format", "Download", null) as null|anything in list("Logis", "JSON")
+	if(!format_choice || !check_rights_for(src, R_ADMIN))
+		return
+
+	var/root
 	switch(root_type)
 		if(BROWSE_ROOT_ALL_LOGS)
-			root = "data/logis_logs/" // BANDASTATION EDIT - Logis: ("data/logis_logs/")
+			root = format_choice == "Logis" ? "data/logis_logs/" : "data/logs/"
 		if(BROWSE_ROOT_CURRENT_LOGS)
-			root = "[GLOB.logis_logs_directory]/" // BANDASTATION EDIT - Logis: ("[GLOB.logis_logs_directory]/")
+			root = format_choice == "Logis" ? "[GLOB.logis_logs_directory]/" : "[GLOB.log_directory]/"
 	var/path = root
 
 	for(var/i in 1 to max_iterations)
@@ -22,6 +26,8 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 		choices = sort_list(choices) + "Download Folder"
 
 		var/choice = input(src,"Choose a file to access:","Download",null) as null|anything in choices
+		if(!check_rights_for(src, R_ADMIN))
+			return
 		switch(choice)
 			if(null)
 				return
@@ -31,6 +37,8 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 			if("Download Folder")
 				var/list/comp_flist = flist(path)
 				var/confirmation = input(src, "Are you SURE you want to download all the files in this folder? (This will open [length(comp_flist)] prompt[length(comp_flist) == 1 ? "" : "s"])", "Confirmation") in list("Yes", "No")
+				if(!check_rights_for(src, R_ADMIN))
+					return
 				if(confirmation != "Yes")
 					continue
 				for(var/file in comp_flist)

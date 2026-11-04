@@ -32,7 +32,16 @@ type Props = {
 /** The cargo catalogue - when a new build comes in, the old one stays on screen until it's loaded */
 export function CargoCatalog(props: Props) {
   const { data } = useBackend<CargoData>();
-  const catalogue = useShownCatalogue(data.catalogue);
+  // NtOS can send the app's data before its static data the first time it's opened (while assets are still sending)
+  if (!data.catalogue) {
+    return <LoadingScreen />;
+  }
+
+  return <ShownCatalog {...props} catalogue={data.catalogue} />;
+}
+
+function ShownCatalog(props: Props & { catalogue: Catalogue }) {
+  const catalogue = useShownCatalogue(props.catalogue);
 
   return (
     <Suspense fallback={<LoadingScreen />}>
@@ -200,7 +209,13 @@ type CatalogListProps = {
 
 function CatalogList(props: CatalogListProps) {
   const { act, data } = useBackend<CargoData>();
-  const { cart = [], max_order, self_paid, app_cost, displayed_currency_name } = data;
+  const {
+    cart = [],
+    max_order,
+    self_paid,
+    app_cost,
+    displayed_currency_name,
+  } = data;
   const { packs = [], openContents } = props;
 
   return (
@@ -277,11 +292,13 @@ function CatalogList(props: CatalogListProps) {
                     opacity={privateBuy && 0.75}
                     style={{ textDecoration: privateBuy && 'red line-through' }}
                   >
-                    {formatMoney(pack.cost)}{displayed_currency_name}
+                    {formatMoney(pack.cost)}
+                    {displayed_currency_name}
                   </Stack.Item>
                   {!!privateBuy && (
                     <Stack.Item>
-                      {formatMoney(Math.round(pack.cost * 1.1))}{displayed_currency_name}
+                      {formatMoney(Math.round(pack.cost * 1.1))}
+                      {displayed_currency_name}
                     </Stack.Item>
                   )}
                 </Stack>

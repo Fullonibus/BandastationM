@@ -1,0 +1,6 @@
+#include "_defines.dm"
+#include "_telephones.dm"
+#include "code/exchange.dm"
+#include "code/telephone.dm"
+#include "code/handset.dm"
+#include "code/presets.dm"
