@@ -64,6 +64,24 @@ BandaStation and their contributors:
 No existing mob pixels were pasted into the new sprites. The weaver resource
 follows the same CC BY-SA 3.0 asset license described above.
 
+## Amber bio-silk duffel bag sprites
+
+The four `phoenix_duffel*.dmi` files adapt the `duffel` state from the
+following repository assets at revision
+`bb64e7526ddd29958b0382520de5e1d94ff23876`, by /tg/station, BandaStation
+and their contributors:
+
+- `icons/obj/storage/backpack.dmi` for the item.
+- `icons/mob/clothing/back/backpack.dmi` for the worn bag.
+- `icons/mob/inhands/equipment/backpack_lefthand.dmi` for the left hand.
+- `icons/mob/inhands/equipment/backpack_righthand.dmi` for the right hand.
+
+Each adaptation is named `duffel-phoenix`. The original silhouettes,
+alignment and directions are preserved. The fabric is recolored in amber,
+the straps in dark olive, and the zipper in muted gold. The item sprite
+also has short highlights along the fabric fold. These adaptations follow
+the same CC BY-SA 3.0 asset license described above.
+
 ## Documentation previews
 
 The PNGs in `../docs/` are documentation only. Equipment and creature previews

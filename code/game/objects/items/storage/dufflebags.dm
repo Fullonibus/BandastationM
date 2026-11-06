@@ -25,9 +25,13 @@
 	set_zipper(TRUE)
 	RegisterSignal(src, COMSIG_SPEED_POTION_APPLIED, PROC_REF(on_speed_potioned))
 
+/** Describe what the current zipper state means for access and movement. */
 /obj/item/storage/backpack/duffelbag/examine(mob/user)
 	. = ..()
-	. += "[zipped_up ? "It's zipped up, preventing you from accessing its contents." : "It's unzipped, and harder to move in."]"
+	if(zipped_up)
+		. += "It's zipped up, preventing you from accessing its contents."
+	else
+		. += zip_slowdown ? "It's unzipped, and harder to move in." : "It's unzipped."
 
 /obj/item/storage/backpack/duffelbag/attack_self(mob/user, modifiers)
 	if(loc != user) // God fuck TK

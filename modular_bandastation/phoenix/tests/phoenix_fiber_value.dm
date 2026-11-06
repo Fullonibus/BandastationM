@@ -77,3 +77,19 @@
 	ordinary_arm.seep_gauze(6)
 	TEST_ASSERT(applied_bio.absorption_capacity > 0, "A bio-bandage must remain effective after an exposure that exhausts ordinary gauze.")
 	TEST_ASSERT(ordinary.absorption_capacity <= 0, "The same exposure must exhaust the control dressing.")
+
+/// Finishing a wash must exchange the entire batch once and leave the result in the drum.
+/datum/unit_test/phoenix_fiber_washing/Run()
+	var/obj/machinery/washing_machine/washer = allocate(/obj/machinery/washing_machine, run_loc_floor_bottom_left)
+	var/initial_contents = length(washer.contents)
+	var/obj/item/stack/phoenix_fiber/raw_fiber = allocate(/obj/item/stack/phoenix_fiber, washer, 9, "washing-test")
+	washer.wash_cycle(null)
+	TEST_ASSERT(QDELETED(raw_fiber), "The completed wash must consume the raw biofiber.")
+	var/obj/item/stack/phoenix_refined_fiber/clean_fiber = locate() in washer
+	TEST_ASSERT_NOTNULL(clean_fiber, "The cleaned fiber must remain in the drum.")
+	allocated |= clean_fiber
+	TEST_ASSERT_EQUAL(clean_fiber.amount, 9, "Washing must preserve the entire stack quantity.")
+	washer.wash_cycle(null)
+	TEST_ASSERT(!QDELETED(clean_fiber) && clean_fiber.loc == washer, "A second wash must preserve the cleaned batch.")
+	TEST_ASSERT_EQUAL(length(washer.contents), initial_contents + 1, "A second wash must not duplicate the batch.")
+	TEST_ASSERT_EQUAL(clean_fiber.amount, 9, "A second wash must not add more fiber to the stack.")
