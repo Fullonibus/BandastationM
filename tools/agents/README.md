@@ -11,6 +11,7 @@
 | [tasks/](tasks/) | Создание, чтение и миграция локальных задач |
 | [repo/](repo/) | Read-only инспектор репозитория и локальная Git-защита |
 | [mcp/](mcp/) | MCP launchers, package locks и адаптер ripgrep |
+| [setup-maps.ps1](setup-maps.ps1), [maps/](maps/README.md) | Отдельная установка MCP карт, визуальный цикл, адресные правки и maplint |
 | [lib/](lib/) | Общие PowerShell/Python функции и перенос набора |
 | [tests/](tests/) | Проверка содержимого и сценарии инструментария/MCP |
 

@@ -14,6 +14,10 @@
 	registration_faction = "НТ"
 	callsign = "Борт НТ"
 
+/** Registered identity installed on Trurl's mapped bridge. */
+/obj/item/circuitboard/computer/stationtrauma_transponder/nt/trurl
+	callsign = "Трурль"
+
 /** Transponder preset scg; identity remains on the removable board. */
 /obj/item/circuitboard/computer/stationtrauma_transponder/scg
 	registration_faction = "КССП"

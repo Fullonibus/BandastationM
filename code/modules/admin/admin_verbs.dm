@@ -666,11 +666,39 @@ ADMIN_VERB(debug_spell_requirements, R_DEBUG, "Debug Spell Requirements", "View 
 	popup.set_content(page_contents)
 	popup.open()
 
-ADMIN_VERB(load_lazy_template, R_ADMIN, "Load/Jump Lazy Template", "Loads a lazy template and/or jumps to it.", ADMIN_CATEGORY_EVENTS)
+/** Load or visit ordinary lazy reservations and fully registered overmap ship templates. */
+ADMIN_VERB(load_lazy_template, R_ADMIN, "Load/Jump Lazy Template", "Loads a lazy template or overmap ship and/or jumps to it.", ADMIN_CATEGORY_EVENTS)
 	var/list/choices = LAZY_TEMPLATE_KEY_LIST_ALL()
+	var/list/ship_choices = SSstationtrauma_space_voyage.ship_template_choices()
+	choices += ship_choices
 	var/choice = tgui_input_list(user, "Key?", "Lazy Loader", choices)
+	if(!choice || !check_rights_for(user, R_ADMIN))
+		return
 	var/teleport_to_template = tgui_input_list(user, "Jump to template after loading?", "Where to?", list("Yes", "No"))
-	if(!choice)
+	if(!teleport_to_template || !check_rights_for(user, R_ADMIN))
+		return
+	if(ship_choices[choice])
+		var/caller_name = key_name(user)
+		var/caller_admin = key_name_admin(user)
+		var/obj/docking_port/mobile/stationtrauma_space/ship
+		try
+			ship = SSstationtrauma_space_voyage.load_ship_template(ship_choices[choice])
+		catch(var/exception/failure)
+			log_mapping("Admin overmap template load failed: [failure]")
+		if(QDELETED(ship))
+			to_chat(user, span_warning("Не удалось загрузить корабль. Проверьте готовность overmap, уникальность ID и журнал загрузки карт."))
+			return
+		log_admin("[caller_name] loaded or visited overmap ship template '[ship_choices[choice]]' ([ship.shuttle_id])")
+		message_admins("[caller_admin] loaded or visited overmap ship template '[ship_choices[choice]]' ([ship.shuttle_id])")
+		if(!check_rights_for(user, R_ADMIN))
+			return
+		if(teleport_to_template == "Yes")
+			if(!isobserver(user.mob))
+				SSadmin_verbs.dynamic_invoke_verb(user, /datum/admin_verb/admin_ghost)
+			if(!check_rights_for(user, R_ADMIN) || !isobserver(user.mob) || QDELETED(ship) || !get_turf(ship))
+				return
+			user.mob.forceMove(get_turf(ship))
+		to_chat(user, span_notice("[ship.name]: корабль доступен на overmap."))
 		return
 
 	choice = choices[choice]
@@ -682,13 +710,15 @@ ADMIN_VERB(load_lazy_template, R_ADMIN, "Load/Jump Lazy Template", "Loads a lazy
 	var/force_load = FALSE
 	if(already_loaded && (tgui_alert(user, "Template already loaded.", "", list("Jump", "Load Again")) == "Load Again"))
 		force_load = TRUE
+	if(!check_rights_for(user, R_ADMIN))
+		return
 
 	var/datum/turf_reservation/reservation = SSmapping.lazy_load_template(choice, force = force_load)
 	if(!reservation)
 		to_chat(user, span_boldwarning("Failed to load template!"))
 		return
 
-	if(teleport_to_template == "Yes")
+	if(teleport_to_template == "Yes" && check_rights_for(user, R_ADMIN))
 		if(!isobserver(user.mob))
 			SSadmin_verbs.dynamic_invoke_verb(user, /datum/admin_verb/admin_ghost)
 		user.mob.forceMove(reservation.bottom_left_turfs[1])

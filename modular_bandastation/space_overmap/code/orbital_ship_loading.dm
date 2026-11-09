@@ -78,6 +78,18 @@
 		exterior = new /area/space
 	var/list/areas = list()
 	var/datum/stationtrauma_work_budget/budget = new
+	// Geometry changes can move loose items onto cells already visited by cooperative cleanup.
+	var/list/to_delete = list()
+	for(var/z_level in levels)
+		for(var/turf/tile as anything in block(locate(loaded_min_x, loaded_min_y, z_level), locate(loaded_min_x + width - 1, loaded_min_y + height - 1, z_level)))
+			budget.yield()
+			for(var/atom/movable/content in tile.get_all_contents())
+				to_delete[content] = TRUE
+	for(var/atom/movable/content as anything in to_delete)
+		budget.yield()
+		if(!QDELETED(content))
+			qdel(content, force = TRUE)
+	to_delete.Cut()
 	for(var/z_level in levels)
 		for(var/turf/tile as anything in block(locate(loaded_min_x, loaded_min_y, z_level), locate(loaded_min_x + width - 1, loaded_min_y + height - 1, z_level)))
 			budget.yield()
@@ -90,18 +102,43 @@
 			tile.change_area(get_area(tile), exterior)
 			var/turf/open/space/vacuum = tile
 			vacuum.air ||= vacuum.space_gas
+	// Replacing a support turf can spawn wall-mount debris on an already cleared neighbouring cell.
+	for(var/z_level in levels)
+		for(var/turf/tile as anything in block(locate(loaded_min_x, loaded_min_y, z_level), locate(loaded_min_x + width - 1, loaded_min_y + height - 1, z_level)))
+			budget.yield()
+			for(var/atom/movable/debris in tile.get_all_contents())
+				to_delete[debris] = TRUE
+	for(var/atom/movable/debris as anything in to_delete)
+		budget.yield()
+		if(!QDELETED(debris))
+			qdel(debris, force = TRUE)
 	for(var/area/old_area as anything in areas)
 		if(old_area != exterior && !QDELETED(old_area) && !old_area.has_contained_turfs())
 			qdel(old_area)
 	exterior.reg_in_areas_in_z()
 	require_area_resort()
 
-/** Keep one cleanup boundary around map loading, ownership discovery and native initialization. */
-/proc/load_stationtrauma_space_ship(map_path)
+/** Keep loading and optional midround sector attachment inside the same rejected-template cleanup boundary. */
+/proc/load_stationtrauma_space_ship(map_path, attach_to_sector = FALSE)
 	var/datum/map_template/stationtrauma_space/ship/template = new(map_path, "Overmap ship")
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 	try
 		vessel = template.load_ship()
+		if(vessel)
+			vessel.source_template = map_path
+		if(vessel && attach_to_sector)
+			var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors[vessel.overmap_sector]
+			// Registration can suffix an ID even after its previous owner has been deleted.
+			if(sector?.ready && !vessel.registered)
+				vessel.register()
+			var/valid_hosts = TRUE
+			for(var/obj/docking_port/stationary/stationtrauma_space_station/slot in SSshuttle.stationary_docking_ports)
+				if((slot.z in vessel.owned_z_levels) && slot.host_ship_id && slot.host_ship_id != vessel.shuttle_id)
+					valid_hosts = FALSE
+					break
+			if(!valid_hosts || !sector?.ready || !sector.attach(vessel))
+				log_mapping("Could not attach overmap ship [map_path]: unavailable sector, conflicting carrier IDs or invalid hull")
+				vessel = null
 	catch(var/exception/failure)
 		template.discard_loaded_ship()
 		qdel(template)
@@ -109,6 +146,48 @@
 	if(!vessel)
 		template.discard_loaded_ship()
 	qdel(template)
+	return vessel
+
+/datum/controller/subsystem/stationtrauma_space_voyage
+	/// Only one admin template load may allocate decks and register its mapped IDs at a time.
+	var/loading_ship_template = FALSE
+
+/** Server-owned ship files offered alongside the ordinary lazy templates. */
+/datum/controller/subsystem/stationtrauma_space_voyage/proc/ship_template_choices()
+	var/map_directory = "_maps/map_files/overmap_ships/"
+	var/list/choices = list()
+	for(var/file_name in sort_list(flist(map_directory)))
+		if(copytext(file_name, -4) == ".dmm")
+			choices["Overmap — [copytext(file_name, 1, -4)]"] = "[map_directory][file_name]"
+	return choices
+
+/** Reuse a live template instance or load and attach it after sectors are ready. */
+/datum/controller/subsystem/stationtrauma_space_voyage/proc/load_ship_template(map_path)
+	var/allowed = FALSE
+	var/list/choices = ship_template_choices()
+	for(var/label in choices)
+		if(choices[label] == map_path)
+			allowed = TRUE
+			break
+	if(!allowed || loading_ship_template || !initialized || loading || !length(sectors))
+		return null
+	for(var/obj/docking_port/mobile/stationtrauma_space/vessel in SSshuttle.mobile_docking_ports)
+		if(vessel.source_template == map_path)
+			var/datum/stationtrauma_overmap/space/navigation = vessel.overmap
+			var/datum/stationtrauma_overmap_sector/space/sector = navigation?.sector
+			return !QDELETED(navigation) && navigation.is_operational() && sector?.ready && sector.ships[vessel.shuttle_id] == navigation ? vessel : null
+	for(var/id in sectors)
+		var/datum/stationtrauma_overmap_sector/space/sector = sectors[id]
+		if(!sector.ready)
+			return null
+	loading_ship_template = TRUE
+	var/obj/docking_port/mobile/stationtrauma_space/vessel
+	try
+		vessel = load_stationtrauma_space_ship(map_path, attach_to_sector = TRUE)
+	catch(var/exception/failure)
+		loading_ship_template = FALSE
+		throw failure
+	loading_ship_template = FALSE
 	return vessel
 
 /** Collect the whole ship before its one native mobile port is initialized. */

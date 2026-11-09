@@ -33,6 +33,8 @@
 	var/hull_mass = 0
 	/// Physical deck reservations owned by this vessel, retained independently from native guest movement.
 	var/list/owned_z_levels = list()
+	/// Source DMM used to find an already loaded template, including ships from the startup fleet.
+	var/source_template
 	/// Multideck hulls stay on their orbital maps and cannot use one-deck native relocation.
 	var/orbital_only = FALSE
 

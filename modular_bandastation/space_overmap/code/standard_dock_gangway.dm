@@ -4,6 +4,9 @@
 	autoclose = FALSE
 	air_tight = TRUE
 	can_atmos_pass = ATMOS_PASS_PROC
+	generate_map_preview = TRUE
+	WHEN_MAP(icon = 'icons/obj/fluff/map_previews.dmi')
+	WHEN_MAP(icon_state = "/obj/machinery/door/airlock/stationtrauma_docking")
 	/// The passage using this endpoint, while physically moored.
 	var/datum/stationtrauma_dock_gangway/gangway
 
@@ -18,8 +21,25 @@
 /obj/machinery/door/airlock/stationtrauma_docking/wall/ui_interact(mob/user, datum/tgui/ui)
 	return FALSE
 
+/** Explain the same outward direction used by the docking validator and installation kit. */
+/obj/machinery/door/airlock/stationtrauma_docking/examine(mob/user)
+	. = ..()
+	var/outward_direction
+	switch(dir)
+		if(NORTH)
+			outward_direction = "на север"
+		if(SOUTH)
+			outward_direction = "на юг"
+		if(EAST)
+			outward_direction = "на восток"
+		if(WEST)
+			outward_direction = "на запад"
+	. += span_notice("Стрелка смотрит [outward_direction], наружу к месту стыковки. Герметичное помещение должно находиться с противоположной стороны.")
+
+/** Keep the endpoint recognizable while showing which side faces the docking passage. */
 /obj/machinery/door/airlock/stationtrauma_docking/update_overlays()
 	. = ..()
+	. += mutable_appearance('icons/testing/turf_analysis.dmi', "red_arrow")
 	if(airlock_state != AIRLOCK_CLOSED)
 		return
 	// The interlock owns opening. Keep its closed indicator independent of the mechanical bolts.

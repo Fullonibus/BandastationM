@@ -174,6 +174,10 @@
 	/// Moles per second one nozzle draws at full load; thrust comes from engine_power, not from more gas.
 	var/propellant_flow = 0.52
 
+/** Mapping preset for receivers connected to the fourth pipe layer. */
+/obj/machinery/atmospherics/components/unary/ship_engine_heater/layer4
+	piping_layer = 4
+
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/Initialize(mapload)
 	. = ..()
 	var/datum/gas_mixture/air = airs[1]

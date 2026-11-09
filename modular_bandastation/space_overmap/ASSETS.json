@@ -56,7 +56,7 @@
 		},
 		{
 			"path": "icons/obj/fluff/map_previews.dmi",
-			"sha256": "de97b0ec7644c4a57e473e554c19b43e624d28d345acb17c3063acab7ab1a4bb",
+			"sha256": "5a03183fe9d750b3dd3839864bc202625603c9f90aa1424cd056efb51614f9c0",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["TG, BandaStation and Primera contributors"],
 			"source": {
@@ -67,7 +67,7 @@
 				"sha256": "884340c242ae79ac1147268b8611f4d13b8d712de38c9b271297d5ecbf5edc4f",
 				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md"
 			},
-			"changes": "Native auto-generated map preview sheet; includes the Cyberiad Overmap profile. The trade terminal uses a preview in its own 32x48 DMI.",
+			"changes": "Native auto-generated map preview sheet; includes the Cyberiad Overmap profile and docking airlock with the existing public airlock and turf_analysis red_arrow sprites. The trade terminal uses a preview in its own 32x48 DMI.",
 			"byte_identical": false
 		},
 		{

@@ -106,8 +106,10 @@ def install_runtime(name: str, source: Path, seed: Path | None, repair: bool) ->
         print(name+' dependencies match lock; installation skipped.')
     if not matches_runtime(cache, lock):
         raise ValueError('Installed '+name+' runtime differs from its lock')
-    if name == 'ripgrep':
+    if name in ('ripgrep', 'maps'):
         shutil.copyfile(source/'index.mjs', cache/'index.mjs')
+    if name == 'maps':
+        shutil.copyfile(source/'worker-runner.py', cache/'worker-runner.py')
     receipt.write_text(lock_hash+'\n', encoding='utf-8')
 
 
@@ -117,6 +119,7 @@ def main() -> None:
     parser.add_argument('--config-only', action='store_true')
     parser.add_argument('--browser-seed', type=Path)
     parser.add_argument('--ripgrep-seed', type=Path)
+    parser.add_argument('--maps-seed', type=Path)
     args = parser.parse_args()
     if os.name != 'nt' or not os.environ.get('LOCALAPPDATA'):
         raise ValueError('This setup requires Windows and LOCALAPPDATA')
@@ -133,6 +136,11 @@ def main() -> None:
     if not args.config_only:
         install_runtime('browser', ROOT/'tools/agents/mcp', args.browser_seed, args.repair)
         install_runtime('ripgrep', ROOT/'tools/agents/mcp/ripgrep', args.ripgrep_seed, args.repair)
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('setup_maps', Path(__file__).with_name('setup-maps.py'))
+        setup_maps = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(setup_maps)
+        setup_maps.install_maps(args.maps_seed, args.repair)
         for launcher in ('playwright-mcp.cjs', 'ripgrep-mcp.cjs'):
             print(run([node, str(ROOT/'tools/agents/mcp'/launcher), '--check'], cwd=ROOT).strip())
         record_runtime('browser', ROOT/'tools/agents/mcp')

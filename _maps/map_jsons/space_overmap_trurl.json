@@ -1,0 +1,72 @@
+{
+	"version": 1,
+	"map_name": "Cyberiad Overmap + Trurl",
+	"map_path": "map_files/CyberiadOvermap",
+	"map_file": "CyberiadOvermap.dmm",
+	"fluff_name": "Кибериада: экспедиционные рейсы",
+	"welcome_sound_override": "modular_bandastation/aesthetics_sounds/sound/welcome_sounds/welcome_cyberiad.ogg",
+	"main_floor": 2,
+	"give_players_hooks": 1,
+	"shuttles": {
+		"cargo": null,
+		"ferry": "ferry_fancy",
+		"whiteship": "whiteship_delta",
+		"emergency": "emergency_delta"
+	},
+	"traits": [
+		{
+			"Linkage": "Cross"
+		},
+		{
+			"Baseturf": "/turf/open/openspace",
+			"Linkage": "Cross"
+		}
+	],
+	"job_changes": {
+		"Captain": {
+			"no_charter": 1
+		},
+		"Cook": {
+			"additional_cqc_areas": [
+				"/area/station/service/bar",
+				"/area/station/commons/lounge",
+				"/area/station/service/kitchen"
+			]
+		},
+		"Nanotrasen Representative": {
+			"spawn_positions": 1
+		},
+		"Blueshield": {
+			"spawn_positions": 1
+		},
+		"Magistrate": {
+			"spawn_positions": 1
+		},
+		"Explorer": {
+			"spawn_positions": 4
+		}
+	},
+	"height_autosetup": true,
+	"space_overmap": {
+		"station_id": "cyberiad",
+		"ships": [
+			{
+				"template": "_maps/map_files/overmap_ships/raven.dmm",
+				"dispatchable": true
+			},
+			{
+				"template": "_maps/map_files/overmap_ships/pocketrocket.dmm"
+			},
+			{
+				"template": "_maps/map_files/overmap_ships/s_dock_test.dmm"
+			},
+			{
+				"template": "_maps/map_files/overmap_ships/trurl.dmm"
+			}
+		]
+	},
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"wilderness_levels": 0,
+	"load_all_away_missions": false
+}

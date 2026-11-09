@@ -20,7 +20,7 @@
 /** A prefabricated endpoint installs facing away from the builder. */
 /obj/item/stationtrauma_docking_kit
 	name = "монтажный комплект стыковочного шлюза"
-	desc = "Установите на соседний пол, стоя со стороны герметичного помещения. Шлюз будет смотреть от вас."
+	desc = "Установите на соседний пол, стоя со стороны герметичного помещения. Стрелка установленного шлюза будет смотреть от вас, наружу к месту стыковки."
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "flatpack"
 	/// The finished docking endpoint this kit installs.
