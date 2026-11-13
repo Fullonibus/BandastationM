@@ -2,23 +2,14 @@
 	/// Cached Antagonist Win/Loss Stats TGUI panel owned by this admin holder.
 	var/datum/antag_winloss_panel/antag_winloss_panel
 
-/**
- * Opens the Antagonist Win/Loss Stats TGUI panel for the calling admin.
- *
- * Arguments:
- * * user - Optional mob opening the panel; falls back to `owner?.mob`.
- */
-/datum/admins/proc/open_antag_winloss_stats(mob/user)
-	if(!check_rights(R_ADMIN))
-		return
-	var/mob/target_user = user || owner?.mob
-	if(QDELETED(target_user))
+/// Opens this holder's antagonist statistics panel.
+/datum/admins/proc/open_antag_winloss_stats()
+	var/mob/user = owner?.mob
+	if(QDELETED(user) || owner.holder != src || !check_rights_for(owner, R_ADMIN))
 		return
 	if(!antag_winloss_panel)
 		antag_winloss_panel = new(src)
-	if(!SStgui.get_open_ui(target_user, antag_winloss_panel))
-		antag_winloss_panel.history_needs_reload = TRUE
-	antag_winloss_panel.ui_interact(target_user)
+	antag_winloss_panel.ui_interact(user)
 
 /**
  * # Antagonist Win/Loss Panel
@@ -33,14 +24,8 @@
 	var/history_limit = 25
 	/// Cached serialized historical statistics from the latest completed DB query.
 	var/list/cached_history_data
-	/// Whether opening the panel should trigger an asynchronous history reload.
-	var/history_needs_reload = TRUE
-	/// Whether an asynchronous history query is currently in flight.
-	var/history_loading = FALSE
-	/// Monotonic request counter used to discard stale async query results.
-	var/history_request_id = 0
-	/// Remaining retry attempts for pushing updates to uninitialized UI windows.
-	var/history_push_attempts = 0
+	/// State of the current history request, including its result when finished.
+	var/history_status = "idle"
 
 /**
  * Initializes the panel datum and stores its owning admin holder.
@@ -58,21 +43,28 @@
 		holder.antag_winloss_panel = null
 	holder = null
 	cached_history_data = null
-	history_loading = FALSE
-	history_request_id++
 	return ..()
 
 /datum/antag_winloss_panel/ui_state(mob/user)
 	return ADMIN_STATE(R_ADMIN)
 
+/datum/antag_winloss_panel/ui_status(mob/user, datum/ui_state/state)
+	if(!can_view_panel(user?.client))
+		return UI_CLOSE
+	return ..()
+
 /datum/antag_winloss_panel/ui_interact(mob/user, datum/tgui/ui)
-	if(history_needs_reload && !history_loading)
-		request_history_reload()
+	if(!can_view_panel(user?.client))
+		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AntagWinLossPanel")
 		ui.set_autoupdate(FALSE)
 		ui.open()
+
+/// Checks both the owning holder and its current permissions.
+/datum/antag_winloss_panel/proc/can_view_panel(client/viewer)
+	return viewer && holder && viewer.holder == holder && check_rights_for(viewer, R_ADMIN)
 
 /**
  * Builds a brief human-readable context string for an objective's current state.
@@ -150,101 +142,98 @@
  * Evaluates a list of objectives and serializes them for TGUI display.
  *
  * Arguments:
+ * * objective_rows - Serialized objective rows shared by this snapshot.
  * * objectives - List of `/datum/objective` datums to evaluate.
  */
-/datum/antag_winloss_panel/proc/evaluate_objectives(list/datum/objective/objectives)
+/datum/antag_winloss_panel/proc/evaluate_objectives(list/datum/objective/objectives, list/objective_rows)
 	var/list/serialized_objs = list()
-	var/all_completed = TRUE
+	var/outcome = -1
 
 	for(var/datum/objective/obj as anything in objectives)
 		if(!istype(obj) || QDELETED(obj))
 			continue
-		// Negative values such as CULT_NARSIE_KILLED (-1) are truthy in DM, so require > 0.
-		var/completion_result = obj.check_completion()
-		var/is_completed = (isnum(completion_result) && completion_result > 0)
-		if(!is_completed)
-			all_completed = FALSE
-		serialized_objs += list(list(
-			"text" = format_text(obj.explanation_text) || "(Цель без описания)",
-			"completed" = is_completed,
-			"context" = get_objective_context(obj),
-		))
+		var/list/row = objective_rows[obj]
+		if(!row)
+			var/is_completed
+			if(!obj.no_failure)
+				// A negative result such as CULT_NARSIE_KILLED is a failure.
+				is_completed = obj.check_completion_read_only() > 0
+			else if(obj.completed)
+				// Scripted successes such as the Grand Ritual use a custom objective.
+				is_completed = TRUE
+			row = list(
+				"text" = format_text(obj.explanation_text) || "(Цель без описания)",
+				"completed" = is_completed,
+				"context" = get_objective_context(obj),
+			)
+			objective_rows[obj] = row
+		serialized_objs += list(row)
+		var/is_completed = row["completed"]
+		if(!isnull(is_completed) && outcome != 0)
+			outcome = is_completed ? 1 : 0
 
-	var/outcome = serialized_objs.len ? (all_completed ? 1 : 0) : -1
 	return list("outcome" = outcome, "objectives" = serialized_objs)
 
-/**
- * Starts an asynchronous reload of historical antagonist statistics from the DB.
- */
+/// Starts at most one history request at a time.
 /datum/antag_winloss_panel/proc/request_history_reload()
-	history_needs_reload = FALSE
-	history_request_id++
-	var/request_id = history_request_id
+	if(history_status == "loading")
+		return
+	history_status = "loading"
+	cached_history_data = null
+	push_history_update()
+	INVOKE_ASYNC(src, PROC_REF(fetch_history))
 
-	if(!SSdbcore.Connect())
-		cached_history_data = null
-		history_loading = FALSE
+/// Returns the history fields independently of the current-round snapshot.
+/datum/antag_winloss_panel/proc/history_payload()
+	return list(
+		"history" = cached_history_data,
+		"history_limit" = history_limit,
+		"history_status" = history_status,
+	)
+
+/// Updates history without reevaluating the objectives in the current round.
+/datum/antag_winloss_panel/proc/push_history_update()
+	var/list/data = history_payload()
+	for(var/datum/tgui/ui as anything in open_uis)
+		if(ui.closing || !ui.window || !can_view_panel(ui.user?.client))
+			continue
+		if(!ui.initialized)
+			// The window queues messages until its browser is ready.
+			ui.window.send_message("update", list("data" = data))
+			continue
+		ui.send_update(custom_data = data, force = TRUE)
+
+/// Fetches the latest recorded antagonist feedback without blocking the TGUI action.
+/datum/antag_winloss_panel/proc/fetch_history()
+	if(QDELETED(src))
+		return
+	if(!can_view_panel(holder?.owner))
+		history_status = "idle"
+		return
+	if(SSdbcore.shutting_down || !SSdbcore.Connect())
+		history_status = "unavailable"
 		push_history_update()
 		return
 
-	history_loading = TRUE
-	push_history_update()
-	INVOKE_ASYNC(src, PROC_REF(fetch_history), request_id)
-
-/**
- * Pushes updated dynamic data to all open UI windows,
- * retrying briefly if a newly opened window has not finished initializing yet.
- *
- * Arguments:
- * * reset_retries - Whether to reset the retry counter for uninitialized windows.
- */
-/datum/antag_winloss_panel/proc/push_history_update(reset_retries = TRUE)
-	if(QDELETED(src) || !LAZYLEN(open_uis))
-		return
-	if(reset_retries)
-		history_push_attempts = 10
-	var/has_uninitialized = FALSE
-	for(var/datum/tgui/ui as anything in open_uis)
-		if(ui.closing || !ui.user?.client || !ui.window)
-			continue
-		if(!ui.initialized)
-			has_uninitialized = TRUE
-			ui.window.send_message("update", ui.get_payload(with_data = TRUE))
-			continue
-		ui.send_update(force = TRUE)
-	if(has_uninitialized && history_push_attempts > 0)
-		history_push_attempts--
-		addtimer(CALLBACK(src, PROC_REF(push_history_update), FALSE), 0.5 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_DELETE_ME)
-
-/**
- * Executes a read-only SELECT query for historical antagonist feedback and caches the result.
- *
- * Arguments:
- * * request_id - Request generation token used to ignore superseded async results.
- */
-/datum/antag_winloss_panel/proc/fetch_history(request_id)
-	if(QDELETED(src) || request_id != history_request_id)
-		return
-
-	var/sanitized_limit = isnum(history_limit) ? clamp(round(history_limit), 1, 100) : 25
 	var/datum/db_query/query = SSdbcore.NewQuery({"
 		SELECT round_id, CAST(datetime AS CHAR), CAST(json AS CHAR)
 		FROM [format_table_name("feedback")]
-		WHERE key_name = 'antagonists'
-		ORDER BY round_id DESC
-		LIMIT [sanitized_limit]
-	"})
-
-	if(!query || !query.Execute(async = TRUE))
+		WHERE key_name = 'antagonists' AND round_id IS NOT NULL
+		ORDER BY round_id DESC, id DESC
+		LIMIT :round_limit
+	"}, list("round_limit" = history_limit))
+	var/query_succeeded = query?.Execute(async = TRUE)
+	if(QDELETED(src))
 		qdel(query)
-		if(!QDELETED(src) && request_id == history_request_id)
-			cached_history_data = null
-			history_loading = FALSE
-			push_history_update()
 		return
-
-	if(QDELETED(src) || request_id != history_request_id)
+	if(!can_view_panel(holder?.owner))
 		qdel(query)
+		history_status = "idle"
+		return
+	if(!query_succeeded)
+		qdel(query)
+		history_status = SSdbcore.IsConnected() ? "error" : "unavailable"
+		push_history_update()
 		return
 
 	var/list/rounds_data = list()
@@ -268,7 +257,11 @@
 		var/round_losses = 0
 
 		for(var/entry_id in data_list)
-			var/list/antag_entry = islist(entry_id) ? entry_id : data_list[entry_id]
+			var/list/antag_entry
+			if(islist(entry_id))
+				antag_entry = entry_id
+			else if(istext(entry_id))
+				antag_entry = data_list[entry_id]
 			if(!islist(antag_entry))
 				continue
 
@@ -282,9 +275,13 @@
 				for(var/list/obj_info as anything in objs)
 					if(!islist(obj_info))
 						continue
-					has_valid_obj = TRUE
-					if(obj_info["result"] != "SUCCESS")
-						all_success = FALSE
+					switch(obj_info["result"])
+						if("SUCCESS")
+							has_valid_obj = TRUE
+						if("FAIL")
+							has_valid_obj = TRUE
+							all_success = FALSE
+					if(!all_success)
 						break
 				if(has_valid_obj)
 					outcome = all_success ? 1 : 0
@@ -345,13 +342,16 @@
 		"roles" = serialized_roles,
 		"rounds" = rounds_data,
 	)
-	history_loading = FALSE
+	history_status = "ready"
 	push_history_update()
 
 /datum/antag_winloss_panel/ui_data(mob/user)
-	if(!check_rights_for(CLIENT_FROM_VAR(user), R_ADMIN))
+	var/client/viewer = user?.client
+	if(!can_view_panel(viewer))
 		return list()
-	. = list()
+	. = history_payload()
+	.["can_view_variables"] = check_rights_for(viewer, R_DEBUG)
+	var/list/objective_rows = list()
 	var/round_started = SSticker && SSticker.HasRoundStarted()
 	.["round_started"] = round_started
 
@@ -381,7 +381,7 @@
 					if(istype(team_obj) && !QDELETED(team_obj) && !(team_obj in all_objectives))
 						all_objectives += team_obj
 
-			var/list/eval = evaluate_objectives(all_objectives)
+			var/list/eval = evaluate_objectives(all_objectives, objective_rows)
 			var/outcome = eval["outcome"]
 			var/list/serialized_objs = eval["objectives"]
 
@@ -434,6 +434,7 @@
 				"objectives" = serialized_objs,
 				"outcome" = outcome,
 				"mob_ref" = antag_mob ? REF(antag_mob) : null,
+				"antag_ref" = REF(antag),
 				"mind_ref" = REF(owner_mind),
 			)
 
@@ -499,7 +500,7 @@
 						"mind_ref" = REF(member_mind),
 					))
 
-			var/list/team_eval = team_inst.objectives?.len ? evaluate_objectives(team_inst.objectives) : list("outcome" = -1, "objectives" = list())
+			var/list/team_eval = evaluate_objectives(team_inst.objectives, objective_rows)
 
 			teams_data += list(list(
 				"name" = (istext(team_inst.name) && format_text(team_inst.name)) || "Команда",
@@ -511,10 +512,6 @@
 			))
 
 	.["teams"] = teams_data
-	.["db_connected"] = SSdbcore.IsConnected() ? TRUE : FALSE
-	.["history_limit"] = history_limit
-	.["history_loading"] = history_loading
-	.["history"] = cached_history_data
 
 /**
  * Safely resolves a mob reference within `GLOB.mob_list`.
@@ -549,79 +546,59 @@
 	if(.)
 		return
 
-	if(!check_rights(R_ADMIN))
+	var/client/viewer = usr?.client
+	if(usr != ui.user || !can_view_panel(viewer) || (params && !islist(params)))
 		return FALSE
 
 	switch(action)
 		if("pm")
-			var/target_ckey = params["ckey"]
-			if(!istext(target_ckey) || !length(target_ckey))
-				return FALSE
-			usr.client?.cmd_admin_pm(target_ckey)
-			return TRUE
+			var/target_ckey = params?["ckey"]
+			if(istext(target_ckey) && length(target_ckey) && target_ckey == ckey(target_ckey))
+				viewer.cmd_admin_pm(target_ckey)
 
 		if("follow")
-			var/mob/target_mob = locate_mob(params["mob_ref"])
-			if(!target_mob)
-				return FALSE
-			usr.client?.admin_follow(target_mob)
-			return TRUE
+			var/mob/target_mob = locate_mob(params?["mob_ref"])
+			if(target_mob)
+				viewer.admin_follow(target_mob)
 
 		if("player_panel")
-			var/mob/target_mob = locate_mob(params["mob_ref"])
-			if(!target_mob)
-				var/datum/mind/target_mind = locate_mind(params["mind_ref"])
-				if(target_mind && !QDELETED(target_mind.current))
-					target_mob = target_mind.current
-			if(!target_mob)
-				return FALSE
-			SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/show_player_panel, target_mob)
-			return TRUE
+			var/datum/mind/target_mind = locate_mind(params?["mind_ref"])
+			var/mob/target_mob = target_mind ? target_mind.current : locate_mob(params?["mob_ref"])
+			if(!QDELETED(target_mob))
+				SSadmin_verbs.dynamic_invoke_verb(viewer, /datum/admin_verb/show_player_panel, target_mob)
 
 		if("traitor_panel")
-			var/datum/mind/target_mind = locate_mind(params["mind_ref"])
+			var/datum/mind/target_mind = locate_mind(params?["mind_ref"])
 			if(target_mind)
 				target_mind.traitor_panel()
-				return TRUE
-			var/mob/target_mob = locate_mob(params["mob_ref"])
-			if(target_mob && !QDELETED(target_mob.mind))
-				target_mob.mind.traitor_panel()
-				return TRUE
-			return FALSE
 
 		if("vv")
-			if(!check_rights(R_DEBUG))
+			if(!check_rights_for(viewer, R_DEBUG))
 				return FALSE
-			var/target_ref = params["target_ref"]
-			var/datum/target = locate_mob(target_ref) || locate_mind(target_ref) || locate_mob(params["mob_ref"]) || locate_mind(params["mind_ref"])
-			if(QDELETED(target))
-				return FALSE
-			usr.client?.debug_variables(target)
-			return TRUE
+			var/target_ref = params?["target_ref"]
+			var/datum/target = locate_mob(target_ref) || locate_mind(target_ref)
+			if(!QDELETED(target))
+				viewer.debug_variables(target)
 
 		if("check_teams")
-			usr.client?.holder?.check_teams()
-			return TRUE
+			holder.check_teams()
 
 		if("refresh_current")
 			return TRUE
 
-		if("refresh_history")
-			if(!history_loading)
+		if("load_history")
+			if(history_status == "idle")
 				request_history_reload()
-			return TRUE
+
+		if("refresh_history")
+			request_history_reload()
 
 		if("set_limit")
-			var/raw_limit = params["limit"]
-			var/new_limit = isnum(raw_limit) ? raw_limit : (istext(raw_limit) ? text2num(raw_limit) : null)
-			if(!isnum(new_limit))
-				return FALSE
-			new_limit = round(new_limit)
-			if(!(new_limit >= 1 && new_limit <= 100))
+			var/new_limit = params?["limit"]
+			if(history_status == "loading" || !isnum(new_limit) || !(new_limit >= 1 && new_limit <= 100) || new_limit != round(new_limit))
 				return FALSE
 			if(new_limit != history_limit)
 				history_limit = new_limit
 				request_history_reload()
-			else if(history_needs_reload && !history_loading)
-				request_history_reload()
-			return TRUE
+
+	return FALSE

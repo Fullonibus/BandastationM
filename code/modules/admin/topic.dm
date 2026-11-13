@@ -79,9 +79,7 @@
 		dynamic_panel(usr)
 
 	else if(href_list["antag_winloss_stats"])
-		if(!check_rights(R_ADMIN))
-			return
-		open_antag_winloss_stats(usr)
+		open_antag_winloss_stats()
 
 	else if(href_list["call_shuttle"])
 		if(!check_rights(R_ADMIN))

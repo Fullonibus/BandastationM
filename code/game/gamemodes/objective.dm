@@ -96,6 +96,10 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 /datum/objective/proc/check_completion()
 	return completed
 
+/// Checks the objective for display without advancing gameplay state. Override when check_completion has side effects.
+/datum/objective/proc/check_completion_read_only()
+	return check_completion()
+
 /// Provides a string describing what a good job you did or did not do
 /datum/objective/proc/get_roundend_success_suffix()
 	if(no_failure)
@@ -253,19 +257,27 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	message_admins("[ADMIN_LOOKUPFLW(target.current)] has gone AFK with a mutiny objective that involves them. They only have [COOLDOWN_TIMELEFT(src, disconnect_timer) / 10] seconds remaining before they are treated as if they were dead.")
 
 /datum/objective/mutiny/check_completion()
+	return check_mutiny_completion()
+
+/datum/objective/mutiny/check_completion_read_only()
+	return check_mutiny_completion(read_only = TRUE)
+
+/// Checks the mutiny result. A preview only reads the existing disconnect grace timer.
+/datum/objective/mutiny/proc/check_mutiny_completion(read_only = FALSE)
 	if(!target || !considered_alive(target) || considered_exiled(target))
 		return TRUE
 
 	if(considered_afk(target))
 		if(!COOLDOWN_STARTED(src, disconnect_timer))
-			COOLDOWN_START(src, disconnect_timer, DISCONNECT_GRACE_TIME)
-			warn_admins()
+			if(!read_only)
+				COOLDOWN_START(src, disconnect_timer, DISCONNECT_GRACE_TIME)
+				warn_admins()
 		else if(COOLDOWN_FINISHED(src, disconnect_timer))
 			return TRUE
-		else if(COOLDOWN_TIMELEFT(src, disconnect_timer) <= DISCONNECT_GRACE_WARNING_TIME && !warned_admins)
+		else if(!read_only && COOLDOWN_TIMELEFT(src, disconnect_timer) <= DISCONNECT_GRACE_WARNING_TIME && !warned_admins)
 			warned_admins = TRUE
 			warn_admins()
-	else
+	else if(!read_only)
 		COOLDOWN_RESET(src, disconnect_timer)
 		warned_admins = FALSE
 
@@ -414,7 +426,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	var/hijack_speed_override = 1
 
 /datum/objective/hijack/check_completion() // Requires all owners to escape.
-	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
+	if(SSshuttle.emergency?.mode != SHUTTLE_ENDGAME)
 		return FALSE
 	var/list/datum/mind/owners = get_owners()
 	for(var/datum/mind/M in owners)
@@ -429,7 +441,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	martyr_compatible = FALSE
 
 /datum/objective/elimination/check_completion()
-	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
+	if(SSshuttle.emergency?.mode != SHUTTLE_ENDGAME)
 		return FALSE
 	var/list/datum/mind/owners = get_owners()
 	for(var/datum/mind/M in owners)
@@ -442,7 +454,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	explanation_text = "Сбегите на шаттле в одиночку. Убедитесь, что никто другой кроме вас не сбежал."
 
 /datum/objective/elimination/highlander/check_completion()
-	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
+	if(SSshuttle.emergency?.mode != SHUTTLE_ENDGAME)
 		return FALSE
 	var/list/datum/mind/owners = get_owners()
 	for(var/datum/mind/M in owners)
@@ -460,7 +472,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 /datum/objective/block/check_completion()
 	if(GLOB.station_was_nuked)
 		return TRUE
-	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
+	if(SSshuttle.emergency?.mode != SHUTTLE_ENDGAME)
 		return TRUE
 	for(var/mob/living/player in GLOB.player_list)
 		if(player.mind && player.stat != DEAD && (player.mob_biotypes & MOB_ORGANIC))

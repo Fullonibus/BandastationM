@@ -129,7 +129,7 @@ ADMIN_VERB(check_antagonists, R_ADMIN, "Check Antagonists", "See all antagonists
 	BLACKBOX_LOG_ADMIN_VERB("Check Antagonists")
 
 ADMIN_VERB(antag_winloss_stats, R_ADMIN, "Antagonist Win/Loss Stats", "View antagonist win/loss statistics and round results.", ADMIN_CATEGORY_GAME)
-	user.holder.open_antag_winloss_stats(user.mob)
+	user.holder.open_antag_winloss_stats()
 	log_admin("[key_name(user)] viewed antagonist win/loss stats.")
 	BLACKBOX_LOG_ADMIN_VERB("Antagonist Win/Loss Stats")
 
