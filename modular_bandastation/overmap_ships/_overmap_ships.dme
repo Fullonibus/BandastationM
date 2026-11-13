@@ -6,3 +6,4 @@
 #include "code/glimpse.dm"
 #include "code/kilo.dm"
 #include "code/argos.dm"
+#include "code/cargo_s.dm"

@@ -1,0 +1,598 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aL" = (
+/obj/effect/turf_decal/loading_area,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/cargo_s)
+"bR" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east{
+	req_access = list("cargo");
+	start_charge = 100
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"bX" = (
+/obj/effect/turf_decal/loading_area,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/cargo_s)
+"cD" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman/ship{
+	active = 1;
+	anchored = 1;
+	sheets = 40
+	},
+/obj/machinery/airalarm/directional/west,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"cK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 2
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/cargo_s)
+"eh" = (
+/obj/effect/turf_decal/loading_area,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/cargo_s)
+"gF" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/west{
+	req_access = list("cargo");
+	start_charge = 100
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"gM" = (
+/obj/effect/turf_decal/loading_area,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/cargo_s)
+"hW" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	area_type = /area/shuttle/stationtrauma_space/cargo_s;
+	dir = 1;
+	name = "Челнок";
+	overmap_x = 1000;
+	ship_class = "small";
+	shuttle_id = "overmap_cargo_s";
+	starting_dock = "cyberiad_s_dock"
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"jF" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"jV" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"lB" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	area_type = /area/shuttle/stationtrauma_space/cargo_s;
+	dir = 1;
+	name = "Челнок";
+	overmap_x = 1000;
+	ship_class = "small";
+	shuttle_id = "overmap_cargo_s";
+	starting_dock = "cyberiad_s_dock"
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"mu" = (
+/obj/machinery/computer/stationtrauma_transponder{
+	dir = 2;
+	circuit = /obj/item/circuitboard/computer/stationtrauma_transponder/nt/cargo_s
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"pH" = (
+/obj/structure/cable,
+/obj/machinery/stationtrauma_bluespace_drive{
+	charges = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"qd" = (
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"qH" = (
+/obj/machinery/atmospherics/components/binary/pump/on/layer4{
+	dir = 1;
+	target_pressure = 506.625
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"rY" = (
+/obj/machinery/door/airlock/shuttle/glass{
+	dir = 1;
+	air_tight = 1;
+	name = "Рубка"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"te" = (
+/obj/machinery/atmospherics/components/binary/pump/on/layer4{
+	dir = 1;
+	target_pressure = 506.625
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"tp" = (
+/obj/machinery/door/airlock/external{
+	dir = 2;
+	air_tight = 1;
+	closeOtherId = "overmap_cargo_s_eva";
+	name = "Внутренний шлюз"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/turf_decal/stripes/full{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"uB" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"uH" = (
+/obj/effect/turf_decal/loading_area,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/cargo_s)
+"vG" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	area_type = /area/shuttle/stationtrauma_space/cargo_s;
+	dir = 1;
+	name = "Челнок";
+	overmap_x = 1000;
+	ship_class = "small";
+	shuttle_id = "overmap_cargo_s";
+	starting_dock = "cyberiad_s_dock"
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"vR" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"vV" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman/ship{
+	active = 1;
+	anchored = 1;
+	sheets = 40
+	},
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"wc" = (
+/obj/machinery/airalarm/directional/west,
+/obj/machinery/telecomms/allinone/ship,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"yI" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/cargo_s)
+"yO" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"zN" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"Ap" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"AH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"Bn" = (
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"BX" = (
+/obj/effect/turf_decal/loading_area,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/cargo_s)
+"Cx" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"Ea" = (
+/obj/machinery/door/airlock/stationtrauma_docking/ship{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/full{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"EZ" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"Fu" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 2
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/cargo_s/exterior)
+"Fw" = (
+/obj/machinery/door/airlock/external{
+	dir = 2;
+	air_tight = 1;
+	closeOtherId = "overmap_cargo_s_eva";
+	name = "Наружный шлюз"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/turf_decal/stripes/full{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"Gx" = (
+/obj/machinery/computer/stationtrauma_space_navigation{
+	dir = 2;
+	use_power = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"Ho" = (
+/obj/machinery/atmospherics/components/tank/air/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"HH" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"IY" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"JC" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"JW" = (
+/turf/open/space/basic,
+/area/space)
+"Kl" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/cargo_s)
+"Km" = (
+/obj/machinery/atmospherics/components/tank/air/layer2{
+	dir = 1;
+	name = "Бак отходящих газов";
+	starting_pressure_percent = 0
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"KB" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"Lx" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"MX" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	area_type = /area/shuttle/stationtrauma_space/cargo_s;
+	dir = 1;
+	name = "Челнок";
+	overmap_x = 1000;
+	ship_class = "small";
+	shuttle_id = "overmap_cargo_s";
+	starting_dock = "cyberiad_s_dock"
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"Nz" = (
+/obj/effect/turf_decal/stripes/full{
+	dir = 2
+	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"PU" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"Rd" = (
+/obj/effect/turf_decal/stripes/full{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/cargo_s)
+"Tv" = (
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/cargo_s)
+"TS" = (
+/obj/machinery/computer/stationtrauma_bluespace{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"Um" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman/ship{
+	active = 1;
+	anchored = 1;
+	sheets = 40
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"UO" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s)
+"WO" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/cargo_s)
+"YP" = (
+/obj/structure/closet{
+	anchored = 1;
+	name = "Аварийный и ремонтный запас"
+	},
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/stack/cable_coil,
+/obj/item/stack/sheet/iron/ten,
+/obj/item/stack/sheet/mineral/plasma/ten,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+
+(1,1,1) = {"
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+"}
+(2,1,1) = {"
+JW
+Lx
+Lx
+Lx
+yI
+yI
+yI
+yI
+yI
+yI
+yI
+yI
+yI
+yI
+yI
+JW
+JW
+"}
+(3,1,1) = {"
+JW
+Lx
+wc
+vR
+yI
+gM
+bX
+gM
+gM
+gM
+gM
+uH
+gF
+cD
+yI
+JW
+JW
+"}
+(4,1,1) = {"
+JW
+qd
+TS
+EZ
+rY
+Bn
+Bn
+Bn
+Bn
+zN
+Bn
+Bn
+UO
+pH
+yI
+Fu
+JW
+"}
+(5,1,1) = {"
+JW
+qd
+Gx
+JC
+WO
+eh
+eh
+eh
+eh
+lB
+eh
+eh
+qH
+Ho
+yI
+JW
+JW
+"}
+(6,1,1) = {"
+JW
+qd
+mu
+PU
+cK
+AH
+AH
+AH
+AH
+KB
+AH
+AH
+Km
+yI
+yI
+Fu
+JW
+"}
+(7,1,1) = {"
+JW
+Lx
+YP
+bR
+yI
+gM
+gM
+gM
+gM
+Ap
+BX
+Nz
+tp
+Tv
+Fw
+JW
+JW
+"}
+(8,1,1) = {"
+JW
+Lx
+Lx
+Lx
+yI
+yI
+yI
+yI
+yI
+Ea
+yI
+yI
+yI
+yI
+yI
+JW
+JW
+"}
+(9,1,1) = {"
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+"}

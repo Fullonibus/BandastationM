@@ -59,7 +59,7 @@
 				"template": "_maps/map_files/overmap_ships/pocketrocket.dmm"
 			},
 			{
-				"template": "_maps/map_files/overmap_ships/s_dock_test.dmm"
+				"template": "_maps/map_files/overmap_ships/cargo_s.dmm"
 			}
 		]
 	},
