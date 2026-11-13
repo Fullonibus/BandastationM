@@ -81,6 +81,10 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 
 /obj/machinery/atmospherics/shuttleRotate(rotation, params)
 	var/list/real_node_connect = get_node_connects()
+	var/rotated_directions = NONE
+	for(var/direction in GLOB.cardinals)
+		if(initialize_directions & direction)
+			rotated_directions |= turn(direction, -rotation)
 	for(var/i in 1 to device_type)
 		var/node_dir = real_node_connect[i]
 		if(isnull(node_dir))
@@ -89,7 +93,8 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 		real_node_connect[i] = turn(node_dir, -rotation)
 
 	. = ..()
-	set_init_directions()
+	// Smart pipes must retain their cut directions instead of reconnecting on every side.
+	set_init_directions(rotated_directions)
 	var/list/supposed_node_connect = get_node_connects()
 	var/list/nodes_copy = nodes.Copy()
 
@@ -100,6 +105,17 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 
 		var/new_pos = supposed_node_connect.Find(node_dir)
 		nodes[new_pos] = nodes_copy[i]
+
+/** Cable cuts rotate with the hull before the native late-move network rebuild. */
+/obj/structure/cable/shuttleRotate(rotation, params)
+	. = ..()
+	if(!(params & ROTATE_DIR))
+		return
+	var/rotated_links = NONE
+	for(var/direction in GLOB.cardinals)
+		if(banned_links & direction)
+			rotated_links |= turn(direction, -rotation)
+	banned_links = rotated_links
 
 //prevents shuttles attempting to rotate this since it messes up sprites
 /obj/machinery/gateway/shuttleRotate(rotation, params)

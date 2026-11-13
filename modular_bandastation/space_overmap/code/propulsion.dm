@@ -8,6 +8,8 @@
 	var/obj/effect/abstract/particle_holder/exhaust
 	/// Plume colours from the nozzle outward; bluespace drives by default.
 	var/list/exhaust_gradient = list("#FFFFFF", "#9FF4FF", "#2F8CFF")
+	/// Last feed palette, so changing converters refreshes an already firing plume.
+	var/list/last_exhaust_gradient
 	/// Whether the plume shows the green tritium afterburner.
 	var/exhaust_boosted = FALSE
 	/// Engineer's switch on the engine console; a switched-off nozzle gives no thrust and takes no gas.
@@ -22,19 +24,23 @@
  *
  * Arguments:
  * * active - Whether the nozzle is producing thrust
- * * boosted - Whether burning tritium turns the plume green
+ * * boosted - Whether the supplying fusion core is in overdrive
+ * * gradient - Palette supplied by the converter; ordinary engines use their default
  */
-/obj/machinery/power/shuttle_engine/proc/set_exhaust(active, boosted = FALSE)
+/obj/machinery/power/shuttle_engine/proc/set_exhaust(active, boosted = FALSE, list/gradient)
 	boosted = active && boosted
-	if(!!exhaust == !!active && exhaust_boosted == boosted)
+	gradient ||= exhaust_gradient
+	if(!!exhaust == !!active && exhaust_boosted == boosted && (!active || last_exhaust_gradient == gradient))
 		return
 	exhaust_boosted = boosted
+	last_exhaust_gradient = active ? gradient : null
 	QDEL_NULL(exhaust)
 	if(!active)
 		set_light(0)
 		return
 	var/static/list/afterburner_gradient = list("#FFFFFF", "#C9FFB8", "#2BD23C")
-	var/list/gradient = boosted ? afterburner_gradient : exhaust_gradient
+	if(boosted)
+		gradient = afterburner_gradient
 	exhaust = new(src, /particles/ship_exhaust)
 	var/list/offset = dir2offset(dir)
 	// Emit across the whole outer edge of the real footprint, including rotated large nozzles.
@@ -65,25 +71,68 @@
 	scale = generator(GEN_VECTOR, list(0.9, 0.9), list(1.5, 1.5), NORMAL_RAND)
 	spin = generator(GEN_NUM, -20, 20)
 
-/** Small nozzle fed with the fusion core's hot gas through its converter. */
-/obj/machinery/power/shuttle_engine/propulsion/tritium
-	name = "тритиевый двигатель"
-	desc = "Сопло двигательной установки с подачей горячего газа от приёмного блока."
+/** Standard small nozzle; the converter determines its working fluid and delivered thrust. */
+/obj/machinery/power/shuttle_engine/propulsion/standard
+	name = "малое корабельное сопло"
+	desc = "Стандартное сопло двигательной установки. Требует подачи рабочего тела от преобразователя тяги."
 	requires_combustion = TRUE
-	circuit = /obj/item/circuitboard/machine/engine/propulsion/tritium
-	// The fusion-fed drive is the strongest per nozzle.
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/standard
 	engine_power = 2
-	exhaust_gradient = list("#FFFFFF", "#FCE6B6", "#FD481C")
 
-/** Large nozzle retaining the native two-by-two footprint. */
-/obj/machinery/power/shuttle_engine/large/tritium
-	name = "большой тритиевый двигатель"
-	desc = "Тяжёлое сопло двигательной установки с подачей горячего газа."
+/** Standard small nozzle retaining the native left appearance. */
+/obj/machinery/power/shuttle_engine/propulsion/standard/left
+	name = "левое малое корабельное сопло"
+	icon_state = /obj/machinery/power/shuttle_engine/propulsion/left::icon_state
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/standard/left
+
+/** Standard small nozzle retaining the native right appearance. */
+/obj/machinery/power/shuttle_engine/propulsion/standard/right
+	name = "правое малое корабельное сопло"
+	icon_state = /obj/machinery/power/shuttle_engine/propulsion/right::icon_state
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/standard/right
+
+/** Standard small nozzle retaining the native burst appearance. */
+/obj/machinery/power/shuttle_engine/propulsion/standard/burst
+	name = "малое корабельное сопло «Burst»"
+	icon_state = /obj/machinery/power/shuttle_engine/propulsion/burst::icon_state
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/standard/burst
+
+/** Standard small nozzle retaining the native burst/left appearance. */
+/obj/machinery/power/shuttle_engine/propulsion/standard/burst/left
+	name = "левое корабельное сопло «Burst»"
+	icon_state = /obj/machinery/power/shuttle_engine/propulsion/burst/left::icon_state
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/standard/burst/left
+
+/** Standard small nozzle retaining the native burst/right appearance. */
+/obj/machinery/power/shuttle_engine/propulsion/standard/burst/right
+	name = "правое корабельное сопло «Burst»"
+	icon_state = /obj/machinery/power/shuttle_engine/propulsion/burst/right::icon_state
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/standard/burst/right
+
+/** Standard heavy nozzle retaining the native two-by-two footprint. */
+/obj/machinery/power/shuttle_engine/large/standard
+	name = "большое корабельное сопло"
+	desc = "Тяжёлое стандартное сопло. Доступная тяга ограничена мощностью подключённого преобразователя."
 	requires_combustion = TRUE
-	circuit = /obj/item/circuitboard/machine/engine/propulsion/tritium/large
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/standard/large
 	// Four small nozzles' footprint.
 	engine_power = 8
-	exhaust_gradient = list("#FFFFFF", "#FCE6B6", "#FD481C")
+
+/** Standard three-by-three nozzle, with the same capacity per tile as the smaller sizes. */
+/obj/machinery/power/shuttle_engine/huge/standard
+	name = "огромное корабельное сопло"
+	desc = "Стандартное сопло для крупных кораблей. Требует подачи рабочего тела от преобразователя тяги."
+	requires_combustion = TRUE
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/standard/huge
+	engine_power = 18
+
+/** Compatibility for maps using the former fuel-specific nozzle paths. */
+/obj/machinery/power/shuttle_engine/propulsion/tritium
+	parent_type = /obj/machinery/power/shuttle_engine/propulsion/standard
+
+/** Compatibility for the former heavy fusion nozzle. */
+/obj/machinery/power/shuttle_engine/large/tritium
+	parent_type = /obj/machinery/power/shuttle_engine/large/standard
 
 /**
  * Fuel gauges of real supply networks; each mixture and canister is counted once, including those behind inlet pumps.
@@ -130,25 +179,112 @@
 	name = "преобразователь тяги"
 	build_path = /obj/machinery/atmospherics/components/unary/ship_engine_heater
 
-/** Rebuilding a small fuelled nozzle preserves its propellant requirement. */
+/** Rebuilding a standard nozzle retains its requirement for a real converter. */
+/obj/item/circuitboard/machine/engine/propulsion/standard
+	name = "малое корабельное сопло"
+	build_path = /obj/machinery/power/shuttle_engine/propulsion/standard
+
+/** Board preserving the left nozzle during native rebuilding. */
+/obj/item/circuitboard/machine/engine/propulsion/standard/left
+	name = "левое малое корабельное сопло"
+	build_path = /obj/machinery/power/shuttle_engine/propulsion/standard/left
+
+/** Board preserving the right nozzle during native rebuilding. */
+/obj/item/circuitboard/machine/engine/propulsion/standard/right
+	name = "правое малое корабельное сопло"
+	build_path = /obj/machinery/power/shuttle_engine/propulsion/standard/right
+
+/** Board preserving the burst nozzle during native rebuilding. */
+/obj/item/circuitboard/machine/engine/propulsion/standard/burst
+	name = "малое корабельное сопло «Burst»"
+	build_path = /obj/machinery/power/shuttle_engine/propulsion/standard/burst
+
+/** Board preserving the burst/left nozzle during native rebuilding. */
+/obj/item/circuitboard/machine/engine/propulsion/standard/burst/left
+	name = "левое корабельное сопло «Burst»"
+	build_path = /obj/machinery/power/shuttle_engine/propulsion/standard/burst/left
+
+/** Board preserving the burst/right nozzle during native rebuilding. */
+/obj/item/circuitboard/machine/engine/propulsion/standard/burst/right
+	name = "правое корабельное сопло «Burst»"
+	build_path = /obj/machinery/power/shuttle_engine/propulsion/standard/burst/right
+
+/** Heavy standard nozzle board, usable with any compatible converter. */
+/obj/item/circuitboard/machine/engine/propulsion/standard/large
+	name = "большое корабельное сопло"
+	build_path = /obj/machinery/power/shuttle_engine/large/standard
+
+/** Three-by-three nozzle board using the native machine frame. */
+/obj/item/circuitboard/machine/engine/propulsion/standard/huge
+	name = "огромное корабельное сопло"
+	build_path = /obj/machinery/power/shuttle_engine/huge/standard
+
+/** Existing boards rebuild the same standardized hardware as newly printed boards. */
 /obj/item/circuitboard/machine/engine/propulsion/tritium
-	name = "тритиевый двигатель"
-	build_path = /obj/machinery/power/shuttle_engine/propulsion/tritium
+	parent_type = /obj/item/circuitboard/machine/engine/propulsion/standard
 
-/** The native large nozzle has no board; this one makes a wrecked heavy nozzle replaceable. */
+/** Compatibility for the former heavy fusion nozzle board. */
 /obj/item/circuitboard/machine/engine/propulsion/tritium/large
-	name = "большой тритиевый двигатель"
-	build_path = /obj/machinery/power/shuttle_engine/large/tritium
+	parent_type = /obj/item/circuitboard/machine/engine/propulsion/standard/large
 
-/datum/design/board/stationtrauma_large_engine
-	name = "Плата большого тритиевого двигателя"
-	desc = "Плата тяжёлого сопла корабля с подачей горячего газа."
-	build_path = /obj/item/circuitboard/machine/engine/propulsion/tritium/large
+/** Buildable heavy converter; its rating is independent of the attached nozzle. */
+/obj/item/circuitboard/machine/engine/heater/combustion/large
+	name = "большой преобразователь тяги"
+	build_path = /obj/machinery/atmospherics/components/unary/ship_engine_heater/large
+
+/** Standard nozzle boards available through shuttle engineering. */
+/datum/design/board/stationtrauma_engine
+	name = "Плата малого корабельного сопла"
+	desc = "Плата стандартного сопла с подачей рабочего тела от преобразователя."
+	build_path = /obj/item/circuitboard/machine/engine/propulsion/standard
 	build_type = IMPRINTER
 	category = list(
 		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
+
+/** Printable board for the left small nozzle. */
+/datum/design/board/stationtrauma_engine/left
+	name = "Плата: левое малое корабельное сопло"
+	build_path = /obj/item/circuitboard/machine/engine/propulsion/standard/left
+
+/** Printable board for the right small nozzle. */
+/datum/design/board/stationtrauma_engine/right
+	name = "Плата: правое малое корабельное сопло"
+	build_path = /obj/item/circuitboard/machine/engine/propulsion/standard/right
+
+/** Printable board for the burst small nozzle. */
+/datum/design/board/stationtrauma_engine/burst
+	name = "Плата: малое корабельное сопло «Burst»"
+	build_path = /obj/item/circuitboard/machine/engine/propulsion/standard/burst
+
+/** Printable board for the burst/left small nozzle. */
+/datum/design/board/stationtrauma_engine/burst_left
+	name = "Плата: левое корабельное сопло «Burst»"
+	build_path = /obj/item/circuitboard/machine/engine/propulsion/standard/burst/left
+
+/** Printable board for the burst/right small nozzle. */
+/datum/design/board/stationtrauma_engine/burst_right
+	name = "Плата: правое корабельное сопло «Burst»"
+	build_path = /obj/item/circuitboard/machine/engine/propulsion/standard/burst/right
+
+/** Printable board for the three-by-three standard nozzle. */
+/datum/design/board/stationtrauma_engine/huge
+	name = "Плата огромного корабельного сопла"
+	build_path = /obj/item/circuitboard/machine/engine/propulsion/standard/huge
+
+/** Keep the existing research design identity for heavy nozzles. */
+/datum/design/board/stationtrauma_large_engine
+	parent_type = /datum/design/board/stationtrauma_engine
+	name = "Плата большого корабельного сопла"
+	build_path = /obj/item/circuitboard/machine/engine/propulsion/standard/large
+
+/** Heavy converter board paired with the large nozzle rating. */
+/datum/design/board/stationtrauma_large_converter
+	parent_type = /datum/design/board/stationtrauma_engine
+	name = "Плата большого преобразователя тяги"
+	desc = "Плата преобразователя горячего газа для тяжёлого корабельного сопла."
+	build_path = /obj/item/circuitboard/machine/engine/heater/combustion/large
 
 /** One native pipe inlet, directed toward a separately installed physical nozzle. */
 /obj/machinery/atmospherics/components/unary/ship_engine_heater
@@ -173,6 +309,16 @@
 	var/delivered_fraction = 0
 	/// Moles per second one nozzle draws at full load; thrust comes from engine_power, not from more gas.
 	var/propellant_flow = 0.52
+	/// Nominal thrust the converter can supply, independently of the nozzle's capacity.
+	var/rated_thrust = 2
+	/// Working-fluid palette belongs to the installation, not the replaceable nozzle.
+	var/list/exhaust_gradient = list("#FFFFFF", "#FCE6B6", "#FD481C")
+
+/** Heavy fusion converter preserving the mapped Raven's existing fuel budget. */
+/obj/machinery/atmospherics/components/unary/ship_engine_heater/large
+	name = "большой преобразователь тяги"
+	circuit = /obj/item/circuitboard/machine/engine/heater/combustion/large
+	rated_thrust = 8
 
 /** Mapping preset for receivers connected to the fourth pipe layer. */
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/layer4
@@ -296,12 +442,13 @@
 	var/ready = ready_fraction()
 	var/obj/machinery/power/shuttle_engine/engine = nozzle?.resolve()
 	var/obj/docking_port/mobile/stationtrauma_space/ship = engine?.connected_ship
+	var/capacity = engine ? min(1, rated_thrust / max(1, engine.engine_power)) : 0
 	if(!ship?.engines_running)
-		return ready
-	. = min(ready, delivered_fraction)
+		return ready * capacity
+	. = min(ready, delivered_fraction) * capacity
 	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = core?.resolve()
-	if(. && reactor?.overdrive_active())
-		. *= 1 + SHIP_AFTERBURNER_THRUST
+	if(.)
+		. *= reactor?.thrust_multiplier() || 1
 
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/process_atmos(seconds_per_tick)
 	delivered_fraction = 0
@@ -312,7 +459,7 @@
 	if(!ship.engines_running)
 		return
 	var/datum/stationtrauma_overmap/space/map = ship.overmap
-	var/load = map?.ascending() ? 1 : map?.helm_engaged ? max(abs(map.throttle) / 100, !!map.braking, !!map.maneuver_direction) : 0
+	var/load = map?.commanded_thrust() || 0
 	// The fusion core's full output covers every Raven converter at full thrust.
 	var/requested = propellant_flow * max(0.15, load) * seconds_per_tick
 	var/datum/gas_mixture/air = airs[1]
@@ -354,18 +501,13 @@
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/crowbar_act(mob/living/user, obj/item/tool)
 	return crowbar_deconstruction_act(user, tool)
 
-/** Small nozzle exhausting electrically heated plasma; no combustion chamber is involved. */
+/** Compatibility for mapped plasma engines; plasma behaviour belongs to their converter. */
 /obj/machinery/power/shuttle_engine/propulsion/plasma
-	name = "плазменный двигатель"
-	desc = "Сопло, выбрасывающее плазму, разогретую электрическим нагревателем."
-	requires_combustion = TRUE
-	circuit = /obj/item/circuitboard/machine/engine/propulsion/plasma
-	exhaust_gradient = list("#FFFFFF", "#F2B8FF", "#9B3DFF")
+	parent_type = /obj/machinery/power/shuttle_engine/propulsion/standard
 
-/** Rebuilding a plasma nozzle preserves its propellant requirement. */
+/** Existing plasma boards now rebuild the standard small nozzle. */
 /obj/item/circuitboard/machine/engine/propulsion/plasma
-	name = "плазменный двигатель"
-	build_path = /obj/machinery/power/shuttle_engine/propulsion/plasma
+	parent_type = /obj/item/circuitboard/machine/engine/propulsion/standard
 
 /** Buildable electric plasma heater. */
 /obj/item/circuitboard/machine/engine/heater/plasma
@@ -383,6 +525,8 @@
 	circuit = /obj/item/circuitboard/machine/engine/heater/plasma
 	// Three times the fusion drive mass flow: a cheap but hungry drive.
 	propellant_flow = 1.56
+	rated_thrust = 1
+	exhaust_gradient = list("#FFFFFF", "#F2B8FF", "#9B3DFF")
 	/// Maximum electric heating rate.
 	var/heating_power = 50 KILO WATTS
 	/// Exhaust temperature for full thrust; plasma relies on mass flow rather than heat.
@@ -472,9 +616,14 @@
 		else if(engine.machine_stat & BROKEN)
 			status = "Повреждено"
 		status ||= ship.engines_running ? (thrust >= 100 ? "Работает" : "Ограниченная тяга") : "Готово"
+		var/size = "Малое"
+		if(engine.bound_width > 2 * ICON_SIZE_X)
+			size = "Огромное"
+		else if(engine.bound_width > ICON_SIZE_X)
+			size = "Большое"
 		engines += list(list(
 			"id" = REF(engine), "number" = length(engines) + 1,
-			"size" = engine.bound_width > ICON_SIZE_X ? "Большое" : "Малое",
+			"size" = size,
 			"power" = engine.engine_power,
 			"enabled" = engine.crew_enabled,
 			"integrity" = round(100 * engine.get_integrity() / engine.max_integrity),

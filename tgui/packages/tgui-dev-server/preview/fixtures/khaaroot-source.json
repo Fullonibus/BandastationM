@@ -1,0 +1,134 @@
+{
+	"config": {
+		"interface": {
+			"name": "KhaarootHivemind"
+		},
+		"title": "Улей Кхаарут",
+		"window": {
+			"size": [620, 500]
+		}
+	},
+	"data": {
+		"can_manage": true,
+		"thralls": [
+			{
+				"name": "Александра-Екатерина Северная-Дальнепутная, младший инженер технического обслуживания",
+				"ref": "[0x210001]",
+				"status": "Активен",
+				"health": 100,
+				"location": "Технический коридор",
+				"objective": "Найдите запасной кабель и восстановите питание южного шлюза.\nСообщите источнику, если доступ к распределительному щиту закрыт.",
+				"has_mob": true,
+				"has_objective": true,
+				"objective_status": "assigned",
+				"objective_revision": 7,
+				"objective_reply": ""
+			},
+			{
+				"name": "Лев Каменский",
+				"ref": "[0x210002]",
+				"status": "Активен",
+				"health": 73,
+				"location": "Медицинский отсек",
+				"objective": "Доставьте аптечку к южному техническому шлюзу.",
+				"has_mob": true,
+				"has_objective": true,
+				"objective_status": "accepted",
+				"objective_revision": 3,
+				"objective_reply": ""
+			},
+			{
+				"name": "Мира Тихая",
+				"ref": "[0x210003]",
+				"status": "Критическое",
+				"health": -32.5,
+				"location": "Заброшенная часть технических тоннелей за северо-восточным двигателем",
+				"objective": "Откройте запасной проход к двигательному отсеку.",
+				"has_mob": true,
+				"has_objective": true,
+				"objective_status": "blocked",
+				"objective_revision": 12,
+				"objective_reply": "Не могу добраться до шлюза: проход завален, а инструментов для разборки у меня нет. Нужна помощь другого участника."
+			},
+			{
+				"name": "Оскар Речной",
+				"ref": "[0x210004]",
+				"status": "Активен",
+				"health": 100,
+				"location": "Технический коридор",
+				"objective": "Оставьте инструменты в условленном месте.",
+				"has_mob": true,
+				"has_objective": true,
+				"objective_status": "completed",
+				"objective_revision": 2,
+				"objective_reply": ""
+			},
+			{
+				"name": "Соня Лесная",
+				"ref": "[0x210005]",
+				"status": "Нет тела",
+				"health": 0,
+				"location": "Неизвестно",
+				"objective": "",
+				"has_mob": false,
+				"has_objective": false,
+				"objective_status": "assigned",
+				"objective_revision": 0,
+				"objective_reply": ""
+			}
+		],
+		"thrall_count": 5,
+		"events": [
+			{
+				"id": 8,
+				"time": "12:48",
+				"text": "Мира Тихая: не могу выполнить цель. Причина: проход завален, инструментов нет.",
+				"kind": "task"
+			},
+			{
+				"id": 7,
+				"time": "12:47",
+				"text": "Мира Тихая в критическом состоянии.",
+				"kind": "warning"
+			},
+			{
+				"id": 6,
+				"time": "12:46",
+				"text": "Оскар Речной: цель выполнена.",
+				"kind": "task"
+			},
+			{
+				"id": 5,
+				"time": "12:44",
+				"text": "Александра-Екатерина Северная-Дальнепутная, младший инженер технического обслуживания: поставлена новая цель.\nНайдите запасной кабель и восстановите питание южного шлюза.",
+				"kind": "task"
+			},
+			{
+				"id": 4,
+				"time": "12:42",
+				"text": "Сигнал Сони Лесной изменился: тело утрачено.",
+				"kind": "warning"
+			},
+			{
+				"id": 3,
+				"time": "12:40",
+				"text": "Павел Ясный погиб.",
+				"kind": "danger"
+			},
+			{
+				"id": 2,
+				"time": "12:38",
+				"text": "Лев Каменский присоединился к улью.",
+				"kind": "info"
+			},
+			{
+				"id": 1,
+				"time": "12:36",
+				"text": "Павел Ясный исключён из улья.",
+				"kind": "info"
+			}
+		]
+	},
+	"static_data": {},
+	"shared": {}
+}

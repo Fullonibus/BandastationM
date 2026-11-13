@@ -49,7 +49,7 @@
 /turf/template_noop,
 /area/expedition_planet/barren)
 "L" = (
-/obj/item/stationtrauma_field_scanner,
+/obj/item/excavation/depth_scanner,
 /turf/template_noop,
 /area/expedition_planet/barren)
 "N" = (

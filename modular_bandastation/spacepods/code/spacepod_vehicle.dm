@@ -812,7 +812,7 @@
 	install_equipment(new /obj/item/spacepod_equipment/misc/tracker(src), "misc_system")
 	install_equipment(new /obj/item/spacepod_equipment/sec_cargo/chair(src), "sec_cargo_system")
 	install_equipment(new /obj/item/spacepod_equipment/lock/keyed(src), "lock_system")
-	lock_system.id = 100000
+	lock_system.id = SPACEPOD_SECURITY_LOCK_ID
 
 /obj/vehicle/sealed/spacepod/syndi
 	name = "syndicate spacepod"

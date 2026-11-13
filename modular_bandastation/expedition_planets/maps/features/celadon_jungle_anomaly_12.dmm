@@ -14,9 +14,8 @@
 /turf/open/misc/dirt/jungle,
 /area/expedition_planet/barren)
 "r" = (
-/obj/effect/anomaly/ectoplasm{
-	immortal = 1;
-	move_chance = 0
+/obj/effect/anomaly/pulsing/phantom{
+	immortal = 1
 	},
 /turf/open/misc/dirt/jungle/wasteland,
 /area/expedition_planet/barren)

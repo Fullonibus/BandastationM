@@ -8,8 +8,7 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 
 /** Immutable observations shared by the field source and its physical specimens. */
 /datum/stationtrauma_research_record
-	/// Discovery ID, reused when the same source is surveyed again.
-	var/id
+	parent_type = /datum/expedition_record
 	/// Authored location identity, or null when no site marker was mapped.
 	var/site_id
 	/// Display name captured before the specimen leaves its location.
@@ -31,20 +30,19 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 	source_name = source.name
 	field_notes = source.field_notes
 	laboratory_notes = source.laboratory_notes
-	var/turf/origin = get_turf(source)
-	coordinates = origin ? "[origin.x], [origin.y], [origin.z]" : "не установлены"
+	var/turf/tile = get_turf(source)
+	coordinates = tile ? "[tile.x], [tile.y], [tile.z]" : "не установлены"
 	site_name = "неразмеченный район"
-	if(!origin)
-		return
 	for(var/obj/effect/landmark/stationtrauma_research_site/site in GLOB.landmarks_list)
-		if(site.z != origin.z || !istext(site.site_id) || !length(site.site_id))
+		if(!tile || site.z != tile.z || !istext(site.site_id) || !length(site.site_id))
 			continue
 		site_id = site.site_id
 		site_name = site.name
 		break
+	origin = "[source_name]; [site_name] ([site_id || "ID не назначен"]), [coordinates]"
 
 /** Build safe display text; possession of a record alone does not reveal laboratory results. */
-/datum/stationtrauma_research_record/proc/report_text(laboratory = FALSE)
+/datum/stationtrauma_research_record/proc/specimen_text(laboratory = FALSE)
 	var/list/lines = list(
 		"<b>Находка [html_encode(id)]</b>: [html_encode(source_name)]",
 		"Район: [html_encode(site_name)] ([html_encode(site_id || "ID не назначен")])",
@@ -84,7 +82,7 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 /** Surveyable mineral source using the native ore appearance. */
 /obj/structure/stationtrauma_research_source/mineral
 	name = "необычный минеральный нарост"
-	desc = "Кристаллические отложения в породе. Полевой сканер и контейнер позволят доставить пробу в лабораторию."
+	desc = "Кристаллические отложения в породе. Стратиграфический сканер и контейнер позволят доставить пробу в лабораторию."
 	icon = 'icons/obj/ore.dmi'
 	icon_state = "iron"
 	field_notes = "Плотный минеральный нарост с заметными кристаллическими включениями."

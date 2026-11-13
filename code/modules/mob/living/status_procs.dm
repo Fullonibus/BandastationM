@@ -534,7 +534,8 @@
 		if(quirk.quirk_flags & QUIRK_NO_TRANSFER)
 			continue
 		quirk.remove_from_current_holder(quirk_transfer = TRUE)
-		quirk.add_to_holder(to_mob, quirk_transfer = TRUE, client_source = to_pass)
+		if(!quirk.add_to_holder(to_mob, quirk_transfer = TRUE, client_source = to_pass))
+			qdel(quirk)
 
 
 /// Helper to easily add a personality by a typepath

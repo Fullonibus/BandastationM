@@ -1,8 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_anomaly_7.dmm
 "c" = (
-/obj/effect/anomaly/hallucination{
-	immortal = 1;
-	move_chance = 0
+/obj/effect/anomaly/pulsing/tvstatic{
+	immortal = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/flora/rock/pile,

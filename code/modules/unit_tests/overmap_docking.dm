@@ -176,6 +176,128 @@
 /datum/unit_test/overmap_docking/blocked_preflight/proc/block_during_preflight()
 	blocker = allocate(/obj/item, get_turf(bay))
 
+/// A real landing orders engine thrust and aborts in flight space if the engines stop before touchdown.
+/datum/unit_test/overmap_docking/powered_landing
+	/// Whether the asynchronous docking call has returned.
+	var/finished = FALSE
+	/// Result of the real docking call.
+	var/landed = FALSE
+
+/datum/unit_test/overmap_docking/powered_landing/Run()
+	site.landing = TRUE
+	TEST_ASSERT(!navigation.can_dock(site, navigation.control_revision), "Landing must require running engines")
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "The landing fixture needs its real engine")
+	INVOKE_ASYNC(src, PROC_REF(land))
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(navigation.approach_started || finished || world.time >= deadline)
+	var/thrust = navigation.commanded_thrust()
+	var/obj/machinery/computer/stationtrauma_space_navigation/console = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(ship))
+	console.vessel = ship
+	var/list/data = console.ui_data(null)
+	navigation.set_engines_running(FALSE)
+	deadline = world.time + 5 SECONDS
+	UNTIL(finished || world.time >= deadline)
+	TEST_ASSERT(finished, "Engine failure must end the landing without waiting for the full descent")
+	TEST_ASSERT_EQUAL(thrust, 1, "The automatic descent must demand full thrust despite an idle manual lever")
+	TEST_ASSERT_EQUAL(data["throttle"], 100, "The pilot must see the automatic descent thrust")
+	TEST_ASSERT(!landed, "A landing without thrust must not commit")
+	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "An interrupted descent must leave the hull in flight space")
+	TEST_ASSERT_NULL(site.docking_owner, "An interrupted descent must release its surface reservation")
+	TEST_ASSERT_EQUAL(navigation.commanded_thrust(), 0, "Cancelled automatic thrust must not remain latched")
+
+/** Exercise the real asynchronous landing, including its waiting and final revalidation. */
+/datum/unit_test/overmap_docking/powered_landing/proc/land()
+	landed = navigation.dock()
+	finished = TRUE
+
+/// Shared timed departure check: the hull must leave early while automatic flight still locks the helm.
+/datum/unit_test/overmap_docking/early_departure
+	abstract_type = /datum/unit_test/overmap_docking/early_departure
+	/// Whether this departure is an ascent from a planetary surface.
+	var/planetary = FALSE
+	/// Whether the asynchronous departure call has returned.
+	var/finished = FALSE
+	/// Result of the real departure call.
+	var/departed = FALSE
+
+/datum/unit_test/overmap_docking/early_departure/Run()
+	site.landing = planetary
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "The departure fixture needs its real engine")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "Place the hull at its real starting berth")
+	INVOKE_ASYNC(src, PROC_REF(depart))
+	TEST_ASSERT_EQUAL(hull_area.parallax_movedir, NONE, "Spooling up at the old berth must keep the parallax still")
+	var/deadline = world.time + 12 SECONDS
+	UNTIL(isnull(navigation.docked) || finished || world.time >= deadline)
+	var/left_early = isnull(navigation.docked) && ship.get_docked() == navigation.flight_berth
+	var/in_flight = left_early && navigation.approach_started && !finished
+	var/thrust = navigation.commanded_thrust()
+	var/locked = navigation.preparing && !navigation.sail()
+	var/moving_parallax = hull_area.parallax_movedir == ship.preferred_direction
+	var/departure_x = navigation.pos_x
+	var/departure_y = navigation.pos_y
+	var/duration = navigation.approach_duration
+	sleep(2 SECONDS)
+	var/opening_distance = navigation.pos_x != departure_x || navigation.pos_y != departure_y
+	if(planetary || !left_early)
+		navigation.set_engines_running(FALSE)
+	deadline = world.time + 25 SECONDS
+	UNTIL(finished || world.time >= deadline)
+	TEST_ASSERT(finished, "The departure coroutine must finish or safely abort")
+	TEST_ASSERT(left_early, "The native hull must already be in flight space before the departure timer ends")
+	TEST_ASSERT(in_flight && locked, "Automatic flight must continue after the berth is freed, without allowing racing helm orders")
+	TEST_ASSERT_EQUAL(thrust, planetary ? 1 : 0.5, "Automatic thrust must continue after docked is cleared")
+	TEST_ASSERT_EQUAL(duration, planetary ? 1 MINUTES : 20 SECONDS, "The full manoeuvre must retain its agreed duration")
+	TEST_ASSERT(opening_distance, "The ship must physically open overmap distance while the remaining departure still locks the helm")
+	TEST_ASSERT(moving_parallax, "Only the released hull's flight phase starts the moving parallax")
+	TEST_ASSERT_NULL(navigation.docked, "The old virtual dock must stay released")
+	TEST_ASSERT_NULL(site.docking_owner, "Another ship must be able to reserve the freed berth")
+	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "Neither completion nor engine failure may return the hull to the old berth")
+	TEST_ASSERT(!navigation.approach_started && !navigation.preparing, "Completion must release the manoeuvre lock")
+	TEST_ASSERT_EQUAL(departed, !planetary, "The powered departure completes; the ascent interrupted in space does not")
+
+/** Run the normal departure rather than bypassing the timing with the admin instant path. */
+/datum/unit_test/overmap_docking/early_departure/proc/depart()
+	departed = navigation.depart()
+	finished = TRUE
+
+/// A station departure completes its remaining manoeuvre in flight space before engaging the helm.
+/datum/unit_test/overmap_docking/early_departure/station
+
+/// Losing engines after takeoff leaves the hull in space and safely cancels the remaining climb.
+/datum/unit_test/overmap_docking/early_departure/planet
+	planetary = TRUE
+
+/// A newer stop after native departure commits must not be overwritten by automatic outward flight.
+/datum/unit_test/overmap_docking/stop_after_departure_move
+	/// Whether the stop executed inside the real native movement.
+	var/interrupted = FALSE
+
+/datum/unit_test/overmap_docking/stop_after_departure_move/Destroy()
+	UnregisterSignal(ship, COMSIG_ATOM_AFTER_SHUTTLE_MOVE)
+	return ..()
+
+/datum/unit_test/overmap_docking/stop_after_departure_move/Run()
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "The departure fixture needs its real engine")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "The fixture must first be physically moored")
+	var/origin_x = navigation.pos_x
+	var/origin_y = navigation.pos_y
+	RegisterSignal(ship, COMSIG_ATOM_AFTER_SHUTTLE_MOVE, PROC_REF(stop_after_move))
+	TEST_ASSERT(!navigation.depart(), "A newer stop must cancel automatic flight after the committed native release")
+	TEST_ASSERT(interrupted, "The stop must run during real relocation")
+	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "The stop must retain the already committed physical departure")
+	TEST_ASSERT_NULL(navigation.docked, "The physically vacated berth must stay released")
+	TEST_ASSERT(!navigation.helm_engaged && !navigation.preparing && !navigation.approach_started, "Automatic flight must not relaunch a stopped hull")
+	TEST_ASSERT_EQUAL(navigation.pos_x, origin_x, "The old departure must not move the stopped hull east or west")
+	TEST_ASSERT_EQUAL(navigation.pos_y, origin_y, "The old departure must not move the stopped hull north or south")
+	TEST_ASSERT_EQUAL(hull_area.parallax_movedir, NONE, "The stopped hull must retain stationary parallax")
+
+/** Stop with the engines still lit, after relocation committed but before the old departure starts flight. */
+/datum/unit_test/overmap_docking/stop_after_departure_move/proc/stop_after_move(obj/docking_port/mobile/source, turf/old_tile)
+	SIGNAL_HANDLER
+	UnregisterSignal(source, COMSIG_ATOM_AFTER_SHUTTLE_MOVE)
+	interrupted = navigation.relocating
+	navigation.stop("Departure interrupted by the engineer")
+
 /// Evacuation frees the shared bay even when the old flight footprint is occupied, harming nobody left outside.
 /datum/unit_test/overmap_docking/evacuation
 

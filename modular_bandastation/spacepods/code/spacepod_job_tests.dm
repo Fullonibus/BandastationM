@@ -68,3 +68,40 @@
 	TEST_ASSERT(engineering_spawn.used, "Engineering fallback did not reserve its chosen spawn.")
 	TEST_ASSERT_EQUAL(preferred_spawn, workshop_spawn, "Spacepod Technician ignored its dedicated workshop spawn.")
 	TEST_ASSERT(workshop_spawn.used, "Dedicated workshop spawn was not reserved.")
+
+/datum/unit_test/spacepod_job_security/Run()
+	var/datum/job/spacepod_pilot/job = SSjob.get_job_type(/datum/job/spacepod_pilot)
+	if(SSmapping.current_map.map_name != "Cyberiad")
+		TEST_ASSERT_NULL(job, "Spacepod Pilot was registered on a map without a security pod hangar.")
+		return
+
+	TEST_ASSERT_NOTNULL(job, "Spacepod Pilot was not registered on Cyberiad.")
+	TEST_ASSERT(job in SSjob.joinable_occupations, "Spacepod Pilot cannot be selected by players.")
+	TEST_ASSERT_EQUAL(job.spawn_positions, 1, "Cyberiad must have one roundstart pilot slot.")
+	TEST_ASSERT_EQUAL(job.total_positions, 1, "Cyberiad must have one total pilot slot.")
+	var/obj/effect/landmark/start/spacepod_pilot/spawn_point = locate() in GLOB.start_landmarks_list
+	TEST_ASSERT_NOTNULL(spawn_point, "Cyberiad is missing the pilot's roundstart landmark.")
+	TEST_ASSERT(istype(get_area(spawn_point), /area/station/security/spacepod_pilot), "The pilot landmark is outside the hangar.")
+
+	var/mob/living/carbon/human/pilot = allocate(/mob/living/carbon/human/consistent, run_loc_floor_bottom_left)
+	pilot.mind_initialize()
+	pilot.mind.set_assigned_role(job)
+	pilot.dress_up_as_job(job, consistent = TRUE)
+	var/obj/item/card/id/card = pilot.wear_id
+	TEST_ASSERT_NOTNULL(card, "Spacepod Pilot did not receive an ID card.")
+	TEST_ASSERT_EQUAL(card.assignment, JOB_SPACEPOD_PILOT_RU, "Spacepod Pilot's ID has the wrong assignment.")
+	var/obj/machinery/door/airlock/security/airlock = allocate(__IMPLIED_TYPE__)
+	airlock.req_access = list(ACCESS_SECURITY)
+	TEST_ASSERT(airlock.allowed(pilot), "Spacepod Pilot cannot enter the security hangar.")
+	TEST_ASSERT(!(ACCESS_ARMORY in card.GetAccess()), "Spacepod Pilot unexpectedly received armory access.")
+
+	var/obj/item/storage/backpack/backpack = pilot.back
+	TEST_ASSERT(istype(backpack), "Spacepod Pilot did not receive a backpack.")
+	TEST_ASSERT(locate(/obj/item/choice_beacon/weapon/security_pistol) in backpack, "Spacepod Pilot did not receive the standard security sidearm beacon.")
+	var/obj/item/spacepod_equipment/key/security/key = locate() in backpack
+	TEST_ASSERT_NOTNULL(key, "Spacepod Pilot did not receive the security pod key.")
+	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, get_step(run_loc_floor_bottom_left, NORTH))
+	pod.item_interaction(pilot, key)
+	TEST_ASSERT(!pod.unlocked, "The pilot's key did not lock the security pod.")
+	pod.item_interaction(pilot, key)
+	TEST_ASSERT(pod.unlocked, "The pilot's key did not unlock the security pod.")

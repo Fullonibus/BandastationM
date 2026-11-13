@@ -1,0 +1,20 @@
+// BEGIN_INTERNALS
+// END_INTERNALS
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+// END_FILE_DIR
+// BEGIN_PREFERENCES
+// END_PREFERENCES
+// BEGIN_INCLUDE
+#include "_expedition_contracts.dm"
+#include "code\_defines.dm"
+#include "code\board.dm"
+#include "code\contract.dm"
+#include "code\corporate.dm"
+#include "code\customers.dm"
+#include "code\finds.dm"
+#include "code\journal.dm"
+#include "code\rewards.dm"
+#include "code\side.dm"
+#include "code\survey.dm"
+// END_INCLUDE

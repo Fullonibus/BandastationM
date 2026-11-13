@@ -2,6 +2,7 @@
 #include "code/ruin_areas.dm"
 #include "code/research_sources.dm"
 #include "code/icarus.dm"
+#include "code/waste.dm"
 #include "code/scav_mining.dm"
 #include "code/space_catalog.dm"
 #include "code/planet_catalog.dm"

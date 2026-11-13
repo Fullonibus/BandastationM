@@ -518,6 +518,11 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/id = 0
 
+/obj/item/spacepod_equipment/key/security
+	name = "security spacepod key"
+	desc = "Готовый ключ от челнока службы безопасности."
+	id = SPACEPOD_SECURITY_LOCK_ID
+
 /obj/item/lock_buster
 	name = "pod lock buster"
 	desc = "Инструмент для высверливания замков челноков."

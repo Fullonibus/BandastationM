@@ -7,9 +7,8 @@
 /turf/open/misc/dirt/jungle/dark,
 /area/expedition_planet/barren)
 "k" = (
-/obj/effect/anomaly/hallucination{
-	immortal = 1;
-	move_chance = 0
+/obj/effect/anomaly/pulsing/tvstatic{
+	immortal = 1
 	},
 /turf/open/misc/dirt/jungle/wasteland,
 /area/expedition_planet/barren)

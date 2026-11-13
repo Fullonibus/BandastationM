@@ -119,6 +119,52 @@
 	interrupted = navigation.relocating && navigation.set_engines_running(FALSE)
 	flight_blocker = allocate(/obj/item, old_tile)
 
+/** The twenty-second release spools up while moored, then opens real distance with the helm still locked. */
+/datum/unit_test/overmap_docking/ship_release_flight
+	parent_type = /datum/unit_test/overmap_docking/ship_pair
+	/// Whether the real asynchronous departure has returned.
+	var/finished = FALSE
+	/// Whether the whole departure completed successfully.
+	var/departed = FALSE
+
+/datum/unit_test/overmap_docking/ship_release_flight/Run()
+	var/datum/stationtrauma_ship_docking/link = allocate(/datum/stationtrauma_ship_docking, navigation, host_navigation)
+	TEST_ASSERT(link.connect() && link.flush, "The fixture must form a real hatch-to-hatch pair")
+	var/obj/machinery/computer/stationtrauma_space_navigation/console = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(ship))
+	console.vessel = ship
+	var/started = world.time
+	INVOKE_ASYNC(src, PROC_REF(cast_off))
+	sleep(1 SECONDS)
+	var/early_thrust = navigation.commanded_thrust()
+	var/still_moored = ship.get_docked() == link.anchor && hull_area.parallax_movedir == NONE
+	sleep(2 SECONDS)
+	var/thrust_increased = navigation.commanded_thrust() > early_thrust && early_thrust > 0
+	var/deadline = started + 12 SECONDS
+	UNTIL(ship.get_docked() == navigation.flight_berth || finished || world.time >= deadline)
+	var/in_flight = !finished && navigation.preparing && navigation.approach_departing && ship.get_docked() == navigation.flight_berth
+	var/list/data = console.ui_data(null)
+	var/flight_x = navigation.pos_x
+	var/flight_y = navigation.pos_y
+	sleep(2 SECONDS)
+	var/opening_distance = navigation.pos_x != flight_x || navigation.pos_y != flight_y
+	var/moving_parallax = hull_area.parallax_movedir == ship.preferred_direction
+	deadline = started + 30 SECONDS
+	UNTIL(finished || world.time >= deadline)
+	TEST_ASSERT(finished && departed, "The complete release must finish normally")
+	TEST_ASSERT(still_moored && thrust_increased, "Engine demand must rise while the physically coupled hull and its parallax remain still")
+	TEST_ASSERT(in_flight && opening_distance && moving_parallax, "Physical release must precede the remaining automatic outward flight")
+	TEST_ASSERT_EQUAL(data["approach"]?["duration"], 20, "The paired ship's pilot must see the complete twenty-second manoeuvre")
+	TEST_ASSERT_EQUAL(data["approach"]?["site"], host_ship.name, "The departure display must identify the peer after physical separation")
+	TEST_ASSERT(world.time - started >= 20 SECONDS, "Early physical release must not shorten the complete departure")
+	TEST_ASSERT_NULL(navigation.ship_docking, "Completion must clear the departing hull's pair")
+	TEST_ASSERT_NULL(host_navigation.ship_docking, "Completion must clear the peer's pair")
+	TEST_ASSERT(!navigation.preparing && !navigation.approach_started, "Completion must unlock the helm")
+
+/** Exercise the player departure path, including the shared link's timed release and final helm handover. */
+/datum/unit_test/overmap_docking/ship_release_flight/proc/cast_off()
+	departed = navigation.depart()
+	finished = TRUE
+
 /** Declining or superseding a docking request cannot bypass the sender's notification cooldown. */
 /datum/unit_test/overmap_docking/ship_request_cooldown
 	parent_type = /datum/unit_test/overmap_docking/ship_pair

@@ -4,8 +4,8 @@
  * Sierra's airless, lifeless, mineral-rich profile, using TG's seeded rust-g noise.
  *
  * Height, heat and humidity noise choose Celadon biomes: mountains above [/datum/map_generator/expedition_barren/var/mountain_height]
- * use the cave table and keep ore-bearing rock between cave pockets. Terrain follows the seed; ore veins, flora and fauna use TG's random
- * vein growth and biome population.
+ * use the cave table and keep ore-bearing rock around a native tunnel system. Biomes and mountains follow the seed; tunnels, ore veins,
+ * flora and fauna use TG's random cave system, vein growth and biome population.
  */
 /datum/map_generator/expedition_barren
 	/// Deterministic terrain seed, between 1 and 1000000.
@@ -14,6 +14,8 @@
 	var/biome_zoom = 65
 	/// Height noise above which terrain becomes mountain rock with cave pockets. Celadon's moon uses 0.8; Sierra's barren profile stays mineral-rich.
 	var/mountain_height = 0.5
+	/// Initial open share of a tunnel system carved through the whole surface, as on native lavaland; null keeps separate mountains.
+	var/surface_open_percent
 	/// Surface biomes by heat band (coldest first), then humidity band (driest first).
 	var/list/biome_table = list(
 		list(/datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar),
@@ -46,6 +48,8 @@
 	var/wildlife = FALSE
 	/// Fauna density multiplier from modifiers, applied to this planet's own biome copies.
 	var/fauna_multiplier = 1
+	/// Names of the applied modifiers for admin logs; the survey shows only crew-facing lines.
+	var/list/modifier_log = list()
 	/// Applied modifiers placing surface objects through [/datum/map_generator/expedition_barren/proc/place_nests].
 	var/list/datum/expedition_planet_modifier/nests = list()
 	/// This planet's biome copies by type, so modifier densities never reach other planets.
@@ -181,6 +185,8 @@
 /datum/map_generator/expedition_barren/generate_terrain(list/turfs, area/generate_in)
 	budget ||= new
 	var/list/turf/closed/mineral/rocks = list()
+	var/whole_surface = !cave_level && !isnull(surface_open_percent)
+	var/cave_grid = cave_system_grid(whole_surface ? surface_open_percent : null)
 	for(var/turf/tile as anything in turfs)
 		budget.yield()
 		tile.change_area(get_area(tile), generate_in)
@@ -194,13 +200,13 @@
 		// The reservation and open cross keep landing, the laboratory and the field connected.
 		else if(cave_level ? !in_clearing(x, y) : !is_reserved(x, y))
 			// The cave level is one mountain; its own pocket noise keeps it from mirroring surface caves.
-			var/mountain = cave_level || text2num(rustg_noise_get_at_coordinates("[seed]", "[x / biome_zoom]", "[y / biome_zoom]")) > mountain_height
+			var/mountain = cave_level || (!whole_surface && text2num(rustg_noise_get_at_coordinates("[seed]", "[x / biome_zoom]", "[y / biome_zoom]")) > mountain_height)
 			biome = biome_at(x, y, mountain)
 			terrain = biome.open_turf_type
 			// Noisy cliffs inside the rim replace its straight edge; the camp, ruins and cross stay reserved.
 			var/edge = max(abs(x - width / 2), abs(y - width / 2)) / (width / 2) + text2num(rustg_noise_get_at_coordinates("[seed + 4000000]", "[x / 16]", "[y / 16]")) * edge_roughness
-			// Rock between cave pockets keeps the mountain mineable.
-			if(edge > 1 || (mountain && text2num(rustg_noise_get_at_coordinates("[seed + (cave_level ? 6000000 : 3000000)]", "[x / 8]", "[y / 8]")) > 0.5))
+			// Rock around the tunnel system keeps the mountain mineable.
+			if(edge > 1 || ((mountain || whole_surface) && cave_grid[width * (y - 1) + x] != "1"))
 				terrain = rock_type
 		var/turf/generated = tile.ChangeTurf(terrain, floor_type, CHANGETURF_IGNORE_AIR)
 		if(ismineralturf(generated))
@@ -220,6 +226,28 @@
 		rock.change_ore(ore_type)
 		if(prob(ore_type::spread_chance))
 			rock.spread_vein(ore_type)
+
+/**
+ * Native rust-g cave system carved into mountains: BSP rooms joined by MST corridors with some loops, smoothed by cellular automata.
+ *
+ * Returns a width*width string of "1" (open) and "0" (rock), row-major from the bottom row. On the cave level the clearings beneath
+ * the surface connectors join the network as open rooms; across a whole surface the camp and ruins do. The generator takes no seed,
+ * so tunnels do not follow the planet seed.
+ *
+ * Arguments:
+ * * open_percent - Initial open share; null uses the native lavaland value
+ */
+/datum/map_generator/expedition_barren/proc/cave_system_grid(open_percent)
+	var/list/clearings = list()
+	for(var/list/point as anything in connector_points)
+		clearings += list(list("x" = point[1] - 2, "y" = point[2] - 2, "w" = 5, "h" = 5, "isEnclosed" = FALSE))
+	if(!cave_level && !isnull(open_percent))
+		clearings += list(list("x" = camp_x, "y" = camp_y, "w" = camp_width, "h" = camp_height, "isEnclosed" = FALSE))
+		for(var/list/bounds as anything in ruin_bounds)
+			clearings += list(list("x" = bounds[1], "y" = bounds[2], "w" = bounds[3] - bounds[1] + 1, "h" = bounds[4] - bounds[2] + 1, "isEnclosed" = FALSE))
+	// Native lavaland settings, read as the native generator's initial values; dead edges keep the tunnels off the rim.
+	var/datum/map_generator/cave_generator/native
+	return rustg_cave_system_generator_generate("[width]", "[width]", json_encode(clearings), "[native::min_bsp_size]", "[native::max_ratio]", "[native::padding]", "[native::room_fill_percent]", "[native::corridor_width]", "[native::loop_percent]", "[isnull(open_percent) ? native::noise_percent : open_percent]", "[native::ca_steps]", "[native::birth_limit]", "[native::survival_limit]", "[FALSE]")
 
 /** Native rock must expose this planet's ground, atmosphere and tint when mined. */
 /datum/map_generator/expedition_barren/proc/prepare_rock(turf/closed/mineral/rock)
@@ -356,8 +384,9 @@
 	smooth_zlevel(caves.z_value)
 	return length(connector_points)
 
-/** Populate the generated biomes; fauna never starts near the camp or on placed features. */
+/** Populate the generated biomes with flora, then settle their fauna in packs; fauna never starts near the camp or on placed features. */
 /datum/map_generator/expedition_barren/proc/populate_biomes()
+	var/list/wild_by_biome = list()
 	for(var/datum/biome/biome as anything in biome_turfs)
 		var/list/near_camp = list()
 		var/list/wild = list()
@@ -371,8 +400,10 @@
 			else
 				wild += tile
 		biome.populate_turfs(near_camp, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = FALSE)
-		biome.populate_turfs(wild, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = TRUE)
+		biome.populate_turfs(wild, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = FALSE)
+		wild_by_biome[biome] = wild
 	biome_turfs = null
+	place_packs(wild_by_biome)
 
 /datum/map_generator/expedition_barren/populate_terrain(list/turfs, area/generate_in)
 	populate_biomes()
@@ -405,7 +436,14 @@
 				if(!istype(tile) || tile.is_blocked_turf())
 					continue
 				var/nest_type = islist(modifier.nest_type) ? pick(modifier.nest_type) : modifier.nest_type
-				new nest_type(tile)
+				if(istype(src, /datum/map_generator/expedition_barren/dead) && ispath(nest_type, /obj/structure/spawner/stationtrauma_zombie_pit))
+					var/datum/map_generator/expedition_barren/dead/dead_profile = src
+					if(!dead_profile.in_zombie_region(tile))
+						continue
+				var/atom/nest = new nest_type(tile)
+				// Spawner dens hold their kind from the start; mines and geysers stand alone.
+				if(istype(nest, /obj/structure/spawner))
+					raise_lair(nest)
 				if(modifier.nest_cluster && !patch)
 					patch = list(x, y)
 				break
@@ -446,7 +484,7 @@
 	max_integrity = 150
 	max_mobs = 5
 	spawn_time = 45 SECONDS
-	mob_types = list(/mob/living/basic/zombie/rotten)
+	mob_types = list(/mob/living/basic/zombie/rotten/expedition)
 	spawn_text = "выползает из"
 	faction = list(FACTION_HOSTILE)
 	mob_gps_id = "ZMB"

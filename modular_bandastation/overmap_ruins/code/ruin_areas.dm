@@ -567,6 +567,10 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_xeno_nest/ruin/unpowered/crashed_holemaker
 	name = "Гнездо ксеноморфов"
 
+/** Imported room boundary for Гнездо ксеноморфов в джунглях: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior
+	name = "Гнездо ксеноморфов в джунглях: наружная территория"
+
 /** Imported room boundary for Зимний биокупол; inherits the expedition ruin environment. */
 /area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft
 	name = "Зимний биокупол"
@@ -630,3 +634,391 @@
 /** Imported room boundary for Разрушенный завод; inherits the expedition ruin environment. */
 /area/ruin/space/has_grav/expedition_content/exp_celadon_wrecked_factory/ruin/lavaland/factory/warehouse
 	name = "Разрушенный завод"
+
+/** Imported room boundary for Обломки корабля абдукторов: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior
+	name = "Обломки корабля абдукторов: наружная территория"
+
+/** Imported room boundary for Обломки корабля абдукторов; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet
+	name = "Обломки корабля абдукторов"
+
+/** Imported room boundary for Разбитый камбуз: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/exterior
+	name = "Разбитый камбуз: наружная территория"
+
+/** Imported room boundary for Разбитый камбуз: обесточенный отсек; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered
+	name = "Разбитый камбуз: обесточенный отсек"
+
+/** Imported room boundary for Крепость одиночества: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior
+	name = "Крепость одиночества: наружная территория"
+
+/** Imported room boundary for Крепость одиночества; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered
+	name = "Крепость одиночества"
+
+/** Imported room boundary for Заброшенная лаборатория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_lab/ruin/powered
+	name = "Заброшенная лаборатория"
+
+/** Imported room boundary for Заброшенный мехбей: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior
+	name = "Заброшенный мехбей: наружная территория"
+
+/** Imported room boundary for Заброшенный мехбей; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay
+	name = "Заброшенный мехбей"
+
+/** Imported room boundary for Заброшенный мехбей; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1
+	name = "Заброшенный мехбей"
+
+/** Imported room boundary for Заброшенный мехбей; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2
+	name = "Заброшенный мехбей"
+
+/** Imported room boundary for Заброшенный мехбей; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol
+	name = "Заброшенный мехбей"
+
+/** Imported room boundary for Заброшенный мехбей: жилые помещения; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters
+	name = "Заброшенный мехбей: жилые помещения"
+
+/** Imported room boundary for Заброшенный мехбей; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering
+	name = "Заброшенный мехбей"
+
+/** Imported room boundary for Заброшенный мехбей; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall
+	name = "Заброшенный мехбей"
+
+/** Imported room boundary for Заброшенный мехбей; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab
+	name = "Заброшенный мехбей"
+
+/** Imported room boundary for Радиоактивный могильник; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_unhonorable/ruin/wasteplanet/wasteplanet_radiation
+	name = "Радиоактивный могильник"
+
+/** Imported room boundary for Радиоактивный могильник; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_unhonorable/ruin/wasteplanet/wasteplanet_radiation/containment
+	name = "Радиоактивный могильник"
+
+/** Imported room boundary for Радиоактивный могильник; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_unhonorable/ruin/wasteplanet/wasteplanet_radiation/main
+	name = "Радиоактивный могильник"
+
+/** Imported room boundary for Радиоактивный могильник; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_unhonorable/ruin/wasteplanet/wasteplanet_radiation/maint
+	name = "Радиоактивный могильник"
+
+/** Imported room boundary for Свалка; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_yard/ruin/wasteplanet
+	name = "Свалка"
+
+/** Imported room boundary for Свалка; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_yard/ruin/wasteplanet/wasteplanet_shipbreaking/bay
+	name = "Свалка"
+
+/** Imported room boundary for Свалка; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_yard/ruin/wasteplanet/wasteplanet_shipbreaking/canteen
+	name = "Свалка"
+
+/** Imported room boundary for Свалка; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_yard/ruin/wasteplanet/wasteplanet_shipbreaking/dorms
+	name = "Свалка"
+
+/** Imported room boundary for Свалка; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_yard/ruin/wasteplanet/wasteplanet_shipbreaking/ship
+	name = "Свалка"
+
+/** Imported room boundary for Разбомбленный космопорт: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/exterior
+	name = "Разбомбленный космопорт: наружная территория"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase/armory
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase/cargo
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase/dorms
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase/engineering
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase/hangar
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase/med
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase/shed
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase/tower
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разбомбленный космопорт; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_bombed_starport/ruin/jungle/airbase/turrets
+	name = "Разбомбленный космопорт"
+
+/** Imported room boundary for Разрушенный город: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior
+	name = "Разрушенный город: наружная территория"
+
+/** Imported room boundary for Разрушенный город: кабинет; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office
+	name = "Разрушенный город: кабинет"
+
+/** Imported room boundary for Приморский город: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior
+	name = "Приморский город: наружная территория"
+
+/** Imported room boundary for Приморский город; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown
+	name = "Приморский город"
+
+/** Imported room boundary for Приморский город; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar
+	name = "Приморский город"
+
+/** Imported room boundary for Приморский город; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel
+	name = "Приморский город"
+
+/** Imported room boundary for Приморский город; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop
+	name = "Приморский город"
+
+/** Imported room boundary for Заброшенный посёлок: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior
+	name = "Заброшенный посёлок: наружная территория"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Заброшенный посёлок; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck
+	name = "Заброшенный посёлок"
+
+/** Imported room boundary for Логово Когтя: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior
+	name = "Логово Когтя: наружная территория"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя: рубка; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge
+	name = "Логово Когтя: рубка"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central
+	name = "Логово Когтя"
+
+/** Imported room boundary for Логово Когтя: медицинский отсек; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical
+	name = "Логово Когтя: медицинский отсек"
+
+/** Imported room boundary for Логово Когтя; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory
+	name = "Логово Когтя"
+
+/** Imported room boundary for Заброшенный комплекс: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/exterior
+	name = "Заброшенный комплекс: наружная территория"
+
+/** Imported room boundary for Заброшенный комплекс; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility
+	name = "Заброшенный комплекс"
+
+/** Imported room boundary for Заброшенный комплекс; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/crew
+	name = "Заброшенный комплекс"
+
+/** Imported room boundary for Заброшенный комплекс; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/eastbay
+	name = "Заброшенный комплекс"
+
+/** Imported room boundary for Заброшенный комплекс; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/northwing
+	name = "Заброшенный комплекс"
+
+/** Imported room boundary for Заброшенный комплекс; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/southwing
+	name = "Заброшенный комплекс"
+
+/** Imported room boundary for Заброшенный комплекс; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/westbay
+	name = "Заброшенный комплекс"
+
+/** Imported room boundary for Военная база: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/exterior
+	name = "Военная база: наружная территория"
+
+/** Imported room boundary for Военная база; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/TURRETS
+	name = "Военная база"
+
+/** Imported room boundary for Военная база; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cic
+	name = "Военная база"
+
+/** Imported room boundary for Военная база; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun
+	name = "Военная база"
+
+/** Imported room boundary for Военная база; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/eng
+	name = "Военная база"
+
+/** Imported room boundary for Военная база; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab
+	name = "Военная база"
+
+/** Imported room boundary for Военная база; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/tcom1
+	name = "Военная база"
+
+/** Imported room boundary for Военная база; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/tcommoni
+	name = "Военная база"
+
+/** Imported room boundary for Военная база; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/vault
+	name = "Военная база"
+
+/** Imported room boundary for Военная база; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/warehouse
+	name = "Военная база"
+
+/** Imported room boundary for Пандора; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet
+	name = "Пандора"
+
+/** Imported room boundary for Перерабатывающий док: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/exterior
+	name = "Перерабатывающий док: наружная территория"
+
+/** Imported room boundary for Перерабатывающий док; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/secure_claw
+	name = "Перерабатывающий док"
+
+/** Imported room boundary for Перерабатывающий док; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/secure_claw/control
+	name = "Перерабатывающий док"
+
+/** Imported room boundary for Перерабатывающий док; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/secure_claw/engineering
+	name = "Перерабатывающий док"
+
+/** Imported room boundary for Перерабатывающий док; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/barracks
+	name = "Перерабатывающий док"
+
+/** Imported room boundary for Перерабатывающий док; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center
+	name = "Перерабатывающий док"
+
+/** Imported room boundary for Торговый пост: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior
+	name = "Торговый пост: наружная территория"
+
+/** Imported room boundary for Торговый пост; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost
+	name = "Торговый пост"
+
+/** Imported room boundary for Торговый пост; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks
+	name = "Торговый пост"
+
+/** Imported room boundary for Торговый пост; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center
+	name = "Торговый пост"
+
+/** Imported room boundary for Торговый пост; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse
+	name = "Торговый пост"

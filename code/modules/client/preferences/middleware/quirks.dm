@@ -113,7 +113,8 @@
 
 	preferences.validate_quirks()
 	var/list/new_quirks = preferences.all_quirks | quirk_name
-	if (SSquirks.filter_invalid_quirks(new_quirks) != new_quirks)
+	var/datum/species/selected_species = GLOB.species_prototypes[preferences.read_preference(/datum/preference/choiced/species)]
+	if (!selected_species.can_have_quirks || SSquirks.filter_invalid_quirks(new_quirks) != new_quirks)
 		// If the client is sending an invalid give_quirk, that means that
 		// something went wrong with the client prediction, so we should
 		// catch it back up to speed.

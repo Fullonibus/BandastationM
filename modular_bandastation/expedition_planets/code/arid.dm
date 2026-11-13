@@ -13,6 +13,7 @@
 
 /** Seeded desert terrain using a local oxygen-free planetary atmosphere. */
 /datum/map_generator/expedition_barren/arid
+	fauna_pack_size = list(1, 1)
 	hole_type = /turf/open/openspace/expedition_arid
 	wildlife = TRUE
 	storm_trait = ZTRAIT_SANDSTORM
@@ -107,11 +108,11 @@
 	)
 	feature_density = 0.1
 	feature_types = list(/obj/structure/geyser/random = 1)
-	fauna_density = 4
+	fauna_density = 0.3
 	fauna_types = list(
-		/mob/living/basic/mining/goliath = 50,
-		/mob/living/basic/mining/basilisk = 40,
-		/mob/living/basic/mining/legion = 30,
+		/mob/living/basic/mining/goldgrub = 50,
+		/mob/living/basic/mining/goliath = 10,
+		/mob/living/basic/mining/basilisk = 20,
 	)
 
 /** Celadon wasteland with mushrooms and old remains. */
@@ -154,7 +155,7 @@
 		/obj/structure/flora/rock/pile/style_random = 3,
 	)
 	feature_density = 0
-	fauna_density = 1
+	fauna_density = 0.1
 
 /** Celadon sulfur plains without their donor pools: bare sand where predators do not roam. */
 /datum/biome/expedition/sand/sulfur
@@ -167,9 +168,9 @@
 	open_turf_type = /turf/open/misc/dirt/expedition_arid
 	flora_density = 0
 	fauna_types = list(
-		/mob/living/basic/mining/goliath = 40,
-		/mob/living/basic/mining/basilisk = 30,
-		/mob/living/basic/mining/legion = 20,
+		/mob/living/basic/mining/goldgrub = 50,
+		/mob/living/basic/mining/goliath = 10,
+		/mob/living/basic/mining/basilisk = 20,
 	)
 
 /** Celadon sand cave with rocks, geysers and burrowing grubs. */
@@ -182,28 +183,26 @@
 	)
 	feature_density = 0.1
 	feature_types = list(/obj/structure/geyser/random = 1)
-	fauna_density = 4
+	fauna_density = 0.3
 	fauna_types = list(
-		/mob/living/basic/mining/goliath = 50,
-		/mob/living/basic/mining/basilisk = 40,
-		/mob/living/basic/mining/legion = 30,
-		/mob/living/basic/mining/goldgrub = 10,
+		/mob/living/basic/mining/goliath = 10,
+		/mob/living/basic/mining/basilisk = 20,
+		/mob/living/basic/mining/goldgrub = 50,
 	)
 
-/** Celadon deep cave on stony ground with more grubs. */
+/** Celadon deep cave on stony ground with burrowing grubs. */
 /datum/biome/expedition/sand_cave/deep
 	open_turf_type = /turf/open/misc/asteroid/basalt/expedition_arid
 	fauna_types = list(
-		/mob/living/basic/mining/goliath = 50,
-		/mob/living/basic/mining/basilisk = 40,
-		/mob/living/basic/mining/legion = 30,
-		/mob/living/basic/mining/goldgrub = 20,
+		/mob/living/basic/mining/goliath = 10,
+		/mob/living/basic/mining/basilisk = 20,
+		/mob/living/basic/mining/goldgrub = 50,
 	)
 
 /** Celadon dry volcanic cave; dry ground replaces the donor acid and lava pools. */
 /datum/biome/expedition/sand_cave/dry
 	open_turf_type = /turf/open/misc/dirt/expedition_arid
-	fauna_density = 2
+	fauna_density = 0.15
 
 /** Finite research source: полосчатое соляное отложение, with authored survey and laboratory observations. */
 /obj/structure/stationtrauma_research_source/mineral/expedition_arid

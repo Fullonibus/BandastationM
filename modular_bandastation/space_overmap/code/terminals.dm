@@ -14,7 +14,7 @@
 	desc = "Диспетчерская связь с кораблями, обслуживающими причал."
 	icon_screen = "shuttle"
 	circuit = /obj/item/circuitboard/computer/stationtrauma_dispatch
-	req_access = list(ACCESS_COMMAND)
+	req_one_access = list(ACCESS_COMMAND, ACCESS_EXPLORER)
 	/// Stable sector destination ID associated with this station berth.
 	var/site_id
 

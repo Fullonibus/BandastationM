@@ -134,3 +134,77 @@
 /datum/techweb_node/plasma_mining/New()
 	. = ..()
 	unlocked_designs |= /datum/design/exploreverse_mk2
+
+/// Third prototype: the Mk.I's reactor in a Sierra laser carbine body, with a heavy shot against large fauna.
+/obj/item/gun/energy/laser/awaymission_aeg/mk3
+	name = "Exploreverse Mk.III"
+	desc = "Третий прототип оружия с миниатюрным реактором, в корпусе лазерного карабина. \
+	\nКроме обычного луча стреляет тяжёлым зарядом против крупной фауны: он съедает четверть батареи. Переключение режимов — в руке."
+	icon_state = "laser_gate_mk3"
+	inhand_icon_state = "laser"
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/awaymission_aeg/mk3, /obj/item/ammo_casing/energy/lasergun/awaymission_heavy)
+	// The carbine's charge strip is drawn into whole sprites, one per level, rather than overlays.
+	automatic_charge_overlays = FALSE
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/uranium = SHEET_MATERIAL_AMOUNT * 1.5,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 0.5,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+
+/obj/item/gun/energy/laser/awaymission_aeg/mk3/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[get_charge_ratio()]"
+
+// After a heavy shot the reactor audibly charges up; the reload sound (1.14 s) ends as the next heavy shot is ready.
+/obj/item/gun/energy/laser/awaymission_aeg/mk3/shoot_live_shot(mob/living/user, pointblank = FALSE, atom/pbtarget = null, message = TRUE)
+	. = ..()
+	if(istype(ammo_type[select], /obj/item/ammo_casing/energy/lasergun/awaymission_heavy))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, 'sound/items/weapons/kinetic_reload.ogg', 50, TRUE), fire_delay - 1.15 SECONDS)
+
+/obj/item/ammo_casing/energy/lasergun/awaymission_aeg/mk3
+	fire_sound = 'modular_bandastation/weapon/sound/ranged/exploreverse_mk3_fire.ogg'
+
+/obj/item/ammo_casing/energy/lasergun/awaymission_heavy
+	projectile_type = /obj/projectile/beam/laser/heavylaser/awaymission
+	e_cost = LASER_SHOTS(4, STANDARD_CELL_CHARGE)
+	select_name = "тяжёлый"
+	fire_sound = 'sound/items/weapons/lasercannonfire.ogg'
+	// The reactor needs time to charge the next heavy shot.
+	delay = 2 SECONDS
+
+/obj/projectile/beam/laser/heavylaser/awaymission
+	wound_bonus = -100
+	exposed_wound_bonus = -100
+
+/datum/design/exploreverse_mk3
+	name = "Exploreverse Mk.III"
+	desc = "Энергетическое оружие с экспериментальным миниатюрным реактором и тяжёлым режимом огня против крупной фауны."
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/uranium = SHEET_MATERIAL_AMOUNT * 1.5,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 0.5,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	transfered_materials = list(
+		/obj/item/gun/energy/laser/awaymission_aeg/mk3 = /obj/item/gun/energy/laser/awaymission_aeg/mk3::custom_materials,
+		/obj/item/firing_pin/explorer = /obj/item/firing_pin/explorer::custom_materials,
+		/obj/item/stock_parts/power_store/cell = list(),
+		/obj/item/ammo_casing/energy/lasergun/awaymission_aeg/mk3 = list(),
+		/obj/item/ammo_casing/energy/lasergun/awaymission_heavy = list(),
+	)
+	build_path = /obj/item/gun/energy/laser/awaymission_aeg/mk3
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_RANGED,
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_SECURITY
+
+/datum/techweb_node/mining_adv/New()
+	. = ..()
+	unlocked_designs |= /datum/design/exploreverse_mk3

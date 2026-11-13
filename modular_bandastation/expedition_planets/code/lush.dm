@@ -19,6 +19,10 @@
 	endless_storm_type = /datum/weather/particle/rain_storm/expedition_endless
 	sky_color = "#e0ffc8"
 	floor_type = /turf/open/misc/grass/jungle
+	hive_variants = list("jungle", "grown")
+	// Towns without radiation may stand in the jungle on a widened surface.
+	large_ruin_chance = 25
+	large_ruin_biome = "lush"
 	source_type = /obj/structure/stationtrauma_research_source/expedition_lush
 	mountain_height = 0.85
 	mineral_chance = 5
@@ -184,10 +188,9 @@
 	)
 	fauna_density = 1
 	fauna_types = list(
-		/mob/living/basic/mining/wolf = 1,
 		/mob/living/basic/bear = 1,
-		/mob/living/basic/bat = 1,
-		/mob/living/basic/snake = 1,
+		/mob/living/basic/bat = 5,
+		/mob/living/basic/snake = 3,
 	)
 
 /** Celadon overgrown cave on bare dirt. */

@@ -15,6 +15,8 @@ import { Window } from '../layouts';
 
 type Data = {
   missing?: BooleanLike;
+  electric?: BooleanLike;
+  leaking?: BooleanLike;
   active: BooleanLike;
   tripped: BooleanLike;
   overdrive: BooleanLike;
@@ -75,7 +77,7 @@ function Reaction() {
   const { act, data } = useBackend<Data>();
   return (
     <Section
-      title="Реакция"
+      title={data.electric ? 'Нагрев плазмы' : 'Реакция'}
       buttons={
         <Button
           icon="power-off"
@@ -93,7 +95,14 @@ function Reaction() {
         </NoticeBox>
       )}
       {!!data.overdrive && (
-        <NoticeBox>Форсаж с мостика: двойной расход трития</NoticeBox>
+        <NoticeBox>
+          {data.electric
+            ? 'Форсаж с мостика: повышенный расход плазмы и электричества'
+            : 'Форсаж с мостика: двойной расход трития'}
+        </NoticeBox>
+      )}
+      {!!data.leaking && (
+        <NoticeBox danger>Разгерметизация блока: утечка плазмы!</NoticeBox>
       )}
       <LabeledList>
         <LabeledList.Item label="Режим">
@@ -120,7 +129,9 @@ function Reaction() {
             </Box>
           )}
         </LabeledList.Item>
-        <LabeledList.Item label="Цель реакции">{data.target} %</LabeledList.Item>
+        <LabeledList.Item label={data.electric ? 'Задание нагревателя' : 'Цель реакции'}>
+          {data.target} %
+        </LabeledList.Item>
         <LabeledList.Item label="Отдача">
           <ProgressBar
             value={data.output / data.max_level}
@@ -132,12 +143,12 @@ function Reaction() {
             {data.output} %
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Нагрев ядра">
+        <LabeledList.Item label={data.electric ? 'Нагрев блока' : 'Нагрев ядра'}>
           <ProgressBar value={data.heat / 100} ranges={heatRanges}>
             {data.heat} %
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Впрыск трития">
+        <LabeledList.Item label={data.electric ? 'Подача плазмы' : 'Впрыск трития'}>
           {data.fuel_flow} моль/с, предел{' '}
           <NumberInput
             value={data.injection_limit}
@@ -162,7 +173,7 @@ function Reaction() {
             </ProgressBar>
           </LabeledList.Item>
         ))}
-        <LabeledList.Item label="Магистраль гелия">
+        <LabeledList.Item label={data.electric ? 'Магистраль плазмы' : 'Магистраль гелия'}>
           {data.exhaust_pressure} кПа
         </LabeledList.Item>
       </LabeledList>
@@ -175,10 +186,16 @@ function Grid() {
   return (
     <Section title="Электросеть">
       {!data.grid && (
-        <NoticeBox>Под ядром нет кабеля: питание в сеть не идёт</NoticeBox>
+        <NoticeBox>
+          {data.electric
+            ? 'Под блоком нет кабеля: нагреватель не получает питание'
+            : 'Под ядром нет кабеля: питание в сеть не идёт'}
+        </NoticeBox>
       )}
       <LabeledList>
-        <LabeledList.Item label="Выработка">{data.power} кВт</LabeledList.Item>
+        <LabeledList.Item label={data.electric ? 'Потребление' : 'Выработка'}>
+          {data.power} кВт
+        </LabeledList.Item>
         {data.batteries.map((battery, index) => (
           <LabeledList.Item key={index} label={`СМЕС ${index + 1}`}>
             <ProgressBar
@@ -222,7 +239,8 @@ function Safety() {
       </LabeledList>
       {!data.interlock && (
         <NoticeBox danger mt={1}>
-          Без блокировки перегретое ядро не остановится и может взорваться
+          Без блокировки перегретый {data.electric ? 'блок' : 'реактор'} не
+          остановится и может взорваться
         </NoticeBox>
       )}
     </Section>

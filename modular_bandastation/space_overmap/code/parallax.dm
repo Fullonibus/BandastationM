@@ -159,6 +159,11 @@
 /atom/movable/screen/parallax_layer/expedition_planet/lava
 	icon_state = "lava"
 
+/// The barren world darkened to ash by its war.
+/atom/movable/screen/parallax_layer/expedition_planet/dead
+	icon_state = "barren"
+	color = "#8a7c6c"
+
 /// The station's own native planet, seen from a flight level near the station.
 /atom/movable/screen/parallax_layer/expedition_planet/station
 	icon = 'icons/effects/parallax.dmi'
@@ -181,7 +186,8 @@
 		var/datum/stationtrauma_overmap_site/space/site = sites[id]
 		var/datum/stationtrauma_overmap_site/space/planet/planet = site
 		// The station's planet stays in view from the flight level while the hull is near it.
-		var/layer = istype(planet) ? planet.parallax_layer : site.physical_docking ? /atom/movable/screen/parallax_layer/expedition_planet/station : null
+		// Trade outposts dock physically too, but only the station itself orbits its planet.
+		var/layer = istype(planet) ? planet.parallax_layer : site.physical_docking && site.berth && is_station_level(site.berth.z) ? /atom/movable/screen/parallax_layer/expedition_planet/station : null
 		if(!layer || site.failed || !knows_site(site))
 			continue
 		// A just-relocated hull can reach the surface before dock() publishes its destination.
@@ -196,7 +202,7 @@
 /** Choose the ship background from its dock or the current asteroid region. */
 /datum/stationtrauma_overmap/space/proc/parallax_background()
 	// The station background belongs to the station level: a hull already moved to its flight level sees open space.
-	if(docked?.physical_docking && vessel.z == docked.berth?.z)
+	if(docked?.physical_docking && vessel.z == docked.berth?.z && is_station_level(vessel.z))
 		return /atom/movable/screen/parallax_layer/planet
 	for(var/datum/stationtrauma_overmap_zone/zone as anything in zones)
 		if(zone.kind == "asteroids" && (pos_x - zone.pos_x) ** 2 + (pos_y - zone.pos_y) ** 2 <= zone.radius ** 2)

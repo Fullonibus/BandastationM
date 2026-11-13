@@ -1,0 +1,653 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/WasteRuins/wasteplanet_ruined_abductor_ship.dmm
+"bd" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"be" = (
+/obj/effect/gibspawner/larva,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"bN" = (
+/obj/structure/showcase/horrific_experiment,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"cb" = (
+/obj/structure/showcase{
+	desc = "An alien power source that produces energy seemingly out of nowhere. Look's like this one didn't work.";
+	name = "Void Core"
+	},
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"cB" = (
+/obj/structure/bed/abductor,
+/obj/effect/mob_spawn/corpse/human/bartender,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"eq" = (
+/obj/effect/abstract/stationtrauma_radiation,
+/obj/structure/stationtrauma_nuclear_waste/leaking,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"ev" = (
+/obj/structure/alien/egg/burst,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"eK" = (
+/obj/structure/table/abductor,
+/obj/machinery/computer/camera_advanced/abductor,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"hk" = (
+/obj/item/stack/sheet/mineral/abductor,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"hx" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"hK" = (
+/obj/machinery/abductor/console,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"iN" = (
+/obj/structure/alien/resin/wall,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"ly" = (
+/obj/item/bodypart/chest/abductor,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"ma" = (
+/obj/effect/gibspawner/human,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"mC" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"ny" = (
+/obj/item/bodypart/head/abductor,
+/obj/structure/holosign/barrier/cyborg/hacked,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"nL" = (
+/obj/item/bodypart/head/abductor,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"nS" = (
+/turf/template_noop,
+/area/template_noop)
+"oF" = (
+/obj/effect/mine/explosive/light,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"pV" = (
+/obj/structure/holosign/barrier/cyborg/hacked,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"rI" = (
+/obj/effect/mine/explosive/light,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"st" = (
+/obj/item/bodypart/chest/abductor,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"tn" = (
+/obj/structure/door_assembly/door_assembly_abductor,
+/obj/structure/alien/resin/wall,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"tH" = (
+/obj/item/clothing/head/helmet/abductor,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"ub" = (
+/turf/closed/indestructible/alien,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"um" = (
+/obj/structure/alien/egg/burst,
+/obj/structure/alien/weeds/node,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"zv" = (
+/obj/structure/holosign/barrier/cyborg/hacked,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"Ay" = (
+/obj/machinery/abductor/pad,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"CX" = (
+/obj/machinery/abductor/gland_dispenser,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"ET" = (
+/obj/structure/alien/weeds/node,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"Gw" = (
+/obj/structure/closet/abductor,
+/obj/item/crowbar/abductor,
+/obj/item/wrench/abductor,
+/obj/item/restraints/handcuffs/alien,
+/obj/item/restraints/handcuffs/alien,
+/obj/item/screwdriver/abductor,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"GZ" = (
+/obj/item/bodypart/leg/left/abductor,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"Ic" = (
+/obj/machinery/abductor/experiment,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"IQ" = (
+/obj/item/clothing/suit/armor/abductor/vest,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"JC" = (
+/obj/effect/mine/stun,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"JD" = (
+/obj/effect/gibspawner/xeno,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"Ko" = (
+/mob/living/basic/alien/queen/large,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"KX" = (
+/obj/structure/table_frame/abductor,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"Mg" = (
+/obj/effect/mine/explosive/light,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"MD" = (
+/obj/structure/closet/abductor,
+/obj/item/organ/eyes/alien,
+/obj/item/organ/body_egg/alien_embryo,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"MU" = (
+/obj/structure/door_assembly/door_assembly_abductor,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"Pm" = (
+/obj/structure/alien/resin/wall,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"Rj" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"RZ" = (
+/mob/living/basic/alien/sentinel,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"Vo" = (
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"Wk" = (
+/mob/living/basic/alien/drone,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"XX" = (
+/obj/item/bodypart/leg/left/abductor,
+/obj/item/radio/headset/abductor,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"YJ" = (
+/obj/structure/holosign/barrier/cyborg/hacked,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/exterior)
+"YO" = (
+/obj/structure/bed/abductor,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+"Zm" = (
+/obj/structure/bed/nest,
+/turf/open/floor/plating/abductor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_abductor_ship/ruin/wasteplanet)
+
+(1,1,1) = {"
+nS
+nS
+nS
+nS
+nS
+nS
+bd
+bd
+bd
+bd
+bd
+bd
+nS
+nS
+nS
+nS
+nS
+nS
+nS
+nS
+"}
+(2,1,1) = {"
+nS
+nS
+nS
+Mg
+nS
+nS
+nS
+bd
+bd
+eq
+bd
+pV
+nS
+Mg
+nS
+nS
+nS
+nS
+nS
+nS
+"}
+(3,1,1) = {"
+nS
+bd
+nS
+nS
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+zv
+nS
+nS
+st
+nS
+nS
+nS
+nS
+"}
+(4,1,1) = {"
+bd
+eq
+bd
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+zv
+YJ
+Rj
+Rj
+nS
+nS
+nS
+"}
+(5,1,1) = {"
+bd
+bd
+mC
+mC
+mC
+ub
+ub
+ub
+ub
+tn
+Pm
+mC
+mC
+iN
+mC
+ny
+rI
+Rj
+nS
+nS
+"}
+(6,1,1) = {"
+bd
+bd
+mC
+mC
+ub
+ub
+ev
+ev
+um
+KX
+Pm
+Pm
+Pm
+iN
+mC
+YJ
+bd
+bd
+nS
+nS
+"}
+(7,1,1) = {"
+nS
+mC
+mC
+ub
+ub
+bN
+nL
+Vo
+XX
+Vo
+KX
+Pm
+Pm
+mC
+mC
+mC
+bd
+bd
+nS
+nS
+"}
+(8,1,1) = {"
+nS
+mC
+mC
+ub
+CX
+Vo
+Wk
+hk
+YO
+RZ
+hx
+KX
+Pm
+Pm
+mC
+mC
+bd
+bd
+nS
+nS
+"}
+(9,1,1) = {"
+nS
+mC
+mC
+ub
+eK
+Vo
+ET
+ma
+Vo
+ly
+be
+hk
+MU
+Pm
+mC
+mC
+eq
+bd
+nS
+nS
+"}
+(10,1,1) = {"
+nS
+mC
+mC
+ub
+Ay
+Vo
+IQ
+Vo
+Vo
+tH
+GZ
+ET
+cb
+ub
+mC
+mC
+bd
+bd
+nS
+nS
+"}
+(11,1,1) = {"
+nS
+mC
+mC
+ub
+hK
+Vo
+Vo
+Wk
+Vo
+Vo
+IQ
+JD
+Vo
+ub
+mC
+mC
+bd
+nS
+nS
+nS
+"}
+(12,1,1) = {"
+nS
+mC
+mC
+ub
+Ic
+Vo
+Vo
+JD
+cB
+hk
+RZ
+Vo
+Vo
+ub
+mC
+mC
+nS
+nS
+nS
+nS
+"}
+(13,1,1) = {"
+nS
+mC
+mC
+ub
+ub
+bN
+Vo
+Ko
+Vo
+ET
+nL
+Vo
+ub
+ub
+mC
+mC
+nS
+nS
+nS
+nS
+"}
+(14,1,1) = {"
+oF
+mC
+mC
+mC
+ub
+ub
+Gw
+Zm
+Zm
+Vo
+MD
+ub
+ub
+mC
+mC
+mC
+nS
+Rj
+nS
+nS
+"}
+(15,1,1) = {"
+bd
+bd
+mC
+mC
+mC
+ub
+ub
+ub
+ub
+ub
+ub
+ub
+mC
+mC
+mC
+mC
+Rj
+Rj
+Rj
+nS
+"}
+(16,1,1) = {"
+bd
+eq
+bd
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+Rj
+Rj
+Rj
+Rj
+nS
+"}
+(17,1,1) = {"
+Rj
+bd
+bd
+Rj
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+mC
+nS
+Rj
+Rj
+Rj
+rI
+Rj
+nS
+"}
+(18,1,1) = {"
+nS
+Rj
+Rj
+Rj
+Rj
+Rj
+nS
+nS
+JC
+bd
+eq
+bd
+bd
+nS
+nS
+Rj
+Rj
+Rj
+nS
+nS
+"}
+(19,1,1) = {"
+nS
+nS
+Rj
+Rj
+Rj
+nS
+nS
+nS
+nS
+bd
+bd
+bd
+nS
+nS
+nS
+Rj
+Rj
+Rj
+nS
+nS
+"}
+(20,1,1) = {"
+nS
+nS
+nS
+nS
+nS
+nS
+nS
+nS
+nS
+nS
+bd
+bd
+nS
+nS
+nS
+nS
+nS
+nS
+nS
+nS
+"}

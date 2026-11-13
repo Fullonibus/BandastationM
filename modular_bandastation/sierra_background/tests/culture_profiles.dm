@@ -16,6 +16,7 @@
 		/datum/language/draconic,
 		/datum/language/moffic,
 		/datum/language/nekomimetic,
+		/datum/language/calcic,
 		/datum/language/voltaic,
 	)
 	for(var/culture_id in cultures)
@@ -34,9 +35,7 @@
 		if(!isnull(name_language))
 			TEST_ASSERT_NOTNULL(GLOB.language_datum_instances[name_language], "Culture [culture_id] references a missing name generator.")
 	var/list/plasmaman = get_sierra_background_culture_profile("plasmaman_technocrat")
-	var/list/plasmaman_languages = plasmaman["languages"]
-	TEST_ASSERT(!(/datum/language/calcic in plasmaman_languages), "The approved Plasmaman lore does not grant their lost language.")
-	TEST_ASSERT_EQUAL(plasmaman["name_language"], /datum/language/calcic, "Plasmaman chemical naming must remain independent of language knowledge.")
+	TEST_ASSERT_EQUAL(plasmaman["name_language"], /datum/language/calcic, "Plasmaman upbringing lost its chemical name generator.")
 	var/list/unknown = get_sierra_background_culture_profile("invalid-culture")
 	TEST_ASSERT_EQUAL(json_encode(unknown), json_encode(get_sierra_background_culture_profile("other")), "An unknown culture does not use the neutral profile.")
 

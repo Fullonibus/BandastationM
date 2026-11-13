@@ -142,6 +142,18 @@
 	icon_state = "tcom_storage"
 	area_flags = BLOBS_ALLOWED | CULT_PERMITTED
 
+/area/station/engineering/spacepods/hangar
+	name = "Spacepods Hangar"
+	icon_state = "engine"
+
+/area/station/engineering/spacepods/boathouse
+	name = "Spacepods Boathouse"
+	icon_state = "engine"
+
+/area/station/engineering/spacepods/port
+	name = "Spacepods Port"
+	icon_state = "engine"
+
 /*
 * Construction Areas
 */

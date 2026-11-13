@@ -1,43 +1,3 @@
-/** Field instrument for surveying research sources. */
-/obj/item/stationtrauma_field_scanner
-	name = "полевой исследовательский сканер"
-	desc = "Обследует экспедиционные находки перед отбором проб."
-	icon = 'icons/obj/devices/scanner.dmi'
-	icon_state = "manual_mining"
-	inhand_icon_state = "analyzer"
-	worn_icon_state = "analyzer"
-	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
-	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = ITEM_SLOT_BELT
-	/// One survey per scanner at a time.
-	var/busy = FALSE
-
-/obj/item/stationtrauma_field_scanner/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
-	if(!istype(target, /obj/structure/stationtrauma_research_source))
-		return ..()
-	if(!busy && user.is_holding(src))
-		INVOKE_ASYNC(src, PROC_REF(survey), target, user)
-	return TRUE
-
-/** Survey a source while the operator holds the scanner. */
-/obj/item/stationtrauma_field_scanner/proc/survey(obj/structure/stationtrauma_research_source/source, mob/living/user)
-	if(busy || QDELETED(source) || !user?.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
-		return
-	busy = TRUE
-	var/datum/mind/operator = user.mind
-	to_chat(user, span_notice("Вы начинаете полевое обследование [source]."))
-	var/completed = do_after(user, 6 SECONDS, source)
-	if(QDELETED(src))
-		return
-	busy = FALSE
-	if(!completed || QDELETED(source) || QDELETED(user) || user.mind != operator || !user.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
-		return
-	var/datum/stationtrauma_research_record/record = source.research_record()
-	record.surveyed = TRUE
-	to_chat(user, span_notice(record.report_text()))
-	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
-
 /** A sealed physical specimen; its discovery record is independent of this particular container. */
 /obj/item/stationtrauma_sample
 	name = "контейнер для экспедиционной пробы"
@@ -71,7 +31,7 @@
 
 /obj/item/stationtrauma_sample/attack_self(mob/user)
 	if(record)
-		to_chat(user, span_notice(record.report_text(analyzed)))
+		to_chat(user, span_notice(record.specimen_text(analyzed)))
 
 /obj/item/stationtrauma_sample/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(!istype(target, /obj/structure/stationtrauma_research_source))
@@ -106,6 +66,7 @@
 	GLOB.stationtrauma_research_serial++
 	sample_id = "S-[GLOB.stationtrauma_research_serial]"
 	collected_by = user.real_name
+	record.log_observation(user, source, "Отобрана проба [sample_id]. Осталось проб: [source.remaining_samples].")
 	name = "экспедиционная проба [sample_id]"
 	update_appearance()
 	balloon_alert(user, "проба запечатана")
@@ -161,9 +122,11 @@
 	if(!completed || operation_interrupted || !is_operational || QDELETED(sample) || QDELETED(user) || sample.record != original_record || sample.analyzed || user.mind != operator || !user.is_holding(sample) || !user.can_perform_action(src, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
 	sample.analyzed = TRUE
+	original_record.log_observation(user, src, "Лабораторный анализ пробы [sample.sample_id]: [original_record.laboratory_notes]")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_SAMPLE_ANALYZED, original_record, user, src)
 	var/obj/item/paper/report = new /obj/item/paper/stationtrauma_research_report(drop_location())
 	report.name = "лабораторный отчёт [sample.sample_id]"
-	report.add_raw_text("<b>Проба [html_encode(sample.sample_id)]</b><br>Отбор: [html_encode(sample.collected_by)]<br>Аналитик: [html_encode(user.real_name)]<br>[original_record.report_text(TRUE)]", advanced_html = TRUE)
+	report.add_raw_text("<b>Проба [html_encode(sample.sample_id)]</b><br>Отбор: [html_encode(sample.collected_by)]<br>Аналитик: [html_encode(user.real_name)]<br>[original_record.specimen_text(TRUE)]", advanced_html = TRUE)
 	to_chat(user, span_notice("Анализ выполнен. Отчёт напечатан; результаты также доступны при использовании пробы в руке."))
 	playsound(src, 'sound/machines/ping.ogg', 40, TRUE)
 
@@ -180,9 +143,9 @@
 /** Field scanner and sample-container kit. */
 /obj/item/storage/box/stationtrauma_research
 	name = "комплект полевого исследователя"
-	desc = "Полевой сканер и четыре стерильных контейнера для экспедиционных проб."
+	desc = "Стратиграфический сканер и четыре стерильных контейнера для экспедиционных проб."
 
 /obj/item/storage/box/stationtrauma_research/PopulateContents()
-	new /obj/item/stationtrauma_field_scanner(src)
+	new /obj/item/excavation/depth_scanner(src)
 	for(var/index in 1 to 4)
 		new /obj/item/stationtrauma_sample(src)

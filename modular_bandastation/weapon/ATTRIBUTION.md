@@ -11,3 +11,9 @@ The known credits above were confirmed by Fullonibus on 2026-10-30. The source P
 # Legacy display revolvers
 
 The `anaconda` and `rsh12` sprites in `icons/ranged/ballistic.dmi`, and the added revolver states in `icons/ranged/inhands/ballistic/{lefthand,righthand}.dmi`, were imported from [BandaStation #2756](https://github.com/ss220club/BandaStation/pull/2756), commit `f1089abd748be433a1ebc8cb826673c86f4a29e9` by Ingakem. The source PR is the asset provenance; these resources follow BandaStation's CC BY-SA 3.0 asset license.
+
+# Exploreverse Mk.III
+
+The `laser_gate_mk3` and `laser_gate_mk3_0`…`_4` states in `icons/ranged/energy.dmi` are the laser carbine sprites (`laser`, `laser0`…`laser100`) of [SierraBay/SierraBay12 `icons/obj/guns/laser_carbine.dmi`](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/guns/laser_carbine.dmi), commit `c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037`, renamed without pixel or timing changes. Authorship belongs to the SierraBay/Baystation contributors; CC BY-SA 3.0.
+
+`sound/ranged/exploreverse_mk3_fire.ogg` is [prifle_flash0_by_OnlyTheGhosts.wav](https://freesound.org/people/onlytheghosts/sounds/251430/) by **OnlyTheGhosts** on Freesound, licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), converted from WAV to Ogg Vorbis without other changes.

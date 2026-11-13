@@ -1,0 +1,6465 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/WasteRuins/wasteplanet_claw_ruin.dmm
+"ag" = (
+/obj/effect/decal/cleanable/glass,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"aq" = (
+/obj/item/reagent_containers/cup/bottle,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"ar" = (
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"as" = (
+/obj/structure/sign/warning/docking,
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"az" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"aD" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"aR" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"bh" = (
+/obj/structure/chair/sofa{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"bD" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"bP" = (
+/obj/machinery/power/terminal{
+	icon_state = "term";
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+"bW" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"bX" = (
+/obj/effect/turf_decal/trimline/red/line,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"cb" = (
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"ch" = (
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/stripes/end,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"cp" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 4
+	},
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_waste_claw_minutemen_corvus_engines";
+	name = "Thruster Blast Door"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"cq" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/door/poddoor/shuttledock{
+	name = "Exterior Blast Doors";
+	id = "exp_celadon_waste_claw_ExteriorBlastDoors"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"cN" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"cW" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_claw_ntcop_windows"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"dd" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"dg" = (
+/obj/machinery/door/airlock/engineering,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+"dr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/orange/visible,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"dJ" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/machinery/light/directional/south{
+	pixel_y = 0;
+	pixel_x = 32;
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"dN" = (
+/obj/structure/table,
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 20
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+"dO" = (
+/turf/template_noop,
+/area/template_noop)
+"ei" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/item/clothing/glasses/hud/security/night{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/clothing/glasses/hud/security/night{
+	pixel_x = 0;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 4
+	},
+/obj/structure/sign/poster/official/love_ian/directional/east,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"ey" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/machinery/light_switch/directional/east{
+	pixel_x = -19;
+	pixel_y = 12
+	},
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"eT" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_claw_ntcop_bridge";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"fb" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"fe" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"fh" = (
+/obj/structure/bed/pod,
+/obj/effect/spawner/random/bedsheet,
+/obj/structure/curtain/bounty,
+/obj/structure/window/reinforced/tinted/frosted/spawner/directional/north,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"fi" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"fl" = (
+/mob/living/basic/zombie,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"fq" = (
+/mob/living/simple_animal/hostile/asteroid/elite/broodmother,
+/obj/effect/gibspawner/human,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"fx" = (
+/obj/structure/flora/rock/pile,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"fy" = (
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/north{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"fA" = (
+/obj/structure/table,
+/obj/item/food/burger,
+/obj/item/clothing/head/helmet/blueshirt{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"fB" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1;
+	color = "#808080"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"fT" = (
+/obj/structure/table,
+/obj/item/toy/cards/deck,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"ga" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"gb" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"gm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"gv" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"gC" = (
+/obj/effect/decal/cleanable/confetti,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"gG" = (
+/obj/machinery/computer{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"gM" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"ha" = (
+/obj/machinery/door/airlock/multi_tile/security/glass,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"hh" = (
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"hs" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_waste_claw_ntcop_bridge"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"hA" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"hD" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/mob/living/basic/zombie,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"hE" = (
+/obj/machinery/airalarm/directional/west,
+/obj/effect/turf_decal/trimline/brown/filled/arrow_ccw{
+	dir = 8
+	},
+/obj/machinery/computer{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"hI" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1;
+	color = "#808080"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"hN" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+"hQ" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"hT" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"ij" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/dark_blue/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/trimline/dark_blue/corner{
+	dir = 4
+	},
+/obj/machinery/button/door/directional/north{
+	id = "exp_celadon_waste_claw_darect_armory";
+	pixel_y = -21;
+	name = "Armory Shutters"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"iP" = (
+/obj/machinery/airalarm/directional/west,
+/obj/structure/sign/poster/official/help_others/directional/north,
+/obj/machinery/modular_computer/preset/command,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"iS" = (
+/obj/effect/turf_decal/trimline/dark/filled/line,
+/obj/machinery/door/airlock/command{
+	name = "Patrol Leader's Quarters"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"iT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/binary/pump/on/layer2{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/oil{
+	pixel_y = 11
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"iW" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "Helm"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"iY" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"jt" = (
+/mob/living/basic/zombie,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"jL" = (
+/obj/machinery/firealarm/directional/north,
+/obj/effect/turf_decal/trimline/brown/filled/arrow_ccw{
+	dir = 4
+	},
+/obj/machinery/suit_storage_unit,
+/obj/item/tank/internals/oxygen,
+/obj/item/clothing/suit/space/eva,
+/obj/item/clothing/head/helmet/space/eva,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"jM" = (
+/obj/structure/table/wood,
+/obj/item/radio{
+	desc = "An old handheld radio. You could use it, if you really wanted to.";
+	icon_state = "radio";
+	name = "old radio";
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"jV" = (
+/obj/structure/closet/radiation,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"jY" = (
+/obj/machinery/door/poddoor/shuttledock{
+	name = "Internal Blast Doors";
+	id = "exp_celadon_waste_claw_Internalblastdoors"
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"kf" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor3"
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"kl" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/computer{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"kt" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"kR" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating/dark/corner,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"kU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"kW" = (
+/obj/structure/railing{
+	dir = 2
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"lg" = (
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"lk" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"ll" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_claw_darect_cargodoors"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"ln" = (
+/obj/structure/table,
+/obj/structure/cable,
+/obj/item/lighter/greyscale{
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"ly" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1;
+	color = "#808080"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"lI" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/flour,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"lR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"lU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_containers/cup/bucket,
+/obj/item/mop,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/obj/item/storage/bag/trash,
+/obj/effect/turf_decal/trimline/dark_blue/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_blue/warning,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"ml" = (
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/item/ammo_box/c9mm,
+/obj/item/ammo_box/c9mm,
+/obj/item/ammo_box/c9mm,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"mo" = (
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"mu" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"mI" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door/directional/west{
+	id = "exp_celadon_waste_claw_ExteriorBlastDoors";
+	name = "Exterior Blast Doors";
+	pixel_y = 8;
+	pixel_x = 7
+	},
+/obj/machinery/button/door/directional/west{
+	id = "exp_celadon_waste_claw_Internalblastdoors";
+	name = "Internal blast doors";
+	pixel_y = -4;
+	pixel_x = 7
+	},
+/obj/machinery/button/door/directional/west{
+	id = "exp_celadon_waste_claw_Shutters";
+	name = "Shutters Control";
+	pixel_y = 2;
+	pixel_x = -5
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"mO" = (
+/obj/structure/sink/directional/east,
+/obj/structure/mirror{
+	pixel_x = -25
+	},
+/obj/structure/toilet{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit/old{
+	pixel_x = 5
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"mS" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/glass/bottle/rum{
+	pixel_y = 7;
+	pixel_x = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"na" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 2;
+	color = "#808080"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"np" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"nt" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"ny" = (
+/obj/effect/gibspawner/human,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"nB" = (
+/obj/machinery/light/directional/west,
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/brown/filled/arrow_ccw{
+	dir = 8
+	},
+/obj/machinery/newscaster/directional/south{
+	pixel_x = 7;
+	pixel_y = -32
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"nL" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"oz" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"oB" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"pc" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/stack/spacecash/c500{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/stack/spacecash/c1000,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"pf" = (
+/obj/machinery/door/poddoor/shuttledock{
+	name = "Exterior Blast Doors";
+	id = "exp_celadon_waste_claw_ExteriorBlastDoors"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"pp" = (
+/obj/effect/turf_decal/stripes/line{
+	color = "#808080";
+	dir = 1
+	},
+/obj/machinery/computer/operating{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"px" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil{
+	pixel_y = 11
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"pH" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"pL" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"pX" = (
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/obj/machinery/vending/boozeomat{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"qb" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"qe" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"qp" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"qE" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 20
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"qO" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"qS" = (
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"qX" = (
+/obj/effect/gibspawner/human,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"rC" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/item/binoculars{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/binoculars{
+	pixel_x = 7;
+	pixel_y = 0
+	},
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"rN" = (
+/obj/effect/turf_decal/stripes/corner{
+	color = "#808080";
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"rO" = (
+/obj/structure/table,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"rR" = (
+/obj/structure/chair/office{
+	dir = 4;
+	name = "Command and Control";
+	desc = "You sit in this. It feels very authoritive."
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"rX" = (
+/obj/structure/cable,
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"sn" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1;
+	color = "#808080"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"su" = (
+/obj/machinery/camera/autoname/directional/east,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"sy" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/holopad,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"sA" = (
+/obj/machinery/camera/autoname{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/corner{
+	color = "#808080";
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"sJ" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"sW" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering";
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"sX" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"sY" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"tf" = (
+/obj/effect/turf_decal/stripes/corner{
+	color = "#808080";
+	dir = 2
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"tn" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/freezer{
+	name = "emergency donuts locker"
+	},
+/obj/item/storage/fancy/donut_box{
+	pixel_x = 0;
+	pixel_y = -4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"tq" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"tQ" = (
+/obj/machinery/power/smes/magical,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"tW" = (
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"ub" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"ux" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2;
+	color = "#808080"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"uL" = (
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_claw_darect_cargodoors"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"uN" = (
+/obj/structure/railing/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
+/obj/machinery/light/directional/north,
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering";
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"uS" = (
+/obj/structure/railing,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"vs" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/turf_decal/trimline/red/line,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"vu" = (
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "exp_celadon_waste_claw_darect_armory";
+	name = "Armory"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"vL" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"vU" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/machinery/light/small/directional/north{
+	pixel_x = -9
+	},
+/obj/machinery/shower/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spider/stickyweb,
+/obj/effect/spawner/random/decoration/glowstick,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"vY" = (
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+"wb" = (
+/obj/machinery/computer{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"wg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"wz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"wC" = (
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"wH" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"wK" = (
+/turf/open/floor/iron/stairs/right{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"wO" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"wX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"xa" = (
+/obj/structure/cable,
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"xc" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/confetti,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"xp" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"xq" = (
+/obj/machinery/button/door/directional/east{
+	id = "exp_celadon_waste_claw_ntcop_windows";
+	name = "Window blastdoors";
+	pixel_x = -22;
+	pixel_y = -10
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/machinery/firealarm/directional/west{
+	pixel_y = 7
+	},
+/obj/machinery/newscaster/directional/west{
+	pixel_y = 19
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"xz" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/machinery/button/door/directional/north{
+	id = "exp_celadon_waste_claw_darect_cargodoors";
+	name = "Cargo Doors";
+	pixel_x = -6;
+	pixel_y = -24
+	},
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"xL" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"xO" = (
+/obj/machinery/camera/autoname{
+	dir = 10
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"yi" = (
+/obj/machinery/firealarm/directional/north{
+	pixel_x = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 10
+	},
+/obj/machinery/button/door{
+	id = "exp_celadon_waste_claw_minutemen_corvus_engines";
+	name = "Engine Blast Doors";
+	pixel_x = -10;
+	pixel_y = 24
+	},
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"ym" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"yq" = (
+/obj/structure/sign/warning/vacuum/external{
+	pixel_x = 30
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"yH" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/machinery/computer{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"yJ" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"ze" = (
+/obj/structure/table/reinforced,
+/obj/item/toy/plush/slimeplushie{
+	pixel_x = 9
+	},
+/obj/item/paper_bin{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/pen/fountain{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/food/donut/jelly/choco{
+	pixel_x = 6;
+	pixel_y = 14
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"zx" = (
+/obj/structure/closet/emcloset/anchored,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"zy" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"zz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/railing{
+	dir = 2
+	},
+/obj/structure/sign/warning/no_smoking/directional/north,
+/obj/machinery/light_switch{
+	pixel_x = -12;
+	pixel_y = 23
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"zP" = (
+/obj/effect/turf_decal/stripes/corner{
+	color = "#808080";
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"Aa" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/small/directional/north,
+/obj/effect/turf_decal/box,
+/obj/structure/cable,
+/obj/structure/frame/machine,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"Ak" = (
+/obj/structure/sign/warning/radiation,
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Am" = (
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"As" = (
+/obj/structure/rack,
+/obj/item/kinetic_crusher,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Aw" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"AD" = (
+/obj/structure/flora/rock/pile,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"AI" = (
+/obj/structure/chair/sofa/corner/brown,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"AP" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2;
+	color = "#808080"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Bj" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/west,
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet{
+	name = "security medic's locker"
+	},
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/reagent_containers/hypospray/combat,
+/obj/item/clothing/glasses/hud/health/sunglasses,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/suit/toggle/labcoat,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/gloves/latex/nitrile,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"BB" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/machinery/suit_storage_unit,
+/obj/item/tank/internals/oxygen,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/item/clothing/head/helmet/space/eva,
+/obj/item/clothing/suit/space/eva,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"BI" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_claw_ntcop_bridge";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"BM" = (
+/obj/structure/rack,
+/obj/item/kinetic_crusher,
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"BU" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"Cj" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_claw_ntcop_windows"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"Cm" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"Cz" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/dark,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"CF" = (
+/obj/structure/cable,
+/obj/machinery/holopad,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"CN" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"CR" = (
+/obj/item/radio/intercom/directional/west,
+/obj/machinery/light/directional/south,
+/obj/structure/bed,
+/obj/item/bedsheet/hos,
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"Dd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"Dp" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/power/port_gen/pacman/super{
+	anchored = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+"Dt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/delivery,
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/autolathe,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"Dy" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"DI" = (
+/obj/machinery/door/airlock/multi_tile/public/glass,
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Eb" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Ef" = (
+/obj/structure/closet/secure_closet{
+	icon_state = "med";
+	name = "medical supplies's locker"
+	},
+/obj/item/storage/medkit/brute{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/obj/item/storage/medkit/fire{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/storage/pill_bottle{
+	pixel_x = -11;
+	pixel_y = -7
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"Eg" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Eh" = (
+/obj/machinery/camera/autoname/directional/east{
+	pixel_y = 3
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"En" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"Eu" = (
+/obj/structure/cable,
+/turf/open/floor/iron/stairs/left{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"EM" = (
+/obj/structure/bed/pod,
+/obj/effect/spawner/random/bedsheet,
+/obj/structure/curtain/bounty,
+/obj/effect/decal/cleanable/glitter{
+	color = "4040ff"
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"EO" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/item/reagent_containers/condiment/enzyme,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"EY" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"Fb" = (
+/obj/machinery/light/directional/south,
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/end{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"Fc" = (
+/obj/effect/turf_decal/caution,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"Fj" = (
+/obj/structure/sink/directional/west,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Fv" = (
+/obj/structure/chair/office{
+	name = "Command and Control";
+	desc = "You sit in this. It feels very authoritive."
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"FG" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/machinery/light/small/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bodycontainer/morgue{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"FH" = (
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"FI" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/effect/turf_decal/stripes/line{
+	color = "#808080";
+	dir = 1
+	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"FL" = (
+/obj/machinery/firealarm/directional/north{
+	pixel_x = 4
+	},
+/obj/effect/turf_decal/trimline/dark_blue/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/dark_blue/corner,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"FQ" = (
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"FV" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 10
+	},
+/obj/machinery/airalarm/directional/south,
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"Gi" = (
+/obj/machinery/camera/autoname/directional/west,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"Gl" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Gn" = (
+/obj/effect/turf_decal/trimline/red/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"Gw" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"Gz" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/bounty,
+/obj/item/bedsheet/cosmos,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"GJ" = (
+/obj/structure/table/optable,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"GT" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/obj/item/radio/intercom/directional/south{
+	pixel_x = -4
+	},
+/obj/item/radio/intercom/directional/west,
+/obj/item/folder/blue{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/newspaper,
+/obj/item/paper_bin{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/pen/fountain/captain{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/machinery/light/small/directional/south{
+	pixel_x = 10
+	},
+/obj/structure/table/reinforced/titaniumglass,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"GY" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/effect/decal/cleanable/plasma,
+/obj/machinery/firealarm/directional/east{
+	pixel_y = -12
+	},
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"Hf" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/north{
+	pixel_x = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"If" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
+	},
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/light_switch/directional/north{
+	pixel_x = -12;
+	pixel_y = -16
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 8
+	},
+/obj/machinery/computer/crew{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"IB" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/engine/hull,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"IE" = (
+/obj/structure/closet/radiation,
+/obj/effect/turf_decal/stripes/corner{
+	color = "#808080";
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"IJ" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/airlock/external/glass,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"IN" = (
+/obj/machinery/newscaster/directional/north,
+/obj/item/cigarette/syndicate{
+	pixel_x = 2;
+	pixel_y = 0
+	},
+/obj/item/cigarette/syndicate{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/cigarette/syndicate{
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/obj/item/cigarette/syndicate{
+	pixel_x = 5;
+	pixel_y = 15
+	},
+/obj/item/restraints/handcuffs{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"IO" = (
+/obj/effect/turf_decal/stripes/line{
+	color = "#808080";
+	dir = 2
+	},
+/obj/item/radio/intercom/directional/west,
+/obj/structure/table/glass,
+/obj/item/storage/box/bodybags{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"IP" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"Jb" = (
+/obj/structure/cable,
+/obj/machinery/holopad,
+/obj/effect/turf_decal/trimline/neutral/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/neutral/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/neutral/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/neutral/corner,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Jc" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"Jf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 4
+	},
+/obj/item/clothing/mask/gas/sechailer/swat,
+/obj/item/clothing/mask/gas/sechailer/swat,
+/obj/item/clothing/mask/gas/sechailer,
+/obj/item/clothing/mask/gas/sechailer,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/head/helmet,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"Jt" = (
+/obj/effect/decal/cleanable/blood/gibs/robot_debris/up,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Jw" = (
+/obj/effect/turf_decal/stripes/corner{
+	color = "#808080";
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Jz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"JA" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/structure/closet/secure_closet{
+	icon_state = "armory";
+	name = "security tools locker"
+	},
+/obj/item/restraints/legcuffs/bola/energy,
+/obj/item/restraints/legcuffs/bola/energy,
+/obj/item/restraints/legcuffs/bola/energy,
+/obj/item/restraints/legcuffs/bola/energy,
+/obj/item/restraints/legcuffs/bola/energy,
+/obj/item/shield/riot/tele{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/item/shield/riot/tele{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/shield/riot/tele,
+/obj/item/reagent_containers/spray/pepper,
+/obj/item/reagent_containers/spray/pepper,
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"JG" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"JH" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs/robot_debris/up,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"JL" = (
+/obj/machinery/power/smes/full{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/door/window/left/directional/east,
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_waste_claw_minutemen_corvus_engines";
+	name = "Thruster Blast Door"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"JY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating/dark/end{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/airlock/mining{
+	name = "Cargo"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"Kh" = (
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Kl" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Bathroom"
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"KC" = (
+/obj/effect/mine/shrapnel,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"KG" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"KL" = (
+/obj/machinery/light/directional/south,
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/machinery/light_switch/directional/east{
+	pixel_x = -19;
+	pixel_y = 12
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"Ld" = (
+/obj/structure/railing{
+	dir = 2
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/machinery/computer{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"Ly" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"Mc" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"Mu" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Mv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"MM" = (
+/obj/machinery/light/floor,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"MO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"Nc" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Nd" = (
+/obj/structure/bed/pod,
+/obj/effect/spawner/random/bedsheet,
+/obj/structure/curtain/bounty,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Nn" = (
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/caution{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"Np" = (
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"Ns" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"Nw" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+"NC" = (
+/obj/structure/chair/office{
+	dir = 4;
+	name = "Command and Control";
+	desc = "You sit in this. It feels very authoritive."
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"NS" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/delivery,
+/obj/machinery/atmospherics/components/unary/portables_connector/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"NT" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/trimline/brown/filled/arrow_ccw{
+	dir = 4
+	},
+/obj/machinery/suit_storage_unit,
+/obj/item/tank/internals/oxygen,
+/obj/item/clothing/suit/space/eva,
+/obj/item/clothing/head/helmet/space/eva,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"NX" = (
+/obj/structure/sign/poster/official/no_erp/directional/west,
+/obj/machinery/newscaster/directional/north,
+/obj/machinery/airalarm/directional/west,
+/obj/structure/bed,
+/obj/item/bedsheet/nanotrasen,
+/obj/structure/curtain/cloth,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"NZ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"Oa" = (
+/obj/effect/gibspawner/human,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Op" = (
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+"Ov" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"OF" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"OK" = (
+/obj/structure/toilet{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/window/reinforced/tinted/frosted/spawner/directional/south,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"OR" = (
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"OW" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Pe" = (
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Ph" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/dark_blue/line,
+/obj/effect/turf_decal/trimline/dark_blue/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"Px" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"PG" = (
+/obj/effect/decal/cleanable/glass,
+/obj/structure/sink/kitchen/directional/west,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"PL" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/stasis,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"PO" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/light_switch/directional/north{
+	pixel_x = -12;
+	pixel_y = -15
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"PX" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"Qc" = (
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"Qd" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"Qj" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Qw" = (
+/obj/effect/mine/shrapnel,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Qz" = (
+/obj/structure/cable,
+/obj/item/trash/pistachios{
+	pixel_x = -10;
+	pixel_y = -5
+	},
+/obj/item/stack/sheet/glass{
+	pixel_x = 6;
+	amount = 50
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"QB" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit,
+/obj/item/tank/internals/oxygen,
+/obj/item/clothing/suit/space/hardsuit,
+/obj/item/clothing/mask/breath/medical,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"QF" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"QG" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 8
+	},
+/obj/structure/rack,
+/obj/item/melee/baton/security/loaded{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 4
+	},
+/obj/machinery/light_switch/directional/west{
+	pixel_x = 19;
+	pixel_y = -12
+	},
+/obj/item/melee/baton/security/loaded{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"Rd" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4;
+	id = "exp_celadon_waste_claw_Shutters"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Rq" = (
+/obj/effect/turf_decal/stripes/corner{
+	color = "#808080";
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Rv" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+"RM" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"RS" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_claw_ntcop_bridge"
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"RU" = (
+/obj/effect/gibspawner/human,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/exterior)
+"RW" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/airlock/medical/glass{
+	dir = 4;
+	name = "Medbay"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"Sf" = (
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/airlock/command{
+	dir = 4;
+	name = "Bridge"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"Sh" = (
+/obj/effect/decal/cleanable/glitter{
+	color = "4040ff"
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Sp" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"Sy" = (
+/obj/effect/turf_decal/stripes/end{
+	dir = 8
+	},
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"SA" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"SN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_claw_ntcop_windows"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"SP" = (
+/obj/item/radio/intercom/directional/west{
+	pixel_y = 10
+	},
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"Ta" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 2;
+	color = "#808080"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Tx" = (
+/obj/machinery/power/smes/full{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/window/right/directional/east{
+	name = "Engine Access"
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_waste_claw_minutemen_corvus_engines";
+	name = "Thruster Blast Door"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"TG" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"TI" = (
+/obj/effect/turf_decal/trimline/red/warning{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/security/armory)
+"Ul" = (
+/obj/structure/curtain,
+/obj/machinery/shower/directional/east,
+/obj/item/soap/nanotrasen,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Us" = (
+/obj/machinery/camera/autoname/directional/west,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Uv" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"Uw" = (
+/obj/structure/chair/sofa/right/brown,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Uy" = (
+/obj/machinery/door/airlock/silver,
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Vg" = (
+/obj/effect/turf_decal/stripes/corner{
+	color = "#808080";
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Vh" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/contain)
+"Vj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/trimline/dark_blue/line,
+/obj/effect/turf_decal/trimline/dark_blue/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"Vo" = (
+/obj/structure/tank_dispenser,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Vs" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/door/poddoor/shuttledock{
+	name = "Internal Blast Doors";
+	id = "exp_celadon_waste_claw_Internalblastdoors"
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"VA" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"VG" = (
+/obj/machinery/power/smes/engineering,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"VN" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_claw_ntcop_bridge"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"VT" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external/glass{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"VU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"VV" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"VX" = (
+/obj/machinery/camera/autoname/directional/east{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"Wc" = (
+/obj/structure/railing{
+	dir = 2
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "Helm"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"Wq" = (
+/obj/structure/chair/sofa{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"WD" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/machinery/recharger{
+	pixel_x = -10
+	},
+/obj/machinery/computer/records/security/laptop{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/machinery/button/door{
+	id = "exp_celadon_waste_claw_ntcop_bridge";
+	name = "Bridge shutters";
+	pixel_x = -10;
+	pixel_y = 11
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"WH" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/light_switch/directional/west{
+	pixel_x = 19;
+	pixel_y = -12
+	},
+/obj/effect/turf_decal/trimline/dark_blue/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_blue/warning,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/hallway/central)
+"WJ" = (
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"Xh" = (
+/obj/structure/cable,
+/mob/living/basic/zombie,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
+"XC" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"XI" = (
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"XJ" = (
+/obj/structure/chair/plastic,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"XR" = (
+/obj/effect/turf_decal/stripes/line{
+	color = "#808080";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/glass{
+	pixel_x = -11;
+	pixel_y = 2
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/turf_decal/box,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"Ya" = (
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
+"Ym" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew/canteen)
+"YD" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 4
+	},
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_waste_claw_minutemen_corvus_engines";
+	name = "Thruster Blast Door"
+	},
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"YK" = (
+/obj/structure/cable,
+/mob/living/basic/zombie{
+	name = "Zombiefied Facility Director"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"YN" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/cargo)
+"YV" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/medical)
+"Zc" = (
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw)
+"Zz" = (
+/obj/item/radio/headset,
+/obj/item/radio/headset,
+/obj/item/flashlight/seclite,
+/obj/item/flashlight/seclite,
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/shoes/combat,
+/obj/item/knife/combat/survival,
+/obj/item/knife/combat/survival,
+/obj/item/storage/backpack/security,
+/obj/item/storage/backpack/security,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/effect/turf_decal/siding/wideplating/dark,
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/item/storage/belt/security/webbing,
+/obj/item/storage/belt/security/webbing,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/crew)
+"ZU" = (
+/obj/machinery/camera/autoname{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"ZZ" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/engineering)
+
+(1,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+hQ
+FQ
+OF
+xa
+TG
+hQ
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(2,1,1) = {"
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+hQ
+YD
+JL
+Tx
+cp
+hQ
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(3,1,1) = {"
+dO
+dO
+dO
+dO
+Jc
+Jc
+EY
+hQ
+yi
+qE
+SA
+dr
+hQ
+qp
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(4,1,1) = {"
+dO
+dO
+dO
+dO
+ub
+Jc
+hQ
+VG
+Fc
+wg
+Uv
+Dy
+FI
+hQ
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(5,1,1) = {"
+dO
+dO
+dO
+Jc
+ub
+Jc
+hQ
+Aa
+zy
+Qz
+KG
+px
+XR
+SN
+IB
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(6,1,1) = {"
+dO
+dO
+Jc
+ub
+Jc
+Aw
+YV
+YV
+YV
+YV
+YV
+uN
+PX
+fi
+ag
+Jc
+Jc
+ub
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(7,1,1) = {"
+dO
+dO
+Jc
+Jc
+Aw
+YV
+pp
+GJ
+IO
+PL
+YV
+kW
+ar
+fi
+pL
+fi
+Jc
+ub
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(8,1,1) = {"
+dO
+dO
+Jc
+Jc
+YV
+Bj
+xL
+lk
+xL
+FV
+YV
+Ov
+kU
+ag
+fi
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(9,1,1) = {"
+dO
+dO
+ub
+Jc
+YV
+Ef
+qe
+En
+VU
+FG
+YV
+zz
+Dt
+iT
+NS
+Cj
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(10,1,1) = {"
+dO
+Jc
+Jc
+Jc
+YV
+QB
+GY
+dJ
+ym
+If
+aq
+sW
+hQ
+hQ
+hQ
+hQ
+Jc
+Jc
+Jc
+ub
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(11,1,1) = {"
+Jc
+Jc
+Jc
+Jc
+Sp
+Sp
+Sp
+Sp
+RW
+wH
+wH
+Mv
+XJ
+EO
+KL
+yJ
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(12,1,1) = {"
+Jc
+Jc
+Jc
+oz
+Sp
+hE
+nB
+YN
+Hf
+Gn
+SP
+VV
+pH
+fA
+pX
+yJ
+Gw
+Jc
+Jc
+Jc
+Jc
+fi
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(13,1,1) = {"
+Jc
+Jc
+Jc
+uL
+fy
+XI
+xz
+YN
+ga
+bX
+sY
+sX
+pH
+fb
+kt
+tn
+yJ
+Jc
+ub
+Jc
+pL
+fi
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(14,1,1) = {"
+Jc
+ub
+Jc
+ll
+cb
+WJ
+lR
+JY
+NZ
+vs
+fi
+Cm
+gb
+wX
+Ly
+lI
+yJ
+Jc
+Jc
+Jc
+fi
+BU
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(15,1,1) = {"
+Jc
+Jc
+Jc
+uL
+qS
+Qc
+PO
+YN
+IN
+fi
+fi
+fi
+fi
+ln
+PG
+Qd
+yJ
+Jc
+Jc
+fi
+fi
+fi
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(16,1,1) = {"
+Jc
+Jc
+Jc
+oz
+Sp
+jL
+NT
+YN
+fi
+fi
+fi
+pL
+fi
+fi
+Ym
+yJ
+Gw
+Jc
+fi
+fi
+fi
+fi
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(17,1,1) = {"
+Jc
+ub
+Jc
+fi
+fi
+fi
+fi
+fi
+fi
+BU
+fi
+fi
+BU
+fi
+fi
+fi
+fi
+pL
+fi
+fi
+pL
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(18,1,1) = {"
+Jc
+ub
+Jc
+fi
+fi
+pL
+fi
+fi
+fi
+pL
+fi
+fi
+fi
+pL
+fi
+fi
+fi
+fi
+BU
+fi
+fi
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(19,1,1) = {"
+Jc
+Jc
+Jc
+fi
+fi
+fi
+fi
+pL
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+pL
+fi
+fi
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(20,1,1) = {"
+Jc
+ub
+Jc
+fi
+gv
+gv
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+rC
+dd
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(21,1,1) = {"
+Jc
+Jc
+Jc
+fi
+gv
+NX
+Cz
+fi
+pL
+fi
+bD
+Np
+TI
+Am
+ml
+dd
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(22,1,1) = {"
+Jc
+Jc
+Jc
+fi
+cW
+tq
+gm
+Jz
+fi
+wz
+hA
+vu
+Dd
+Nn
+Jf
+dd
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(23,1,1) = {"
+Jc
+Jc
+Jc
+fi
+gv
+Sy
+Zz
+Fb
+gv
+FL
+ij
+dd
+JA
+QG
+ei
+dd
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(24,1,1) = {"
+dO
+Jc
+Jc
+pL
+Mc
+gv
+gv
+gv
+gv
+lU
+Vj
+dd
+dd
+dd
+dd
+as
+fi
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(25,1,1) = {"
+dO
+Jc
+Jc
+fi
+fi
+wH
+vU
+mO
+Kl
+WH
+Ph
+VT
+yq
+ch
+IJ
+fi
+BU
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(26,1,1) = {"
+dO
+ub
+Jc
+fi
+fi
+QF
+QF
+QF
+QF
+QF
+Sf
+QF
+QF
+QF
+wO
+fi
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(27,1,1) = {"
+dO
+Jc
+Jc
+fi
+BU
+RS
+jM
+CR
+QF
+iP
+fe
+ey
+xq
+GT
+QF
+fi
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(28,1,1) = {"
+dO
+Jc
+Jc
+Jc
+fi
+RS
+BB
+MO
+iS
+iY
+hT
+Ya
+iW
+pc
+VN
+fi
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(29,1,1) = {"
+dO
+Jc
+Jc
+Jc
+fi
+vL
+FH
+ag
+QF
+sy
+Wc
+WD
+yH
+VN
+eT
+BU
+fi
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+dO
+Jc
+Jc
+dO
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(30,1,1) = {"
+dO
+Jc
+ub
+Jc
+Jc
+fi
+vL
+nt
+QF
+kl
+Ld
+VN
+hs
+eT
+fi
+fi
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+"}
+(31,1,1) = {"
+dO
+Jc
+Jc
+Jc
+Jc
+fi
+fi
+ag
+vL
+hs
+hs
+BI
+fi
+fi
+fi
+fi
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+"}
+(32,1,1) = {"
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+fi
+BU
+fi
+fi
+fi
+fi
+BU
+fi
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+"}
+(33,1,1) = {"
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+pL
+fi
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+"}
+(34,1,1) = {"
+dO
+dO
+dO
+Jc
+ub
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+fi
+fi
+fi
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+"}
+(35,1,1) = {"
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+pL
+AD
+Jc
+Jc
+Jc
+fi
+fi
+fi
+fi
+fi
+fi
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+aD
+aD
+aD
+aD
+aD
+aD
+aD
+aD
+aD
+aD
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+dO
+"}
+(36,1,1) = {"
+dO
+dO
+dO
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+fi
+pL
+fi
+Jc
+fi
+pL
+fi
+AD
+fi
+qO
+OW
+OW
+OW
+OW
+nL
+nL
+nL
+nL
+Jc
+Jc
+aD
+aD
+JG
+mo
+KC
+JG
+KC
+mo
+KC
+mo
+aD
+aD
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+"}
+(37,1,1) = {"
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+fi
+fi
+fi
+Jc
+fi
+fi
+fi
+fi
+fi
+qb
+Kh
+Us
+Kh
+Kh
+ha
+Eg
+Eg
+nL
+Jc
+Jc
+aD
+JG
+JG
+aD
+aD
+aD
+aD
+aD
+aD
+mo
+mo
+aD
+aD
+Jc
+Jc
+Jc
+Jc
+Jc
+"}
+(38,1,1) = {"
+dO
+dO
+dO
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+pL
+fi
+fi
+fi
+pL
+fi
+fi
+Kh
+qO
+hh
+hh
+hh
+XC
+kR
+JH
+nL
+nL
+nL
+aD
+KC
+aD
+mo
+mo
+mo
+MM
+mo
+mo
+aD
+KC
+JG
+aD
+aD
+Jc
+ub
+Jc
+Jc
+"}
+(39,1,1) = {"
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+fi
+fi
+AD
+fi
+fi
+fi
+qO
+Kh
+Kh
+hh
+Kh
+wb
+nL
+aR
+Jb
+YK
+Nc
+xp
+aD
+aD
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+mo
+mo
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(40,1,1) = {"
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+AD
+fi
+fi
+fi
+pL
+fi
+fi
+qb
+Kh
+Kh
+hh
+Fv
+wb
+nL
+ZU
+NC
+np
+rR
+Eg
+aD
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+KC
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(41,1,1) = {"
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+pL
+fi
+fi
+fi
+fi
+fi
+Kh
+Kh
+Zc
+mu
+kf
+wb
+nL
+gG
+gG
+mI
+ze
+tW
+aD
+mo
+mo
+mo
+su
+mo
+mo
+mo
+ny
+mo
+mo
+aD
+mo
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(42,1,1) = {"
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+ub
+Jc
+fi
+fi
+fi
+AD
+fi
+fi
+BU
+fi
+Kh
+Kh
+hh
+cN
+Kh
+nL
+nL
+nL
+Rd
+Rd
+nL
+aD
+MM
+mo
+mo
+aD
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+mo
+aD
+Jc
+Jc
+ub
+Jc
+"}
+(43,1,1) = {"
+dO
+dO
+dO
+dO
+Jc
+Jc
+ub
+Jc
+ub
+Jc
+ub
+Jc
+Jc
+fi
+fi
+fi
+fi
+fi
+BU
+fi
+fi
+fi
+Kh
+hh
+hD
+Kh
+tf
+Ak
+sA
+Eg
+Eg
+Vo
+nL
+mo
+mo
+mo
+xO
+mo
+mo
+MM
+mo
+mo
+mo
+aD
+KC
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(44,1,1) = {"
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+fi
+pL
+fi
+fi
+fi
+AD
+fi
+RU
+Kh
+hh
+cN
+Kh
+na
+pf
+sn
+Eg
+Eg
+Rq
+Ak
+rN
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+JG
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(45,1,1) = {"
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+fi
+AD
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+qO
+hh
+cN
+Kh
+na
+pf
+sn
+Eg
+Eg
+Ta
+jY
+ly
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+mo
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(46,1,1) = {"
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+pL
+fi
+fi
+fi
+qb
+fi
+fi
+fi
+qb
+Kh
+wC
+VA
+Eb
+AP
+cq
+fB
+Qj
+Qj
+ux
+Vs
+hI
+IP
+IP
+Ns
+Ns
+fq
+mo
+mo
+MM
+mo
+aD
+mo
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(47,1,1) = {"
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+fi
+fi
+fi
+fi
+qO
+fi
+qO
+fi
+fx
+mu
+wC
+Kh
+Kh
+na
+pf
+sn
+fl
+Eg
+Ta
+jY
+ly
+mo
+lg
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+KC
+aD
+Jc
+Jc
+ub
+Jc
+"}
+(48,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+fi
+fi
+fi
+qb
+Kh
+qO
+qb
+Kh
+hh
+hh
+Kh
+qO
+Kh
+na
+pf
+sn
+Eg
+Eg
+Vg
+Ak
+zP
+mo
+lg
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+mo
+aD
+Jc
+ub
+Jc
+Jc
+"}
+(49,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+ub
+Jc
+Jc
+pL
+fi
+fi
+fi
+qO
+Kh
+Kh
+Kh
+qb
+hh
+jt
+Kh
+Oa
+Kh
+Jw
+Ak
+IE
+BM
+As
+jV
+nL
+mo
+mo
+lg
+su
+mo
+mo
+MM
+mo
+mo
+mo
+aD
+mo
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(50,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+fi
+AD
+fi
+fi
+Kh
+Kh
+Oa
+qO
+Kh
+hh
+Kh
+Eh
+Kh
+Kh
+OW
+OW
+OW
+OW
+OW
+OW
+aD
+MM
+mo
+lg
+aD
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+KC
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(51,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+ub
+Jc
+fi
+fi
+fi
+qO
+Kh
+Kh
+Kh
+qO
+qb
+hh
+Kh
+Nw
+Nw
+Nw
+OW
+OW
+OW
+OW
+Qw
+Kh
+aD
+mo
+mo
+lg
+Gi
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+JG
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(52,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+qO
+qO
+Kh
+qO
+Kh
+Jt
+Kh
+hh
+Zc
+Nw
+ZZ
+hN
+OW
+OW
+OW
+OW
+gM
+Qw
+aD
+mo
+mo
+lg
+mo
+mo
+mo
+mo
+mo
+mo
+mo
+aD
+mo
+aD
+Jc
+Jc
+ub
+Jc
+"}
+(53,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+fi
+fi
+OW
+Kh
+Kh
+jt
+Kh
+Kh
+hh
+hh
+dg
+Rv
+bP
+OW
+OW
+OW
+OW
+OW
+Kh
+mo
+aD
+mo
+lg
+qX
+mo
+mo
+mo
+mo
+mo
+aD
+mo
+KC
+aD
+Jc
+Jc
+ub
+Jc
+"}
+(54,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+OW
+OW
+Kh
+Kh
+qO
+Kh
+hh
+Kh
+Nw
+vY
+Op
+OW
+OW
+OW
+OW
+OW
+OW
+mo
+KC
+aD
+mo
+Vh
+mo
+MM
+mo
+mo
+aD
+KC
+mo
+aD
+aD
+Jc
+Jc
+Jc
+Jc
+"}
+(55,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+OW
+OW
+Kh
+uS
+wK
+Eu
+CN
+Nw
+dN
+Dp
+rX
+rX
+tQ
+OW
+Jc
+OW
+aD
+mo
+JG
+aD
+aD
+aD
+aD
+aD
+aD
+mo
+mo
+aD
+aD
+Jc
+Jc
+Jc
+Jc
+Jc
+"}
+(56,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Px
+Px
+Px
+az
+DI
+Px
+Px
+Px
+Px
+Px
+OW
+OW
+OW
+Jc
+Jc
+aD
+aD
+JG
+KC
+mo
+JG
+KC
+mo
+JG
+KC
+aD
+aD
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+"}
+(57,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Px
+Mu
+zx
+OR
+bW
+OR
+Px
+OK
+Ul
+Px
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+aD
+aD
+aD
+aD
+aD
+aD
+aD
+aD
+aD
+aD
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+dO
+"}
+(58,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Px
+OR
+OR
+RM
+bW
+OR
+Uy
+Pe
+Fj
+Px
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+"}
+(59,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Px
+Uw
+mS
+gC
+CF
+oB
+Px
+Px
+Px
+Px
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+"}
+(60,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Px
+Wq
+fT
+OR
+Xh
+OR
+fh
+EM
+Nd
+Px
+Jc
+Jc
+Jc
+Jc
+Jc
+sJ
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+"}
+(61,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Px
+Wq
+rO
+bW
+xc
+OR
+RM
+Sh
+OR
+Px
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+dO
+dO
+dO
+"}
+(62,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Px
+AI
+bh
+Gl
+VX
+OR
+fh
+Gz
+Nd
+Px
+Jc
+Jc
+ub
+Jc
+Jc
+sJ
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+"}
+(63,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Px
+Px
+Px
+Px
+Px
+Px
+Px
+Px
+Px
+Px
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+"}
+(64,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(65,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(66,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(67,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+ub
+Jc
+Jc
+Jc
+ub
+Jc
+Jc
+dO
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(68,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}
+(69,1,1) = {"
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+Jc
+dO
+dO
+Jc
+Jc
+dO
+Jc
+dO
+Jc
+dO
+Jc
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+dO
+"}

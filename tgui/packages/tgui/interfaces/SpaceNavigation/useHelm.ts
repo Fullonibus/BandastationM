@@ -31,12 +31,12 @@ export function useHelm(data: NavigationData) {
   const blocked = helmBlocked(data);
   const lateral = lateralBlocked(data);
 
-  const setThrottle = (value: number) => {
+  const setThrottle = (value: number, button = false) => {
     throttleOrder.current = { value, at: Date.now() };
-    act('throttle', { value });
+    act('throttle', { value, button });
   };
 
-  const changeThrottle = (delta: number) => {
+  const changeThrottle = (delta: number, button = false) => {
     const state = current.current;
     if (helmBlocked(state)) return;
     const prior = throttleOrder.current;
@@ -47,7 +47,7 @@ export function useHelm(data: NavigationData) {
         (Date.now() - prior.at < 1000 ? prior.value : state.throttle) + delta,
       ),
     );
-    setThrottle(value);
+    setThrottle(value, button);
   };
   const throttleStep = useRef(changeThrottle);
   throttleStep.current = changeThrottle;

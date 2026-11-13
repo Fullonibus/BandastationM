@@ -319,3 +319,124 @@
 	name = "Expedition-Surface Celadon distillery"
 	suffix = "celadon_distillery.dmm"
 	planet_biomes = list("barren")
+
+// Waste planet ruins stand only on planets scarred by a radiation bombardment.
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_mechbay. */
+/datum/map_template/ruin/expedition/celadon_waste_mechbay
+	id = "celadon_waste_mechbay"
+	name = "Expedition-Surface Celadon waste_mechbay"
+	suffix = "celadon_waste_mechbay.dmm"
+	planet_biomes = list("waste")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_unhonorable. */
+/datum/map_template/ruin/expedition/celadon_waste_unhonorable
+	id = "celadon_waste_unhonorable"
+	name = "Expedition-Surface Celadon waste_unhonorable"
+	suffix = "celadon_waste_unhonorable.dmm"
+	planet_biomes = list("waste")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_yard. */
+/datum/map_template/ruin/expedition/celadon_waste_yard
+	id = "celadon_waste_yard"
+	name = "Expedition-Surface Celadon waste_yard"
+	suffix = "celadon_waste_yard.dmm"
+	planet_biomes = list("waste")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_crash_kitchen. */
+/datum/map_template/ruin/expedition/celadon_waste_crash_kitchen
+	id = "celadon_waste_crash_kitchen"
+	name = "Expedition-Surface Celadon waste_crash_kitchen"
+	suffix = "celadon_waste_crash_kitchen.dmm"
+	planet_biomes = list("waste")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_fortress. */
+/datum/map_template/ruin/expedition/celadon_waste_fortress
+	id = "celadon_waste_fortress"
+	name = "Expedition-Surface Celadon waste_fortress"
+	suffix = "celadon_waste_fortress.dmm"
+	planet_biomes = list("waste")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_lab. */
+/datum/map_template/ruin/expedition/celadon_waste_lab
+	id = "celadon_waste_lab"
+	name = "Expedition-Surface Celadon waste_lab"
+	suffix = "celadon_waste_lab.dmm"
+	planet_biomes = list("waste")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_abductor_ship. */
+/datum/map_template/ruin/expedition/celadon_waste_abductor_ship
+	id = "celadon_waste_abductor_ship"
+	name = "Expedition-Surface Celadon waste_abductor_ship"
+	suffix = "celadon_waste_abductor_ship.dmm"
+	planet_biomes = list("waste")
+
+// Large towns and complexes fill the large ruin slot of widened surfaces.
+/** Expedition-only ruin template for Expedition-Surface Celadon pubbytown. */
+/datum/map_template/ruin/expedition/celadon_pubbytown
+	id = "celadon_pubbytown"
+	name = "Expedition-Surface Celadon pubbytown"
+	suffix = "celadon_pubbytown.dmm"
+	planet_biomes = list("dead")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon ocean_town. */
+/datum/map_template/ruin/expedition/celadon_ocean_town
+	id = "celadon_ocean_town"
+	name = "Expedition-Surface Celadon ocean_town"
+	suffix = "celadon_ocean_town.dmm"
+	planet_biomes = list("dead", "lush")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon el_town. */
+/datum/map_template/ruin/expedition/celadon_el_town
+	id = "celadon_el_town"
+	name = "Expedition-Surface Celadon el_town"
+	suffix = "celadon_el_town.dmm"
+	planet_biomes = list("dead")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon bombed_starport. */
+/datum/map_template/ruin/expedition/celadon_bombed_starport
+	id = "celadon_bombed_starport"
+	name = "Expedition-Surface Celadon bombed_starport"
+	suffix = "celadon_bombed_starport.dmm"
+	planet_biomes = list("lush")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_facility. */
+/datum/map_template/ruin/expedition/celadon_waste_facility
+	id = "celadon_waste_facility"
+	name = "Expedition-Surface Celadon waste_facility"
+	suffix = "celadon_waste_facility.dmm"
+	planet_biomes = list("dead")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_icwbase. */
+/datum/map_template/ruin/expedition/celadon_waste_icwbase
+	id = "celadon_waste_icwbase"
+	name = "Expedition-Surface Celadon waste_icwbase"
+	suffix = "celadon_waste_icwbase.dmm"
+	planet_biomes = list("dead")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_recyclebay. */
+/datum/map_template/ruin/expedition/celadon_waste_recyclebay
+	id = "celadon_waste_recyclebay"
+	name = "Expedition-Surface Celadon waste_recyclebay"
+	suffix = "celadon_waste_recyclebay.dmm"
+	planet_biomes = list("dead")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_tradepost. */
+/datum/map_template/ruin/expedition/celadon_waste_tradepost
+	id = "celadon_waste_tradepost"
+	name = "Expedition-Surface Celadon waste_tradepost"
+	suffix = "celadon_waste_tradepost.dmm"
+	planet_biomes = list("dead")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_claw. */
+/datum/map_template/ruin/expedition/celadon_waste_claw
+	id = "celadon_waste_claw"
+	name = "Expedition-Surface Celadon waste_claw"
+	suffix = "celadon_waste_claw.dmm"
+	planet_biomes = list("dead")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon waste_pandora. */
+/datum/map_template/ruin/expedition/celadon_waste_pandora
+	id = "celadon_waste_pandora"
+	name = "Expedition-Surface Celadon waste_pandora"
+	suffix = "celadon_waste_pandora.dmm"
+	planet_biomes = list("dead")

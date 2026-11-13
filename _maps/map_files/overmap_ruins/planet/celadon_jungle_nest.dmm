@@ -1,0 +1,791 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_nest.dmm
+"ab" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien/drone,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"av" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien/queen/large,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"aE" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien/sentinel,
+/obj/effect/decal/cleanable/blood/old,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"aS" = (
+/turf/closed/mineral/random/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"cb" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/blood/old,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"cR" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"dz" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/larva/body,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"ef" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/egg,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"eR" = (
+/obj/structure/alien/resin/membrane,
+/obj/structure/alien/weeds,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"eT" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"fa" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/blood/gibs/xeno/torso,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"fM" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/remains/xeno/larva,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"fQ" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/wall,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"fS" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/clothing/under/costume/mech_suit,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"gd" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/up,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"jw" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/storage/bag/books,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"kC" = (
+/obj/structure/barricade/wooden,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"kH" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/membrane,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"kZ" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/wall,
+/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"lV" = (
+/obj/structure/alien/weeds,
+/obj/structure/table/wood/fancy,
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"mR" = (
+/obj/structure/flora/tree/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"nM" = (
+/obj/structure/flora/bush/pointy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"qn" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/knife/combat/survival,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"qQ" = (
+/obj/structure/alien/weeds,
+/obj/structure/barricade/wooden/crude,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"sL" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/clothing/head/helmet/toggleable/riot,
+/obj/item/shield/riot,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"tp" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node,
+/obj/machinery/vending/boozeomat,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"tL" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/clothing/under/rank/civilian/curator,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"tW" = (
+/obj/structure/alien/weeds,
+/obj/structure/sink/oil_well,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"uM" = (
+/obj/structure/alien/weeds,
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/structure/bed/nest,
+/obj/effect/decal/cleanable/blood/old,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"xH" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node,
+/obj/effect/decal/cleanable/blood/old,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"yq" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/egg/burst,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"yS" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"yZ" = (
+/obj/structure/alien/weeds,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"zC" = (
+/obj/structure/flora/bush/grassy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"zL" = (
+/obj/structure/alien/resin/wall,
+/obj/structure/alien/weeds,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"zO" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/larva,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Bn" = (
+/obj/structure/alien/weeds,
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/obj/effect/decal/cleanable/blood/old,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"BT" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/clothing/glasses/night,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Cs" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/remains/xeno,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Db" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"DJ" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/remains/human,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"DN" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/effect/spawner/random/maintenance/two,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"DO" = (
+/obj/structure/alien/resin/wall,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Fw" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/storage/box/alienhandcuffs,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"He" = (
+/obj/structure/alien/weeds,
+/obj/structure/mecha_wreckage/seraph,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Ho" = (
+/obj/structure/alien/weeds,
+/obj/structure/table/wood/fancy,
+/obj/machinery/chem_dispenser/drinks{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"HO" = (
+/obj/structure/alien/weeds,
+/obj/effect/mob_spawn/corpse/human/secoff,
+/obj/structure/bed/nest,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Ja" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/egg,
+/obj/item/toy/toy_xeno,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"JB" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien/maid,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Kp" = (
+/obj/structure/alien/weeds,
+/obj/structure/table/wood/fancy,
+/obj/item/reagent_containers/cup/glass/bottle/fernet,
+/obj/item/reagent_containers/cup/glass/bottle/champagne,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"KD" = (
+/obj/structure/alien/weeds,
+/obj/structure/table/wood/fancy,
+/obj/machinery/dish_drive,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Mb" = (
+/obj/structure/flora/bush/reed,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Mj" = (
+/obj/structure/alien/weeds,
+/obj/structure/barricade/wooden,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Nn" = (
+/obj/structure/flora/bush/stalky,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Nt" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"PD" = (
+/obj/structure/flora/bush/jungle/a,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"PI" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node,
+/mob/living/basic/alien,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"QT" = (
+/obj/structure/alien/weeds,
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/structure/bed/nest,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"SZ" = (
+/obj/structure/flora/bush/large,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"UT" = (
+/obj/structure/flora/tree/jungle/small,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Vp" = (
+/obj/structure/alien/weeds,
+/turf/closed/mineral/random/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Vw" = (
+/obj/structure/alien/resin/wall,
+/obj/structure/alien/weeds,
+/turf/closed/mineral/random/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"VU" = (
+/obj/structure/alien/resin/wall,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"VY" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/clothing/head/helmet/space/eva,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Wb" = (
+/turf/template_noop,
+/area/template_noop)
+"Ws" = (
+/obj/structure/alien/weeds,
+/obj/item/clothing/head/costume/crown,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"WR" = (
+/obj/structure/alien/resin/wall,
+/turf/closed/mineral/random/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"WW" = (
+/obj/structure/alien/weeds,
+/obj/item/bodypart/chest/larva,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"XH" = (
+/obj/structure/alien/weeds,
+/obj/structure/mecha_wreckage/ripley,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"Yh" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+"ZF" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/blood/gibs/xeno/larva/body,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior)
+
+(1,1,1) = {"
+Wb
+Wb
+Wb
+Wb
+aS
+aS
+Db
+Db
+Yh
+Mb
+Wb
+Wb
+Wb
+Wb
+Wb
+"}
+(2,1,1) = {"
+Wb
+Wb
+aS
+aS
+aS
+aS
+Vp
+Nn
+Db
+mR
+Db
+Wb
+Wb
+Wb
+Wb
+"}
+(3,1,1) = {"
+Wb
+aS
+WR
+zL
+zL
+zL
+VU
+yZ
+yZ
+Db
+Db
+Db
+Wb
+Wb
+Wb
+"}
+(4,1,1) = {"
+aS
+WR
+zL
+yq
+fM
+WW
+zL
+zL
+zL
+zO
+SZ
+Db
+Wb
+Wb
+Wb
+"}
+(5,1,1) = {"
+aS
+VU
+ef
+yZ
+yZ
+yZ
+yZ
+fS
+zL
+yZ
+Db
+Db
+zC
+Wb
+Wb
+"}
+(6,1,1) = {"
+aS
+VU
+ef
+Nt
+XH
+Bn
+yZ
+yZ
+zL
+zL
+zL
+zL
+Db
+Db
+Wb
+"}
+(7,1,1) = {"
+aS
+VU
+VU
+yZ
+av
+yZ
+fQ
+kH
+fQ
+tW
+BT
+zL
+Db
+PD
+Wb
+"}
+(8,1,1) = {"
+aS
+aS
+VU
+ZF
+yZ
+yZ
+fQ
+yZ
+fQ
+xH
+HO
+zL
+Mb
+dz
+Nn
+"}
+(9,1,1) = {"
+aS
+aS
+VU
+VU
+Ws
+ZF
+fQ
+ab
+fQ
+aE
+sL
+zL
+yZ
+Db
+Db
+"}
+(10,1,1) = {"
+Wb
+aS
+aS
+VU
+Ja
+fQ
+fQ
+yZ
+fQ
+yZ
+zL
+VU
+yZ
+UT
+Db
+"}
+(11,1,1) = {"
+Wb
+aS
+aS
+VU
+fQ
+fQ
+DN
+yZ
+fQ
+kH
+zL
+Mj
+yZ
+yZ
+SZ
+"}
+(12,1,1) = {"
+Wb
+aS
+aS
+VU
+yZ
+Cs
+Nt
+yZ
+yZ
+yZ
+eR
+qQ
+fa
+yZ
+Db
+"}
+(13,1,1) = {"
+Wb
+aS
+VU
+zL
+kH
+fQ
+fQ
+fQ
+fQ
+fQ
+zL
+kC
+yZ
+yZ
+nM
+"}
+(14,1,1) = {"
+Wb
+aS
+VU
+uM
+yZ
+yZ
+yZ
+yZ
+He
+cR
+zL
+zL
+zL
+zL
+gd
+"}
+(15,1,1) = {"
+Wb
+aS
+DO
+VY
+yZ
+ab
+yZ
+cb
+QT
+fQ
+fQ
+tL
+jw
+zL
+Nn
+"}
+(16,1,1) = {"
+Wb
+aS
+VU
+qn
+yZ
+Nt
+yZ
+yZ
+yS
+fQ
+yZ
+PI
+eT
+zL
+aS
+"}
+(17,1,1) = {"
+Wb
+aS
+WR
+VU
+fQ
+kH
+fQ
+fQ
+fQ
+fQ
+yZ
+DJ
+Fw
+Vw
+aS
+"}
+(18,1,1) = {"
+Wb
+Wb
+aS
+WR
+VU
+yZ
+yZ
+yZ
+yZ
+yZ
+yZ
+zL
+VU
+WR
+aS
+"}
+(19,1,1) = {"
+Wb
+Wb
+Wb
+aS
+WR
+VU
+VU
+kH
+fQ
+kZ
+fQ
+zL
+aS
+aS
+Wb
+"}
+(20,1,1) = {"
+Wb
+Wb
+Wb
+Wb
+aS
+aS
+VU
+yZ
+yZ
+yZ
+KD
+zL
+aS
+Wb
+Wb
+"}
+(21,1,1) = {"
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+WR
+VU
+tp
+JB
+Kp
+Vw
+aS
+Wb
+Wb
+"}
+(22,1,1) = {"
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+WR
+VU
+Ho
+lV
+Vw
+Wb
+Wb
+Wb
+"}
+(23,1,1) = {"
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+aS
+VU
+VU
+WR
+WR
+Wb
+Wb
+Wb
+"}
+(24,1,1) = {"
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+aS
+aS
+aS
+Wb
+Wb
+Wb
+Wb
+"}
+(25,1,1) = {"
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+"}

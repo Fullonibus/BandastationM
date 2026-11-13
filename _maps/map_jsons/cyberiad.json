@@ -42,6 +42,10 @@
 		"Magistrate": {
 			"spawn_positions": 1
 		},
+		"Spacepod Pilot": {
+			"spawn_positions": 1,
+			"total_positions": 1
+		},
 		"Explorer": {
 			"spawn_positions": 4
 		}

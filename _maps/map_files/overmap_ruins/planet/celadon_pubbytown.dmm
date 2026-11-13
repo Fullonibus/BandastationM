@@ -1,0 +1,6706 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/RandomRuins/SandRuins/whitesands_surface_pubbytown.dmm
+"ad" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"af" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-55"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"ag" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"ak" = (
+/obj/structure/table,
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = 3;
+	pixel_y = 14
+	},
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"ar" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"au" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"aw" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"aH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 10
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"aJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/office/light{
+	dir = 8;
+	icon_state = "chair_toppled"
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"aN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"aQ" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"aS" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"aT" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"br" = (
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"bD" = (
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/machinery/recharger{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"bF" = (
+/obj/structure/table/wood,
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"bH" = (
+/obj/machinery/light/directional/south,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"bI" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"bQ" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("hermit","mining")
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"bU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"cs" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-5"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"cv" = (
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"cy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"cB" = (
+/obj/item/stack/ore/titanium{
+	pixel_x = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"cF" = (
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"cG" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"cJ" = (
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"cM" = (
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = 12
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"cO" = (
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"cW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/maintenance/two,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"db" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"df" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "exp_celadon_pubbytown_frontiepod3"
+	},
+/obj/structure/cable,
+/obj/item/ammo_casing/c9mm,
+/turf/open/floor/engine/hull/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"dx" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc/auto_name/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"dH" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/pirate/melee,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"dM" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 2
+	},
+/obj/structure/cable,
+/mob/living/basic/trooper/pirate/melee,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"dV" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"dY" = (
+/obj/structure/table,
+/obj/item/storage/medkit/regular{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"ee" = (
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "exp_celadon_pubbytown_frontiepod3"
+	},
+/obj/item/ammo_casing/c9mm,
+/turf/open/floor/engine/hull/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"eh" = (
+/obj/item/ammo_casing/c9mm,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"ei" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 1
+	},
+/mob/living/basic/trooper/pirate/ranged,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"el" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 2
+	},
+/obj/machinery/light/dim/directional/north,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"es" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/double{
+	dir = 1
+	},
+/obj/item/bedsheet/double{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"et" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil{
+	icon_state = "floor6"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"eu" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/door/window/left/directional/east{
+	name = "Engine Access"
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"ez" = (
+/obj/machinery/door/airlock/wood{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"eG" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"eH" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"eL" = (
+/obj/item/radio/intercom/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/dresser,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"eP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bookcase,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"eZ" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"fa" = (
+/mob/living/basic/trooper/pirate/melee,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"fb" = (
+/obj/item/stack/ore/iron{
+	pixel_y = -12;
+	pixel_x = 4;
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"ft" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"fw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/structure/frame/machine,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"fB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"fF" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"fN" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-46"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"fQ" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden/crude{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"fT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/silver{
+	pixel_x = -5;
+	pixel_y = 8;
+	amount = 5
+	},
+/obj/item/stack/ore/silver{
+	pixel_x = -7;
+	pixel_y = -4;
+	amount = 5
+	},
+/obj/item/stack/ore/titanium{
+	pixel_x = 4;
+	pixel_y = 1;
+	amount = 5
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"fZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"gh" = (
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"gn" = (
+/obj/machinery/light/directional/west,
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/obj/item/stack/ore/bluespace_crystal{
+	pixel_x = -4;
+	pixel_y = -1;
+	amount = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"go" = (
+/obj/structure/cable,
+/obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"gC" = (
+/obj/machinery/door/airlock/wood,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"gH" = (
+/obj/machinery/camera/autoname/directional/south,
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/obj/structure/bed/dogbed,
+/mob/living/basic/mining/goliath{
+	faction = list("hermit","neutral");
+	name = "Lawrence";
+	desc = "An immature goliath. Goliaths at this stage of life lack fully-developed tendrils, and are reliant on their parents to unearth and supply food. This one seems like quite a pleasant pet."
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"gI" = (
+/obj/structure/closet/crate/grave{
+	pixel_x = 0;
+	pixel_y = -5
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"gJ" = (
+/obj/structure/dresser{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"gN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 10
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"gU" = (
+/obj/structure/bookcase/manuals{
+	pixel_x = 0;
+	pixel_y = 13
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"gW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 1
+	},
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"gZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	pixel_x = -5;
+	pixel_y = 23;
+	id = "exp_celadon_pubbytown_d1"
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"hi" = (
+/obj/structure/chair/wood,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"hm" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 5
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"hp" = (
+/obj/structure/railing,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"hr" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4,
+/turf/open/floor/engine/hull,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"hE" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"hH" = (
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"hL" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"hR" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/spawner/random/maintenance/two,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"hT" = (
+/obj/machinery/door/airlock/hatch{
+	locked = 1
+	},
+/obj/effect/mapping_helpers/airlock/welded,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"hU" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"ib" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-141"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"ie" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden/crude{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"il" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/frame/machine,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"in" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"ip" = (
+/obj/structure/dresser{
+	dir = 4;
+	pixel_x = 5;
+	pixel_y = 0
+	},
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"iz" = (
+/obj/structure/cable,
+/obj/item/clothing/head/beret/sec{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"iI" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 9
+	},
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/obj/item/ammo_casing/c9mm,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor5"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"iL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 4
+	},
+/obj/structure/railing/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"iO" = (
+/obj/item/flashlight/lantern{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"iZ" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-74"
+	},
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"jd" = (
+/obj/structure/barricade/wooden/crude,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"je" = (
+/obj/structure/table/wood,
+/obj/item/cigarette/rollie/cannabis{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/cigarette/rollie/cannabis{
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/obj/item/clothing/head/beret{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"jj" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"jq" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"jw" = (
+/obj/structure/cable,
+/obj/machinery/portable_atmospherics/canister/plasma,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"jB" = (
+/obj/structure/chair/wood{
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"jJ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"jM" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"jX" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8;
+	color = "#D2BC9D"
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"kd" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"kh" = (
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "exp_celadon_pubbytown_frontiepod3"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"kx" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"kG" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"kT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"la" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"lo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder{
+	pixel_x = 6;
+	pixel_y = 14
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"lq" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"lz" = (
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("hermit","mining")
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"lG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"lN" = (
+/obj/structure/cable,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"mf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/iron{
+	pixel_x = -7;
+	pixel_y = 1;
+	amount = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"mm" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"mw" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/sign/poster/official/random/directional/north,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/firealarm/directional/east,
+/obj/item/paper{
+	pixel_x = -5;
+	pixel_y = 2;
+	name = "update";
+	default_raw_text = "Yet another frontiersman attack, we've been here for almost eight years now, and they still won't leave us alone. I'm just glad the guns seem to be holding up. Everyone's been more on edge, recently. There's been more and more traffic in the sector, I've told the town that if anyone lands, they should make get arms ready and board windows, but don't go picking a fight unless they get close. I hope level heads will see a well-armed town and stay away, but.. I just have to hope it's all enough."
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"my" = (
+/turf/template_noop,
+/area/template_noop)
+"mK" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"mM" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"mS" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/wrapping,
+/obj/effect/decal/cleanable/plastic,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"na" = (
+/obj/machinery/door/airlock/wood,
+/obj/structure/cable,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"ne" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden/crude,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"nf" = (
+/obj/effect/turf_decal/caution,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"ng" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"nk" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"nn" = (
+/obj/item/stack/ore/iron{
+	pixel_y = -9;
+	pixel_x = 6;
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"ns" = (
+/obj/structure/platform,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/passive_vent,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"nA" = (
+/obj/item/stack/ore/iron{
+	pixel_y = -12;
+	pixel_x = 5;
+	amount = 5
+	},
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-4"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"nJ" = (
+/obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/plastic{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"nO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"nR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"nX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"oa" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"ob" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"og" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/pirate/ranged{
+	faction = list("hermit","mining")
+	},
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"oi" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"ol" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/secure/plasma,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 50
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"or" = (
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"ot" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"ou" = (
+/obj/structure/platform,
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"oM" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"oT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"oU" = (
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"pg" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"pl" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"pt" = (
+/obj/machinery/door/airlock/public/glass,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"px" = (
+/obj/structure/table/glass,
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"pB" = (
+/obj/effect/decal/cleanable/blood/oil{
+	icon_state = "floor3"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"pD" = (
+/obj/structure/rack{
+	pixel_x = 0;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	pixel_x = 3;
+	pixel_y = 16
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	pixel_x = 9;
+	pixel_y = 14
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	pixel_x = 10;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/clothing/head/soft/black{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"pO" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -4
+	},
+/obj/item/folder/blue{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/item/stamp/law{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/folder{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"pX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"qg" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"qo" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"qt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/chair/plastic{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 1
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"qC" = (
+/obj/item/chair/plastic,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"qD" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 10
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"qE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"qJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/freezer/fridge{
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"qL" = (
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"qO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"qT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"qU" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"ra" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"rd" = (
+/obj/structure/railing,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"ry" = (
+/obj/machinery/power/smes/full,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"rC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"rI" = (
+/obj/item/clothing/head/soft/black{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"rJ" = (
+/obj/structure/flora/rock/pile/style_random,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"rP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"se" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"si" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/stack/ore/uranium{
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/obj/item/stack/ore/uranium{
+	pixel_x = -6;
+	pixel_y = -5
+	},
+/obj/item/stack/ore/uranium{
+	pixel_x = -6;
+	pixel_y = 6;
+	amount = 5
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"sk" = (
+/obj/structure/girder/displaced,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"sn" = (
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"sr" = (
+/obj/item/restraints/handcuffs/cable/zipties/used,
+/obj/effect/decal/cleanable/ash/large,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"sz" = (
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"sB" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"sF" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"sJ" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"sO" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/item/clothing/head/soft/black{
+	pixel_x = 0;
+	pixel_y = 9
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"sP" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"sR" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"sT" = (
+/obj/machinery/door/airlock/wood{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/wood/parquet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"sX" = (
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"ta" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/structure/sign/poster/official/random/directional/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"tg" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"th" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"to" = (
+/obj/item/ammo_casing/c9mm,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"tw" = (
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"tA" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden{
+	dir = 8
+	},
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"tF" = (
+/obj/machinery/door/airlock/hatch{
+	locked = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"tM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4;
+	color = "#D2BC9D"
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"tN" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"tW" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"ua" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"uj" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"us" = (
+/obj/item/ammo_box/c9mm{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"uA" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"uC" = (
+/mob/living/basic/trooper/pirate/ranged{
+	faction = list("hermit","mining")
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"uP" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"uS" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"uU" = (
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"uY" = (
+/obj/item/storage/box{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/stock_parts/micro_laser/high,
+/obj/item/stock_parts/micro_laser/high,
+/obj/item/stock_parts/micro_laser/high,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"vg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"vi" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"vl" = (
+/obj/structure/closet/secure_closet,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -4;
+	pixel_y = -2
+	},
+/obj/item/clothing/shoes/workboots/mining{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/clothing/shoes/workboots/mining{
+	pixel_x = 3;
+	pixel_y = -4
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"vn" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"vp" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"vx" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"vE" = (
+/obj/item/stack/ore/iron,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"vG" = (
+/obj/structure/safe/floor,
+/obj/item/stack/spacecash/c50{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/obj/item/stack/spacecash/c50{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/item/stack/spacecash/c50{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/stack/spacecash/c50{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/crayon{
+	pixel_x = -5;
+	pixel_y = 0
+	},
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 9;
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"vK" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"vP" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"vS" = (
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"wc" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"wg" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"wk" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"wo" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"wv" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"wx" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"wB" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/door/window/right/directional/east{
+	name = "Engine Access"
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"wD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm/directional/west,
+/obj/item/stack/ore/iron{
+	pixel_x = 8;
+	pixel_y = 10;
+	amount = 5
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"wH" = (
+/obj/machinery/button/door/directional/north{
+	pixel_x = -5;
+	pixel_y = -23;
+	id = "exp_celadon_pubbytown_d1"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"wJ" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"wM" = (
+/obj/structure/chair/wood{
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"wP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "engine fuel pump"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"wY" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"wZ" = (
+/obj/item/restraints/handcuffs/cable/zipties/used,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"xf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"xs" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"xt" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"xy" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"xJ" = (
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"xP" = (
+/obj/machinery/light/dim/directional/west,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"xR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden/crude{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"yh" = (
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"ys" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"yB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/obj/item/stack/ore/gold{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"yF" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 6;
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"yM" = (
+/obj/machinery/door/airlock/wood{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"yN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"yT" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_pubbytown_whiteship_windows"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"yV" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/highsecurity,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"yZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "engine fuel pump"
+	},
+/obj/machinery/light/small/directional/north,
+/obj/item/stack/sheet/mineral/wood{
+	amount = 50
+	},
+/obj/structure/closet/crate,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"za" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("hermit","mining")
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"zh" = (
+/obj/structure/cable,
+/obj/structure/frame/machine,
+/obj/item/stock_parts/micro_laser/high{
+	pixel_x = 5;
+	pixel_y = 0
+	},
+/obj/item/stock_parts/micro_laser/high{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/stock_parts/capacitor/adv{
+	pixel_x = 3;
+	pixel_y = -5
+	},
+/obj/item/stock_parts/capacitor/adv{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/obj/item/stock_parts/capacitor/adv{
+	pixel_x = -8;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"zl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"zp" = (
+/obj/structure/closet/crate/bin,
+/obj/item/trash/pistachios{
+	pixel_y = 5
+	},
+/obj/item/trash/energybar,
+/obj/item/trash/candy,
+/obj/item/trash/can/food,
+/obj/item/trash/sosjerky{
+	pixel_x = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"zu" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"zG" = (
+/obj/machinery/light/directional/west,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/structure/rack,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"zN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"zQ" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30"
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"zT" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-29"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"zY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Ac" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"Af" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"Ag" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-21"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Ah" = (
+/obj/structure/platform,
+/obj/machinery/atmospherics/components/unary/passive_vent,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Av" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"Ax" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Az" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/obj/structure/railing{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/dark,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"AB" = (
+/obj/effect/spawner/random/vending/colavend{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"AK" = (
+/obj/structure/rack,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"AQ" = (
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Bl" = (
+/obj/structure/cable,
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Bo" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Bp" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-55"
+	},
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"BG" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"BI" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"BJ" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/structure/closet/secure_closet,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/item/clothing/shoes/workboots/mining{
+	pixel_x = 4;
+	pixel_y = 11
+	},
+/obj/item/clothing/shoes/workboots/mining{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/item/ammo_box/c9mm{
+	pixel_x = 4;
+	pixel_y = -8
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Cc" = (
+/obj/machinery/light/directional/east,
+/obj/structure/sign/poster/official/random/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Ce" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 8
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Ck" = (
+/obj/item/flashlight/lantern{
+	pixel_x = 13;
+	pixel_y = 0
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Cn" = (
+/obj/structure/chair/wood{
+	dir = 8;
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Cx" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"CC" = (
+/obj/structure/table/wood/fancy,
+/obj/item/stack/spacecash/c1{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/obj/item/stack/spacecash/c1{
+	pixel_x = 0;
+	pixel_y = 1
+	},
+/obj/item/stack/spacecash/c10{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/stack/spacecash/c20{
+	pixel_x = 7;
+	pixel_y = 0
+	},
+/obj/item/paper{
+	default_raw_text = "thanks for keeping an eye on the shop for me, kiddo. remember to put the money in the safe at the end of the night. code is 13-91. xoxo. dad";
+	pixel_x = -17;
+	pixel_y = 0;
+	name = "note"
+	},
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"CG" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"CU" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"CV" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"CY" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"Db" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/grunge{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Dh" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Dl" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 6
+	},
+/obj/machinery/power/smes/engineering,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Dm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/railing/corner,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"Dr" = (
+/obj/structure/fireplace{
+	pixel_x = -33;
+	pixel_y = 0
+	},
+/obj/item/grown/log/tree{
+	pixel_x = 9;
+	pixel_y = 19
+	},
+/obj/item/grown/log/tree{
+	pixel_x = 3;
+	pixel_y = 19
+	},
+/obj/item/grown/log/tree{
+	pixel_x = 6;
+	pixel_y = 23
+	},
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Dy" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-78"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"DA" = (
+/obj/structure/cable,
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("hermit","mining")
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"DC" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"DD" = (
+/obj/structure/cable,
+/obj/structure/frame/machine,
+/obj/item/stock_parts/micro_laser/high,
+/obj/item/stock_parts/capacitor/adv{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/stock_parts/capacitor/adv{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/obj/item/stock_parts/capacitor/adv{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"DM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"DX" = (
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Ef" = (
+/obj/effect/turf_decal/caution,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/button/door/directional/east{
+	id = "exp_celadon_pubbytown_whiteshipubbyEngines";
+	name = "Engine Lockdown Control";
+	pixel_x = -25
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Er" = (
+/obj/structure/rack{
+	pixel_x = 0;
+	pixel_y = 5
+	},
+/obj/item/knife/combat{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/hypospray/medipen/survival{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/hypospray/medipen/survival{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/tank/internals/emergency_oxygen/double{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"EB" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"EE" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"EF" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"EJ" = (
+/obj/structure/railing,
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"EM" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"ES" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 1
+	},
+/mob/living/basic/trooper/pirate/melee,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/dim/directional/west,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"EU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"Fa" = (
+/obj/structure/platform,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Fb" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Fk" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 9
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Fv" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-2"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Fw" = (
+/obj/machinery/door/airlock/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/welded,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Fx" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"Fz" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"FD" = (
+/obj/structure/barricade/wooden/crude,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"FL" = (
+/obj/machinery/atmospherics/components/unary/passive_vent,
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"FO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"FX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"Gj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"Gm" = (
+/obj/item/flashlight/lantern,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Gn" = (
+/obj/structure/table,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Gw" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 2
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"GC" = (
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"GL" = (
+/obj/structure/rack{
+	pixel_x = 0;
+	pixel_y = -3
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/clothing/head/soft/black{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/extinguisher/mini{
+	pixel_x = -10;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/hypospray/medipen{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"GP" = (
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"GR" = (
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = -2;
+	pixel_y = 13
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"He" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Hi" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_pubbytown_whiteship_windows"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Hk" = (
+/obj/structure/platform,
+/obj/machinery/atmospherics/components/unary/passive_vent,
+/obj/structure/cable,
+/turf/open/floor/wood/parquet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Hp" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Hx" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"HK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"HW" = (
+/obj/item/flashlight/lantern{
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"HX" = (
+/obj/structure/dresser{
+	dir = 4;
+	pixel_x = -7;
+	pixel_y = 0
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Id" = (
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Io" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_pubbytown_d1"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Iq" = (
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Iw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"IO" = (
+/obj/structure/fireplace{
+	pixel_x = -33;
+	pixel_y = 0
+	},
+/obj/item/grown/log/tree{
+	pixel_x = 10;
+	pixel_y = 18
+	},
+/obj/item/grown/log/tree{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/obj/item/grown/log/tree{
+	pixel_x = 7;
+	pixel_y = 22
+	},
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"IW" = (
+/obj/effect/decal/cleanable/blood/oil{
+	icon_state = "floor6"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Ja" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Jd" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4;
+	color = "#D2BC9D"
+	},
+/obj/item/flashlight/lantern{
+	pixel_x = -13;
+	pixel_y = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Je" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Jg" = (
+/obj/machinery/door/airlock/wood{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"Jj" = (
+/obj/machinery/firealarm/directional/south,
+/obj/structure/dresser{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 1
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Jm" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/portable_atmospherics/canister/plasma,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Jn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Jq" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 10
+	},
+/obj/item/ammo_casing/c9mm,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Jt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Jw" = (
+/obj/item/flashlight/lantern{
+	pixel_x = -9;
+	pixel_y = 0
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Jx" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Jy" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/noticeboard/directional/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"JA" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"JF" = (
+/obj/machinery/atmospherics/components/binary/dp_vent_pump{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"JG" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"JL" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-4"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"JO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"JQ" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-9"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"JX" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 2
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Kg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/gun/energy/laser{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/screwdriver{
+	pixel_x = 7;
+	pixel_y = 0
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Ko" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/stack/cable_coil,
+/obj/structure/sign/poster/contraband/red_rum/directional/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"Kx" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Kz" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4;
+	color = "#D2BC9D"
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"KL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"KP" = (
+/obj/structure/closet/crate/grave{
+	pixel_x = -2;
+	pixel_y = -6
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"KU" = (
+/obj/item/ammo_casing/c9mm,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"KZ" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Lc" = (
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Lf" = (
+/obj/structure/chair/plastic,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Lh" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Ll" = (
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Lw" = (
+/obj/structure/table/wood,
+/obj/item/ammo_box/c9mm{
+	pixel_x = 3;
+	pixel_y = -5
+	},
+/obj/item/ammo_casing/c9mm{
+	pixel_x = -9;
+	pixel_y = 11
+	},
+/obj/item/ammo_box/c9mm{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"LH" = (
+/obj/machinery/light/dim/directional/east,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"LL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"LN" = (
+/obj/item/flashlight/lantern{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"LO" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"LP" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_pubbytown_whiteship_windows"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"LY" = (
+/obj/machinery/griddle,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Me" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Mf" = (
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Mg" = (
+/obj/structure/rack,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"Mh" = (
+/obj/item/flashlight/lantern{
+	pixel_x = -7;
+	pixel_y = 16
+	},
+/obj/item/ammo_box/c9mm{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Mk" = (
+/obj/item/stack/ore/titanium{
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"MB" = (
+/obj/item/flashlight/lantern{
+	pixel_x = 12;
+	pixel_y = 0
+	},
+/obj/structure/platform,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"MC" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#D2BC9D";
+	dir = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"MO" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"MS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"MT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/chair/plastic,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"MW" = (
+/mob/living/basic/trooper/pirate/ranged{
+	faction = list("hermit","mining")
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Na" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Nc" = (
+/obj/machinery/door/airlock/wood{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Ne" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Ni" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"Ns" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Nv" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 9;
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"NE" = (
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"NF" = (
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"NH" = (
+/obj/machinery/door/airlock/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"NN" = (
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"NO" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"NU" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/structure/frame/computer,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"NV" = (
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Oc" = (
+/obj/structure/table/wood,
+/obj/item/storage/bag/tray{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/item/food/meat/steak/goliath{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/food/meat/steak/goliath{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/obj/item/food/meat/steak/goliath{
+	pixel_x = 0;
+	pixel_y = 5
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Oe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Oi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Oj" = (
+/obj/structure/sign/poster/official/random/directional/south,
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"Ol" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"Op" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"Or" = (
+/obj/item/flashlight/lantern{
+	pixel_x = -12;
+	pixel_y = 0
+	},
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Ox" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"OB" = (
+/obj/structure/chair/wood{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"OO" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"OR" = (
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"OS" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 5
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"OX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Pa" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"Pc" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/orange/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Pg" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-1"
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"Pm" = (
+/obj/structure/closet/crate/medical,
+/obj/item/storage/medkit/fire,
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Pq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"PD" = (
+/obj/structure/railing,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"PE" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-6"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"PL" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"PS" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/wiki/engineering_hacking{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/book/manual/wiki/barman_recipes{
+	pixel_x = -12;
+	pixel_y = 1
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"Qc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Qm" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Qs" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/item/pushbroom,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Qt" = (
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = -1;
+	pixel_y = 16
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"QF" = (
+/obj/structure/closet/secure_closet,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -9;
+	pixel_y = -2
+	},
+/obj/item/clothing/shoes/workboots/mining{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/clothing/shoes/workboots/mining{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"QL" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"QO" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/button/door{
+	pixel_x = 0;
+	pixel_y = 24;
+	id = "exp_celadon_pubbytown_frontiepod3"
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"QY" = (
+/obj/structure/closet/secure_closet{
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -8;
+	pixel_y = 0
+	},
+/obj/item/clothing/shoes/workboots/mining{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/clothing/shoes/workboots/mining{
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"Rm" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Rn" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/item/stack/ore/iron,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"RE" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"RI" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_pubbytown_d1"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"RM" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"RO" = (
+/obj/structure/table/wood,
+/obj/item/radio{
+	pixel_x = -4;
+	pixel_y = 13
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"Sa" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Sf" = (
+/obj/structure/table/optable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Sm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/welded,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"Sp" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"St" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/stairs{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"SA" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"SC" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-2"
+	},
+/obj/item/flashlight/lantern,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"SF" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/structure/rack{
+	pixel_x = 0;
+	pixel_y = 5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"SH" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Tm" = (
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"Tz" = (
+/obj/structure/dresser{
+	dir = 4;
+	pixel_x = 6;
+	pixel_y = 0
+	},
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"TC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 6;
+	pixel_y = -1
+	},
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/stock_parts/capacitor/adv{
+	pixel_x = 3;
+	pixel_y = 11
+	},
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = -19;
+	pixel_y = 1
+	},
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"TJ" = (
+/obj/structure/cable,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"TO" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"TQ" = (
+/obj/structure/platform,
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"TT" = (
+/obj/structure/bookcase/random{
+	pixel_x = 0;
+	pixel_y = 13
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"TY" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-2"
+	},
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Ue" = (
+/obj/structure/girder,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Uh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/item/stock_parts/power_store/cell/empty{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/stock_parts/power_store/cell/empty{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Un" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Ut" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Uu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden/crude,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"UA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"UD" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"UJ" = (
+/obj/structure/closet/crate/grave{
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"UM" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"UO" = (
+/obj/structure/frame/computer,
+/obj/item/stack/ore/gold,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"UR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"UT" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-11"
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"UW" = (
+/obj/structure/sign/poster/official/random/directional/west,
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"UY" = (
+/turf/open/floor/engine/hull/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Vb" = (
+/obj/structure/cable,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"Vc" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Vn" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"Vs" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Vz" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle/morphine{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/syringe{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"VC" = (
+/obj/machinery/light/empty/directional/north,
+/obj/structure/table_frame,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"VH" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/item/ammo_casing/c9mm,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"VJ" = (
+/obj/structure/railing,
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"VM" = (
+/obj/structure/flora/tree/dead/style_random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"VN" = (
+/obj/structure/table,
+/obj/structure/reagent_dispensers/servingdish,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"VS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"We" = (
+/obj/machinery/atmospherics/components/unary/passive_vent,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Wj" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Wr" = (
+/obj/structure/closet/secure_closet,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -5;
+	pixel_y = 0
+	},
+/obj/item/clothing/shoes/workboots/mining{
+	pixel_x = 2;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_containers/cup/glass/bottle/cognac{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"Wt" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"Wx" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"Wz" = (
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
+"WP" = (
+/obj/item/restraints/handcuffs/cable/zipties/used,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"WS" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"WV" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"WY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Xe" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"XH" = (
+/obj/effect/decal/fakelattice{
+	icon_state = "lattice-4"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"XO" = (
+/obj/item/ammo_box/c9mm{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"XU" = (
+/obj/structure/chair/wood,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"XW" = (
+/obj/structure/table/wood/fancy,
+/obj/item/gun/energy/e_gun{
+	pixel_x = 1;
+	pixel_y = 12
+	},
+/turf/open/floor/concrete/tiles,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"XZ" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Yi" = (
+/obj/item/restraints/handcuffs/cable/zipties/used,
+/obj/effect/decal/cleanable/ash/large{
+	pixel_x = -2;
+	pixel_y = 0
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Yj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"Ym" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"Yq" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"Yx" = (
+/obj/item/clothing/head/soft/black{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
+"Yy" = (
+/obj/structure/table/reinforced,
+/obj/structure/cable,
+/obj/item/flashlight/lamp{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/item/toy/figure/captain{
+	pixel_x = 7;
+	pixel_y = 12
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"YE" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/box,
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"YN" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"YP" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/door/window/left/directional/east{
+	name = "Engine Access"
+	},
+/obj/structure/cable,
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+"YX" = (
+/obj/machinery/atmospherics/components/unary/passive_vent,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"YZ" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/wood,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"Zw" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
+"ZB" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 2
+	},
+/obj/structure/cable,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"ZP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/plastic,
+/obj/structure/cable,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"ZS" = (
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"ZY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 6
+	},
+/mob/living/basic/trooper/pirate/ranged{
+	faction = list("hermit","mining")
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
+
+(1,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+Rm
+my
+my
+my
+my
+my
+"}
+(2,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+my
+my
+my
+"}
+(3,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Fb
+Fb
+Rm
+Rm
+db
+Rm
+my
+"}
+(4,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+Rm
+Rm
+yh
+Rm
+uS
+uS
+uS
+hE
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+my
+"}
+(5,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+my
+Rm
+my
+my
+my
+my
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+yh
+Rm
+uS
+Mh
+uC
+hE
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+"}
+(6,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+Rm
+my
+Rm
+Rm
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+yh
+Rm
+yh
+hE
+Rm
+Rm
+Rm
+Fb
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+"}
+(7,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cB
+Rm
+Rm
+Rm
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+Rm
+yh
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Fb
+hE
+hE
+Rm
+Rm
+Rm
+"}
+(8,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+Mk
+Rm
+XH
+sk
+nA
+Rm
+Fv
+Ag
+nn
+XH
+Rm
+Fb
+Fb
+Fb
+He
+He
+He
+He
+Rm
+Rm
+Jn
+Rm
+yh
+Rm
+Rm
+Rm
+nO
+uS
+Rm
+Rm
+my
+"}
+(9,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+XH
+fb
+Dy
+CG
+GP
+CG
+CG
+fN
+af
+ib
+Rm
+Fb
+Fb
+He
+He
+HX
+Iq
+He
+He
+He
+Rm
+Jn
+MS
+Rm
+Rm
+Rm
+og
+uS
+Rm
+Rm
+my
+"}
+(10,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+CG
+Ym
+Mf
+CG
+cO
+cO
+cO
+Ax
+Ym
+Mf
+CG
+Rm
+Fb
+Fb
+ra
+KL
+KL
+KL
+ES
+Pq
+He
+Rm
+Rm
+Jn
+Rm
+Rm
+hE
+uS
+uS
+Rm
+Rm
+my
+"}
+(11,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+CG
+YP
+wB
+CG
+cO
+JF
+cW
+CG
+eu
+wB
+CG
+Rm
+Rm
+Fb
+ra
+TO
+KL
+Nv
+mm
+Oe
+He
+Rm
+Rm
+yh
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+"}
+(12,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+CG
+Jm
+wP
+CG
+CG
+sR
+CG
+CG
+yZ
+uP
+CG
+Fb
+Rm
+Fb
+He
+BJ
+kd
+ei
+Oe
+Vb
+na
+Jx
+Rm
+yh
+Rm
+Jn
+Jn
+Rm
+yh
+Rm
+yh
+Rm
+"}
+(13,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+CG
+LO
+iL
+CG
+NU
+Qc
+Ja
+ol
+za
+nk
+Hi
+Fb
+Rm
+Fb
+He
+NV
+sJ
+Oc
+Wz
+cG
+He
+br
+Rm
+Rm
+Jn
+Jn
+MS
+Jn
+Rm
+Rm
+Rm
+Rm
+"}
+(14,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+CG
+Hx
+nX
+CG
+hR
+la
+ft
+WS
+VS
+et
+Hi
+Fb
+Fb
+Fb
+He
+IO
+sJ
+Cn
+He
+He
+He
+br
+yh
+Rm
+Jn
+MS
+MS
+yh
+Rm
+Rm
+Rm
+my
+"}
+(15,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+Fb
+CG
+CG
+ot
+CG
+Vc
+jJ
+YE
+CG
+Dl
+lN
+CG
+Fb
+Fb
+Fb
+He
+SF
+jM
+Oe
+He
+Rm
+br
+Rm
+yh
+yh
+lz
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+my
+"}
+(16,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Rm
+hr
+CG
+SH
+fZ
+Ef
+WV
+ZY
+pg
+nf
+SA
+Kx
+CG
+Fb
+Fb
+Fb
+He
+He
+Sa
+Me
+He
+br
+Rm
+yh
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Yq
+my
+my
+"}
+(17,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+aS
+CG
+jw
+Pc
+jq
+Vs
+QL
+xt
+oM
+UM
+ta
+CG
+aS
+Fb
+Fb
+Rm
+Or
+Fz
+wJ
+oa
+Rm
+Rm
+yh
+Rm
+Rm
+MB
+Lh
+Lh
+wJ
+Yq
+Yq
+my
+my
+"}
+(18,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+wx
+wx
+LP
+LP
+wx
+wx
+wk
+wx
+wx
+LP
+LP
+wx
+wx
+Rm
+Rm
+Rm
+Rm
+yh
+br
+Rm
+MS
+Jn
+MS
+Rm
+ad
+ad
+qU
+qU
+ad
+Fb
+Fb
+Fb
+my
+"}
+(19,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+wx
+aw
+aw
+gn
+wD
+Zw
+Qm
+zG
+AK
+si
+RM
+rC
+Rm
+Yq
+Yq
+Rm
+br
+Rm
+Jn
+Jn
+MS
+Jn
+Rm
+ad
+hH
+RE
+ar
+ad
+Fb
+Fb
+Fb
+my
+"}
+(20,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+aw
+wx
+TC
+yB
+ie
+PD
+sP
+cy
+pB
+RI
+Rm
+Yq
+Yq
+Yq
+yh
+br
+Rm
+Jn
+MS
+Rm
+Rm
+Rm
+ad
+oT
+lq
+hH
+Fb
+Fb
+Fb
+my
+my
+"}
+(21,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+wx
+aw
+Kg
+Oi
+Zw
+zN
+Ns
+qE
+cy
+Io
+Rm
+Rm
+Yq
+Rm
+br
+Rm
+yh
+Rm
+Fa
+ad
+ad
+ad
+ad
+qO
+wY
+hH
+Fb
+Fb
+my
+my
+my
+"}
+(22,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+wx
+aw
+Uh
+mf
+Zw
+UA
+Yj
+Uu
+xf
+Io
+br
+br
+br
+br
+br
+br
+br
+br
+ou
+uU
+Gj
+Wr
+ad
+yM
+ad
+Fb
+Fb
+Fb
+my
+my
+my
+"}
+(23,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+wx
+eP
+FL
+zY
+fQ
+dV
+XZ
+cy
+IW
+Io
+Rm
+yh
+qg
+MS
+Jn
+Rm
+Rm
+hp
+TQ
+uU
+eG
+th
+xP
+Ac
+ad
+Fb
+Fb
+my
+my
+my
+my
+"}
+(24,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+aJ
+fT
+Cc
+EF
+wv
+dV
+cF
+cy
+wH
+wx
+gZ
+qg
+Jn
+Jn
+Jn
+Rm
+Rm
+rd
+Hk
+JG
+FX
+Vn
+LL
+ob
+Fb
+Fb
+Fb
+my
+my
+my
+my
+"}
+(25,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+wx
+wx
+wx
+wx
+wx
+Db
+wx
+wx
+EE
+EE
+EE
+wx
+br
+MS
+bQ
+Rm
+Rm
+Rm
+ad
+sT
+Oj
+OO
+RO
+Qt
+vx
+Fb
+Fb
+Fb
+Fb
+my
+my
+my
+"}
+(26,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+Fb
+VC
+Xe
+Sm
+qL
+mM
+tF
+JL
+xJ
+Pa
+Rm
+br
+Rm
+yh
+Rm
+Fv
+cs
+Rm
+ad
+dx
+Gj
+MO
+PS
+fa
+vp
+Fb
+Fb
+my
+my
+my
+my
+my
+"}
+(27,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+Fb
+Fb
+Mg
+px
+sz
+cJ
+mS
+in
+UT
+Pg
+Rm
+br
+Rm
+yh
+Rm
+SC
+af
+ib
+Rm
+ad
+gU
+or
+MO
+OB
+EU
+Fb
+Fb
+Fb
+Rm
+my
+my
+my
+my
+"}
+(28,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+in
+in
+in
+in
+YX
+vi
+in
+hL
+Rm
+Yq
+br
+Jn
+Jn
+JA
+ng
+ng
+ng
+Rm
+ad
+TT
+hi
+vK
+vS
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+my
+my
+my
+"}
+(29,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+Fb
+my
+Fb
+Fb
+Fb
+eL
+es
+gH
+in
+zp
+bI
+hL
+Gm
+Rm
+Rm
+qg
+Jn
+We
+aQ
+hm
+GC
+ng
+Rm
+ad
+ad
+ad
+UW
+Fb
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+my
+my
+my
+"}
+(30,1,1) = {"
+my
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+qo
+kT
+aH
+NH
+dH
+go
+in
+Rm
+Rm
+yh
+qg
+Rm
+PE
+aT
+UR
+Jj
+ng
+Rm
+Rm
+Rm
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+my
+my
+my
+"}
+(31,1,1) = {"
+my
+my
+my
+my
+my
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+in
+PL
+HK
+vg
+in
+fw
+Ol
+in
+MW
+Rm
+Jn
+qg
+JA
+JA
+JA
+Fw
+JA
+ng
+Rm
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+Rm
+my
+my
+"}
+(32,1,1) = {"
+Fb
+Fb
+my
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+in
+Jy
+Ko
+mw
+in
+il
+NO
+in
+Rm
+Rm
+Rm
+TY
+JA
+MT
+Ut
+Je
+nJ
+ng
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+uY
+MW
+Rm
+Rm
+Rm
+my
+"}
+(33,1,1) = {"
+Rm
+Fb
+Fb
+Fb
+Fb
+Fb
+rJ
+rJ
+Fb
+Fb
+Fb
+in
+in
+in
+in
+in
+in
+yV
+in
+XH
+Rm
+yh
+br
+ng
+DX
+Jt
+WY
+Iw
+yT
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+Rm
+kG
+UY
+UY
+kG
+Rm
+Rm
+my
+"}
+(34,1,1) = {"
+Rm
+Fb
+Fb
+Fb
+Cx
+jX
+MC
+MC
+Fb
+Fb
+Fb
+Fb
+Fb
+in
+Yy
+pO
+Az
+St
+jd
+ib
+MS
+Jn
+br
+pt
+TJ
+xR
+gN
+qt
+yT
+Fb
+Fb
+Fb
+Rm
+Rm
+VM
+Rm
+Rm
+kG
+zh
+DD
+kG
+Rm
+Rm
+my
+"}
+(35,1,1) = {"
+Rm
+Fb
+Fb
+gI
+Yx
+Cx
+Cx
+Cx
+Cx
+Fb
+Fb
+Fb
+Fb
+in
+UO
+Rn
+Dm
+vE
+ne
+zT
+Jn
+Rm
+br
+ng
+lo
+Jt
+ZP
+nR
+yT
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+Rm
+Rm
+kG
+ry
+ry
+KZ
+Rm
+Rm
+my
+"}
+(36,1,1) = {"
+Fb
+Fb
+Fb
+UJ
+sO
+Cx
+Cx
+Cx
+Cx
+Cx
+Fb
+Fb
+Fb
+fF
+fF
+zl
+VJ
+oi
+jd
+JQ
+yh
+Rm
+br
+ng
+LY
+Id
+qC
+NE
+ng
+Fb
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+kG
+kG
+se
+se
+kG
+kG
+Rm
+my
+"}
+(37,1,1) = {"
+Fb
+Fb
+Fb
+KP
+rI
+Cx
+Cx
+Cx
+Cx
+Cx
+Cx
+Cx
+Fb
+Fb
+fF
+fF
+fF
+fF
+in
+MS
+Jn
+Jn
+br
+ng
+qJ
+OX
+BG
+ng
+mK
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Rm
+kG
+wo
+iz
+Na
+zu
+kG
+Rm
+my
+"}
+(38,1,1) = {"
+Fb
+Fb
+Fb
+Fb
+Fb
+Jd
+tM
+Kz
+Cx
+Cx
+Cx
+Cx
+Cx
+Cx
+Fb
+Fb
+Fb
+Fb
+Fb
+Jn
+MS
+kx
+Bp
+hT
+aN
+Un
+Gn
+mK
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Rm
+Rm
+kG
+QO
+eh
+eh
+bH
+kG
+Rm
+my
+"}
+(39,1,1) = {"
+my
+Fb
+Fb
+Fb
+Fb
+rJ
+rJ
+Fb
+Fb
+Fb
+Fb
+Cx
+Cx
+Cx
+Cx
+Fb
+Rm
+Rm
+Jw
+MS
+yh
+Rm
+iZ
+ng
+ng
+Lf
+VN
+Fb
+Fb
+Fb
+Fb
+Fb
+Cx
+Cx
+Rm
+Rm
+KZ
+Bl
+iI
+Jq
+zu
+kG
+Rm
+my
+"}
+(40,1,1) = {"
+my
+my
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Wt
+Wt
+Wt
+Wt
+Wt
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+yh
+yh
+Rm
+br
+Rm
+ng
+ng
+ng
+Fb
+Fb
+Fb
+wZ
+Cx
+Cx
+Cx
+Rm
+Rm
+Ue
+df
+ee
+ee
+kh
+kG
+Rm
+my
+"}
+(41,1,1) = {"
+my
+my
+Fb
+Fb
+Fb
+Fb
+Wt
+Wt
+Wt
+NF
+Af
+bD
+Wt
+Rm
+Rm
+Rm
+Rm
+yh
+Rm
+Jn
+Jn
+Rm
+br
+Rm
+Rm
+Rm
+Rm
+Fb
+Fb
+WP
+Cx
+Bo
+Bo
+Dh
+Dh
+Dh
+VH
+KU
+to
+to
+Rm
+Rm
+Rm
+my
+"}
+(42,1,1) = {"
+my
+my
+Fb
+Fb
+Fb
+Fb
+Wt
+NF
+gJ
+NF
+ys
+ak
+jj
+jj
+jj
+Rm
+Rm
+Rm
+Jn
+MS
+MS
+br
+Rm
+Rm
+Rm
+Rm
+Fb
+Fb
+Fb
+Fb
+sr
+Cx
+Cx
+Rm
+to
+Rm
+Rm
+Rm
+to
+MW
+Rm
+my
+my
+my
+"}
+(43,1,1) = {"
+my
+Fb
+Fb
+Fb
+Rm
+Fa
+jj
+NF
+NF
+Ox
+vP
+fB
+xy
+Wx
+jj
+Rm
+Rm
+Rm
+Jn
+MS
+qg
+VM
+Rm
+sB
+sB
+sB
+Fb
+Fb
+Fb
+Fb
+Yi
+Cx
+Rm
+Rm
+Rm
+Rm
+to
+Rm
+Rm
+Rm
+Rm
+my
+my
+my
+"}
+(44,1,1) = {"
+my
+Fb
+Fb
+Rm
+Rm
+Fa
+vn
+sF
+uj
+vP
+sX
+FD
+DM
+CY
+YZ
+CU
+br
+br
+br
+br
+DA
+Rm
+Rm
+sB
+OR
+uA
+XU
+je
+cM
+Fb
+Fb
+Fb
+Fb
+Rm
+my
+Rm
+Rm
+my
+my
+my
+my
+my
+my
+my
+"}
+(45,1,1) = {"
+my
+my
+Rm
+Rm
+Rm
+Fa
+vn
+wM
+Lw
+oU
+sX
+LH
+FO
+yN
+jj
+Rm
+Rm
+Rm
+yh
+yh
+Rm
+br
+sB
+sB
+Dr
+UD
+AQ
+wc
+zQ
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(46,1,1) = {"
+my
+my
+Rm
+Rm
+Rm
+eH
+jj
+jj
+jj
+QY
+qT
+jj
+jj
+jj
+jj
+Rm
+Lc
+xs
+pX
+Rm
+Rm
+ou
+sB
+sB
+sB
+ez
+sB
+vl
+JX
+Ll
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(47,1,1) = {"
+my
+Rm
+Rm
+db
+Rm
+Rm
+Rm
+Rm
+jj
+vn
+ua
+jj
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+MS
+Jn
+Rm
+ns
+Wj
+tA
+Sp
+Fk
+sB
+sB
+el
+Ne
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(48,1,1) = {"
+my
+Rm
+Rm
+Rm
+Rm
+Jn
+Rm
+Rm
+HW
+wJ
+Fz
+Lh
+Rm
+Rm
+Rm
+yh
+Rm
+Rm
+Jn
+Rm
+Rm
+ou
+tw
+Gw
+sn
+EB
+Pm
+sB
+EM
+Qs
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(49,1,1) = {"
+my
+Rm
+Rm
+Rm
+Rm
+Rm
+Jn
+Rm
+Rm
+Rm
+Rm
+yh
+Rm
+Jn
+Jn
+Rm
+Rm
+Jn
+Jn
+Rm
+Rm
+iO
+sB
+Ce
+Hp
+gh
+Sf
+sB
+Ne
+tW
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(50,1,1) = {"
+my
+Rm
+Rm
+Rm
+Rm
+yh
+Rm
+Jn
+Rm
+Rm
+Jn
+MS
+Jn
+yh
+Rm
+Rm
+Rm
+Rm
+Rm
+MW
+br
+br
+sB
+Nc
+sB
+Vz
+dY
+sB
+Ll
+Tz
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(51,1,1) = {"
+my
+Rm
+Rm
+yh
+Rm
+Rm
+Rm
+Rm
+yh
+yh
+Rm
+Rm
+Rm
+lz
+Rm
+br
+br
+br
+br
+br
+yh
+br
+EJ
+NN
+sB
+sB
+sB
+Fb
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(52,1,1) = {"
+my
+Rm
+Rm
+Rm
+Rm
+hE
+LN
+JO
+Rm
+eZ
+eZ
+eZ
+eZ
+Rm
+Ck
+cv
+Rm
+Rm
+Rm
+yh
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Fb
+Fb
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(53,1,1) = {"
+my
+my
+my
+Rm
+Rm
+uS
+uC
+XO
+Fa
+eZ
+ag
+Fx
+eZ
+eZ
+eZ
+Jg
+eZ
+eZ
+Rm
+Rm
+Rm
+Jn
+Rm
+Rm
+Rm
+Rm
+Fb
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(54,1,1) = {"
+my
+my
+my
+my
+Rm
+uS
+uS
+hE
+Fa
+Op
+BI
+tg
+tN
+eZ
+AB
+YN
+GL
+eZ
+Rm
+Rm
+Rm
+Jn
+Rm
+Rm
+Rm
+Rm
+Fb
+Fb
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(55,1,1) = {"
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+Ah
+DC
+au
+Ni
+hU
+gC
+rP
+OS
+pl
+eZ
+eZ
+Rm
+Rm
+Rm
+Jn
+Rm
+Rm
+Fb
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(56,1,1) = {"
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+Fa
+Op
+ZS
+lG
+ip
+eZ
+pD
+qD
+yF
+gW
+eZ
+Rm
+Rm
+Rm
+Jn
+Rm
+Rm
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(57,1,1) = {"
+my
+my
+my
+my
+my
+Rm
+Rm
+Rm
+eH
+eZ
+eZ
+eZ
+eZ
+eZ
+Er
+ZB
+XW
+wg
+eZ
+Rm
+Rm
+Rm
+hE
+Rm
+Rm
+Fb
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(58,1,1) = {"
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+eZ
+QF
+jB
+bF
+GR
+dM
+CC
+vG
+eZ
+Rm
+Rm
+yh
+uS
+us
+uC
+Fb
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(59,1,1) = {"
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+VM
+Rm
+eZ
+eZ
+Av
+Tm
+bU
+CV
+eZ
+eZ
+eZ
+Rm
+Rm
+Rm
+uS
+uS
+uS
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(60,1,1) = {"
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+Rm
+eZ
+eZ
+Op
+Op
+eZ
+eZ
+Rm
+Rm
+Rm
+yh
+Rm
+Rm
+Rm
+Rm
+Fb
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(61,1,1) = {"
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+eH
+wJ
+wJ
+Lh
+Rm
+Rm
+db
+Rm
+Rm
+Rm
+Rm
+Rm
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(62,1,1) = {"
+my
+my
+my
+my
+my
+my
+my
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}

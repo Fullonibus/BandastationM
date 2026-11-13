@@ -1,0 +1,10240 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/BeachRuins/beach_ocean_town.dmm
+"aa" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"ad" = (
+/obj/item/toy/beach_ball,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ak" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"at" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "The 'Nutshack";
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"aE" = (
+/obj/structure/window/spawner/directional/east,
+/obj/structure/table,
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"aF" = (
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"aQ" = (
+/obj/item/seeds/cocoapod,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"aV" = (
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"aX" = (
+/obj/item/seeds/grape,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ba" = (
+/obj/machinery/door/airlock{
+	name = "Guest Room"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"bd" = (
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"be" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"bg" = (
+/obj/effect/turf_decal/siding/wood,
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"bl" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"bt" = (
+/obj/effect/turf_decal/siding/thinplating/light,
+/obj/structure/broken_flooring/plating/directional/south,
+/obj/structure/broken_flooring/plating/directional/west,
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"bv" = (
+/obj/item/chisel,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"bw" = (
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"by" = (
+/obj/machinery/light/small/directional/west,
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"bB" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"bH" = (
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"bN" = (
+/obj/structure/dresser,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"bQ" = (
+/obj/item/cultivator/rake,
+/obj/item/seeds/coffee,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"bS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/orange,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"bX" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"bY" = (
+/obj/structure/sink/directional/south,
+/obj/structure/mirror{
+	pixel_y = 28
+	},
+/obj/item/fireaxe,
+/obj/item/paper/crumpled/bloody{
+	default_raw_text = "Here's Johnny"
+	},
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"cm" = (
+/obj/structure/chair/sofa{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"cp" = (
+/obj/structure/bonfire/prelit,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"cq" = (
+/obj/effect/turf_decal/siding/thinplating/light{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"cr" = (
+/obj/effect/mob_spawn/corpse/human/pirate,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"cu" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/grenade/chem_grenade/metalfoam{
+	pixel_x = 2
+	},
+/obj/item/grenade/chem_grenade/metalfoam{
+	pixel_x = 6
+	},
+/obj/item/grenade/empgrenade{
+	pixel_x = -4
+	},
+/obj/item/grenade/frag,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"cv" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"cH" = (
+/obj/effect/decal/cleanable/blood/innards,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"cJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/under/shorts/blue{
+	name = "blue swimming shorts";
+	desc = "100% pure cotton!"
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"cK" = (
+/obj/structure/table/wood,
+/obj/structure/curtain/cloth,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"cO" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"cZ" = (
+/obj/item/seeds/apple,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"da" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"db" = (
+/obj/machinery/door/airlock{
+	name = "Employees Only"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"dd" = (
+/obj/machinery/vending/boozeomat,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"dg" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"di" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Johann's Bar";
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"dj" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst,
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"dq" = (
+/turf/closed/wall/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"dr" = (
+/obj/structure/railing,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ds" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"dw" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"dy" = (
+/obj/structure/rack,
+/obj/item/food/chocolatebar,
+/obj/item/food/chocolatebar,
+/obj/item/food/chocolatebar,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"dC" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"dD" = (
+/obj/effect/spawner/random/vending/colavend,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"dH" = (
+/obj/effect/turf_decal/siding/thinplating/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"dK" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/door/airlock/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"dN" = (
+/obj/structure/railing,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"dP" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"dQ" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/tower,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"dV" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"dY" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/chair/comfy/beige,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"eo" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"et" = (
+/obj/item/cultivator/rake,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"eA" = (
+/obj/effect/turf_decal/siding/blue,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"eD" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"eE" = (
+/obj/structure/table/wood,
+/obj/item/food/cornuto{
+	name = "perfect cornuto";
+	desc = "you can't be quite sure how long this cornuto has sat in the sun. Yet it remains perfectly intact. No melting, no signs of damage. It beckons to you."
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"eI" = (
+/obj/effect/turf_decal/siding/thinplating/light{
+	dir = 4
+	},
+/obj/structure/sink/kitchen/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"eO" = (
+/obj/structure/flora/tree/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"eQ" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/railing/corner,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"eX" = (
+/obj/machinery/power/port_gen/pacman/super,
+/obj/effect/turf_decal/delivery,
+/obj/structure/cable,
+/obj/machinery/button/door/directional/north{
+	id = "exp_celadon_ocean_town_gut_engines";
+	name = "Engine Shutters";
+	pixel_y = -22
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"fa" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"fb" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"fe" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/light/small/directional/north,
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"ff" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"fm" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"fo" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/eggplant,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"fs" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"fE" = (
+/mob/living/basic/bear,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"fH" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"fQ" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"fR" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "exp_celadon_ocean_town_gut_cargo";
+	name = "Blast Shutters";
+	dir = 4
+	},
+/turf/open/floor/engine/hull/air,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"fS" = (
+/obj/structure/flora/bush/large,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"fX" = (
+/obj/structure/chair,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"fY" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"gf" = (
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"gj" = (
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"gk" = (
+/obj/structure/chair/stool/bar,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"gs" = (
+/obj/effect/decal/cleanable/blood/splatter/over_window,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"gt" = (
+/obj/structure/safe,
+/obj/item/reagent_containers/cup/glass/trophy/gold_cup,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 50
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 50
+	},
+/obj/item/storage/bag/money/vault,
+/obj/item/storage/bag/money/vault,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"gJ" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Beachside Inn"
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"gM" = (
+/obj/effect/turf_decal/siding/wood,
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"gP" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Grocery Store";
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"gS" = (
+/obj/structure/chair/stool/bar/directional/west,
+/obj/machinery/barsign{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"gT" = (
+/obj/structure/table,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"gU" = (
+/obj/vehicle/ridden/lavaboat{
+	dir = 8;
+	name = "boat"
+	},
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"gW" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"gY" = (
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 1
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ha" = (
+/obj/structure/closet/secure_closet/freezer/fridge/open,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"hg" = (
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"hj" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"hk" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"hn" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"hr" = (
+/obj/item/seeds/cotton,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"hs" = (
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"hB" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"hJ" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"hO" = (
+/obj/structure/fluff/beach_umbrella/engine,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ib" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"ic" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"if" = (
+/obj/item/shard,
+/obj/item/shard{
+	pixel_y = -12;
+	pixel_x = -6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"il" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/structure/railing/corner,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"iy" = (
+/obj/machinery/washing_machine,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"iF" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/effect/turf_decal/siding/thinplating/light,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"iG" = (
+/obj/structure/window/spawner/directional/east,
+/obj/machinery/vending/cigarette/beach,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"iI" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/door/airlock/wood,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"iK" = (
+/obj/structure/fluff/beach_umbrella/cap,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"iL" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"iN" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"jd" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"jh" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"jj" = (
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"jl" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"jr" = (
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"jt" = (
+/obj/structure/railing,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"jx" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"jz" = (
+/obj/structure/sign/poster/official/here_for_your_safety/directional/south,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"jD" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"jK" = (
+/obj/structure/flora/rock/pile/style_random{
+	name = "reeds"
+	},
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ke" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ko" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"ku" = (
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"kx" = (
+/obj/structure/fence/door,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"kC" = (
+/obj/structure/broken_flooring/corner/directional/south{
+	icon_state = "plating"
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"kM" = (
+/obj/item/seeds/tobacco,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"kO" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 9
+	},
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"kS" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/bananalamp,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"kU" = (
+/obj/structure/flora/rock/pile,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"kV" = (
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"kX" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"kY" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"la" = (
+/mob/living/basic/trooper/pirate/ranged,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"lg" = (
+/obj/machinery/jukebox,
+/turf/open/floor/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"lq" = (
+/obj/machinery/power/smes,
+/obj/effect/turf_decal/box,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"lx" = (
+/obj/item/seeds/wheat/rice,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"lB" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"lF" = (
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"lH" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"lI" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/railing/wooden_fence,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"lJ" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"lK" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"lN" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/rum{
+	pixel_y = 2;
+	pixel_x = 11
+	},
+/obj/item/gun/ballistic/revolver/c38{
+	pixel_y = 8
+	},
+/obj/item/gun/ballistic/revolver/c38{
+	pixel_y = 8
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"lP" = (
+/obj/structure/table,
+/obj/item/pizzabox/meat,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"lQ" = (
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"lS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"lW" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"lX" = (
+/obj/structure/chair/stool/bar/directional/west,
+/obj/effect/turf_decal/tile/brown{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"lY" = (
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"mb" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"mj" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"mk" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"mo" = (
+/obj/item/statuebust,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"mq" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/item/paper_bin/bundlenatural,
+/obj/item/pen,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"mr" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 1;
+	color = "#D5A66E"
+	},
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"mz" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"mA" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"mF" = (
+/obj/effect/decal/cleanable/blood/hitsplatter,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"mK" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"mL" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"mQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/orange,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"mZ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/west,
+/obj/structure/dresser,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"na" = (
+/obj/machinery/door/airlock{
+	name = "Employees Only"
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"nc" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"nl" = (
+/obj/machinery/pdapainter,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"no" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"nq" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"ns" = (
+/obj/structure/broken_flooring/plating/directional/south,
+/obj/structure/broken_flooring/plating/directional/east,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"nB" = (
+/obj/machinery/light/floor,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"nN" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"nO" = (
+/obj/machinery/shower/directional/south,
+/obj/structure/curtain,
+/turf/open/floor/iron/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"nW" = (
+/obj/effect/spawner/random/vending/snackvend,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"od" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"of" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"og" = (
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"ok" = (
+/turf/open/floor/iron/stairs{
+	dir = 4;
+	color = "#55391A"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"oq" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"oB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"oD" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"oE" = (
+/obj/structure/chair/sofa{
+	dir = 1
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"oH" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/wrapping,
+/obj/structure/cable,
+/obj/machinery/power/terminal,
+/obj/machinery/door/firedoor/border_only,
+/obj/effect/turf_decal/stripes/line,
+/obj/item/storage/toolbox/syndicate{
+	pixel_y = 5;
+	pixel_x = 11
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"oJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"oL" = (
+/obj/structure/chair/sofa{
+	dir = 4
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"oO" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/item/seeds/grape,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"oU" = (
+/obj/structure/table/wood,
+/obj/item/storage/fancy/candle_box,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"oY" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"pc" = (
+/obj/machinery/vending/boozeomat,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"pf" = (
+/obj/item/shovel/spade,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ph" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"pi" = (
+/obj/structure/flora/rock/pile/style_random,
+/mob/living/basic/trooper/pirate/ranged,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"po" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"py" = (
+/obj/structure/frame/machine,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"pz" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_ocean_town_gut_engines";
+	name = "Thruster Blast Door"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"pA" = (
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"pF" = (
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"pH" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"pJ" = (
+/obj/structure/fence/cut/large,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"pX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"qg" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"qi" = (
+/obj/structure/table,
+/obj/item/book/manual/wiki/barman_recipes,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"qm" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"qo" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"qp" = (
+/obj/structure/table,
+/obj/structure/sink/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"qD" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/machinery/shower/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"qI" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"qJ" = (
+/obj/structure/chair/stool/bar/directional/south,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"qM" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"qU" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"qV" = (
+/obj/vehicle/ridden/lavaboat,
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"rd" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"rj" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"rl" = (
+/obj/structure/table/wood,
+/obj/machinery/light/dim/directional/south,
+/obj/item/gun/ballistic/shotgun/riot,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"rw" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/blue,
+/obj/item/modular_computer/pda/crew,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"rx" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"rI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"rK" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/item/melee/roastingstick,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"rS" = (
+/obj/effect/turf_decal/siding/blue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"rX" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"rY" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/item/seeds/sugarcane,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"sc" = (
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"sg" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/drinkingglass/filled/cola{
+	name = "Ocean Cola"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"sE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"sI" = (
+/obj/machinery/door/airlock{
+	name = "Employees Only";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"sR" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"sW" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"tc" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"td" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "exp_celadon_ocean_town_gut_cargo";
+	name = "Blast Shutters";
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/engine/hull/air,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"tl" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"tm" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"tq" = (
+/obj/machinery/light/small/directional/north,
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"tx" = (
+/turf/open/floor/iron/stairs{
+	dir = 1;
+	color = "#55391A"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ty" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"tE" = (
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 1
+	},
+/obj/machinery/light/directional/west,
+/obj/item/food/candiedapple,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"tF" = (
+/obj/structure/table,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"tG" = (
+/obj/structure/table/wood,
+/obj/machinery/jukebox,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"tL" = (
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"tN" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"tO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"tR" = (
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"tZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"uc" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 9
+	},
+/obj/structure/frame/computer,
+/obj/machinery/turretid{
+	pixel_y = 26;
+	pixel_x = 0
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"uj" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"uk" = (
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"ul" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"um" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"up" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/wiki/medicine,
+/obj/machinery/light/small/directional/west,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"us" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/dresser,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"uv" = (
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"uw" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/item/gun/ballistic/revolver/c38,
+/obj/effect/mob_spawn/corpse/human/cook,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"uD" = (
+/obj/effect/turf_decal/siding/blue,
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/obj/item/food/candiedapple,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"uN" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"uO" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"uP" = (
+/obj/structure/chair/stool/bar/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"uR" = (
+/obj/structure/chair/sofa{
+	dir = 2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"uS" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"uY" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/closet/crate/freezer,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/obj/item/food/sausage,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"va" = (
+/obj/structure/broken_flooring/plating/directional/east,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"vc" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8;
+	name = "tactical chair"
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8;
+	color = "#808080"
+	},
+/obj/effect/decal/cleanable/vomit/old{
+	pixel_y = 6
+	},
+/obj/structure/cable,
+/obj/machinery/light/directional/east,
+/obj/machinery/power/apc/auto_name/directional/north,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"vg" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_y = 1;
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/cup/glass/bottle/rum{
+	pixel_y = 2;
+	pixel_x = 11
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"vu" = (
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"vv" = (
+/obj/effect/turf_decal/siding/thinplating/light{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"vz" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/obj/item/food/canned/peaches,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"vA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"vB" = (
+/obj/structure/flora/tree/jungle{
+	icon_state = "tree6"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"vG" = (
+/obj/effect/turf_decal/siding/blue/corner,
+/obj/item/food/candiedapple,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"vH" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"vJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"vO" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"vS" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"vT" = (
+/obj/item/food/muffin,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"vW" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"wa" = (
+/obj/machinery/seed_extractor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"wb" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"wg" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"wh" = (
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"wp" = (
+/obj/item/seeds/cherry,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"wq" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"wr" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/item/gun/ballistic/revolver,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"wB" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"wC" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"wM" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"wO" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"wT" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/blue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"wU" = (
+/obj/structure/mineral_door/wood{
+	name = "Bedroom"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"wV" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"wX" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"xb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"xf" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"xg" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"xi" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"xB" = (
+/obj/machinery/biogenerator,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"xK" = (
+/obj/machinery/hydroponics/soil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"xW" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"ya" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 1;
+	color = "#D5A66E"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"yg" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"yj" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8;
+	name = "tactical chair"
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8;
+	color = "#808080"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"yv" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/item/gun/ballistic/revolver/c38,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"yw" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"yx" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"yB" = (
+/obj/structure/chair/comfy/beige,
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"yC" = (
+/obj/structure/table,
+/obj/item/paper_bin/bundlenatural,
+/obj/item/pen/fourcolor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"yI" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"yU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/cyan,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"yV" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"zb" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"zj" = (
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"zn" = (
+/obj/structure/flora/tree/jungle{
+	icon_state = "tree5"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"zq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/button/massdriver{
+	id = "exp_celadon_ocean_town_gut_launchdoor";
+	name = "Cannon Button";
+	pixel_x = 21;
+	pixel_y = 8;
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"zt" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"zu" = (
+/obj/machinery/door/airlock{
+	name = "Employees Only";
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"zz" = (
+/obj/vehicle/ridden/lavaboat{
+	dir = 4;
+	name = "boat"
+	},
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"zA" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/aloe,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"zC" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"zG" = (
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("Frontiersmen")
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"zL" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"zN" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"zR" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/rum{
+	pixel_y = 2;
+	pixel_x = -8
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"zT" = (
+/obj/structure/table,
+/obj/item/seeds/grass,
+/obj/item/plant_analyzer,
+/obj/structure/sign/poster/official/fruit_bowl/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"zV" = (
+/obj/structure/flora/tree/stump,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"zW" = (
+/obj/structure/rack,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Aa" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/shovel/spade,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ad" = (
+/obj/structure/bed,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Ae" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ag" = (
+/obj/structure/table,
+/obj/item/binoculars,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Aq" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/railing/wooden_fence,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"AB" = (
+/obj/effect/decal/cleanable/blood/hitsplatter,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"AO" = (
+/obj/item/seeds/cotton,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"AT" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"AU" = (
+/obj/structure/flora/bush/jungle/a,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"AV" = (
+/obj/structure/broken_flooring/plating/directional/south,
+/turf/open/floor/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"AX" = (
+/obj/structure/flora/tree/palm,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ba" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Bh" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/plastic,
+/obj/structure/cable,
+/obj/machinery/power/terminal,
+/obj/machinery/door/firedoor/border_only,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Bu" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Bw" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/structure/sign/poster/official/cohiba_robusto_ad/directional/north,
+/obj/item/food/canned/peaches,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"BB" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"BH" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 9
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"BI" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/flora/tree/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"BJ" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"BL" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"BQ" = (
+/obj/structure/flora/bush/large,
+/obj/structure/flora/bush/jungle/a,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ca" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Ce" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Cl" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/closet/crate/bin,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Cm" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Cp" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Cr" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Cu" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Cy" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"CA" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/peas,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"CB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"CG" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"CH" = (
+/obj/structure/table,
+/obj/structure/window/spawner/directional/south,
+/obj/structure/window/spawner/directional/east,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"CP" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"CQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"CU" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Di" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Dm" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Dp" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8;
+	name = "tactical chair"
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8;
+	color = "#808080"
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Dr" = (
+/obj/effect/turf_decal/siding/blue,
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Dv" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Dy" = (
+/obj/structure/table/wood/poker,
+/mob/living/basic/parrot{
+	faction = list("pirate");
+	name = "Cotton"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"DB" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth,
+/obj/effect/decal/cleanable/blood/splatter/over_window,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"DU" = (
+/obj/structure/railing/wooden_fence,
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ef" = (
+/obj/structure/sink/directional/south,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Et" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ED" = (
+/obj/structure/sign/poster/official/random/directional/south,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"EE" = (
+/obj/machinery/light/small/directional/south,
+/obj/item/kirbyplants/random,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"EG" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/glass/shaker,
+/obj/item/rag,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"EM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/machinery/door/airlock/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Fa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/cyan,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Fb" = (
+/obj/machinery/griddle,
+/obj/item/food/meat/steak,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Fc" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Fe" = (
+/obj/structure/rack,
+/obj/item/food/donut/jelly/slimejelly/plain,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Ff" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Fj" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/item/melee/roastingstick,
+/obj/item/food/sausage,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Fn" = (
+/obj/structure/flora/rock/pile/style_random,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Ft" = (
+/obj/structure/table,
+/obj/structure/window/spawner/directional/east,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Fu" = (
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Fx" = (
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"FN" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"FQ" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"FR" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"FY" = (
+/obj/structure/table/wood,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Gb" = (
+/obj/machinery/door/airlock{
+	name = "Bathroom"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Gf" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Gj" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/closet/crate/bin,
+/obj/structure/railing/wooden_fence{
+	dir = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Gm" = (
+/obj/machinery/shower/directional/south,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Gr" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Gu" = (
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Gv" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"GB" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"GC" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"GD" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_ocean_town_gut_engines";
+	name = "Thruster Blast Door"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"GG" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"GI" = (
+/obj/structure/chair/stool/bar/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"GK" = (
+/obj/effect/mob_spawn/corpse/human/bartender,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"GL" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"GN" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"GQ" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Hc" = (
+/obj/structure/filingcabinet,
+/obj/machinery/light/small/directional/west,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Hf" = (
+/obj/structure/table/wood/fancy/black,
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Hg" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/blue/corner,
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Hk" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass,
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass,
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Hm" = (
+/obj/structure/chair/sofa/right/brown{
+	dir = 1
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Hq" = (
+/obj/machinery/door/airlock{
+	name = "Employees Only";
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Hw" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/dresser{
+	name = "beachside locker";
+	desc = "A beachside closet. It's got enough cabinets for an entire town's worth of t-shirts and jeans."
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Hx" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"HB" = (
+/obj/machinery/door/airlock/wood{
+	name = "Beach Bar"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"HI" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/item/seeds/chanter,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"HK" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/machinery/shower/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"HM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"HP" = (
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"HZ" = (
+/obj/structure/flora/tree/jungle{
+	icon_state = "tree3"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ij" = (
+/obj/structure/closet/crate/bin,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Il" = (
+/obj/structure/closet/athletic_mixed,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Is" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"It" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Iy" = (
+/obj/item/seeds/wheat,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Iz" = (
+/obj/item/seeds/cabbage,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"IB" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/watermelon,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"IH" = (
+/obj/item/gun/ballistic/revolver/c38,
+/obj/effect/mob_spawn/corpse/human/generic_assistant,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"IL" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"IO" = (
+/obj/structure/table,
+/obj/machinery/light/small/directional/south,
+/obj/structure/bedsheetbin,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"IP" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"IT" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"IW" = (
+/obj/effect/turf_decal/box,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/secure/gear,
+/obj/item/gun/ballistic/rifle/boltaction,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Jc" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ji" = (
+/obj/item/seeds/banana,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Jn" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Jo" = (
+/turf/open/floor/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Jq" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/chili,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Jr" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Jt" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Jy" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Jz" = (
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"JA" = (
+/obj/structure/flora/tree/palm{
+	icon_state = "palm2"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"JF" = (
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"JO" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"JP" = (
+/obj/structure/rack,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"JX" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ke" = (
+/obj/structure/table/wood/fancy/black,
+/obj/machinery/light/dim/directional/south,
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/obj/item/pizzabox/meat,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Kl" = (
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Kp" = (
+/obj/structure/rack,
+/obj/item/food/canned/peaches,
+/obj/item/food/canned/peaches,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Kr" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Ks" = (
+/obj/structure/mineral_door/wood{
+	name = "Hotel"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Ky" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"KC" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"KF" = (
+/obj/structure/chair/comfy/beige,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"KH" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"KJ" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Johann's Bar"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"KK" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"KW" = (
+/obj/structure/sign/poster/official/build/directional/south,
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Ld" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Lk" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Lt" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ly" = (
+/obj/structure/chair/wood,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"LA" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/rum{
+	pixel_y = 14;
+	pixel_x = 9
+	},
+/obj/machinery/light/dim/directional/east,
+/obj/item/stack/spacecash/c1000,
+/obj/item/stack/spacecash/c1000{
+	pixel_x = -1
+	},
+/obj/item/stack/spacecash/c200{
+	pixel_x = -11
+	},
+/obj/item/stack/spacecash/c100{
+	pixel_y = -7;
+	pixel_x = -7
+	},
+/obj/item/stack/spacecash/c100{
+	pixel_x = 9
+	},
+/obj/item/stack/spacecash/c100{
+	pixel_y = -11;
+	pixel_x = 4
+	},
+/obj/item/stack/spacecash/c100{
+	pixel_y = -11;
+	pixel_x = 4
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"LF" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/smes/full{
+	dir = 1
+	},
+/obj/structure/window/reinforced/plasma/spawner,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"LJ" = (
+/obj/item/seeds/bamboo,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"LN" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"LP" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "The 'Nutshack";
+	dir = 8
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"LS" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/structure/railing/corner,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"LT" = (
+/obj/item/seeds/potato,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ma" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Mb" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Mc" = (
+/obj/item/shard,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Mh" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -21;
+	pixel_y = 11
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Mn" = (
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Mt" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 5
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"MA" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"MB" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/mob/living/basic/trooper/pirate/ranged{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"MC" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/iron/stairs{
+	dir = 1;
+	color = "#55391A"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"MD" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"ML" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/blood/oil{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/machinery/power/smes/full{
+	dir = 1
+	},
+/obj/structure/window/reinforced/plasma/spawner,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"MM" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"MN" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"MQ" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/item/lighter,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"MS" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Nj" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Nk" = (
+/obj/structure/flora/rock/pile/style_random,
+/mob/living/basic/trooper/pirate/ranged{
+	faction = list("Frontiersmen")
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Nt" = (
+/obj/item/gun/ballistic/shotgun/riot,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"NI" = (
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"NL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood/poker,
+/obj/item/gun/energy/laser,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"NM" = (
+/obj/effect/turf_decal/sand,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"NR" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"NU" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"NY" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Oc" = (
+/obj/machinery/door/window/left/directional/east,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Oj" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"On" = (
+/obj/structure/table,
+/obj/machinery/processor,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Oo" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/structure/broken_flooring/plating/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Or" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Os" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "The 'Nutshack"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"OB" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"OD" = (
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"OE" = (
+/obj/item/stack/sheet/mineral/sandstone,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"OL" = (
+/obj/item/seeds/tower,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"OQ" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/blue/corner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"OS" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "General Store";
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"OV" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"OX" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Pd" = (
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 4
+	},
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Pq" = (
+/obj/effect/turf_decal/caution/stand_clear,
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Pr" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Px" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/orange,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Py" = (
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Pz" = (
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"PJ" = (
+/obj/structure/toilet{
+	pixel_y = 13
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"PM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"PS" = (
+/obj/structure/table,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"PT" = (
+/obj/machinery/door/airlock/wood,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Qj" = (
+/obj/structure/sink/directional/west,
+/obj/structure/mirror{
+	pixel_x = 29;
+	pixel_y = -3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Ql" = (
+/obj/structure/chair/stool/bar/directional/west,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Qq" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/power/smes/full{
+	dir = 1
+	},
+/obj/structure/window/reinforced/plasma/spawner,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Qs" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Qt" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Qz" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"QB" = (
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"QC" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"QD" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/item/food/sausage,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"QF" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"QJ" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"QP" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"QY" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 1;
+	name = "tactical chair"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"QZ" = (
+/obj/structure/chair/sofa/right/brown,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Rh" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8;
+	name = "tactical chair"
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8;
+	color = "#808080"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Rk" = (
+/obj/structure/sign/poster/official/cleanliness/directional/north,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Rn" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Rp" = (
+/obj/item/shard{
+	pixel_y = 11;
+	pixel_x = -6
+	},
+/obj/structure/grille/broken,
+/obj/item/shard{
+	pixel_y = 3
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Rt" = (
+/obj/structure/fence{
+	dir = 5;
+	icon_state = "corner"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"RE" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"RT" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"RW" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Sa" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Sb" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Se" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard{
+	pixel_y = -12;
+	pixel_x = 1
+	},
+/obj/item/shard{
+	pixel_y = -15;
+	pixel_x = 23
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Sj" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/machinery/computer/crew,
+/obj/machinery/light_switch{
+	pixel_y = 21;
+	pixel_x = -10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Sl" = (
+/obj/structure/table,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Sn" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Su" = (
+/obj/effect/turf_decal/siding/blue,
+/obj/item/stack/sheet/glass{
+	amount = 20
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Sx" = (
+/obj/structure/rack,
+/obj/item/food/muffin,
+/obj/item/food/muffin,
+/obj/item/food/muffin,
+/obj/item/food/muffin,
+/obj/item/food/muffin,
+/obj/item/food/muffin,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Sy" = (
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/door/airlock{
+	name = "Guest Room"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Sz" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/tea,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"SD" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"SH" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"SK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"SO" = (
+/obj/item/gun/ballistic/rifle/boltaction,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"SP" = (
+/obj/structure/table/wood,
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Ta" = (
+/obj/structure/chair/plastic,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Tc" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Ti" = (
+/obj/structure/flora/rock/pile/style_random{
+	name = "reeds"
+	},
+/obj/structure/flora/rock/pile/style_random,
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Tr" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Tx" = (
+/obj/structure/curtain,
+/obj/machinery/shower/directional/north,
+/mob/living/basic/bear,
+/turf/open/floor/iron/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"TF" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"TI" = (
+/obj/effect/decal/cleanable/blood/splatter/over_window,
+/obj/effect/spawner/structure/window,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"TJ" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"TL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"TS" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"TT" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/mob/living/basic/trooper/pirate/ranged{
+	faction = list("Frontiersmen")
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"TU" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/bananalamp,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"TV" = (
+/obj/structure/railing/wooden_fence{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ua" = (
+/obj/effect/decal/cleanable/glass,
+/mob/living/basic/bear{
+	faction = list("Frontiersmen")
+	},
+/obj/effect/decal/cleanable/blood/gibs/old{
+	pixel_y = -5;
+	pixel_x = 3
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Ue" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Uf" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Ui" = (
+/obj/effect/turf_decal/box,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine,
+/obj/structure/closet/crate/secure/weapon,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Uk" = (
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Um" = (
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Ut" = (
+/obj/machinery/button/door/directional/north{
+	id = "exp_celadon_ocean_town_gut_cargo";
+	name = "Cargo Door Control";
+	pixel_y = -22
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "exp_celadon_ocean_town_gut_cargo";
+	name = "Blast Shutters";
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/engine/hull/air,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Uw" = (
+/obj/structure/closet/crate/bin,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Ux" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/structure/closet/crate,
+/obj/item/clothing/suit/space/nasavoid/old,
+/obj/item/clothing/head/helmet/space/nasavoid/old,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/clothing/mask/gas,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Uz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/closet/crate/bin,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"UE" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"UK" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"UQ" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"UR" = (
+/obj/structure/chair/sofa{
+	dir = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"UV" = (
+/obj/structure/rack,
+/obj/item/storage/box/drinkingglasses,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Ve" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Vg" = (
+/obj/structure/door_assembly/door_assembly_wood,
+/obj/structure/barricade/wooden,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Vi" = (
+/obj/structure/fence{
+	dir = 9;
+	icon_state = "corner"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Vk" = (
+/obj/structure/flora/rock/pile/style_random,
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Vn" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Vq" = (
+/obj/structure/railing/wooden_fence,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Vv" = (
+/obj/item/hatchet/wooden,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Vw" = (
+/obj/structure/table/wood,
+/obj/structure/sign/poster/official/random/directional/south,
+/obj/item/reagent_containers/cup/glass/mug,
+/obj/item/reagent_containers/cup/glass/mug,
+/obj/item/reagent_containers/cup/glass/bottle/wine{
+	pixel_y = 10;
+	pixel_x = -9
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Vx" = (
+/mob/living/basic/trooper/pirate/melee{
+	faction = list("Frontiersmen")
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"VA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"VG" = (
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"VN" = (
+/obj/structure/table/wood,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"VR" = (
+/obj/structure/closet/crate/bin,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Wa" = (
+/obj/structure/railing/wooden_fence{
+	dir = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Wf" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Wk" = (
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Wm" = (
+/obj/structure/rack,
+/obj/structure/sign/poster/official/pda_ad/directional/south,
+/obj/item/modular_computer/pda/crew,
+/obj/item/modular_computer/pda/crew,
+/obj/item/modular_computer/pda/crew,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Wn" = (
+/obj/item/seeds/sugarcane,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Wq" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Wr" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 12
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Wz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"WD" = (
+/obj/structure/railing/corner,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"WE" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"WH" = (
+/obj/structure/flora/tree/jungle/small{
+	icon_state = "tree2"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"WJ" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"WK" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"WN" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"WQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"WY" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"WZ" = (
+/obj/structure/flora/tree/jungle/small{
+	icon_state = "tree1"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Xa" = (
+/obj/structure/broken_flooring/plating/directional/south,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Xb" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Xh" = (
+/obj/structure/flora/rock/pile/style_random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Xj" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Xn" = (
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Xu" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Xx" = (
+/obj/item/seeds/lemon,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"XA" = (
+/obj/item/seeds/plump,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"XL" = (
+/obj/structure/railing/wooden_fence{
+	dir = 9
+	},
+/mob/living/basic/trooper/pirate/ranged/space,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"XN" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"XY" = (
+/obj/structure/chair/comfy/beige,
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Yc" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Ye" = (
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 4
+	},
+/turf/open/floor/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Yf" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Yi" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Yo" = (
+/obj/structure/rack,
+/obj/machinery/light/directional/north,
+/obj/item/shovel,
+/obj/item/shovel,
+/obj/item/shovel,
+/obj/item/shovel,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Yp" = (
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 1
+	},
+/obj/machinery/light/directional/east,
+/obj/item/food/muffin,
+/obj/item/stack/sheet/iron{
+	amount = 20
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"Yr" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Yt" = (
+/obj/structure/table/wood/fancy/black,
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Yu" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Yx" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/door/airlock/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"YB" = (
+/obj/machinery/door/airlock/wood{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"YN" = (
+/obj/structure/table/wood/fancy/black,
+/obj/machinery/light/dim/directional/north,
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/item/gun/ballistic/revolver/c38,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"YR" = (
+/obj/structure/rack,
+/obj/item/storage/fancy/donut_box,
+/obj/item/storage/fancy/donut_box,
+/obj/item/storage/fancy/donut_box,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/shop)
+"YS" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"YU" = (
+/turf/template_noop,
+/area/template_noop)
+"Za" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/ripley_build_and_repair,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Zd" = (
+/obj/structure/fluff/beach_umbrella,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Zg" = (
+/obj/item/stack/sheet/mineral/sandstone,
+/obj/item/stack/sheet/mineral/sandstone,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Zh" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/hotel)
+"Zm" = (
+/obj/structure/toilet{
+	dir = 4;
+	pixel_x = -2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Zp" = (
+/obj/item/seeds/carrot,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"Zq" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Zt" = (
+/obj/machinery/vending/boozeomat,
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"Zu" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Zw" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"Zx" = (
+/obj/item/gun/ballistic/shotgun/riot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"ZC" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ZD" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ZH" = (
+/obj/structure/fence,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ZL" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/power/terminal,
+/obj/machinery/door/firedoor/border_only,
+/obj/effect/turf_decal/stripes/line,
+/obj/item/stack/cable_coil{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+"ZS" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"ZU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown/bar)
+"ZV" = (
+/obj/machinery/light/small/directional/south,
+/obj/item/gun/ballistic/revolver/c38,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/ruin/beach/oceantown)
+"ZZ" = (
+/obj/structure/railing/corner,
+/turf/open/water/beach,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_ocean_town/exterior)
+
+(1,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+WD
+MN
+MN
+Jc
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(2,1,1) = {"
+tR
+Zd
+Ae
+Xh
+Ae
+fS
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+WD
+Xn
+Uz
+ZC
+Wa
+MN
+Ae
+YU
+YU
+YU
+Ae
+Xh
+Ae
+Ae
+Ae
+Xh
+Ae
+YU
+YU
+YU
+YU
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(3,1,1) = {"
+tR
+pX
+pX
+Ae
+Ae
+tR
+tR
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+BQ
+Ae
+Ae
+Xh
+Ae
+Vq
+NR
+KH
+KH
+uS
+ZC
+Xh
+Ae
+Zu
+Zu
+Xh
+Xh
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+YU
+YU
+Xh
+Xh
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(4,1,1) = {"
+tR
+Ae
+Ae
+Ae
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+fH
+Xh
+Ae
+Vq
+Or
+KH
+KH
+JX
+MA
+Ae
+Xh
+uk
+uk
+uk
+uk
+uk
+zu
+uk
+uk
+uk
+Cr
+Xh
+Xh
+Xh
+jr
+jr
+jr
+KH
+Wn
+KH
+wp
+KH
+Xx
+xi
+KH
+KH
+KH
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+YU
+Ae
+Ae
+Ae
+Xh
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(5,1,1) = {"
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+Zd
+Ae
+Ae
+Ae
+tL
+Ae
+Ae
+Ae
+Mb
+hg
+tO
+KH
+dV
+Ae
+Ae
+Xh
+uk
+dd
+od
+if
+vT
+Su
+nl
+Wm
+uk
+uk
+Xh
+Xh
+Ae
+jr
+xB
+of
+KH
+KH
+xK
+xK
+KH
+Sz
+KH
+xK
+xK
+KH
+Xh
+Xh
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Xh
+Xh
+Ae
+HZ
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+"}
+(6,1,1) = {"
+tR
+tR
+tR
+XL
+mb
+Cm
+dj
+tR
+tR
+tR
+zz
+mQ
+bS
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+eQ
+Xn
+tO
+Yr
+MA
+Ae
+Xh
+Xh
+uk
+Uf
+Uf
+yI
+vG
+jd
+OQ
+nN
+tE
+fY
+Xh
+Xh
+Ae
+jr
+zT
+of
+hr
+KH
+xK
+fo
+KH
+xK
+Ji
+Jq
+xK
+KH
+HI
+Xh
+dV
+Jz
+Jz
+FN
+Jz
+Jz
+tO
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+"}
+(7,1,1) = {"
+tR
+tR
+mr
+KH
+CQ
+Dy
+Cm
+tR
+tR
+tR
+tR
+Ae
+zG
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Vq
+PM
+KH
+dV
+Ae
+Ae
+Xh
+Ae
+db
+Uf
+fX
+yI
+eA
+zW
+rw
+UV
+um
+fY
+Ae
+Xh
+Ae
+jr
+wa
+of
+KH
+KH
+zA
+xK
+KH
+xK
+KH
+xK
+xK
+KH
+Xh
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+rx
+ty
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+Ae
+Ae
+Ae
+YU
+"}
+(8,1,1) = {"
+tR
+fb
+KH
+UQ
+KH
+NL
+Cm
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+JA
+Ae
+Ae
+Vq
+tO
+JX
+MA
+Ae
+Xh
+Xh
+Ae
+uk
+aE
+iG
+CH
+Dr
+nW
+wT
+dD
+um
+fY
+Xh
+Xh
+Ae
+jr
+jr
+jr
+KH
+KH
+cr
+KH
+wg
+Wk
+KH
+et
+Zp
+Iz
+KH
+KH
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Nk
+zj
+On
+PS
+HP
+Hx
+iF
+uw
+na
+Ae
+Ae
+Xh
+YU
+"}
+(9,1,1) = {"
+Ti
+tR
+ya
+CQ
+KH
+gt
+Cm
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+AU
+Ae
+Vq
+tO
+dV
+Ae
+Ae
+Ae
+Xh
+Ae
+uk
+zW
+py
+zW
+uD
+dy
+wT
+Hk
+um
+fY
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+lx
+KH
+Ae
+Ae
+Ae
+pf
+Ae
+IH
+Ae
+xi
+Xh
+Xh
+dV
+Jz
+ZD
+ZD
+Jz
+Jz
+tO
+Xh
+zj
+OX
+GI
+jx
+jx
+bt
+GC
+zj
+Ae
+Ae
+Ae
+YU
+"}
+(10,1,1) = {"
+tR
+tR
+tR
+TV
+KH
+Cm
+dj
+tR
+Ae
+AX
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+WD
+Xn
+tO
+dV
+Xh
+Ae
+Ae
+Ae
+Xh
+uk
+WK
+Bw
+hJ
+sc
+Hg
+wO
+qM
+Yp
+MM
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+KH
+oO
+Xh
+Ae
+LJ
+tL
+LT
+rY
+KH
+Ae
+kM
+dV
+Jz
+ZD
+kV
+Jz
+Jz
+tO
+Xh
+zj
+eI
+cq
+cq
+dH
+vv
+Cp
+zj
+Ae
+Ae
+Xh
+YU
+"}
+(11,1,1) = {"
+tR
+tR
+tR
+tR
+vu
+tR
+tR
+Ae
+NU
+Ae
+Ae
+Ae
+Ae
+Ae
+NU
+Ae
+Ae
+Xh
+Vq
+PM
+KH
+dV
+Xh
+Ae
+eO
+Ae
+Ae
+uk
+uk
+gW
+gW
+Pd
+rS
+Kp
+Sx
+uk
+uk
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Xh
+aX
+KH
+Vv
+KH
+KH
+KH
+KH
+KH
+Wk
+KH
+OL
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Xh
+zj
+RW
+pc
+Tr
+uP
+zb
+hk
+zj
+Ae
+Ae
+Ae
+YU
+"}
+(12,1,1) = {"
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+lW
+uv
+po
+Ae
+Ae
+Ae
+uY
+uv
+po
+Ae
+fS
+Vq
+tO
+xi
+dV
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+uk
+Yo
+JP
+vz
+pA
+WK
+Dv
+uk
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+cZ
+xK
+xK
+KH
+IB
+KH
+xK
+Px
+KH
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+gs
+Jz
+tO
+Ae
+zj
+ns
+Gu
+ZU
+zb
+zb
+GC
+zj
+Xh
+YU
+YU
+YU
+"}
+(13,1,1) = {"
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+jh
+Ae
+Ae
+Mn
+Ae
+Ae
+jh
+Ae
+Ae
+Ae
+Vq
+tO
+JX
+MA
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+uk
+fY
+fY
+OS
+gP
+fY
+Rp
+uk
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+KH
+xK
+xK
+bQ
+xK
+KH
+Aa
+xK
+KH
+Xh
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+zj
+YN
+Yt
+Hf
+Ke
+zj
+sI
+zj
+zj
+zj
+YU
+YU
+"}
+(14,1,1) = {"
+tR
+tR
+tR
+Ae
+Zd
+Ae
+Ae
+Ae
+Ae
+Ta
+WD
+rK
+MQ
+Ae
+Ae
+Ae
+Ae
+Ae
+Vq
+tO
+dV
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Xh
+Xh
+Ae
+JA
+ok
+ok
+JA
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+KH
+CA
+xK
+Wk
+xK
+aQ
+xK
+dQ
+KH
+Ae
+Xh
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Xh
+zj
+gS
+lX
+lX
+lX
+wM
+aa
+Jo
+Jo
+zj
+zj
+YU
+"}
+(15,1,1) = {"
+tR
+Ae
+Ae
+Ae
+yU
+Fa
+Ae
+Ae
+Ae
+Ta
+dr
+cp
+QD
+Kl
+Ae
+Ae
+Ae
+Ae
+Vq
+tO
+dV
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+HZ
+Xh
+Xh
+Ae
+KH
+KH
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+KH
+KH
+KH
+KH
+KH
+KH
+KH
+KH
+Iy
+KH
+KH
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+zj
+WJ
+Yc
+GQ
+KC
+nc
+jt
+AV
+Jo
+lg
+zj
+YU
+"}
+(16,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Fj
+OV
+uN
+Ae
+Ae
+Ae
+Xh
+Ae
+Vq
+tO
+dV
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+KH
+KH
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+KH
+Ae
+Xh
+Xh
+AO
+Ae
+XA
+Ae
+KH
+KH
+KH
+dV
+Jz
+cH
+Jz
+Jz
+Jz
+tO
+Ae
+zj
+KC
+KC
+Kr
+KF
+zR
+dN
+Jo
+Jo
+Jo
+zj
+YU
+"}
+(17,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+NU
+Ae
+Ae
+wh
+wh
+Ae
+NU
+Ae
+Ae
+eQ
+Xn
+tO
+dV
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+KH
+KH
+KH
+KH
+KH
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+KH
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+KH
+KH
+KH
+dV
+Jz
+Jz
+Jz
+Jz
+ZD
+rx
+Ae
+zj
+NI
+KF
+hn
+KF
+tG
+dN
+Jo
+Jo
+Jo
+zj
+YU
+"}
+(18,1,1) = {"
+tR
+Ae
+Zd
+Ae
+Ae
+Ae
+Ae
+lW
+uv
+po
+Ae
+Ae
+Ae
+lW
+uv
+po
+Ae
+Vq
+PM
+bl
+dV
+Ae
+KH
+KH
+KH
+Ae
+KH
+KH
+KH
+mj
+mj
+wX
+mj
+mj
+mj
+mj
+mj
+MB
+mj
+mj
+mj
+mj
+mj
+mj
+wX
+mj
+mj
+mj
+mj
+mj
+mj
+mj
+mj
+mj
+mj
+KH
+Jz
+Jz
+Jz
+Jz
+ZD
+pF
+Xh
+zj
+XY
+vg
+Sa
+mA
+Ld
+Xj
+KK
+wV
+dY
+zj
+YU
+"}
+(19,1,1) = {"
+tR
+Ae
+oB
+cJ
+Ae
+Ae
+la
+Ae
+jh
+Ae
+Ae
+Ae
+Ae
+Ae
+jh
+Ae
+Ae
+Vq
+tO
+KH
+Sn
+uS
+KH
+KH
+mj
+dw
+mj
+Mh
+vS
+Jz
+Is
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Fx
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+zj
+mA
+mA
+BB
+WJ
+JO
+KC
+Oo
+ED
+rl
+zj
+YU
+"}
+(20,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Xh
+Xh
+Vq
+tO
+KH
+KH
+KH
+KH
+MA
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Nt
+Jz
+Jz
+Jz
+Jz
+sR
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+AB
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+KH
+KJ
+KC
+Oo
+Pr
+KC
+Kr
+Vw
+KF
+Sa
+zj
+zj
+YU
+"}
+(21,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+JA
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Xn
+tO
+JX
+mj
+Ff
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Cu
+qm
+kY
+hB
+kY
+hB
+kY
+hB
+kY
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+ZD
+ke
+Ae
+zj
+yB
+LA
+lN
+XY
+hn
+KF
+zj
+zj
+zj
+YU
+YU
+"}
+(22,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+tx
+KH
+dV
+Ae
+Or
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+rj
+Jz
+Jz
+Fx
+Jz
+Jz
+cH
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+ku
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+ZD
+rx
+Ae
+zj
+zj
+zj
+zj
+zj
+di
+zj
+zj
+YU
+YU
+YU
+YU
+"}
+(23,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ql
+Ae
+Ae
+Ae
+Ae
+Ae
+tx
+KH
+dV
+Ae
+Ae
+KH
+uS
+uS
+uS
+uS
+ZC
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+pi
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+"}
+(24,1,1) = {"
+tR
+tR
+Ae
+Ae
+Ae
+Zd
+Ae
+Ae
+Ae
+Ae
+Ae
+VN
+Ae
+Ae
+Ae
+Ae
+Ae
+tx
+KH
+dV
+Xh
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+KH
+KH
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+Lk
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+KH
+Jz
+Jz
+Jz
+Jz
+Jz
+KH
+Ae
+aV
+aV
+aV
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+"}
+(25,1,1) = {"
+tR
+tR
+tR
+tR
+Ae
+mQ
+mQ
+Ae
+Ae
+Ae
+Ae
+Ql
+Ae
+Ae
+Ae
+Xh
+Ae
+hg
+tO
+dV
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+KH
+KH
+KH
+Xh
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+"}
+(26,1,1) = {"
+tR
+tR
+tR
+tR
+Ae
+Ae
+fE
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Vq
+tO
+lH
+Ae
+Ae
+Xh
+Ae
+Xh
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+KH
+KH
+KH
+Xh
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+YU
+YU
+YU
+"}
+(27,1,1) = {"
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+zj
+zj
+zj
+zj
+zj
+Ae
+Xn
+tO
+dV
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+kU
+Ae
+Ae
+kU
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+KH
+KH
+KH
+Xh
+Ae
+kU
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Xh
+Xh
+Ae
+Ae
+Ae
+eO
+Ae
+Ae
+Ae
+Xh
+Ae
+YU
+YU
+"}
+(28,1,1) = {"
+tR
+tR
+tR
+tR
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+NM
+zj
+Zt
+QJ
+pH
+zj
+zj
+PM
+KH
+dV
+Ae
+Xh
+Ae
+Ae
+QB
+QB
+QB
+QB
+wq
+wq
+QB
+QB
+QB
+QB
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+jr
+jr
+jr
+Gv
+Vg
+jr
+jr
+jr
+jr
+TS
+Gv
+of
+Gv
+Ae
+Ae
+Ae
+Xa
+Jz
+Jz
+kC
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Xh
+Xh
+YU
+YU
+"}
+(29,1,1) = {"
+tR
+ZZ
+qg
+qV
+NU
+NU
+Cy
+Ae
+Ae
+Ae
+NM
+HB
+ib
+ib
+ib
+MS
+zj
+tO
+KH
+dV
+Ae
+Xh
+Ae
+Ae
+QB
+iL
+bN
+QB
+VR
+MD
+QB
+bN
+iL
+QB
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+jr
+SP
+QC
+ph
+of
+cm
+cm
+cm
+up
+kO
+td
+fR
+Ut
+Jr
+xi
+Ae
+BH
+da
+da
+da
+Jr
+Jr
+Sb
+kU
+zV
+Ae
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+YU
+YU
+"}
+(30,1,1) = {"
+tR
+DU
+KH
+KH
+KH
+KH
+po
+Ae
+Ql
+Ae
+NM
+cK
+Rn
+ib
+Vx
+EG
+zj
+tO
+KH
+dV
+Ae
+Xh
+Ae
+Ae
+QB
+Gr
+yv
+Sy
+dg
+bw
+ba
+Fu
+Vn
+QB
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+jr
+Jt
+Xb
+nq
+oD
+of
+of
+Gv
+of
+rX
+BJ
+tZ
+Ux
+Jr
+Jr
+Jr
+Jr
+uc
+QY
+Py
+uO
+lq
+Jr
+Jr
+Ae
+kU
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+YU
+YU
+"}
+(31,1,1) = {"
+tR
+gU
+KH
+KH
+KH
+KH
+po
+Ae
+eE
+Ae
+NM
+cK
+ib
+ib
+GK
+qi
+zj
+tO
+JX
+MA
+Ae
+Xh
+Ae
+Ae
+QB
+Ad
+kS
+QB
+Wf
+Wf
+QB
+kS
+Ad
+QB
+Ae
+Xh
+Xh
+Ae
+Xh
+Xh
+jr
+EM
+jr
+jr
+jr
+Zq
+ul
+FQ
+Rk
+rX
+yw
+tZ
+dP
+Nj
+IW
+Ui
+Jr
+Sj
+fm
+Py
+Qz
+oH
+LF
+GD
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+YU
+"}
+(32,1,1) = {"
+tR
+tl
+tc
+tc
+jh
+jh
+WN
+Ae
+Ql
+Ae
+NM
+cK
+ib
+ib
+Rn
+zj
+zj
+Dm
+dV
+Ae
+Ae
+Xh
+Xh
+Ae
+QB
+QB
+QB
+QB
+dg
+Yi
+QB
+QB
+QB
+QB
+Ae
+Xh
+Xh
+Xh
+Ae
+Xh
+jr
+of
+mZ
+qI
+jr
+Yx
+jr
+jr
+tq
+rX
+UE
+tZ
+rd
+Yu
+SD
+sE
+Ma
+Xu
+ds
+ds
+jD
+ZL
+ML
+pz
+kU
+Ae
+kU
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Xh
+Xh
+"}
+(33,1,1) = {"
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+NM
+cK
+ib
+ib
+ib
+zj
+zj
+tO
+dV
+Ae
+Xh
+Xh
+Xh
+Xh
+Ae
+QB
+gT
+ak
+Wf
+SO
+FR
+IO
+QB
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+jr
+fs
+Ve
+gj
+jr
+Pz
+Tx
+jr
+of
+rX
+cu
+mK
+Se
+zq
+oJ
+rI
+hs
+Ue
+VA
+VA
+VA
+Bh
+Qq
+pz
+Ae
+Ae
+zV
+Ae
+Ae
+tR
+tR
+Ae
+Ae
+Ae
+Xh
+"}
+(34,1,1) = {"
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+NM
+zj
+cK
+cK
+cK
+zj
+zj
+tO
+dV
+Xh
+Xh
+Xh
+Xh
+Xh
+Ae
+QB
+Il
+gM
+fa
+Wf
+FR
+iy
+QB
+Ae
+Ae
+Ae
+Ae
+Ae
+kU
+Ae
+jr
+LN
+TU
+AT
+jr
+bY
+Ba
+jr
+VG
+rX
+Ua
+xb
+WQ
+Jr
+Jr
+Jr
+Jr
+vc
+Rh
+yj
+Dp
+eX
+Jr
+Jr
+kU
+Ae
+Ae
+Ae
+tR
+tR
+tR
+tR
+Ae
+Ae
+Xh
+"}
+(35,1,1) = {"
+tR
+tR
+tR
+tR
+AX
+Ae
+gk
+VN
+qJ
+Ae
+NM
+NM
+NM
+NM
+NM
+Cl
+Vq
+tO
+dV
+Ae
+Ae
+Ae
+Ae
+Ae
+QB
+QB
+QB
+QB
+RT
+Wf
+QB
+QB
+QB
+QB
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+jr
+jr
+jr
+jr
+jr
+jr
+jr
+jr
+TI
+kX
+rX
+rX
+rX
+Jr
+xi
+kU
+Mt
+Jr
+Jr
+Jr
+Jr
+Jr
+Sb
+Ae
+Ae
+Xh
+Ae
+tR
+tR
+tR
+Vk
+tR
+Xh
+Ae
+Ae
+"}
+(36,1,1) = {"
+tR
+tR
+tR
+zz
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ql
+Ae
+Ae
+Ae
+WD
+Xn
+tO
+dC
+Ae
+Ae
+Ae
+Ae
+Ae
+QB
+iL
+bN
+QB
+yx
+Wf
+QB
+bN
+iL
+QB
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Mc
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+dV
+va
+Jz
+Jz
+Jz
+kC
+rx
+Ae
+Ae
+Ae
+Ae
+Ae
+tR
+Vk
+tR
+tR
+tR
+Ae
+Ae
+Ae
+"}
+(37,1,1) = {"
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+sg
+Ae
+Ae
+Ql
+Vq
+Uz
+bl
+Sn
+ZC
+Ae
+Ae
+Ae
+Ae
+QB
+Gr
+Fu
+ba
+Wf
+Wf
+ba
+Fu
+Vn
+QB
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+jr
+jr
+jr
+Ef
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+WH
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+rx
+Xh
+Ae
+Ae
+Ae
+tR
+tR
+Vk
+tR
+tR
+Vk
+tR
+Xh
+Ae
+"}
+(38,1,1) = {"
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Et
+Ae
+Ql
+Ae
+Ae
+VN
+Vq
+tO
+JX
+mj
+IT
+ZC
+Ae
+Ae
+Ae
+QB
+Ad
+kS
+QB
+Wf
+Wf
+QB
+kS
+Ad
+QB
+Ae
+Ae
+Ae
+kU
+Ae
+Xh
+Xh
+jr
+PJ
+Gb
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+dV
+ZD
+ZD
+ZD
+ZD
+Jz
+tO
+Ae
+Ae
+Ae
+tR
+tR
+Vk
+tR
+Vk
+tR
+tR
+tR
+Ae
+Ae
+"}
+(39,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+fS
+Ae
+Ae
+Ae
+Ae
+Ae
+Ql
+Vq
+tO
+dV
+Ae
+Or
+IT
+ZC
+Ae
+Xh
+QB
+QB
+QB
+QB
+Wf
+yx
+QB
+QB
+QB
+QB
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Xh
+jr
+jr
+jr
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+tR
+tR
+tR
+Vk
+tR
+Vk
+tR
+Ae
+Ae
+Ae
+"}
+(40,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+WD
+Xn
+tO
+dV
+Ae
+Ae
+Or
+IT
+ZC
+Ae
+Ae
+Ae
+Ae
+QB
+Wf
+Wf
+mq
+lQ
+Bu
+QB
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+kU
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+tR
+tR
+Vk
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+"}
+(41,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+OE
+Ae
+ad
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xn
+PM
+KH
+dV
+Ae
+Xh
+Ae
+Or
+IT
+uS
+uS
+uS
+uS
+gJ
+Wf
+Wf
+mz
+qo
+wb
+QB
+Ae
+Xh
+Xh
+Xh
+Xh
+dq
+ZH
+ZH
+ZH
+ZH
+bd
+ZH
+ZH
+pJ
+ZH
+ZH
+dq
+Ae
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+tR
+tR
+tR
+Ae
+Ae
+Xh
+Ae
+Xh
+Ae
+"}
+(42,1,1) = {"
+tR
+Xh
+Ae
+TF
+YB
+TF
+TF
+TF
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+tx
+KH
+JX
+MA
+Ae
+Xh
+Xh
+Ae
+Or
+mj
+mj
+mj
+mj
+cv
+QF
+Wf
+mz
+lQ
+lQ
+QB
+Ae
+Xh
+Xh
+Xh
+Xh
+TJ
+nB
+JF
+gf
+nB
+JF
+JF
+nB
+gf
+JF
+nB
+TJ
+Ae
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Xh
+Ae
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+"}
+(43,1,1) = {"
+tR
+Ae
+Ae
+TF
+Ae
+Ae
+Ae
+TF
+OE
+Ae
+Ae
+tL
+Ae
+Ae
+tx
+KH
+dV
+Ae
+Ae
+zn
+Xh
+Xh
+Ae
+Ae
+Ae
+Xh
+Ae
+QB
+Wf
+Wf
+QB
+Hq
+QB
+QB
+Ae
+Xh
+Xh
+Ae
+Ae
+TJ
+JF
+vO
+SK
+SK
+SK
+SK
+SK
+SK
+yg
+JF
+kx
+Ae
+Ae
+Ae
+Xh
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+Xh
+tR
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+YU
+"}
+(44,1,1) = {"
+tR
+Ae
+Ae
+TF
+Ae
+pf
+bv
+TF
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+tx
+KH
+dV
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+Xh
+QB
+QB
+Wf
+dg
+Yf
+Di
+EE
+QB
+Ae
+Ae
+Ae
+Ae
+Ae
+TJ
+gY
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+Pq
+TJ
+Ae
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Xh
+Ae
+Ae
+Ae
+tR
+Ae
+Ae
+Xh
+Xh
+YU
+YU
+YU
+"}
+(45,1,1) = {"
+tR
+Ae
+Ae
+TF
+Ae
+mo
+Ae
+TF
+Ae
+Ae
+Ae
+Ae
+Ae
+WD
+bH
+tO
+dV
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+QB
+QB
+Tc
+Tc
+Tc
+TT
+cO
+Uk
+zL
+Ae
+Ae
+Ae
+Ae
+Ae
+TJ
+JF
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+JF
+Rt
+jr
+jr
+jr
+jr
+dV
+Jz
+Jy
+Jz
+Jz
+Jz
+tO
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+YU
+YU
+YU
+"}
+(46,1,1) = {"
+tR
+Ae
+Ae
+TF
+Ae
+Ae
+Ae
+TF
+Ae
+Ae
+Ae
+AX
+Ae
+Aq
+PM
+UK
+MA
+Ae
+Ae
+Ae
+Ae
+Vk
+Ae
+Xh
+QB
+QB
+Uk
+Uk
+Uk
+Uk
+Uk
+Uk
+Zh
+zL
+Ae
+Ae
+Ae
+Ae
+Ae
+TJ
+nB
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+nB
+Um
+jr
+yC
+Hc
+jr
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+"}
+(47,1,1) = {"
+tR
+JA
+OE
+TF
+TF
+TF
+TF
+TF
+Ae
+Ae
+Ae
+Ae
+Ae
+Vq
+tO
+dV
+Ae
+Ae
+Ae
+Xh
+tR
+tR
+Ae
+Ae
+QB
+SH
+Uk
+CP
+Uk
+Uk
+Uk
+Uk
+Uk
+zL
+Ae
+Ae
+Ae
+Ae
+Ae
+TJ
+JF
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+JF
+Um
+PT
+og
+jz
+jr
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+"}
+(48,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Zg
+Ae
+Ae
+Ae
+Ae
+Xh
+Vq
+tO
+dV
+Ae
+Xh
+Ae
+Ae
+Vk
+tR
+Ae
+Ae
+QB
+RE
+oL
+oL
+oL
+oL
+oE
+Uw
+QB
+QB
+Ae
+Ae
+Ae
+Ae
+Ae
+TJ
+gY
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+Pq
+Um
+bB
+GL
+Zx
+DB
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+YU
+YU
+YU
+YU
+YU
+"}
+(49,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Lt
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Vq
+tO
+Ky
+Ae
+Ae
+Ae
+Vk
+tR
+Vk
+tR
+Xh
+QB
+QB
+UR
+Zh
+Zh
+Zh
+Hm
+QB
+QB
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+TJ
+JF
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+JF
+Um
+DB
+vW
+Ag
+bB
+KH
+Jz
+Jz
+Jz
+Jz
+Jz
+KH
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(50,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+zG
+Xh
+tL
+Ae
+Ae
+Ae
+Xh
+Ae
+Vq
+tO
+dV
+Ae
+Ae
+Ae
+Ae
+tR
+tR
+Ae
+Ae
+Ae
+QB
+zL
+zL
+zL
+zL
+zL
+QB
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+Xh
+TJ
+nB
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+nB
+Um
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+zn
+Ae
+Xh
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(51,1,1) = {"
+tR
+Ae
+iK
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+eQ
+Xn
+Dm
+dV
+Xh
+Xh
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+tR
+tR
+tR
+tR
+Vk
+Ae
+Xh
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+TJ
+JF
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+JF
+Um
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(52,1,1) = {"
+tR
+tR
+yU
+yU
+Ae
+Ae
+uv
+uv
+uv
+Ae
+Xh
+Ae
+Vq
+PM
+WE
+MA
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+tR
+Vk
+tR
+tR
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+TJ
+gY
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+Pq
+Um
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Xh
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(53,1,1) = {"
+tR
+zz
+yU
+yU
+Ae
+Ae
+qD
+uv
+HK
+Ae
+Ae
+Ae
+Vq
+tO
+dV
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+tR
+tR
+Vk
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+TJ
+JF
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+JF
+Um
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(54,1,1) = {"
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Hw
+uv
+Hw
+Ae
+Ae
+WD
+Xn
+tO
+dV
+Ae
+Ae
+Ae
+Ae
+zn
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+tR
+tR
+Xh
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+TJ
+nB
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+nB
+Um
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Xh
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(55,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+qD
+uv
+HK
+Ae
+Xh
+Vq
+PM
+bl
+dV
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+kU
+Ae
+Ae
+TJ
+JF
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+JF
+Vi
+uv
+Ae
+Ae
+Xh
+KH
+Jz
+Jz
+Jz
+Jz
+Jz
+KH
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(56,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Xh
+Ae
+uv
+uv
+uv
+Ae
+Ae
+Vq
+tO
+JX
+MA
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Xh
+Xh
+Ae
+Xh
+Xh
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+TJ
+gY
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+Pq
+TJ
+Ae
+Xh
+Xh
+Xh
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+Xh
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(57,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Vq
+tO
+dV
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+kU
+Ae
+Ae
+Xh
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Xh
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+TJ
+JF
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+JF
+TJ
+Xh
+Xh
+Ae
+Ae
+oY
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+Ae
+Ae
+Ae
+Xh
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(58,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+BQ
+Ae
+Ae
+Ae
+WD
+Xn
+tO
+dV
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Xh
+Xh
+Ae
+jr
+jr
+jr
+jr
+Ks
+jr
+Fn
+Fn
+Zu
+Zu
+TJ
+nB
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+nB
+TJ
+Ae
+Xh
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+aF
+tO
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(59,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+WD
+Xn
+PM
+bl
+dV
+Ae
+Xh
+Xh
+Ae
+eO
+Xh
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+jr
+by
+gj
+wU
+fQ
+jr
+Zu
+Zu
+Fn
+Fn
+TJ
+JF
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+JF
+TJ
+Ae
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Xh
+Ae
+jh
+Xh
+Xh
+Xh
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(60,1,1) = {"
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+WD
+Xn
+PM
+vH
+KH
+WY
+uS
+bX
+Xh
+Xh
+Xh
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+HZ
+Xh
+Ae
+jr
+wr
+Fc
+jr
+fQ
+jr
+Zu
+Fn
+Fn
+Fn
+TJ
+gY
+TL
+JF
+JF
+JF
+JF
+JF
+JF
+tN
+Pq
+TJ
+Ae
+Xh
+Xh
+Xh
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+jr
+DB
+bB
+bB
+jr
+jr
+jr
+YU
+YU
+YU
+YU
+"}
+(61,1,1) = {"
+tR
+Ae
+WD
+IL
+Jc
+Ae
+Ae
+Xh
+Vq
+PM
+bl
+KH
+LS
+IP
+sW
+Sn
+ZC
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+jr
+jr
+jr
+jr
+fQ
+jr
+Zu
+Fn
+Fn
+Zu
+TJ
+JF
+lS
+vA
+vA
+vA
+vA
+vA
+vA
+vJ
+JF
+TJ
+Xh
+Ae
+Xh
+Xh
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+fe
+Ly
+iN
+Zw
+zt
+Ij
+jr
+YU
+YU
+YU
+YU
+"}
+(62,1,1) = {"
+tR
+Ae
+dr
+cp
+Ce
+Ae
+Xh
+WD
+Xn
+tO
+LS
+IP
+eo
+Ae
+HM
+sW
+dV
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+jr
+Gm
+lJ
+Ks
+fQ
+jr
+Zu
+Zu
+Fn
+Zu
+TJ
+nB
+JF
+Ye
+nB
+JF
+JF
+nB
+Ye
+JF
+nB
+TJ
+Ae
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+zN
+lF
+lF
+lF
+Ca
+lP
+bB
+YU
+YU
+YU
+YU
+"}
+(63,1,1) = {"
+tR
+Ae
+NY
+OV
+uN
+Ae
+Ae
+Vq
+PM
+bl
+lI
+Ae
+Ae
+Ae
+Ae
+Jn
+dV
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+Ae
+jr
+jr
+jr
+jr
+Ks
+jr
+Zu
+Zu
+Fn
+Fn
+dq
+pJ
+ZH
+ZH
+ZH
+bd
+ZH
+ZH
+ZH
+ZH
+ZH
+dq
+Ae
+Xh
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+rj
+tO
+KH
+iI
+XN
+Jt
+zC
+Jt
+nq
+ha
+bB
+YU
+YU
+YU
+YU
+"}
+(64,1,1) = {"
+tR
+Ae
+hO
+Ae
+Ae
+Xh
+WD
+Xn
+tO
+LS
+eo
+Ae
+Xh
+Xh
+Ae
+Jn
+dV
+Xh
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+Za
+of
+KW
+tF
+qp
+xW
+jr
+YU
+YU
+YU
+YU
+"}
+(65,1,1) = {"
+tR
+Ae
+CB
+CB
+Ae
+Ae
+Xn
+PM
+il
+eo
+Ae
+Ae
+Xh
+Xh
+Ae
+HM
+be
+ZC
+Ae
+uk
+uk
+uk
+LP
+uk
+uk
+uk
+uk
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+vB
+Xh
+Ae
+Xh
+Xh
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+QZ
+Gf
+oU
+jr
+jr
+jr
+jr
+YU
+YU
+YU
+YU
+"}
+(66,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+tx
+KH
+lI
+Ae
+Ae
+Xh
+Xh
+BI
+Ae
+Ae
+Jn
+Sn
+uk
+uk
+Fe
+zW
+wC
+wC
+hj
+GG
+uk
+Xh
+Ae
+kU
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+eD
+NU
+NU
+Cy
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+eO
+Ae
+Ae
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Xh
+jr
+uR
+Wr
+ul
+jr
+nO
+Zm
+jr
+YU
+YU
+YU
+YU
+"}
+(67,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+tx
+KH
+lI
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Jn
+xi
+uk
+QP
+Wq
+wC
+jj
+wC
+Ft
+Oc
+uk
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+lW
+KH
+KH
+po
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+uR
+OB
+of
+dK
+no
+Qj
+jr
+YU
+YU
+YU
+YU
+"}
+(68,1,1) = {"
+tR
+Ae
+Xh
+Ae
+Ae
+Ae
+MC
+KH
+YS
+lB
+Wz
+Ae
+Ae
+Xh
+Xh
+Ae
+Jn
+KH
+Os
+wC
+Fe
+Fe
+wC
+wC
+YR
+lK
+uk
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Xh
+Ae
+Ae
+lW
+KH
+KH
+po
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+kU
+Ae
+Xh
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+OD
+ZV
+jr
+jr
+jr
+jr
+jr
+YU
+YU
+YU
+YU
+"}
+(69,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Xh
+hg
+Or
+mj
+jl
+GB
+qU
+Ae
+Ae
+Xh
+Ae
+Jn
+KH
+uk
+QP
+wC
+wC
+mF
+wC
+wC
+wC
+uk
+Ae
+Xh
+Xh
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+tR
+DU
+KH
+KH
+po
+Xh
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+uj
+BL
+jr
+qI
+It
+Qs
+jr
+YU
+YU
+YU
+YU
+"}
+(70,1,1) = {"
+tR
+Ae
+Ae
+Ae
+fS
+Ae
+NY
+ic
+hg
+Or
+mj
+ff
+Wz
+Ae
+Ae
+Ae
+Jn
+JX
+uk
+uk
+Fe
+Fe
+wC
+Fe
+zW
+zW
+uk
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Vk
+Vk
+tR
+DU
+KH
+KH
+tm
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+dV
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+QC
+ph
+jr
+us
+GN
+Fc
+jr
+YU
+YU
+YU
+YU
+"}
+(71,1,1) = {"
+tR
+tR
+qV
+Ae
+Ae
+Ae
+Ae
+Ae
+NY
+ic
+hg
+Qt
+CU
+Wz
+Ae
+Gj
+oq
+MA
+Xh
+uk
+uk
+uk
+at
+uk
+uk
+uk
+uk
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Vk
+Vk
+jK
+tR
+DU
+KH
+KH
+tm
+tR
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+Xh
+dV
+Jz
+Jz
+Jz
+Jz
+Jy
+tO
+Xh
+jr
+FY
+ph
+dK
+of
+ko
+ZS
+jr
+YU
+YU
+YU
+YU
+"}
+(72,1,1) = {"
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+NY
+hg
+Or
+CU
+Oj
+yV
+dV
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+tR
+Vk
+jK
+jK
+tR
+DU
+KH
+KH
+tm
+tR
+tR
+Xh
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+bg
+Jz
+Jz
+Jz
+Jz
+Jz
+tO
+Ae
+jr
+jr
+jr
+jr
+jr
+jr
+jr
+jr
+YU
+YU
+YU
+YU
+"}
+(73,1,1) = {"
+tR
+tR
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+NY
+hg
+xg
+Ff
+JX
+MA
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+Xh
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+tR
+tR
+tR
+tR
+tR
+tl
+mL
+mL
+wB
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+Xh
+dV
+Jz
+Jz
+Ae
+Ae
+Jz
+tO
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+YU
+YU
+YU
+YU
+YU
+"}
+(74,1,1) = {"
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+NY
+hg
+tO
+dV
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+tR
+tR
+tR
+tR
+tR
+xf
+xf
+xf
+xf
+tR
+jK
+tR
+tR
+Ae
+Ae
+Ae
+Xh
+Ae
+Xh
+Ae
+Ae
+Xh
+dV
+Jz
+Ae
+Ae
+Ae
+Jz
+tO
+Xh
+Xh
+Xh
+Xh
+Xh
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(75,1,1) = {"
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Vq
+tO
+Sn
+ZC
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Xh
+tR
+tR
+jK
+tR
+tR
+xf
+xf
+xf
+xf
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+KH
+Jz
+Ae
+Ae
+Ae
+Jz
+KH
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(76,1,1) = {"
+BQ
+Ae
+Ae
+uv
+Fb
+Sl
+uv
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Vq
+tO
+KH
+dV
+Ae
+Xh
+Ae
+Ae
+kU
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+Xh
+Ae
+Ae
+Ae
+tR
+tR
+tR
+tR
+tR
+xf
+xf
+tR
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Xh
+Jz
+Jz
+Ae
+Jz
+Jz
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(77,1,1) = {"
+Ae
+Ae
+Ae
+uv
+uv
+uv
+uv
+Ae
+Ae
+Ae
+Ae
+AU
+Ae
+Vq
+mk
+CG
+MA
+Ae
+Xh
+Ae
+Xh
+Ae
+Ae
+YU
+YU
+Ae
+Ae
+Ae
+YU
+YU
+Ae
+Ae
+Ae
+Ae
+Ae
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+tR
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Xh
+Ae
+Jz
+Ae
+Jz
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(78,1,1) = {"
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+NY
+hg
+lY
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+Ae
+Ae
+Ae
+Ae
+Ae
+tR
+tR
+tR
+tR
+jK
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Xh
+Ae
+WZ
+Ae
+Ae
+Jz
+Jz
+Jz
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(79,1,1) = {"
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Ae
+Ae
+NY
+ic
+Xh
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+tR
+tR
+tR
+tR
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+Xh
+Xh
+YU
+YU
+YU
+Jz
+Jz
+Jz
+Ae
+Jz
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}
+(80,1,1) = {"
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Xh
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Xh
+Ae
+Ae
+Ae
+Ae
+Ae
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+YU
+"}

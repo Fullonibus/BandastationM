@@ -1,0 +1,32 @@
+{
+	"config": {
+		"interface": {
+			"name": "KhaarootHivemind"
+		},
+		"title": "Улей Кхаарут",
+		"window": {
+			"size": [620, 500]
+		}
+	},
+	"data": {
+		"can_manage": false,
+		"thralls": [
+			{
+				"name": "Элина Ветрова",
+				"ref": "[0x210001]",
+				"status": "Активен",
+				"health": 100,
+				"location": "Технический коридор",
+				"objective": "Доставьте аптечку к южному техническому шлюзу.",
+				"has_mob": true,
+				"has_objective": true,
+				"objective_status": "assigned",
+				"objective_revision": 1,
+				"objective_reply": ""
+			}
+		],
+		"thrall_count": 1
+	},
+	"static_data": {},
+	"shared": {}
+}

@@ -160,6 +160,7 @@
 #define ACCESS_MAGISTRATE "magistrate"
 /// Access to Explorer's closets
 #define ACCESS_EXPLORER "explorer"
+#define ACCESS_EXPEDITION_LEADER "expedition_leader"
 // BANDASTATION ADD - END
 
 /// - - - AWAY MISSIONS - - -
@@ -386,6 +387,7 @@
 
 /// Private head of staff offices, usually only granted to most cards by trimming. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_PRV_COMMAND)
 #define PRIVATE_COMMAND_ACCESS list( \
+	ACCESS_EXPEDITION_LEADER, \
 	ACCESS_CE, \
 	ACCESS_CMO, \
 	ACCESS_HOS, \
@@ -549,8 +551,10 @@
 	ACCESS_QM, \
 	ACCESS_SHIPPING, \
 	ACCESS_VAULT, \
-	ACCESS_EXPLORER, \
 )
+/// Independent expedition corps facilities and its head's office and armoury.
+#define REGION_EXPEDITION "Expeditionary Corps"
+#define REGION_ACCESS_EXPEDITION list(ACCESS_EXPLORER, ACCESS_EXPEDITION_LEADER)
 /// Name for the Command region.
 #define REGION_COMMAND "Command"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all command regional accesses that are overseen by the Captain.
@@ -597,6 +601,7 @@
 
 /// All regions that make up the station area. Helper define to quickly designate a region as part of the station or not. Access via SSid_access.station_regions.
 #define REGION_AREA_STATION list( \
+	REGION_EXPEDITION, \
 	REGION_COMMAND, \
 	REGION_ENGINEERING, \
 	REGION_GENERAL, \

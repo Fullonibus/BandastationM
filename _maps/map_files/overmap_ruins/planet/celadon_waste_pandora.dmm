@@ -1,0 +1,4779 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/WasteRuins/wasteplanet_pandora.dmm
+"aQ" = (
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"bs" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"bM" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 5
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/turf/open/indestructible/hierophant/two,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"cN" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"cR" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"dF" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -12;
+	pixel_x = -11
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = 7;
+	pixel_x = -11
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"dV" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/item/trash/can{
+	icon_state = "lemon-lime"
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"eb" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -9;
+	pixel_y = -12
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"ek" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/flare/torch,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"fv" = (
+/obj/item/stack/sheet/bone,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"fw" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"fM" = (
+/obj/structure/fluff/divine/nexus,
+/obj/effect/light_emitter,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"fT" = (
+/obj/structure/table/wood,
+/obj/item/restraints/handcuffs/cable/sinew,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"fV" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 5
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"gE" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/food/grown/mushroom/jupitercup,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"gT" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 11;
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"hl" = (
+/obj/structure/fluff/divine/convertaltar,
+/obj/item/clothing/accessory/pandora_hope,
+/turf/open/indestructible/hierophant/two,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"hB" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"hT" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/food/grown/mushroom/libertycap,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"if" = (
+/obj/structure/table/wood,
+/obj/item/clothing/head/soft/black,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"im" = (
+/obj/structure/table/wood,
+/obj/item/knife/combat/bone{
+	pixel_x = -20
+	},
+/obj/item/food/salad/herbsalad,
+/obj/item/food/grown/berries/death{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"iR" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"ji" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/berries/glow,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"js" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"ju" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"jx" = (
+/obj/effect/light_emitter,
+/turf/open/indestructible/hierophant/two,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"jD" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/obj/item/gun/ballistic/automatic/wt550{
+	pixel_y = -18
+	},
+/turf/open/indestructible/hierophant/two,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"kb" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 13;
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"kl" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"kp" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/food/grown/mushroom/plumphelmet,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"kA" = (
+/obj/structure/fluff/divine/shrine,
+/obj/effect/light_emitter,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"kU" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"lj" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/indestructible/hierophant/two,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"lu" = (
+/obj/structure/chair/wood/wings,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"lw" = (
+/obj/machinery/hydroponics/soil,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"lA" = (
+/mob/living/basic/skeleton{
+	desc = "A villager resurrected by the power of an unknown deity, eternally seeking vengeance for its people."
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"lB" = (
+/turf/closed/indestructible/riveted/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"lI" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 7;
+	pixel_y = -2
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"lP" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"ms" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"mO" = (
+/obj/item/ammo_casing/spent,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"nn" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"nM" = (
+/obj/item/ammo_casing/spent,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"nW" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"ok" = (
+/obj/structure/closet/crate/grave,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"oP" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"pi" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/suit/armor/bone,
+/obj/item/fireaxe,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"pj" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"pM" = (
+/obj/item/gun/ballistic/automatic/pistol/no_mag,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"pS" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"pW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/banner/command/mundane,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"pX" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 5
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"qI" = (
+/obj/structure/fluff/divine/defensepylon,
+/obj/effect/light_emitter,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"rb" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"rt" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"rD" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"rV" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/head/costume/crown,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"sg" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = -9
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"so" = (
+/obj/structure/table/wood,
+/obj/item/knife/combat/bone,
+/obj/item/flashlight/flare/torch,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"sL" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/food/grown/mushroom/chanterelle,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"sW" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"tx" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 7;
+	pixel_y = -2
+	},
+/obj/item/ammo_casing/spent,
+/obj/structure/barricade/wooden,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"tD" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"tS" = (
+/obj/item/trash/can{
+	icon_state = "shamblers"
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"ud" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = 10
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = -9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"ul" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"uQ" = (
+/obj/structure/bonfire,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"uR" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"uY" = (
+/turf/open/indestructible/hierophant/two,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"vp" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = 10
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -3;
+	pixel_x = -15
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -3;
+	pixel_x = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"vG" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = -10;
+	pixel_y = -5
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = 10;
+	pixel_x = 4
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 11;
+	pixel_y = 7
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"vQ" = (
+/obj/item/trash/can,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"wv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 1
+	},
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"wx" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 5
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"wX" = (
+/obj/structure/closet/cabinet,
+/obj/item/spear/bonespear,
+/obj/item/clothing/suit/armor/vest,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"wZ" = (
+/mob/living/simple_animal/hostile/asteroid/elite/pandora,
+/obj/effect/light_emitter,
+/turf/open/indestructible/hierophant/two,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"xb" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"xG" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/turf/open/indestructible/hierophant/two,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"xQ" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_y = 7;
+	pixel_x = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"xR" = (
+/obj/structure/table/wood,
+/obj/item/food/salad/herbsalad,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"xW" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"yc" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"yp" = (
+/obj/structure/table/wood,
+/obj/item/food/melonfruitbowl,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"yB" = (
+/obj/structure/fluff/divine/shrine,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"za" = (
+/obj/item/flashlight/flare/torch,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"zq" = (
+/obj/item/gun/ballistic/bow,
+/obj/item/ammo_casing/c9mm,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"zx" = (
+/obj/item/ammo_casing/spent,
+/obj/effect/mob_spawn/corpse/human/secoff,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"zz" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"zA" = (
+/obj/item/flashlight/flare/torch,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"zE" = (
+/obj/structure/closet/cabinet,
+/obj/item/spear/bonespear,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/food/grown/berries/death,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"zM" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"zZ" = (
+/obj/item/gun/ballistic/automatic/pistol/no_mag,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Ac" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Aq" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Bl" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/bone{
+	pixel_x = 10
+	},
+/obj/item/flashlight/flare/torch,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Bs" = (
+/obj/structure/table/wood,
+/obj/item/ammo_casing/c9mm{
+	pixel_y = -3
+	},
+/obj/item/ammo_casing/c9mm{
+	pixel_y = 2
+	},
+/obj/item/ammo_casing/c9mm{
+	pixel_y = 7
+	},
+/obj/item/ammo_casing/c9mm{
+	pixel_y = 12
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Bw" = (
+/obj/structure/flora/rock/pile,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"BD" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"BO" = (
+/obj/item/scythe,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Cb" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/bone{
+	pixel_x = 11
+	},
+/obj/item/food/grown/ash_flora/cactus_fruit,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Cc" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Ct" = (
+/mob/living/basic/skeleton{
+	desc = "A villager resurrected by the power of an unknown deity, eternally seeking vengeance for its people."
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"CF" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 8;
+	pixel_y = -12
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"CU" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/mortar,
+/obj/item/pestle,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"DH" = (
+/obj/structure/fluff/divine/powerpylon,
+/obj/effect/light_emitter,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"DS" = (
+/obj/item/toy/plush{
+	name = "wall-dwelling goat plushie"
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"EC" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 5
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 5
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"FR" = (
+/obj/item/stack/sheet/bone,
+/obj/structure/chair/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"FU" = (
+/obj/structure/frame/machine,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Go" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_box/c9mm,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"GF" = (
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"GG" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = -3;
+	pixel_x = 4
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"GS" = (
+/obj/structure/flora/rock/pile/style_random,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Hb" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 5
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Ik" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/ash_flora/cactus_fruit,
+/obj/item/storage/belt/mining/primitive,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"JW" = (
+/obj/structure/table/wood,
+/obj/item/storage/belt/mining/primitive,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"JY" = (
+/obj/item/knife/combat/bone{
+	pixel_x = 15
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Kb" = (
+/obj/structure/closet/crate/secure/weapon,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Ki" = (
+/turf/template_noop,
+/area/template_noop)
+"Kq" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = 11;
+	pixel_y = 11
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Kr" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"La" = (
+/obj/structure/statue/bone/rib,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Lg" = (
+/obj/structure/closet/crate/wooden,
+/obj/item/shovel/serrated,
+/obj/item/flashlight/flare/torch,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"LH" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/sinew,
+/obj/item/stack/sheet/sinew,
+/obj/item/stack/sheet/sinew,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"MD" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"MF" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/bone,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"MR" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"MX" = (
+/obj/structure/barricade/wooden,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"ND" = (
+/obj/structure/chair/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"NJ" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/mineral/plasma,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"NR" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"NT" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = 10
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -3;
+	pixel_x = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Ov" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = 7;
+	pixel_x = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"OC" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"OR" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"OX" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Pe" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/suit/armor/vest,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Pj" = (
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Pm" = (
+/obj/machinery/power/smes/full{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Pq" = (
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"PE" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"PO" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = -9
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"PU" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = 1;
+	pixel_x = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Qo" = (
+/obj/structure/closet/crate/wooden,
+/obj/item/pickaxe,
+/obj/item/flashlight/flare/torch,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Qy" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/glass/trophy/silver_cup,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Qz" = (
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Rf" = (
+/obj/structure/bonfire,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Rm" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Sc" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Sm" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Sv" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 11;
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"SA" = (
+/obj/structure/statue/bone/rib{
+	dir = 1
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"SK" = (
+/obj/structure/table/reinforced,
+/obj/item/ammo_box/magazine/m9mm,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Tm" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/bone,
+/obj/item/stack/sheet/bone,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Tn" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Tw" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -6
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"TE" = (
+/obj/structure/railing/wooden_fence{
+	dir = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"TL" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/mineral/silver{
+	amount = 5
+	},
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Ub" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Uy" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 5
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"UB" = (
+/obj/effect/mob_spawn/corpse/human/secoff,
+/turf/open/indestructible/hierophant,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"UH" = (
+/obj/effect/decal/remains/human,
+/obj/structure/chair/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"UJ" = (
+/obj/structure/table/wood,
+/obj/item/spear/bonespear,
+/obj/item/stack/sheet/sinew,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"UZ" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/spear/bonespear,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Vz" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"VC" = (
+/obj/structure/table/wood,
+/obj/item/spear/bonespear,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Wd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Wn" = (
+/obj/structure/flora/rock,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Ws" = (
+/obj/structure/bed,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"WH" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/suit/armor/bone,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"WM" = (
+/obj/item/trash/can{
+	icon_state = "energy_drink"
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Xh" = (
+/obj/item/stack/sheet/bone,
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Xi" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = 7;
+	pixel_x = 8
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Xt" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -9;
+	pixel_y = -12
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"XX" = (
+/obj/machinery/door/airlock/titanium,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Yh" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 6;
+	pixel_y = -9
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"Yj" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+"ZK" = (
+/obj/item/ammo_casing/spent{
+	pixel_x = -10;
+	pixel_y = -5
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_pandora/ruin/wasteplanet)
+
+(1,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(2,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Rm
+Rm
+Rm
+Bw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(3,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(4,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Rm
+Rm
+hB
+Rm
+Rm
+Rm
+Rm
+hB
+Rm
+Bw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(5,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Rm
+Rm
+Rm
+hB
+FU
+hB
+hB
+js
+hB
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(6,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Rm
+Rm
+hB
+hB
+Pm
+uR
+Go
+Pm
+rD
+rD
+Rm
+Rm
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(7,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Rm
+Bw
+Rm
+hB
+NR
+bs
+nn
+nn
+bs
+Sm
+hB
+Rm
+Rm
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+Ki
+Ki
+"}
+(8,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Rm
+Rm
+Rm
+rD
+fw
+Pq
+Wd
+Pq
+Sm
+wv
+XX
+Rm
+Rm
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+Ki
+"}
+(9,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Rm
+Rm
+Rm
+rD
+NR
+Sm
+Pq
+Pq
+Sm
+pW
+hB
+Rm
+Rm
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+Ki
+"}
+(10,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Rm
+Rm
+Rm
+hB
+hB
+Kb
+Cc
+xW
+SK
+hB
+hB
+Rm
+Rm
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+Ki
+"}
+(11,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+hB
+hB
+nW
+PE
+hB
+rD
+Rm
+Rm
+Rm
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+"}
+(12,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+GS
+Rm
+Rm
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Bw
+Rm
+hB
+lP
+lP
+hB
+Rm
+Rm
+Rm
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+"}
+(13,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Rm
+Rm
+GS
+Rm
+GS
+Rm
+GS
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Bw
+Rm
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+"}
+(14,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Rm
+GS
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+GS
+Rm
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+"}
+(15,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+GS
+Rm
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Bw
+Rm
+Rm
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+"}
+(16,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+Rm
+GS
+zA
+Rm
+lw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+Ki
+"}
+(17,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Rm
+GS
+Rm
+hT
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+GS
+Rm
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+"}
+(18,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+GS
+Rm
+BO
+lw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+zA
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Wn
+Rm
+Rm
+Rm
+Ki
+"}
+(19,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+Rm
+Ct
+sL
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+GS
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+nM
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+"}
+(20,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+Rm
+GS
+lw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+GS
+Rm
+cN
+cN
+vQ
+GS
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ov
+PO
+eb
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Ki
+"}
+(21,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+GS
+aQ
+gE
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+Rm
+DS
+tS
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+zA
+nM
+eb
+Xi
+Rm
+Bw
+Rm
+Rm
+Rm
+Rm
+Ki
+"}
+(22,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+Rm
+GS
+lw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+dV
+Rm
+GS
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+eb
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+Ki
+"}
+(23,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+Rm
+Rm
+Rm
+lw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+WM
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Wn
+Rm
+Rm
+Rm
+Rm
+Pj
+Rm
+Rm
+Pj
+Pj
+Rm
+cN
+cN
+cN
+cN
+Ki
+"}
+(24,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+kp
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+TE
+oP
+OX
+OX
+zM
+Pj
+Rm
+cN
+cN
+cN
+Ki
+Ki
+"}
+(25,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Rm
+GS
+GS
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+zz
+zq
+pS
+Vz
+sW
+Pj
+cN
+cN
+cN
+cN
+Ki
+Ki
+"}
+(26,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+zA
+GS
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+zz
+sW
+sW
+za
+sW
+Pj
+cN
+cN
+cN
+Ki
+Ki
+Ki
+"}
+(27,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+GS
+Rm
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+Rm
+Wn
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+zM
+sW
+sW
+sW
+Pj
+Pj
+cN
+cN
+cN
+Ki
+Ki
+Ki
+"}
+(28,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Aq
+Pj
+VC
+Bs
+Pj
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+"}
+(29,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+Pj
+Pj
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+"}
+(30,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+zA
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+zA
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+"}
+(31,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Bw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(32,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+zA
+Rm
+Rm
+Wn
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Wn
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(33,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(34,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+zA
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Bw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(35,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+Rm
+Rm
+Rm
+zA
+Rm
+Rm
+Rm
+Rm
+Bw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(36,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Rm
+Rm
+Bw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+Pj
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+Pj
+Pj
+Pj
+Pj
+Rm
+Rm
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+"}
+(37,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+WH
+Pj
+Pj
+Pj
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+yp
+Bl
+fv
+pi
+Pj
+Pj
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+"}
+(38,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Rm
+Rm
+Pj
+Pj
+Pj
+Aq
+Pj
+Rm
+Rm
+Pj
+Pj
+UJ
+fv
+ND
+ji
+Pj
+Bw
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+fv
+tD
+sW
+sW
+sW
+Pj
+cN
+cN
+cN
+Pj
+Pj
+Pj
+Pj
+cN
+cN
+Ki
+"}
+(39,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Pj
+Pj
+Pj
+sW
+sW
+dF
+Pj
+Pj
+Rm
+Pj
+sW
+Vz
+sW
+fv
+if
+Pj
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+xQ
+mO
+lA
+sW
+sW
+sW
+Pj
+cN
+cN
+Pj
+Pj
+so
+Cb
+Pj
+Pj
+cN
+Ki
+"}
+(40,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+Pj
+Pj
+fT
+Bl
+sW
+Vz
+sW
+LH
+Pj
+Rm
+Pj
+sW
+sW
+Rf
+lA
+Pj
+Pj
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Aq
+PU
+ud
+JY
+uQ
+sW
+sW
+Pj
+cN
+Pj
+Pj
+sW
+lA
+Xh
+Vz
+Pj
+cN
+Ki
+"}
+(41,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Pj
+sW
+tD
+sW
+sW
+sW
+UH
+JW
+Pj
+Rm
+Pj
+Ws
+sW
+pS
+NT
+Pj
+Rm
+Rm
+SA
+Rm
+Rm
+rt
+Rm
+Rm
+Pj
+mO
+sW
+pS
+sW
+Vz
+sW
+Pj
+cN
+Pj
+Pe
+Vz
+sW
+pS
+fv
+Pj
+cN
+cN
+"}
+(42,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+Pj
+Vz
+sW
+sW
+Rf
+sW
+Vz
+Tm
+Pj
+Rm
+Pj
+Pj
+sW
+Vz
+vp
+GG
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+zA
+Rm
+Pj
+Pj
+sW
+Vz
+Sc
+sW
+Ws
+Pj
+cN
+Pj
+Pj
+CF
+Rf
+Kq
+sW
+Pj
+cN
+cN
+"}
+(43,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+Pj
+Ws
+lA
+sW
+sW
+sW
+fv
+Pj
+Pj
+Rm
+Rm
+Pj
+Pj
+Pj
+Pj
+Pj
+Rm
+zA
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+sW
+sW
+if
+Ik
+Pj
+Pj
+Rm
+Rm
+Pj
+sW
+kb
+kl
+Ws
+Pj
+cN
+cN
+"}
+(44,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+Pj
+Pj
+Pj
+wX
+sW
+sW
+Pj
+Pj
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+Pj
+Pj
+Pj
+Pj
+Rm
+Rm
+Rm
+Aq
+Xt
+sW
+Ws
+Pj
+Pj
+cN
+cN
+"}
+(45,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Pj
+Pj
+Pj
+Pj
+Pj
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Wn
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+La
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+Pj
+Pj
+Pj
+Rm
+cN
+cN
+"}
+(46,1,1) = {"
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+lB
+lB
+lB
+lB
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+rt
+ms
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+SA
+Rm
+zA
+rt
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+"}
+(47,1,1) = {"
+Ki
+Ki
+cN
+cN
+cN
+cN
+lB
+lB
+GF
+GF
+lB
+lB
+lB
+lB
+lB
+lB
+Rm
+Rm
+Rm
+Rm
+zA
+Rm
+ms
+Yh
+Rm
+Rm
+cR
+Rm
+Rm
+Rm
+Wn
+Rm
+Rm
+rt
+Rm
+Rm
+Rm
+Rm
+Ct
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Wn
+cN
+cN
+"}
+(48,1,1) = {"
+Ki
+cN
+cN
+cN
+cN
+lB
+lB
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+qI
+lB
+lB
+lB
+Rm
+Rm
+ms
+Rm
+zx
+zZ
+nM
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+zA
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+zA
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+"}
+(49,1,1) = {"
+Ki
+cN
+cN
+cN
+cN
+lB
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+lB
+lB
+Rm
+Rm
+Ub
+Rm
+PO
+Uy
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Bw
+Rm
+Rm
+cN
+cN
+"}
+(50,1,1) = {"
+Ki
+cN
+cN
+cN
+cN
+lB
+GF
+GF
+uY
+uY
+uY
+uY
+lB
+GF
+GF
+GF
+GF
+GF
+lB
+DH
+Rm
+cR
+ZK
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+Pj
+Aq
+Pj
+Pj
+Pj
+Rm
+Rm
+La
+Rm
+Rm
+rt
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+"}
+(51,1,1) = {"
+Ki
+cN
+cN
+cN
+lB
+lB
+GF
+GF
+uY
+jx
+uY
+uY
+GF
+GF
+uY
+uY
+uY
+BD
+MX
+wx
+vG
+ZK
+kU
+Uy
+zA
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+sW
+MD
+ul
+Sv
+UZ
+Pj
+Pj
+Rm
+Rm
+Pj
+Pj
+Aq
+Pj
+Pj
+Pj
+Pj
+cN
+cN
+Ki
+"}
+(52,1,1) = {"
+Ki
+cN
+cN
+cN
+lB
+DH
+GF
+GF
+uY
+uY
+uY
+uY
+GF
+GF
+uY
+bM
+uY
+GF
+lI
+MX
+pj
+pM
+rt
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Lg
+sW
+sW
+gT
+Vz
+lu
+MF
+Pj
+Rm
+Rm
+Pj
+mO
+Kr
+Tn
+FR
+CU
+Pj
+cN
+cN
+Ki
+"}
+(53,1,1) = {"
+Ki
+cN
+cN
+cN
+lB
+GF
+GF
+GF
+uY
+uY
+uY
+uY
+GF
+GF
+uY
+uY
+lj
+Ac
+GF
+MR
+tx
+UB
+DH
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+sW
+Vz
+pS
+sW
+lA
+fv
+ek
+Pj
+Rm
+cN
+Pj
+sW
+Rf
+rb
+Vz
+im
+Pj
+cN
+cN
+Ki
+"}
+(54,1,1) = {"
+Ki
+cN
+cN
+cN
+lB
+GF
+GF
+GF
+lB
+GF
+GF
+GF
+lB
+GF
+GF
+GF
+OR
+GF
+GF
+OC
+sg
+MX
+lB
+lB
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+sW
+sW
+sW
+Rf
+sW
+sW
+fv
+Pj
+cN
+cN
+Pj
+sW
+lA
+pS
+zE
+Pj
+Pj
+cN
+cN
+Ki
+"}
+(55,1,1) = {"
+Ki
+cN
+cN
+cN
+lB
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+uY
+uY
+uY
+uY
+uY
+GF
+Tw
+GF
+wx
+GF
+lB
+lB
+Rm
+Rm
+Rm
+Rm
+Pj
+Qo
+sW
+sW
+sW
+sW
+sW
+sW
+Pj
+cN
+cN
+Pj
+Ws
+sW
+sW
+Pj
+Pj
+cN
+cN
+Ki
+Ki
+"}
+(56,1,1) = {"
+Ki
+cN
+cN
+cN
+lB
+DH
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+uY
+uY
+uY
+uY
+uY
+Hb
+uY
+xG
+uY
+GF
+GF
+lB
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+xR
+Yj
+Vz
+sW
+sW
+Pj
+Pj
+cN
+cN
+Pj
+Pj
+Pj
+Pj
+Pj
+cN
+cN
+cN
+Ki
+Ki
+"}
+(57,1,1) = {"
+Ki
+cN
+cN
+cN
+lB
+lB
+GF
+GF
+qI
+GF
+GF
+GF
+GF
+uY
+uY
+wZ
+uY
+uY
+GF
+uY
+uY
+uY
+GF
+GF
+lB
+lB
+Rm
+Rm
+Rm
+Rm
+Pj
+xb
+JW
+sW
+sW
+sW
+Pj
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+"}
+(58,1,1) = {"
+Ki
+cN
+cN
+cN
+cN
+lB
+lB
+lB
+lB
+lB
+lB
+kA
+GF
+uY
+uY
+uY
+uY
+uY
+GF
+uY
+uY
+uY
+GF
+GF
+qI
+lB
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+Pj
+Ws
+Ws
+Pj
+Pj
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(59,1,1) = {"
+Ki
+cN
+cN
+cN
+cN
+cN
+lB
+fM
+Qy
+EC
+lB
+GF
+GF
+uY
+uY
+uY
+uY
+uY
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+lB
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Pj
+Pj
+Pj
+Pj
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(60,1,1) = {"
+Ki
+cN
+cN
+cN
+cN
+cN
+lB
+pX
+GF
+GF
+GF
+GF
+ju
+iR
+GF
+GF
+GF
+GF
+lB
+GF
+GF
+GF
+lB
+GF
+GF
+lB
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(61,1,1) = {"
+Ki
+cN
+cN
+cN
+cN
+cN
+lB
+TL
+GF
+uY
+uY
+jD
+yc
+ju
+kA
+GF
+GF
+GF
+GF
+uY
+uY
+uY
+uY
+GF
+GF
+lB
+Wn
+Rm
+Rm
+Rm
+Rm
+Rm
+ok
+Rm
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(62,1,1) = {"
+Ki
+cN
+cN
+cN
+cN
+cN
+lB
+lB
+GF
+uY
+hl
+uY
+Qz
+lB
+lB
+GF
+GF
+GF
+GF
+uY
+uY
+uY
+uY
+GF
+GF
+lB
+lB
+Rm
+Rm
+Rm
+ok
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(63,1,1) = {"
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+lB
+yB
+uY
+uY
+uY
+GF
+NJ
+lB
+GF
+GF
+GF
+GF
+uY
+uY
+jx
+uY
+GF
+GF
+GF
+lB
+Rm
+ok
+Rm
+Rm
+ok
+Rm
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(64,1,1) = {"
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+lB
+lB
+yB
+GF
+GF
+GF
+TL
+lB
+qI
+GF
+GF
+lB
+uY
+uY
+uY
+uY
+GF
+GF
+GF
+lB
+Rm
+Rm
+Rm
+Rm
+Rm
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(65,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+lB
+lB
+lB
+rV
+fV
+fM
+lB
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+lB
+lB
+cN
+Rm
+Rm
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(66,1,1) = {"
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+lB
+lB
+lB
+lB
+lB
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+GF
+lB
+lB
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(67,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+lB
+lB
+DH
+GF
+GF
+GF
+DH
+lB
+lB
+lB
+lB
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(68,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+lB
+lB
+lB
+lB
+lB
+lB
+lB
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(69,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}
+(70,1,1) = {"
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+Ki
+"}

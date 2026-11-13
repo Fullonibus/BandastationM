@@ -36,6 +36,11 @@
 #define RADIO_TOKEN_SUPPLY ":u"
 #define RADIO_COLOR_SUPPLY "#b88646"
 
+#define RADIO_CHANNEL_EXPEDITION "Экспедиция"
+#define RADIO_KEY_EXPEDITION "x"
+#define RADIO_TOKEN_EXPEDITION ":x"
+#define RADIO_COLOR_EXPEDITION "#80b89c"
+
 #define RADIO_CHANNEL_SERVICE "Обслуживание"
 #define RADIO_KEY_SERVICE "v"
 #define RADIO_TOKEN_SERVICE ":v"
@@ -104,6 +109,7 @@
 #define FREQ_ENGINEERING 1357 // Engineering comms frequency, orange
 #define FREQ_SECURITY 1359 // Security comms frequency, red
 #define FREQ_JUSTICE 1361 // Precedure comms frequency, raspberry pink // BANDASTATION ADD - Jobs Module
+#define FREQ_EXPEDITION 1363
 #define FREQ_ENTERTAINMENT 1415 // Used by entertainment monitors, cyan
 #define FREQ_INTERROGATION 1423
 #define FREQ_HOLOGRID_SOLUTION 1433

@@ -172,7 +172,11 @@
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
 	if(!issilicon(ui.user))
-		playsound(src, SFX_KEYBOARD_CLICKS, 10, TRUE, FALSE)
+		play_ui_sound(action, params)
+
+/** Play control feedback after the shared UI checks; individual consoles may distinguish buttons from other controls. */
+/obj/machinery/computer/proc/play_ui_sound(action, list/params)
+	playsound(src, SFX_KEYBOARD_CLICKS, 10, TRUE, FALSE)
 
 /obj/machinery/computer/ui_close(mob/user)
 	SHOULD_CALL_PARENT(TRUE)

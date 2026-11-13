@@ -3,10 +3,9 @@
 /turf/template_noop,
 /area/template_noop)
 "e" = (
-/obj/effect/anomaly/bioscrambler{
+/obj/effect/anomaly/pulsing/transfusion{
 	pixel_y = 11;
-	immortal = 1;
-	move_chance = 0
+	immortal = 1
 	},
 /obj/structure/flora/bush/reed,
 /turf/open/water/jungle,

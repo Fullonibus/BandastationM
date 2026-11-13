@@ -100,10 +100,9 @@
 /turf/open/misc/dirt/jungle/wasteland,
 /area/expedition_planet/barren)
 "aX" = (
-/obj/effect/anomaly/bioscrambler{
+/obj/effect/anomaly/pulsing/heartbeat{
 	pixel_y = 2;
-	immortal = 1;
-	move_chance = 0
+	immortal = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/greenglow/filled,

@@ -54,6 +54,13 @@ type Data = {
     ready_in: number;
     renew_in: number;
   }[];
+  contracts?: {
+    id: string;
+    name: string;
+    customer: string;
+    target: string;
+    credits: number;
+  }[];
 };
 
 export function TradeHub() {
@@ -123,6 +130,7 @@ export function TradeHub() {
           )
         )}
         {!!status && <NoticeBox info>{status}</NoticeBox>}
+        <TradeHubContracts />
         <TradeHubOffers />
         <TradeHubRequests />
       </Window.Content>
@@ -249,6 +257,61 @@ function TradeHubOffers() {
           })}
         </Table>
       )}
+    </Section>
+  );
+}
+
+function TradeHubContracts() {
+  const { act, data } = useBackend<Data>();
+  const { connected, operational, input_ready, contracts = [] } = data;
+
+  if (contracts.length === 0) {
+    return null;
+  }
+  const blockedReason = !connected
+    ? 'Нет связи с узлом.'
+    : !operational
+      ? 'Терминал недоступен.'
+      : !input_ready
+        ? 'Площадка приёма недоступна.'
+        : undefined;
+
+  return (
+    <Section title="Контракты экспедиционного корпуса">
+      <Box color="label" mb={1}>
+        Находка сдаётся в закрытом ящике на площадке приёма: аномальная — в
+        ящике для образцов, остальное — в любом ящике. Оплата поступает в
+        бюджет карго.
+      </Box>
+      <Table>
+        {contracts.map((contract) => (
+          <Table.Row key={contract.id} className="candystripe">
+            <Table.Cell py={0.75}>
+              <Box bold>
+                {contract.id}: {contract.name}
+              </Box>
+              <Box color="label">
+                {contract.customer} · {contract.target}
+              </Box>
+            </Table.Cell>
+            <Table.Cell collapsing textAlign="right">
+              {formatMoney(contract.credits)} кр.
+            </Table.Cell>
+            <Table.Cell collapsing textAlign="right">
+              <Button
+                icon="box"
+                disabled={!!blockedReason}
+                tooltip={
+                  blockedReason || 'Сдать ящик с находкой с площадки приёма.'
+                }
+                onClick={() => act('deliver_contract', { id: contract.id })}
+              >
+                Сдать контракт
+              </Button>
+            </Table.Cell>
+          </Table.Row>
+        ))}
+      </Table>
     </Section>
   );
 }

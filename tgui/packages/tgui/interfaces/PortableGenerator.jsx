@@ -18,9 +18,51 @@ export const PortableGenerator = (props) => {
     (stack_percent > 15 && 'average') ||
     'bad';
   return (
-    <Window width={450} height={340}>
+    <Window width={450} height={data.ship_generator ? 470 : 340}>
       <Window.Content scrollable>
         {!data.anchored && <NoticeBox>Generator not anchored.</NoticeBox>}
+        {!!data.ship_generator && (
+          <Section title="Корабельный режим">
+            <Button
+              role="button"
+              selected={data.auto_mode}
+              onClick={() => act('ship_auto')}
+            >
+              {data.auto_mode ? 'Авто · до 200 кВт' : 'Ручной режим'}
+            </Button>
+            <Button
+              role="button"
+              selected={data.overload}
+              disabled={
+                !data.overload &&
+                (data.tripped || (data.interlock && data.current_heat > 50))
+              }
+              onClick={() => act('ship_overload')}
+            >
+              Перегрузка · 300 кВт
+            </Button>
+            <Button
+              role="button"
+              selected={data.interlock}
+              color={data.interlock ? undefined : 'bad'}
+              onClick={() => act('ship_interlock')}
+            >
+              {data.interlock ? 'Защита включена' : 'Защита отключена'}
+            </Button>
+            <Box mt={1}>Нагрев: {Math.round(data.current_heat)} %</Box>
+            {!!data.tripped && (
+              <NoticeBox danger>
+                Остановка по перегреву. Для повторного пуска дождитесь охлаждения
+                до 50 %.
+              </NoticeBox>
+            )}
+            {!data.interlock && (
+              <NoticeBox danger>
+                Защита отключена. Предельный перегрев приведёт к взрыву.
+              </NoticeBox>
+            )}
+          </Section>
+        )}
         <Section title="Status">
           <LabeledList>
             <LabeledList.Item label="Power switch">
@@ -80,12 +122,33 @@ export const PortableGenerator = (props) => {
               {data.power_output}
             </LabeledList.Item>
             <LabeledList.Item label="Adjust output">
-              <Button icon="minus" onClick={() => act('lower_power')}>
+              <Button
+                icon="minus"
+                aria-label={data.ship_generator ? 'Уменьшить мощность' : undefined}
+                role={data.ship_generator ? 'button' : undefined}
+                disabled={data.ship_generator && data.auto_mode}
+                onClick={() =>
+                  act(data.ship_generator ? 'ship_lower_power' : 'lower_power')
+                }
+              >
                 {data.power_generated}
               </Button>
-              <Button icon="plus" onClick={() => act('higher_power')}>
+              <Button
+                icon="plus"
+                aria-label={data.ship_generator ? 'Увеличить мощность' : undefined}
+                role={data.ship_generator ? 'button' : undefined}
+                disabled={data.ship_generator && data.auto_mode}
+                onClick={() =>
+                  act(data.ship_generator ? 'ship_higher_power' : 'higher_power')
+                }
+              >
                 {data.power_generated}
               </Button>
+              {!!data.ship_generator && !data.auto_mode && (
+                <Box inline ml={1}>
+                  Задание: {data.manual_percent} %
+                </Box>
+              )}
             </LabeledList.Item>
             <LabeledList.Item label="Power available">
               <Box inline color={!data.connected && 'bad'}>

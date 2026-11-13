@@ -254,6 +254,7 @@
 #include "interaction_silicon.dm"
 #include "interaction_structures.dm"
 #include "job_display_order.dm"
+#include "job_experience.dm"
 #include "job_icons.dm"
 #include "json_savefile_importing.dm"
 #include "keybinding_init.dm"
@@ -312,7 +313,11 @@
 #include "outfit_sanity.dm"
 #include "overmap_argos.dm"
 #include "overmap_docking.dm"
+#include "overmap_generator.dm"
 #include "overmap_standard_dock.dm"
+#include "overmap_propulsion.dm"
+#include "overmap_plasma.dm"
+#include "overmap_planet_help.dm"
 #include "overmap_surface_dock.dm"
 #include "overmap_ship_core.dm"
 #include "overmap_carrier.dm"
@@ -477,6 +482,7 @@
 #include "../../../modular_bandastation/quirks/code/tests/porphyria.dm" // BANDASTATION ADDITION - Porphyria
 
 #include "../../../modular_bandastation/bug_reports/tests/bug_reports_test.dm" // BANDASTATION ADDITION - In-game bug reports
+#include "../../../modular_bandastation/examine_panel/tests/portrait_preferences.dm"
 
 // AI EDIT START - Separate ear slots
 // BANDASTATION ADDITION START - Separate ear slots
@@ -501,6 +507,8 @@
 #include "../../../modular_bandastation/telephones/_defines.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_tests.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_speech_tests.dm"
+
+#include "../../../modular_bandastation/explorers/code/tests.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

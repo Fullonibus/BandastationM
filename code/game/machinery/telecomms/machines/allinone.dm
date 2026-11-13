@@ -13,6 +13,10 @@
 	var/syndicate = FALSE
 	/// List of all frequencies to their name/color
 	var/static/alist/frequency_infos = alist(
+		"[FREQ_EXPEDITION]" = list(
+			"name" = RADIO_CHANNEL_EXPEDITION,
+			"color" = RADIO_COLOR_EXPEDITION,
+		),
 		"[FREQ_SCIENCE]" = list(
 			"name" = RADIO_CHANNEL_SCIENCE,
 			"color" = RADIO_COLOR_SCIENCE

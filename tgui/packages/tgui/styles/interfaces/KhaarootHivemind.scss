@@ -1,0 +1,57 @@
+.KhaarootHivemind .Window {
+  --color-text: #eadac4;
+  --color-label: #bea699;
+  --color-scrollbar-thumb: #6d414b;
+  --color-scrollbar-base: #110b0e;
+  --titlebar-background: #29141c;
+  --titlebar-text: #f3e0c7;
+  --titlebar-shadow-core: #583039;
+  --section-background: rgba(26, 16, 20, 0.86);
+  --section-title-color: #f3e0c7;
+  --section-separator-color: #583039;
+  --tabs-container-background: #24141b;
+  --tab-background-hover: #3a2029;
+  --tab-background-selected: #502934;
+  --tab-color: #d2b9aa;
+  --tab-color-selected: #f3e0c7;
+  --button-background-default: #71414c;
+  --button-background-selected: #8e535d;
+  --button-color: #f3e0c7;
+  --button-color-transparent: #d2b9aa;
+  --notice-box-background: #502c34;
+  --notice-box-color: #eadac4;
+  --notice-box-stripes: rgba(215, 180, 155, 0.04);
+
+  background: #110b0e;
+
+  .Window__content {
+    background-image: url('tgui/assets/khaaroot-background.svg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-base);
+  }
+
+  .TitleBar {
+    box-shadow: none;
+  }
+
+  .Button--color--good {
+    --color: #3d572c;
+  }
+
+  .Button--color--bad {
+    --color: #8b303c;
+  }
+
+  .Button:focus-visible,
+  .Tab:focus-visible {
+    outline: 2px solid #e9c5a4;
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    color: #f3e0c7;
+    background: #71414c;
+  }
+}

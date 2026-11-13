@@ -25,7 +25,18 @@
 	unlocked_designs += list(
 		/datum/design/board/shuttle/stationtrauma_space_navigation,
 		/datum/design/board/stationtrauma_bluespace_drive,
+		/datum/design/board/stationtrauma_engine,
+		/datum/design/board/stationtrauma_engine/left,
+		/datum/design/board/stationtrauma_engine/right,
+		/datum/design/board/stationtrauma_engine/burst,
+		/datum/design/board/stationtrauma_engine/burst_left,
+		/datum/design/board/stationtrauma_engine/burst_right,
+		/datum/design/board/stationtrauma_engine/huge,
 		/datum/design/board/stationtrauma_large_engine,
+		/datum/design/board/stationtrauma_large_converter,
+		/datum/design/board/stationtrauma_ship_generator,
+		/datum/design/board/stationtrauma_plasma_core,
+		/datum/design/board/stationtrauma_plasma_converter,
 	)
 
 /obj/machinery/computer/stationtrauma_space_navigation/post_machine_initialize()
@@ -84,7 +95,7 @@
 		"x" = map.pos_x, "y" = map.pos_y,
 		"vx" = map.velocity_x, "vy" = map.velocity_y, "trajectory" = map.predict_trajectory(),
 		"course" = map.course, "ordered_course" = map.ordered_course,
-		"speed" = map.speed, "throttle" = map.throttle, "speed_scale" = ST_SPACE_MAX_SPEED,
+		"speed" = map.speed, "throttle" = map.approach_started ? round(100 * map.commanded_thrust()) * vessel.engines_running : map.throttle, "speed_scale" = ST_SPACE_MAX_SPEED,
 		"maneuver_direction" = map.maneuver_direction,
 		"braking" = map.braking, "braking_distance" = map.get_braking_distance(),
 		"emergency_braking" = map.emergency_braking && vessel.has_power(),
@@ -124,16 +135,18 @@
 	data["compartments"] = hull["rooms"]
 	data["hull"] = hull["rows"]
 	var/datum/stationtrauma_overmap_site/space/approach_site = map.approach_site
-	if(map.approach_started && !QDELETED(approach_site))
+	var/datum/stationtrauma_ship_docking/pair = map.ship_docking
+	var/datum/stationtrauma_overmap/space/peer = pair ? (pair.first == map ? pair.second : pair.first) : null
+	if(map.approach_started && (!QDELETED(approach_site) || !QDELETED(peer)))
 		var/datum/stationtrauma_overmap_site/space/planet/approach_planet = approach_site
 		data["approach"] = list(
 			"elapsed" = (world.time - map.approach_started) / (1 SECONDS),
 			"duration" = map.approach_duration / (1 SECONDS),
 			"departing" = map.approach_departing,
-			"site" = map.site_label(approach_site),
-			"scene" = istype(approach_planet) ? "planet" : approach_site.approach_scene,
+			"site" = !QDELETED(approach_site) ? map.site_label(approach_site) : peer.vessel?.name || "Корабль",
+			"scene" = istype(approach_planet) ? "planet" : approach_site?.approach_scene || "station",
 			"biome" = istype(approach_planet) ? approach_planet.ruin_biome : null,
-			"loading" = approach_site.loading_map,
+			"loading" = !!approach_site?.loading_map,
 		)
 	if(istype(target, /datum/stationtrauma_overmap_site/space/planet) && map.knows_site(target))
 		var/datum/stationtrauma_overmap_site/space/planet/planet = target
@@ -216,4 +229,12 @@
 		return
 	if(!can_interact(ui.user))
 		return FALSE
+	if(action == "interface_click")
+		return TRUE
 	return navigation_command(action, params["value"])
+
+/** Navigation buttons use the supplied tone; the throttle lever keeps the native mechanical click. */
+/obj/machinery/computer/stationtrauma_space_navigation/play_ui_sound(action, list/params)
+	if(action == "throttle" && params?["button"] != TRUE)
+		return ..()
+	playsound(src, 'modular_bandastation/space_overmap/sound/navigation_button.wav', 10, FALSE, FALSE)

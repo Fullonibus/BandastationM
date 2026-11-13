@@ -1,0 +1,13520 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/EarthSandRuins/el_town.dmm
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/goose{
+	name = "Khasir"
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ag" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"ai" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"am" = (
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ao" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/pet/cat,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"au" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"aA" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/railing/wooden_fence,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"aE" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"aM" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/cigarette/rollie/cannabis,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"aZ" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/lighter{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ba" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"bg" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"bl" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"bw" = (
+/obj/item/cultivator/rake,
+/obj/item/hatchet/wooden,
+/obj/structure/table/wood,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"bA" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"bH" = (
+/obj/machinery/light/floor,
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/ammo_box/c9mm{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"bK" = (
+/obj/structure/bed,
+/obj/structure/curtain/cloth/fancy,
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"bL" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_x = 9;
+	pixel_y = 0
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"bQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"bU" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"bW" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/south,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"cb" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"cc" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ce" = (
+/obj/structure/closet/cardboard,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"cj" = (
+/obj/structure/table/bronze,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box{
+	pixel_y = 1
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"co" = (
+/obj/structure/closet/cabinet,
+/obj/item/cultivator/rake,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"cs" = (
+/obj/structure/table/wood,
+/obj/item/c_tube{
+	pixel_x = 0;
+	pixel_y = 2
+	},
+/obj/item/c_tube{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/c_tube{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"cw" = (
+/obj/structure/closet/crate/wooden,
+/obj/structure/curtain/cloth/fancy,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"cD" = (
+/obj/structure/railing/wooden_fence,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"cE" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = 0;
+	pixel_y = 1
+	},
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = 0;
+	pixel_y = -4
+	},
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = 0;
+	pixel_y = -8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"cY" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"df" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fluff/paper/stack{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"di" = (
+/obj/structure/table/glass,
+/obj/item/lighter{
+	pixel_x = -9
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dj" = (
+/obj/structure/closet/cabinet,
+/obj/item/gun/ballistic/automatic/ar,
+/obj/item/grenade/smokebomb,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -7;
+	pixel_y = -2
+	},
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/shoes/sandal,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dn" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/cigarette/rollie/cannabis,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/clothing/shoes/sandal,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"du" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dw" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dH" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dK" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bookcase/manuals,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dR" = (
+/obj/structure/chair/sofa{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dS" = (
+/obj/structure/chair/wood{
+	pixel_x = 13;
+	pixel_y = 16
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dV" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"dZ" = (
+/obj/structure/table/wood/fancy/green,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"ed" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/obj/structure/curtain/cloth/fancy,
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ef" = (
+/obj/structure/closet/crate/wooden,
+/obj/structure/curtain/cloth/fancy,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/grass,
+/obj/item/food/grown/grass,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ej" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/plumbed,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"en" = (
+/obj/structure/table/greyscale,
+/obj/item/stack/sheet/iron{
+	amount = 10
+	},
+/obj/item/stack/sheet/iron{
+	pixel_x = 7;
+	pixel_y = -2;
+	amount = 10
+	},
+/obj/item/stack/sheet/iron{
+	pixel_x = -9;
+	pixel_y = 0;
+	amount = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"es" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ey" = (
+/obj/structure/closet/cabinet,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"eA" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/airlock_painter/decal,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"eM" = (
+/obj/structure/closet/cabinet,
+/obj/item/gun/ballistic/automatic/ar,
+/obj/item/grenade/smokebomb,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -7;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/shoes/sandal,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -7;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/shoes/sandal,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"eR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/wood{
+	pixel_x = 4;
+	pixel_y = 16
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"eY" = (
+/obj/structure/table/wood,
+/obj/item/storage/fancy/cigarettes/cigars/havana,
+/obj/item/lighter{
+	pixel_x = -9
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"fd" = (
+/obj/structure/table/wood/fancy,
+/obj/item/hatchet/wooden,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"fm" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/aloe,
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"fn" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"fq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"fu" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = -10;
+	pixel_y = -3
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"fx" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/cigarette/rollie/cannabis,
+/obj/item/clothing/head/helmet,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"fB" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/railing/wooden_fence,
+/obj/item/food/grown/cannabis,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"fE" = (
+/obj/structure/table/wood,
+/obj/machinery/microwave{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"fM" = (
+/obj/item/grenade/syndieminibomb,
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"gd" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"gj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"gn" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/clothing/head/soft/black{
+	pixel_x = 13;
+	pixel_y = 0
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"gs" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/structure/table/wood,
+/obj/item/kitchen/fork/plastic,
+/obj/item/reagent_containers/cup/bowl{
+	pixel_x = -7;
+	pixel_y = 0
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"gu" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"gv" = (
+/obj/structure/table/wood,
+/obj/item/c_tube{
+	pixel_x = 0;
+	pixel_y = 2
+	},
+/obj/item/c_tube{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"gy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa{
+	dir = 2
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"gA" = (
+/obj/structure/table/wood,
+/obj/item/knife/kitchen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"gQ" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/crowbar,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"hb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"hc" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/clothing/head/soft/black,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"he" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/item/ammo_box/c9mm,
+/obj/item/ammo_box/c9mm{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/structure/rack,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"hp" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"hq" = (
+/obj/structure/table/wood/fancy/blue,
+/obj/item/clothing/shoes/sandal{
+	pixel_x = 4;
+	pixel_y = 11
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"hs" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/chair/wood,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"ht" = (
+/obj/structure/reagent_dispensers/plumbed,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"hR" = (
+/obj/structure/sign/poster/contraband/random/directional/east,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"hV" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"hW" = (
+/obj/item/stack/sheet/mineral/sandbags{
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/obj/item/stack/sheet/mineral/sandbags{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"ia" = (
+/obj/structure/table/wood,
+/obj/item/ammo_box/c9mm{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/ammo_box/c9mm{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/grenade/smokebomb,
+/obj/item/grenade/smokebomb{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 11;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ii" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"in" = (
+/obj/structure/table/greyscale,
+/obj/item/grenade/frag,
+/obj/item/grenade/frag{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"io" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = 12;
+	pixel_y = 4
+	},
+/obj/structure/closet/cabinet,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/shoes/sandal,
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"iq" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/shoes/sandal,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ix" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/obj/item/food/grown/cannabis,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"iB" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"iC" = (
+/obj/structure/flora/tree/palm/style_2,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"iK" = (
+/obj/item/wirecutters,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"iM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/curtain/cloth/fancy,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"iN" = (
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ja" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/reagent_dispensers/cooking_oil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"jb" = (
+/obj/structure/table/glass,
+/obj/item/stamp/law,
+/obj/item/lighter{
+	pixel_x = -9
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"jh" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/railing/wooden_fence,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ji" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"jm" = (
+/obj/structure/curtain/cloth/fancy,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"jn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"jx" = (
+/obj/structure/table/glass,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"jA" = (
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/cigarette/rollie/cannabis,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"jD" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"jH" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/clothing/mask/bandana/green{
+	pixel_y = 11
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"jS" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/food/grown/cannabis,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"jT" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/reagent_containers/cup/bowl{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"jZ" = (
+/obj/structure/closet/cabinet,
+/obj/item/pushbroom,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"kb" = (
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -7;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"kd" = (
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
+/obj/item/cultivator/rake,
+/obj/item/hatchet/wooden,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"kh" = (
+/obj/effect/decal/cleanable/ash,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"km" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"kq" = (
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ky" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"kB" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"kD" = (
+/obj/structure/table/wood/fancy/blue,
+/obj/item/food/grown/grapes,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"kL" = (
+/obj/structure/table/wood,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"kX" = (
+/obj/structure/bed,
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/structure/curtain/cloth/fancy,
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"la" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/reagent_containers/cup/bowl,
+/obj/item/reagent_containers/cup/bowl{
+	pixel_x = -7;
+	pixel_y = 0
+	},
+/obj/item/reagent_containers/cup/bowl{
+	pixel_x = 18;
+	pixel_y = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"lb" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"lc" = (
+/obj/structure/mineral_door/sandstone,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"lm" = (
+/obj/structure/table/greyscale,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ln" = (
+/obj/structure/fluff/paper/stack{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"lo" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"lw" = (
+/obj/structure/table/wood,
+/obj/item/clothing/head/helmet/space/pirate/bandana,
+/obj/item/gun/ballistic/automatic/wt550,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"lx" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"lS" = (
+/obj/item/ammo_box/c9mm{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"lX" = (
+/obj/machinery/light/directional/south,
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"lZ" = (
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"md" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/reagent_containers/cup/bowl,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"mi" = (
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"mn" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/chair/wood,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"mp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"mq" = (
+/obj/structure/mop_bucket,
+/obj/item/mop,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"mw" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/cigarette/rollie/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"mz" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"mF" = (
+/obj/structure/table/wood/fancy/blue,
+/obj/item/stack/sheet/cotton{
+	pixel_x = 3;
+	pixel_y = 7;
+	amount = 10
+	},
+/obj/item/stack/sheet/cotton{
+	pixel_x = 10;
+	pixel_y = 2;
+	amount = 10
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"mI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/cigarette/rollie/cannabis,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"mL" = (
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = 7;
+	pixel_y = 13
+	},
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = -18;
+	pixel_y = 19
+	},
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"mM" = (
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"mT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"mV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"mX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/c9mm{
+	pixel_x = 2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"mZ" = (
+/obj/structure/table/wood,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"nl" = (
+/obj/structure/table/wood,
+/obj/item/weldingtool/mini,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"nm" = (
+/obj/structure/table/wood,
+/obj/item/cultivator/rake,
+/obj/item/seeds/cannabis,
+/obj/item/seeds/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"nr" = (
+/obj/structure/closet/secure_closet,
+/obj/machinery/light/directional/north,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"nt" = (
+/obj/structure/table/wood,
+/obj/item/seeds/cannabis,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"nx" = (
+/obj/machinery/light/directional/south,
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"nG" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/stack/sheet/cotton{
+	pixel_x = 2;
+	pixel_y = -2;
+	amount = 10
+	},
+/obj/item/stack/sheet/cotton{
+	pixel_x = -4;
+	pixel_y = 6;
+	amount = 10
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"nI" = (
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"nJ" = (
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"nQ" = (
+/obj/structure/reagent_dispensers/plumbed,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"nU" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"of" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/curtain/cloth/fancy,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"oh" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/light/directional/east,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"oj" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"om" = (
+/obj/structure/closet/cabinet,
+/obj/item/pushbroom,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"oo" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/clothing/suit/jacket/leather,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"oq" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ot" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"oy" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/clothing/suit/jacket/leather,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"oF" = (
+/obj/structure/table/bronze,
+/obj/item/lighter,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"oN" = (
+/obj/structure/table/wood,
+/obj/item/wirecutters{
+	pixel_x = 2;
+	pixel_y = 21
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/cigarette/rollie/cannabis,
+/obj/item/clothing/shoes/workboots{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/obj/item/grenade/frag{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"oO" = (
+/obj/structure/closet/cabinet,
+/obj/item/cultivator/rake,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"oP" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"oQ" = (
+/obj/machinery/light/directional/north,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"oY" = (
+/obj/structure/mineral_door/sandstone,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"pg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/wooden,
+/obj/structure/curtain/cloth/fancy,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/corn,
+/obj/item/food/grown/corn,
+/obj/item/food/grown/grapes,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"pi" = (
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"pj" = (
+/obj/structure/fluff/paper/stack,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"pn" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"pK" = (
+/obj/structure/chair/wood,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"pL" = (
+/obj/structure/mineral_door/sandstone,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"pO" = (
+/obj/structure/table/wood/fancy,
+/obj/item/seeds/cannabis,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"pY" = (
+/obj/item/ammo_box/c9mm{
+	pixel_x = 9;
+	pixel_y = -10
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"qd" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/food/grown/grapes,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"qe" = (
+/obj/effect/turf_decal/sand/plating,
+/mob/living/basic/goat{
+	faction = list("goat","playerElysium")
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"qh" = (
+/mob/living/basic/goat{
+	faction = list("goat","playerElysium")
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"qo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"qp" = (
+/obj/structure/reagent_dispensers/cooking_oil,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"qD" = (
+/obj/structure/closet/cabinet,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"qQ" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"qR" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"qS" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/stack/sheet/cotton{
+	amount = 10
+	},
+/obj/item/clothing/shoes/sandal,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"qT" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"re" = (
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/machinery/light/small/directional/east,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ri" = (
+/obj/structure/table/wood/fancy,
+/obj/item/seeds/lemon,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/seeds/ambrosia{
+	pixel_y = 6;
+	pixel_x = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"rj" = (
+/obj/machinery/hydroponics/soil,
+/obj/machinery/light/directional/north,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"rw" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"rz" = (
+/obj/structure/mineral_door/sandstone,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"rD" = (
+/obj/structure/table/wood,
+/obj/item/wrench,
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"rJ" = (
+/obj/structure/table/wood,
+/obj/machinery/reagentgrinder{
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"rN" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/c_tube,
+/obj/item/grenade/smokebomb,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"rO" = (
+/obj/effect/spawner/structure/window,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"rS" = (
+/obj/structure/table/glass,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"rW" = (
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/obj/structure/table/greyscale,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 0;
+	pixel_y = 3
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 10;
+	pixel_y = 0
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"rY" = (
+/obj/structure/table/wood/fancy,
+/obj/item/storage/bag/plants/portaseeder,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"sa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood/fancy/green,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"sm" = (
+/obj/structure/table/wood,
+/obj/item/gun/ballistic/automatic/ar,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"so" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ss" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/cakeslice/pumpkinspice,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"sA" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/food/grown/cannabis,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"sI" = (
+/obj/structure/closet/cabinet,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/grenade/frag,
+/obj/item/clothing/shoes/sandal,
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"sO" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"sP" = (
+/obj/structure/railing/wooden_fence{
+	dir = 9
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"sS" = (
+/mob/living/basic/pet/penguin/emperor/shamebrero{
+	name = "Al-Ahmad Penguin";
+	desc = "Oh god... Is this him?"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"sZ" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"tr" = (
+/obj/structure/bed,
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"tt" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/grapes,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"tv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ty" = (
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"tM" = (
+/obj/structure/closet/crate/miningcar,
+/obj/structure/curtain/cloth/fancy,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/grapes,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"tP" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"tW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/garbage,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"uj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"uo" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"uu" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"uz" = (
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"uB" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"uQ" = (
+/obj/structure/sacrificealtar,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"va" = (
+/obj/structure/table/wood/fancy/blue,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/shoes/sandal{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"vc" = (
+/obj/structure/table/wood/fancy,
+/obj/item/storage/fancy/cigarettes/cigpack_cannabis{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_candy{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_carp{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_midori{
+	pixel_x = 0;
+	pixel_y = 2
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = -3;
+	pixel_y = 0
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"vp" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/item/food/grown/cannabis,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"vx" = (
+/obj/machinery/light/directional/south,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"vB" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"vK" = (
+/obj/effect/spawner/structure/window,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"vN" = (
+/obj/structure/flora/tree/palm,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"vQ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"vY" = (
+/obj/structure/flora/rock/pile/style_random,
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"wd" = (
+/obj/structure/closet/crate,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"we" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wf" = (
+/obj/structure/table/greyscale,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wl" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/mineral/sandstone{
+	amount = 30
+	},
+/obj/item/stack/sheet/mineral/sandstone{
+	pixel_x = 10;
+	pixel_y = -2;
+	amount = 30
+	},
+/obj/item/stack/sheet/mineral/sandstone{
+	pixel_x = -9;
+	pixel_y = 1;
+	amount = 30
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wm" = (
+/turf/template_noop,
+/area/template_noop)
+"wv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/food/grown/grapes,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wz" = (
+/obj/structure/table/wood,
+/obj/item/wrench,
+/obj/item/lighter{
+	pixel_x = -9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wB" = (
+/obj/structure/reagent_dispensers/cooking_oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wE" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"wL" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/ash,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wU" = (
+/obj/structure/chair/sofa{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wX" = (
+/obj/structure/table/wood/fancy/red,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"wZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"xa" = (
+/obj/structure/fluff/paper/stack,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"xg" = (
+/obj/structure/chair/pew/right,
+/obj/effect/turf_decal/sand/plating,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"xk" = (
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"xo" = (
+/obj/structure/sign/departments/medbay/alt{
+	pixel_x = 30
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"xs" = (
+/obj/structure/table/wood/fancy/green,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"xw" = (
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"xx" = (
+/obj/structure/chair/wood{
+	pixel_x = 13;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"xJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"xO" = (
+/obj/structure/chair/sofa{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"xW" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"xZ" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"ye" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/structure/fluff/beach_umbrella/engine{
+	pixel_x = 0;
+	pixel_y = 9
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"yl" = (
+/obj/structure/reagent_dispensers/cooking_oil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"ys" = (
+/obj/structure/ore_box,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"yy" = (
+/obj/structure/table/wood,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 0;
+	pixel_y = 7
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -7;
+	pixel_y = -2
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"yA" = (
+/obj/item/food/grown/cannabis,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"yN" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"yR" = (
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/item/stack/sheet/mineral/sandbags{
+	pixel_x = 10;
+	pixel_y = 18
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"za" = (
+/obj/structure/table/wood,
+/obj/item/surgery_tray/full,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zc" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zf" = (
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"zj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/iron{
+	pixel_x = 14;
+	pixel_y = -2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zl" = (
+/turf/closed/wall/mineral/sandstone{
+	pixel_x = 1;
+	pixel_y = 0
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zv" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zw" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/concrete/slab_2,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"zx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/greyscale,
+/obj/item/stack/sheet/iron{
+	pixel_x = -9;
+	pixel_y = 0;
+	amount = 10
+	},
+/obj/item/stack/sheet/iron{
+	pixel_x = 7;
+	pixel_y = -2;
+	amount = 10
+	},
+/obj/item/stack/sheet/iron{
+	amount = 10
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zy" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"zH" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zN" = (
+/obj/structure/closet/cabinet,
+/obj/item/food/grown/cannabis,
+/obj/item/storage/dice,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zR" = (
+/obj/effect/decal/cleanable/shreds,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/shoes/sandal,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zZ" = (
+/obj/structure/chair/wood{
+	pixel_x = 4;
+	pixel_y = 16
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Aa" = (
+/obj/item/bedsheet/green{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ab" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/emptysandbag{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Ac" = (
+/obj/structure/table/wood,
+/obj/item/gun/ballistic/automatic/ar,
+/obj/machinery/light/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ag" = (
+/obj/structure/table/wood/fancy,
+/obj/item/weldingtool/largetank,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Ah" = (
+/obj/structure/closet/secure_closet/engineering_welding{
+	pixel_x = 6;
+	pixel_y = 0
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ai" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_x = 32
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Av" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"AA" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"AB" = (
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"AC" = (
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"AK" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/stack/sheet/cotton{
+	amount = 10
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"AL" = (
+/obj/structure/closet/secure_closet/medical1,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"AM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/shoes/workboots,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"AU" = (
+/obj/structure/table/wood/fancy,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"AV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/cabinet,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"AX" = (
+/obj/structure/table/wood,
+/obj/item/grenade/smokebomb{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/grenade/smokebomb{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/grenade/smokebomb{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/clothing/head/soft/black,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Bq" = (
+/obj/structure/chair/wood{
+	pixel_x = 13;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Br" = (
+/obj/structure/table/wood,
+/obj/item/seeds/cannabis,
+/obj/item/seeds/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"BF" = (
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = -9;
+	pixel_y = 18
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"BI" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"BL" = (
+/obj/item/bedsheet/green{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/structure/curtain/cloth/fancy,
+/obj/machinery/light/small/directional/east,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ci" = (
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Co" = (
+/obj/structure/table/wood/fancy/blue,
+/obj/item/reagent_containers/cup/bowl,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Cp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Cs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/ammo_box/c9mm{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Cv" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"CE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/cigarette/rollie/cannabis,
+/obj/item/stack/sheet/mineral/sandbags,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"CF" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = 0;
+	pixel_y = 1
+	},
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = 0;
+	pixel_y = -4
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"CH" = (
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/obj/item/storage/toolbox/mechanical,
+/obj/structure/table/greyscale,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"CJ" = (
+/obj/structure/chair/sofa{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"CR" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"CY" = (
+/obj/structure/railing/corner,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Da" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Dd" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/flora/rock/pile/style_random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Dg" = (
+/obj/item/ammo_casing/c9mm{
+	pixel_x = 2
+	},
+/obj/structure/table/wood/fancy/green,
+/obj/item/food/grown/cannabis{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = -12;
+	pixel_y = 11
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Du" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/cigarette/rollie/cannabis,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Dv" = (
+/obj/structure/reagent_dispensers/plumbed,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Dx" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"DJ" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -3;
+	pixel_y = -1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"DR" = (
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"DS" = (
+/obj/structure/railing/wooden_fence,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"DX" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/cup/bowl{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Eb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ee" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/structure/flora/tree/stump,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Ew" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ex" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ez" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/barricade/sandbags,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"EI" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/stack/sheet/cotton{
+	amount = 5
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"EJ" = (
+/obj/structure/chair/sofa{
+	dir = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"EM" = (
+/obj/structure/closet/cabinet,
+/obj/item/cultivator/rake,
+/obj/item/food/grown/cannabis{
+	pixel_x = 0;
+	pixel_y = 3
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"EQ" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/reagent_containers/cup/bowl,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"EZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/structure/closet/cabinet,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -9;
+	pixel_y = 0
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = 10;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/suit/armor/vest,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Fc" = (
+/obj/structure/table/wood,
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Fe" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Fh" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Fo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Fs" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/stack/sheet/cotton{
+	amount = 10
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Ft" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/railing/corner,
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"FA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"FC" = (
+/obj/structure/closet/crate/wooden,
+/obj/structure/curtain/cloth/fancy,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/grass,
+/obj/item/food/grown/grass,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"FF" = (
+/obj/structure/table/wood,
+/obj/item/hatchet/wooden,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"FR" = (
+/obj/structure/table/wood{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/wirecutters{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/stack/sheet/iron{
+	pixel_x = 7;
+	pixel_y = -2;
+	amount = 10
+	},
+/obj/item/stack/sheet/iron{
+	pixel_x = -9;
+	pixel_y = 0;
+	amount = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"FS" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/item/cultivator/rake,
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"FU" = (
+/obj/item/target/alien,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"FV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = -9;
+	pixel_y = 18
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Gf" = (
+/obj/structure/table/wood/fancy,
+/obj/item/stack/sheet/cotton{
+	amount = 10
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Gu" = (
+/obj/structure/chair/sofa{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Gz" = (
+/obj/structure/table/wood,
+/obj/item/wrench,
+/obj/item/hand_labeler{
+	pixel_x = -3;
+	pixel_y = -7
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"GI" = (
+/obj/structure/stationtrauma_nuclear_waste,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"GJ" = (
+/obj/structure/table/wood/fancy,
+/obj/item/wirecutters,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"GL" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -7;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"GN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"GP" = (
+/obj/item/storage/pill_bottle/lsd{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"GQ" = (
+/obj/structure/mineral_door/sandstone,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"GR" = (
+/obj/structure/flora/rock/pile/style_random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"GV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Hd" = (
+/obj/item/ammo_casing/c9mm{
+	pixel_x = 2
+	},
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Hh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/cannabis,
+/obj/item/clothing/head/soft/black,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Hl" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Ho" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"HB" = (
+/turf/closed/wall/mineral/sandstone,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"HM" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/stack/sheet/cotton{
+	amount = 5
+	},
+/obj/item/stack/sheet/cotton{
+	amount = 5
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"HN" = (
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"HP" = (
+/obj/effect/decal/cleanable/plastic,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ie" = (
+/obj/structure/table/wood/fancy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Il" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/seeds/ambrosia{
+	pixel_y = 6;
+	pixel_x = 2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"In" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/grenade/frag{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ir" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Is" = (
+/obj/structure/closet/cabinet,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Iy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Iz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"IB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"IC" = (
+/obj/structure/closet/cabinet,
+/obj/item/pushbroom,
+/obj/item/food/grown/cannabis,
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ID" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/gun/ballistic/automatic/ar,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"IE" = (
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/structure/curtain/cloth/fancy,
+/obj/machinery/light/directional/north,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"IF" = (
+/obj/structure/table/wood,
+/obj/item/storage/belt/utility,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"IN" = (
+/obj/structure/rack,
+/obj/item/clothing/head/helmet{
+	pixel_y = -13;
+	pixel_x = 7
+	},
+/obj/item/clothing/head/helmet,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"IU" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/clothing/shoes/workboots,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"IV" = (
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = -9
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ja" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Jb" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Jj" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Jp" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Jx" = (
+/obj/structure/table/wood,
+/obj/item/clothing/head/soft/black,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"JV" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"JZ" = (
+/obj/item/pickaxe/improvised,
+/obj/structure/table/greyscale,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ka" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_x = 32
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Kc" = (
+/obj/structure/table/wood,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = 10;
+	pixel_y = -8
+	},
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Kg" = (
+/obj/structure/chair/pew/left,
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Kh" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 13;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/cardboard{
+	pixel_x = -11;
+	pixel_y = -2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Kn" = (
+/obj/structure/mineral_door/sandstone,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"KA" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/clothing/head/soft/black{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/obj/item/clothing/head/soft/black{
+	pixel_x = 0;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/soft/black{
+	pixel_x = 7;
+	pixel_y = 0
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"KF" = (
+/obj/structure/table/wood/fancy/black,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"KK" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"KN" = (
+/obj/structure/table/wood,
+/obj/item/knife/plastic,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"KY" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"KZ" = (
+/obj/structure/table/wood/fancy,
+/obj/item/seeds/lavaland/porcini,
+/obj/item/seeds/pineapple,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Lc" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Ll" = (
+/obj/structure/chair/pew,
+/obj/effect/turf_decal/sand/plating,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Lq" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Lt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/food/grown/grapes,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Lu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/clothing/head/helmet{
+	pixel_x = 14;
+	pixel_y = -7
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = 18
+	},
+/obj/item/clothing/head/soft/black,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"LF" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/storage/fancy/cigarettes/cigars/havana,
+/obj/item/hatchet/wooden,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"LH" = (
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"LI" = (
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"LL" = (
+/obj/structure/closet/cabinet,
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = 0;
+	pixel_y = 1
+	},
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = 0;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -9;
+	pixel_y = 0
+	},
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/shoes/sandal,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"LM" = (
+/obj/structure/chair/sofa{
+	dir = 2
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"LO" = (
+/obj/structure/reagent_dispensers/cooking_oil,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"LR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"LT" = (
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"LV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"LW" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"LX" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/reagent_dispensers/plumbed,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"LZ" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/cigarette/rollie/cannabis,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Mb" = (
+/obj/item/cultivator/rake,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Mc" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Mg" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/item/clothing/head/soft/black,
+/obj/machinery/light/directional/south,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Mk" = (
+/obj/structure/table/wood,
+/obj/item/storage/dice,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Mu" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"My" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"MK" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"MM" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_2,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"MR" = (
+/obj/structure/reagent_dispensers/plumbed,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"MU" = (
+/obj/structure/bookcase/manuals/engineering,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"MV" = (
+/obj/structure/chair/sofa{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Na" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/shreds,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ne" = (
+/obj/structure/mineral_door/sandstone,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Nn" = (
+/obj/item/gun/ballistic/automatic/wt550{
+	pixel_x = 9;
+	pixel_y = 1
+	},
+/obj/structure/table/wood,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Nt" = (
+/obj/structure/table/optable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Nw" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/clothing/head/soft/black,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Ny" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"NH" = (
+/obj/structure/chair/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"NM" = (
+/obj/structure/table/wood,
+/obj/machinery/reagentgrinder{
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"NP" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"NQ" = (
+/obj/machinery/hydroponics/soil,
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/item/food/grown/cannabis,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"NU" = (
+/obj/structure/table/wood,
+/obj/item/scythe,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"NW" = (
+/obj/structure/bed,
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Of" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Om" = (
+/obj/structure/table/wood,
+/obj/item/scythe,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"On" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Os" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/toolcloset,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ow" = (
+/obj/structure/table/wood,
+/obj/item/wirecutters,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"OI" = (
+/obj/structure/closet/secure_closet/engineering_welding{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"OJ" = (
+/obj/structure/table/wood,
+/obj/item/gun/ballistic/automatic/ar{
+	pixel_x = -7;
+	pixel_y = -1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"OL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/medical3,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"OM" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"OQ" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/food/sandwich,
+/obj/item/grenade/smokebomb{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"OT" = (
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/cigarette/rollie/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"OZ" = (
+/obj/item/food/grown/cannabis,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Pj" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/structure/chair/wood{
+	dir = 1;
+	pixel_x = -9;
+	pixel_y = 18
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Pl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Pr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/wooden,
+/obj/structure/curtain/cloth/fancy,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/carrotlike/carrot,
+/obj/item/food/grown/carrotlike/carrot,
+/obj/item/food/grown/corn,
+/obj/item/food/grown/corn,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/grapes,
+/obj/item/food/grown/grass,
+/obj/item/food/grown/grass,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Py" = (
+/obj/structure/reagent_dispensers/cooking_oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"PA" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"PF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"PO" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/apple,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"PS" = (
+/obj/structure/railing/wooden_fence,
+/obj/item/food/grown/cannabis,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"PU" = (
+/obj/effect/decal/cleanable/wrapping,
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Qu" = (
+/obj/machinery/hydroponics/soil,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"QE" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/clothing/head/soft/black,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"QI" = (
+/obj/structure/chair/sofa{
+	dir = 2
+	},
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"QJ" = (
+/obj/structure/chair/wood{
+	pixel_x = 4;
+	pixel_y = 16
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"QM" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"QO" = (
+/obj/structure/chair/wood{
+	pixel_x = 13;
+	pixel_y = 16
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Rf" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Rh" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/shoes/sandal{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Rk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bookcase/random,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Rm" = (
+/obj/item/ammo_casing/c9mm{
+	pixel_x = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Rp" = (
+/obj/structure/table/wood,
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/item/bedsheet/green{
+	pixel_x = 0;
+	pixel_y = 11
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Rr" = (
+/obj/item/ammo_casing/shotgun/buckshot{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/ammo_casing/shotgun/buckshot,
+/obj/structure/fluff/paper/stack{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Rv" = (
+/obj/structure/closet/secure_closet/freezer/meat/open,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Rx" = (
+/obj/structure/table/wood/fancy,
+/obj/item/seeds/lavaland/polypore,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"RB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/c9mm{
+	pixel_x = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"RE" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/clothing/suit/jacket/leather,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"RF" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"RH" = (
+/obj/structure/table/wood,
+/obj/item/gun/ballistic/automatic/ar,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"RO" = (
+/obj/structure/table/greyscale,
+/obj/item/stack/sheet/iron{
+	pixel_x = 7;
+	pixel_y = -2;
+	amount = 10
+	},
+/obj/item/stack/sheet/iron{
+	amount = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"RR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"RU" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/structure/table/wood,
+/obj/item/hatchet/wooden,
+/obj/item/food/grown/carrotlike/parsnip,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"RV" = (
+/obj/structure/table/wood,
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/item/bedsheet/green{
+	pixel_x = 0;
+	pixel_y = 11
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Sh" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/shoes/sandal,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Sl" = (
+/obj/item/gun/ballistic/automatic/ar,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Sm" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/reagent_containers/cup/bowl{
+	pixel_x = -11;
+	pixel_y = 0
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Sy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"SA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"SD" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"SG" = (
+/obj/structure/stationtrauma_nuclear_waste,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"SK" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"SM" = (
+/obj/structure/table/wood/fancy,
+/obj/item/storage/fancy/cigarettes/cigpack_cannabis,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"SY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Tf" = (
+/obj/structure/tank_dispenser,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Tm" = (
+/obj/item/bedsheet{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"To" = (
+/obj/structure/table/wood,
+/obj/item/clothing/head/soft/black,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Tq" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ts" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/flora/rock/pile/style_random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"TC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/food/grown/grapes{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"TE" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ub" = (
+/obj/structure/table/wood,
+/obj/item/gun/ballistic/automatic/wt550,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 6;
+	pixel_y = 16
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Uf" = (
+/obj/structure/table/wood,
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ug" = (
+/obj/structure/table/wood/fancy,
+/obj/item/cigarette/rollie/cannabis,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Ui" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/stationtrauma_nuclear_waste,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Uk" = (
+/obj/structure/table/wood,
+/obj/item/kitchen/fork/plastic,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ul" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/clothing/head/helmet{
+	pixel_x = 18
+	},
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/head/helmet{
+	pixel_y = -13;
+	pixel_x = 7
+	},
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Uz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"UD" = (
+/obj/structure/closet/cabinet,
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/item/pushbroom,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"UG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/iron{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/ammo_casing/c9mm{
+	pixel_x = 2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"UJ" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = -32
+	},
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/cigarette/rollie/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"UK" = (
+/obj/structure/flora/tree/palm{
+	pixel_x = -5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"UM" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/jacket/leather{
+	pixel_x = -8;
+	pixel_y = 0
+	},
+/obj/structure/closet/cabinet,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/shoes/sandal,
+/obj/item/clothing/shoes/sandal,
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"US" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood/fancy/green,
+/obj/item/lighter{
+	pixel_x = -9
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 13;
+	pixel_y = 1
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"UU" = (
+/obj/structure/chair/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"UX" = (
+/obj/structure/bed,
+/obj/item/bedsheet/green{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Vb" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/carrotlike/carrot,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ve" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Vf" = (
+/obj/structure/closet/cabinet,
+/obj/item/cultivator/rake,
+/obj/item/food/grown/cannabis{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Vg" = (
+/obj/structure/bonfire,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Vl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Vm" = (
+/obj/structure/table/wood,
+/obj/item/ammo_box/c9mm{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/ammo_box/c9mm{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Vq" = (
+/obj/structure/chair/sofa{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Vr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/weldingtool/mini,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Vy" = (
+/obj/structure/closet/cabinet,
+/obj/item/food/grown/cannabis,
+/obj/item/food/grown/cannabis,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"VC" = (
+/obj/structure/table/greyscale,
+/obj/item/stack/sheet/iron{
+	pixel_x = -9;
+	pixel_y = 0;
+	amount = 10
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"VD" = (
+/obj/structure/closet/cabinet,
+/obj/item/food/grown/cannabis,
+/obj/item/scythe,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"VT" = (
+/obj/structure/chair/wood{
+	pixel_x = 13;
+	pixel_y = 16
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"VU" = (
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"VV" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 10;
+	pixel_y = -2
+	},
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 0;
+	pixel_y = 9
+	},
+/obj/item/stack/sheet/cardboard{
+	pixel_x = -12;
+	pixel_y = 0
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"VW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/food/grown/grapes,
+/obj/item/grenade/smokebomb{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"VZ" = (
+/obj/item/target,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Wa" = (
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = -9
+	},
+/obj/item/food/grown/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Wf" = (
+/obj/structure/reagent_dispensers/cooking_oil,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Wi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa{
+	dir = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Wm" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Wr" = (
+/obj/machinery/hydroponics/soil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Wy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"WE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/lighter{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"WI" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"WL" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"WO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/cigarette/rollie/cannabis,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"WP" = (
+/obj/structure/chair/wood,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"WS" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/stack/sheet/cotton{
+	pixel_x = 1;
+	pixel_y = 3;
+	amount = 10
+	},
+/obj/item/stack/sheet/cotton{
+	pixel_x = 5;
+	pixel_y = -3;
+	amount = 10
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"WX" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Xc" = (
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Xf" = (
+/obj/machinery/seed_extractor,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Xh" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Xq" = (
+/obj/structure/table/wood,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Xr" = (
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Xv" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Xz" = (
+/obj/item/ammo_casing/c9mm{
+	pixel_x = 2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"XD" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"XF" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/shoes/workboots,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"XH" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/seeds/ambrosia{
+	pixel_y = 6;
+	pixel_x = 2
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"XJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"XP" = (
+/obj/machinery/processor,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"XQ" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/cooking_oil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"XU" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/emptysandbag{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/mineral/sandbags,
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"XV" = (
+/obj/item/storage/briefcase,
+/obj/structure/table/wood,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Ya" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/stack/sheet/cotton{
+	amount = 5
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Yf" = (
+/obj/structure/table/wood,
+/obj/item/clothing/head/helmet{
+	pixel_x = 14;
+	pixel_y = -7
+	},
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/head/soft/black,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Yl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Yo" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Yq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Yx" = (
+/obj/machinery/door/poddoor/shutters/indestructible,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"YB" = (
+/obj/structure/table/wood,
+/obj/item/storage/belt/utility,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"YF" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/grapes{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/food/grown/grapes{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"YL" = (
+/obj/structure/chair/sofa{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"YM" = (
+/obj/structure/fluff/paper/stack,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"YO" = (
+/obj/structure/signpost{
+	name = "Карет ульхудуи"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"YU" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/curtain/cloth/fancy,
+/obj/structure/reagent_dispensers/plumbed,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Zc" = (
+/obj/item/bedsheet/green{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/structure/curtain/cloth/fancy,
+/obj/machinery/light/directional/north,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Zd" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Zw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ZG" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"ZI" = (
+/obj/structure/table/wood,
+/obj/item/cigarette/rollie/cannabis,
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ZN" = (
+/obj/item/weldingtool/largetank,
+/obj/structure/table/greyscale,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ZR" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ZT" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ZV" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/turf_decal/sand/plating,
+/obj/item/emptysandbag{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/stack/sheet/mineral/sandbags{
+	pixel_x = -2;
+	pixel_y = 12
+	},
+/turf/open/floor/concrete/slab_3,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+
+(1,1,1) = {"
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+"}
+(2,1,1) = {"
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+"}
+(3,1,1) = {"
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+LI
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+"}
+(4,1,1) = {"
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+HB
+HB
+KK
+KK
+HB
+HB
+HB
+KK
+HB
+HB
+KK
+KK
+GR
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+LI
+LI
+LI
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+"}
+(5,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+HB
+HB
+HB
+sP
+hp
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+pi
+KK
+oj
+oj
+oj
+KK
+KK
+HB
+HB
+HB
+KK
+KK
+HB
+oj
+oj
+oj
+KK
+GR
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+wm
+"}
+(6,1,1) = {"
+wm
+wm
+KK
+KK
+KK
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+HB
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+zy
+Wr
+mi
+GR
+mi
+mi
+mi
+mi
+GR
+fn
+oj
+oj
+wB
+oj
+GR
+KK
+KK
+HB
+KK
+KK
+GR
+KK
+oj
+Rr
+oj
+oj
+oj
+GR
+YO
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+"}
+(7,1,1) = {"
+wm
+KK
+KK
+ag
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+Ts
+iK
+GR
+mi
+mi
+mi
+mi
+mi
+GR
+oj
+oj
+wB
+tW
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+xa
+pj
+df
+oj
+oj
+KK
+KK
+kB
+zw
+KK
+KK
+KK
+KK
+KK
+GR
+ag
+ag
+ag
+ag
+"}
+(8,1,1) = {"
+wm
+KK
+ag
+ag
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+HB
+HB
+HB
+HB
+KK
+KK
+KK
+KK
+KK
+oj
+oj
+rO
+rO
+oj
+oj
+oj
+GR
+GR
+GR
+mi
+mi
+mi
+mi
+mi
+oj
+we
+Zw
+jn
+HN
+Zw
+Eb
+Zw
+Zw
+Jp
+Eb
+Zw
+Eb
+HN
+ln
+YM
+bU
+oY
+ot
+KK
+kB
+kB
+zw
+kB
+qh
+KK
+KK
+GR
+KK
+ag
+ag
+ag
+ag
+"}
+(9,1,1) = {"
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+oj
+Xf
+dK
+dK
+Jp
+Jp
+oj
+Wr
+KK
+GR
+GR
+mi
+GR
+GR
+GR
+oj
+LO
+Eb
+Eb
+oj
+oj
+oj
+oj
+bK
+ed
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+kB
+zw
+kB
+KK
+KK
+hR
+KK
+KK
+ag
+GR
+ag
+ag
+ag
+ag
+ag
+"}
+(10,1,1) = {"
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+HB
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+PA
+Vl
+uz
+Zw
+oq
+oj
+bw
+KK
+Wr
+GR
+GR
+GR
+GR
+GR
+oY
+Zw
+wv
+Eb
+oj
+GR
+yl
+oj
+oj
+oj
+oj
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+kB
+kB
+HB
+HB
+GR
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+"}
+(11,1,1) = {"
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+HB
+HB
+yl
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+oj
+rY
+Rx
+KZ
+ri
+Zw
+oj
+qh
+KK
+KK
+KK
+KK
+KK
+Wr
+GR
+oj
+oj
+XD
+Eb
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+yl
+oj
+oj
+oj
+oj
+GR
+KK
+KK
+zw
+KK
+GR
+HB
+HB
+HB
+HB
+ag
+ag
+ag
+ag
+ag
+ag
+"}
+(12,1,1) = {"
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+HB
+HB
+yl
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+oj
+oj
+oj
+oj
+oY
+oj
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+oj
+oj
+wB
+oj
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+oj
+qQ
+UJ
+rO
+KK
+KK
+zw
+kB
+KK
+KK
+KK
+KK
+KK
+HB
+KK
+ag
+ag
+ag
+GR
+KK
+"}
+(13,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+RF
+GR
+KK
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+lx
+CY
+oj
+oj
+oj
+KK
+KK
+KK
+KK
+GR
+GR
+KK
+oj
+wv
+Jp
+xW
+rO
+KK
+Pl
+kB
+KK
+oj
+oj
+rO
+oj
+oj
+KK
+KK
+ag
+ag
+ag
+KK
+KK
+"}
+(14,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+RF
+KK
+KK
+oj
+nU
+Jp
+Ne
+Jp
+Jx
+oj
+zy
+Lc
+FS
+RU
+pi
+KK
+cc
+oj
+oY
+oj
+GR
+KK
+oj
+cY
+pn
+Zw
+oj
+SA
+KK
+AA
+kB
+oY
+Zw
+bl
+ey
+oj
+KK
+KK
+KK
+KK
+iC
+ag
+KK
+"}
+(15,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+QM
+Tm
+qD
+oj
+Jp
+To
+oj
+zy
+KK
+KK
+KK
+fn
+cc
+cc
+nI
+Zw
+oj
+oj
+KK
+oj
+uz
+Jp
+Zw
+oY
+kB
+Fh
+kB
+Ie
+oj
+oj
+zZ
+NW
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+"}
+(16,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+pK
+fd
+KK
+KK
+LR
+KK
+KK
+QM
+oj
+oj
+oj
+PF
+uz
+oj
+zy
+KK
+KK
+yA
+Wr
+cc
+cc
+qQ
+pn
+oO
+oj
+KK
+oj
+uz
+Zw
+pn
+oj
+Pl
+KK
+kB
+Ie
+Ny
+oj
+oj
+oj
+oj
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+"}
+(17,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+sS
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+GR
+KK
+KK
+SM
+KK
+RF
+RF
+KK
+LI
+oj
+aM
+uz
+Ne
+Zw
+Vl
+oj
+Ts
+KK
+Wr
+mi
+nx
+cc
+DR
+Vl
+Vl
+wv
+oj
+KK
+QM
+DR
+uz
+Aa
+QM
+KK
+KK
+Hl
+KK
+GR
+oj
+Bq
+om
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+"}
+(18,1,1) = {"
+ag
+ag
+ag
+KK
+KK
+GR
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+GR
+ag
+ag
+ag
+ag
+ag
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+LI
+LI
+oj
+WX
+re
+oj
+Zw
+Jp
+oj
+Ee
+KK
+GR
+mi
+cc
+cc
+oj
+oj
+IE
+uz
+oj
+KK
+QM
+QM
+Vy
+QM
+QM
+KK
+kB
+kB
+Ie
+oj
+oj
+Zw
+jA
+QM
+sP
+pi
+HB
+KK
+GR
+KK
+KK
+"}
+(19,1,1) = {"
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+oj
+oj
+QM
+QM
+oj
+oj
+KK
+RF
+RF
+RF
+KK
+oj
+QM
+QM
+oj
+oj
+oY
+oj
+LI
+LI
+KK
+cc
+cc
+zH
+zc
+oj
+oj
+oj
+oj
+GR
+GR
+QM
+QM
+QM
+KK
+Hl
+RF
+KK
+kB
+oY
+Ka
+du
+NW
+QM
+uB
+DS
+HB
+HB
+GR
+KK
+KK
+"}
+(20,1,1) = {"
+KK
+ag
+ag
+KK
+GR
+KK
+KK
+KK
+HB
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+cc
+cc
+KK
+KK
+ag
+ag
+KK
+ag
+oj
+Jp
+Jp
+Jp
+Is
+oj
+KK
+RF
+KK
+RF
+LR
+RF
+RF
+KK
+KK
+KK
+RF
+RF
+KK
+KK
+GR
+cc
+cc
+WP
+uz
+Jp
+Jp
+UD
+rO
+KK
+KK
+QM
+QM
+vN
+KK
+zw
+KK
+KK
+KK
+oj
+rO
+oj
+oj
+oj
+KK
+Lc
+pi
+HB
+GR
+KK
+KK
+"}
+(21,1,1) = {"
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+HB
+KK
+GR
+KK
+KK
+KK
+KK
+cc
+cc
+cc
+oj
+oj
+KK
+GR
+KK
+KK
+oj
+Vb
+Zw
+Jp
+wZ
+oj
+KK
+RF
+KK
+oj
+oj
+oY
+oj
+QM
+QM
+oj
+oj
+oj
+RF
+RF
+KK
+cc
+cc
+uz
+Zw
+Jp
+wv
+hV
+rO
+KK
+KK
+KK
+KK
+Pl
+RF
+RF
+KK
+GR
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+DS
+HB
+KK
+KK
+wm
+"}
+(22,1,1) = {"
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+oj
+KK
+KK
+cc
+AC
+AC
+vp
+rO
+KK
+KK
+KK
+KK
+oj
+fm
+dG
+Jp
+Jp
+oY
+RF
+RF
+KK
+oj
+Jp
+Jp
+jZ
+oj
+Jp
+uz
+ey
+QM
+KK
+RF
+KK
+oj
+IE
+uz
+DR
+BL
+Zw
+Jp
+QM
+GR
+KK
+KK
+zw
+KK
+zw
+Pl
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+aA
+HB
+HB
+KK
+wm
+"}
+(23,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+KK
+KK
+cc
+cc
+AC
+vx
+oj
+oj
+KK
+KK
+KK
+oj
+PO
+Vl
+uz
+Zw
+oj
+KK
+KK
+KK
+oj
+UU
+Zw
+Jp
+am
+Zw
+Zw
+Zw
+QM
+LR
+RF
+KK
+oj
+oj
+oj
+oj
+oj
+QM
+oY
+QM
+GR
+KK
+zw
+zw
+kB
+RF
+KK
+KK
+KK
+yl
+oj
+oY
+oj
+oj
+ZG
+KK
+KK
+Dd
+pi
+HB
+KK
+wm
+"}
+(24,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+uz
+Vl
+Vl
+Jp
+Os
+oj
+KK
+KK
+GR
+rO
+ix
+es
+vp
+rO
+KK
+KK
+KK
+oj
+NU
+zc
+Vl
+Jp
+oj
+oj
+RF
+KK
+oj
+zH
+zc
+Jj
+oj
+IE
+Aa
+Jp
+oj
+RF
+KK
+fd
+ye
+KK
+KK
+KK
+UK
+KK
+SY
+KK
+KK
+Pl
+zw
+RF
+KK
+KK
+KK
+GR
+yl
+oj
+oj
+uz
+Jj
+oj
+GR
+KK
+KK
+GR
+DS
+HB
+KK
+wm
+"}
+(25,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+IF
+zH
+Vl
+Jp
+Jp
+oj
+KK
+KK
+KK
+rO
+Ft
+Zw
+au
+rO
+KK
+GR
+KK
+oj
+lX
+oj
+oj
+oj
+oj
+oj
+ZG
+RF
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+oY
+oj
+RF
+KK
+Ug
+AU
+Ag
+KK
+GR
+KK
+KK
+kB
+KK
+KK
+zw
+zw
+KK
+KK
+KK
+KK
+GR
+oj
+oj
+AM
+Jp
+KY
+rO
+KK
+GR
+KK
+KK
+DS
+HB
+KK
+wm
+"}
+(26,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+rD
+Xv
+Zw
+Jp
+oj
+oj
+KK
+KK
+KK
+rO
+dV
+Zw
+vB
+oj
+oj
+oj
+KK
+GR
+KK
+KK
+yl
+yl
+oj
+oj
+KK
+RF
+KK
+KK
+KK
+KK
+lZ
+KK
+KK
+RF
+KK
+RF
+KK
+KK
+KK
+KK
+RF
+RF
+RF
+RF
+Pl
+wE
+kB
+AA
+oj
+QM
+QM
+oY
+oj
+KK
+rO
+mz
+Xq
+NM
+Mc
+rO
+KK
+KK
+KK
+GR
+DS
+HB
+KK
+KK
+"}
+(27,1,1) = {"
+wm
+KK
+KK
+KK
+KK
+KK
+oj
+ao
+Jp
+Jp
+IB
+oj
+yl
+KK
+KK
+KK
+oj
+Br
+Zw
+NQ
+oj
+oj
+oj
+KK
+KK
+KK
+RF
+RF
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+RF
+RF
+KK
+LR
+RF
+RF
+RF
+RF
+RF
+RF
+LR
+RF
+KK
+KK
+KK
+KK
+kB
+KK
+GR
+rO
+QI
+uz
+uz
+oj
+KK
+rO
+tP
+mZ
+pn
+Pj
+rO
+KK
+KK
+GR
+KK
+DS
+HB
+KK
+KK
+"}
+(28,1,1) = {"
+wm
+KK
+KK
+KK
+KK
+KK
+oj
+Jp
+Zw
+Zw
+WO
+oj
+KK
+GR
+KK
+GR
+oj
+nt
+Zw
+oj
+oj
+KK
+RF
+RF
+KK
+RF
+KK
+KK
+Pl
+KK
+RF
+LR
+RF
+KK
+RF
+KK
+KK
+ag
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+GR
+KK
+KK
+LI
+LI
+KK
+RF
+KK
+KK
+KK
+QM
+LM
+zH
+uz
+oj
+KK
+rO
+wL
+wz
+Zw
+Ah
+oj
+KK
+KK
+KK
+KK
+DS
+HB
+KK
+KK
+"}
+(29,1,1) = {"
+wm
+wm
+KK
+KK
+KK
+KK
+oj
+Jp
+nl
+Zw
+Fc
+oj
+yl
+KK
+KK
+KK
+oj
+uz
+Zw
+oY
+RF
+RF
+LR
+KK
+KK
+KK
+KK
+KK
+LI
+LI
+KK
+qh
+GR
+RF
+KK
+ag
+ag
+cc
+oj
+oj
+oj
+oj
+oj
+oY
+oj
+oj
+oj
+ag
+ag
+GR
+KK
+zw
+kB
+KK
+KK
+QM
+EJ
+IV
+Vl
+oj
+GR
+oj
+Jp
+kL
+Jp
+oj
+oj
+KK
+ag
+ag
+CY
+Ho
+KK
+KK
+KK
+"}
+(30,1,1) = {"
+wm
+wm
+KK
+KK
+HB
+HB
+oj
+WP
+BI
+Zw
+gd
+oj
+yl
+KK
+KK
+KK
+oj
+Vl
+Jp
+oj
+KK
+KK
+oj
+oj
+oj
+oj
+oY
+oj
+oj
+oj
+oj
+oj
+oj
+KK
+RF
+ag
+cc
+AC
+jh
+Jp
+iN
+Zw
+Jp
+Jp
+pn
+om
+oj
+ag
+ag
+KK
+KK
+wE
+Pl
+KK
+KK
+QM
+EJ
+CJ
+uz
+oj
+KK
+oj
+PA
+Jp
+pn
+oj
+XQ
+pi
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+"}
+(31,1,1) = {"
+wm
+wm
+KK
+KK
+HB
+KK
+oj
+Vl
+Vr
+Jp
+Jp
+oj
+RF
+GR
+KK
+KK
+oj
+Vl
+Vl
+oj
+KK
+RF
+oj
+om
+Jp
+iN
+Jp
+Jp
+oj
+Jp
+Vl
+zH
+oj
+KK
+RF
+ag
+cc
+AC
+cD
+Jp
+oj
+oj
+Zw
+wv
+Zw
+zH
+cc
+ag
+ag
+KK
+Pl
+zw
+KK
+KK
+GR
+oj
+oj
+oj
+iN
+oj
+KK
+oj
+Vl
+Tf
+OI
+oj
+KK
+DS
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+"}
+(32,1,1) = {"
+wm
+wm
+KK
+KK
+HB
+KK
+oj
+cY
+Zw
+Jp
+Zw
+oY
+qe
+KK
+KK
+KK
+oj
+uz
+oh
+oj
+uu
+KK
+oj
+PA
+Zw
+oj
+On
+OT
+oj
+PA
+Zw
+ey
+oj
+KK
+RF
+ag
+oj
+Qu
+PS
+Zw
+Zw
+oj
+PF
+uz
+uz
+eY
+cc
+ag
+GR
+KK
+KK
+kB
+kB
+kB
+bA
+oY
+pn
+pn
+Jp
+oj
+KK
+oj
+oY
+oj
+oj
+oj
+KK
+aA
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+"}
+(33,1,1) = {"
+wm
+wm
+wm
+KK
+HB
+KK
+oj
+uz
+Da
+Zw
+Zw
+oj
+GR
+RF
+RF
+KK
+oj
+oj
+oj
+oj
+RF
+KK
+oj
+Aa
+uz
+oj
+uo
+qQ
+oj
+iN
+QM
+QM
+QM
+GR
+KK
+KK
+oj
+rj
+OZ
+es
+Jp
+oj
+DR
+Ex
+Aa
+cc
+iC
+KK
+Ie
+KK
+wE
+KK
+KK
+KK
+KK
+oj
+Vl
+Wm
+Iy
+oj
+GR
+KK
+RF
+KK
+KK
+GR
+KK
+DS
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+"}
+(34,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+KK
+oj
+zH
+IF
+zH
+gd
+oj
+yl
+KK
+RF
+KK
+RF
+lZ
+GR
+KK
+KK
+KK
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+Jp
+Jp
+zH
+oj
+GR
+RF
+KK
+oj
+sA
+Fe
+kd
+wv
+oj
+oj
+uz
+oj
+oj
+KK
+mn
+GJ
+KK
+AA
+zw
+KK
+gn
+KA
+oj
+PU
+uz
+Gz
+oj
+KK
+Fh
+RF
+GR
+KK
+KK
+GR
+ja
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+"}
+(35,1,1) = {"
+wm
+wm
+wm
+KK
+HB
+KK
+oj
+oj
+oj
+oj
+oj
+oj
+ZG
+GR
+KK
+RF
+RF
+RF
+KK
+KK
+RF
+KK
+oj
+ey
+Jp
+oj
+Jp
+Jp
+oj
+uz
+Zw
+uz
+oY
+RF
+KK
+KK
+oj
+oj
+oj
+fB
+Jp
+Jp
+oj
+oj
+oj
+KK
+KK
+pO
+Ie
+Pl
+kB
+RF
+KK
+Nw
+Ny
+oj
+ce
+Vl
+Kh
+oj
+KK
+RF
+Fh
+KK
+oj
+QM
+QM
+oj
+cc
+ag
+ag
+ag
+ag
+KK
+KK
+"}
+(36,1,1) = {"
+wm
+wm
+wm
+KK
+HB
+KK
+iC
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+RF
+KK
+KK
+oj
+In
+uz
+oj
+wv
+Zw
+oj
+jD
+zH
+Jp
+oj
+RF
+RF
+KK
+GR
+GR
+oj
+oj
+oj
+iN
+oj
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+kB
+KK
+KK
+KK
+GR
+oj
+ce
+HP
+VV
+oj
+KK
+Fh
+Fh
+KK
+oj
+JZ
+JZ
+lm
+oj
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(37,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+oj
+Yq
+uz
+oj
+Jp
+QM
+oj
+oj
+oj
+oj
+oj
+KK
+RF
+KK
+KK
+GR
+oj
+Jp
+Jp
+Zw
+oY
+Fh
+KK
+KK
+KK
+KK
+kB
+zw
+KK
+LI
+LI
+KK
+KK
+oj
+oj
+oj
+oj
+oj
+KK
+Fh
+RF
+KK
+oY
+uz
+Vl
+uz
+oj
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(38,1,1) = {"
+wm
+wm
+KK
+KK
+HB
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+ag
+KK
+KK
+GR
+KK
+GR
+KK
+RF
+KK
+KK
+oj
+Aa
+Zw
+HN
+Zw
+QM
+yl
+GR
+KK
+lZ
+KK
+KK
+KK
+RF
+KK
+KK
+oj
+Rp
+WL
+Jp
+oj
+qh
+Fh
+Fh
+KK
+KK
+RF
+KK
+KK
+KK
+hR
+xo
+KK
+KK
+KK
+GR
+KK
+KK
+RF
+KK
+RF
+GR
+oj
+ys
+Vl
+uz
+uz
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(39,1,1) = {"
+wm
+wm
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+KK
+oj
+oj
+oj
+oj
+oj
+KK
+KK
+KK
+oj
+oj
+iN
+oj
+Zw
+QM
+yl
+KK
+KK
+RF
+KK
+RF
+RF
+KK
+RF
+KK
+oj
+RV
+mw
+pn
+oj
+Fh
+Fh
+Fh
+Fh
+RF
+wE
+lo
+dZ
+KK
+oj
+oj
+oY
+oj
+oj
+oj
+oj
+oj
+KK
+KK
+KK
+KK
+oj
+oj
+oj
+Vl
+uz
+oj
+ag
+ag
+KK
+KK
+KK
+"}
+(40,1,1) = {"
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+KK
+oj
+tM
+Rf
+pg
+oj
+KK
+KK
+KK
+oj
+Jp
+Zw
+oj
+Jp
+QM
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+oj
+ey
+Eb
+Jp
+oj
+oj
+Kg
+Fh
+zw
+wE
+KK
+dZ
+qT
+KK
+oj
+Jp
+Jp
+Jp
+oj
+Zd
+Of
+oj
+KK
+RF
+RF
+KK
+oj
+Wm
+Zw
+Vl
+Vl
+oj
+ag
+ag
+ag
+ag
+KK
+"}
+(41,1,1) = {"
+wm
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+KK
+oj
+iN
+Zw
+Pr
+oj
+KK
+RF
+RF
+oY
+Zw
+Sy
+oj
+Zw
+oj
+GR
+KK
+oj
+oj
+oj
+rO
+rO
+oj
+oj
+KK
+oj
+ey
+pn
+Jp
+oj
+oj
+Ll
+Fh
+RF
+Pl
+oj
+oj
+KK
+oj
+oj
+Wa
+Ow
+pn
+pL
+Zd
+Zd
+oj
+oj
+KK
+RF
+KK
+QM
+Zw
+wv
+uz
+wf
+oj
+oj
+ag
+ag
+ag
+KK
+"}
+(42,1,1) = {"
+KK
+KK
+KK
+KK
+HB
+KK
+GR
+KK
+KK
+KK
+GR
+KK
+ag
+KK
+oj
+Jp
+Zw
+Jp
+oj
+RF
+KK
+KK
+oj
+oj
+oj
+oj
+pn
+oj
+KK
+RF
+oj
+oO
+pn
+dK
+dK
+ZI
+oj
+RF
+oj
+oj
+oj
+iN
+Jp
+oj
+xg
+Fh
+kB
+KK
+QM
+oj
+GR
+oj
+Zw
+sO
+Jp
+Jp
+oj
+OM
+Nt
+oj
+oj
+ZG
+KK
+KK
+QM
+cY
+Jp
+Vl
+lm
+oj
+oj
+ag
+ag
+ag
+KK
+"}
+(43,1,1) = {"
+KK
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+KK
+oj
+mI
+Vl
+Vl
+oY
+RF
+KK
+KK
+oj
+uz
+Vl
+Zw
+Zw
+oY
+KK
+KK
+oj
+VU
+uz
+uz
+Vl
+Zw
+oj
+RF
+oj
+gv
+Jp
+wv
+Jp
+oj
+Fh
+KK
+wE
+Hl
+QM
+oj
+oj
+oj
+cY
+Jp
+Zw
+AL
+oj
+za
+oj
+oj
+GR
+KK
+RF
+GR
+QM
+iN
+iN
+oj
+oj
+oj
+ag
+ag
+ag
+KK
+KK
+"}
+(44,1,1) = {"
+KK
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+KK
+oj
+oP
+Xv
+Vl
+oj
+RF
+KK
+KK
+oj
+PA
+Vl
+Zw
+Zw
+oj
+GR
+RF
+oj
+oj
+oj
+oj
+NW
+Vl
+oj
+KK
+oj
+cs
+Jp
+Zw
+Jp
+oY
+KK
+KK
+RF
+KK
+QM
+oj
+KK
+oj
+OL
+WX
+oj
+oj
+oj
+oj
+oj
+iC
+GR
+KK
+RF
+KK
+QM
+Jp
+Vl
+uz
+GP
+oj
+ag
+ag
+ag
+KK
+KK
+"}
+(45,1,1) = {"
+KK
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+oj
+Iz
+Jp
+Vl
+QM
+KK
+RF
+KK
+oj
+oj
+oj
+oj
+oj
+oj
+KK
+RF
+oj
+Zw
+Jp
+oj
+oj
+Jp
+oY
+RF
+oj
+ZT
+Jp
+wd
+oj
+oj
+KK
+kB
+kB
+KK
+oj
+oj
+KK
+oj
+oj
+oj
+oj
+KK
+KK
+rw
+GR
+KK
+KK
+KK
+RF
+GR
+oj
+MR
+Jp
+uz
+Vl
+oj
+ag
+ag
+ag
+KK
+KK
+"}
+(46,1,1) = {"
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+Zw
+Zw
+Jp
+QM
+yl
+RF
+KK
+RF
+KK
+RF
+KK
+GR
+KK
+KK
+RF
+oj
+Jp
+Zw
+Zw
+oj
+oj
+oj
+RF
+oj
+Jp
+oj
+oj
+oj
+KK
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+KK
+KK
+Xz
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+RF
+KK
+oj
+oj
+oj
+Jp
+oq
+oj
+ag
+ag
+KK
+KK
+KK
+"}
+(47,1,1) = {"
+wm
+wm
+KK
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+ag
+ag
+KK
+oj
+cw
+Zw
+FC
+oj
+yl
+KK
+KK
+KK
+KK
+RF
+KK
+RF
+RF
+KK
+RF
+oY
+Zw
+uz
+Zw
+Jp
+uz
+oj
+uu
+oj
+Jp
+oj
+KK
+KK
+KK
+RF
+KK
+MM
+RF
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+LI
+LI
+KK
+KK
+RF
+oY
+Jp
+Jp
+wv
+Jp
+oj
+ag
+ag
+KK
+KK
+KK
+"}
+(48,1,1) = {"
+wm
+wm
+KK
+HB
+KK
+ag
+ag
+KK
+GR
+KK
+KK
+ag
+ag
+KK
+oj
+ef
+yN
+cw
+oj
+ag
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+Zc
+om
+LH
+uz
+Vl
+oj
+KK
+oj
+oj
+oj
+KK
+wE
+wE
+bA
+KK
+wE
+KK
+RF
+RF
+RF
+AA
+RF
+AA
+RF
+RF
+RF
+RF
+RF
+RF
+KK
+RF
+RF
+KK
+oj
+Jp
+pn
+Zw
+pn
+oj
+oj
+oj
+KK
+KK
+KK
+"}
+(49,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+ag
+KK
+KK
+KK
+oj
+oj
+oj
+oj
+oj
+ag
+GR
+GR
+KK
+Wr
+GR
+KK
+KK
+GR
+KK
+KK
+oj
+QM
+QM
+oj
+rO
+rO
+oj
+RF
+oj
+oj
+KK
+wE
+wE
+wE
+RF
+wE
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+AA
+KK
+KK
+KK
+KK
+oj
+nQ
+Zw
+Jp
+Zw
+iN
+Zw
+oj
+oj
+KK
+KK
+"}
+(50,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+mi
+Wr
+mi
+mi
+GR
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+wE
+LF
+vc
+KK
+RF
+KK
+KK
+KK
+KK
+GR
+QM
+oY
+oj
+oj
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+oj
+oj
+oj
+oj
+oj
+oj
+Jp
+tW
+oj
+KK
+KK
+"}
+(51,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+ag
+ag
+KK
+KK
+ag
+ag
+ag
+iC
+KK
+GR
+KK
+ag
+ag
+ag
+mi
+mi
+mi
+mi
+mi
+mi
+KK
+KK
+KK
+KK
+oj
+oj
+QM
+QM
+oj
+oj
+GR
+kh
+KK
+KK
+wE
+wE
+Sm
+qT
+KK
+KK
+RF
+KK
+GR
+GR
+KK
+QM
+QM
+Zw
+nI
+oj
+GR
+qh
+oj
+oj
+oY
+oj
+oj
+oj
+RF
+KK
+KK
+KK
+GR
+yl
+oj
+oj
+we
+oj
+KK
+wm
+"}
+(52,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+qh
+KK
+GR
+ag
+ag
+ag
+mi
+GR
+GR
+GR
+Wr
+mi
+mi
+KK
+KK
+KK
+oj
+IC
+Zw
+wv
+hV
+rO
+Xz
+KK
+KK
+oo
+wE
+KK
+KK
+KK
+KK
+KK
+zw
+fx
+Gf
+KK
+QM
+QM
+co
+Vl
+XF
+oj
+ZG
+KK
+oj
+dH
+Jp
+Jp
+dH
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+yl
+oj
+Zw
+oj
+KK
+wm
+"}
+(53,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+mi
+GR
+KK
+Pl
+KK
+GR
+mi
+KK
+KK
+KK
+oj
+LH
+Jp
+CE
+oj
+oj
+wE
+KK
+wE
+gQ
+NP
+Il
+wE
+KK
+KK
+KK
+rN
+SD
+KK
+oj
+QM
+uz
+tr
+Vl
+zv
+vK
+KK
+KK
+oj
+Uk
+wv
+WP
+Uk
+oj
+KK
+KK
+KF
+KF
+KF
+KK
+KK
+oj
+Jp
+oj
+KK
+wm
+"}
+(54,1,1) = {"
+wm
+wm
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+GR
+KK
+KK
+KK
+ag
+ag
+ag
+mi
+GR
+Wr
+KK
+KK
+Pl
+KK
+GR
+KK
+KK
+QM
+AV
+wv
+xJ
+oj
+LX
+kB
+KK
+KK
+Ab
+XU
+ZV
+KK
+KK
+zw
+GR
+DX
+kB
+KK
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+KK
+KK
+QM
+zH
+Jp
+WP
+Yo
+oj
+RF
+GR
+KF
+qh
+KK
+KK
+oj
+oj
+Jp
+oj
+KK
+wm
+"}
+(55,1,1) = {"
+wm
+wm
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+GR
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+QM
+Zw
+Zw
+Zw
+oY
+wE
+kB
+wE
+KK
+kB
+kB
+wE
+zw
+zw
+zw
+KK
+kB
+LI
+KK
+oj
+uz
+iB
+Ex
+Vl
+Mc
+vK
+KK
+KK
+QM
+Cv
+Zw
+WP
+zH
+oj
+KK
+RF
+oj
+oj
+oj
+oj
+oj
+iN
+Wm
+oj
+KK
+wm
+"}
+(56,1,1) = {"
+wm
+wm
+KK
+HB
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+QM
+Zw
+Zw
+cb
+oj
+KK
+wE
+Ya
+HM
+QE
+KK
+wE
+KK
+wE
+wE
+KK
+kB
+LI
+LI
+oj
+Om
+oN
+Mk
+Zw
+Av
+vK
+KK
+KK
+QM
+uz
+Zw
+pn
+SK
+rO
+KK
+RF
+oj
+Dv
+Dv
+uz
+uz
+pn
+oj
+oj
+KK
+wm
+"}
+(57,1,1) = {"
+wm
+wm
+KK
+HB
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+GR
+oj
+oj
+oj
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+LI
+KK
+KK
+QM
+oQ
+Jp
+oj
+oj
+KK
+KK
+XH
+JV
+Rh
+KK
+KK
+HB
+ZG
+RF
+KK
+KK
+KK
+KK
+oj
+Zw
+Jp
+Zw
+Zw
+Na
+vK
+KK
+KK
+QM
+Jp
+Jp
+Zw
+bg
+rO
+KK
+RF
+oj
+PA
+uz
+Jp
+Wy
+Jp
+oj
+GR
+KK
+KK
+"}
+(58,1,1) = {"
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+GR
+KK
+KK
+oj
+di
+YL
+oj
+GR
+GR
+KK
+KK
+KK
+KK
+LI
+LI
+KK
+KK
+oj
+NW
+UX
+oj
+Xh
+KK
+KK
+KK
+KK
+KK
+KK
+HB
+KK
+kB
+KK
+kB
+KK
+KK
+KK
+oY
+Zw
+Zw
+pn
+Ex
+YB
+oj
+KK
+KK
+oj
+Zw
+wv
+WP
+gs
+rO
+RF
+KK
+oj
+uz
+Jp
+pn
+zx
+oj
+oj
+KK
+KK
+KK
+"}
+(59,1,1) = {"
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+oj
+oj
+oj
+rS
+MV
+oj
+KK
+KK
+KK
+KK
+KK
+GR
+LI
+KK
+KK
+KK
+oj
+oj
+oj
+oj
+yl
+qh
+KK
+KK
+GR
+KK
+KK
+KK
+wE
+kB
+kB
+AK
+Ny
+KK
+GR
+oj
+Wm
+Jp
+zR
+QJ
+XV
+oj
+KK
+KK
+oj
+PF
+wv
+WP
+KN
+oj
+RF
+KK
+oj
+Vl
+Jp
+ej
+ej
+oj
+KK
+KK
+KK
+KK
+"}
+(60,1,1) = {"
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+oj
+oj
+oj
+MK
+LW
+Vl
+MV
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wE
+KK
+GR
+KK
+kB
+KK
+EI
+CR
+KK
+KK
+KK
+oj
+oj
+oj
+oj
+oj
+IF
+oj
+GR
+KK
+oj
+Zw
+Jp
+Zw
+Cv
+oj
+RF
+KK
+oj
+Vl
+oj
+oj
+oj
+oj
+KK
+KK
+KK
+KK
+"}
+(61,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+oj
+oj
+wU
+jb
+jx
+Ex
+MK
+oj
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wE
+gu
+oy
+kB
+wE
+KK
+kB
+jH
+qT
+KK
+KK
+KK
+oj
+Ja
+KK
+KK
+oj
+oj
+oj
+KK
+KK
+oj
+My
+My
+iN
+oj
+oj
+KK
+oj
+oj
+Vl
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+"}
+(62,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+oj
+oj
+wU
+xO
+Vq
+uz
+uQ
+oj
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+GR
+KK
+Ir
+GR
+KK
+GR
+KK
+KK
+KK
+hs
+hc
+kB
+KK
+KK
+wE
+QE
+KK
+KK
+KK
+KK
+LZ
+EQ
+dZ
+KK
+KK
+lZ
+KK
+KK
+KK
+oY
+Zd
+Zd
+Zd
+rJ
+oj
+KK
+oj
+tr
+uz
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+"}
+(63,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+oj
+oj
+oj
+oj
+oj
+Kn
+oj
+oj
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+Ir
+Ir
+Ir
+KK
+KK
+KK
+KK
+KK
+kB
+qS
+wE
+KK
+kB
+wE
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+Rv
+Zd
+Zd
+gA
+oj
+KK
+oj
+oj
+PF
+oj
+oj
+GR
+KK
+KK
+KK
+KK
+wm
+"}
+(64,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+oj
+dj
+oj
+oj
+Ci
+Yl
+ji
+MK
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+Ir
+KK
+KK
+KK
+KK
+KK
+KK
+wE
+wE
+KK
+KK
+RF
+RF
+KK
+KK
+KK
+KK
+hR
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+XP
+Zd
+Zd
+fE
+oj
+RF
+KK
+oj
+Zw
+RO
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+"}
+(65,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+oj
+oj
+NW
+oj
+MK
+Yl
+Yl
+Yl
+MK
+oj
+KK
+KK
+QM
+QM
+QM
+QM
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+Sh
+Fs
+KK
+KK
+oj
+oY
+oj
+oj
+oj
+oj
+oj
+yl
+KK
+KK
+KK
+KK
+oj
+Zd
+Zd
+Zd
+oj
+oj
+KK
+RF
+Ne
+Jp
+VC
+oj
+KK
+KK
+ag
+ag
+ag
+KK
+"}
+(66,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+KK
+ag
+ag
+oj
+Lq
+uz
+oj
+MK
+Yl
+Yl
+Ci
+MK
+QM
+QM
+QM
+QM
+uz
+uz
+QM
+QM
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+RF
+Fs
+Ny
+KK
+KK
+oj
+Jp
+Zw
+Jp
+Ac
+sm
+oj
+oj
+oj
+yl
+KK
+KK
+oj
+ty
+oj
+oY
+oj
+KK
+RF
+KK
+oj
+oj
+oj
+oj
+KK
+KK
+ag
+ag
+ag
+KK
+"}
+(67,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+KK
+ag
+KK
+ag
+ag
+oj
+MK
+SG
+oj
+MK
+Ci
+Yl
+Ci
+MK
+Lq
+uz
+uz
+Lq
+uz
+Ci
+Jj
+QM
+QM
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+RE
+KK
+KK
+Ir
+oj
+Jp
+Zw
+Zw
+Zw
+zj
+Cs
+Vm
+oj
+oj
+KK
+KK
+oj
+mq
+oj
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+Lc
+pi
+KK
+KK
+ag
+ag
+ag
+KK
+"}
+(68,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+oj
+MK
+oj
+oj
+oj
+Tq
+Ci
+Ci
+tv
+Vl
+uz
+uz
+uz
+uz
+Ci
+uz
+uz
+QM
+QM
+ZG
+iC
+KK
+iC
+GR
+KK
+KK
+RF
+RF
+KK
+KK
+GR
+KK
+KK
+KK
+GR
+QM
+Nn
+UG
+Zw
+Jp
+Jp
+mX
+Zw
+wl
+oj
+KK
+KK
+oj
+oj
+oj
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+KK
+DS
+KK
+KK
+ag
+ag
+ag
+KK
+"}
+(69,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+KK
+oj
+Cp
+Cp
+Kn
+Ci
+Ci
+Ex
+cj
+ii
+Ci
+Ci
+Yl
+Yl
+Yl
+Ci
+Ci
+Ci
+MK
+lc
+LT
+LT
+RF
+RF
+KK
+RF
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+KK
+oj
+Fo
+lw
+Ub
+Mu
+Zw
+Zw
+FR
+oj
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+CY
+zf
+KK
+KK
+ag
+ag
+ag
+KK
+"}
+(70,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+oj
+Jb
+MK
+GQ
+Ci
+Ci
+Vl
+oF
+Ci
+Ci
+Ci
+mV
+Yl
+Ci
+Ci
+Ci
+Ci
+MK
+lc
+RF
+LT
+LT
+RF
+RF
+RF
+RF
+KK
+KK
+KK
+KK
+RF
+GR
+KK
+KK
+oj
+QM
+QM
+QM
+QM
+oj
+oj
+oY
+oj
+oj
+KK
+KK
+KK
+RF
+KK
+RF
+RF
+RF
+RF
+RF
+oj
+oj
+oj
+oj
+oj
+KK
+ag
+ag
+ag
+ag
+KK
+"}
+(71,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+KK
+oj
+Cp
+oj
+oj
+oj
+Tq
+Ci
+ii
+Ci
+uz
+uz
+uz
+Vl
+uz
+Yl
+uz
+uz
+QM
+QM
+ZG
+vN
+KK
+vN
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+KK
+RF
+RF
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+RF
+RF
+KK
+RF
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+oj
+en
+in
+ZN
+oj
+KK
+ag
+ag
+ag
+KK
+KK
+"}
+(72,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+ag
+ag
+ag
+ag
+KK
+oj
+MK
+gj
+oj
+MK
+Ci
+ii
+ii
+Cp
+WI
+uz
+uz
+fq
+uz
+Ci
+Jj
+QM
+QM
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+GR
+oj
+rO
+rO
+oj
+Hd
+KK
+KK
+KK
+KK
+qh
+KK
+RF
+KK
+oj
+oj
+oY
+oj
+oj
+oj
+oj
+KK
+KK
+KK
+KK
+RF
+oY
+Jp
+Jp
+Zw
+oj
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(73,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+ag
+ag
+KK
+KK
+KK
+oj
+WI
+uz
+oj
+MK
+Ci
+Yl
+Yl
+MK
+QM
+QM
+QM
+QM
+uz
+uz
+QM
+QM
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+GR
+oj
+dK
+dK
+oj
+oY
+oj
+KK
+KK
+GR
+KK
+RF
+KK
+KK
+oj
+uz
+uz
+uz
+uz
+TE
+oj
+KK
+GR
+KK
+QM
+oj
+oj
+rW
+GV
+xw
+oj
+KK
+ag
+KK
+KK
+KK
+KK
+"}
+(74,1,1) = {"
+KK
+KK
+KK
+HB
+KK
+ag
+ag
+ag
+KK
+KK
+oj
+oj
+NW
+oj
+MK
+Yl
+Yl
+Yl
+MK
+oj
+KK
+KK
+QM
+QM
+QM
+QM
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+QM
+QM
+oj
+QO
+bQ
+oj
+Jp
+oj
+oj
+QM
+KK
+KK
+KK
+RF
+KK
+oj
+PA
+EJ
+US
+Vl
+Rk
+oj
+GR
+KK
+KK
+QM
+Wf
+vQ
+CH
+xw
+xw
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+"}
+(75,1,1) = {"
+wm
+KK
+KK
+HB
+KK
+ag
+ag
+ag
+KK
+KK
+KK
+zl
+eM
+oj
+oj
+Yl
+Yl
+Ve
+MK
+oj
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+Ir
+GR
+KK
+KK
+KK
+RF
+KK
+QM
+VD
+Jp
+Zw
+ai
+oj
+eR
+Vl
+zN
+QM
+yl
+KK
+KK
+KK
+KK
+rO
+Xc
+Wi
+Dg
+Ex
+KY
+rO
+KK
+KK
+KK
+QM
+Py
+GV
+GV
+xw
+GV
+Yx
+KK
+nJ
+KK
+KK
+KK
+KK
+"}
+(76,1,1) = {"
+wm
+wm
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+KK
+KK
+zl
+zl
+zl
+zl
+oj
+Kn
+oj
+oj
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+Ir
+Ir
+Ir
+KK
+KK
+KK
+RF
+KK
+QM
+Zw
+Vl
+Vl
+NW
+oj
+kq
+Eb
+NW
+oj
+oj
+ZG
+RF
+KK
+KK
+rO
+Xc
+Wi
+xs
+sa
+KY
+rO
+GR
+KK
+KK
+oj
+Wf
+GI
+xw
+GV
+GV
+Yx
+nJ
+KK
+nJ
+nJ
+KK
+KK
+"}
+(77,1,1) = {"
+wm
+wm
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+GR
+KK
+zl
+zl
+Gu
+Gu
+dR
+Vl
+uQ
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+Ir
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+oY
+oj
+oj
+oj
+QM
+QM
+oj
+oj
+oj
+oj
+KK
+RF
+KK
+KK
+rO
+ba
+Wi
+CJ
+Uz
+Jj
+oj
+KK
+KK
+KK
+oj
+oj
+nr
+xw
+GV
+GV
+Yx
+nJ
+KK
+KK
+nJ
+KK
+KK
+"}
+(78,1,1) = {"
+wm
+wm
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+zl
+zl
+wU
+jb
+jx
+Vl
+Cp
+oj
+GR
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+RF
+KK
+KK
+RF
+QM
+Jp
+km
+tt
+QM
+PF
+Zw
+Jp
+oY
+RF
+RF
+KK
+KK
+oj
+RB
+uz
+uz
+uz
+uz
+oj
+KK
+GR
+KK
+GR
+oj
+oj
+NW
+NW
+LL
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+"}
+(79,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+KK
+zl
+zl
+zl
+MK
+sZ
+uz
+MV
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+LI
+LI
+KK
+RF
+KK
+RF
+KK
+QM
+QM
+GN
+WE
+oj
+Zw
+Zw
+oq
+oj
+oj
+RF
+RF
+KK
+oj
+oj
+oj
+oY
+oj
+oj
+oj
+KK
+KK
+KK
+GR
+GR
+oj
+QM
+QM
+oj
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+"}
+(80,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+zl
+zl
+zl
+rS
+MV
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+GR
+KK
+KK
+Ez
+RF
+RF
+RF
+RF
+RF
+RF
+QM
+Zw
+NW
+oj
+xx
+Ex
+Lt
+QM
+oj
+KK
+RF
+KK
+KK
+KK
+KK
+RF
+KK
+GR
+lZ
+GR
+KK
+LI
+KK
+KK
+KK
+KK
+GR
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+"}
+(81,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+GR
+KK
+GR
+KK
+oj
+di
+MV
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+RF
+RF
+KK
+KK
+RF
+KK
+KK
+GR
+RF
+oY
+Jp
+oj
+oj
+Vl
+Vl
+LH
+oj
+ht
+KK
+RF
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+LI
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+"}
+(82,1,1) = {"
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+zl
+zl
+zl
+zl
+KK
+GR
+KK
+KK
+RF
+RF
+RF
+RF
+RF
+RF
+RF
+RF
+KK
+RF
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+oj
+oj
+IC
+Ai
+NW
+oj
+oj
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+GR
+KK
+KK
+GR
+LI
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+KK
+KK
+KK
+KK
+"}
+(83,1,1) = {"
+wm
+wm
+wm
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+qh
+KK
+KK
+KK
+KK
+RF
+RF
+RF
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+Co
+GR
+yl
+oj
+QM
+rO
+QM
+oj
+KK
+OQ
+KK
+RF
+RF
+RF
+RF
+KK
+RF
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+ag
+ag
+KK
+KK
+KK
+"}
+(84,1,1) = {"
+wm
+wm
+wm
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+GR
+KK
+KK
+KK
+GR
+KK
+oj
+oj
+oj
+oj
+oj
+oj
+oY
+oj
+oj
+GR
+GR
+DJ
+Du
+KK
+RF
+RF
+KK
+KK
+KK
+mF
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+xZ
+wX
+KK
+KK
+KK
+KK
+RF
+KK
+RF
+RF
+RF
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+"}
+(85,1,1) = {"
+wm
+wm
+KK
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+oj
+VD
+uz
+qo
+Uf
+FV
+Zw
+mT
+oj
+KK
+KK
+pK
+lb
+KK
+KK
+RF
+KK
+KK
+KK
+kD
+mM
+GR
+KK
+LI
+KK
+KK
+md
+ss
+md
+KK
+RF
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+RF
+RF
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+"}
+(86,1,1) = {"
+wm
+KK
+KK
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+GR
+KK
+oj
+oj
+oj
+oj
+VT
+uz
+Zw
+Zw
+Eb
+Zw
+oj
+ZG
+KK
+KK
+fu
+KK
+KK
+RF
+KK
+KK
+KK
+va
+hq
+KK
+KK
+KK
+LI
+LI
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+eA
+KK
+KK
+KK
+RF
+KK
+RF
+KK
+GR
+KK
+KK
+KK
+GR
+yl
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+"}
+(87,1,1) = {"
+KK
+KK
+KK
+KK
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+GR
+KK
+KK
+KK
+KK
+GR
+oj
+NW
+uz
+oj
+oj
+oj
+NW
+Vl
+ai
+bQ
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+RF
+KK
+KK
+KK
+KK
+EQ
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+IU
+NH
+KK
+oj
+oj
+oY
+oj
+GR
+RF
+RF
+KK
+KK
+KK
+GR
+yl
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+"}
+(88,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+GR
+KK
+KK
+KK
+oY
+uz
+Vl
+Kc
+Yf
+oj
+oj
+oj
+oj
+oj
+oj
+KK
+KK
+KK
+KK
+LI
+LI
+RF
+RF
+KK
+KK
+KK
+KK
+dn
+BF
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+la
+KK
+KK
+oj
+ZR
+uz
+oj
+QM
+QM
+QM
+RF
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+"}
+(89,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+ag
+ag
+ag
+oj
+cY
+Jp
+Zw
+Zw
+VD
+oj
+KK
+KK
+KK
+vN
+GR
+KK
+GR
+KK
+GR
+LI
+KK
+Fh
+RF
+KK
+KK
+KK
+nG
+WS
+KK
+KK
+bL
+EQ
+KK
+KK
+RF
+KK
+GR
+jT
+Ny
+GR
+oj
+dP
+uz
+Vl
+Jp
+ZR
+oj
+RF
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(90,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+ag
+ag
+ag
+oj
+oj
+oj
+oj
+oj
+oj
+oj
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+GR
+KK
+KK
+KK
+RF
+RF
+KK
+KK
+LI
+LI
+KK
+qR
+lo
+qd
+KK
+KK
+RF
+RF
+KK
+KK
+oj
+oj
+oj
+RR
+uz
+Vl
+Vl
+wZ
+oj
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(91,1,1) = {"
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+ag
+ag
+KK
+KK
+RF
+RF
+KK
+RF
+RF
+RF
+KK
+LI
+KK
+KK
+KK
+KK
+KK
+KK
+RF
+RF
+KK
+GR
+oj
+PF
+Zw
+QJ
+Rm
+MU
+cc
+oj
+oj
+KK
+GR
+GR
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(92,1,1) = {"
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+HB
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+GR
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+RF
+KK
+GR
+RF
+RF
+KK
+RF
+RF
+Ez
+RF
+RF
+RF
+KK
+KK
+KK
+RF
+KK
+KK
+KK
+oj
+oj
+oj
+oj
+oj
+cc
+ag
+qh
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(93,1,1) = {"
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+HB
+HB
+GR
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+qh
+KK
+KK
+KK
+KK
+hR
+KK
+KK
+KK
+GR
+KK
+KK
+RF
+RF
+RF
+RF
+RF
+RF
+KK
+GR
+KK
+ag
+ag
+ag
+ag
+KK
+ag
+ag
+GR
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(94,1,1) = {"
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+HB
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+oj
+oj
+KK
+RF
+oj
+oj
+oj
+oj
+GR
+KK
+KK
+KK
+KK
+KK
+RF
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+yl
+KK
+KK
+KK
+KK
+KK
+Vg
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(95,1,1) = {"
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+HB
+HB
+KK
+KK
+ag
+ag
+ag
+ag
+cc
+cc
+ag
+ag
+ag
+ag
+ag
+cc
+cc
+cc
+cc
+cc
+cc
+oj
+oj
+oj
+Jp
+oj
+KK
+RF
+oj
+FA
+WE
+oj
+KK
+KK
+KK
+oj
+oj
+oj
+oY
+oj
+KK
+KK
+RF
+KK
+KK
+GR
+ag
+ag
+ag
+ag
+ag
+yl
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+"}
+(96,1,1) = {"
+KK
+KK
+KK
+ag
+ag
+KK
+KK
+HB
+HB
+GR
+KK
+KK
+ag
+ag
+cc
+oj
+oj
+oj
+oj
+cc
+cc
+cc
+cc
+NW
+kX
+NW
+cc
+cc
+QM
+wy
+Jp
+Jp
+oj
+KK
+KK
+oj
+xJ
+TC
+oj
+KK
+KK
+KK
+oj
+Jp
+Zw
+Jp
+oj
+KK
+KK
+RF
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+KK
+KK
+FF
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(97,1,1) = {"
+KK
+KK
+KK
+ag
+ag
+GR
+KK
+HB
+HB
+KK
+GR
+ag
+ag
+ag
+cc
+oj
+NW
+uz
+oj
+oj
+uz
+cc
+NW
+dw
+XJ
+bW
+oj
+cc
+QM
+Hh
+Zw
+Jp
+oY
+RF
+RF
+oY
+Zw
+Jp
+oj
+yl
+GR
+KK
+oj
+cY
+uz
+Jp
+QM
+QM
+KK
+RF
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+Wr
+Mb
+KK
+GR
+nm
+KK
+yl
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(98,1,1) = {"
+KK
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+cc
+oj
+sI
+es
+RH
+oj
+LV
+NW
+iq
+XJ
+ad
+Ui
+ia
+cc
+oj
+EM
+Zw
+Jp
+oj
+rz
+RF
+oj
+ky
+Vl
+oj
+oj
+KK
+KK
+QM
+oO
+Jp
+Zw
+VW
+QM
+KK
+RF
+KK
+GR
+ag
+ag
+ag
+ag
+ag
+ag
+Wr
+GR
+KK
+KK
+GR
+KK
+yl
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(99,1,1) = {"
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+GR
+HB
+HB
+kb
+KK
+ag
+ag
+cc
+oj
+oj
+uz
+Lu
+oj
+hb
+XJ
+XJ
+XJ
+XJ
+ID
+io
+fM
+oj
+cY
+Jp
+uz
+QM
+ZG
+KK
+oj
+uz
+Vl
+Zw
+oj
+QM
+yl
+QM
+Vl
+Jp
+Zw
+LH
+QM
+KK
+RF
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+jS
+KK
+KK
+ag
+ag
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(100,1,1) = {"
+KK
+KK
+KK
+ag
+ag
+ag
+KK
+KK
+KK
+HB
+xk
+KK
+ag
+ag
+ag
+cc
+cc
+uz
+iM
+XJ
+Ew
+zT
+XJ
+GL
+mp
+XJ
+UM
+cc
+oj
+Vf
+Zw
+uz
+QM
+GR
+KK
+oj
+oj
+NW
+oO
+oj
+QM
+QM
+QM
+uz
+Eb
+sO
+oj
+oj
+RF
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+Wr
+KK
+jS
+mi
+ag
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(101,1,1) = {"
+KK
+KK
+ag
+ag
+ag
+ag
+GR
+KK
+KK
+KK
+KK
+GR
+ag
+ag
+ag
+cc
+oj
+oj
+XJ
+XJ
+cc
+YU
+Ul
+cE
+CF
+Dx
+Dx
+of
+oj
+oj
+Jp
+Vl
+QM
+KK
+KK
+RF
+oj
+oj
+oj
+oj
+Zw
+Jp
+am
+Zw
+NW
+oj
+oj
+KK
+KK
+KK
+GR
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+Wr
+KK
+GR
+mi
+ag
+GR
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+"}
+(102,1,1) = {"
+KK
+KK
+ag
+ag
+ag
+ag
+HB
+HB
+KK
+LI
+LI
+yR
+KK
+ag
+cc
+cc
+oj
+EZ
+mp
+XJ
+CF
+cc
+iM
+XJ
+pY
+XJ
+XJ
+Dx
+so
+oj
+Jp
+uj
+QM
+GR
+KK
+KK
+KK
+KK
+GR
+oj
+ky
+Zw
+oj
+oj
+oj
+oj
+KK
+RF
+KK
+KK
+KK
+GR
+ag
+ag
+ag
+ag
+ag
+ag
+Wr
+yA
+Wr
+mi
+ag
+ag
+mi
+mi
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(103,1,1) = {"
+KK
+KK
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+LI
+KK
+hW
+KK
+Sl
+cc
+cc
+IN
+es
+es
+XJ
+XJ
+es
+lS
+qp
+qp
+bH
+cc
+cc
+am
+oj
+am
+oj
+oj
+KK
+KK
+KK
+RF
+KK
+KK
+oj
+dS
+Vl
+oj
+qh
+GR
+KK
+KK
+RF
+KK
+GR
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+Wr
+KK
+mi
+mi
+mi
+mi
+mi
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(104,1,1) = {"
+KK
+KK
+ag
+ag
+ag
+KK
+GR
+KK
+GR
+LI
+KK
+KK
+KK
+KK
+KK
+oj
+es
+XJ
+XJ
+Mg
+oj
+cc
+cc
+cc
+cc
+he
+he
+cc
+uz
+Xr
+Vl
+oj
+KK
+KK
+KK
+GR
+RF
+RF
+LI
+oj
+Jp
+Jp
+oY
+KK
+KK
+KK
+RF
+KK
+KK
+KK
+GR
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+GR
+Wr
+mi
+mi
+mi
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+"}
+(105,1,1) = {"
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+GR
+KK
+GR
+KK
+KK
+jm
+es
+oj
+vY
+mi
+HB
+HB
+ag
+ag
+ag
+ag
+ag
+cc
+oj
+gy
+aZ
+oj
+KK
+KK
+KK
+KK
+KK
+Ez
+LI
+oj
+YF
+NW
+oj
+KK
+KK
+RF
+RF
+KK
+KK
+mi
+mi
+mi
+GR
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+GR
+mi
+ag
+ag
+ag
+ag
+GR
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(106,1,1) = {"
+KK
+ag
+ag
+ag
+ag
+KK
+GR
+KK
+KK
+GR
+KK
+AX
+AB
+KK
+KK
+cc
+cc
+oj
+mL
+mi
+mi
+mi
+mi
+mi
+ag
+ag
+ag
+ag
+ag
+EJ
+CJ
+oj
+GR
+GR
+KK
+GR
+KK
+KK
+KK
+oj
+oj
+oj
+oj
+GR
+KK
+RF
+KK
+KK
+KK
+GR
+KK
+mi
+GR
+ag
+ag
+ag
+ag
+mi
+mi
+mi
+mi
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(107,1,1) = {"
+ag
+ag
+ag
+ag
+KK
+ag
+KK
+HB
+KK
+KK
+KK
+KK
+OJ
+yy
+KK
+ag
+ag
+ag
+ag
+vY
+mi
+mi
+mi
+mi
+mi
+mi
+ag
+ag
+ag
+oj
+oj
+oj
+GR
+GR
+KK
+KK
+KK
+KK
+RF
+KK
+GR
+KK
+KK
+KK
+RF
+KK
+KK
+GR
+KK
+KK
+KK
+mi
+mi
+ag
+ag
+mi
+mi
+mi
+mi
+mi
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(108,1,1) = {"
+ag
+ag
+ag
+ag
+KK
+ag
+HB
+HB
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+ag
+ag
+ag
+ag
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+ag
+ag
+mi
+GR
+GR
+Wr
+KK
+GR
+KK
+RF
+KK
+KK
+KK
+RF
+KK
+KK
+KK
+KK
+GR
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+"}
+(109,1,1) = {"
+ag
+ag
+ag
+ag
+KK
+ag
+HB
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+ag
+mi
+mi
+mi
+GR
+KK
+KK
+RF
+RF
+KK
+RF
+RF
+KK
+KK
+KK
+KK
+GR
+GR
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+ag
+KK
+KK
+KK
+KK
+KK
+wm
+"}
+(110,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+FU
+KK
+GR
+KK
+KK
+GR
+HB
+KK
+GR
+ag
+ag
+ag
+ag
+ag
+ag
+mi
+mi
+ag
+mi
+mi
+mi
+mi
+mi
+ag
+ag
+ag
+ag
+mi
+GR
+KK
+KK
+KK
+RF
+RF
+KK
+KK
+KK
+KK
+KK
+KK
+mi
+mi
+mi
+mi
+mi
+mi
+GR
+KK
+mi
+mi
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+"}
+(111,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+ag
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+HB
+HB
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+GR
+Wr
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+GR
+mi
+mi
+mi
+mi
+mi
+mi
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+"}
+(112,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+VZ
+KK
+VZ
+KK
+KK
+GR
+GR
+HB
+HB
+ag
+ag
+ag
+ag
+ag
+ag
+mi
+mi
+ag
+ag
+ag
+ag
+mi
+mi
+mi
+ag
+ag
+mi
+mi
+mi
+mi
+mi
+Wr
+KK
+RF
+RF
+KK
+KK
+GR
+KK
+ag
+ag
+ag
+ag
+mi
+ag
+ag
+ag
+ag
+GR
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+"}
+(113,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+VZ
+KK
+KK
+KK
+HB
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+GR
+ag
+ag
+ag
+ag
+ag
+ag
+mi
+mi
+mi
+GR
+GR
+KK
+KK
+KK
+RF
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+"}
+(114,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+FU
+KK
+GR
+KK
+KK
+ag
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+mi
+GR
+Wr
+KK
+KK
+GR
+KK
+RF
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+"}
+(115,1,1) = {"
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+ag
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+GR
+Wr
+KK
+KK
+RF
+RF
+KK
+RF
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+"}
+(116,1,1) = {"
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+RF
+RF
+KK
+KK
+KK
+GR
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+ag
+KK
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+"}
+(117,1,1) = {"
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+KK
+KK
+ag
+ag
+ag
+ag
+KK
+ag
+ag
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+YO
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+"}
+(118,1,1) = {"
+wm
+ag
+ag
+ag
+ag
+ag
+KK
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+"}
+(119,1,1) = {"
+wm
+KK
+KK
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+LI
+LI
+LI
+ag
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+ag
+ag
+ag
+ag
+ag
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+"}
+(120,1,1) = {"
+wm
+wm
+KK
+ag
+ag
+ag
+KK
+KK
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+GR
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+"}
+(121,1,1) = {"
+wm
+wm
+wm
+ag
+ag
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+KK
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+wm
+"}

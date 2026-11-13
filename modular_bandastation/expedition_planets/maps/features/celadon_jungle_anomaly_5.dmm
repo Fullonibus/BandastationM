@@ -16,9 +16,8 @@
 /turf/open/misc/dirt/jungle/wasteland,
 /area/expedition_planet/barren)
 "R" = (
-/obj/effect/anomaly/bioscrambler{
-	immortal = 1;
-	move_chance = 0
+/obj/effect/anomaly/pulsing/heartbeat{
+	immortal = 1
 	},
 /turf/open/misc/dirt/jungle/wasteland,
 /area/expedition_planet/barren)

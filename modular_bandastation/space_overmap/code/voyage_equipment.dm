@@ -120,10 +120,12 @@ GLOBAL_LIST_EMPTY(stationtrauma_distress_beacons)
 	return ..()
 
 /obj/item/pinpointer/stationtrauma_docking/scan_for_target()
-	beacon = null
-	var/turf/here = get_turf(src)
+	beacon = stationtrauma_docking_beacon(get_turf(src))
+
+/// The turf on `here`'s level leading to the airlock of the destination a vessel holds through a remote seam, or null.
+/proc/stationtrauma_docking_beacon(turf/here)
 	if(!here)
-		return
+		return null
 	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
 		var/datum/stationtrauma_overmap_sector/sector = SSstationtrauma_space_voyage.sectors[sector_id]
 		for(var/ship_id in sector.ships)
@@ -132,16 +134,15 @@ GLOBAL_LIST_EMPTY(stationtrauma_distress_beacons)
 			if(!istype(navigation) || !istype(site) || site.landing || site.physical_docking || QDELETED(site.berth) || !navigation.connection.active)
 				continue
 			if(here.z == site.berth.z)
-				beacon = site.entrance || get_turf(site.berth)
-				return
+				return site.entrance || get_turf(site.berth)
 			if(here.z != navigation.vessel.z)
 				continue
 			var/datum/stationtrauma_map_connection/connection = navigation.connection
 			var/edge = connection.get_ship_edge(navigation.vessel.return_coords(), 1, connection.direction)
 			if(isnull(edge))
 				continue
-			beacon = connection.direction & (EAST|WEST) ? locate(edge, site.berth.y, here.z) : locate(site.berth.x, edge, here.z)
-			return
+			return connection.direction & (EAST|WEST) ? locate(edge, site.berth.y, here.z) : locate(site.berth.x, edge, here.z)
+	return null
 
 /obj/item/pinpointer/stationtrauma_docking/update_overlays()
 	. = ..()

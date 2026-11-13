@@ -64,7 +64,7 @@
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
 "ai" = (
-/obj/machinery/power/shuttle_engine/propulsion/plasma{
+/obj/machinery/power/shuttle_engine/propulsion/standard{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -106,7 +106,7 @@
 	overmap_y = 80;
 	preferred_direction = 4
 	},
-/obj/machinery/power/shuttle_engine/propulsion/plasma{
+/obj/machinery/power/shuttle_engine/propulsion/standard{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,

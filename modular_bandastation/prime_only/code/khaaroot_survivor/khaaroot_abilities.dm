@@ -9,6 +9,11 @@
 	desc = "Внедрить остатки вируса Кхаарут в разум цели, подчиняя её воле улья. Цель должна находиться рядом и не иметь ментальной защиты."
 	button_icon = 'modular_bandastation/prime_only/icons/khaaroot.dmi'
 	button_icon_state = "infect"
+	background_icon = 'modular_bandastation/prime_only/icons/khaaroot.dmi'
+	background_icon_state = "bg_khaaroot"
+	overlay_icon = 'modular_bandastation/prime_only/icons/khaaroot.dmi'
+	overlay_icon_state = "border_khaaroot"
+	active_overlay_icon_state = "border_khaaroot_active"
 	cooldown_time = 30 SECONDS
 	spell_requirements = SPELL_CASTABLE_WITHOUT_INVOCATION
 	cast_range = 1
@@ -180,7 +185,11 @@
 	desc = "Отправить мысленное сообщение всем участникам улья Кхаарут."
 	button_icon = 'modular_bandastation/prime_only/icons/khaaroot.dmi'
 	button_icon_state = "hivemind_com"
-	background_icon_state = "bg_alien"
+	background_icon = 'modular_bandastation/prime_only/icons/khaaroot.dmi'
+	background_icon_state = "bg_khaaroot"
+	overlay_icon = 'modular_bandastation/prime_only/icons/khaaroot.dmi'
+	overlay_icon_state = "border_khaaroot"
+	active_overlay_icon_state = "border_khaaroot_active"
 	check_flags = AB_CHECK_CONSCIOUS
 	cooldown_time = 0
 	melee_cooldown_time = 0
@@ -190,17 +199,18 @@
 	/// Weakref to the hivemind controller
 	var/datum/weakref/hivemind_ref
 
-/datum/action/cooldown/khaaroot_hivemind_comm/New(datum/khaaroot_hivemind/hivemind)
-	. = ..()
+/datum/action/cooldown/khaaroot_hivemind_comm/New(datum/khaaroot_hivemind/hivemind, datum/action_owner)
+	. = ..(action_owner || hivemind)
 	if(hivemind)
 		hivemind_ref = WEAKREF(hivemind)
 
 /datum/action/cooldown/khaaroot_hivemind_comm/IsAvailable(feedback = FALSE)
-	return ..() && (owner.stat != DEAD)
+	var/datum/khaaroot_hivemind/hivemind = hivemind_ref?.resolve()
+	return ..() && hivemind?.can_interact(owner)
 
 /datum/action/cooldown/khaaroot_hivemind_comm/Activate(atom/target)
 	var/datum/khaaroot_hivemind/hivemind = hivemind_ref?.resolve()
-	if(!hivemind)
+	if(!hivemind || !IsAvailable(feedback = TRUE))
 		to_chat(owner, span_warning("Связь с ульем потеряна."))
 		return
 
@@ -211,10 +221,14 @@
 			prompt = "◆ ВАША ТЕКУЩАЯ ЗАДАЧА\n«[antag.thrall_objective]»\n\n[prompt]"
 
 	var/message = tgui_input_text(owner, prompt, "Улей Кхаарут", max_length = MAX_MESSAGE_LEN)
-	if(!message || QDELETED(src) || QDELETED(owner) || !IsAvailable(feedback = TRUE))
+	if(!message || QDELETED(src) || QDELETED(owner) || QDELETED(hivemind) || !IsAvailable(feedback = TRUE))
 		return
 
-	log_directed_talk(owner, hivemind.get_infector_mob(), message, LOG_SAY, "khaaroot hivemind")
+	var/mob/living/infector = hivemind.get_infector_mob()
+	if(infector)
+		log_directed_talk(owner, infector, message, LOG_SAY, "khaaroot hivemind")
+	else
+		owner.log_talk(message, LOG_SAY, tag = "khaaroot hivemind")
 	hivemind.broadcast_message(message, owner)
 	StartCooldown()
 
@@ -223,12 +237,17 @@
 //  CONTROL PANEL
 // ============================================================
 
-/// Innate action for the infector to open the hivemind control panel.
+/// Innate panel action: source management or the member's own task.
 /datum/action/cooldown/khaaroot_hivemind_panel
 	name = "панель Улья Кхаарут"
-	desc = "Открыть панель управления ульем Кхаарут для управления заражёнными."
+	desc = "Открыть панель Улья Кхаарут: управление заражёнными для источника или собственная задача для участника."
 	button_icon = 'modular_bandastation/prime_only/icons/khaaroot.dmi'
 	button_icon_state = "hivemind_panel"
+	background_icon = 'modular_bandastation/prime_only/icons/khaaroot.dmi'
+	background_icon_state = "bg_khaaroot"
+	overlay_icon = 'modular_bandastation/prime_only/icons/khaaroot.dmi'
+	overlay_icon_state = "border_khaaroot"
+	active_overlay_icon_state = "border_khaaroot_active"
 	check_flags = AB_CHECK_CONSCIOUS
 	cooldown_time = 0
 	melee_cooldown_time = 0
@@ -238,21 +257,19 @@
 	/// Weakref to the hivemind controller
 	var/datum/weakref/hivemind_ref
 
-/datum/action/cooldown/khaaroot_hivemind_panel/New(datum/khaaroot_hivemind/hivemind)
-	. = ..()
+/datum/action/cooldown/khaaroot_hivemind_panel/New(datum/khaaroot_hivemind/hivemind, datum/action_owner)
+	. = ..(action_owner || hivemind)
 	if(hivemind)
 		hivemind_ref = WEAKREF(hivemind)
 
 /datum/action/cooldown/khaaroot_hivemind_panel/IsAvailable(feedback = FALSE)
-	return ..() && (owner.stat != DEAD)
+	var/datum/khaaroot_hivemind/hivemind = hivemind_ref?.resolve()
+	return ..() && hivemind?.can_interact(owner)
 
 /datum/action/cooldown/khaaroot_hivemind_panel/Activate(atom/target)
 	var/datum/khaaroot_hivemind/hivemind = hivemind_ref?.resolve()
-	if(!hivemind)
+	if(!hivemind || !IsAvailable(feedback = TRUE))
 		to_chat(owner, span_warning("Связь с ульем потеряна."))
-		return
-	if(!hivemind.is_infector(owner))
-		to_chat(owner, span_warning("Только источник улья может открыть панель управления."))
 		return
 	hivemind.ui_interact(owner)
 	StartCooldown()

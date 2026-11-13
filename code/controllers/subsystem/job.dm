@@ -142,6 +142,7 @@ SUBSYSTEM_DEF(job)
 	overflow_role = new_overflow.type
 	job_debug("SET_OVRFLW: Overflow role set to: [new_overflow.type]")
 
+/// Set up selectable jobs while retaining map-independent playtime categories.
 /datum/controller/subsystem/job/proc/setup_occupations()
 	name_occupations = list()
 	type_occupations = list()
@@ -161,11 +162,20 @@ SUBSYSTEM_DEF(job)
 	var/list/new_joinable_departments = list()
 	var/list/new_joinable_departments_by_type = list()
 	var/list/new_experience_jobs_map = list()
+	var/list/new_department_experience_jobs_map = list()
 
 	for(var/job_type in all_jobs)
 		var/datum/job/job = new job_type()
 		if(!job.config_check())
 			continue
+		// Saved playtime must still count when the current map disables a job.
+		if(job.exp_granted_type)
+			new_experience_jobs_map[job.exp_granted_type] += list(job)
+		if(job.job_flags & JOB_NEW_PLAYER_JOINABLE)
+			for(var/datum/job_department/experience_department as anything in job.departments_list)
+				var/experience_type = initial(experience_department.department_experience_type)
+				if(experience_type)
+					new_department_experience_jobs_map[experience_type] += list(job)
 		if(!job.map_check()) //Even though we initialize before mapping, this is fine because the config is loaded at new
 			log_job_debug("Removed [job.title] due to map config")
 			continue
@@ -192,18 +202,16 @@ SUBSYSTEM_DEF(job)
 				department.add_job(job)
 
 	sortTim(new_all_occupations, GLOBAL_PROC_REF(cmp_job_display_with_departments_asc))
-	for(var/datum/job/job as anything in new_all_occupations)
-		if(!job.exp_granted_type)
-			continue
-		new_experience_jobs_map[job.exp_granted_type] += list(job)
 
 	sortTim(new_joinable_departments_by_type, GLOBAL_PROC_REF(cmp_department_display_asc), associative = TRUE)
 	for(var/department_type in new_joinable_departments_by_type)
 		var/datum/job_department/department = new_joinable_departments_by_type[department_type]
 		sortTim(department.department_jobs, GLOBAL_PROC_REF(cmp_job_display_with_departments_asc))
 		new_joinable_departments += department
-		if(department.department_experience_type)
-			new_experience_jobs_map[department.department_experience_type] = department.department_jobs.Copy()
+
+	// Department membership takes precedence over a job's general experience type.
+	for(var/experience_type in new_department_experience_jobs_map)
+		new_experience_jobs_map[experience_type] = new_department_experience_jobs_map[experience_type]
 
 	all_occupations = new_all_occupations
 	joinable_occupations = sortTim(new_joinable_occupations, GLOBAL_PROC_REF(cmp_job_display_with_departments_asc))
@@ -663,7 +671,7 @@ SUBSYSTEM_DEF(job)
 			var/mob/dead/new_player/player = i
 			if(!(player.ready == PLAYER_READY_TO_PLAY && player.mind && is_unassigned_job(player.mind.assigned_role)))
 				continue //This player is not ready
-			if(is_banned_from(player.ckey, job.title) || QDELETED(player))
+			if(job.is_role_banned(player.ckey) || QDELETED(player))
 				banned++
 				continue
 			if(!job.player_old_enough(player.client))
@@ -965,7 +973,7 @@ SUBSYSTEM_DEF(job)
 		return JOB_UNAVAILABLE_PLAYTIME
 
 	// Run the banned check last since it should be the rarest check to fail and can access the database.
-	if(is_banned_from(player.ckey, possible_job.title))
+	if(possible_job.is_role_banned(player.ckey))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED
 

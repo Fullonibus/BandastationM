@@ -276,6 +276,10 @@
 /datum/job/proc/config_check()
 	return TRUE
 
+/// Whether a role ban blocks this player from the job.
+/datum/job/proc/is_role_banned(player_key)
+	return is_banned_from(player_key, title)
+
 /**
  * # map_check
  *

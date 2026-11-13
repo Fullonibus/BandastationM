@@ -22,9 +22,8 @@
 /turf/template_noop,
 /area/template_noop)
 "R" = (
-/obj/effect/anomaly/bioscrambler{
-	immortal = 1;
-	move_chance = 0
+/obj/effect/anomaly/pulsing/transfusion{
+	immortal = 1
 	},
 /turf/open/water/jungle,
 /area/expedition_planet/barren)

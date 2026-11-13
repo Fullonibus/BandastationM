@@ -1,0 +1,6030 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/WasteRuins/wasteplanet_abandoned_mechbay.dmm
+"aa" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"ad" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"ai" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"ak" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"am" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"an" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"at" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/iron/stairs{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay)
+"ay" = (
+/obj/effect/turf_decal/trimline/neutral/arrow_ccw{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"az" = (
+/obj/structure/sign/warning/radiation,
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"aA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"aD" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/caution/stand_clear/white{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"aI" = (
+/obj/effect/turf_decal/box/white,
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"aV" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/blue,
+/obj/structure/curtain,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"aZ" = (
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay3"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"ba" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"bb" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/arrows{
+	pixel_y = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"be" = (
+/obj/machinery/door/airlock/external{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"bo" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/maintenance/six,
+/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"bv" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"bw" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/caution/stand_clear/white{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"bB" = (
+/obj/machinery/atmospherics/components/trinary/mixer/flipped/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"bG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"bK" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"bS" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Bathroom"
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"bT" = (
+/obj/structure/cable,
+/obj/machinery/camera/autoname{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"cf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"cj" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"cn" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"cx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/mecha_parts/part/gygax_armor,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"cI" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/arrows{
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"cM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/shreds,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"cQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"cV" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"dg" = (
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 20
+	},
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 20
+	},
+/obj/structure/table,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"di" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/holopad,
+/obj/effect/turf_decal/trimline/neutral/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/neutral/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/neutral/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/neutral/corner,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"dj" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/turf_decal/box/white,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"dm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"dn" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_baseinternal"
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"dr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"dy" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"dE" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/machinery/light/directional/south,
+/obj/machinery/button/door/directional/east{
+	id = "exp_celadon_waste_mechbay_mechbay1";
+	pixel_y = -7;
+	name = "Bay Shutters";
+	pixel_x = -24
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"dO" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution/stand_clear/white,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"dV" = (
+/obj/structure/bed/medical/emergency,
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
+/obj/structure/sign/poster/official/bless_this_spess/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"dZ" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"ei" = (
+/obj/machinery/shower/directional/south,
+/obj/structure/curtain,
+/mob/living/basic/trooper/syndicate{
+	desc = "Can an armored mook not shower in peace?"
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"eo" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"ex" = (
+/obj/structure/chair/sofa/right/brown,
+/mob/living/basic/trooper/syndicate{
+	name = "Syndicate Engineer";
+	desc = "Death to bad mechanics."
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"eD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"eI" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/west,
+/mob/living/basic/trooper/syndicate{
+	name = "Syndicate Engineer";
+	desc = "Death to bad mechanics."
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"eO" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"eW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/circuit,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"eY" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"eZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"fc" = (
+/obj/effect/decal/cleanable/ash,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"fz" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"fA" = (
+/obj/structure/table,
+/obj/effect/turf_decal/box,
+/obj/effect/spawner/random/engineering/material,
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 20
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"fM" = (
+/obj/structure/chair/sofa/middle/brown{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"fN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"fU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"fV" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"fZ" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera/autoname{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"gd" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"gi" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/mob/living/basic/trooper/syndicate{
+	name = "Syndicate Launderer";
+	desc = "Death to Dirty Laundry?"
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"gs" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"gv" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"gA" = (
+/obj/effect/gibspawner/human,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"gM" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"gN" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"hl" = (
+/obj/effect/turf_decal/trimline/neutral/filled/corner{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"hn" = (
+/obj/machinery/atmospherics/components/trinary/filter/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"hq" = (
+/obj/machinery/camera/autoname/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"hK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"hO" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/maintenance/two,
+/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"ia" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"if" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"ii" = (
+/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/box,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"il" = (
+/obj/structure/toilet{
+	pixel_y = 11
+	},
+/obj/structure/sink/directional/west,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"iw" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"ix" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"iI" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door/directional/west{
+	id = "exp_celadon_waste_mechbay_baseexterior";
+	name = "Exterior Blast Doors";
+	pixel_y = 9;
+	pixel_x = 7
+	},
+/obj/machinery/button/door/directional/west{
+	id = "exp_celadon_waste_mechbay_baseinternal";
+	name = "Interior Blast Doors";
+	pixel_y = -1;
+	pixel_x = 7
+	},
+/obj/machinery/button/door/directional/west{
+	id = "exp_celadon_waste_mechbay_exitwindow";
+	name = "Viewing Shutters";
+	pixel_y = -1;
+	pixel_x = -4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"iL" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"iO" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"iP" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/machinery/camera/autoname{
+	dir = 10
+	},
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"iS" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_baseexterior"
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"jb" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/item/shard,
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"jf" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/ash/large,
+/obj/machinery/camera/autoname/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"jg" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"jl" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"jm" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"jr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/camera/autoname/directional/south,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"jB" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/arrows{
+	pixel_y = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"jJ" = (
+/obj/machinery/camera/autoname{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"jP" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/machinery/camera/directional/north,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"ka" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"ki" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"kj" = (
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"kl" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"km" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"kp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"kq" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"kv" = (
+/obj/machinery/door/airlock/medical,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"kw" = (
+/obj/machinery/mecha_part_fabricator,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"kC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"kE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"kL" = (
+/obj/structure/cable,
+/obj/machinery/light/broken/directional/west,
+/obj/effect/turf_decal/trimline/neutral/filled/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"kP" = (
+/obj/effect/turf_decal/box/white,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"lq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/caution/stand_clear/white,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"lu" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/orange,
+/obj/structure/curtain,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"lv" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera/autoname/directional/east,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"lx" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/box/white,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"lB" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"lH" = (
+/obj/effect/turf_decal/caution/stand_clear/white,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"lL" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"lP" = (
+/obj/structure/sign/warning/secure_area,
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"mb" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/greenglow,
+/obj/machinery/light/floor,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"mc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"mt" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"mu" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay)
+"my" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"mA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/camera/autoname/directional/west,
+/obj/structure/cable,
+/mob/living/basic/trooper/syndicate{
+	name = "Syndicate Engineer";
+	desc = "Death to bad mechanics."
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"mD" = (
+/obj/structure/bed/medical/emergency,
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"mK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"mS" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"nc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"nf" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"nj" = (
+/obj/structure/flora/rock,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"nn" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/highsecurity{
+	name = "Bay 1"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"nx" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/mob/living/basic/trooper/syndicate{
+	name = "Syndicate Engineer";
+	desc = "Death to bad mechanics."
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"nz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/structure/cable,
+/obj/structure/sign/poster/official/safety_internals/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"nG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"nI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"nN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"nV" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"nZ" = (
+/turf/closed/wall/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"od" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"oe" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/firedoor,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"og" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"op" = (
+/obj/effect/turf_decal/caution/stand_clear/white,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"ot" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"oH" = (
+/obj/effect/gibspawner/human,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"oJ" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/camera/autoname{
+	dir = 9
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"oK" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"oN" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"oO" = (
+/obj/effect/mine/shrapnel,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"oQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay2"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"oR" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"oS" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"oZ" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning,
+/obj/item/shard,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"ph" = (
+/obj/machinery/light/dim/directional/west,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"pl" = (
+/obj/machinery/mech_bay_recharge_port,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"pm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"pq" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/machinery/camera/autoname/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"pt" = (
+/obj/structure/cable,
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"pu" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay1"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"pw" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"pE" = (
+/turf/closed/wall/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"qc" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"qj" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"ql" = (
+/obj/machinery/camera/autoname/directional/south,
+/obj/machinery/light/directional/south,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"qo" = (
+/obj/effect/turf_decal/trimline/neutral/filled/corner,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/firealarm/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"qy" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"qC" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"qF" = (
+/obj/structure/rack,
+/obj/item/weldingtool/largetank,
+/obj/item/weldingtool/largetank,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"qL" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/highsecurity{
+	name = "Bay 2"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"qV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/syndicate/melee{
+	name = "Syndicate Mech Pilot"
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"rb" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/turf_decal/box/white,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"rc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/hatch{
+	name = "Crew Quarters";
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"rn" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"rv" = (
+/obj/effect/turf_decal/box/white,
+/obj/machinery/light/broken/directional/south,
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"rC" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"rI" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"sh" = (
+/obj/structure/railing/corner,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"sk" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"so" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/obj/effect/turf_decal/box,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"sv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"sA" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"sK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"sW" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/light/dim/directional/east,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"tb" = (
+/obj/effect/turf_decal/caution/stand_clear/white{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"tq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/structure/sign/warning/gas_mask/directional/west,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"tO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"tP" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay2"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"tR" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Laundry";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"tV" = (
+/obj/effect/turf_decal/trimline/neutral/filled/corner{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"tY" = (
+/obj/structure/table/reinforced,
+/obj/item/clipboard{
+	pixel_y = 5;
+	pixel_x = 7
+	},
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/obj/item/stamp/law,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"ub" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"uc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/structure/mecha_wreckage/gygax,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"ud" = (
+/obj/machinery/light/dim/directional/north,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"ul" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay)
+"up" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"uw" = (
+/obj/structure/closet/emcloset,
+/obj/item/storage/medkit/toxin,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/item/storage/medkit/regular,
+/obj/item/storage/medkit/regular,
+/obj/item/storage/medkit/regular,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"ux" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"uH" = (
+/obj/structure/railing,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"uK" = (
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_baseexterior"
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"uR" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/camera/autoname{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"uU" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"uX" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"vd" = (
+/turf/template_noop,
+/area/template_noop)
+"ve" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor/shutters{
+	id = "exp_celadon_waste_mechbay_exitwindow";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"vf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/camera/autoname/directional/west,
+/obj/machinery/light/dim/directional/west,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"vq" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"vw" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"vz" = (
+/obj/structure/table/reinforced,
+/obj/item/food/donut/jelly/choco,
+/obj/effect/turf_decal/box/white,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"vB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"vI" = (
+/obj/machinery/computer/mech_bay_power_console{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"vN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"vZ" = (
+/obj/effect/turf_decal/trimline/neutral/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"wl" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/camera/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"ws" = (
+/obj/structure/bed/dogbed{
+	name = "McKinnon's Bed"
+	},
+/obj/machinery/light/directional/east,
+/mob/living/basic/pet/fox{
+	dir = 8;
+	name = "McKinnon"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"wt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"wu" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"wx" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_baseinternal"
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"wz" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"wA" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/water_cooler,
+/obj/structure/cable,
+/obj/machinery/light/small/broken/directional/west,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"wF" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/turf_decal/box,
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/food/salt,
+/obj/item/soap/nanotrasen,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"wG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/iron/recharge_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"wN" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"wS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/innards,
+/obj/structure/mecha_wreckage/gygax/dark{
+	name = "515 EX 'Lucky #2'"
+	},
+/turf/open/floor/iron/recharge_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"wZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay3"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"xd" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"xe" = (
+/obj/effect/turf_decal/trimline/neutral/filled/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/glasses/hud/diagnostic,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"xf" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"xn" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"xH" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"xJ" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Ready Room"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"xK" = (
+/obj/structure/rack,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"xP" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"xU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"xY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"ya" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"yj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/dark,
+/obj/machinery/door/firedoor,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"yx" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/machinery/firealarm/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"yG" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Crew Quarters";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"yJ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/box,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/power/port_gen/pacman/super{
+	anchored = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"yK" = (
+/obj/machinery/computer/mech_bay_power_console{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"yU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/caution/stand_clear/white,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"yW" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"zk" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay4"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"zn" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/effect/turf_decal/box,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"zq" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"zt" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/cosmos,
+/obj/structure/curtain,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"zu" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/arrows{
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"zF" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"zQ" = (
+/obj/structure/bed/medical/emergency,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Ac" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/machinery/camera/autoname/directional/west,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Af" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/green,
+/obj/structure/curtain,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Aj" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"As" = (
+/obj/machinery/computer/security{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/north,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"Bf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Bk" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/plastic,
+/mob/living/basic/trooper/syndicate/ranged/shotgun,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Bp" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Bq" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Bu" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"Bv" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Bz" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stock_parts/capacitor/adv,
+/obj/item/stock_parts/capacitor/adv,
+/obj/item/stock_parts/power_store/cell/super,
+/obj/item/stock_parts/power_store/cell/super,
+/obj/item/stock_parts/scanning_module/adv,
+/obj/item/stock_parts/scanning_module/adv,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"BD" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/machinery/camera/autoname/directional/west,
+/mob/living/basic/trooper/syndicate/ranged/smg/space,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"BI" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/chair/office{
+	dir = 4;
+	name = "Command and Control";
+	desc = "You sit in this. It feels very authoritive."
+	},
+/obj/machinery/turretid{
+	pixel_y = 29;
+	pixel_x = 32
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"BW" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"BZ" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Cs" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"Ct" = (
+/obj/structure/table,
+/obj/effect/spawner/random/clothing/pirate_or_bandana,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Cv" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"CA" = (
+/obj/structure/cable,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"CG" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"CH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"CP" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"CX" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/syndicate/melee{
+	name = "Syndicate Mech Pilot"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Df" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/arrows{
+	pixel_y = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Dp" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"Dq" = (
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Dt" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/camera/directional/north,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"DA" = (
+/obj/structure/rack,
+/obj/item/wrench,
+/obj/item/crowbar,
+/obj/item/screwdriver,
+/obj/item/stack/cable_coil,
+/obj/effect/turf_decal/box/white,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/light/directional/east,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"DH" = (
+/obj/effect/turf_decal/trimline/neutral/filled/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"DK" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"DQ" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/highsecurity{
+	name = "Bay 4"
+	},
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"DS" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"En" = (
+/obj/effect/turf_decal/siding/dark,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Eo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/circuit,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Es" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Eu" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/four,
+/obj/effect/turf_decal/box/white,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Ev" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"EA" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"EL" = (
+/obj/effect/turf_decal/trimline/neutral/filled/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"EP" = (
+/obj/machinery/light/dim/directional/south,
+/mob/living/basic/trooper/syndicate/melee{
+	name = "Syndicate Mech Pilot"
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"EY" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Fn" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/machinery/light/broken/directional/north,
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Fp" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"FA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"FI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"FO" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/light/small/broken/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"FS" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay4"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"FT" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay1"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"FU" = (
+/obj/effect/turf_decal/trimline/neutral/filled/corner,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Ge" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Gh" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Gj" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/light/broken/directional/north,
+/obj/machinery/button/door/directional/east{
+	id = "exp_celadon_waste_mechbay_mechbay3";
+	pixel_y = 7;
+	name = "Bay Shutters";
+	pixel_x = -24
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Gq" = (
+/obj/structure/sign/warning/radiation,
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Gs" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/sign/poster/official/help_others/directional/west,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Gx" = (
+/obj/structure/sign/warning/secure_area{
+	pixel_y = 8
+	},
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Gy" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/black,
+/obj/structure/curtain,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"GA" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"GD" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/caution/stand_clear/white{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"GO" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"GY" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/south,
+/mob/living/basic/trooper/syndicate/melee{
+	name = "Syndicate Mech Pilot"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Hb" = (
+/obj/structure/chair/sofa/corner/brown,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Hg" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Hi" = (
+/obj/effect/turf_decal/trimline/neutral/arrow_ccw{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"HD" = (
+/obj/structure/chair/sofa/middle/brown{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"HI" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/machinery/light/floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"HU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"HV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay3"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Ic" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/gibspawner/human,
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Ie" = (
+/obj/structure/sign/warning/radiation,
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"ID" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"IR" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"IS" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/box,
+/obj/machinery/power/smes,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"IW" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Jb" = (
+/obj/structure/rack,
+/obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Jd" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"Jm" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"Jx" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"JC" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/light/broken/directional/south,
+/obj/machinery/button/door/directional/east{
+	id = "exp_celadon_waste_mechbay_mechbay2";
+	pixel_y = -7;
+	name = "Bay Shutters";
+	pixel_x = -24
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"JD" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"JG" = (
+/obj/structure/chair/sofa/left/brown{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"JH" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"JL" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"JM" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"JN" = (
+/obj/structure/rack,
+/obj/item/mecha_ammo/lmg,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"JO" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"JQ" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"JR" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/box/white,
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"JT" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/four,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Kl" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Kp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Kt" = (
+/obj/structure/tank_dispenser,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Kw" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"KA" = (
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_baseexterior"
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"KO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"KU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"KV" = (
+/obj/machinery/computer/mech_bay_power_console{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Le" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Mech Lab";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Lj" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Lx" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"Lz" = (
+/obj/machinery/atmospherics/components/trinary/filter/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"LE" = (
+/obj/machinery/autolathe,
+/obj/effect/turf_decal/box,
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"LJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"LM" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"LV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Mk" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay4"
+	},
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Mm" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Mn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Mq" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Mu" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 9;
+	name = "rusting turret";
+	desc = "A ballistic machine gun auto-turret, it's woven into the hexacrete walls. Despite that, it's age is clear, decay has set in."
+	},
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"Mv" = (
+/obj/machinery/light/small/directional/south,
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"MF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"MH" = (
+/obj/structure/flora/rock/pile,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"MV" = (
+/obj/effect/turf_decal/caution/stand_clear/white{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Nt" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"NB" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"NC" = (
+/obj/structure/table,
+/obj/item/toy/cards/deck,
+/obj/item/reagent_containers/cup/glass/bottle/rum{
+	pixel_y = 7;
+	pixel_x = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"NL" = (
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"NM" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/mecha_wreckage/gygax/dark,
+/turf/open/floor/iron/recharge_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"NR" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/turf_decal/siding/dark,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Ob" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Od" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/highsecurity{
+	name = "Bay 3"
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Oo" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Or" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/box/white,
+/obj/structure/sign/poster/official/build/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Os" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"Ox" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/door/airlock/engineering{
+	name = "Air Intake"
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Oz" = (
+/obj/machinery/camera/autoname{
+	dir = 5
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"OE" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"OG" = (
+/obj/machinery/autolathe,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"OJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"OK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"OL" = (
+/obj/effect/turf_decal/trimline/neutral/arrow_ccw{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"OQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"OW" = (
+/obj/machinery/power/port_gen/pacman/super{
+	anchored = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/box,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"Pb" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution/stand_clear/white,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/neutral/line{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Pc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/sign/poster/official/get_your_legs/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Pr" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/brown,
+/obj/structure/curtain,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Ps" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Pz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/south,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"PB" = (
+/obj/effect/turf_decal/trimline/neutral/arrow_ccw{
+	dir = 6;
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"PD" = (
+/obj/structure/rack,
+/obj/item/weldingtool/largetank,
+/obj/item/weldingtool/largetank,
+/obj/item/weldingtool/largetank,
+/obj/item/clothing/mask/gas/welding,
+/obj/item/clothing/mask/gas/welding,
+/obj/item/clothing/mask/gas/welding,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/belt/utility/full,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"PH" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"PO" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"PY" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"PZ" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/washing_machine,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Qf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Qm" = (
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"QI" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"QJ" = (
+/obj/machinery/camera/autoname/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"QK" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/greenglow,
+/obj/machinery/light/floor,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"QQ" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"QZ" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Rd" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Rk" = (
+/obj/structure/table/reinforced,
+/obj/structure/railing,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Rn" = (
+/obj/item/radio/intercom/directional/north{
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Ru" = (
+/obj/structure/sign/warning/gas_mask,
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"RE" = (
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"RM" = (
+/obj/structure/rack,
+/obj/item/mecha_ammo/lmg,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"RR" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Sk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"Sl" = (
+/obj/effect/turf_decal/trimline/neutral/arrow_ccw{
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Sp" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Ss" = (
+/obj/effect/turf_decal/trimline/neutral/arrow_ccw{
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"SG" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"SL" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/washing_machine,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"SM" = (
+/obj/effect/turf_decal/box/white,
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"SO" = (
+/obj/structure/railing,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"SQ" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/official/cleanliness/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"SV" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_baseinternal"
+	},
+/obj/structure/cable,
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"SY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/camera/autoname/directional/west,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Td" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Tg" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Tj" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"TA" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"TK" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"TW" = (
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/mob/living/basic/trooper/syndicate/ranged/shotgun,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"TZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/light/broken/directional/east,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Ub" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/mecha_wreckage/gygax/dark,
+/turf/open/floor/iron/recharge_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Ud" = (
+/obj/effect/turf_decal/trimline/neutral/line{
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Ug" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"Uh" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Uo" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/box/white,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/rag,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Ut" = (
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"UF" = (
+/obj/structure/table/reinforced,
+/obj/item/radio/intercom/directional/east,
+/obj/item/paperplane{
+	pixel_y = -3;
+	pixel_x = -5
+	},
+/obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 10
+	},
+/obj/item/folder/red,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"UJ" = (
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"UT" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/mob/living/basic/trooper/syndicate/ranged/smg/space,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Vb" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"Ve" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Vl" = (
+/obj/structure/cable,
+/obj/structure/closet/secure_closet{
+	name = "Pilot Equipment"
+	},
+/obj/item/clothing/head/helmet/space/eva,
+/obj/item/clothing/under/costume/mech_suit,
+/obj/item/clothing/glasses/heat,
+/obj/item/clothing/glasses/cold,
+/obj/effect/turf_decal/box,
+/obj/item/clothing/glasses/sunglasses{
+	name = "blastglasses"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Vp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Vs" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"VM" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"VW" = (
+/obj/effect/gibspawner/human,
+/obj/effect/turf_decal/box/white,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Wd" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"We" = (
+/obj/machinery/light_switch/directional/west{
+	pixel_x = 22
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Wh" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/light/broken/directional/north,
+/obj/machinery/button/door/directional/east{
+	id = "exp_celadon_waste_mechbay_mechbay4";
+	pixel_y = 7;
+	name = "Bay Shutters";
+	pixel_x = -24
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Wi" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/caution/stand_clear/white,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"Wn" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/effect/turf_decal/trimline/neutral/line{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"WA" = (
+/obj/machinery/light/floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"WC" = (
+/turf/closed/wall/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"WS" = (
+/obj/machinery/atmospherics/components/unary/passive_vent/layer4,
+/obj/effect/turf_decal/box,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"Xb" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"Xg" = (
+/obj/structure/table/reinforced,
+/obj/item/kitchen/fork,
+/obj/machinery/light/small/broken/directional/north,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Xp" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Xr" = (
+/obj/structure/closet/crate,
+/obj/effect/turf_decal/box,
+/obj/item/mop,
+/obj/item/reagent_containers/cup/bucket,
+/obj/effect/spawner/random/maintenance/two,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Xs" = (
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"XC" = (
+/obj/machinery/power/smes/magical,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"XF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"XG" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay2"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"XH" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stock_parts/capacitor/adv,
+/obj/item/stock_parts/capacitor/adv,
+/obj/item/stock_parts/power_store/cell/super,
+/obj/item/stock_parts/power_store/cell/super,
+/obj/item/stock_parts/scanning_module/adv,
+/obj/item/stock_parts/scanning_module/adv,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"XJ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/concrete/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"XO" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/door/firedoor,
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"XT" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 6
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"XW" = (
+/obj/structure/closet/secure_closet{
+	name = "Pilot Equipment"
+	},
+/obj/item/clothing/head/helmet/space/eva,
+/obj/item/clothing/under/costume/mech_suit,
+/obj/item/clothing/glasses/heat,
+/obj/item/clothing/glasses/cold,
+/obj/item/clothing/glasses/orange,
+/obj/effect/turf_decal/box,
+/obj/item/clothing/glasses/sunglasses{
+	name = "blastglasses"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"XZ" = (
+/obj/structure/closet/secure_closet{
+	name = "Pilot Equipment"
+	},
+/obj/item/clothing/head/helmet/space/eva,
+/obj/item/clothing/under/costume/mech_suit,
+/obj/item/clothing/glasses/heat,
+/obj/item/clothing/glasses/cold,
+/obj/effect/turf_decal/box,
+/obj/item/clothing/glasses/sunglasses{
+	name = "blastglasses"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"Yb" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Ye" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Mech Lab";
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Yg" = (
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_waste_mechbay_mechbay1"
+	},
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay1)
+"Yo" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/bay2)
+"Ys" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Command and Control"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/commandcontrol)
+"YA" = (
+/turf/closed/wall/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"YQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	pixel_y = -8;
+	dir = 1
+	},
+/obj/structure/sign/warning/gas_mask/directional/east,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mainhall)
+"YT" = (
+/turf/closed/wall/concrete,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"YU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/mechlab)
+"Zl" = (
+/turf/open/floor/concrete/slab_1,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+"Zt" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"ZG" = (
+/obj/structure/chair/sofa/corner/brown{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/crewquarters)
+"ZN" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/ruin/wasteplanet/abandoned_mechbay/engineering)
+"ZV" = (
+/obj/machinery/light/small/directional/east,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_mechbay/exterior)
+
+(1,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+vd
+ad
+Os
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(2,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(3,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(4,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+Os
+Os
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(5,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+Ug
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+vd
+vd
+Os
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(6,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+ad
+Ug
+Ug
+PH
+nj
+Ug
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+vd
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(7,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+Ug
+PH
+Ug
+Ug
+sh
+DS
+DS
+DS
+Cv
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(8,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+Ug
+MH
+Ug
+PH
+Ug
+SO
+WA
+QJ
+WA
+TA
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+Os
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(9,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+Ug
+Ug
+PH
+Ug
+Ug
+PH
+SO
+mc
+Mu
+at
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+Ug
+Ug
+ad
+ad
+ad
+ad
+vd
+vd
+ul
+mu
+vd
+vd
+vd
+"}
+(10,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+PH
+Ug
+sh
+DS
+DS
+DS
+DS
+Jm
+Sk
+ID
+NL
+ID
+YT
+YT
+YT
+YT
+YT
+YT
+YT
+ID
+ID
+Ug
+ad
+ad
+ad
+ad
+Os
+vd
+mu
+vd
+vd
+vd
+vd
+"}
+(11,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+Ug
+nj
+PH
+Ug
+uH
+HI
+Aj
+bv
+Aj
+gd
+bv
+az
+wu
+YT
+YT
+kw
+Eo
+kw
+eW
+LE
+YT
+YT
+ID
+ID
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+vd
+mu
+vd
+vd
+"}
+(12,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+PH
+Ug
+PH
+Ug
+SO
+iO
+Sk
+MF
+ii
+ii
+hq
+Ru
+Qf
+YT
+vz
+Bk
+tO
+JR
+tO
+Ut
+rv
+YT
+nI
+ID
+ID
+Os
+ad
+ad
+ad
+ad
+ad
+ad
+Os
+vd
+vd
+"}
+(13,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+Os
+ad
+ad
+PH
+Ug
+MH
+Ug
+Ug
+uH
+CG
+MF
+Mu
+OQ
+OQ
+ID
+ID
+be
+YT
+wl
+RR
+km
+TW
+KU
+if
+fc
+kv
+Mn
+dV
+ID
+ID
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+vd
+vd
+"}
+(14,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+Ug
+Ug
+oO
+PH
+PH
+SO
+Xb
+jJ
+ID
+Lz
+mA
+bB
+nz
+Td
+Ox
+Vs
+Or
+UJ
+DA
+Kw
+Uo
+Vp
+YT
+YU
+mS
+zQ
+ID
+ID
+Os
+ad
+ad
+ad
+ad
+ad
+mu
+mu
+"}
+(15,1,1) = {"
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+Ug
+Ug
+Ug
+PH
+Ug
+SO
+zF
+WS
+EA
+Kl
+hn
+FO
+xU
+Mv
+YT
+Eu
+YT
+Ye
+YT
+Le
+YT
+lx
+YT
+uw
+uR
+qC
+mD
+ID
+ID
+ad
+ad
+ad
+ad
+ad
+vd
+vd
+"}
+(16,1,1) = {"
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+PH
+Ug
+Ug
+Ug
+Ug
+yW
+Jx
+Jx
+Jx
+LV
+sk
+og
+og
+og
+og
+og
+og
+vN
+wA
+kE
+jm
+jm
+jm
+jm
+jm
+jm
+jm
+jm
+jm
+ad
+ad
+ad
+ad
+ad
+Os
+vd
+"}
+(17,1,1) = {"
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+Jx
+SL
+gi
+og
+rb
+qo
+eI
+iP
+IW
+dE
+lP
+Ge
+Sl
+eY
+Gx
+Gj
+ba
+fZ
+jb
+hl
+SM
+jm
+jm
+ad
+Os
+ad
+ad
+ad
+ad
+vd
+"}
+(18,1,1) = {"
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+Ug
+Ug
+Ug
+Ug
+Ug
+PH
+Jx
+PZ
+Ps
+og
+GA
+mt
+vI
+pl
+aa
+zu
+FT
+eo
+nV
+jB
+wZ
+up
+oS
+JM
+oH
+Ob
+VW
+jm
+jm
+ad
+ad
+ad
+ad
+ad
+vd
+vd
+"}
+(19,1,1) = {"
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+PH
+nj
+PH
+Ug
+oO
+MH
+Jx
+Xr
+jr
+og
+PD
+oZ
+QZ
+wG
+uc
+GD
+Yg
+yU
+qj
+aD
+aZ
+lq
+gA
+Ub
+xn
+am
+qF
+jm
+jm
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+"}
+(20,1,1) = {"
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+PH
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+Jx
+wF
+qc
+og
+JN
+bK
+nf
+cx
+ki
+cI
+pu
+Rd
+ot
+Df
+HV
+Wd
+KO
+Yb
+yK
+am
+xK
+jm
+jm
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+"}
+(21,1,1) = {"
+vd
+vd
+ad
+Os
+ad
+ad
+ad
+ad
+ad
+PH
+Ug
+Ug
+oO
+Ug
+Ug
+Ug
+ZV
+Jx
+Rk
+dm
+og
+XH
+DH
+Xs
+cV
+my
+GY
+og
+oJ
+Hi
+lL
+jm
+eO
+SG
+Mm
+Ic
+EL
+Jb
+jm
+jm
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+"}
+(22,1,1) = {"
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+Ug
+Ug
+MH
+Ug
+Ug
+ak
+Mu
+Jx
+pE
+tR
+og
+og
+nn
+og
+og
+og
+og
+og
+mb
+DK
+EY
+jm
+jm
+jm
+jm
+jm
+Od
+jm
+jm
+jm
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+"}
+(23,1,1) = {"
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+Ug
+Ug
+Ug
+Ug
+Ug
+nj
+Jx
+Xg
+BD
+Gh
+cj
+Gs
+dr
+Kp
+dr
+vf
+MV
+kp
+oR
+ot
+bG
+Bf
+lH
+kC
+SY
+wt
+jl
+Yo
+EP
+jm
+ad
+ad
+Os
+vd
+vd
+vd
+vd
+"}
+(24,1,1) = {"
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+oO
+Ug
+Ug
+Ug
+Ug
+PH
+Jx
+Jx
+JD
+uX
+Es
+zq
+sv
+fN
+XF
+XF
+hK
+tb
+ia
+CH
+rC
+an
+ix
+op
+sW
+nc
+Pc
+nc
+uU
+kj
+jm
+ad
+ad
+ad
+ad
+ad
+vd
+vd
+"}
+(25,1,1) = {"
+vd
+vd
+ad
+vd
+vd
+ad
+ad
+ad
+Ug
+Ug
+nj
+Ug
+oO
+ad
+ad
+Jx
+pE
+pE
+pE
+yG
+og
+og
+qL
+og
+og
+og
+og
+og
+QK
+PY
+UT
+jm
+jm
+jm
+jm
+jm
+DQ
+jm
+jm
+jm
+ad
+ad
+ad
+ad
+Os
+vd
+vd
+"}
+(26,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+Ug
+Ug
+Ug
+Ug
+ad
+ad
+Jx
+Jx
+lu
+Af
+zt
+cf
+og
+RM
+FU
+vq
+yx
+ya
+JC
+lP
+jP
+Hi
+Dq
+Gx
+Wh
+Bp
+SQ
+xf
+vZ
+JT
+jm
+jm
+ad
+Os
+ad
+ad
+ad
+vd
+vd
+"}
+(27,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+Ug
+ad
+ad
+ad
+ad
+Jx
+Jx
+pE
+Rn
+vw
+qV
+NB
+og
+Bz
+Lj
+vI
+pl
+Sp
+zu
+tP
+eo
+nV
+bb
+FS
+Xp
+Nt
+CX
+ai
+dZ
+hO
+jm
+jm
+ad
+ad
+ad
+ad
+vd
+vd
+vd
+"}
+(28,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+Os
+ad
+ad
+Jx
+Jx
+ei
+pE
+Pr
+Gy
+aV
+cf
+og
+PD
+bK
+QZ
+wS
+mK
+bw
+XG
+Wi
+xd
+aD
+Mk
+lq
+od
+NM
+rI
+ux
+bo
+jm
+jm
+ad
+ad
+Os
+vd
+vd
+vd
+vd
+"}
+(29,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+Jx
+pE
+il
+bS
+We
+pq
+TZ
+ub
+og
+GA
+kq
+nf
+aA
+cM
+cI
+oQ
+Rd
+Ud
+Df
+zk
+Wd
+Ev
+Yb
+KV
+JO
+kP
+jm
+jm
+ad
+ad
+vd
+ad
+vd
+vd
+vd
+"}
+(30,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+Jx
+pE
+pE
+pE
+pE
+pE
+pE
+rc
+og
+dj
+xe
+GO
+jf
+sA
+QI
+og
+PO
+Ss
+lL
+jm
+Fn
+JL
+lv
+Ve
+tV
+aI
+jm
+jm
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+"}
+(31,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+WC
+nZ
+nZ
+nZ
+gM
+IR
+nZ
+xY
+og
+og
+og
+og
+og
+og
+og
+og
+JQ
+OE
+EY
+jm
+jm
+jm
+jm
+jm
+jm
+jm
+jm
+jm
+ad
+ad
+ad
+ad
+ad
+ad
+vd
+"}
+(32,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+Os
+WC
+nZ
+As
+tY
+di
+Bu
+Ys
+fU
+Hg
+Zt
+kl
+kL
+CP
+HU
+Bv
+xJ
+JH
+Oo
+JH
+ZN
+fz
+Lx
+bT
+oN
+cQ
+YA
+VM
+VM
+ad
+Os
+ad
+ad
+vd
+vd
+vd
+"}
+(33,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+Os
+ad
+WC
+nZ
+BI
+wN
+Cs
+Pz
+nZ
+Kt
+BW
+Qm
+RE
+ex
+NC
+Ct
+JG
+pE
+Tg
+lB
+NR
+YA
+nx
+eD
+wz
+ka
+sK
+YA
+VM
+ad
+ad
+ad
+ad
+Os
+vd
+vd
+vd
+"}
+(34,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+Ug
+ad
+ad
+ad
+WC
+nZ
+iI
+UF
+ws
+Jd
+nZ
+rn
+Vl
+XZ
+XW
+Hb
+HD
+fM
+ZG
+pE
+Dt
+QQ
+En
+YA
+so
+OK
+OG
+ka
+qy
+YA
+VM
+ad
+Os
+ad
+ad
+ad
+vd
+vd
+vd
+"}
+(35,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+Ug
+Ug
+Ug
+Oz
+Ie
+WC
+ve
+ve
+WC
+nZ
+nZ
+pE
+pE
+pE
+pE
+pE
+pE
+pE
+pE
+pE
+ud
+oe
+yj
+YA
+zn
+OK
+fA
+ka
+qy
+YA
+VM
+ad
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+"}
+(36,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+Ug
+Ug
+Ug
+Zl
+Vb
+KA
+XJ
+oK
+wx
+tq
+BZ
+nG
+Ac
+FI
+LJ
+Bq
+Bq
+Ac
+Uh
+ph
+vB
+xH
+En
+YA
+dg
+FA
+Dp
+ka
+eZ
+YA
+VM
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+"}
+(37,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+Ug
+Ug
+Ug
+Zl
+gs
+iS
+dO
+dy
+SV
+Pb
+Wn
+iL
+ay
+LM
+XO
+cn
+cn
+cn
+OL
+cn
+gv
+PB
+En
+YA
+OW
+xP
+IS
+ka
+nN
+YA
+VM
+ad
+ad
+Os
+ad
+vd
+vd
+vd
+vd
+"}
+(38,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+Ug
+Ug
+Ug
+Zl
+Vb
+uK
+TK
+Tj
+dn
+YQ
+gN
+OJ
+pw
+Fp
+pm
+iw
+iw
+iw
+Mq
+iw
+iw
+pw
+XT
+YA
+yJ
+fV
+IS
+CA
+nN
+YA
+VM
+ad
+ad
+ad
+ad
+ad
+vd
+vd
+vd
+"}
+(39,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+Ug
+Ug
+Ug
+ql
+Gq
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+jg
+VM
+pt
+pt
+VM
+VM
+VM
+VM
+VM
+ad
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+"}
+(40,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+jg
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+VM
+XC
+VM
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+vd
+vd
+vd
+vd
+vd
+"}
+(41,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+jg
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+vd
+ad
+ad
+ad
+ad
+ad
+VM
+VM
+VM
+Os
+ad
+ad
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(42,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+ad
+ad
+ad
+vd
+vd
+Os
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+Os
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(43,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+vd
+ad
+ad
+vd
+ad
+ad
+ad
+Os
+vd
+ad
+ad
+vd
+vd
+vd
+Os
+ad
+vd
+vd
+ad
+vd
+ad
+ad
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(44,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+vd
+vd
+ad
+vd
+vd
+Os
+ad
+vd
+vd
+ad
+vd
+vd
+vd
+vd
+vd
+Os
+ad
+vd
+vd
+Os
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}
+(45,1,1) = {"
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+ad
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+Os
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+vd
+"}

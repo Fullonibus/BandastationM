@@ -235,7 +235,7 @@
 	var/list/positions = list()
 	for(var/index in 1 to 5)
 		positions += list(random_position(700, 2000, 450))
-	var/list/profiles = shuffle(list(/datum/stationtrauma_overmap_site/space/planet, /datum/stationtrauma_overmap_site/space/planet/frozen, /datum/stationtrauma_overmap_site/space/planet/arid, /datum/stationtrauma_overmap_site/space/planet/lush, /datum/stationtrauma_overmap_site/space/planet/lava))
+	var/list/profiles = shuffle(list(/datum/stationtrauma_overmap_site/space/planet, /datum/stationtrauma_overmap_site/space/planet/frozen, /datum/stationtrauma_overmap_site/space/planet/frozen/plain, /datum/stationtrauma_overmap_site/space/planet/arid, /datum/stationtrauma_overmap_site/space/planet/lush, /datum/stationtrauma_overmap_site/space/planet/lava, /datum/stationtrauma_overmap_site/space/planet/dead))
 	var/static/list/planet_letters = list("b", "c", "d", "e", "f")
 	var/first_seed = rand(1, 1000001 - length(positions))
 	for(var/index in 1 to length(positions))

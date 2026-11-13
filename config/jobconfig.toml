@@ -264,6 +264,13 @@
 "# Spawn Positions" = 3
 "# Total Positions" = 3
 
+[SPACEPOD_PILOT]
+"# Playtime Requirements" = 300
+"# Required Account Age" = 7
+"# Required Character Age" = 0
+"# Spawn Positions" = 1
+"# Total Positions" = 1
+
 [STATION_ENGINEER]
 "# Playtime Requirements" = 60
 "# Required Account Age" = 0

@@ -11,9 +11,8 @@
 /obj/effect/mob_spawn/corpse/human/engineer{
 	brute_damage = 600
 	},
-/obj/effect/anomaly/flux{
-	immortal = 1;
-	move_chance = 0
+/obj/effect/anomaly/pulsing/veins{
+	immortal = 1
 	},
 /turf/open/water/jungle,
 /area/expedition_planet/barren)

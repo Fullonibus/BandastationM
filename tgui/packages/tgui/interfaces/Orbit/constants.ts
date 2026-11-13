@@ -53,7 +53,13 @@ export const DEPARTMENT2COLOR: Record<string, Department> = {
   },
   security: {
     color: 'red',
-    trims: ['Detective', 'Head of Security', 'Security Officer', 'Warden'],
+    trims: [
+      'Detective',
+      'Head of Security',
+      'Security Officer',
+      'Spacepod Pilot',
+      'Warden',
+    ],
   },
   service: {
     color: 'green',

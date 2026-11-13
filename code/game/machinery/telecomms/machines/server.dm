@@ -93,11 +93,15 @@
 
 /obj/machinery/telecomms/server/presets/science
 	id = "Science Server"
-	freq_listening = list(FREQ_SCIENCE)
+	freq_listening = list(FREQ_SCIENCE, FREQ_EXPEDITION)
 	autolinkers = list("science")
 
 /obj/machinery/telecomms/server/presets/science/New()
 	. = ..()
+	frequency_infos["[FREQ_EXPEDITION]"] = list(
+		"name" = RADIO_CHANNEL_EXPEDITION,
+		"color" = RADIO_COLOR_EXPEDITION,
+	)
 	frequency_infos["[FREQ_SCIENCE]"] = list(
 		"name" = RADIO_CHANNEL_SCIENCE,
 		"color" = RADIO_COLOR_SCIENCE

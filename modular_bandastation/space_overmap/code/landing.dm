@@ -214,6 +214,23 @@
 	update_parallax()
 	refresh_engine_audio()
 
+/** Fly the remaining departure with normal physics after physical release, keeping manual orders locked until it finishes. */
+/datum/stationtrauma_overmap/space/proc/departure_flight(revision)
+	if(revision != control_revision || !is_operational() || !vessel.engines_running || engine_fraction() <= 0)
+		return FALSE
+	// Public sail() refuses a preparing or coupled hull; this phase has already committed its physical release.
+	helm_engaged = TRUE
+	last_update = world.time
+	update_parallax()
+	while(world.time - approach_started < approach_duration)
+		shake_crew()
+		sleep(1 SECONDS)
+		if(QDELETED(src) || revision != control_revision || !is_operational() || !vessel.engines_running || engine_fraction() <= 0)
+			return FALSE
+		advance()
+		sync_carrier()
+	return revision == control_revision
+
 /** Strength of atmospheric flight from 0 to 1: it builds through the middle half of a descent or ascent and peaks halfway. */
 /datum/stationtrauma_overmap/space/proc/entry_heat()
 	if(!approach_started || !approach_site?.landing || approach_duration <= 0)
@@ -254,6 +271,9 @@
 		shake_crew()
 		sleep(1 SECONDS)
 		if(QDELETED(src) || QDELETED(site) || (controlled && site.docking_owner != src))
+			return FALSE
+		if(site.landing && (!is_operational() || !vessel.engines_running || engine_fraction() <= 0))
+			status = "Посадка прервана: нет тяги"
 			return FALSE
 	if(site.failed)
 		status = site.landing ? "Посадка отменена: поверхность не картографирована" : "Стыковка отменена: объект не обнаружен"

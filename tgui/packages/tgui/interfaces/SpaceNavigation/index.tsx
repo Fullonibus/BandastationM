@@ -134,7 +134,10 @@ function Navigation({ data }: { data: NavigationData }) {
                 className={`Button ${panel === id ? 'Button--selected' : ''}`}
                 role="tab"
                 aria-selected={panel === id}
-                onClick={() => setPanel(id)}
+                onClick={() => {
+                  act('interface_click');
+                  setPanel(id);
+                }}
               >
                 {label}
               </button>
@@ -192,7 +195,10 @@ function Navigation({ data }: { data: NavigationData }) {
                         setHoveredTarget(`contact:${record.id}`)
                       }
                       onMouseLeave={() => setHoveredTarget(null)}
-                      onClick={() => setFocusedContact(record.id)}
+                      onClick={() => {
+                        act('interface_click');
+                        setFocusedContact(record.id);
+                      }}
                     >
                       <span>
                         К{record.id} ·{' '}
@@ -231,6 +237,7 @@ function Navigation({ data }: { data: NavigationData }) {
               data={data}
               focusedContact={focusedContact}
               onContact={(id) => {
+                act('interface_click');
                 setFocusedContact(id);
                 setPanel('scanner');
               }}
@@ -425,7 +432,7 @@ function Navigation({ data }: { data: NavigationData }) {
                 <Button
                   disabled={helm.blocked}
                   tooltip="Увеличить тягу"
-                  onClick={() => helm.changeThrottle(5)}
+                  onClick={() => helm.changeThrottle(5, true)}
                   aria-label="Увеличить тягу"
                 >
                   <Icon name="arrow-up" />
@@ -458,7 +465,7 @@ function Navigation({ data }: { data: NavigationData }) {
                 <Button
                   disabled={helm.blocked}
                   tooltip="Уменьшить тягу"
-                  onClick={() => helm.changeThrottle(-5)}
+                  onClick={() => helm.changeThrottle(-5, true)}
                   aria-label="Уменьшить тягу"
                 >
                   <Icon name="arrow-down" />

@@ -32,19 +32,35 @@
 	else if(issilicon(source))
 		examine_list += get_silicon_flavor_text(source)
 
+	if(ishuman(source) && user.client?.prefs.read_preference(/datum/preference/toggle/show_character_portraits_in_chat))
+		var/list/portrait_urls = get_portrait_urls(source)
+		if(length(portrait_urls))
+			var/portrait_url = portrait_urls[1]
+			examine_list += "<img class='examine-portrait' src='[html_encode(portrait_url)]' alt='Портрет персонажа' referrerpolicy='no-referrer' style='max-width:100px;max-height:100px;image-rendering:auto'>"
+
 	if(user == source && !source.build_incapacitated())
 		var/edit_link = "byond://?src=[REF(src)];lookup_info=edit_flavor_text"
 		examine_list += span_notice("<a href='[edit_link]'>Изменить описание</a>")
 
+/// Return the configured portraits in slot order when the face can be identified.
+/datum/component/examine_panel/proc/get_portrait_urls(mob/living/carbon/human/character)
+	if(!character.dna || character.is_face_obscured())
+		return null
+	var/list/portrait_urls = list()
+	for(var/portrait_url in character.dna.features["character_portrait_urls"])
+		if(portrait_url)
+			portrait_urls += portrait_url
+	return portrait_urls
+
+/// Return the description preview or only its link when the face is obscured.
 /datum/component/examine_panel/proc/get_carbon_flavor_text(mob/living/carbon/source)
 	var/flavor_text_link
 	/// The first 1-FLAVOR_PREVIEW_LIMIT characters in the mob's "flavor_text" DNA feature. FLAVOR_PREVIEW_LIMIT is defined in flavor_defines.dm.
 	var/preview_text = copytext_char(flavor_text, 1, FLAVOR_PREVIEW_LIMIT)
-	// What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
 	var/face_obscured = FALSE
 	if(ishuman(source))
 		var/mob/living/carbon/human/human_source = source
-		face_obscured = (human_source.wear_mask && (human_source.wear_mask.flags_inv & HIDEFACE)) || (human_source.head && (human_source.head.flags_inv & HIDEFACE))
+		face_obscured = human_source.is_face_obscured()
 
 	if (!(face_obscured))
 		flavor_text_link = span_notice("[preview_text]... <a href='byond://?src=[REF(src)];lookup_info=open_examine_panel'>Раскрыть описание</a>")
@@ -126,8 +142,10 @@
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/holder_human = parent
-		obscured = (holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE))
+		obscured = holder_human.is_face_obscured()
 		tgui_flavor_text = obscured ? "Скрывает лицо" : flavor_text
+		if(!obscured)
+			data["portrait_urls"] = get_portrait_urls(holder_human)
 
 	var/name = obscured ? "Неизвестный" : parent
 

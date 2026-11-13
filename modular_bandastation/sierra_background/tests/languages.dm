@@ -118,23 +118,41 @@
 	TEST_ASSERT(character.has_language(/datum/language/spinwarder, SPOKEN_LANGUAGE), "Removing a shared background grant also removed independently learned speech.")
 	TEST_ASSERT(character.has_language(/datum/language/spinwarder, UNDERSTOOD_LANGUAGE), "Removing a shared background grant also removed independently learned understanding.")
 
-/// Knowing a language does not bypass the vocal organs or grant omnitongue.
+/// Learned cultural speech is available through an intact tongue without omnitongue.
 /datum/unit_test/sierra_background_language_physiology
 	parent_type = /datum/unit_test/sierra_background_fixture
 
 /datum/unit_test/sierra_background_language_physiology/Run()
+	var/datum/preferences/preferences = make_preferences()
+	TEST_ASSERT(preferences.update_preference(GLOB.preference_entries[/datum/preference/choiced/species], "human"), "Could not select a human to verify learned speech independently of native languages.")
+	var/datum/preference/culture = GLOB.preference_entries[/datum/preference/choiced/sierra_background/culture]
 	var/mob/living/carbon/human/character = allocate(/mob/living/carbon/human/consistent)
-	character.apply_sierra_background_languages("ethereal_sprout")
-	TEST_ASSERT(character.has_language(/datum/language/voltaic, UNDERSTOOD_LANGUAGE), "An adopted upbringing could not supply language understanding.")
-	TEST_ASSERT(!character.can_speak_language(/datum/language/voltaic), "A human upbringing grant bypassed Voltaic's tongue restriction.")
+	character.grant_language(/datum/language/voltaic, ALL, LANGUAGE_QUIRK)
+	TEST_ASSERT(!character.can_speak_language(/datum/language/voltaic), "Unrelated language knowledge received the cultural speech allowance.")
+	character.remove_language(/datum/language/voltaic, ALL, LANGUAGE_QUIRK)
+
+	var/list/culture_languages = list(
+		"urlum_upbringing" = /datum/language/qurvolious,
+		"mauna_b_upbringing" = /datum/language/qurvolious,
+		"plasmaman_technocrat" = /datum/language/calcic,
+		"ethereal_sprout" = /datum/language/voltaic,
+	)
+	for(var/culture_id in culture_languages)
+		TEST_ASSERT(preferences.update_preference(culture, culture_id), "Could not select [culture_id] to verify learned speech.")
+		preferences.apply_prefs_to(character)
+		var/language_type = culture_languages[culture_id]
+		TEST_ASSERT(character.has_language(language_type, UNDERSTOOD_LANGUAGE), "[culture_id] did not teach understanding of [language_type].")
+		TEST_ASSERT(character.can_speak_language(language_type), "A human with [culture_id] cannot speak [language_type].")
+		var/list/row = background_row(preferences, "culture")
+		var/datum/language/language = GLOB.language_datum_instances[language_type]
+		TEST_ASSERT(language.name in row["language_names"], "The UI does not preview [language_type] for [culture_id].")
 	TEST_ASSERT(!character.get_language_holder().omnitongue, "Upbringing enabled omnitongue.")
-	character.set_species(/datum/species/ethereal)
-	TEST_ASSERT(character.can_speak_language(/datum/language/voltaic), "Compatible physiology could not use the already learned language.")
-	character.apply_sierra_background_languages("other")
-	TEST_ASSERT(character.has_language(/datum/language/voltaic, SPOKEN_LANGUAGE), "Removing cultural Voltaic also removed the body's native speech.")
-	TEST_ASSERT(character.has_language(/datum/language/voltaic, UNDERSTOOD_LANGUAGE), "Removing cultural Voltaic also removed the body's native understanding.")
-	character.set_species(/datum/species/human)
-	TEST_ASSERT(!character.has_language(/datum/language/voltaic, UNDERSTOOD_LANGUAGE), "A former Ethereal retained a species-only language after returning to human.")
+	var/obj/item/organ/tongue/tongue = character.get_organ_slot(ORGAN_SLOT_TONGUE)
+	TEST_ASSERT_NOTNULL(tongue, "Expected the human to have a tongue before removing it.")
+	tongue.Remove(character, special = TRUE)
+	qdel(tongue)
+	TEST_ASSERT(character.has_language(/datum/language/voltaic, UNDERSTOOD_LANGUAGE), "Losing a tongue removed cultural understanding.")
+	TEST_ASSERT(!character.can_speak_language(/datum/language/voltaic), "Cultural speech remained possible without a tongue.")
 
 /// Species changes replace only species sources, leaving upbringing and independent grants intact.
 /datum/unit_test/sierra_background_language_species_change

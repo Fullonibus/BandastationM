@@ -1,0 +1,659 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/WasteRuins/wasteplanet_crash_kitchen.dmm
+"ai" = (
+/mob/living/basic/hivebot/rapid,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"aK" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/cup/beaker/large{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/machinery/firealarm/directional/west,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/bar/fourcorners{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"aQ" = (
+/obj/structure/window/reinforced/tinted/frosted/spawner/directional/north,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"bg" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/layer4{
+	dir = 8
+	},
+/obj/item/oar,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"bo" = (
+/obj/structure/girder,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"ci" = (
+/obj/structure/lattice,
+/obj/structure/girder,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"cn" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"ep" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/exterior)
+"er" = (
+/obj/effect/decal/fakelattice,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/exterior)
+"eR" = (
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"fi" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/exterior)
+"fJ" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "exp_celadon_waste_crash_kitchen_sgwindowshut";
+	name = "External Shutters"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"gU" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"hD" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"iH" = (
+/turf/template_noop,
+/area/template_noop)
+"iN" = (
+/obj/machinery/gibber,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/bar/fourcorners{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"jb" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"lU" = (
+/obj/item/electronics/apc,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"rs" = (
+/obj/structure/curtain/bounty,
+/turf/open/floor/eighties,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"uo" = (
+/obj/structure/table,
+/obj/item/storage/bag/tray,
+/obj/item/reagent_containers/cup/glass/shaker,
+/obj/item/rag,
+/obj/item/reagent_containers/condiment/enzyme,
+/obj/item/knife/kitchen,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/bar/fourcorners{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"uN" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"vR" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"vV" = (
+/obj/machinery/atmospherics/components/tank/air,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/camera/autoname/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"wo" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"wP" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Ad" = (
+/obj/structure/cable,
+/obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"BW" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"BY" = (
+/obj/structure/girder,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"CC" = (
+/obj/structure/sign/warning/docking,
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"DC" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Ff" = (
+/obj/item/ammo_casing/spent{
+	dir = 1;
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/item/gun/ballistic/automatic/pistol{
+	pixel_y = 7
+	},
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"GB" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Hl" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/fancy/donut_box,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/bar/fourcorners{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"HX" = (
+/obj/structure/curtain/bounty,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/eighties,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"HZ" = (
+/obj/machinery/light/small/directional/east,
+/obj/machinery/door/window/right/directional/west,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/atmospherics/components/binary/pump/layer2,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Ib" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Ip" = (
+/mob/living/basic/hivebot/rapid,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"IT" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"JG" = (
+/obj/structure/curtain,
+/obj/machinery/shower/directional/south,
+/obj/structure/window/reinforced/tinted/frosted/spawner/directional/west,
+/obj/item/soap,
+/mob/living/basic/hivebot/rapid,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"JO" = (
+/obj/structure/table,
+/obj/machinery/chem_dispenser/drinks,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/bar/fourcorners{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Ke" = (
+/obj/structure/frame/machine,
+/obj/structure/table,
+/obj/item/circuitboard/machine/chem_dispenser/drinks/beer,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Lb" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/airlock/public/glass{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Nz" = (
+/obj/structure/table,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/machinery/button/door{
+	id = "exp_celadon_waste_crash_kitchen_sgkitchen";
+	name = "Kitchen Shutters";
+	pixel_y = -22
+	},
+/obj/machinery/camera/autoname/directional/south,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/bar/fourcorners{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Qg" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"QH" = (
+/obj/structure/chair/comfy/blue,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"RK" = (
+/obj/machinery/door/airlock/public/glass{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"SS" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/bar/fourcorners{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"SU" = (
+/obj/structure/table,
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"TA" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/exterior)
+"Uc" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"VW" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Crew Quarters"
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Xc" = (
+/mob/living/basic/hivebot/rapid,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/exterior)
+"Xk" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/condiment/saltshaker{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/condiment/peppermill{
+	pixel_y = 2
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/bar/fourcorners{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Yl" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/bar/fourcorners{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"Ym" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+"ZK" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/structure/sink/directional/west,
+/obj/structure/mirror{
+	pixel_x = 24
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_crash_kitchen/ruin/unpowered)
+
+(1,1,1) = {"
+ep
+iH
+ep
+er
+er
+er
+Xc
+TA
+fi
+er
+er
+ep
+iH
+ep
+iH
+iH
+"}
+(2,1,1) = {"
+CC
+vV
+HZ
+bg
+Qg
+Lb
+RK
+Qg
+Qg
+BY
+Uc
+Uc
+er
+iH
+iH
+iH
+"}
+(3,1,1) = {"
+BY
+BY
+Uc
+Qg
+Qg
+jb
+BW
+cn
+VW
+Ym
+vR
+HX
+jb
+er
+ep
+iH
+"}
+(4,1,1) = {"
+BY
+iN
+aK
+SS
+bo
+wo
+gU
+hD
+Uc
+QH
+IT
+rs
+gU
+wo
+er
+ep
+"}
+(5,1,1) = {"
+fJ
+uo
+Yl
+Ip
+Xk
+DC
+wo
+SU
+Uc
+lU
+wP
+aQ
+gU
+jb
+er
+er
+"}
+(6,1,1) = {"
+fJ
+Ke
+gU
+Ff
+Hl
+wo
+gU
+Ib
+Qg
+JG
+ZK
+Qg
+wo
+er
+iH
+ep
+"}
+(7,1,1) = {"
+GB
+JO
+jb
+Nz
+Uc
+eR
+Ad
+BY
+Qg
+BY
+Qg
+Qg
+er
+ep
+iH
+iH
+"}
+(8,1,1) = {"
+ci
+Qg
+Qg
+uN
+BY
+gU
+gU
+gU
+wo
+BY
+er
+ep
+ep
+iH
+iH
+iH
+"}
+(9,1,1) = {"
+ep
+ep
+er
+er
+wo
+jb
+ai
+wo
+er
+er
+ep
+iH
+iH
+iH
+iH
+iH
+"}
+(10,1,1) = {"
+iH
+iH
+ep
+iH
+ep
+er
+er
+er
+ep
+iH
+ep
+iH
+iH
+iH
+iH
+iH
+"}
+(11,1,1) = {"
+iH
+iH
+iH
+iH
+iH
+ep
+er
+ep
+iH
+iH
+iH
+iH
+iH
+iH
+iH
+iH
+"}

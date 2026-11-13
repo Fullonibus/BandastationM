@@ -1907,6 +1907,9 @@
 		/datum/stock_part/capacitor = 1,
 	)
 
+/obj/item/circuitboard/machine/atmos_shield_gen/tier2
+	def_components = list(/datum/stock_part/micro_laser = /datum/stock_part/micro_laser/tier2)
+
 /obj/item/circuitboard/machine/engine
 	name = "Shuttle Engine"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING

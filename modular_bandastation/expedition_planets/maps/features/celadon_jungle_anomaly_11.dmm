@@ -35,9 +35,8 @@
 /turf/open/floor/plating/rust,
 /area/expedition_planet/barren)
 "az" = (
-/obj/effect/anomaly/ectoplasm{
-	immortal = 1;
-	move_chance = 0
+/obj/effect/anomaly/pulsing/phantom{
+	immortal = 1
 	},
 /turf/open/floor/plating/rust,
 /area/expedition_planet/barren)

@@ -84,13 +84,15 @@
 	reactor?.bind_converters()
 	bind_plasma_heaters()
 
-/** Plasma heaters have no controller, so each unfed nozzle looks for one directly behind it. */
+/** Plasma heaters have no controller; search the rear edge of the nozzle's full footprint. */
 /obj/docking_port/mobile/stationtrauma_space/proc/bind_plasma_heaters()
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in engine_list)
 		if(!engine.requires_combustion || engine.combustion_feed?.resolve())
 			continue
-		var/obj/machinery/atmospherics/components/unary/ship_engine_heater/plasma/heater = locate() in get_step(engine, REVERSE_DIR(engine.dir))
-		heater?.bind_nozzle(src)
+		for(var/turf/nozzle_tile as anything in engine.locs)
+			var/obj/machinery/atmospherics/components/unary/ship_engine_heater/plasma/heater = locate() in get_step(nozzle_tile, REVERSE_DIR(engine.dir))
+			if(heater && is_in_shuttle_bounds(heater) && heater.bind_nozzle(src))
+				break
 
 /** Measure every owned deck and classify multideck hulls before navigation admits docking commands. */
 /obj/docking_port/mobile/stationtrauma_space/proc/measure_hull()

@@ -282,25 +282,24 @@
 	refresh_engine_exhaust()
 	engine_sound?.update(seconds_per_tick)
 
-/** Thrust the helm orders from the main engines, from 0 to 1; a docked hull orders none unless it climbs off a surface. */
+/** Main-engine demand from the pilot or the automatic landing, ascent and docking manoeuvre, from 0 to 1. */
 /datum/stationtrauma_overmap/space/proc/commanded_thrust()
-	if(ascending())
-		return 1
+	if(approach_started)
+		if(approach_departing)
+			return (approach_site?.landing ? 1 : 0.5) * clamp((world.time - approach_started) / ST_SPACE_DEPARTURE_DELAY, 0, 1)
+		return approach_site?.landing ? 1 : 0.15
 	if(!helm_engaged || docked)
 		return 0
 	return max(abs(throttle) / 100, !!braking, !!maneuver_direction)
 
-/** Whether the hull is climbing off a planetary surface at full thrust. */
-/datum/stationtrauma_overmap/space/proc/ascending()
-	return approach_departing && docked?.landing
-
-/** Show exhaust on every nozzle that is actually delivering commanded thrust, green on combustion nozzles while tritium burns; called with the audio refresh. */
+/** Show each firing nozzle's actual converter palette and fusion overdrive state. */
 /datum/stationtrauma_overmap/space/proc/refresh_engine_exhaust()
 	var/thrusting = vessel.engines_running && commanded_thrust() > 0
 	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = vessel.fusion_core?.resolve()
-	var/boosted = reactor?.overdrive_active()
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
-		engine.set_exhaust(thrusting && engine_output(engine) > 0, boosted && engine.requires_combustion)
+		var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
+		var/boosted = reactor?.overdrive_active() && !reactor.is_electric && feed?.core?.resolve() == reactor
+		engine.set_exhaust(thrusting && engine_output(engine) > 0, boosted, feed?.exhaust_gradient)
 
 /** Docking latch; a remote seam also has listeners on the destination level, physical docking needs only one emission. */
 /datum/stationtrauma_overmap/space/proc/play_maneuver_audio(atom/remote)
@@ -308,3 +307,13 @@
 	playsound(vessel, clip, 25, FALSE, extrarange = radius, pressure_affected = FALSE)
 	if(!QDELETED(remote) && remote.z != vessel.z)
 		playsound(remote, clip, 12, FALSE, extrarange = radius, pressure_affected = FALSE)
+
+/** A short launch roar or release of docking latches, with a visual jolt aboard the departing hull. */
+/datum/stationtrauma_overmap/space/proc/play_departure_effects(planetary = FALSE)
+	if(planetary)
+		playsound(vessel, 'sound/vehicles/rocketlaunch.ogg', 50, TRUE, extrarange = radius, pressure_affected = FALSE)
+	else
+		play_maneuver_audio()
+	for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
+		if(vessel.is_in_shuttle_bounds(crew))
+			shake_camera(crew, 0.5 SECONDS, 1)

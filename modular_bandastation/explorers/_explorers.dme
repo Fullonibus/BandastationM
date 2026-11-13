@@ -1,0 +1,24 @@
+// BEGIN_INTERNALS
+// END_INTERNALS
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+// END_FILE_DIR
+// BEGIN_PREFERENCES
+// END_PREFERENCES
+// BEGIN_INCLUDE
+#include "_explorers.dm"
+#include "code\access.dm"
+#include "code\clothing.dm"
+#include "code\department.dm"
+#include "code\equipment.dm"
+#include "code\field_gear.dm"
+#include "code\gps.dm"
+#include "code\jobs.dm"
+#include "code\journal.dm"
+#include "code\mapping.dm"
+#include "code\modsuits.dm"
+#include "code\outfits.dm"
+#include "code\pda.dm"
+#include "code\radio.dm"
+#include "code\wardrobe.dm"
+// END_INCLUDE

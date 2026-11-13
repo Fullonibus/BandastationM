@@ -20,6 +20,8 @@
 #include "code/ship_audio.dm"
 #include "code/fusion_core.dm"
 #include "code/propulsion.dm"
+#include "code/plasma_core.dm"
+#include "code/ship_generator.dm"
 #include "code/ship_docking.dm"
 #include "code/standard_dock.dm"
 #include "code/dock_surface.dm"

@@ -1622,9 +1622,11 @@
 * Unless you are doing something very specific, these are the ones you want to use.
 */
 
-/// Gets or creates the relevant language holder. For mindless atoms, gets the local one. For atom with mind, gets the mind one.
-/atom/movable/proc/get_language_holder()
+/// Gets the language holder, optionally creating one if it is missing.
+/atom/movable/proc/get_language_holder(create_if_missing = TRUE)
 	RETURN_TYPE(/datum/language_holder)
+	if(!create_if_missing)
+		return language_holder
 	if(QDELING(src))
 		CRASH("get_language_holder() called on a QDELing atom, \
 			this will try to re-instantiate the language holder that's about to be deleted, which is bad.")

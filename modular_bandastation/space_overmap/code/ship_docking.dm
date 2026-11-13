@@ -254,6 +254,8 @@
 		connection.disconnect()
 	for(var/datum/stationtrauma_overmap/space/map as anything in list(first, second))
 		if(!QDELETED(map) && map.ship_docking == src)
+			if(closing && map.approach_departing)
+				map.end_approach()
 			map.ship_docking = null
 			map.preparing = FALSE
 			map.status = closing ? "Соединение разомкнуто" : "Стыковка прервана"
@@ -276,10 +278,10 @@
 		&& first.control_revision == first_revision && second.control_revision == second_revision \
 		&& get_turf(first.vessel) == first_origin && get_turf(second.vessel) == second_origin
 
-/** Hold the pair through a mooring manoeuvre; fails as soon as the pair is gone or `still_valid` does. */
-/datum/stationtrauma_ship_docking/proc/hold(datum/callback/still_valid)
+/** Hold the pair through a manoeuvre; fails as soon as the pair is gone or `still_valid` does. */
+/datum/stationtrauma_ship_docking/proc/hold(datum/callback/still_valid, duration = ST_SPACE_MOORING_TIME)
 	var/started = world.time
-	while(world.time - started < ST_SPACE_MOORING_TIME)
+	while(world.time - started < duration)
 		sleep(1 SECONDS)
 		if(QDELETED(src) || !still_valid.Invoke())
 			return FALSE
@@ -355,30 +357,52 @@
 	first.preparing = second.preparing = TRUE
 	var/revision = departing.control_revision
 	var/datum/stationtrauma_overmap/space/peer = departing == first ? second : first
-	departing.status = peer.status = "Расстыковка: отдача захватов"
-	if(!instant && !hold(CALLBACK(src, PROC_REF(releasable), departing, revision)))
+	if(!instant)
+		departing.begin_approach(null, ST_SPACE_MOORING_TIME, departing = TRUE)
+	departing.status = peer.status = "Расстыковка: набор тяги"
+	if(!instant && !hold(CALLBACK(src, PROC_REF(releasable), departing, revision), ST_SPACE_DEPARTURE_DELAY))
 		if(QDELETED(src))
 			return FALSE
 		closing = FALSE
+		departing.end_approach()
 		first.preparing = second.preparing = FALSE
 		first.status = second.status = "Расстыковка прервана"
 		return FALSE
 	if(flush)
 		// The first hull returns to its own level before either pilot may fly away.
-		if(!first.relocate(first.flight_berth))
+		if(!first.relocate(first.flight_berth, CALLBACK(src, PROC_REF(commit_release), departing, revision, instant)))
 			if(QDELETED(src))
 				return FALSE
 			closing = FALSE
+			departing.end_approach()
 			first.preparing = second.preparing = FALSE
 			departing.status = "Расстыковка не выполнена: стоянка корабля перекрыта"
 			return FALSE
 	else
+		if(!commit_release(departing, revision, instant))
+			closing = FALSE
+			departing.end_approach()
+			first.preparing = second.preparing = FALSE
+			return FALSE
 		connection.disconnect_cooperatively(new /datum/stationtrauma_work_budget)
 	if(QDELETED(src))
 		return FALSE
 	var/ready = releasable(departing, revision)
+	if(ready && !instant)
+		ready = departing.departure_flight(revision)
+		if(QDELETED(src))
+			return FALSE
 	qdel(src)
 	return ready
+
+/** Play the release after preflight revalidation and immediately before the hull moves. */
+/datum/stationtrauma_ship_docking/proc/commit_release(datum/stationtrauma_overmap/space/departing, revision, instant)
+	if(QDELETED(src) || !closing || !releasable(departing, revision))
+		return FALSE
+	departing.status = "Расстыковка: отдача захватов"
+	if(!instant)
+		departing.play_departure_effects()
+	return TRUE
 
 /** Whether the departing hull may still fly away under the order that started the release. */
 /datum/stationtrauma_ship_docking/proc/releasable(datum/stationtrauma_overmap/space/departing, revision)

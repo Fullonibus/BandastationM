@@ -120,10 +120,10 @@
 	target.voice = voice
 	target.voice_filter = voice_filter
 
+	dna.copy_dna(target.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
 	for(var/datum/quirk/target_quirk as anything in quirks)
 		target_quirk.add_to_holder(target)
 
-	dna.copy_dna(target.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
 	for(var/obj/item/bodypart/limb as anything in target.get_bodyparts())
 		limb.update_limb(is_creating = TRUE)
 	target.updateappearance(mutcolor_update = TRUE)

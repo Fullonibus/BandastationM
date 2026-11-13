@@ -3,6 +3,7 @@
 	name = "КПБ"
 	plural_form = "КПБ"
 	id = SPECIES_IPC
+	can_have_quirks = FALSE
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_DEFIB_BLACKLISTED,

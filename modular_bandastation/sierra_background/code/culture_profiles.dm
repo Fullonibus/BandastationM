@@ -53,9 +53,12 @@
 			profile["name_language"] = language_type
 			profile["name_label"] = "Имена культуры [cultures[id]["name"]]"
 
-		// The approved Plasmaman article says their old language was lost.
-		// Chemical names remain a naming tradition; they do not grant knowledge of Calcic.
+		// Learning Qurvolious does not change local naming traditions.
+		profiles["urlum_upbringing"]["languages"] |= /datum/language/qurvolious
+		profiles["mauna_b_upbringing"]["languages"] |= /datum/language/qurvolious
+
 		var/list/plasmaman_profile = profiles["plasmaman_technocrat"]
+		plasmaman_profile["languages"] |= /datum/language/calcic
 		plasmaman_profile["name_language"] = /datum/language/calcic
 		plasmaman_profile["name_label"] = "Химические названия с номером"
 

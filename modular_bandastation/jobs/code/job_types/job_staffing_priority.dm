@@ -134,9 +134,6 @@
 /datum/job/shaft_miner
 	staffing_priority = STAFFING_PRIORITY_MODERATE
 
-/datum/job/explorer
-	staffing_priority = STAFFING_PRIORITY_NEGLIGIBLE
-
 // MARK: Justice
 /datum/job/magistrate
 	staffing_priority = STAFFING_PRIORITY_MINOR

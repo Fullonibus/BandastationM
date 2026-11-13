@@ -1,0 +1,6767 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/WasteRuins/wasteplanet_fortress_of_solitide.dmm
+"ab" = (
+/mob/living/basic/mouse/rat,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ah" = (
+/obj/structure/table/reinforced,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"al" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ao" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"au" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"aw" = (
+/obj/structure/flora/rock,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior)
+"aD" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"aI" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"aK" = (
+/obj/structure/sign/poster/contraband/smoke/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"aL" = (
+/obj/item/toy/figure/hos,
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"aX" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"aZ" = (
+/obj/structure/closet/crate/trashcart,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bc" = (
+/obj/structure/rack,
+/obj/item/circuitboard/machine/dnascanner,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/semki,
+/obj/effect/spawner/random/maintenance,
+/obj/item/photo,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bg" = (
+/obj/structure/table/wood,
+/obj/machinery/fax,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bm" = (
+/obj/structure/grille,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bp" = (
+/obj/structure/table/wood/poker,
+/obj/item/gun/ballistic/revolver/c38,
+/obj/item/ammo_casing/c38,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bq" = (
+/obj/structure/table,
+/obj/item/bikehorn/golden{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/clothing/shoes/clown_shoes/banana_shoes/combat{
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bx" = (
+/obj/structure/headpike,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior)
+"bD" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bG" = (
+/obj/structure/fluff/paper/stack{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bI" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/item/megaphone/clown,
+/obj/item/clothing/under/rank/civilian/clown/jester,
+/obj/item/clothing/shoes/clown_shoes/banana_shoes/combat,
+/obj/item/borg/upgrade/transform/clown,
+/obj/item/stamp/law,
+/obj/structure/closet/secure_closet/freezer/cream_pie,
+/obj/item/mod/control/pre_equipped/cosmohonk,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bM" = (
+/obj/item/trash/chips,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"bO" = (
+/obj/structure/headpike,
+/obj/effect/decal/cleanable/generic,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior)
+"cc" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_carp{
+	pixel_x = 4
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_carp{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/lighter,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ch" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/gibspawner/human,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ci" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"cp" = (
+/obj/structure/reagent_dispensers/cooking_oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"cv" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"cw" = (
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"cz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"cH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/greenglow/filled,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"cY" = (
+/obj/structure/closet/cardboard,
+/mob/living/basic/snake,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"db" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/pirate,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"dd" = (
+/obj/structure/chair/comfy/beige,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"df" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"di" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"dm" = (
+/obj/structure/table/bronze,
+/obj/item/clothing/suit/jacket/letterman_red,
+/obj/item/clothing/head/costume/chicken{
+	pixel_y = 11
+	},
+/obj/item/knife/kitchen{
+	pixel_x = -9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"do" = (
+/obj/structure/rack,
+/obj/item/pneumatic_cannon/pie,
+/obj/item/reagent_containers/spray/waterflower/lube,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"dr" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ds" = (
+/obj/structure/table,
+/obj/item/paper{
+	pixel_x = -4;
+	pixel_y = 3;
+	name = "pamphlet"
+	},
+/obj/item/paper{
+	pixel_x = 5;
+	pixel_y = 1;
+	name = "pamphlet"
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"du" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"dA" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"dF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"dG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"dL" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"dW" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Throneroom Reception";
+	dir = 4
+	},
+/obj/item/assembly/mousetrap/armed,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ef" = (
+/obj/item/spear,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"el" = (
+/obj/structure/sign/poster/contraband/eat/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"en" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"es" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ey" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"eD" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"eF" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "The Reliquary";
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/item/assembly/mousetrap/armed,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"eH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"eJ" = (
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"eV" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Throneroom Desk";
+	dir = 4
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fc" = (
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fp" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/item/clothing/head/utility/chefhat,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/trash/chips,
+/obj/effect/spawner/random/maintenance,
+/obj/item/toner,
+/obj/item/mop,
+/obj/item/weldingtool/empty,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fs" = (
+/obj/structure/closet/cardboard,
+/mob/living/basic/snake,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fD" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fG" = (
+/obj/item/trash/chips,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fH" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood,
+/obj/item/spear,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fM" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fN" = (
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fP" = (
+/obj/structure/table/wood,
+/obj/item/toy/plush/snakeplushie,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fR" = (
+/obj/vehicle/ridden/wheelchair,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fT" = (
+/obj/structure/grille,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fX" = (
+/obj/effect/decal/cleanable/greenglow/filled,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"fZ" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gd" = (
+/obj/structure/rack,
+/obj/item/trash/can/food,
+/obj/item/trash/popcorn,
+/obj/effect/spawner/random/maintenance,
+/obj/item/toner,
+/obj/item/clipboard,
+/obj/item/flashlight/glowstick,
+/obj/item/hand_labeler,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gf" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gk" = (
+/obj/effect/gibspawner/human,
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/can/food/beans,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gl" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Automatonatron"
+	},
+/obj/item/restraints/legcuffs/beartrap,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gu" = (
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	default_raw_text = "You know you want to do it. Give in to your pyromaniacal urges. DO IT."
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gx" = (
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/paper{
+	default_raw_text = "this place is hell. im done. meet me there, guys.";
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gE" = (
+/obj/effect/spawner/random/trash/grille_or_waste,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gH" = (
+/obj/item/food/cakeslice/birthday,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gI" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gJ" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gR" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gV" = (
+/obj/item/statuebust,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gX" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"gY" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hc" = (
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hh" = (
+/obj/structure/mecha_wreckage/phazon,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hk" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance/five,
+/obj/item/toner/extreme,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hl" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/light/directional/north,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hn" = (
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hp" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/assistant,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ht" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hx" = (
+/obj/effect/gibspawner/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hE" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/food/cake/birthday,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hJ" = (
+/obj/structure/punching_bag,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hM" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/closet/crate,
+/obj/item/trash/sosjerky,
+/obj/item/trash/candy,
+/obj/effect/spawner/random/maintenance,
+/obj/item/book/manual/random,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hQ" = (
+/mob/living/carbon/human/species/monkey,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hR" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hT" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hU" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"hY" = (
+/obj/item/statuebust,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ie" = (
+/obj/structure/table,
+/obj/item/food/bubblegum,
+/obj/item/food/bubblegum{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"if" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"in" = (
+/turf/template_noop,
+/area/template_noop)
+"io" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Barracks"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/item/assembly/mousetrap/armed,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"is" = (
+/obj/effect/spawner/random/trash/grille_or_waste,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"iu" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"iB" = (
+/obj/structure/table/reinforced,
+/obj/item/food/cakeslice/trumpet,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"iL" = (
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"iP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/trash/chips,
+/obj/item/trash/raisins,
+/obj/effect/spawner/random/maintenance,
+/obj/item/book/manual/random,
+/obj/item/paper,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"iV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"iX" = (
+/obj/structure/sign/poster/contraband/donut_corp/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jb" = (
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/item/clothing/head/costume/crown{
+	pixel_x = 2;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jc" = (
+/obj/structure/closet/body_bag,
+/obj/item/clothing/under/costume/pirate,
+/obj/item/clothing/suit/costume/pirate,
+/obj/item/clothing/head/costume/pirate,
+/obj/item/clothing/head/helmet/space/pirate/bandana,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jj" = (
+/obj/structure/kitchenspike,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/mob/living/basic/mouse/rat,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jo" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/basic/mouse/rat,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"js" = (
+/obj/structure/bed,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ju" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jw" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jx" = (
+/obj/structure/sign/poster/contraband/fun_police/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jJ" = (
+/obj/structure/closet/crate,
+/obj/item/trash/can/food,
+/obj/item/trash/sosjerky,
+/obj/item/trash/raisins,
+/obj/item/airlock_painter,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jL" = (
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jN" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/item/trash/chips,
+/obj/effect/spawner/random/maintenance,
+/obj/item/assembly/igniter,
+/obj/item/flashlight/glowstick,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jT" = (
+/obj/effect/decal/cleanable/insectguts,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"jZ" = (
+/obj/effect/decal/cleanable/insectguts,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ka" = (
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"kg" = (
+/mob/living/basic/mimic/crate,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/sosjerky,
+/obj/item/trash/chips,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"kh" = (
+/obj/structure/sign/poster/contraband/eat/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"kr" = (
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"kt" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Laboratorium";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ku" = (
+/obj/structure/curtain/cloth/fancy,
+/obj/item/trash/tray,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"kA" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"kG" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Galley";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/grown/bananapeel,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"kJ" = (
+/obj/structure/sign/poster/contraband/ambrosia_vulgaris/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"kN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"kU" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"la" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ld" = (
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/door/airlock/maintenance{
+	name = "Detective Halligan's Office"
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"lj" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/broken_bottle,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"lu" = (
+/obj/structure/table,
+/obj/item/organ/ears/cat,
+/obj/item/organ/tail/cat,
+/obj/item/restraints/handcuffs/cable,
+/obj/item/restraints/handcuffs/cable,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"lC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"lD" = (
+/obj/structure/sign/poster/contraband/d_day_promo/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"lJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"lN" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/clown/clownhulk/chlown{
+	name = "Боба"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"lT" = (
+/obj/structure/closet/crate,
+/obj/item/spear,
+/obj/item/spear,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/tray,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"me" = (
+/obj/structure/table,
+/obj/item/ammo_box/c9mm{
+	pixel_y = 6
+	},
+/obj/item/gun/ballistic/automatic/pistol,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"mf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"mq" = (
+/obj/structure/closet/cardboard,
+/mob/living/basic/snake,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ms" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/clothing/under/rank/civilian/clown/rainbow,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"mw" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"mA" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/toy/figure/clown,
+/obj/item/trash/candle,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"mB" = (
+/obj/effect/decal/cleanable/ash,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"mI" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"mK" = (
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"mY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"mZ" = (
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nC" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/left/directional/south,
+/obj/machinery/door/window/brigdoor/left/directional/north,
+/obj/item/paper_bin,
+/obj/item/trash/tray,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nD" = (
+/obj/structure/table,
+/obj/item/pai_card,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nL" = (
+/obj/effect/gibspawner/human,
+/obj/item/statuebust,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nO" = (
+/obj/structure/mirror{
+	pixel_y = 30
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nV" = (
+/obj/structure/table,
+/obj/item/stack/rods/ten{
+	amount = 10
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nW" = (
+/mob/living/basic/mouse/rat,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nY" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"nZ" = (
+/obj/machinery/photocopier/prebuilt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oc" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"od" = (
+/obj/structure/rack,
+/obj/item/clothing/gloves/color/fyellow,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oo" = (
+/obj/structure/sign/poster/contraband/smoke/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"os" = (
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ou" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/food/egg_smudge,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oy" = (
+/obj/structure/filingcabinet/security,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oz" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Barracks Part 2";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/ash,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oC" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/computer/records/medical,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oG" = (
+/obj/structure/table,
+/obj/item/paper{
+	default_raw_text = "Everything on a table or in a container is altogether 100 credits or an item of equivalent value."
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oI" = (
+/obj/effect/gibspawner/human,
+/obj/item/statuebust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oK" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"oR" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pa" = (
+/obj/structure/sign/poster/contraband/tools/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pc" = (
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pd" = (
+/mob/living/basic/mouse/rat,
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pl" = (
+/obj/structure/sign/poster/contraband/punch_shit/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"po" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/trash/candy,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pr" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pv" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pA" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/pirate,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pO" = (
+/obj/structure/plaque/static_plaque/golden,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior)
+"pX" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"pZ" = (
+/obj/structure/grille,
+/obj/item/restraints/legcuffs/beartrap,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qa" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Serpentorium";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qe" = (
+/obj/item/spear,
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qg" = (
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qp" = (
+/obj/structure/curtain/cloth/fancy,
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qw" = (
+/mob/living/basic/mining/goliath/ancient{
+	desc = "Douglas! Everyone's pal! What a guy!";
+	dir = 1;
+	faction = list("neutral");
+	name = "Douglas the Friendly Maintenance Goliath"
+	},
+/obj/structure/chair/sofa/left/brown{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qK" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qL" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/chips,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qQ" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/assistant,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qU" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/mob_spawn/corpse/human/pirate,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"qW" = (
+/obj/structure/table/wood,
+/obj/item/detective_scanner,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rf" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/raisins,
+/obj/effect/spawner/random/maintenance,
+/obj/item/airlock_painter,
+/obj/item/tape/random,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rh" = (
+/obj/structure/table,
+/obj/item/gun/energy/laser/retro,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/extendohand,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rs" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rv" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rz" = (
+/mob/living/basic/mouse/rat,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rD" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rF" = (
+/obj/structure/rack,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rI" = (
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/mob_spawn/corpse/human/pirate,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rV" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"rX" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Detective Halligan's Office"
+	},
+/obj/structure/barricade/wooden/crude,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sc" = (
+/obj/machinery/griddle,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sf" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/three,
+/obj/item/flashlight/glowstick,
+/obj/item/hand_labeler_refill,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ss" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sv" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sD" = (
+/obj/effect/gibspawner/human,
+/obj/item/statuebust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sG" = (
+/obj/structure/rack,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/item/clothing/gloves/color/fyellow,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sI" = (
+/obj/structure/rack,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/trash/sosjerky,
+/obj/item/folder/yellow,
+/obj/effect/spawner/random/maintenance,
+/obj/item/book/manual/random,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sL" = (
+/obj/structure/table,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/stack/sheet/mineral/wood,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/spawner/random/maintenance,
+/obj/item/flashlight/glowstick,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sV" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sX" = (
+/obj/structure/sign/poster/contraband/the_griffin/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"sY" = (
+/obj/machinery/porta_turret/syndicate/energy,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ta" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tb" = (
+/obj/structure/musician/piano,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"td" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/toy/plush/lizard_plushie{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior)
+"tg" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ti" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tk" = (
+/obj/machinery/vending/sovietsoda,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"to" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tp" = (
+/obj/structure/filingcabinet,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tt" = (
+/obj/structure/closet,
+/obj/item/gun/ballistic/automatic/pistol,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tu" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/ash,
+/obj/item/c_tube{
+	pixel_x = -12;
+	pixel_y = 3
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tw" = (
+/obj/structure/table,
+/obj/item/storage/fancy/donut_box,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tz" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tE" = (
+/mob/living/carbon/human/species/monkey,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tK" = (
+/obj/effect/mine/sound,
+/obj/structure/grille,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tR" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Funny Creature Storage";
+	dir = 4
+	},
+/obj/structure/barricade/wooden/crude,
+/obj/item/restraints/legcuffs/beartrap,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tV" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "The Reliquary";
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/item/assembly/mousetrap/armed,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tW" = (
+/obj/effect/gibspawner/human,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"tZ" = (
+/obj/structure/closet/crate/secure/science,
+/obj/item/laser_pointer/upgraded,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/item/trash/chips,
+/obj/effect/spawner/random/maintenance/two,
+/obj/item/electronics/airlock,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"uc" = (
+/mob/living/basic/mouse/rat,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ug" = (
+/obj/item/statuebust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"uh" = (
+/obj/item/statuebust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"up" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/mob/living/basic/trooper/pirate/melee{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"us" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"uA" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"uC" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"uQ" = (
+/obj/structure/table/wood,
+/obj/structure/bedsheetbin,
+/obj/item/toy/sword,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"va" = (
+/obj/structure/chair/stool/directional/west,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"vg" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"vk" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"vz" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/item/cigbutt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"vA" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/food/deadmouse,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"vB" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Barracks Part 4";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"vC" = (
+/obj/item/reagent_containers/cup/glass/bottle/beer,
+/obj/item/reagent_containers/cup/glass/bottle/beer,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"vK" = (
+/obj/structure/closet/cardboard,
+/mob/living/basic/snake,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"vN" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"vY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/can/food/beans,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wd" = (
+/obj/structure/closet,
+/obj/item/clothing/suit/armor/riot/knight/greyscale,
+/obj/item/clothing/head/helmet/knight/greyscale,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wh" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wm" = (
+/obj/structure/table,
+/obj/item/claymore,
+/obj/item/clothing/head/costume/delinquent,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wr" = (
+/obj/structure/sign/poster/contraband/masked_men/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ws" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ww" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/item/trash/sosjerky,
+/obj/item/trash/candy,
+/obj/item/assembly/igniter,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wC" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/cleanable/blood/innards,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wD" = (
+/obj/structure/rack,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/item/clothing/gloves/color/fyellow,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wE" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wF" = (
+/obj/structure/table/wood,
+/obj/item/toy/plush/snakeplushie,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wH" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wY" = (
+/obj/structure/table,
+/obj/item/screwdriver,
+/obj/item/kitchen/fork,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"wZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"xf" = (
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"xg" = (
+/obj/structure/table,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/under/color/grey/ancient,
+/obj/item/spear,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"xp" = (
+/obj/structure/sign/poster/contraband/grey_tide/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"xJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"xL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"xP" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ye" = (
+/obj/item/trash/boritos,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"yn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"yq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"yu" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance/five,
+/obj/item/kitchen/spoon,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"yv" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"yx" = (
+/obj/structure/grille,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/restraints/legcuffs/beartrap,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"yH" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/raisins,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"yI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"yL" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/flask/det,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/folder{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zb" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/misc/assistantformal,
+/obj/item/clothing/under/misc/assistantformal,
+/obj/item/clothing/under/misc/assistantformal,
+/obj/item/clothing/under/misc/assistantformal,
+/obj/item/clothing/under/misc/assistantformal,
+/obj/item/clothing/under/misc/assistantformal,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ze" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/ash/large,
+/obj/item/cigbutt,
+/obj/item/cigbutt{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/cigbutt{
+	pixel_x = 11
+	},
+/obj/item/cigbutt{
+	pixel_y = 15
+	},
+/obj/item/cigbutt{
+	pixel_y = -8
+	},
+/obj/item/cigbutt{
+	pixel_x = -12;
+	pixel_y = 7
+	},
+/obj/item/cigbutt{
+	pixel_x = 8;
+	pixel_y = -8
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zh" = (
+/obj/structure/sign/poster/official/random/directional/north{
+	desc = "You forgot to download CS Source, didn't you.";
+	name = "black and pink poster"
+	},
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zl" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zt" = (
+/obj/structure/falsewall/gold,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zu" = (
+/obj/structure/chair/sofa/right/brown{
+	dir = 1
+	},
+/mob/living/basic/goose/vomit{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zD" = (
+/obj/structure/closet/crate,
+/obj/item/trash/raisins,
+/obj/effect/spawner/random/maintenance,
+/obj/item/flashlight/glowstick,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zH" = (
+/obj/item/broken_bottle,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"zX" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ai" = (
+/obj/effect/decal/cleanable/insectguts,
+/obj/structure/rack,
+/obj/item/folder/yellow,
+/obj/effect/spawner/random/maintenance,
+/obj/item/electronics/airlock,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Aj" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ak" = (
+/obj/machinery/icecream_vat,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ar" = (
+/obj/structure/toilet{
+	dir = 8;
+	name = "The Great Throne"
+	},
+/mob/living/basic/regal_rat{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Aw" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ay" = (
+/obj/structure/dresser,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"AB" = (
+/obj/structure/grille,
+/obj/item/assembly/mousetrap/armed,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"AF" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"AV" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"AX" = (
+/obj/structure/closet/cardboard,
+/obj/item/reagent_containers/cup/bottle/clownstears,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"AZ" = (
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Bz" = (
+/obj/structure/table,
+/obj/item/hatchet,
+/obj/item/lighter,
+/obj/item/surgicaldrill,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"BC" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"BG" = (
+/obj/structure/sign/poster/contraband/hacking_guide/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"BN" = (
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"BQ" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Gambling Hall"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"BR" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"BS" = (
+/obj/structure/chair/comfy/beige{
+	dir = 8
+	},
+/mob/living/basic/mouse/rat,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"BW" = (
+/mob/living/carbon/human/species/monkey,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Cg" = (
+/obj/structure/table,
+/obj/item/shard,
+/obj/item/wirecutters,
+/obj/item/trash/tray,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ch" = (
+/obj/item/ammo_casing,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ck" = (
+/obj/item/toy/figure/secofficer,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Cq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/item/trash/chips,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ct" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Cx" = (
+/obj/structure/rack,
+/obj/item/trash/can/food/peaches,
+/obj/effect/spawner/random/maintenance,
+/obj/item/fakeartefact,
+/obj/item/poster/random_official,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Cz" = (
+/obj/structure/window/plasma/spawner/directional/east,
+/obj/item/clothing/gloves/color/yellow,
+/obj/effect/decal/cleanable/glass/plasma,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"CH" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Other Serpentorium"
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"CI" = (
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"CJ" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"CL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"CP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"CV" = (
+/obj/machinery/vending/cigarette/beach,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"CZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Dd" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Dk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Dr" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/food/salt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ds" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Armoire";
+	dir = 4
+	},
+/obj/item/restraints/legcuffs/beartrap,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Du" = (
+/obj/structure/chair/stool/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Dv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Dy" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"DA" = (
+/obj/structure/table/wood,
+/obj/item/coin/antagtoken{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"DD" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Chirurgeon's Theatre";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"DN" = (
+/obj/structure/sign/poster/contraband/rip_badger/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"DT" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"DU" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ec" = (
+/obj/structure/table,
+/obj/item/assembly/relic,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ee" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Grey Fortress"
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Eq" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/mortar,
+/obj/item/pestle,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Et" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/trash/chips,
+/obj/item/trash/sosjerky,
+/obj/effect/spawner/random/maintenance,
+/obj/item/assembly/igniter,
+/obj/item/clipboard,
+/obj/item/electronics/airlock,
+/obj/item/hand_labeler_refill,
+/obj/item/photo,
+/obj/item/wrench,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"EA" = (
+/obj/structure/sign/poster/contraband/have_a_puff/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"EC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/sosjerky,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"EI" = (
+/obj/effect/gibspawner/human,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"EL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"EN" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	pixel_x = 1;
+	pixel_y = -6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"EP" = (
+/obj/item/kitchen/rollingpin,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"EX" = (
+/obj/structure/sign/poster/contraband/donut_corp/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"EY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ff" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Fp" = (
+/obj/effect/spawner/random/food_or_drink/keg{
+	desc = "For drunk science."
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Fq" = (
+/obj/effect/decal/cleanable/greenglow/filled,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Fu" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FB" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Grey Fortress";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FI" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FL" = (
+/obj/structure/rack,
+/obj/item/trash/boritos,
+/obj/item/trash/can/food/peaches/maint,
+/obj/effect/spawner/random/maintenance,
+/obj/item/airlock_painter/decal,
+/obj/item/poster/random_official,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FN" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/mob_spawn/corpse/human/assistant,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FO" = (
+/obj/item/mecha_parts/mecha_equipment/generator,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FQ" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Grey Fortress";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FU" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/mob/living/basic/mouse/rat,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FX" = (
+/obj/effect/gibspawner/robot,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FY" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Throneroom";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/assembly/mousetrap/armed,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"FZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance,
+/obj/item/coin,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ge" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Gf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Gi" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/ammo_casing/shotgun/techshell,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Gk" = (
+/obj/structure/sign/poster/contraband/space_cube/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Gn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Gv" = (
+/obj/structure/sign/poster/contraband/pwr_game/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"GA" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Laboratorium Storage"
+	},
+/obj/item/assembly/mousetrap/armed,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"GL" = (
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"GV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hb" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hc" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/sign/poster/contraband/random/directional/south,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"He" = (
+/obj/structure/window/plasma/spawner/directional/west,
+/obj/item/storage/toolbox/syndicate,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hg" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/grille,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hk" = (
+/obj/structure/rack,
+/obj/item/clothing/accessory/medal/silver/security,
+/obj/item/clothing/accessory/medal/silver/bureaucracy{
+	pixel_x = 8
+	},
+/obj/item/clothing/accessory/medal/bronze_heart{
+	pixel_x = -8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hl" = (
+/obj/item/grown/bananapeel,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hs" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hu" = (
+/obj/structure/grille,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hy" = (
+/obj/item/ammo_casing{
+	dir = 5;
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/item/chair/plastic,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Hz" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/mask/fakemoustache/italian,
+/obj/item/kitchen/spoon/plastic{
+	name = "normal-sized spoon"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"HS" = (
+/obj/structure/rack,
+/obj/item/trash/chips,
+/obj/effect/spawner/random/maintenance,
+/obj/item/assembly/igniter,
+/obj/item/camera,
+/obj/item/tape/random,
+/obj/item/weldingtool/empty,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ic" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance/five,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/item/toner/extreme,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ig" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ii" = (
+/obj/structure/chair/wood,
+/obj/effect/mob_spawn/corpse/human/pirate,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ij" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ik" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Self-Service Shoppery"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ip" = (
+/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ir" = (
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Iy" = (
+/obj/effect/decal/cleanable/food/flour,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"IC" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ID" = (
+/mob/living/basic/clown/clownhulk{
+	name = "Биба"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"IN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/obj/item/cigbutt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Jd" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Jk" = (
+/mob/living/basic/mouse/rat,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/item/rcl/ghetto,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Jr" = (
+/obj/effect/mob_spawn/corpse/human/engineer,
+/obj/item/crowbar/power{
+	pixel_x = -1;
+	pixel_y = -13
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/cable,
+/obj/item/pipe_dispenser{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Js" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Jv" = (
+/obj/structure/closet/cardboard,
+/mob/living/basic/snake,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Jy" = (
+/obj/effect/decal/cleanable/food/pie_smudge,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"JB" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior)
+"JF" = (
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"JG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/trash/sosjerky,
+/obj/item/trash/candy,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"JH" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"JM" = (
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"JS" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"JU" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Kc" = (
+/obj/structure/table/reinforced,
+/obj/item/toy/figure/chef,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Kd" = (
+/obj/structure/showcase/cyborg/old{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Kh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/trash/can/food/beans,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Kj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/pistachios,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Kl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/restraints/legcuffs/beartrap,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ks" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Kt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ku" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Kw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Kx" = (
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KE" = (
+/obj/structure/spirit_board,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/mob/living/basic/clown/clownhulk/honkmunculus{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KK" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KL" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/food/pie/cream,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/c_tube,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KP" = (
+/obj/structure/falsewall/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/trash/can/food/beans,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/broken_bottle,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KT" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/obj/item/assembly/mousetrap/armed,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"KZ" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"La" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Lf" = (
+/mob/living/carbon/human/species/monkey,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Lk" = (
+/obj/structure/closet/crate,
+/obj/item/folder/yellow,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ll" = (
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Lo" = (
+/obj/structure/sign/poster/contraband/space_cola/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Lq" = (
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Lt" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/glasses/orange,
+/obj/item/clothing/glasses/orange,
+/obj/item/clothing/glasses/orange,
+/obj/item/clothing/glasses/orange,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Lx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/can/food/beans,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ly" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"LC" = (
+/obj/structure/table,
+/obj/item/holochip{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/clothing/suit/toggle/owlwings/griffinwings{
+	pixel_y = 5
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"LL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"LP" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/engineering,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"LS" = (
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"LV" = (
+/obj/structure/table,
+/obj/item/pizzabox/pineapple,
+/obj/item/pizzabox/pineapple{
+	pixel_y = 3
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"LW" = (
+/obj/structure/closet/crate,
+/obj/item/trash/sosjerky,
+/obj/item/trash/raisins,
+/obj/effect/spawner/random/maintenance,
+/obj/item/toner,
+/obj/item/flashlight/glowstick,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ma" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Mg" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Gauntlet";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/assembly/mousetrap/armed,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Mi" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/two,
+/obj/item/assembly/prox_sensor,
+/obj/item/camera,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ml" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Mt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"MI" = (
+/obj/structure/chair/comfy/beige,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"MP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"MQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"MR" = (
+/obj/machinery/deepfryer,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"MS" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"MV" = (
+/obj/item/statuebust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"MX" = (
+/obj/structure/rack,
+/obj/item/trash/sosjerky,
+/obj/item/trash/raisins,
+/obj/item/folder/blue,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"MY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"MZ" = (
+/obj/effect/spawner/random/maintenance/four,
+/obj/structure/table/wood/poker,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Nb" = (
+/obj/structure/window/spawner/directional/south,
+/mob/living/carbon/human/species/monkey,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Nf" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Nk" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Nl" = (
+/obj/effect/spawner/random/maintenance/two,
+/obj/structure/table,
+/obj/item/coin/plastic,
+/obj/item/food/butterdog,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Nm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Nn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ns" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/decal/cleanable/glass,
+/obj/item/restraints/legcuffs/beartrap,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Nu" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Nv" = (
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"NK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"NZ" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Oa" = (
+/obj/effect/decal/cleanable/food/pie_smudge,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Od" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Of" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Oh" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Oi" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"OC" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"OF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"OG" = (
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"OJ" = (
+/obj/structure/falsewall/gold,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"OR" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"OS" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"OT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"OX" = (
+/obj/structure/window/spawner/directional/north,
+/mob/living/carbon/human/species/monkey,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"OY" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Glovebox"
+	},
+/obj/item/assembly/mousetrap/armed,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Pb" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ph" = (
+/obj/item/storage/toolbox/mechanical/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Pj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Pl" = (
+/obj/structure/filingcabinet/employment,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Po" = (
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Pp" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ps" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/semki,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Pw" = (
+/obj/structure/sign/poster/contraband/missing_gloves/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"PB" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/spawner/random/maintenance,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"PC" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/item/toy/talking/griffin,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"PD" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"PF" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"PG" = (
+/mob/living/carbon/human/species/monkey,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"PI" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/chair/plastic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"PQ" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"PZ" = (
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Qg" = (
+/obj/structure/rack,
+/obj/item/trash/raisins,
+/obj/effect/spawner/random/maintenance,
+/obj/item/toner,
+/obj/item/assembly/prox_sensor,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Qp" = (
+/obj/structure/grille,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/item/grown/bananapeel,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Qr" = (
+/obj/item/flashlight/lamp/bananalamp,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Qs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"QF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"QG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"QQ" = (
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"QX" = (
+/obj/structure/table/wood,
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/coin,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Rd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Rf" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Rj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/chips,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Rn" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/light/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Rs" = (
+/obj/structure/table,
+/obj/item/stock_parts/micro_laser/ultra,
+/obj/item/reagent_containers/cup/beaker{
+	name = "standard-sized beaker";
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"RB" = (
+/mob/living/basic/mouse/rat,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"RD" = (
+/obj/structure/chair/comfy/black,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"RO" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"RS" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"RT" = (
+/obj/machinery/door/airlock/maintenance/glass{
+	name = "Waiting Lobby";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Si" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Sk" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"St" = (
+/obj/structure/headpike,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior)
+"SE" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"SH" = (
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"SO" = (
+/obj/structure/bed,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"SW" = (
+/obj/structure/filingcabinet/medical,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ta" = (
+/obj/structure/table,
+/obj/item/clothing/gloves/captain,
+/obj/item/storage/belt/utility/full,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Th" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Tm" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Grey Fortress"
+	},
+/obj/structure/fans/tiny,
+/obj/item/assembly/mousetrap/armed,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Tp" = (
+/obj/item/storage/fancy/cigarettes/cigpack_robustgold,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ts" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Tx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/can/food/beans,
+/obj/structure/closet/crate,
+/obj/item/trash/candy,
+/obj/effect/spawner/random/maintenance,
+/obj/item/assembly/prox_sensor,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ty" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"TP" = (
+/obj/structure/filingcabinet/security,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"TQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/trash/chips,
+/obj/effect/spawner/random/maintenance/two,
+/obj/item/assembly/prox_sensor,
+/obj/item/hand_labeler_refill,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"TS" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"TU" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Uc" = (
+/obj/structure/table/wood,
+/obj/item/food/pizza/meat,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Uh" = (
+/obj/structure/rack,
+/obj/item/melee/baton/security/cattleprod,
+/obj/item/restraints/handcuffs/cable/pink,
+/obj/item/clothing/mask/muzzle,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Um" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ut" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Uu" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"UD" = (
+/obj/item/spear,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"UG" = (
+/obj/structure/closet/cardboard,
+/mob/living/basic/snake,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"UI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"UL" = (
+/obj/structure/closet/crate,
+/obj/item/trash/sosjerky,
+/obj/item/trash/syndi_cakes,
+/obj/effect/spawner/random/maintenance/two,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"UN" = (
+/obj/structure/sign/poster/contraband/red_rum/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"UQ" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/trash/chips,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"UX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"UY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Vh" = (
+/obj/structure/table/wood,
+/obj/item/toy/figure/lawyer{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/obj/item/toy/figure/secofficer{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/toy/figure/warden{
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Vw" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Vx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Vz" = (
+/obj/item/statuebust,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"VG" = (
+/obj/effect/decal/remains/human,
+/obj/item/clothing/head/helmet{
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior)
+"VN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"VT" = (
+/obj/structure/closet/cardboard,
+/mob/living/basic/snake,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"VV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"VX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"VY" = (
+/obj/structure/bed,
+/obj/item/bedsheet/clown,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Wf" = (
+/obj/structure/sign/poster/official/science/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Wj" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/rack,
+/obj/item/trash/sosjerky,
+/obj/effect/spawner/random/maintenance,
+/obj/item/assembly/prox_sensor,
+/obj/item/photo,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Wo" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "The Barracks Part 3"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Wp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ws" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Ww" = (
+/obj/item/rack_parts,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Wx" = (
+/obj/structure/rack,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Wz" = (
+/obj/structure/falsewall/gold,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"WC" = (
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"WF" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"WG" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"WN" = (
+/obj/effect/decal/cleanable/glass,
+/obj/structure/closet/crate,
+/obj/item/trash/semki,
+/obj/effect/spawner/random/maintenance,
+/obj/item/airlock_painter,
+/obj/item/hand_labeler_refill,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"WR" = (
+/obj/item/gun/ballistic/automatic/pistol,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/exterior)
+"WS" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xk" = (
+/obj/effect/mob_spawn/corpse/human/pirate,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xl" = (
+/obj/structure/closet/crate,
+/obj/item/trash/popcorn,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance,
+/obj/item/assembly/prox_sensor,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xn" = (
+/obj/item/flashlight/glowstick,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xo" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/decal/cleanable/blood,
+/mob/living/basic/mouse/rat,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xq" = (
+/obj/structure/chair/comfy/beige{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xr" = (
+/obj/structure/table/wood,
+/obj/item/paper{
+	default_raw_text = "Please leave money and pawned items on this table. Thank you! -R";
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/stack/spacecash/c100,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xu" = (
+/obj/structure/closet/cardboard,
+/obj/item/toy/plush/carpplushie/dehy_carp,
+/obj/item/toy/plush/carpplushie,
+/obj/item/toy/plush/carpplushie,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/maintenance,
+/obj/item/poster/random_contraband,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xw" = (
+/obj/item/storage/toolbox/mechanical,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Xz" = (
+/obj/item/trash/chips,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"XA" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"XO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Yc" = (
+/obj/structure/closet/crate,
+/obj/item/trash/chips,
+/obj/effect/spawner/random/maintenance,
+/obj/item/clipboard,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Yi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Yo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Yq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance,
+/obj/item/book/manual/random,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Yz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"YK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"YN" = (
+/obj/effect/decal/cleanable/glass,
+/obj/item/cigbutt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"YX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/rack,
+/obj/item/trash/candy,
+/obj/item/folder/yellow,
+/obj/effect/spawner/random/maintenance,
+/obj/item/electronics/airlock,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"YY" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Zb" = (
+/obj/structure/closet/crate/bin,
+/obj/item/clothing/mask/gas/mime,
+/obj/item/clothing/under/rank/civilian/mime,
+/obj/item/clothing/head/beret/frenchberet,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Zd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weldingtool/mini,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Zh" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Zk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Zp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Zq" = (
+/obj/structure/sign/poster/contraband/shamblers_juice/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Zs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Zw" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/sign/poster/contraband/random/directional/south,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"Zz" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/accessory/holster/detective,
+/obj/item/clothing/under/rank/security/detective,
+/obj/item/clothing/suit/jacket/det_suit,
+/obj/item/clothing/neck/tie/detective,
+/obj/item/clothing/head/fedora/det_hat,
+/obj/item/evidencebag,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ZB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ZD" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ZH" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/storage/toolbox/mechanical,
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ZS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ZU" = (
+/obj/structure/closet/crate,
+/obj/item/spear,
+/obj/item/spear,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/boritos,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+"ZY" = (
+/obj/structure/curtain/cloth/fancy,
+/obj/effect/gibspawner/human,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_fortress/ruin/powered)
+
+(1,1,1) = {"
+in
+in
+in
+PD
+PD
+fD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+fD
+PD
+PD
+PD
+PD
+PD
+PD
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+"}
+(2,1,1) = {"
+in
+in
+in
+PD
+Oi
+sh
+La
+dA
+HS
+Xl
+jT
+ye
+Nk
+BN
+mY
+IN
+AF
+Et
+Oi
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+in
+in
+in
+in
+in
+in
+in
+"}
+(3,1,1) = {"
+in
+in
+in
+PD
+fM
+Hr
+cz
+Nn
+YK
+dF
+XO
+Ig
+iL
+Yi
+Od
+hM
+VX
+Ww
+YK
+Ig
+UQ
+Kh
+XO
+QF
+XO
+hS
+Xv
+Ig
+VX
+OF
+Hr
+EY
+yq
+xJ
+PD
+PD
+PD
+PD
+in
+in
+in
+in
+"}
+(4,1,1) = {"
+PD
+lD
+PD
+PD
+dW
+PD
+PD
+PD
+fD
+YY
+YY
+PD
+PD
+YY
+PD
+YY
+fD
+PD
+PD
+PD
+UY
+PD
+rs
+YY
+PD
+PD
+PD
+PD
+oo
+ld
+oo
+PD
+PD
+wh
+wH
+OT
+ao
+fD
+in
+in
+in
+in
+"}
+(5,1,1) = {"
+PD
+kN
+wd
+PD
+UY
+YY
+SW
+Pl
+PD
+Xo
+cv
+tb
+Rf
+kr
+PD
+PC
+ZD
+uQ
+pA
+YY
+Rd
+PD
+tp
+TP
+PD
+DT
+gH
+hn
+Oi
+Hl
+jw
+Zb
+oo
+LW
+rm
+aX
+Zd
+PD
+in
+in
+in
+in
+"}
+(6,1,1) = {"
+PD
+hR
+wd
+PD
+PF
+fD
+PI
+jw
+sX
+Qr
+KO
+Ks
+rq
+FU
+PD
+Zh
+ab
+hp
+wH
+PD
+RB
+EX
+Hb
+yH
+PD
+LS
+FI
+FI
+Oi
+Oi
+wH
+AX
+PD
+nx
+sh
+gv
+vN
+PD
+PD
+in
+in
+in
+"}
+(7,1,1) = {"
+PD
+rm
+wd
+PD
+wh
+nC
+KZ
+QQ
+PD
+js
+KQ
+tu
+KR
+jw
+Wo
+gF
+Gf
+Lx
+dA
+PD
+JM
+YY
+kA
+JF
+YY
+PD
+Oi
+Oi
+Oi
+wH
+Oi
+Oi
+YY
+Oh
+PD
+YY
+PD
+YY
+PD
+PD
+in
+in
+"}
+(8,1,1) = {"
+fD
+zl
+CJ
+PD
+UY
+oC
+YN
+Ge
+PD
+RO
+qQ
+AV
+Ay
+SO
+PD
+nO
+Jd
+ZD
+ch
+PD
+wc
+fD
+lj
+mY
+bg
+oo
+Jy
+ID
+Oi
+wH
+lN
+fG
+PD
+CI
+PD
+FO
+fZ
+Ml
+ie
+PD
+in
+in
+"}
+(9,1,1) = {"
+PD
+Ku
+lT
+PD
+zS
+PD
+nZ
+dA
+YY
+vB
+PD
+YY
+fD
+PD
+PD
+oz
+PD
+YY
+fD
+YY
+CZ
+PD
+Nk
+Ck
+Zz
+PD
+bM
+Uu
+Rj
+mY
+EL
+wH
+oo
+Ty
+PD
+OG
+OR
+Dk
+ab
+fD
+in
+in
+"}
+(10,1,1) = {"
+PD
+wH
+ZU
+PD
+wh
+PD
+oy
+wH
+PD
+gF
+js
+js
+hJ
+FN
+PD
+wH
+jw
+SO
+Kd
+pO
+JH
+rX
+wH
+gx
+yL
+PD
+gF
+Oi
+Oi
+Oa
+Cq
+FI
+YY
+wh
+PD
+rz
+BC
+bG
+uA
+PD
+in
+in
+"}
+(11,1,1) = {"
+PD
+Ds
+PD
+PD
+RT
+PD
+YY
+eV
+Ip
+fG
+wH
+gk
+Qs
+jo
+Gv
+gF
+Dk
+mY
+mY
+io
+wh
+PD
+CV
+aL
+Vh
+PD
+KL
+mA
+ms
+hE
+Th
+MS
+YY
+xL
+gl
+wH
+FX
+es
+hh
+PD
+in
+in
+"}
+(12,1,1) = {"
+PD
+jw
+rz
+gX
+wh
+wH
+Uu
+jw
+PD
+df
+Aj
+KE
+VY
+zb
+PD
+Vw
+ab
+ci
+SO
+PD
+wh
+PD
+vz
+ze
+qW
+PD
+bI
+Fq
+iu
+qL
+mY
+do
+PD
+UY
+BG
+OC
+Ph
+if
+Nk
+PD
+in
+in
+"}
+(13,1,1) = {"
+PD
+Oi
+Zk
+dA
+xP
+la
+ab
+au
+PD
+PD
+YY
+fD
+PD
+PD
+PD
+YY
+YY
+PD
+PD
+YY
+pr
+PD
+jx
+PD
+PD
+PD
+oo
+PD
+YY
+PD
+oo
+PD
+PD
+UY
+PD
+wH
+mY
+ao
+Nu
+PD
+in
+in
+"}
+(14,1,1) = {"
+PD
+Xq
+tw
+RD
+wh
+MI
+ds
+dd
+PD
+YY
+us
+Ig
+XO
+XA
+XO
+QF
+Hr
+hc
+XO
+Ig
+CL
+sJ
+sJ
+Ig
+hT
+XA
+Hr
+GV
+rv
+Hr
+Hr
+ka
+Hr
+BR
+YY
+sL
+Ll
+nV
+jL
+PD
+in
+in
+"}
+(15,1,1) = {"
+PD
+PD
+PD
+PD
+FY
+PD
+PD
+PD
+PD
+PD
+IC
+PD
+PD
+PD
+PD
+PD
+PD
+rs
+PD
+PD
+PD
+PD
+PD
+YY
+YY
+PD
+PD
+IC
+fD
+PD
+PD
+PD
+YY
+wr
+PD
+PD
+fD
+YY
+PD
+PD
+in
+in
+"}
+(16,1,1) = {"
+PD
+Oi
+MV
+Rn
+Aw
+Ct
+MV
+wH
+PD
+RS
+wh
+ta
+Uu
+ht
+mY
+Dk
+wH
+Oi
+hU
+Ps
+PZ
+wH
+dA
+Um
+gd
+jJ
+rz
+VV
+Kj
+la
+df
+zH
+YY
+SE
+Nk
+PD
+GL
+wE
+db
+PD
+in
+in
+"}
+(17,1,1) = {"
+PD
+hl
+ZY
+wH
+en
+jw
+fc
+wn
+PD
+nr
+VN
+ZS
+ww
+Wp
+EC
+TQ
+UL
+yI
+oR
+Nm
+Zs
+yI
+aZ
+gu
+Wp
+Ws
+Kt
+dG
+Wp
+yI
+jp
+fX
+Fu
+Si
+NZ
+BQ
+iV
+MQ
+bp
+PD
+in
+in
+"}
+(18,1,1) = {"
+PD
+Xw
+gV
+mY
+rV
+mY
+gV
+Xk
+PD
+IC
+PD
+PD
+YY
+PD
+PD
+PD
+YY
+wH
+rz
+YY
+PD
+fD
+PD
+YY
+aK
+PD
+PD
+wh
+YY
+YY
+PD
+PD
+PD
+Mt
+JG
+YY
+iV
+Kw
+up
+PD
+in
+in
+"}
+(19,1,1) = {"
+PD
+ef
+qp
+wH
+to
+mY
+xf
+Oi
+PD
+mZ
+Wp
+yI
+NK
+Kt
+Ns
+xJ
+YY
+MX
+dA
+PD
+Nl
+Uu
+wH
+wH
+Uh
+dm
+YY
+CI
+TU
+wH
+vC
+zu
+PD
+lJ
+mY
+pl
+Ii
+bp
+pX
+fD
+in
+in
+"}
+(20,1,1) = {"
+PD
+KK
+uh
+gF
+CP
+cw
+sD
+qe
+PD
+ZB
+PD
+PD
+fD
+PD
+PD
+Yz
+Gk
+wH
+mY
+Ik
+mY
+Ff
+LV
+gI
+kg
+mY
+PD
+Yo
+TU
+RO
+Tp
+qw
+YY
+YX
+Nf
+PD
+JS
+qU
+PD
+PD
+in
+in
+"}
+(21,1,1) = {"
+PD
+Of
+Nv
+Oi
+Aw
+wH
+Lq
+Zw
+PD
+nx
+PD
+wF
+cc
+WC
+YY
+ss
+PD
+wH
+oG
+PD
+jc
+mY
+Ut
+mY
+wH
+Uu
+Lo
+UY
+PD
+YY
+rs
+PD
+Zq
+Tx
+ws
+PD
+tk
+PD
+PD
+in
+in
+in
+"}
+(22,1,1) = {"
+PD
+mI
+nL
+wH
+MP
+mI
+ug
+au
+PD
+nx
+YY
+Hy
+po
+mK
+kJ
+sA
+PD
+BS
+Oi
+PD
+Xr
+wH
+Xu
+Hk
+MZ
+tt
+PD
+Yz
+PD
+Wx
+od
+sG
+PD
+Gn
+La
+PD
+PD
+PD
+in
+in
+in
+in
+"}
+(23,1,1) = {"
+PD
+LL
+xf
+Ma
+MP
+wH
+AZ
+sv
+PD
+gm
+UN
+vY
+nY
+rD
+YY
+MY
+PD
+PD
+PD
+YY
+PD
+DN
+YY
+YY
+PD
+PD
+YY
+gE
+BG
+Um
+Ku
+Ij
+eJ
+Ly
+mY
+PD
+WR
+aw
+in
+in
+in
+in
+"}
+(24,1,1) = {"
+PD
+TS
+ug
+mY
+tg
+jw
+Vz
+FI
+PD
+Yz
+PD
+Zk
+Th
+QX
+YY
+nx
+fD
+PG
+tE
+Um
+Nb
+Oi
+fp
+dA
+tE
+Lf
+PD
+Yz
+OY
+au
+hx
+jN
+PD
+zn
+Jd
+PD
+aw
+JB
+JB
+bx
+JB
+in
+"}
+(25,1,1) = {"
+PD
+Nk
+xf
+Oi
+bD
+wH
+xf
+wH
+PD
+UI
+CH
+wH
+cH
+FZ
+PD
+Yz
+YY
+BW
+Oi
+hQ
+dL
+pF
+Sk
+OX
+dA
+tE
+PD
+UY
+Pw
+Oi
+Ij
+jT
+PD
+FB
+YY
+PD
+xp
+bx
+JB
+JB
+JB
+JB
+"}
+(26,1,1) = {"
+PD
+ey
+hY
+Zk
+Kx
+mY
+uh
+pd
+PD
+UI
+PD
+dA
+sq
+Du
+YY
+jZ
+YY
+PD
+PD
+PD
+YY
+kh
+tR
+PD
+iX
+PD
+PD
+UY
+YY
+rF
+wD
+wD
+PD
+fK
+Kl
+Ee
+JB
+pV
+JB
+JB
+bx
+JB
+"}
+(27,1,1) = {"
+PD
+gF
+xf
+fH
+PQ
+wH
+rI
+Hc
+PD
+nx
+EA
+wH
+DA
+wF
+PD
+UY
+Zp
+Uu
+SH
+PD
+jj
+vg
+ou
+mY
+Hz
+iB
+PD
+Dy
+fD
+PD
+PD
+YY
+PD
+PD
+fT
+fD
+bO
+pV
+pV
+JB
+JB
+JB
+"}
+(28,1,1) = {"
+PD
+eD
+uh
+qg
+Pp
+Oi
+oI
+wH
+PD
+ss
+PD
+Dk
+va
+Uc
+PD
+fq
+Nf
+ab
+dr
+PD
+cp
+jN
+EP
+Po
+dL
+Dr
+el
+EN
+KP
+JF
+dA
+os
+PD
+oA
+wZ
+Tm
+JB
+JB
+St
+JB
+JB
+JB
+"}
+(29,1,1) = {"
+PD
+Js
+fN
+ju
+Vx
+aI
+ku
+zX
+PD
+Yz
+PD
+mY
+wH
+mY
+fD
+Yz
+Dk
+df
+mw
+PD
+MR
+Iy
+Kc
+Oi
+sc
+Eq
+PD
+QG
+fD
+wH
+Gi
+pc
+PD
+UY
+sI
+sX
+JB
+JB
+JB
+VG
+JB
+bx
+"}
+(30,1,1) = {"
+PD
+EI
+MV
+wH
+Ar
+tz
+MV
+wH
+PD
+nx
+PD
+fP
+ab
+Lt
+PD
+KT
+PD
+PD
+PD
+PD
+PD
+YY
+YY
+kG
+PD
+PD
+PD
+is
+PD
+PD
+YY
+YY
+PD
+FQ
+PD
+fD
+td
+JB
+JB
+JB
+JB
+JB
+"}
+(31,1,1) = {"
+PD
+Oi
+Pb
+Wz
+zt
+OJ
+WG
+wH
+PD
+OS
+PD
+PD
+PD
+PD
+PD
+Oh
+Xn
+Ch
+al
+Lk
+iP
+df
+wH
+dL
+Ak
+Mi
+wT
+mf
+Dk
+Pj
+wH
+qK
+lC
+BR
+PD
+in
+JB
+bx
+JB
+JB
+JB
+JB
+"}
+(32,1,1) = {"
+PD
+uC
+gY
+wH
+wh
+UD
+wH
+ZH
+PD
+fK
+gJ
+yI
+Kt
+nw
+WF
+CL
+yn
+Qg
+yI
+yn
+Hs
+yn
+UX
+gJ
+yn
+qG
+yI
+CL
+Ws
+KH
+pv
+JU
+sf
+rs
+PD
+in
+JB
+JB
+JB
+JB
+JB
+JB
+"}
+(33,1,1) = {"
+PD
+RO
+wH
+gF
+tW
+di
+gY
+Oi
+PD
+Oi
+mY
+Yq
+Yc
+Uu
+UY
+Uu
+PD
+PD
+PD
+PD
+PD
+kt
+PD
+Wf
+PD
+PD
+PD
+YY
+YY
+YY
+DD
+PD
+PD
+PD
+PD
+PD
+in
+JB
+JB
+JB
+bx
+JB
+"}
+(34,1,1) = {"
+PD
+PD
+PD
+PD
+PD
+tV
+PD
+PD
+PD
+PD
+PD
+PD
+YY
+PD
+Mg
+YY
+PD
+bc
+Oi
+rs
+Ts
+hR
+Uu
+ab
+OG
+nD
+PD
+lu
+fR
+aD
+gF
+YY
+fs
+UG
+VT
+PD
+in
+in
+in
+in
+in
+in
+"}
+(35,1,1) = {"
+PD
+gf
+gf
+gf
+PD
+eF
+PD
+gf
+gf
+gf
+gf
+gf
+fD
+DU
+mf
+Uu
+YY
+rf
+WS
+PD
+dA
+jT
+vk
+Dv
+jw
+Rs
+PD
+Bz
+gF
+vA
+eH
+YY
+cY
+vK
+mq
+PD
+in
+in
+in
+in
+in
+in
+"}
+(36,1,1) = {"
+PD
+gf
+PD
+PD
+PD
+tV
+PD
+PD
+PD
+PD
+PD
+gf
+PD
+Zp
+mf
+Ai
+YY
+Dd
+gI
+GA
+EL
+La
+wH
+au
+ti
+rh
+YY
+Oi
+KG
+Pb
+Cg
+PD
+Jv
+cY
+cY
+PD
+in
+in
+in
+in
+in
+in
+"}
+(37,1,1) = {"
+PD
+gf
+PD
+FL
+Uu
+mf
+WG
+wH
+kr
+hk
+PD
+gf
+PD
+rm
+Oh
+jR
+PD
+tZ
+Fp
+PD
+sY
+WG
+kr
+Pb
+kU
+Ec
+fD
+gF
+ah
+wC
+wY
+PD
+PD
+qa
+PD
+PD
+in
+in
+in
+in
+in
+in
+"}
+(38,1,1) = {"
+PD
+gf
+PD
+LC
+dA
+fL
+tJ
+me
+mY
+wH
+PD
+gf
+PD
+Uu
+UY
+Uu
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+fD
+YY
+PD
+PD
+PD
+PD
+YY
+PD
+PD
+Wj
+mY
+ab
+PD
+in
+in
+in
+in
+in
+in
+"}
+(39,1,1) = {"
+PD
+gf
+zh
+wH
+mY
+jb
+zc
+zc
+yv
+Ta
+PD
+gf
+PD
+mY
+gs
+Xz
+Hu
+nW
+hS
+yx
+Ig
+oc
+bm
+Hr
+ka
+tK
+Hr
+OF
+bm
+rv
+Hr
+AB
+mB
+du
+qV
+PD
+in
+in
+in
+in
+in
+in
+"}
+(40,1,1) = {"
+PD
+gf
+PD
+Oi
+bq
+pI
+sh
+yu
+zo
+wH
+PD
+gf
+PD
+sV
+Dk
+ao
+PD
+PD
+fD
+PD
+PD
+PD
+PD
+PD
+Cz
+PD
+pa
+PD
+PD
+PD
+PD
+fD
+BN
+mf
+AF
+PD
+in
+in
+in
+in
+in
+in
+"}
+(41,1,1) = {"
+PD
+gf
+PD
+LP
+Ir
+oK
+au
+mY
+sh
+dA
+PD
+gf
+PD
+WN
+jm
+wH
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+He
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+mK
+Yo
+zD
+PD
+in
+in
+in
+in
+in
+in
+"}
+(42,1,1) = {"
+PD
+gf
+PD
+Ic
+wH
+xg
+wH
+Cx
+Dk
+wm
+PD
+gf
+PD
+wH
+mY
+Oi
+PD
+Jr
+Jk
+Hg
+PB
+Ig
+Hg
+gR
+Hr
+Qp
+Hr
+Hr
+pZ
+Hr
+nW
+bm
+Hr
+uc
+wH
+PD
+in
+in
+in
+in
+in
+in
+"}
+(43,1,1) = {"
+PD
+gf
+PD
+PD
+PD
+PD
+xp
+PD
+PD
+PD
+PD
+gf
+PD
+PD
+fD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+fD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+in
+in
+in
+in
+in
+in
+"}
+(44,1,1) = {"
+PD
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+PD
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+pV
+in
+in
+in
+in
+in
+in
+in
+"}
+(45,1,1) = {"
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+PD
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+"}

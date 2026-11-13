@@ -80,6 +80,11 @@
 	if(quirk_holder)
 		CRASH("Attempted to add quirk to a holder when it already has a holder.")
 
+	if(ishuman(new_holder))
+		var/mob/living/carbon/human/human_holder = new_holder
+		if(!human_holder.dna.species.can_have_quirks)
+			return FALSE
+
 	quirk_holder = new_holder
 	LAZYADD(quirk_holder.quirks, src)
 	// If we weren't passed a client source try to use a present one
@@ -200,7 +205,8 @@
 
 /// If a quirk is able to be selected for the mob's species
 /datum/quirk/proc/is_species_appropriate(datum/species/mob_species)
-	if(mob_trait in GLOB.species_prototypes[mob_species].inherent_traits)
+	var/datum/species/species = GLOB.species_prototypes[mob_species]
+	if(!species.can_have_quirks || (mob_trait in species.inherent_traits))
 		return FALSE
 	return TRUE
 

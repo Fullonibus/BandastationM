@@ -147,7 +147,8 @@
 	return !preparing && !ship_docking && vessel.engines_running && engine_fraction() > 0
 
 /datum/stationtrauma_overmap/space/get_target_speed()
-	return vessel.engines_running ? max_speed() * throttle / 100 : 0
+	var/demand = approach_departing ? commanded_thrust() : throttle / 100
+	return vessel.engines_running ? max_speed() * demand : 0
 
 /datum/stationtrauma_overmap/space/get_braking_acceleration()
 	return vessel.engines_running ? min(1, (ST_SPACE_REFERENCE_SPEED / 15) * thrust_ratio() / ST_SPACE_REFERENCE_THRUST) : 0
@@ -324,7 +325,8 @@
 /**
  * Cast off from the current berth or hull, then engage the helm.
  *
- * A planetary ascent burns at full thrust and shakes the crew; losing thrust or the berth keeps the hull where it is.
+ * The hull leaves after a brief preparation, then completes the ascent or departure in flight space.
+ * Losing thrust before the native move keeps it moored; afterwards it stops in space.
  *
  * Arguments:
  * * instant - Leave at once, for admin repositioning
@@ -345,12 +347,12 @@
 	var/revision = control_revision
 	if(!instant)
 		var/duration = old_dock.landing ? ST_SPACE_TAKEOFF_TIME : ST_SPACE_MOORING_TIME
+		var/delay = ST_SPACE_DEPARTURE_DELAY
 		if(length(slot?.active_berth?.gangways))
-			duration -= ST_STANDARD_DOCK_RETRACTION_LEAD
+			delay -= ST_STANDARD_DOCK_RETRACTION_LEAD
 		begin_approach(old_dock, duration, departing = TRUE)
 		status = old_dock.landing ? "Взлёт: [old_dock.name]" : "Расстыковка: [old_dock.name]"
-		while(world.time - approach_started < approach_duration)
-			shake_crew()
+		while(world.time - approach_started < delay)
 			sleep(1 SECONDS)
 			if(QDELETED(src))
 				return FALSE
@@ -390,12 +392,16 @@
 			end_approach()
 			stop("Расстыковка прервана")
 			return FALSE
-		before_takeoff = CALLBACK(src, PROC_REF(retract_departure_gangways), old_dock, slot, standard_berth, revision)
+	before_takeoff = CALLBACK(src, PROC_REF(commit_departure), old_dock, slot, has_gangways ? standard_berth : null, revision, instant)
 	if((old_dock.landing || old_dock.physical_docking) && !relocate(flight_berth, before_takeoff))
 		if(has_gangways && !QDELETED(standard_berth))
 			standard_berth.cancel_retraction()
 		end_approach()
 		stop(status)
+		return FALSE
+	if(!old_dock.landing && !old_dock.physical_docking && !before_takeoff.Invoke())
+		end_approach()
+		stop("Расстыковка прервана")
 		return FALSE
 	slot?.clear_berth()
 	preparing = TRUE
@@ -405,8 +411,18 @@
 	if(old_dock.docking_owner == src)
 		old_dock.docking_owner = null
 	docked = null
+	update_parallax()
 	var/left_selected_dock = sites[selected_destination] == old_dock
 	var/orphaned_dock = old_dock.failed && !old_dock.host && sites[old_dock.id] != old_dock && !old_dock.docking_owner
+	// Casting off must not become a new arrival order while the automatic flight opens the distance.
+	if(left_selected_dock)
+		selected_destination = null
+		prepared_site = null
+	var/ready = TRUE
+	if(!instant)
+		ready = departure_flight(revision)
+		if(QDELETED(src))
+			return FALSE
 	clear_construction_site()
 	if(orphaned_dock)
 		qdel(old_dock)
@@ -415,20 +431,24 @@
 	update_parallax()
 	if(QDELETED(src))
 		return FALSE
-	if(revision != control_revision)
+	if(!ready || revision != control_revision)
 		end_approach()
+		if(revision == control_revision)
+			stop("Отлёт прерван: нет тяги")
 		return FALSE
 	throttle = 50
-	// The berth just left is no longer an arrival order during the first slow acceleration tick.
-	if(left_selected_dock)
-		selected_destination = null
-		prepared_site = null
 	. = sail()
 	end_approach()
 
-/** Commit the folded passages once native preflight has accepted the departure. */
-/datum/stationtrauma_overmap/space/proc/retract_departure_gangways(datum/stationtrauma_overmap_site/space/site, obj/docking_port/stationary/stationtrauma_space_station/standard/slot, obj/docking_port/stationary/stationtrauma_space_site/standard/berth, revision)
-	return departure_gangway_valid(site, slot, berth, revision) && berth.finish_retraction()
+/** Release the passages and jolt the hull only after native preflight accepts the move. */
+/datum/stationtrauma_overmap/space/proc/commit_departure(datum/stationtrauma_overmap_site/space/site, obj/docking_port/stationary/stationtrauma_space_station/standard/slot, obj/docking_port/stationary/stationtrauma_space_site/standard/berth, revision, instant)
+	if(QDELETED(site) || docked != site || revision != control_revision || !is_operational() || !vessel.engines_running || engine_fraction() <= 0)
+		return FALSE
+	if(berth && (!departure_gangway_valid(site, slot, berth, revision) || !berth.finish_retraction()))
+		return FALSE
+	if(!instant)
+		play_departure_effects(site.landing)
+	return TRUE
 
 /** The approach must still own the berth and have propulsion at each commit point. */
 /datum/stationtrauma_overmap/space/proc/departure_gangway_valid(datum/stationtrauma_overmap_site/space/site, obj/docking_port/stationary/stationtrauma_space_station/standard/slot, obj/docking_port/stationary/stationtrauma_space_site/standard/berth, revision)
@@ -445,6 +465,8 @@
 /** Revalidate the selected site, berth ownership, proximity and helm order revision. */
 /datum/stationtrauma_overmap/space/proc/can_dock(datum/stationtrauma_overmap_site/space/site, revision)
 	if(!carrier_arrival_ready(site) || carrier_busy())
+		return FALSE
+	if(site?.landing && (!vessel.engines_running || engine_fraction() <= 0))
 		return FALSE
 	if(site?.host && sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2) > radius + site.radius + ST_NAV_APPROACH + 5)
 		return FALSE
@@ -552,9 +574,13 @@
 /datum/stationtrauma_overmap/space/update_parallax()
 	var/background = parallax_background()
 	var/planet = parallax_planet()
-	// Casting off already moves the hull: the stars stream past while the station's planet keeps its place.
-	// An engaged helm under throttle counts as under way, so the stars do not pause before the speed registers.
-	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || (helm_engaged && throttle > 0) || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
+	var/moored = docked || (ship_docking && !helm_engaged)
+	if(!moored && (approach_site?.landing || approach_site?.physical_docking))
+		var/obj/docking_port/stationary/physical_berth = vessel.get_docked()
+		moored = physical_berth && physical_berth != flight_berth
+	// Spooling up does not move the hull; departure flight starts only after the physical release.
+	var/moving = speed > ST_NAV_STOPPED_SPEED || (approach_started && !approach_departing) || (helm_engaged && (approach_departing || throttle > 0)) || jump_phase >= HYPERSPACE_LAUNCH
+	var/direction = !moored && moving ? vessel.preferred_direction : NONE
 	// Bluespace flight streaks the stars past the hull.
 	var/rush = jump_phase == HYPERSPACE_LAUNCH ? ST_SPACE_JUMP_PARALLAX_RUSH : 1
 	var/motion_changed = direction != parallax_direction || rush != parallax_rush

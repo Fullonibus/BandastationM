@@ -34,6 +34,15 @@
 	max_integrity = 400
 	use_power = NO_POWER_USE
 	circuit = /obj/item/circuitboard/machine/stationtrauma_fusion_core
+	/// Electrical heaters share the ship control contract, but consume rather than generate power.
+	var/is_electric = FALSE
+	/// Installation-specific hookup instructions shown by examination.
+	var/connection_description = "Тритий подаётся во вход, горячий гелий уходит из выхода к преобразователям. Электричество идёт в кабель под ядром."
+	/// Icon-space origin of pipe sleeves; the fusion casing uses a centred 96px image.
+	var/sleeve_origin = ICON_SIZE_X
+	/// Local machine sound profiles; electrical heaters supply their own recordings.
+	var/soundloop_type = /datum/looping_sound/stationtrauma_fusion
+	var/overdrive_sound_type = /datum/looping_sound/stationtrauma_fusion/overdrive
 	/// Engineer's manual output setting, in percent of the nominal reaction; above 100 is overload.
 	var/level = 100
 	/// Whether the core follows the grid and engine demand itself instead of the manual setting.
@@ -48,6 +57,8 @@
 	var/interlock = TRUE
 	/// Latched heat trip; the core cannot run again until cold.
 	var/tripped = FALSE
+	/// Hot restarts retain the warning deadline; cooling below the unsafe range clears it.
+	var/meltdown_deadline = 0
 	/// Engineer's cap on the tritium injector, in moles per second.
 	var/injection_limit = ST_CORE_FUEL_RATE * ST_CORE_MAX_LEVEL / 100 * ST_CORE_OVERDRIVE_FUEL
 	/// Output the reaction aimed for on the last tick, in percent.
@@ -67,8 +78,8 @@
 
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/Initialize(mapload)
 	. = ..()
-	soundloop = new(src)
-	overdrive_sound = new(src)
+	soundloop = new soundloop_type(src)
+	overdrive_sound = new overdrive_sound_type(src)
 	refresh_effects()
 
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/post_machine_initialize()
@@ -117,8 +128,8 @@
 		var/connection = node ? "intact" : "exposed"
 		var/mutable_appearance/sleeve = mutable_appearance('icons/obj/pipes_n_cables/pipe_underlays.dmi', "[connection]_[port_direction]_[piping_layer]", appearance_flags = RESET_COLOR|KEEP_APART)
 		sleeve.color = node ? SELECT_ATMOS_NODE_COLOR(src, node) : pipe_color
-		sleeve.pixel_x = ICON_SIZE_X * (1 + (port_direction == EAST) - (port_direction == WEST))
-		sleeve.pixel_y = ICON_SIZE_Y * (1 + (port_direction == NORTH) - (port_direction == SOUTH))
+		sleeve.pixel_x = sleeve_origin + ICON_SIZE_X * ((port_direction == EAST) - (port_direction == WEST))
+		sleeve.pixel_y = sleeve_origin + ICON_SIZE_Y * ((port_direction == NORTH) - (port_direction == SOUTH))
 		if(underfloor_state == UNDERFLOOR_VISIBLE || uncovered_turf)
 			sleeve.layer = BELOW_CATWALK_LAYER + get_pipe_layer_offset()
 			SET_PLANE_EXPLICIT(sleeve, FLOOR_PLANE, src)
@@ -183,7 +194,7 @@
 
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/update_overlays()
 	. = ..()
-	if(icon_state in list("core", "core_open"))
+	if(is_electric || (icon_state in list("core", "core_open")))
 		return
 	. += emissive_appearance(icon, "[icon_state]_glow", src)
 
@@ -236,7 +247,7 @@
 
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/examine(mob/user)
 	. = ..()
-	. += span_notice("Тритий подаётся во вход, горячий гелий уходит из выхода к преобразователям. Электричество идёт в кабель под ядром.")
+	. += span_notice(connection_description)
 
 /** Hand the outlet line's converters to this core and pair each with its nozzle; called on hookup and start, never per tick. */
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/proc/bind_converters()
@@ -255,6 +266,10 @@
 /** Whether overdrive is actually raising the output. */
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/proc/overdrive_active()
 	return overdrive && output > 0
+
+/** Thrust gain belongs to the supplying installation, not the interchangeable nozzle. */
+/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/proc/thrust_multiplier()
+	return overdrive_active() ? 1 + SHIP_AFTERBURNER_THRUST : 1
 
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/process(seconds_per_tick)
 	var/obj/docking_port/mobile/stationtrauma_space/ship = vessel_ref?.resolve()
@@ -280,9 +295,16 @@
 		trip()
 	else if(tripped && heat <= 0)
 		tripped = FALSE
-	if(output > 0 && heat > 100 && (heat >= ST_CORE_MELTDOWN_HEAT || prob((heat - 100) * ST_CORE_MELTDOWN_CHANCE * seconds_per_tick)))
-		meltdown()
-		return
+	if(heat <= 100)
+		meltdown_deadline = 0
+	else if(!interlock && output > 0)
+		if(!meltdown_deadline)
+			meltdown_deadline = world.time + ST_CORE_MELTDOWN_DELAY
+			playsound(src, 'sound/machines/warning-buzzer.ogg', 75, FALSE)
+			say("Критический перегрев ядра. До возможного разрушения — не менее [ST_CORE_MELTDOWN_DELAY / (1 SECONDS)] секунд. Немедленно остановите реакцию и охладите ядро!")
+		if(heat >= ST_CORE_MELTDOWN_HEAT && world.time >= meltdown_deadline)
+			meltdown()
+			return
 	if(output > 1 || heat > 0)
 		warm_room(seconds_per_tick)
 	if(output > 0)
@@ -352,7 +374,8 @@
 	log_game("Fusion core meltdown at [AREACOORD(ground)].")
 	radiation_pulse(ground, max_range = 10, threshold = RAD_LIGHT_INSULATION, chance = 60)
 	qdel(src)
-	explosion(ground, devastation_range = 1, heavy_impact_range = 3, light_impact_range = 6, flame_range = 5)
+	// A ship reactor catastrophe exceeds the ordinary bomb cap without changing caps for other explosives.
+	explosion(ground, devastation_range = 10, heavy_impact_range = 14, light_impact_range = 18, flame_range = 12, ignorecap = TRUE)
 
 /**
  * Feed the cable beneath the core and push hot helium to the outlet line.
@@ -465,9 +488,9 @@
 			injection_limit = clamp(value, 0, ST_CORE_FUEL_RATE * ST_CORE_MAX_LEVEL / 100 * ST_CORE_OVERDRIVE_FUEL)
 		if("interlock")
 			interlock = !interlock
-			log_game("[key_name(user)] turned the fusion core interlock [interlock ? "on" : "off"] at [AREACOORD(src)].")
+			log_game("[key_name(user)] turned [name] interlock [interlock ? "on" : "off"] at [AREACOORD(src)].")
 			if(!interlock)
-				message_admins("[ADMIN_LOOKUPFLW(user)] turned off a fusion core interlock at [ADMIN_VERBOSEJMP(src)].")
+				message_admins("[ADMIN_LOOKUPFLW(user)] turned off [name] interlock at [ADMIN_VERBOSEJMP(src)].")
 		else
 			return FALSE
 	return TRUE

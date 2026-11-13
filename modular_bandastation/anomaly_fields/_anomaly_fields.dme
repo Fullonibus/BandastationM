@@ -1,0 +1,8 @@
+#include "_anomaly_fields.dm"
+#include "code\_defines.dm"
+#include "code\field.dm"
+#include "code\field_types.dm"
+#include "code\artefacts.dm"
+#include "code\equipment.dm"
+#include "code\placement.dm"
+#include "code\test_stand.dm"

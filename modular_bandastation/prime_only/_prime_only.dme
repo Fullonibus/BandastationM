@@ -6,6 +6,12 @@
 #include "code/normandy_suit_storage.dm"
 // AI EDIT START - Compile Prime regression tests only when their module and test harness are enabled.
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+#include "code/tests/khaaroot_hivemind_tests.dm"
+#include "code/tests/khaaroot_mutation_tests.dm"
+#include "code/tests/khaaroot_tendril_tests.dm"
+#include "code/tests/khaaroot_gland_tests.dm"
+#include "code/tests/khaaroot_molt_tests.dm"
+#include "code/tests/khaaroot_recovery_tests.dm"
 #include "code/tests/mod_delta_817_tests.dm"
 #include "code/tests/normandy_suit_storage_tests.dm"
 #endif
@@ -16,6 +22,11 @@
 #include "code/khaaroot_survivor/viral_surge.dm"
 #include "code/khaaroot_survivor/khaaroot_hivemind.dm"
 #include "code/khaaroot_survivor/khaaroot_abilities.dm"
+#include "code/khaaroot_survivor/khaaroot_mutations.dm"
+#include "code/khaaroot_survivor/khaaroot_tendril.dm"
+#include "code/khaaroot_survivor/khaaroot_gland.dm"
+#include "code/khaaroot_survivor/khaaroot_molt.dm"
+#include "code/khaaroot_survivor/khaaroot_recovery.dm"
 
 #include "../_defines220/code/defines/bodycam.dm"
 #include "../~components/code/bodycam_camera.dm"

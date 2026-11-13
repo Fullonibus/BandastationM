@@ -124,6 +124,10 @@
 	name = "Security Mechbay"
 	icon_state = "sec_mechbay"
 
+/area/station/security/spacepod_pilot
+	name = "Spacepod Pilot"
+	icon_state = "security"
+
 /*
 * Security Checkpoints
 */

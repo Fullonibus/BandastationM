@@ -30,9 +30,8 @@
 /turf/open/misc/beach/sand,
 /area/expedition_planet/barren)
 "E" = (
-/obj/effect/anomaly/flux{
-	immortal = 1;
-	move_chance = 0
+/obj/effect/anomaly/pulsing/veins{
+	immortal = 1
 	},
 /obj/structure/flora/bush/generic{
 	pixel_y = -6

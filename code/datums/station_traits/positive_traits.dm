@@ -293,6 +293,7 @@
 		/datum/job/roboticist = /obj/item/organ/cyberimp/eyes/hud/diagnostic,
 		/datum/job/scientist = /obj/item/organ/ears/cybernetic,
 		/datum/job/security_officer = /obj/item/organ/cyberimp/arm/toolkit/flash,
+		/datum/job/spacepod_pilot = /obj/item/organ/cyberimp/arm/toolkit/flash,
 		/datum/job/shaft_miner = /obj/item/organ/monster_core/rush_gland,
 		/datum/job/station_engineer = /obj/item/organ/cyberimp/arm/toolkit/toolset,
 		/datum/job/warden = /obj/item/organ/cyberimp/eyes/hud/security,

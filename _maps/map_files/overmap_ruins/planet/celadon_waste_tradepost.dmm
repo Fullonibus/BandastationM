@@ -1,0 +1,7230 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/WasteRuins/wasteplanet_tradepost.dmm
+"ae" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"ai" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"am" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"an" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"aJ" = (
+/obj/item/bedsheet/hos{
+	name = "vanguard's bedsheet"
+	},
+/obj/structure/bed/pod,
+/obj/structure/curtain/cloth,
+/obj/machinery/light/small/broken/directional/north,
+/turf/open/floor/carpet/orange,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"aN" = (
+/obj/structure/cable,
+/obj/structure/reagent_dispensers/watertank,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"aP" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"aT" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/pen/fountain,
+/obj/machinery/newscaster/directional/west,
+/obj/item/paper{
+	pixel_x = -5;
+	pixel_y = -9;
+	name = "paper scrap"
+	},
+/obj/item/paper{
+	pixel_x = 7;
+	pixel_y = -16;
+	name = "paper scrap"
+	},
+/obj/item/stack/spacecash/c100{
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"aY" = (
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"bc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/marker_beacon,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"bq" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"bu" = (
+/obj/structure/rack,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"bv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"bw" = (
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/east,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/item/clothing/head/soft,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"by" = (
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"bA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 8
+	},
+/obj/structure/table_frame,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"bD" = (
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/o2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"bE" = (
+/obj/structure/filingcabinet,
+/obj/item/radio/intercom/directional/east,
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"bK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"bO" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"bT" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/hivebot/range,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"cg" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"cw" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"cE" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Holopad Access"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"cI" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"cM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"cO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/chips,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"cP" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 10
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 10
+	},
+/obj/item/storage/box{
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/obj/item/storage/box{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/obj/item/storage/box{
+	pixel_x = 12;
+	pixel_y = 11
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"cT" = (
+/obj/structure/table,
+/obj/machinery/light/small/broken/directional/east,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/item/paper_bin{
+	pixel_y = 3;
+	pixel_x = 2
+	},
+/obj/item/pen{
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"df" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 9
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/obj/machinery/firealarm/directional/north,
+/obj/item/chair,
+/obj/structure/closet/crate/bin,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"dL" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_y = -8;
+	pixel_x = -7
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"dO" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/right/directional/east,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"eb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"ek" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/item/stack/ore/iron{
+	amount = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"eM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/marker_beacon,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"eO" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"eQ" = (
+/obj/item/radio/intercom/directional/north,
+/obj/structure/closet/crate,
+/obj/effect/turf_decal/stripes/full,
+/obj/item/circuitboard/machine/space_heater,
+/obj/item/circuitboard/machine/space_heater,
+/obj/item/circuitboard/machine/space_heater,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"eT" = (
+/obj/item/clothing/head/helmet{
+	pixel_y = 4;
+	pixel_x = 3
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"eW" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"fb" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"ff" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/item/stack/ore/iron{
+	amount = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"fo" = (
+/obj/structure/table,
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_y = 6;
+	pixel_x = -4
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = 3;
+	pixel_y = -4
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_mindbreaker{
+	pixel_y = 8;
+	pixel_x = 9
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_cannabis{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"fB" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"fE" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"fF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/airlock/engineering{
+	dir = 4;
+	name = "Engineering"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"fG" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/clothing/head/beret/sec,
+/obj/machinery/light/small/broken/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4,
+/obj/item/clipboard,
+/obj/machinery/button/door/directional/east{
+	pixel_y = -9;
+	pixel_x = -22;
+	name = "privacy lock"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"fK" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"fQ" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"fT" = (
+/obj/structure/cable,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id = "exp_celadon_waste_tradepost_wtpw2"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"fW" = (
+/obj/structure/sign/poster/contraband/c20r/directional/north,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"gc" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"gg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"gi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/gold,
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"gr" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"gt" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"gx" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/sign/poster/contraband/random/directional/east,
+/obj/item/reagent_containers/cup/glass/coffee{
+	pixel_x = 7;
+	pixel_y = -2
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"gz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"gM" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"gN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"ha" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/pet_carrier,
+/obj/item/clothing/suit/jacket/leather,
+/obj/item/clothing/under/misc/pj/red,
+/obj/item/clothing/under/rank/civilian/lawyer/black,
+/obj/item/clothing/mask/gas/atmos,
+/obj/item/clothing/under/shorts/blue{
+	name = "jorts";
+	desc = "potentially the most horrific thing you've ever seen."
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"hd" = (
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"hh" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip5"
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"hj" = (
+/obj/machinery/light/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/modular_computer/preset/civilian{
+	name = "high powered gaming PC";
+	desc = "Looks pretty premium. Probably made by Cybersun though."
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"hp" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"hq" = (
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"hC" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"hP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 4
+	},
+/obj/item/stack/ore/iron,
+/obj/item/stack/ore/gold,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"hQ" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/machinery/portable_atmospherics/scrubber/huge/movable,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"hT" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/gun/ballistic/automatic/pistol{
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine/m9mm,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"ic" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/airlock/engineering{
+	dir = 4;
+	name = "Engineering"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"ih" = (
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"ii" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/gibspawner/robot,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"in" = (
+/obj/vehicle/sealed/mecha/ripley/cargo{
+	name = "improper APLU "ForkliftCertified""
+	},
+/obj/effect/turf_decal/recharge,
+/obj/structure/sign/warning/no_smoking{
+	pixel_x = 28
+	},
+/obj/machinery/light/small/broken/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"io" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/gold,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"is" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/item/paper{
+	name = "paper scrap"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"iw" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip3"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"iB" = (
+/obj/structure/table,
+/obj/machinery/fax{
+	pixel_y = 7
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"iC" = (
+/obj/item/cigbutt{
+	pixel_y = 6
+	},
+/obj/item/cigbutt{
+	pixel_y = 4;
+	pixel_x = -11
+	},
+/obj/item/cigbutt{
+	pixel_y = -7;
+	pixel_x = -7
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"iH" = (
+/mob/living/basic/hivebot/range,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"iM" = (
+/obj/item/stack/sheet/mineral/sandbags{
+	amount = 2
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"iU" = (
+/mob/living/basic/hivebot/strong,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"iW" = (
+/obj/machinery/button/door/directional/east{
+	pixel_x = -24;
+	pixel_y = 8;
+	id = "exp_celadon_waste_tradepost_wtpw1"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"jc" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"jh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"jm" = (
+/obj/structure/table,
+/obj/machinery/airalarm/directional/south,
+/obj/item/reagent_containers/cup/glass/mug/tea{
+	pixel_y = 6;
+	pixel_x = 2
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"jp" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/caution{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"jt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"jv" = (
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"jA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"jE" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"jO" = (
+/obj/structure/chair,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"ka" = (
+/obj/machinery/door/airlock{
+	dir = 4;
+	name = "Showers"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"kj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"kv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"ky" = (
+/obj/effect/decal/cleanable/molten_object{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/molten_object{
+	pixel_x = 1;
+	pixel_y = -12
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip1"
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"kD" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"kF" = (
+/obj/item/clipboard,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/item/radio/intercom/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"kL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/item/watertank{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/clothing/mask/gas/atmos,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"kO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"kQ" = (
+/obj/machinery/light/small/broken/directional/east,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"kY" = (
+/mob/living/basic/hivebot/strong,
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"lb" = (
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/n2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"li" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/door/airlock/command/glass{
+	name = "Central Dome"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"ll" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"ln" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/mob/living/basic/hivebot/range,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"lt" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"lu" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"lz" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"lA" = (
+/obj/machinery/door/airlock/security{
+	name = "Armory"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"lS" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"lW" = (
+/obj/machinery/shower/directional/north,
+/obj/structure/curtain,
+/obj/structure/window/reinforced/tinted/spawner/directional/east,
+/obj/structure/window/reinforced/tinted/spawner/directional/west,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"mb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/corpse/human/engineer,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"ml" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"mv" = (
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/structure/door_assembly/door_assembly_com,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"mD" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"mF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"mO" = (
+/obj/structure/cable,
+/obj/structure/closet/secure_closet/engineering_welding,
+/obj/item/clothing/glasses/welding,
+/obj/item/weldingtool/largetank,
+/obj/item/weldingtool/largetank,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"mP" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"mQ" = (
+/obj/machinery/firealarm/directional/west,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"nd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"ng" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/frame/machine,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"ni" = (
+/obj/machinery/power/floodlight{
+	anchored = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"no" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 10
+	},
+/obj/machinery/meter,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"nu" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"nx" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip3"
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"nz" = (
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"nE" = (
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"nG" = (
+/obj/machinery/button/door/directional/west{
+	pixel_y = -8;
+	pixel_x = 24;
+	id = "exp_celadon_waste_tradepost_wtpw2"
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"nQ" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/gun/ballistic/automatic/pistol,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/item/ammo_box/magazine/m9mm,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"nY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"oe" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"of" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"oj" = (
+/obj/structure/marker_beacon,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"ok" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
+	dir = 5
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"ol" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"oo" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"oq" = (
+/obj/structure/cable,
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/item/storage/toolbox/electrical,
+/obj/item/multitool,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"os" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"ow" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/turf_decal/stripes/end{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"oF" = (
+/obj/machinery/door/airlock/command/glass{
+	dir = 4;
+	name = "Holopad Access"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"oG" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"oU" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"oX" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"pg" = (
+/obj/item/flashlight/flare,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"po" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 8
+	},
+/obj/item/kirbyplants/random,
+/obj/item/paper{
+	name = "paper scrap"
+	},
+/obj/item/trash/chips,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"pw" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"pz" = (
+/obj/item/clothing/head/cone,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"pA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"pB" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"pG" = (
+/obj/structure/foamedmetal/iron,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"pJ" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip3"
+	},
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"pK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/greyscale,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"pR" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"pS" = (
+/obj/item/stack/ore/gold,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"qh" = (
+/obj/machinery/holopad/secure,
+/obj/effect/turf_decal/box,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"qj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"qE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"qH" = (
+/obj/machinery/door/airlock{
+	name = "Bathroom";
+	id_tag = "exp_celadon_waste_tradepost_but"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"qN" = (
+/obj/effect/turf_decal/caution,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"qQ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"qZ" = (
+/obj/item/stack/ore/iron{
+	amount = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/door/airlock/security{
+	name = "Barracks"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"rg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"rp" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"rr" = (
+/obj/effect/decal/cleanable/molten_object{
+	pixel_x = -10;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/molten_object{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip4"
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"rz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"rC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"rH" = (
+/obj/machinery/meter/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"rI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/ash/cap_shroom,
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"rM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/head/cone,
+/obj/item/light/tube/broken,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"rZ" = (
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/structure/rack,
+/obj/machinery/door/window/left/directional/south,
+/obj/structure/window/reinforced/tinted/spawner/directional/east,
+/obj/item/soap,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"sc" = (
+/mob/living/basic/hivebot/range,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"sd" = (
+/obj/effect/decal/cleanable/molten_object/large,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"sg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"sl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/pen/fourcolor,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"sp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"sr" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"sw" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"sz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"sD" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"sP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"sU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"sW" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"ti" = (
+/obj/item/flashlight/flare,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"tr" = (
+/obj/machinery/light/directional/south,
+/obj/structure/bookcase/random,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"tH" = (
+/obj/machinery/door/airlock/mining{
+	name = "Warehouse"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"tI" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"tK" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"tT" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"tW" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"uc" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown,
+/obj/item/radio/intercom/directional/south,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"ud" = (
+/obj/machinery/door/airlock/medical{
+	name = "Medbay"
+	},
+/obj/effect/mapping_helpers/airlock/welded,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"uk" = (
+/obj/item/storage/box{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"up" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/gibspawner/robot,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"uq" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"us" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"uP" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 5
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 5
+	},
+/obj/machinery/light/small/broken/directional/east,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"uR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"uY" = (
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"va" = (
+/obj/structure/flora/ash/cap_shroom,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"vd" = (
+/obj/structure/rack,
+/obj/machinery/door/window/right/directional/south,
+/obj/structure/window/reinforced/tinted/spawner/directional/west,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"vf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"vg" = (
+/obj/item/stack/sheet/mineral/sandbags{
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"vw" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"vD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"vE" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"vJ" = (
+/obj/item/radio/intercom/directional/north{
+	name = "IRMG shortwave intercom"
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"vM" = (
+/obj/machinery/atmospherics/components/binary/pump/layer2{
+	dir = 1;
+	name = "Waste to Recycling"
+	},
+/obj/machinery/atmospherics/components/binary/pump/layer4{
+	dir = 1;
+	name = "Distro to Filtration"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
+/obj/machinery/light/small/broken/directional/west,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"vZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"wr" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"ws" = (
+/obj/machinery/light/small/broken/directional/south,
+/obj/machinery/holopad/secure,
+/turf/open/floor/carpet/orange,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"wz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/structure/floodlight_frame,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"wE" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/closet/crate,
+/obj/machinery/light/small/broken/directional/south,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"wI" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"wJ" = (
+/obj/machinery/atmospherics/components/trinary/mixer/airmix,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"wO" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"wP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/item/stack/ore/iron{
+	amount = 5
+	},
+/obj/machinery/door/airlock/command/glass{
+	name = "Central Dome"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"wQ" = (
+/obj/machinery/light/small/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/obj/item/surgery_tray/full,
+/obj/item/storage/medkit/toxin,
+/obj/item/storage/medkit/toxin,
+/obj/item/reagent_containers/hypospray/medipen,
+/obj/item/reagent_containers/hypospray/medipen,
+/obj/item/reagent_containers/hypospray/medipen,
+/obj/item/reagent_containers/hypospray/medipen,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"wS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/foamedmetal/iron,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"xa" = (
+/obj/structure/bed/pod,
+/obj/machinery/light/small/broken/directional/north,
+/obj/structure/curtain/cloth,
+/obj/item/bedsheet/brown,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"xp" = (
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"xs" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"xB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"xE" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"xI" = (
+/obj/effect/decal/cleanable/molten_object{
+	pixel_x = -10;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/molten_object{
+	pixel_x = 9;
+	pixel_y = -4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"xJ" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"xL" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"xN" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"xR" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"xU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"yj" = (
+/obj/machinery/airalarm/directional/west,
+/obj/item/ammo_casing/spent,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "floor2"
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"ym" = (
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"yr" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"yv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"yO" = (
+/obj/structure/grille,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"yT" = (
+/obj/item/stack/sheet/mineral/sandbags{
+	amount = 3
+	},
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/hivebot/strong,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"yV" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"zb" = (
+/obj/structure/cable,
+/mob/living/basic/hivebot/strong,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"zi" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"zp" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip1"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/mob/living/basic/hivebot/range,
+/obj/structure/door_assembly/door_assembly_com,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"zv" = (
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"zw" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"zx" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"zy" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/table/wood,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"zz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/holopad/secure,
+/mob/living/basic/hivebot/strong,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"zC" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 8
+	},
+/obj/structure/closet/crate,
+/obj/item/circuitboard/machine/shieldwallgen,
+/obj/item/circuitboard/machine/shieldwallgen,
+/obj/item/circuitboard/machine/shieldwallgen,
+/obj/item/circuitboard/machine/shieldwallgen,
+/obj/item/circuitboard/machine/shieldwallgen,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"zI" = (
+/obj/item/light/tube/broken,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"zP" = (
+/obj/effect/turf_decal/caution,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"zW" = (
+/obj/structure/cable,
+/obj/structure/floodlight_frame,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"zX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/light/small/broken/directional/east,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Af" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Ag" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/flashlight/flare,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Aj" = (
+/obj/machinery/light/small/directional/north,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Ar" = (
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/obj/item/clothing/head/cone,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"At" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/flashlight/flare,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"AB" = (
+/obj/machinery/power/floodlight{
+	anchored = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"AU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/corner,
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"AW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/obj/item/stack/ore/iron{
+	amount = 5
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"AY" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/ore_box,
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Bj" = (
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Bq" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip1"
+	},
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Bv" = (
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/obj/effect/gibspawner/robot,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/structure/table_frame,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"By" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"BA" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"BC" = (
+/obj/item/chair{
+	pixel_y = -4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/item/gun/ballistic/automatic/pistol/no_mag{
+	pixel_y = 8;
+	pixel_x = 10
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"BE" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"BF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"BL" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/item/radio/off{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"BV" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/mob/living/basic/hivebot/range,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Cr" = (
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Cs" = (
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id = "exp_celadon_waste_tradepost_wtpw1"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Cw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/item/radio/off,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"CF" = (
+/obj/item/stack/sheet/mineral/sandbags{
+	amount = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/greyscale{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"CH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"CJ" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"CP" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"CS" = (
+/obj/structure/table,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"CW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/ash/cap_shroom,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"CX" = (
+/obj/machinery/light/small/broken/directional/south,
+/obj/machinery/shower/directional/west,
+/obj/structure/toilet{
+	dir = 4;
+	pixel_x = -6
+	},
+/obj/machinery/button/door/directional/east{
+	pixel_y = 11;
+	pixel_x = -22;
+	normaldoorcontrol = 1;
+	specialfunctions = 3;
+	id = "exp_celadon_waste_tradepost_but"
+	},
+/obj/structure/sink/directional/west,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"CY" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Db" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper_bin,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/mob/living/basic/hivebot/range,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/item/trash/chips,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Dj" = (
+/obj/machinery/shower/directional/north,
+/obj/structure/curtain,
+/obj/structure/window/reinforced/tinted/spawner/directional/east,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Do" = (
+/obj/structure/table/greyscale,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Dp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Dr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/thinplating,
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/item/radio/intercom/directional/south,
+/obj/item/stack/ore/iron,
+/obj/structure/cable,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Dv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/pen/fourcolor,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Dx" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/thinplating,
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/machinery/light/small/directional/south,
+/obj/structure/cable,
+/obj/item/chair,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Dy" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"DF" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Ef" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Em" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"Ev" = (
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Ez" = (
+/mob/living/basic/hivebot/strong,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"EB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/greyscale,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"EP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer4{
+	dir = 1
+	},
+/obj/structure/sign/warning/gas_mask{
+	pixel_x = -28
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"EU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id = "exp_celadon_waste_tradepost_wtpw2"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Fg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/east,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Fh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Fi" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Fo" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Fv" = (
+/obj/item/cigbutt{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/cigbutt{
+	pixel_y = 6;
+	pixel_x = -8
+	},
+/obj/item/cigbutt,
+/obj/structure/sign/warning/no_smoking{
+	pixel_y = 28
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"FA" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"FJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clipboard,
+/obj/item/paper{
+	name = "paper scrap"
+	},
+/obj/item/paper{
+	name = "paper scrap"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/structure/table_frame,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"FO" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/gibspawner/robot,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"FR" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/cloth,
+/obj/item/radio/intercom/directional/east,
+/obj/item/bedsheet/brown,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"FX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Ge" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Gk" = (
+/obj/item/airlock_painter/decal{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Go" = (
+/obj/effect/gibspawner/robot,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Gq" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/obj/item/bot_assembly/medbot,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Gx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Gz" = (
+/obj/structure/table/greyscale,
+/obj/item/clothing/shoes/laceup{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"GG" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/item/trash/chips,
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"GW" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Hh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Hi" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/item/stack/ore/iron{
+	amount = 5
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer4{
+	dir = 1
+	},
+/obj/machinery/light/small/broken/directional/west,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Hk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"HD" = (
+/obj/item/radio/intercom/directional/north,
+/obj/effect/turf_decal/siding/dark/corner,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"HI" = (
+/obj/item/radio/intercom/directional/north,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"HL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/radio/intercom/directional/south,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"HW" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip3"
+	},
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Ia" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Ib" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Id" = (
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Il" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/visible,
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"Ip" = (
+/obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Ir" = (
+/obj/structure/flora/ash/cap_shroom,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"It" = (
+/obj/item/clothing/head/cone,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Ix" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"IB" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"IK" = (
+/obj/machinery/door/airlock/mining{
+	name = "Warehouse"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"IU" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/obj/machinery/button/door/directional/east{
+	pixel_x = -24;
+	pixel_y = -8;
+	id = "exp_celadon_waste_tradepost_wtpw1"
+	},
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"IW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Jj" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 5
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/trimline/yellow/line,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Jo" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/door/window/left/directional/west,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Jy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/mineral/sandbags,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"JI" = (
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/obj/structure/sign/warning/gas_mask{
+	pixel_x = -28
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip1"
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/item/paper{
+	name = "paper scrap"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"JJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/pipe_dispenser,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"JK" = (
+/obj/machinery/door/airlock{
+	dir = 4;
+	name = "Trader's Quarters"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"JO" = (
+/obj/effect/decal/cleanable/glass,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"JP" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/gun/ballistic/automatic/pistol{
+	pixel_y = 5;
+	pixel_x = -4
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"JS" = (
+/obj/structure/filingcabinet,
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"JU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"JX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/mob/living/basic/hivebot/strong,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"JY" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/turf_decal/stripes/end,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Kq" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_y = -11;
+	pixel_x = -3
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -4
+	},
+/obj/item/paper{
+	name = "paper scrap"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Ky" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/caution{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"KB" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"KN" = (
+/obj/structure/door_assembly/door_assembly_sec,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"KQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"KT" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = -4;
+	pixel_x = -2
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -7;
+	pixel_x = -9
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -11;
+	pixel_x = -3
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_y = -8;
+	pixel_x = -7
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"KW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"KX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Li" = (
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Ll" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Lp" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Lr" = (
+/obj/machinery/light/small/directional/north,
+/obj/machinery/computer/operating,
+/obj/item/disk/surgery,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Lv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 5
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"LA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/flashlight/flare,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"LF" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"LH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"LI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"LS" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"LU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown,
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"LZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Ma" = (
+/turf/template_noop,
+/area/template_noop)
+"Mh" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Mi" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"Mz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/kirbyplants/random,
+/obj/item/paper{
+	name = "paper scrap"
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/machinery/light/directional/south,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"MG" = (
+/obj/item/ammo_casing/spent,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"MM" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/effect/decal/cleanable/glass,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"MS" = (
+/obj/structure/sign/warning/gas_mask{
+	pixel_x = -28
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Nc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Nj" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip3"
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Nm" = (
+/obj/machinery/light/small/broken/directional/west,
+/obj/machinery/portable_atmospherics/scrubber/huge/movable,
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Nv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Nx" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/full,
+/obj/machinery/power/rtg,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"NL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/gibspawner/robot,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"NM" = (
+/mob/living/basic/hivebot/strong,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"NV" = (
+/obj/effect/decal/cleanable/molten_object{
+	pixel_x = 1;
+	pixel_y = -12
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"NW" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"NZ" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Oe" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Og" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Om" = (
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Oo" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/north,
+/obj/item/storage/toolbox{
+	pixel_y = 2
+	},
+/obj/item/storage/toolbox{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Ot" = (
+/obj/machinery/mech_bay_recharge_port,
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"OD" = (
+/obj/structure/girder/displaced,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"OE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"OT" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/obj/structure/barricade/sandbags,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"OU" = (
+/obj/structure/grille,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"OZ" = (
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Pd" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"Pg" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"PA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"PC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"PO" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"PS" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"PW" = (
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Qa" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"Qc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"Qj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating,
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Qv" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"QF" = (
+/obj/effect/gibspawner/robot,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"QG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"QI" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
+/obj/machinery/light/small/broken/directional/south,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"QJ" = (
+/obj/structure/floodlight_frame,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"QM" = (
+/obj/machinery/airalarm/directional/west,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 10
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 10
+	},
+/obj/structure/table,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"QP" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"QS" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"QU" = (
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"QV" = (
+/obj/structure/table_frame,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Ro" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"RG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/structure/cable,
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/light/small/broken/directional/south,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"RH" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "exp_celadon_waste_tradepost_tradepost_vanguard"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"RN" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 9
+	},
+/obj/machinery/light/small/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 4
+	},
+/obj/structure/table,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"RS" = (
+/obj/effect/turf_decal/siding/thinplating,
+/obj/effect/turf_decal/trimline/yellow/line,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"RU" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/closet/crate,
+/obj/structure/sign/warning/gas_mask{
+	pixel_y = 30
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"RW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Sb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/structure/bed/dogbed{
+	name = "cat bed";
+	desc = "A comfy-looking cat bed. You can even strap your pet in, in case the gravity turns off."
+	},
+/mob/living/basic/pet/cat/kitten{
+	name = "Biggles";
+	desc = "That's Mr. Biggles to you."
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Sf" = (
+/obj/effect/decal/cleanable/molten_object/large,
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/radio/weather_monitor,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Sh" = (
+/obj/structure/girder/displaced,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Sk" = (
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"SD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"SL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"SN" = (
+/obj/structure/cable,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"SQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"SU" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"SV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/green/visible{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/machinery/light/small/broken/directional/west,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"SY" = (
+/obj/machinery/button/door/directional/west{
+	pixel_y = 8;
+	pixel_x = 24;
+	id = "exp_celadon_waste_tradepost_wtpw2"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 8
+	},
+/obj/structure/closet/crate,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Ta" = (
+/obj/machinery/shower/directional/north,
+/obj/structure/curtain,
+/obj/structure/window/reinforced/tinted/spawner/directional/west,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Tf" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Ti" = (
+/obj/item/radio/weather_monitor,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Tj" = (
+/obj/machinery/light/directional/west,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/item/paper_bin,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/mob/living/basic/hivebot/strong,
+/obj/item/trash/chips,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Tm" = (
+/obj/item/paper{
+	name = "paper scrap"
+	},
+/obj/structure/filingcabinet,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Tp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/obj/item/reagent_containers/cup/glass/coffee{
+	pixel_x = -10;
+	pixel_y = -7
+	},
+/obj/item/paper{
+	pixel_x = 5;
+	pixel_y = -1;
+	name = "paper scrap"
+	},
+/obj/item/tape/random{
+	pixel_y = 7;
+	pixel_x = -6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Tq" = (
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Tr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Tw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Tx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/mob/living/basic/hivebot/strong,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"TH" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"TK" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/structure/sign/poster/official/random/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"TR" = (
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"TV" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"TZ" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/rack,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Uc" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/full,
+/obj/machinery/power/rtg,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Ue" = (
+/obj/machinery/modular_computer/preset/civilian{
+	dir = 4
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Ui" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/reagent_dispensers/foamtank,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Ul" = (
+/obj/machinery/atmospherics/components/unary/passive_vent,
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Un" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	name = "paper scrap"
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Uz" = (
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "drip5"
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"UB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"UI" = (
+/obj/machinery/airalarm/directional/east,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/structure/closet/crate/bin,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"UL" = (
+/obj/structure/marker_beacon,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"UO" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"UQ" = (
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/obj/structure/closet/crate/bin,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"UT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/gold,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/structure/cable,
+/obj/machinery/door/airlock/security{
+	name = "Barracks"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"UU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"UV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer4{
+	dir = 1
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Vm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Vo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Vp" = (
+/obj/machinery/stasis{
+	dir = 1
+	},
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"VB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"VD" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"VH" = (
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Wc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"We" = (
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/mob_spawn/corpse/human/engineer,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Wj" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/stack/sheet/cardboard,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Wp" = (
+/obj/machinery/door/airlock/command{
+	dir = 4;
+	name = "Vanguard's Quarters"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "exp_celadon_waste_tradepost_tradepost_vanguard";
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Wq" = (
+/obj/structure/bed,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/item/bedsheet/red,
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"WH" = (
+/obj/structure/sign/warning/gas_mask{
+	pixel_x = -28
+	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost)
+"WI" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"WW" = (
+/obj/structure/table/wood,
+/obj/machinery/fax{
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"WX" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Xa" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Xj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Xk" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Xs" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"Xu" = (
+/mob/living/basic/hivebot/strong,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Xv" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Xx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"XC" = (
+/obj/effect/gibspawner/robot,
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer4{
+	dir = 1
+	},
+/obj/machinery/light/small/broken/directional/east,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"XD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"XM" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/hivebot/range,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"XO" = (
+/obj/machinery/computer/mech_bay_power_console{
+	dir = 8
+	},
+/obj/item/radio/intercom/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"XT" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"XW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"XZ" = (
+/obj/machinery/light/small/broken/directional/north,
+/obj/item/radio/intercom/directional/west,
+/obj/structure/closet/cabinet,
+/obj/item/clothing/head/soft,
+/obj/item/clothing/head/soft,
+/obj/item/clothing/head/soft,
+/obj/item/clothing/head/beret/sec,
+/obj/item/clothing/head/beret/sec,
+/obj/item/clothing/head/beret/sec,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/shoes/combat,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Yg" = (
+/obj/structure/table/greyscale,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Ym" = (
+/obj/structure/door_assembly/door_assembly_com,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"Yz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter/oil,
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Za" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/concrete/pavement,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Zm" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"Zn" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/structure/foamedmetal/iron,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"Zp" = (
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"ZH" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"ZJ" = (
+/obj/machinery/firealarm/directional/south,
+/obj/structure/bookcase/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/center)
+"ZL" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"ZQ" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+"ZR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/barracks)
+"ZX" = (
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id = "exp_celadon_waste_tradepost_wtpw1"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/ruin/wasteplanet/tradepost/warehouse)
+"ZZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_tradepost/exterior)
+
+(1,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+by
+by
+by
+cI
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(2,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+cI
+by
+pg
+by
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(3,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ge
+by
+by
+cI
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(4,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+Xa
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+cI
+by
+Ge
+by
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(5,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+Xa
+DF
+DF
+Ma
+Ma
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+cI
+Tr
+Tr
+Dp
+Ge
+cI
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(6,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+Xa
+DF
+Xa
+DF
+DF
+Ma
+DF
+DF
+DF
+Xa
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Tr
+At
+Zm
+Dp
+Tr
+cI
+cI
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(7,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Xa
+Ma
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+QF
+cI
+cI
+NM
+by
+Nv
+cI
+Nv
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(8,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+Xa
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Tr
+LA
+cI
+Ge
+by
+Ge
+Tr
+Tr
+Tr
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(9,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+Xa
+DF
+DF
+DF
+Xa
+Xa
+Xa
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+DF
+Ma
+Ma
+cI
+cI
+Ll
+Tr
+cI
+by
+Ge
+Dp
+ti
+QF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(10,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+Xa
+xJ
+xJ
+Xa
+cI
+Xa
+Xa
+Xa
+DF
+DF
+Xa
+DF
+DF
+DF
+DF
+cI
+cI
+Ge
+iU
+QF
+Tr
+Dp
+by
+Go
+Tr
+Zm
+cI
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(11,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+Xa
+DF
+DF
+xJ
+cI
+cI
+Ge
+cI
+cI
+cI
+Xa
+Xa
+Xa
+Xa
+Xa
+Xa
+Xa
+Xa
+ZQ
+ZQ
+NZ
+cI
+Ge
+cI
+Dp
+At
+by
+QU
+cI
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(12,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Xa
+DF
+DF
+DF
+DF
+xJ
+Ge
+cI
+cI
+cI
+cI
+va
+cI
+cI
+NV
+cI
+pG
+pG
+pG
+Ti
+xp
+hT
+Oe
+cI
+cI
+iH
+Om
+jh
+Jy
+Tr
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(13,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+DF
+DF
+Xa
+CJ
+CJ
+CJ
+CJ
+CJ
+cI
+Ge
+cI
+cI
+cI
+pG
+pG
+pG
+uk
+xI
+Wj
+ow
+cI
+by
+jh
+jh
+Ro
+eb
+JY
+xJ
+xJ
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+"}
+(14,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Xa
+DF
+DF
+Xa
+DF
+BA
+BA
+BA
+CJ
+Lr
+mP
+CJ
+CJ
+BA
+CJ
+BA
+BA
+BA
+pG
+pG
+eT
+cI
+vE
+Dp
+cM
+jh
+Dp
+iM
+SU
+Bq
+pJ
+pG
+pG
+Xa
+Xa
+Xa
+DF
+DF
+Xa
+DF
+DF
+DF
+Ma
+Ma
+Ma
+"}
+(15,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+CJ
+BA
+iB
+Ue
+CJ
+Vp
+Gq
+CJ
+RN
+QM
+BA
+Oo
+cP
+BA
+cI
+cI
+cI
+va
+Nj
+jh
+jh
+cM
+Dp
+cI
+ow
+Sf
+ky
+Ir
+pG
+pG
+pG
+xJ
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+"}
+(16,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+Xa
+DF
+DF
+DF
+CJ
+XZ
+TR
+WI
+CJ
+wQ
+bw
+ud
+nY
+RS
+BA
+Tf
+Jj
+BA
+cI
+zW
+Zp
+cI
+cg
+ii
+KX
+KW
+Tr
+cI
+cI
+bq
+rr
+eW
+cI
+Ge
+cI
+xJ
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+Ma
+Ma
+"}
+(17,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+DF
+CJ
+jv
+zw
+HL
+BA
+BA
+BA
+CJ
+RW
+Qj
+BA
+dO
+bu
+BA
+cI
+cI
+Zp
+oe
+nx
+Dp
+nE
+Tw
+CW
+Tr
+by
+nE
+Xu
+MG
+Ge
+cI
+cI
+Xa
+Xa
+Xa
+Xa
+DF
+DF
+DF
+DF
+DF
+Ma
+"}
+(18,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+Xa
+Xa
+Xa
+BA
+xa
+Sk
+sp
+qH
+CX
+BA
+df
+pA
+AU
+lA
+ae
+Ip
+BA
+cI
+cI
+Zp
+QS
+sd
+nE
+by
+Dp
+Dp
+sz
+by
+qj
+by
+cI
+cI
+cI
+cI
+cI
+cI
+cI
+Xa
+DF
+DF
+DF
+DF
+DF
+Ma
+"}
+(19,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Xa
+DF
+DF
+DF
+Xa
+cI
+BA
+Zn
+Sk
+sp
+CJ
+CJ
+BA
+Gx
+LH
+Dr
+CJ
+BA
+CJ
+CJ
+by
+kD
+SN
+gc
+bT
+Dp
+Dp
+Ef
+cM
+KX
+Ef
+sz
+by
+cI
+va
+Zm
+cI
+cI
+Ge
+cI
+Xa
+Xa
+DF
+DF
+DF
+DF
+Ma
+"}
+(20,1,1) = {"
+Ma
+Ma
+Ma
+DF
+DF
+DF
+Xa
+Xa
+Xa
+cI
+BA
+xa
+Sk
+KN
+bv
+MS
+Pg
+hP
+zz
+Dx
+oU
+EP
+GW
+qZ
+qN
+oG
+wI
+Yz
+Fh
+Dp
+Tr
+Tr
+Tr
+cI
+cI
+cI
+pG
+cI
+cI
+cI
+Zm
+cI
+Ge
+cI
+cI
+Xa
+Xa
+DF
+DF
+Xa
+DF
+"}
+(21,1,1) = {"
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+Xa
+Fv
+va
+CJ
+fW
+IB
+gz
+FX
+tI
+CJ
+uP
+sg
+ZR
+UT
+AW
+PS
+CJ
+vJ
+Dp
+SD
+oX
+Dp
+Tr
+Ll
+OD
+Vo
+Li
+VH
+mD
+pG
+Ge
+cI
+cI
+va
+cI
+cI
+cI
+cI
+cI
+Xa
+Xa
+DF
+DF
+DF
+"}
+(22,1,1) = {"
+Ma
+Ma
+Ma
+Xa
+DF
+DF
+Xa
+Xa
+iC
+uY
+CJ
+FR
+vZ
+zi
+cT
+BL
+CJ
+BA
+Wp
+BA
+CJ
+BA
+BA
+CJ
+cI
+nE
+SD
+Ef
+io
+Ev
+rM
+Ll
+cI
+cI
+Li
+pG
+pG
+cI
+cI
+cI
+cI
+cI
+cI
+cI
+Ge
+cI
+va
+Xa
+Xa
+DF
+DF
+"}
+(23,1,1) = {"
+Ma
+Ma
+DF
+Xa
+DF
+DF
+Xa
+cI
+cI
+fo
+CJ
+CJ
+BA
+BA
+BA
+CJ
+CJ
+fG
+mF
+RH
+HW
+xR
+JO
+cI
+by
+by
+SD
+Xx
+rI
+wz
+gi
+Zp
+kY
+cI
+Ge
+pG
+cI
+bc
+Zm
+eM
+Nv
+Ll
+eM
+Ge
+bc
+cI
+cI
+cI
+Xa
+DF
+DF
+"}
+(24,1,1) = {"
+Ma
+Ma
+DF
+DF
+Xa
+Xa
+Xa
+cI
+Ge
+cI
+cI
+cI
+cI
+cI
+cI
+cI
+BA
+LU
+uc
+BA
+ZZ
+cI
+JO
+by
+by
+Xj
+sU
+Dp
+zI
+pS
+Ar
+Tr
+Tr
+cI
+pz
+pG
+va
+Ll
+Nv
+Zm
+Zm
+Zm
+Zm
+Zm
+Ge
+cI
+cI
+Xa
+Xa
+DF
+DF
+"}
+(25,1,1) = {"
+Ma
+Ma
+DF
+DF
+DF
+xJ
+cI
+cI
+va
+cI
+cI
+cI
+CW
+Ll
+Tr
+Tr
+BA
+aJ
+ws
+BA
+ZZ
+iw
+cI
+iH
+Xj
+sU
+by
+Id
+cI
+Gk
+Sh
+mb
+Nv
+Zm
+fE
+pG
+cI
+bc
+Ge
+Zm
+Ge
+Zm
+Zm
+Ge
+UL
+cI
+cI
+Xa
+DF
+DF
+Xa
+"}
+(26,1,1) = {"
+Ma
+DF
+DF
+DF
+DF
+xJ
+cI
+cI
+Zm
+cI
+Ge
+cI
+cI
+cI
+cI
+cI
+BA
+BA
+BA
+BA
+PA
+LS
+by
+by
+SD
+LF
+eO
+cI
+cI
+cI
+cI
+cI
+cI
+pG
+pG
+pG
+pG
+Nv
+Zm
+Zm
+Ge
+Zm
+Ge
+Zm
+Zm
+Zm
+Ge
+xJ
+Xa
+DF
+DF
+"}
+(27,1,1) = {"
+Ma
+DF
+Xa
+DF
+fQ
+fQ
+fQ
+ll
+ll
+ll
+ll
+ll
+fQ
+fQ
+cI
+Ge
+cI
+Tr
+Tr
+Tr
+am
+Go
+by
+Ef
+JU
+LF
+by
+by
+by
+xE
+Dp
+by
+yV
+Li
+hd
+by
+Dp
+Dp
+Zm
+Zm
+Ge
+Ge
+Ge
+Zm
+oj
+Ge
+cI
+xJ
+DF
+DF
+DF
+"}
+(28,1,1) = {"
+Ma
+DF
+DF
+fQ
+fQ
+ha
+aT
+Tp
+WW
+fQ
+HD
+ZH
+mQ
+fQ
+fQ
+cI
+cI
+cI
+cI
+by
+lt
+XD
+VD
+oG
+sU
+by
+by
+Dp
+Dp
+oo
+NL
+jh
+jh
+pB
+OZ
+aP
+Ll
+by
+Zm
+Ge
+Ge
+Zm
+Ge
+Ge
+Zm
+cI
+cI
+xJ
+DF
+DF
+DF
+"}
+(29,1,1) = {"
+Ma
+DF
+DF
+ll
+zy
+ai
+uR
+Sb
+jE
+fQ
+cw
+qh
+xN
+jm
+ll
+cI
+ni
+Zm
+by
+PO
+gt
+oG
+TH
+by
+nE
+by
+by
+XM
+by
+xE
+Dp
+Dp
+jh
+Dp
+Dp
+Ge
+Ll
+by
+Zm
+Ge
+Ge
+Zm
+Zm
+Ge
+Zm
+va
+cI
+Xa
+DF
+DF
+DF
+"}
+(30,1,1) = {"
+DF
+Xa
+DF
+ll
+hj
+UU
+Af
+Hk
+tr
+ll
+HI
+lu
+Mh
+CS
+ll
+cI
+cI
+cI
+by
+hh
+Za
+Dp
+by
+cI
+cI
+by
+cI
+Nv
+cI
+cI
+Lp
+Lp
+Lp
+Tr
+CW
+cI
+cI
+oj
+Zm
+Zm
+Ge
+Zm
+Ge
+Zm
+UL
+Ge
+cI
+Xa
+DF
+Xa
+DF
+"}
+(31,1,1) = {"
+DF
+DF
+DF
+ll
+kO
+an
+an
+vf
+ZJ
+ll
+ll
+ll
+oF
+OE
+ll
+ll
+Zm
+cI
+Go
+Uz
+CH
+Dp
+cI
+cI
+va
+cI
+cI
+sr
+sr
+sw
+ZX
+Cs
+ZX
+sr
+sr
+sr
+cI
+Ge
+Ge
+Ge
+Zm
+Ge
+Ge
+Zm
+Ge
+cI
+cI
+Xa
+DF
+DF
+DF
+"}
+(32,1,1) = {"
+DF
+DF
+DF
+fQ
+Wq
+gx
+UQ
+Ix
+fQ
+fQ
+rp
+ll
+Aj
+UV
+TK
+ll
+cI
+va
+by
+jc
+LZ
+by
+by
+by
+sr
+sr
+sr
+sr
+RU
+IU
+Ky
+wr
+jp
+iW
+wE
+sr
+cI
+UL
+Zm
+Ge
+Zm
+Ge
+Ge
+Ge
+UL
+cI
+cI
+Xa
+DF
+DF
+DF
+"}
+(33,1,1) = {"
+Xa
+DF
+DF
+ll
+ll
+xL
+ll
+JK
+fQ
+kF
+is
+cE
+nz
+fb
+Xk
+ll
+cI
+cI
+by
+WX
+BV
+gN
+jA
+PW
+tH
+zX
+aY
+IK
+zP
+nd
+gg
+gg
+yv
+Og
+Ui
+sw
+cI
+Ge
+Ge
+Zm
+Zm
+Ge
+Ge
+Zm
+Ge
+Ge
+Ge
+xJ
+DF
+DF
+DF
+"}
+(34,1,1) = {"
+DF
+DF
+DF
+ll
+JP
+yj
+Kq
+dL
+Tj
+vw
+zx
+fQ
+fQ
+fQ
+ll
+ll
+ll
+ll
+FA
+Dp
+ff
+by
+by
+by
+sw
+sr
+sw
+sr
+CP
+bK
+hp
+pw
+KB
+ZL
+CY
+sr
+cI
+bc
+Ge
+bc
+rg
+Nv
+bc
+Ge
+UL
+cI
+cI
+xJ
+DF
+DF
+DF
+"}
+(35,1,1) = {"
+DF
+DF
+DF
+fQ
+JS
+xB
+Yg
+sl
+QV
+XT
+Xv
+mv
+Bv
+JI
+li
+Hi
+zp
+MM
+FO
+rC
+KQ
+cI
+cI
+cI
+cI
+sr
+Nm
+hQ
+zv
+zv
+TZ
+TZ
+TZ
+sD
+XO
+sr
+cI
+cI
+cI
+cI
+cI
+va
+cI
+cI
+cI
+Ge
+cI
+xJ
+DF
+Xa
+DF
+"}
+(36,1,1) = {"
+DF
+DF
+DF
+fQ
+bE
+BC
+Do
+Tx
+EB
+sP
+Un
+ln
+vg
+yT
+Ym
+XC
+Fg
+wP
+VB
+Nc
+LZ
+cI
+cI
+va
+cI
+sr
+eQ
+zv
+hC
+ol
+bO
+Xs
+vD
+gM
+Ot
+sw
+va
+cI
+pG
+VH
+pG
+pG
+pG
+cI
+cI
+cI
+Xa
+Xa
+DF
+DF
+DF
+"}
+(37,1,1) = {"
+DF
+DF
+DF
+fQ
+fQ
+QP
+Gz
+cO
+pK
+Dv
+os
+CF
+lS
+OT
+ll
+ll
+ll
+ll
+VB
+jh
+up
+fK
+cI
+cI
+cI
+sr
+Cr
+AY
+nG
+Fi
+Fo
+SY
+zC
+wO
+in
+sw
+cI
+pG
+Sh
+cI
+cI
+cI
+Ge
+Sh
+cI
+cI
+Xa
+DF
+DF
+DF
+DF
+"}
+(38,1,1) = {"
+Ma
+DF
+DF
+DF
+fQ
+Ia
+Ib
+Db
+FJ
+JX
+GG
+XW
+SQ
+nQ
+gr
+QG
+QG
+QG
+BF
+jh
+ek
+by
+cI
+cI
+cI
+sw
+sr
+sr
+sw
+fT
+EU
+sr
+sr
+sw
+sr
+sr
+cI
+VH
+Ge
+ng
+cI
+Nx
+cI
+pG
+cI
+Xa
+Xa
+DF
+DF
+DF
+Ma
+"}
+(39,1,1) = {"
+Ma
+DF
+DF
+DF
+ll
+tK
+Tm
+po
+UB
+TV
+UI
+bA
+KT
+Mz
+ll
+cI
+Ge
+va
+sc
+Xx
+rz
+jt
+iH
+fK
+LF
+LF
+fK
+fK
+by
+IW
+LI
+SN
+nu
+By
+By
+Zp
+ml
+Zp
+Zp
+Zp
+hq
+Ge
+cI
+pG
+cI
+xJ
+DF
+DF
+DF
+DF
+Ma
+"}
+(40,1,1) = {"
+Ma
+DF
+DF
+DF
+ll
+fQ
+ll
+ll
+ka
+ll
+ll
+ll
+Jo
+ll
+ll
+cI
+cI
+It
+cI
+SN
+by
+lz
+oG
+oG
+oG
+xs
+oG
+Dy
+kj
+Hh
+SL
+nu
+fK
+LF
+fK
+cI
+Zm
+cI
+cI
+Uc
+Ge
+cI
+cI
+Xa
+xJ
+Xa
+DF
+Xa
+DF
+DF
+Ma
+"}
+(41,1,1) = {"
+Ma
+DF
+DF
+DF
+DF
+DF
+fQ
+rZ
+fB
+us
+Dj
+ll
+fQ
+ll
+OU
+OU
+yO
+OU
+OU
+Zp
+cI
+by
+Ge
+Ll
+Dp
+UO
+by
+by
+qE
+Vm
+by
+nu
+fK
+fK
+fK
+cI
+Ge
+cI
+Ge
+Ge
+cI
+va
+Xa
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+"}
+(42,1,1) = {"
+Ma
+Ma
+DF
+DF
+DF
+DF
+fQ
+vd
+of
+Tq
+lW
+fQ
+cI
+pG
+cI
+Ag
+JJ
+cI
+yO
+AB
+pz
+Ge
+cI
+cI
+iU
+We
+by
+by
+tT
+by
+cI
+Zp
+cI
+Zm
+Zm
+mD
+cI
+Sh
+cI
+cI
+pG
+pG
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+"}
+(43,1,1) = {"
+Ma
+Ma
+DF
+DF
+DF
+DF
+fQ
+fQ
+Bj
+uq
+Ta
+fQ
+cI
+Li
+Ge
+wS
+pG
+pG
+yO
+Ge
+Zm
+Ge
+Zm
+BE
+Pd
+fF
+BE
+iU
+ZZ
+cI
+cI
+aN
+Ge
+Zm
+cI
+Ge
+Ge
+cI
+cI
+pG
+pG
+Xa
+Xa
+DF
+Xa
+DF
+DF
+DF
+DF
+Ma
+Ma
+"}
+(44,1,1) = {"
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+fQ
+fQ
+fQ
+fQ
+fQ
+cI
+Zm
+Ll
+VH
+mD
+pG
+yO
+Li
+VH
+Ge
+cI
+Qa
+WH
+RG
+Pd
+cI
+ZZ
+Ge
+cI
+ml
+QJ
+cI
+cI
+cI
+Zm
+cI
+cI
+pG
+Xa
+Xa
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+Ma
+Ma
+"}
+(45,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+Xa
+Xa
+cI
+cI
+cI
+ti
+fE
+Tr
+cI
+Zm
+va
+NW
+Xa
+Pd
+Pd
+Pd
+BE
+ic
+Pd
+Pd
+Pd
+ZZ
+Gk
+Sh
+hq
+cI
+OU
+NW
+va
+Ge
+Zm
+cI
+Xa
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+"}
+(46,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+Xa
+DF
+Xa
+Xa
+cI
+va
+cI
+cI
+Ge
+ml
+ml
+Zp
+ml
+Ul
+PC
+SV
+Il
+vM
+ok
+rH
+Cw
+yr
+Wc
+cI
+cI
+hq
+OU
+OU
+cI
+cI
+cI
+mD
+Xa
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+"}
+(47,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+Xa
+cI
+cI
+ti
+Ge
+va
+zb
+Zm
+cI
+pg
+Ul
+PC
+xU
+Lv
+tW
+qQ
+jO
+kL
+Pd
+ih
+cI
+cI
+OU
+OU
+cI
+cI
+cI
+pG
+Xa
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+"}
+(48,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+Xa
+Xa
+cI
+cI
+cI
+Ge
+cI
+Zm
+cI
+Ge
+Ul
+PC
+Qc
+no
+lb
+bD
+sW
+kv
+Pd
+cI
+Zm
+cI
+OU
+hq
+Zp
+Ez
+cI
+pG
+Xa
+DF
+DF
+DF
+DF
+cI
+DF
+Xa
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+"}
+(49,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+xJ
+xJ
+cI
+cI
+mD
+va
+Zm
+cI
+Ge
+xJ
+Pd
+BE
+mO
+Em
+wJ
+pR
+QI
+Pd
+cI
+cI
+cI
+cI
+cI
+Ge
+cI
+pG
+pG
+Xa
+DF
+Xa
+DF
+DF
+Ma
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(50,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+xJ
+Xa
+Ge
+cI
+Zm
+mD
+cI
+cI
+cI
+cI
+BE
+oq
+Qv
+kQ
+ym
+Mi
+Pd
+Sh
+cI
+va
+Zm
+Ge
+pG
+pG
+pG
+Xa
+Xa
+DF
+DF
+DF
+Ma
+Ma
+Ma
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(51,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+Xa
+Xa
+cI
+cI
+Ge
+ti
+cI
+cI
+cI
+BE
+BE
+BE
+BE
+Pd
+Pd
+BE
+cI
+cI
+cI
+pG
+pG
+pG
+Xa
+Xa
+Xa
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(52,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+Xa
+DF
+Xa
+cI
+Xa
+Xa
+Xa
+Xa
+Xa
+Xa
+Xa
+DF
+DF
+DF
+DF
+DF
+xJ
+xJ
+xJ
+xJ
+xJ
+xJ
+xJ
+Xa
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(53,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+Xa
+Xa
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(54,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+Xa
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(55,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(56,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+DF
+Xa
+DF
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}
+(57,1,1) = {"
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+DF
+DF
+DF
+DF
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+Ma
+"}

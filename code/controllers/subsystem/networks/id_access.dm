@@ -118,6 +118,7 @@ SUBSYSTEM_DEF(id_access)
 	accesses_by_region[REGION_RESEARCH] = REGION_ACCESS_RESEARCH
 	accesses_by_region[REGION_ENGINEERING] = REGION_ACCESS_ENGINEERING
 	accesses_by_region[REGION_SUPPLY] = REGION_ACCESS_SUPPLY
+	accesses_by_region[REGION_EXPEDITION] = REGION_ACCESS_EXPEDITION
 	accesses_by_region[REGION_COMMAND] = REGION_ACCESS_COMMAND
 	accesses_by_region[REGION_CENTCOM] = REGION_ACCESS_CENTCOM
 	/// BANDASTATION ADDITION START - Jobs Module
@@ -155,6 +156,12 @@ SUBSYSTEM_DEF(id_access)
 		))
 
 	sub_department_managers_tgui = list(
+		"[ACCESS_EXPEDITION_LEADER]" = list(
+			"regions" = list(REGION_EXPEDITION),
+			"head" = JOB_EXPEDITION_LEADER,
+			"templates" = list(),
+			"pdas" = list(),
+		),
 		"[ACCESS_CAPTAIN]" = list(
 			"regions" = list(REGION_COMMAND),
 			"head" = JOB_CAPTAIN,
@@ -329,6 +336,8 @@ SUBSYSTEM_DEF(id_access)
 	desc_by_access[ACCESS_MINERAL_STOREROOM] = "Mineral Storage"
 	desc_by_access[ACCESS_MINISAT] = "AI Satellite"
 	desc_by_access[ACCESS_WEAPONS] = "Weapon Permit"
+	desc_by_access[ACCESS_EXPLORER] = "Экспедиционный корпус"
+	desc_by_access[ACCESS_EXPEDITION_LEADER] = "Глава экспедиционного корпуса"
 	desc_by_access[ACCESS_NETWORK] = "Network Access"
 	desc_by_access[ACCESS_MECH_MINING] = "Mining Mech Access"
 	desc_by_access[ACCESS_MECH_MEDICAL] = "Medical Mech Access"

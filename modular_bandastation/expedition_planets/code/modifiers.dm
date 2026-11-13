@@ -13,8 +13,10 @@
  * other modifiers of the same group.
  */
 /datum/expedition_planet_modifier
-	/// Crew-facing survey line.
+	/// Modifier name for admin logs.
 	var/name
+	/// Crew-facing survey line; null shows the name, an empty string keeps the modifier off the survey.
+	var/survey_name
 	/// Only one modifier of a group applies to a planet.
 	var/group
 	/// Budget category paying [/datum/expedition_planet_modifier/var/cost].
@@ -41,6 +43,14 @@
 	var/list/nest_count = list(1, 2)
 	/// Radius of the patch every placed object shares around the first one; zero scatters them over the whole surface.
 	var/nest_cluster = 0
+	/// Whether this modifier raises a xenomorph hive, native or grown, instead of scattering its nest objects.
+	var/hive = FALSE
+	/// Whether this modifier sets one of the profile's megafauna far from the camp.
+	var/megafauna = FALSE
+	/// Whether this modifier pocks the surface with radioactive bombardment craters.
+	var/craters = FALSE
+	/// Weighted robots this modifier sends in packs among the wildlife.
+	var/list/guardian_types
 
 /** Whether this modifier means anything for the generator's environment profile. */
 /datum/expedition_planet_modifier/proc/can_apply(datum/map_generator/expedition_barren/generator)
@@ -74,6 +84,8 @@
 /// Danger: twice the profile fauna; only on profiles with wildlife.
 /datum/expedition_planet_modifier/predators
 	name = "Многочисленная фауна"
+	// Ship sensors never tell the crew what lives below, only that it is hostile.
+	survey_name = "Агрессивная фауна"
 	group = "fauna"
 	cost = 1
 	fauna_multiplier = 2
@@ -84,6 +96,7 @@
 /// Free: a third of the profile fauna; only on profiles with wildlife.
 /datum/expedition_planet_modifier/calm
 	name = "Редкая фауна"
+	survey_name = ""
 	group = "fauna"
 	probability = 25
 	fauna_multiplier = 0.3
@@ -124,6 +137,7 @@
 
 /// Danger: one or two spawners on the open surface; biome nests belong to their own profiles.
 /datum/expedition_planet_modifier/nest
+	survey_name = "Агрессивная фауна"
 	group = "nest"
 	cost = 1
 	probability = 0
@@ -142,15 +156,18 @@
 			return TRUE
 	return FALSE
 
-/// A xenomorph egg cluster hatches hunters until it is torn down.
+/// A whole xenomorph hive: the native nest with its queen, or a resin chamber grown anew; its egg clutch keeps breeding.
 /datum/expedition_planet_modifier/nest/xeno_hive
 	name = "Улей ксеноморфов"
+	profiles = list(/datum/map_generator/expedition_barren/lush, /datum/map_generator/expedition_barren/dead)
+	cost = 2
 	probability = 15
-	nest_type = /obj/structure/spawner/stationtrauma_xeno_hive
+	hive = TRUE
 
 /// A plague pit raises the dead until it is filled in.
 /datum/expedition_planet_modifier/nest/zombie_pit
 	name = "Очаг заражения"
+	profiles = list(/datum/map_generator/expedition_barren/dead)
 	probability = 15
 	nest_type = /obj/structure/spawner/stationtrauma_zombie_pit
 
@@ -197,6 +214,18 @@
 	profiles = list(/datum/map_generator/expedition_barren/arid)
 	nest_type = /obj/structure/spawner/mining/basilisk
 
+/// Danger: one of the profile's megafauna roams far from the camp, guarding its native loot.
+/datum/expedition_planet_modifier/megafauna
+	name = "Мегафауна"
+	survey_name = "Агрессивная фауна"
+	group = "boss"
+	cost = 2
+	probability = 15
+	megafauna = TRUE
+
+/datum/expedition_planet_modifier/megafauna/can_apply(datum/map_generator/expedition_barren/generator)
+	return length(generator.megafauna_types)
+
 /// Reward: a stable bluespace anomaly whose core a signaller tuned to it frees for the bluespace drive.
 /datum/expedition_planet_modifier/bluespace_anomaly
 	name = "Блюспейс-аномалия"
@@ -216,6 +245,29 @@
 	nest_type = /obj/effect/mine/explosive/light
 	nest_count = list(10, 16)
 	nest_cluster = 8
+
+// Robotic guardians follow Sierra's planet theme on TG hivebots; no donor code is copied.
+// https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/code/modules/overmap/exoplanets/planet_themes/robotic_guardians.dm
+/// Danger: hivebot squads of a forgotten builder still patrol the surface, mechanics repairing the rest.
+/datum/expedition_planet_modifier/guardians
+	name = "Роботы-стражи"
+	survey_name = "Движение без признаков жизни"
+	group = "guardians"
+	cost = 1
+	probability = 20
+	guardian_types = list(/mob/living/basic/hivebot = 3, /mob/living/basic/hivebot/range = 3, /mob/living/basic/hivebot/rapid = 1, /mob/living/basic/hivebot/strong = 1, /mob/living/basic/hivebot/mechanic = 1)
+
+/// Danger: craters of an old radiation bombardment, each glowing core irradiating its surroundings.
+/datum/expedition_planet_modifier/radiation_bombing
+	name = "Радиационная бомбардировка"
+	survey_name = "Очаги радиации"
+	group = "hazard"
+	cost = 1
+	probability = 20
+	craters = TRUE
+
+/datum/expedition_planet_modifier/radiation_bombing/can_apply(datum/map_generator/expedition_barren/generator)
+	return !generator.craters
 
 /// Reward: chemical geysers for plumbing.
 /datum/expedition_planet_modifier/geysers
@@ -249,28 +301,45 @@
 	probability = 40
 	light_alpha = 60
 
-/**
- * Roll offered modifiers in random order and apply those that fit the remaining budgets.
- *
- * Both budgets are half of `level`, so distant planets afford stronger rewards and dangers.
- * Returns the survey names of the applied modifiers.
- */
-/datum/map_generator/expedition_barren/proc/apply_modifiers(level)
+/** Shared read-only modifier prototypes used by generation and the admin picker. */
+/proc/expedition_planet_modifiers()
 	var/static/list/datum/expedition_planet_modifier/modifiers
 	if(!modifiers)
 		modifiers = list()
 		for(var/modifier_type in subtypesof(/datum/expedition_planet_modifier))
 			modifiers += new modifier_type
-	var/list/budget = list(PLANET_MODIFIER_DANGER = level / 2, PLANET_MODIFIER_REWARD = level / 2)
+	return modifiers
+
+/**
+ * Roll budgeted modifiers, or apply an exact admin selection without random offers or budget costs.
+ *
+ * Null selected_types keeps ordinary rolls; an empty list means no modifiers. Invalid, incompatible,
+ * duplicate or mutually exclusive selections return null before changing the generator.
+ * Returns survey lines; full modifier names are retained in modifier_log.
+ */
+/datum/map_generator/expedition_barren/proc/apply_modifiers(level, list/selected_types = null)
+	if(!isnull(selected_types) && !islist(selected_types))
+		return null
 	var/list/offered = list()
-	for(var/datum/expedition_planet_modifier/modifier as anything in modifiers)
-		if(prob(modifier.probability) && modifier.can_apply(src))
-			offered += modifier
 	var/list/used_groups = list()
+	for(var/datum/expedition_planet_modifier/modifier as anything in expedition_planet_modifiers())
+		if(isnull(selected_types))
+			if(prob(modifier.probability) && modifier.can_apply(src))
+				offered += modifier
+		else if(modifier.type in selected_types)
+			if(!modifier.name || !modifier.can_apply(src) || (modifier.group in used_groups))
+				return null
+			used_groups += modifier.group
+			offered += modifier
+	if(!isnull(selected_types) && length(offered) != length(selected_types))
+		return null
+	used_groups.Cut()
+	danger_level = level
+	var/list/budget = list(PLANET_MODIFIER_DANGER = level / 2, PLANET_MODIFIER_REWARD = level / 2)
 	var/list/names = list()
 	while(length(offered))
 		var/datum/expedition_planet_modifier/modifier = pick_n_take(offered)
-		if((modifier.group in used_groups) || modifier.cost > budget[modifier.category])
+		if((modifier.group in used_groups) || (isnull(selected_types) && modifier.cost > budget[modifier.category]))
 			continue
 		budget[modifier.category] -= modifier.cost
 		used_groups += modifier.group
@@ -280,9 +349,19 @@
 		endless_storm ||= modifier.endless_storm
 		underground ||= modifier.underground
 		light_alpha = max(light_alpha, modifier.light_alpha)
-		if(modifier.nest_type)
+		megafauna ||= modifier.megafauna
+		craters ||= modifier.craters
+		anomaly_fields ||= modifier.anomaly_fields
+		if(modifier.guardian_types)
+			guardian_types = modifier.guardian_types
+		if(modifier.hive)
+			hive_variant = pick(hive_variants)
+		else if(modifier.nest_type)
 			nests += modifier
-		names += modifier.name
+		modifier_log += modifier.name
+		var/survey = isnull(modifier.survey_name) ? modifier.name : modifier.survey_name
+		if(survey && !(survey in names))
+			names += survey
 	return names
 
 #undef PLANET_MODIFIER_DANGER
