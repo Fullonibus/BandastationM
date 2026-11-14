@@ -26,6 +26,43 @@
 			continue
 		TEST_ASSERT(antenna.icon_state in icon_states(antenna.icon), "IPC antenna [antenna_name] has no icon.")
 
+/// Hair preferences must leave the IPC's independently selected head accessories intact.
+/datum/unit_test/ipc_hair_accessories/Run()
+	var/datum/client_interface/mock_client = allocate(/datum/client_interface)
+	var/datum/preferences/preferences = allocate(/datum/preferences, mock_client)
+	preferences.value_cache[/datum/preference/choiced/species] = /datum/species/ipc
+	var/datum/preference/choiced/hairstyle/hair_preference = GLOB.preference_entries[/datum/preference/choiced/hairstyle]
+	var/datum/preference/color/hair_color/color_preference = GLOB.preference_entries[/datum/preference/color/hair_color]
+	TEST_ASSERT(hair_preference.is_accessible(preferences), "IPC hairstyle preference is inaccessible.")
+	TEST_ASSERT(color_preference.is_accessible(preferences), "IPC hair color preference is inaccessible.")
+
+	var/mob/living/carbon/human/dummy/consistent/ipc = allocate(/mob/living/carbon/human/dummy/consistent)
+	ipc.set_species(/datum/species/ipc)
+	ipc.dna.species.prepare_human_for_preview(ipc)
+	var/datum/sprite_accessory/ipc_antenna/antenna = GLOB.ipc_antennae[/datum/sprite_accessory/ipc_antenna/ipc_antennae::name]
+	ipc.dna.features[FEATURE_IPC_ANTENNA] = antenna.name
+	ipc.update_body(is_creating = TRUE)
+	var/obj/item/bodypart/head/robot/ipc/head = ipc.get_bodypart(BODY_ZONE_HEAD)
+	var/display_name = head.ipc_display_name
+	for(var/style in list("Bald", "Afro", "Ponytail"))
+		hair_preference.apply_to_human(ipc, style, preferences)
+		color_preference.apply_to_human(ipc, COLOR_RED, preferences)
+		ipc.update_hair()
+		TEST_ASSERT_EQUAL(head.hairstyle, style, "IPC did not apply its hairstyle.")
+		TEST_ASSERT_EQUAL(head.hair_color, COLOR_RED, "IPC did not apply its hair color.")
+		TEST_ASSERT_EQUAL(head.ipc_display_name, display_name, "Changing hair replaced the IPC display.")
+		TEST_ASSERT_EQUAL(head.ipc_antenna_name, antenna.name, "Changing hair replaced the IPC antenna.")
+		var/antenna_visible = FALSE
+		var/display_visible = FALSE
+		var/datum/sprite_accessory/ipc_display/display = GLOB.ipc_displays[display_name]
+		for(var/image/overlay as anything in head.get_limb_icon(dropped = FALSE))
+			if(overlay.icon == antenna.icon && overlay.icon_state == antenna.icon_state)
+				antenna_visible = TRUE
+			if(overlay.icon == display.icon && overlay.icon_state == display.icon_state)
+				display_visible = TRUE
+		TEST_ASSERT(antenna_visible && display_visible, "Changing hair removed an IPC head accessory overlay.")
+		TEST_ASSERT_EQUAL(length(head.get_hair_overlays()) > 0, style != "Bald", "IPC hairstyle overlay does not match the selected style.")
+
 /datum/unit_test/ipc_appearance_screenshots/Run()
 	var/mob/living/carbon/human/dummy/consistent/ipc = allocate(/mob/living/carbon/human/dummy/consistent)
 	ipc.set_species(/datum/species/ipc)
