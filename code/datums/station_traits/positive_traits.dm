@@ -278,6 +278,7 @@
 		/datum/job/detective = /obj/item/organ/lungs/cybernetic/tier3,
 		/datum/job/doctor = /obj/item/organ/cyberimp/arm/toolkit/surgery,
 		/datum/job/donor/barber = /obj/item/organ/cyberimp/brain/anti_drop,
+		/datum/job/donor/musician = /obj/item/organ/ears/cybernetic,
 		/datum/job/donor/waiter = /obj/item/organ/cyberimp/brain/anti_drop,
 		/datum/job/donor/administrator = /obj/item/organ/cyberimp/arm/toolkit/paperwork,
 		/datum/job/donor/guard = /obj/item/organ/cyberimp/eyes/hud/security,
