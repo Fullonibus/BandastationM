@@ -66,6 +66,39 @@
 	TEST_ASSERT(helmet.adjust_visor(speaker), "Could not raise the helmet visor.")
 	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Alice", "Raising the helmet visor must restore the name.")
 
+/// Radio chat keeps the channel and message without exposing the sender through labels or AI links.
+/datum/unit_test/anonymous_radio_chat/Run()
+	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
+	speaker.fully_replace_character_name(null, "Radio Sender")
+	var/mob/dead/observer/observer = allocate(/mob/dead/observer)
+	var/mob/living/silicon/ai/ai_listener = allocate(/mob/living/silicon/ai, run_loc_floor_top_right, observer)
+	var/atom/movable/virtualspeaker/radio_voice = allocate(/atom/movable/virtualspeaker, null, speaker)
+	radio_voice.job = "Radio Test Job"
+	var/raw_message = "Anonymous transmission"
+
+	for(var/mob/listener as anything in list(speaker, ai_listener, observer))
+		var/rendered = listener.compose_message(radio_voice, /datum/language/common, raw_message, FREQ_COMMON)
+		TEST_ASSERT(findtext(rendered, get_radio_name(FREQ_COMMON, null)), "Radio chat lost its channel for [listener.type].")
+		TEST_ASSERT(findtext(rendered, raw_message), "Radio chat lost its message for [listener.type].")
+		TEST_ASSERT(!findtext(rendered, speaker.real_name), "Radio chat exposed the sender's name to [listener.type].")
+		TEST_ASSERT(!findtext(rendered, radio_voice.job), "Radio chat exposed the sender's job to [listener.type].")
+		TEST_ASSERT(!findtext(rendered, "track="), "Radio chat exposed an AI tracking link to [listener.type].")
+		TEST_ASSERT(!findtext(rendered, "open="), "Radio chat exposed an AI door link to [listener.type].")
+
+	var/overridden_message = speaker.compose_message(radio_voice, /datum/language/common, raw_message, FREQ_COMMON, message_mods = list(MODE_SPEAKER_NAME_OVERRIDE = "Radio Alias"))
+	TEST_ASSERT(!findtext(overridden_message, "Radio Alias"), "A message override exposed a radio sender label.")
+	var/obj/item/radio/anonymous_radio = allocate(/obj/item/radio)
+	anonymous_radio.anonymize = TRUE
+	var/atom/movable/virtualspeaker/anonymous_voice = allocate(/atom/movable/virtualspeaker, null, speaker, anonymous_radio)
+	TEST_ASSERT_EQUAL(anonymous_voice.name, "Unknown", "The test radio must anonymize its sender.")
+	TEST_ASSERT_EQUAL(speaker.compose_message(anonymous_voice, /datum/language/common, raw_message, FREQ_COMMON), overridden_message, "Anonymous radio must omit its sender label just like ordinary radio.")
+
+	var/local_message = speaker.compose_message(speaker, /datum/language/common, raw_message)
+	TEST_ASSERT(findtext(local_message, speaker.real_name), "Local speech must still show the sender's visible identity.")
+	TEST_ASSERT_EQUAL(radio_voice.name, speaker.real_name, "Formatting radio chat must not change the radio speaker's identity.")
+	TEST_ASSERT_EQUAL(radio_voice.GetSource(), speaker, "Formatting radio chat must preserve the source for radio routing.")
+	TEST_ASSERT_EQUAL(radio_voice.GetJob(), "Radio Test Job", "Formatting radio chat must not erase the radio speaker's job data.")
+
 /// Test to verify message mods are parsed correctly
 /datum/unit_test/get_message_mods
 	var/mob/host_mob
