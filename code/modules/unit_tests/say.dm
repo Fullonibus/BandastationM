@@ -1,3 +1,71 @@
+/// Face-concealing clothing must expose only the worn ID's identity, or an anonymous name.
+/datum/unit_test/masked_speech_identity/Run()
+	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
+	speaker.fully_replace_character_name(null, "Alice")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Alice", "An uncovered speaker without ID must retain their voice name.")
+
+	var/obj/item/clothing/under/color/grey/uniform = allocate(/obj/item/clothing/under/color/grey)
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(uniform, ITEM_SLOT_ICLOTHING), "Could not equip the uniform for the ID slot.")
+	var/obj/item/clothing/mask/surgical/mask = allocate(/obj/item/clothing/mask/surgical)
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(mask, ITEM_SLOT_MASK), "Could not equip the face-concealing mask.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Неизвестный", "A covered face without ID exposed the speaker's name.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Неизвестный", "Local speech must use the hidden name without a disguise suffix.")
+	var/atom/movable/virtualspeaker/radio_voice = allocate(/atom/movable/virtualspeaker, null, speaker)
+	TEST_ASSERT_EQUAL(radio_voice.name, "Неизвестный", "Radio speech exposed the masked speaker's name.")
+
+	var/obj/item/card/id/advanced/id = allocate(/obj/item/card/id/advanced)
+	id.registered_name = "Bob"
+	id.chosen_honorific = "Captain"
+	id.honorific_position = HONORIFIC_POSITION_FIRST_FULL
+	id.update_honorific()
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(id, ITEM_SLOT_ID), "Could not equip the ID.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Bob", "A covered speaker must use the foreign ID's name.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Captain Bob", "Local speech must use the ID's title without exposing the real name or a disguise suffix.")
+	speaker.override_voice = speaker.real_name
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Captain Bob", "A voice override must not expose the real name behind a covered face.")
+	radio_voice = allocate(/atom/movable/virtualspeaker, null, speaker)
+	TEST_ASSERT_EQUAL(radio_voice.name, "Captain Bob", "Radio must use the foreign ID's title even with a voice override.")
+	TEST_ASSERT(!findtext(speaker.compose_message(speaker, /datum/language/common, "Test"), speaker.real_name), "Formatted local speech exposed the real name.")
+	TEST_ASSERT(!findtext(speaker.compose_message(radio_voice, /datum/language/common, "Test", FREQ_COMMON), speaker.real_name), "Formatted radio speech exposed the real name.")
+	TEST_ASSERT(mask.adjust_visor(speaker), "Could not uncover the face while wearing a foreign ID.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Alice", "An uncovered face must restore the ordinary voice name.")
+	speaker.override_voice = "Disguised voice"
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Disguised voice", "An uncovered face must preserve explicit voice overrides.")
+	TEST_ASSERT(mask.adjust_visor(speaker), "Could not cover the face while wearing a foreign ID.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Captain Bob", "Covering the face must restore the ID's identity over a voice override.")
+	speaker.override_voice = null
+	TEST_ASSERT(speaker.transferItemToLoc(id, speaker.drop_location()), "Could not remove the ID.")
+	TEST_ASSERT(speaker.put_in_hands(id), "Could not hold the removed ID.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Неизвестный", "An ID in hand must not identify a masked speaker.")
+
+	TEST_ASSERT(mask.adjust_visor(speaker), "Could not uncover the face.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Alice", "Uncovering the face must immediately restore the name.")
+	TEST_ASSERT(mask.adjust_visor(speaker), "Could not cover the face again.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Неизвестный", "Covering the face again must hide the name.")
+	speaker.override_voice = speaker.real_name
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Неизвестный", "A covered face without ID must not expose the real name through a voice override.")
+	ADD_TRAIT(speaker, TRAIT_UNKNOWN_VOICE, TRAIT_SOURCE_UNIT_TESTS)
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Unknown", "Supernatural anonymity must keep its existing priority.")
+	REMOVE_TRAIT(speaker, TRAIT_UNKNOWN_VOICE, TRAIT_SOURCE_UNIT_TESTS)
+	speaker.override_voice = null
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(id, ITEM_SLOT_ID), "Could not re-equip the ID.")
+	ADD_TRAIT(speaker, TRAIT_VOICE_MATCHES_ID, TRAIT_SOURCE_UNIT_TESTS)
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Bob", "ID-based voice changers must retain their disguise.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Captain Bob", "An ID-based voice changer must preserve the title without a redundant disguise suffix.")
+	REMOVE_TRAIT(speaker, TRAIT_VOICE_MATCHES_ID, TRAIT_SOURCE_UNIT_TESTS)
+	TEST_ASSERT(speaker.transferItemToLoc(id, speaker.drop_location()), "Could not remove the disguised ID.")
+	TEST_ASSERT(speaker.transferItemToLoc(mask, speaker.drop_location()), "Could not remove the mask.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Alice", "Removing the mask must restore the name.")
+
+	var/obj/item/clothing/mask/breath/breath_mask = allocate(/obj/item/clothing/mask/breath)
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(breath_mask, ITEM_SLOT_MASK), "Could not equip the non-concealing mask.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Alice", "A mask without HIDEFACE must not hide the name.")
+	var/obj/item/clothing/head/utility/welding/helmet = allocate(/obj/item/clothing/head/utility/welding)
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(helmet, ITEM_SLOT_HEAD), "Could not equip the face-concealing helmet.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Неизвестный", "A closed helmet must conceal the speaker's name.")
+	TEST_ASSERT(helmet.adjust_visor(speaker), "Could not raise the helmet visor.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Alice", "Raising the helmet visor must restore the name.")
+
 /// Test to verify message mods are parsed correctly
 /datum/unit_test/get_message_mods
 	var/mob/host_mob
