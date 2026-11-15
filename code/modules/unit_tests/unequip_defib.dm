@@ -54,3 +54,42 @@
 	TEST_ASSERT(!HAS_TRAIT(defib.paddles, TRAIT_WIELDED), "The user kept wielding the paddles after they returned to the main unit.")
 // BANDASTATION ADDITION END
 // AI EDIT END
+
+/// NT paddles cannot stun or overload hearts; EMP shielding preserves their charge and medical operation.
+/datum/unit_test/nanotrasen_defib_medical_only/Run()
+	// Teardown deletes allocations in order; the unit must return its paddles before their holder is deleted.
+	var/obj/item/defibrillator/compact/combat/loaded/nanotrasen/defib = allocate(/obj/item/defibrillator/compact/combat/loaded/nanotrasen)
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
+	click_wrapper(user, defib)
+	defib.paddles.attack_self(user)
+	user.set_combat_mode(TRUE)
+	click_wrapper(user, patient, list(RIGHT_CLICK = TRUE))
+	TEST_ASSERT_EQUAL(patient.get_stamina_loss(), 0, "NT paddles still inflicted stamina damage.")
+	TEST_ASSERT(!patient.has_status_effect(/datum/status_effect/incapacitating/knockdown), "NT paddles still knocked the patient down.")
+	click_wrapper(user, patient)
+	TEST_ASSERT_EQUAL(patient.get_fire_loss(), 0, "NT paddles still inflicted combat burns.")
+	TEST_ASSERT(!patient.undergoing_cardiac_arrest(), "NT paddles still overloaded the patient's heart.")
+
+	var/charge_before_emp = defib.cell.charge
+	defib.emp_act(EMP_HEAVY)
+	TEST_ASSERT_EQUAL(defib.cell.charge, charge_before_emp, "An EMP drained the shielded NT battery.")
+	click_wrapper(user, patient, list(RIGHT_CLICK = TRUE))
+	TEST_ASSERT_EQUAL(patient.get_stamina_loss(), 0, "An EMP disabled the NT medical safeties.")
+	user.set_combat_mode(FALSE)
+	patient.set_heartattack(TRUE)
+	click_wrapper(user, patient)
+	TEST_ASSERT(!patient.undergoing_cardiac_arrest(), "Shielded NT paddles could not restart the patient's heart.")
+	TEST_ASSERT(defib.cell.charge < charge_before_emp, "NT defibrillation still used an infinite battery.")
+
+/// Nerfing NT's child type must not disable the Syndicate defibrillator's offensive shock.
+/datum/unit_test/syndicate_defib_still_offensive/Run()
+	// Teardown deletes allocations in order; the unit must return its paddles before their holder is deleted.
+	var/obj/item/defibrillator/compact/combat/loaded/defib = allocate(/obj/item/defibrillator/compact/combat/loaded)
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
+	click_wrapper(user, defib)
+	defib.paddles.attack_self(user)
+	user.set_combat_mode(TRUE)
+	click_wrapper(user, patient, list(RIGHT_CLICK = TRUE))
+	TEST_ASSERT_EQUAL(patient.get_stamina_loss(), 60, "Syndicate paddles lost their offensive stamina shock.")

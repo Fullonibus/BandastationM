@@ -339,12 +339,24 @@
 
 /obj/item/defibrillator/compact/combat/loaded/nanotrasen
 	name = "elite Nanotrasen defibrillator"
-	desc = "A belt-equipped state-of-the-art defibrillator. Can revive through thick clothing, has an experimental self-recharging battery, and can be utilized as a weapon via applying the paddles while in a combat stance."
+	desc = "A belt-equipped defibrillator with standard medical safeties and a replaceable battery. Its electronics and battery compartment are shielded against electromagnetic pulses."
+	combat = FALSE
+	safety = TRUE
+	cell_removable = TRUE
+	cooldown_duration = 5 SECONDS
 	icon_state = "defibnt" //needs defib inhand sprites
 	inhand_icon_state = null
 	worn_icon_state = "defibnt"
 	paddle_type = /obj/item/shockpaddles/syndicate/nanotrasen
 	paddle_state = "defibnt-paddles"
+
+/// Keep the NT casing and marking, but replace the inherited infinite cell with shielded standard electronics.
+/obj/item/defibrillator/compact/combat/loaded/nanotrasen/Initialize(mapload)
+	. = ..()
+	QDEL_NULL(cell)
+	cell = new /obj/item/stock_parts/power_store/cell(src)
+	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF|EMP_PROTECT_CONTENTS)
+	update_power()
 
 //paddles
 
@@ -744,7 +756,8 @@
 
 /obj/item/shockpaddles/syndicate/nanotrasen
 	name = "elite Nanotrasen defibrillator paddles"
-	desc = "A pair of paddles used to revive deceased ERT members. They possess both the ability to penetrate armor and to deliver powerful or disabling shocks offensively."
+	desc = "A pair of paddles used to revive deceased ERT members. Standard medical safeties prevent offensive shocks."
+	combat = FALSE
 	icon_state = "ntpaddles0"
 	inhand_icon_state = "ntpaddles0"
 	base_icon_state = "ntpaddles"

@@ -28,6 +28,8 @@
 	// BANDASTATION EDIT END: Centcom homerun
 	/// Can we launch mobs thrown at us away?
 	var/mob_thrower = FALSE
+	/// Whether melee strikes and batting thrown mobs can launch the victim.
+	var/knockback_enabled = FALSE
 	/// List of all thrown datums we sent.
 	var/list/thrown_datums = list()
 
@@ -42,7 +44,7 @@
 
 /obj/item/melee/baseball_bat/attack_self(mob/user)
 	// BANDASTATION EDIT START: Centcom homerun
-	if(always_homerun || !homerun_able)
+	if(!knockback_enabled || always_homerun || !homerun_able)
 		return ..()
 	if(homerun_ready)
 		to_chat(user, span_warning("You're already ready to do a home run!"))
@@ -60,7 +62,7 @@
 	var/relative_direction = get_dir(src, target) // BANDASTATION EDIT: Correct homerun direction
 	var/atom/throw_target = get_edge_target_turf(target, relative_direction)
 	. = ..()
-	if(HAS_TRAIT(user, TRAIT_PACIFISM))
+	if(!knockback_enabled || HAS_TRAIT(user, TRAIT_PACIFISM))
 		return
 	if(homerun_ready || always_homerun) // BANDASTATION EDIT: Centcom homerun
 		user.visible_message(span_userdanger("It's a home run!"))
@@ -95,7 +97,7 @@
 	return ..()
 
 /obj/item/melee/baseball_bat/proc/try_launch(atom/movable/target, mob/living/user)
-	if(!target.throwing || (ismob(target) && !mob_thrower))
+	if(!target.throwing || (ismob(target) && (!mob_thrower || !knockback_enabled)))
 		return FALSE
 	var/datum/thrownthing/throw_datum = target.throwing
 	var/datum_throw_speed = throw_datum.speed

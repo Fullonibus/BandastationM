@@ -18,6 +18,7 @@
 	attack_verb_simple = list("hit", "poked")
 	homerun_able = TRUE
 	always_homerun = TRUE
+	knockback_enabled = TRUE
 	/// Sound of extending the bat
 	var/on_sound = 'sound/items/weapons/batonextend.ogg'
 	/// Force when extended
