@@ -192,7 +192,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	messagepart = " <span class='message'>[messagepart]</span></span>"
 
 	if(radio_freq)
-		return "[spanpart1][spanpart2][freqpart][languageicon][endspanpart][messagepart]"
+		return "[spanpart1][spanpart2][freqpart][languageicon][compose_radio_links(speaker)][endspanpart][messagepart]"
 
 	return "[spanpart1][spanpart2][freqpart][languageicon][compose_track_href(speaker, namepart)]["<span style='color: [speaker.chat_color]'>[namepart]</span>"][compose_job(speaker, message_language, raw_message, radio_freq)][endspanpart][messagepart]" // BANDASTATION Addition: span with color
 
@@ -200,6 +200,10 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return ""
 
 /atom/movable/proc/compose_job(atom/movable/speaker, message_langs, raw_message, radio_freq)
+	return ""
+
+/// Listener-specific radio actions must not reveal the sender's name or job.
+/atom/movable/proc/compose_radio_links(atom/movable/speaker)
 	return ""
 
 /**
