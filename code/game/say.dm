@@ -156,6 +156,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 	do_tts_message(tts_message_to_use, message_language, message_mods, tts_filter, listened)
 
+/// Formats speech for a listener, omitting the sender's identity from radio messages.
 /atom/movable/proc/compose_message(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), visible_name = FALSE)
 	//This proc uses [] because it is faster than continually appending strings. Thanks BYOND.
 	//Basic span
@@ -190,12 +191,19 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/messagepart = speaker.generate_messagepart(raw_message, spans, message_mods)
 	messagepart = " <span class='message'>[messagepart]</span></span>"
 
+	if(radio_freq)
+		return "[spanpart1][spanpart2][freqpart][languageicon][compose_radio_links(speaker)][endspanpart][messagepart]"
+
 	return "[spanpart1][spanpart2][freqpart][languageicon][compose_track_href(speaker, namepart)]["<span style='color: [speaker.chat_color]'>[namepart]</span>"][compose_job(speaker, message_language, raw_message, radio_freq)][endspanpart][messagepart]" // BANDASTATION Addition: span with color
 
 /atom/movable/proc/compose_track_href(atom/movable/speaker, message_langs, raw_message, radio_freq)
 	return ""
 
 /atom/movable/proc/compose_job(atom/movable/speaker, message_langs, raw_message, radio_freq)
+	return ""
+
+/// Listener-specific radio actions must not reveal the sender's name or job.
+/atom/movable/proc/compose_radio_links(atom/movable/speaker)
 	return ""
 
 /**

@@ -1,3 +1,168 @@
+/// Face-concealing clothing must expose only the worn ID's identity, or an anonymous name.
+/datum/unit_test/masked_speech_identity/Run()
+	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
+	speaker.fully_replace_character_name(null, "Alice")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Alice", "An uncovered speaker without ID must retain their voice name.")
+
+	var/obj/item/clothing/under/color/grey/uniform = allocate(/obj/item/clothing/under/color/grey)
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(uniform, ITEM_SLOT_ICLOTHING), "Could not equip the uniform for the ID slot.")
+	var/obj/item/clothing/mask/surgical/mask = allocate(/obj/item/clothing/mask/surgical)
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(mask, ITEM_SLOT_MASK), "Could not equip the face-concealing mask.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Неизвестный", "A covered face without ID exposed the speaker's name.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Неизвестный", "Local speech must use the hidden name without a disguise suffix.")
+	var/atom/movable/virtualspeaker/radio_voice = allocate(/atom/movable/virtualspeaker, null, speaker)
+	TEST_ASSERT_EQUAL(radio_voice.name, "Неизвестный", "Radio speech exposed the masked speaker's name.")
+
+	var/obj/item/card/id/advanced/id = allocate(/obj/item/card/id/advanced)
+	id.registered_name = "Bob"
+	id.chosen_honorific = "Captain"
+	id.honorific_position = HONORIFIC_POSITION_FIRST_FULL
+	id.update_honorific()
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(id, ITEM_SLOT_ID), "Could not equip the ID.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Bob", "A covered speaker must use the foreign ID's name.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Captain Bob", "Local speech must use the ID's title without exposing the real name or a disguise suffix.")
+	speaker.override_voice = speaker.real_name
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Captain Bob", "A voice override must not expose the real name behind a covered face.")
+	radio_voice = allocate(/atom/movable/virtualspeaker, null, speaker)
+	TEST_ASSERT_EQUAL(radio_voice.name, "Captain Bob", "Radio must use the foreign ID's title even with a voice override.")
+	TEST_ASSERT(!findtext(speaker.compose_message(speaker, /datum/language/common, "Test"), speaker.real_name), "Formatted local speech exposed the real name.")
+	TEST_ASSERT(!findtext(speaker.compose_message(radio_voice, /datum/language/common, "Test", FREQ_COMMON), speaker.real_name), "Formatted radio speech exposed the real name.")
+	TEST_ASSERT(mask.adjust_visor(speaker), "Could not uncover the face while wearing a foreign ID.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Alice", "An uncovered face must restore the ordinary voice name.")
+	speaker.override_voice = "Disguised voice"
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Disguised voice", "An uncovered face must preserve explicit voice overrides.")
+	TEST_ASSERT(mask.adjust_visor(speaker), "Could not cover the face while wearing a foreign ID.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Captain Bob", "Covering the face must restore the ID's identity over a voice override.")
+	speaker.override_voice = null
+	TEST_ASSERT(speaker.transferItemToLoc(id, speaker.drop_location()), "Could not remove the ID.")
+	TEST_ASSERT(speaker.put_in_hands(id), "Could not hold the removed ID.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Неизвестный", "An ID in hand must not identify a masked speaker.")
+
+	TEST_ASSERT(mask.adjust_visor(speaker), "Could not uncover the face.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Alice", "Uncovering the face must immediately restore the name.")
+	TEST_ASSERT(mask.adjust_visor(speaker), "Could not cover the face again.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Неизвестный", "Covering the face again must hide the name.")
+	speaker.override_voice = speaker.real_name
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Неизвестный", "A covered face without ID must not expose the real name through a voice override.")
+	ADD_TRAIT(speaker, TRAIT_UNKNOWN_VOICE, TRAIT_SOURCE_UNIT_TESTS)
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Unknown", "Supernatural anonymity must keep its existing priority.")
+	REMOVE_TRAIT(speaker, TRAIT_UNKNOWN_VOICE, TRAIT_SOURCE_UNIT_TESTS)
+	speaker.override_voice = null
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(id, ITEM_SLOT_ID), "Could not re-equip the ID.")
+	ADD_TRAIT(speaker, TRAIT_VOICE_MATCHES_ID, TRAIT_SOURCE_UNIT_TESTS)
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Bob", "ID-based voice changers must retain their disguise.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Captain Bob", "An ID-based voice changer must preserve the title without a redundant disguise suffix.")
+	REMOVE_TRAIT(speaker, TRAIT_VOICE_MATCHES_ID, TRAIT_SOURCE_UNIT_TESTS)
+	TEST_ASSERT(speaker.transferItemToLoc(id, speaker.drop_location()), "Could not remove the disguised ID.")
+	TEST_ASSERT(speaker.transferItemToLoc(mask, speaker.drop_location()), "Could not remove the mask.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Alice", "Removing the mask must restore the name.")
+
+	var/obj/item/clothing/mask/breath/breath_mask = allocate(/obj/item/clothing/mask/breath)
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(breath_mask, ITEM_SLOT_MASK), "Could not equip the non-concealing mask.")
+	TEST_ASSERT_EQUAL(speaker.get_voice(), "Alice", "A mask without HIDEFACE must not hide the name.")
+	var/obj/item/clothing/head/utility/welding/helmet = allocate(/obj/item/clothing/head/utility/welding)
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(helmet, ITEM_SLOT_HEAD), "Could not equip the face-concealing helmet.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Неизвестный", "A closed helmet must conceal the speaker's name.")
+	TEST_ASSERT(helmet.adjust_visor(speaker), "Could not raise the helmet visor.")
+	TEST_ASSERT_EQUAL(speaker.get_message_voice(), "Alice", "Raising the helmet visor must restore the name.")
+
+/// Radio chat hides identity while retaining body-based actions for the AI and its shell.
+/datum/unit_test/anonymous_radio_chat/Run()
+	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
+	speaker.fully_replace_character_name(null, "Radio Sender")
+	var/mob/dead/observer/observer = allocate(/mob/dead/observer)
+	var/mob/living/silicon/ai/ai_listener = allocate(/mob/living/silicon/ai, run_loc_floor_top_right, observer)
+	var/mob/living/silicon/robot/shell/ai_shell = allocate(/mob/living/silicon/robot/shell)
+	ai_shell.set_connected_ai(ai_listener)
+	ai_listener.deployed_shell = ai_shell
+	var/atom/movable/virtualspeaker/radio_voice = allocate(/atom/movable/virtualspeaker, null, speaker)
+	radio_voice.job = "Radio Test Job"
+	var/raw_message = "Anonymous transmission"
+
+	for(var/mob/listener as anything in list(speaker, ai_listener, ai_shell, observer))
+		var/rendered = listener.compose_message(radio_voice, /datum/language/common, raw_message, FREQ_COMMON)
+		TEST_ASSERT(findtext(rendered, get_radio_name(FREQ_COMMON, null)), "Radio chat lost its channel for [listener.type].")
+		TEST_ASSERT(findtext(rendered, raw_message), "Radio chat lost its message for [listener.type].")
+		TEST_ASSERT(!findtext(rendered, speaker.real_name), "Radio chat exposed the sender's name to [listener.type].")
+		TEST_ASSERT(!findtext(rendered, radio_voice.job), "Radio chat exposed the sender's job to [listener.type].")
+		if(listener == ai_listener || listener == ai_shell)
+			TEST_ASSERT(findtext(rendered, "src=[REF(ai_listener)];track_radio=[REF(speaker)]"), "AI radio tracking must target the actual speaker's body.")
+			TEST_ASSERT(findtext(rendered, "src=[REF(ai_listener)];open=[REF(speaker)]"), "AI radio must retain its door link.")
+			TEST_ASSERT(findtext(rendered, "\[Отправитель\]"), "AI radio tracking must have a neutral label.")
+		else
+			TEST_ASSERT(!findtext(rendered, "track_radio="), "Radio chat exposed AI tracking to [listener.type].")
+			TEST_ASSERT(!findtext(rendered, "open="), "Radio chat exposed AI door controls to [listener.type].")
+	ai_listener.deployed_shell = null
+	TEST_ASSERT_EQUAL(ai_shell.compose_radio_links(radio_voice), "", "An inactive shell must not receive AI radio controls.")
+
+	var/overridden_message = speaker.compose_message(radio_voice, /datum/language/common, raw_message, FREQ_COMMON, message_mods = list(MODE_SPEAKER_NAME_OVERRIDE = "Radio Alias"))
+	TEST_ASSERT(!findtext(overridden_message, "Radio Alias"), "A message override exposed a radio sender label.")
+	var/obj/item/radio/anonymous_radio = allocate(/obj/item/radio)
+	anonymous_radio.anonymize = TRUE
+	var/atom/movable/virtualspeaker/anonymous_voice = allocate(/atom/movable/virtualspeaker, null, speaker, anonymous_radio)
+	TEST_ASSERT_EQUAL(anonymous_voice.name, "Unknown", "The test radio must anonymize its sender.")
+	TEST_ASSERT_EQUAL(speaker.compose_message(anonymous_voice, /datum/language/common, raw_message, FREQ_COMMON), overridden_message, "Anonymous radio must omit its sender label just like ordinary radio.")
+	TEST_ASSERT_EQUAL(ai_listener.compose_radio_links(anonymous_voice), "", "An anonymizing transmitter must not reveal its source through AI links.")
+
+	var/local_message = speaker.compose_message(speaker, /datum/language/common, raw_message)
+	TEST_ASSERT(findtext(local_message, speaker.real_name), "Local speech must still show the sender's visible identity.")
+	TEST_ASSERT_EQUAL(radio_voice.name, speaker.real_name, "Formatting radio chat must not change the radio speaker's identity.")
+	TEST_ASSERT_EQUAL(radio_voice.GetSource(), speaker, "Formatting radio chat must preserve the source for radio routing.")
+	TEST_ASSERT_EQUAL(radio_voice.GetJob(), "Radio Test Job", "Formatting radio chat must not erase the radio speaker's job data.")
+
+/// Clicking an anonymous radio link tracks the exact body without bypassing camera or user checks.
+/datum/unit_test/anonymous_radio_tracking
+	var/list/original_level_traits
+
+/datum/unit_test/anonymous_radio_tracking/Destroy()
+	if(!isnull(original_level_traits))
+		reservation.traits = original_level_traits
+	return ..()
+
+/datum/unit_test/anonymous_radio_tracking/Run()
+	// The test room is an away level, where camera tracking is deliberately disabled.
+	original_level_traits = reservation.traits
+	reservation.traits = original_level_traits.Copy()
+	reservation.traits -= ZTRAIT_AWAY
+	var/mob/living/carbon/human/other_speaker = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
+	other_speaker.fully_replace_character_name(null, "Same Name")
+	speaker.fully_replace_character_name(null, "Same Name")
+	var/mob/dead/observer/observer = allocate(/mob/dead/observer)
+	var/mob/living/silicon/ai/ai_listener = allocate(/mob/living/silicon/ai, run_loc_floor_top_right, observer)
+	allocate(/obj/machinery/camera, speaker.loc)
+	var/datum/camerachunk/chunk = SScameras.generate_chunk(speaker.x, speaker.y, speaker.z)
+	chunk.force_update(only_if_necessary = FALSE)
+	TEST_ASSERT(speaker.can_track(ai_listener), "The test speaker must be visible to cameras.")
+	var/list/href_list = list("track_radio" = REF(speaker))
+	var/old_usr = usr
+	usr = other_speaker
+	ai_listener.Topic("", href_list)
+	usr = old_usr
+	TEST_ASSERT(isnull(ai_listener.ai_tracking_tool.tracked_mob), "Another mob must not control the AI through a radio link.")
+
+	usr = ai_listener
+	ai_listener.Topic("", href_list)
+	usr = old_usr
+	TEST_ASSERT_EQUAL(ai_listener.ai_tracking_tool.tracked_mob, speaker, "Radio tracking selected the wrong body among identical names.")
+	TEST_ASSERT_EQUAL(get_turf(ai_listener.eyeobj), get_turf(speaker), "The AI camera did not move to the radio sender.")
+	ai_listener.ai_tracking_tool.reset_tracking()
+
+	var/obj/structure/closet/closet = allocate(/obj/structure/closet)
+	speaker.forceMove(closet)
+	usr = ai_listener
+	ai_listener.Topic("", href_list)
+	usr = old_usr
+	TEST_ASSERT(isnull(ai_listener.ai_tracking_tool.tracked_mob), "Radio tracking must not find a speaker hidden from cameras.")
+	speaker.forceMove(run_loc_floor_bottom_left)
+
+	ai_listener.control_disabled = TRUE
+	usr = ai_listener
+	ai_listener.Topic("", href_list)
+	usr = old_usr
+	TEST_ASSERT(isnull(ai_listener.ai_tracking_tool.tracked_mob), "Disabled AI control must block radio tracking.")
+	ai_listener.control_disabled = FALSE
+
 /// Test to verify message mods are parsed correctly
 /datum/unit_test/get_message_mods
 	var/mob/host_mob

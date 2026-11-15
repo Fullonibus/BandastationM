@@ -33,6 +33,22 @@
 
 	return "[radio_freq ? " ([speaker.GetJob()])" : ""][speaker.GetSource() ? "</a>" : ""][compose_open_door_href(speaker)]" //BANDA STATION ADDITION - AI DOOR
 
+/mob/living/silicon/compose_radio_links(atom/movable/speaker)
+	var/obj/item/radio/radio = speaker.GetRadio()
+	var/mob/living/target = speaker.GetSource()
+	if(!HAS_TRAIT(src, TRAIT_CAN_GET_AI_TRACKING_MESSAGE) || radio?.anonymize || !isliving(target) || QDELETED(target))
+		return ""
+	var/mob/living/silicon/ai/controller
+	if(isAI(src))
+		controller = src
+	else if(iscyborg(src))
+		var/mob/living/silicon/robot/bot = src
+		if(bot.shell && bot.connected_ai?.deployed_shell == bot)
+			controller = bot.connected_ai
+	if(!controller)
+		return ""
+	return "<a href='byond://?src=[REF(controller)];track_radio=[REF(target)]'>\[Отправитель\]</a>[compose_open_door_href(speaker)]"
+
 /mob/living/silicon/ai/try_speak(message, ignore_spam = FALSE, forced = null, filterproof = FALSE)
 	// AIs cannot speak if silent AI is on.
 	// Unless forced is set, as that's probably stating laws or something.
