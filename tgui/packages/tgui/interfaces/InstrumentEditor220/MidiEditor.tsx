@@ -139,6 +139,12 @@ export function MidiEditor({
         doc,
         instruments.map((instrument) => instrument.id),
       );
+      if (doc === serverDocument) {
+        setError('');
+        if (action) act(action, { mode: 'sequence' });
+        onComplete?.();
+        return true;
+      }
       upload(
         {
           ...doc,

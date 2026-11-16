@@ -40,6 +40,9 @@ for (const state of ['complete', 'error'] as const) {
     }
     const view = render(<Editor />);
     expect(screen.queryByText('Octave')).toBeNull();
+    fireEvent.change(screen.getByDisplayValue('Test'), {
+      target: { value: 'Edited' },
+    });
     fireEvent.click(screen.getByText('Piano roll'));
     await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
     const [action, payload] = send.mock.calls[0];
@@ -54,3 +57,82 @@ for (const state of ['complete', 'error'] as const) {
     ).toBe(state === 'complete' ? 1 : 0);
   });
 }
+
+it('starts acknowledged MIDI without retransmission but uploads edits and retries rejected changes', async () => {
+  const send = mock((_action: string, _payload?: object) => {});
+  function Editor({
+    status,
+    snapshot = document,
+  }: {
+    status?: MusicUploadStatus;
+    snapshot?: MusicDocument;
+  }) {
+    const transfer = useMusicUpload(send, status);
+    const commit = useRef<((action?: PlayAction) => boolean) | null>(null);
+    return (
+      <>
+        <button
+          disabled={transfer.busy}
+          onClick={() => commit.current?.('play_music')}
+        >
+          Test start
+        </button>
+        <MidiEditor
+          commitRef={commit}
+          document={snapshot}
+          instruments={[]}
+          defaultInstrument={null}
+          disabled={transfer.busy}
+          uploading={transfer.busy}
+          channels={[0]}
+          position={0}
+          playing={false}
+          act={send}
+          upload={(doc, action, complete) =>
+            transfer.upload('sequence', doc, action, complete)
+          }
+        />
+      </>
+    );
+  }
+  const view = render(<Editor />);
+  fireEvent.click(screen.getByText('Test start'));
+  expect(send.mock.calls).toEqual([
+    ['play_music', { mode: 'sequence' }],
+  ]);
+  send.mockClear();
+  fireEvent.change(screen.getByDisplayValue('Test'), {
+    target: { value: 'Edited' },
+  });
+  fireEvent.click(screen.getByText('Test start'));
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
+  expect(send.mock.calls[0][0]).toBe('upload_music_document');
+  const rejected = send.mock.calls[0][1] as {
+    id: string;
+    count: number;
+    play_action: string;
+  };
+  expect(rejected.play_action).toBe('play_music');
+  view.rerender(
+    <Editor status={{ id: rejected.id, next: rejected.count, state: 'error' }} />,
+  );
+  send.mockClear();
+  fireEvent.click(screen.getByText('Test start'));
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
+  expect(send.mock.calls[0][0]).toBe('upload_music_document');
+  const accepted = send.mock.calls[0][1] as { id: string; count: number };
+  view.rerender(
+    <Editor
+      snapshot={{ ...document, title: 'Edited' }}
+      status={{ id: accepted.id, next: accepted.count, state: 'complete' }}
+    />,
+  );
+  send.mockClear();
+  fireEvent.click(screen.getByText('Test start'));
+  expect(send.mock.calls).toEqual([
+    ['play_music', { mode: 'sequence' }],
+  ]);
+  send.mockClear();
+  fireEvent.click(screen.getByText('Piano roll'));
+  expect(send.mock.calls).toEqual([['open_piano_roll']]);
+});
