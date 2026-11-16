@@ -14,6 +14,8 @@
 	var/stillborn = FALSE
 	/// A ghost who accepted an invitation when the parasite hatched.
 	var/datum/weakref/reserved_ghost
+	/// Parasite hatches that already held a poll skip the adult poll.
+	var/poll_on_growth = TRUE
 
 /mob/living/basic/spider/growing/spiderling/terror/Initialize(mapload, caste, brood_directive, datum/weakref/brood_queen, stillborn = FALSE)
 	grow_as = caste || pick(\
@@ -49,17 +51,32 @@
 	adult.directive = directive
 	if(adult.key || is_away_level(adult.z) || istype(adult, /mob/living/basic/spider/giant/terror/queen/empress))
 		return
-	var/datum/component/ghost_direct_control/direct_control = adult.AddComponent(\
+	INVOKE_ASYNC(adult, TYPE_PROC_REF(/mob/living/basic/spider/giant/terror, offer_brood_role), poll_on_growth, reserved_ghost)
+
+/// Offers the adult body by lottery before registering it in the spawners menu.
+/mob/living/basic/spider/giant/terror/proc/offer_brood_role(poll_on_growth, datum/weakref/reserved_ghost)
+	var/list/candidates
+	if(poll_on_growth)
+		candidates = poll_terror_spider_candidates(src, type)
+	else if(reserved_ghost)
+		candidates = list(reserved_ghost.resolve())
+
+	var/turf/adult_turf = get_turf(src)
+	if(QDELETED(src) || stat == DEAD || key || terror_degenerating || !adult_turf || is_away_level(adult_turf.z))
+		return
+	var/datum/component/ghost_direct_control/direct_control = AddComponent(\
 		/datum/component/ghost_direct_control,\
 		ban_type = ROLE_ALIEN,\
 		poll_candidates = FALSE,\
 		assumed_control_message = "Вы паук Ужаса. Следуйте директиве выводка.",\
-		extra_control_checks = CALLBACK(adult, TYPE_PROC_REF(/mob/living/basic/spider/giant/terror, can_claim_brood_role)),\
-		after_assumed_control = CALLBACK(adult, TYPE_PROC_REF(/mob/living/basic/spider/giant/terror, grant_brood_role)),\
+		extra_control_checks = CALLBACK(src, PROC_REF(can_claim_brood_role)),\
+		after_assumed_control = CALLBACK(src, PROC_REF(grant_brood_role)),\
 	)
-	var/mob/dead/observer/chosen = reserved_ghost?.resolve()
-	if(chosen?.client && !adult.key)
-		INVOKE_ASYNC(direct_control, TYPE_PROC_REF(/datum/component/ghost_direct_control, assume_direct_control), chosen)
+	while(length(candidates) && !QDELETED(direct_control))
+		var/mob/dead/observer/candidate = pick_n_take(candidates)
+		if(QDELETED(candidate) || !isobserver(candidate) || !candidate.client || !candidate.ckey)
+			continue
+		direct_control.assume_direct_control(candidate)
 
 /mob/living/basic/spider/giant/terror/proc/can_claim_brood_role(mob/dead/observer/ghost)
 	if(!isobserver(ghost) || !ghost.client)
@@ -75,6 +92,30 @@
 /mob/living/basic/spider/giant/terror/proc/grant_brood_role()
 	mind.set_assigned_role(SSjob.get_job_type(/datum/job/spider))
 	mind.add_antag_datum(new /datum/antagonist/spider/terror(directive))
+
+/// Polls for a hatched spider or a mature egg before its role opens to all ghosts.
+/proc/poll_terror_spider_candidates(atom/movable/target, mob/living/basic/spider/giant/terror/caste)
+	var/turf/poll_turf = get_turf(target)
+	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) || !poll_turf || is_away_level(poll_turf.z))
+		return
+	var/image/portrait = get_terror_spider_poll_portrait(caste)
+	return SSpolling.poll_ghost_candidates(
+		check_jobban = ROLE_ALIEN,
+		poll_time = 10 SECONDS,
+		ignore_category = POLL_IGNORE_SPIDER,
+		alert_pic = portrait,
+		jump_target = target,
+		role_name_text = initial(caste.name),
+		chat_text_border_icon = portrait,
+	)
+
+/// Builds a centered portrait from the caste's living sprite for the HUD and chat.
+/proc/get_terror_spider_poll_portrait(mob/living/basic/spider/giant/terror/caste)
+	var/icon/portrait = icon(initial(caste.icon), initial(caste.icon_living), SOUTH, 1)
+	var/scale = min(1, ICON_SIZE_X / portrait.Width(), ICON_SIZE_Y / portrait.Height())
+	if(scale < 1)
+		portrait.Scale(round(portrait.Width() * scale), round(portrait.Height() * scale))
+	return image(portrait)
 
 /datum/action/cooldown/mob_cooldown/terror_royal_jelly
 	name = "Секреция королевского желе"

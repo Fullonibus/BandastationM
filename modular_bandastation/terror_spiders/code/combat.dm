@@ -135,6 +135,18 @@
 	. = ..()
 	set_terror_wall_breaching(ENVIRONMENT_SMASH_RWALLS)
 	RegisterSignal(src, COMSIG_HOSTILE_POST_ATTACKINGTARGET, PROC_REF(on_guardian_bite))
+	RegisterSignal(src, COMSIG_LIVING_GHOSTROLE_INFO, PROC_REF(set_guardian_role_description))
+
+/mob/living/basic/spider/giant/terror/purple/Login()
+	. = ..()
+	if(.)
+		to_chat(src, span_notice(menu_description))
+
+/// Supplies the Guardian's role description to the ghost spawners menu.
+/mob/living/basic/spider/giant/terror/purple/proc/set_guardian_role_description(datum/source, list/role_info)
+	SIGNAL_HANDLER
+
+	role_info["desc"] = menu_description
 
 /mob/living/basic/spider/giant/terror/purple/Life(seconds_per_tick = SSMOBS_DT)
 	. = ..()

@@ -1,9 +1,12 @@
 /mob/living/basic/spider/giant/terror/red
 	/// A new stance replaces the current one and restarts its duration.
 	var/terror_stance_timer
+	/// The Knight's damage coefficients outside temporary stances.
+	var/list/base_terror_damage_coefficients
 
 /mob/living/basic/spider/giant/terror/red/Initialize(mapload)
 	. = ..()
+	base_terror_damage_coefficients = terror_damage_coefficients
 	set_terror_wall_breaching(ENVIRONMENT_SMASH_WALLS)
 
 /mob/living/basic/spider/giant/terror/red/Destroy()
@@ -31,7 +34,7 @@
 	update_basic_mob_varspeed()
 	melee_damage_lower = initial(melee_damage_lower)
 	melee_damage_upper = initial(melee_damage_upper)
-	terror_damage_coefficients = initial(terror_damage_coefficients)
+	terror_damage_coefficients = base_terror_damage_coefficients
 	if(stat != DEAD)
 		playsound(src, 'modular_bandastation/terror_spiders/sound/keratosis_out.ogg', 150)
 		to_chat(src, span_notice("Вы возвращаетесь в обычную стойку."))

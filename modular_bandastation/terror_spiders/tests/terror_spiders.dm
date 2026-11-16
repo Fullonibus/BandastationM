@@ -39,6 +39,8 @@
 	broodmate.reset_terror_stance()
 	TEST_ASSERT_EQUAL(broodmate.melee_damage_upper, 15, "The Knight did not return to his normal bite when the stance ended.")
 	TEST_ASSERT_EQUAL(broodmate.speed, initial(broodmate.speed), "The Knight did not return to normal speed.")
+	var/damage_after_stance = broodmate.apply_damage(100, BRUTE)
+	TEST_ASSERT(abs(damage_after_stance - 60) < 0.01, "A hit after the Knight's stance ends must deal 60 brute damage, got [damage_after_stance].")
 
 	var/mob/living/basic/spider/giant/terror/gray/gray = allocate(/mob/living/basic/spider/giant/terror/gray)
 	var/obj/structure/spider/stickyweb/terror/transparent/web = allocate(/obj/structure/spider/stickyweb/terror/transparent)
@@ -290,8 +292,12 @@
 	normal_floor_required = TRUE
 	/// Unlike the unit-test room, a reservation is not on an away level.
 	var/datum/turf_reservation/brood_room
+	/// A clientless observer lets the poll run without an eligible candidate.
+	var/mob/dead/observer/poll_observer
 
 /datum/unit_test/terror_spider_ghost_roles/Destroy()
+	GLOB.player_list -= poll_observer
+	poll_observer = null
 	. = ..()
 	QDEL_NULL(brood_room)
 
@@ -326,12 +332,25 @@
 	TEST_ASSERT(QDELETED(clutch), "A normal Terror clutch took more than one minute to hatch.")
 	var/mob/living/basic/spider/growing/spiderling/terror/hatchling = locate() in brood_turf
 	TEST_ASSERT_NOTNULL(hatchling, "The clutch did not produce a spiderling.")
+	poll_observer = ghost
+	GLOB.player_list |= poll_observer
 	hatchling.grow_up()
 	var/mob/living/basic/spider/giant/terror/red/adult = locate() in brood_turf
 	TEST_ASSERT_NOTNULL(adult, "The spiderling did not become an adult.")
 	allocated += adult
 	var/adult_group = format_text(initial(adult.name))
-	TEST_ASSERT_EQUAL(menu_count(menu, ghost, adult_group), 1, "The unoccupied adult did not appear in the spawners menu.")
+	TEST_ASSERT_EQUAL(menu_count(menu, ghost, adult_group), 0, "The adult appeared in the spawners menu before the poll finished.")
+
+	var/obj/effect/mob_spawn/ghost_role/spider/terror/polled_egg = allocate(__IMPLIED_TYPE__, brood_turf, /mob/living/basic/spider/giant/terror/gray)
+	var/egg_group = format_text(polled_egg.name)
+	polled_egg.process(20)
+	TEST_ASSERT(!polled_egg.ready, "The mature egg was claimable before the poll finished.")
+	TEST_ASSERT_EQUAL(menu_count(menu, ghost, egg_group), 0, "The mature egg appeared in the spawners menu during the poll.")
+
+	var/deadline = world.time + 15 SECONDS
+	UNTIL((menu_count(menu, ghost, adult_group) && polled_egg.ready) || world.time >= deadline)
+	TEST_ASSERT_EQUAL(menu_count(menu, ghost, adult_group), 1, "The unoccupied adult did not appear in the spawners menu after the poll.")
+	TEST_ASSERT_EQUAL(menu_count(menu, ghost, egg_group), 1, "The unclaimed egg did not appear in the spawners menu after the poll.")
 	adult.death()
 	TEST_ASSERT_EQUAL(menu_count(menu, ghost, adult_group), 0, "A dead adult stayed in the spawners menu.")
 
