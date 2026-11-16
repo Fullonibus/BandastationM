@@ -231,26 +231,7 @@ export function InstrumentEditor220() {
         )}
         {tab === 'midi' && (
           <Section>
-            <Stack align="center" wrap>
-              <Stack.Item grow>
-                <Dropdown
-                  fluid
-                  selected={data.using_instrument}
-                  options={data.possible_instruments.map((i) => i.name)}
-                  disabled={
-                    !data.can_switch_instrument ||
-                    !!data.playing ||
-                    transfer.busy
-                  }
-                  onSelected={(name) =>
-                    act('change_instrument', {
-                      new_instrument: data.possible_instruments.find(
-                        (i) => i.name === name,
-                      )?.id,
-                    })
-                  }
-                />
-              </Stack.Item>
+            <Stack align="center" justify="end" wrap>
               <Stack.Item>
                 Volume{' '}
                 <NumberInput
