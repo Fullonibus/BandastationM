@@ -202,6 +202,13 @@ GLOBAL_LIST_INIT(strippable_gorilla_items, create_strippable_list(list(
 	var/datum/component/crate_carrier/carrier = GetComponent(/datum/component/crate_carrier)
 	return ..() || length(carrier?.crates_in_hand)
 
+/mob/living/basic/gorilla/cargorilla/update_overlays()
+	. = ..()
+	var/datum/component/crate_carrier/carrier = GetComponent(/datum/component/crate_carrier)
+	if (length(carrier?.crates_in_hand))
+		. -= "standing_overlay"
+		. += "crate_overlay"
+
 /// big fucking gorilla version of pun pun. be afraid.
 /mob/living/basic/gorilla/bar
 	name = "Pun Pun" //C A N O N, allegedly
