@@ -56,3 +56,5 @@ The TGS DMAPI is licensed as a subproject under the MIT license.
 See the footer of [code/\_\_DEFINES/tgs.dm](./code/__DEFINES/tgs.dm) and [code/modules/tgs/LICENSE](./code/modules/tgs/LICENSE) for the MIT license.
 
 All assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.
+
+The east/west arms in the `crate_overlay` state of `icons/mob/simple/cargorillia.dmi` are copied from [Paradise-SS220's `standing_overlay`](https://github.com/ss220club/Paradise-SS220/blob/0fffca1f1f29a63aff49d9b56524813eedf82c6d/icons/mob/cargorillia.dmi), introduced in [Paradise PR #20830](https://github.com/ParadiseSS13/Paradise/pull/20830), under CC BY-SA 3.0. These frames are used only while carrying crates; the original item-holding sprites are preserved.

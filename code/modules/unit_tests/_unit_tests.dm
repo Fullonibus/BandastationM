@@ -169,6 +169,7 @@
 #include "cargo_crates_and_exclusions.dm"
 #include "cargo_dep_order_locations.dm"
 #include "cargo_selling.dm"
+#include "cargorilla.dm"
 #include "chain_pull_through_space.dm"
 #include "chameleon.dm"
 #include "changeling.dm"
