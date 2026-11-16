@@ -205,6 +205,7 @@ GLOBAL_LIST_EMPTY(terror_infections)
 		hatch_egg()
 
 /obj/item/organ/terror_eggs/proc/poll_for_hatch()
+	var/image/portrait = get_terror_spider_poll_portrait(/mob/living/basic/spider/giant/terror/red)
 	var/mob/dead/observer/chosen = SSpolling.poll_ghosts_for_target(
 		question = "Вы хотите сыграть за паука Ужаса?",
 		role = ROLE_ALIEN,
@@ -212,7 +213,9 @@ GLOBAL_LIST_EMPTY(terror_infections)
 		poll_time = 30 SECONDS,
 		checked_target = src,
 		ignore_category = POLL_IGNORE_SPIDER,
+		alert_pic = portrait,
 		role_name_text = "Паук Ужаса",
+		chat_text_border_icon = portrait,
 		announce_chosen = FALSE,
 	)
 	if(QDELETED(src))
@@ -239,6 +242,7 @@ GLOBAL_LIST_EMPTY(terror_infections)
 	eggs_hatched++
 	var/mob/living/basic/spider/growing/spiderling/terror/spiderling = new(hatch_turf, caste)
 	spiderling.reserved_ghost = reserved_ghost
+	spiderling.poll_on_growth = !poll_started
 	reserved_ghost = null
 	poll_started = FALSE
 	to_chat(host, span_userdanger("По коже пробегает колючая дрожь, и весь мир вдруг начинает вращаться!"))
