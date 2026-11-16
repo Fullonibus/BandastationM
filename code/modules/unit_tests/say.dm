@@ -70,6 +70,10 @@
 /datum/unit_test/anonymous_radio_chat/Run()
 	var/mob/living/carbon/human/speaker = allocate(/mob/living/carbon/human/consistent)
 	speaker.fully_replace_character_name(null, "Radio Sender")
+	speaker.gender = MALE
+	var/datum/component/tts_component/voice = speaker.GetComponent(/datum/component/tts_component)
+	voice.tts_seed = SStts220.tts_seeds["Jaina"]
+	TEST_ASSERT(voice.tts_seed, "The test requires a feminine TTS voice.")
 	var/mob/dead/observer/observer = allocate(/mob/dead/observer)
 	var/mob/living/silicon/ai/ai_listener = allocate(/mob/living/silicon/ai, run_loc_floor_top_right, observer)
 	var/mob/living/silicon/robot/shell/ai_shell = allocate(/mob/living/silicon/robot/shell)
@@ -77,12 +81,13 @@
 	ai_listener.deployed_shell = ai_shell
 	var/atom/movable/virtualspeaker/radio_voice = allocate(/atom/movable/virtualspeaker, null, speaker)
 	radio_voice.job = "Radio Test Job"
-	var/raw_message = "Anonymous transmission"
+	var/raw_message = "Anonymous transmission?"
 
 	for(var/mob/listener as anything in list(speaker, ai_listener, ai_shell, observer))
 		var/rendered = listener.compose_message(radio_voice, /datum/language/common, raw_message, FREQ_COMMON)
 		TEST_ASSERT(findtext(rendered, get_radio_name(FREQ_COMMON, null)), "Radio chat lost its channel for [listener.type].")
 		TEST_ASSERT(findtext(rendered, raw_message), "Radio chat lost its message for [listener.type].")
+		TEST_ASSERT(findtext(rendered, "Женский голос [ru_say_verb(radio_voice.verb_ask)],"), "Radio must show the chosen TTS voice and retain the question verb.")
 		TEST_ASSERT(!findtext(rendered, speaker.real_name), "Radio chat exposed the sender's name to [listener.type].")
 		TEST_ASSERT(!findtext(rendered, radio_voice.job), "Radio chat exposed the sender's job to [listener.type].")
 		if(listener == ai_listener || listener == ai_shell)
@@ -101,14 +106,42 @@
 	anonymous_radio.anonymize = TRUE
 	var/atom/movable/virtualspeaker/anonymous_voice = allocate(/atom/movable/virtualspeaker, null, speaker, anonymous_radio)
 	TEST_ASSERT_EQUAL(anonymous_voice.name, "Unknown", "The test radio must anonymize its sender.")
-	TEST_ASSERT_EQUAL(speaker.compose_message(anonymous_voice, /datum/language/common, raw_message, FREQ_COMMON), overridden_message, "Anonymous radio must omit its sender label just like ordinary radio.")
+	var/anonymous_message = speaker.compose_message(anonymous_voice, /datum/language/common, raw_message, FREQ_COMMON)
+	TEST_ASSERT_EQUAL(anonymous_message, replacetext(overridden_message, "Женский голос", "Неизвестный голос"), "An anonymizing transmitter must also hide the TTS voice gender.")
 	TEST_ASSERT_EQUAL(ai_listener.compose_radio_links(anonymous_voice), "", "An anonymizing transmitter must not reveal its source through AI links.")
+
+	var/list/tts_override = list(MODE_TTS_SEED_OVERRIDE = /datum/tts_seed/silero/arthas, SAY_MOD_VERB = "шепчет")
+	var/male_message = speaker.compose_message(radio_voice, /datum/language/common, raw_message, FREQ_COMMON, message_mods = tts_override)
+	TEST_ASSERT(findtext(male_message, "Мужской голос шепчет,"), "A TTS seed override must determine the radio label without changing the supplied verb.")
+	tts_override[MODE_TTS_SEED_OVERRIDE] = /datum/tts_seed/silero/training_robot
+	var/neutral_message = speaker.compose_message(radio_voice, /datum/language/common, raw_message, FREQ_COMMON, message_mods = tts_override)
+	TEST_ASSERT(findtext(neutral_message, "Неизвестный голос шепчет,"), "A voice with no specific gender must have an unknown label.")
+	var/atom/movable/virtualspeaker/source_less_voice = allocate(/atom/movable/virtualspeaker)
+	var/source_less_message = speaker.compose_message(source_less_voice, /datum/language/common, raw_message, FREQ_COMMON)
+	TEST_ASSERT(findtext(source_less_message, "Неизвестный голос"), "A transmission without a TTS speaker must have an unknown label.")
 
 	var/local_message = speaker.compose_message(speaker, /datum/language/common, raw_message)
 	TEST_ASSERT(findtext(local_message, speaker.real_name), "Local speech must still show the sender's visible identity.")
 	TEST_ASSERT_EQUAL(radio_voice.name, speaker.real_name, "Formatting radio chat must not change the radio speaker's identity.")
 	TEST_ASSERT_EQUAL(radio_voice.GetSource(), speaker, "Formatting radio chat must preserve the source for radio routing.")
 	TEST_ASSERT_EQUAL(radio_voice.GetJob(), "Radio Test Job", "Formatting radio chat must not erase the radio speaker's job data.")
+
+	var/obj/item/clothing/under/color/grey/uniform = allocate(/obj/item/clothing/under/color/grey)
+	var/obj/item/clothing/mask/chameleon/mask = allocate(/obj/item/clothing/mask/chameleon)
+	var/obj/item/card/id/advanced/id = allocate(/obj/item/card/id/advanced)
+	id.registered_name = "Radio Voice Test Identity"
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(uniform, ITEM_SLOT_ICLOTHING), "The test needs a uniform for the ID slot.")
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(id, ITEM_SLOT_ID), "The test needs a worn ID.")
+	TEST_ASSERT(speaker.equip_to_slot_if_possible(mask, ITEM_SLOT_MASK), "The test needs an active chameleon mask.")
+	var/datum/tts_seed/original_seed = GLOB.human_to_tts[id.registered_name]
+	GLOB.human_to_tts[id.registered_name] = SStts220.tts_seeds["Arthas"]
+	var/mimic_message = speaker.compose_message(radio_voice, /datum/language/common, raw_message, FREQ_COMMON)
+	if(original_seed)
+		GLOB.human_to_tts[id.registered_name] = original_seed
+	else
+		GLOB.human_to_tts -= id.registered_name
+	TEST_ASSERT(findtext(mimic_message, "Мужской голос"), "Radio must describe the chameleon mask's TTS voice instead of the wearer's voice.")
+	TEST_ASSERT(!findtext(mimic_message, id.registered_name), "The TTS label must not expose the name on the worn ID.")
 
 /// Clicking an anonymous radio link tracks the exact body without bypassing camera or user checks.
 /datum/unit_test/anonymous_radio_tracking
