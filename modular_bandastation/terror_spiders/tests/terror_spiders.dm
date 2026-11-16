@@ -39,6 +39,8 @@
 	broodmate.reset_terror_stance()
 	TEST_ASSERT_EQUAL(broodmate.melee_damage_upper, 15, "The Knight did not return to his normal bite when the stance ended.")
 	TEST_ASSERT_EQUAL(broodmate.speed, initial(broodmate.speed), "The Knight did not return to normal speed.")
+	var/damage_after_stance = broodmate.apply_damage(100, BRUTE)
+	TEST_ASSERT(abs(damage_after_stance - 60) < 0.01, "A hit after the Knight's stance ends must deal 60 brute damage, got [damage_after_stance].")
 
 	var/mob/living/basic/spider/giant/terror/gray/gray = allocate(/mob/living/basic/spider/giant/terror/gray)
 	var/obj/structure/spider/stickyweb/terror/transparent/web = allocate(/obj/structure/spider/stickyweb/terror/transparent)
