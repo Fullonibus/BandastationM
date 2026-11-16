@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { type CSSProperties, useEffect } from 'react';
 import { Color } from 'tgui-core/color';
 import {
   Box,
@@ -19,6 +19,8 @@ import {
 } from '../bandastation/ru_jobs'; // BANDASTATION EDIT
 import { Window } from '../layouts';
 import { JOB2ICON } from './common/JobToIcon';
+
+const JOIN_DISABLED_REASON = 'Вход в раунд временно отключён администрацией.';
 
 type Job = {
   unavailable_reason: string | null;
@@ -71,29 +73,32 @@ function JobEntry(props: JobEntryProps) {
   const jobIcon = job.jobIcon || JOB2ICON[ReverseJobsRu(jobName)];
   const title = job.public_title || JOBS_RU[jobName] || jobName;
   const unavailable = disabled || !!job.unavailable_reason;
+  const departmentColor = Color.fromHex(color);
+  const buttonStyle = {
+    '--button-background': job.prioritized
+      ? '#16fc0f'
+      : departmentColor.lighten(10).toString(),
+    '--button-background-disabled': '#b6b6b6',
+    '--button-disabled-opacity': 1,
+    '--button-color': unavailable
+      ? '#242424'
+      : departmentColor.darken(90).toString(),
+    fontSize: '1.1rem',
+  } as CSSProperties;
 
   return (
     <Button
       fluid
       disabled={unavailable}
-      style={{
-        backgroundColor: unavailable
-          ? '#949494' // Grey background
-          : job.prioritized
-            ? '#16fc0f' // Bright green background
-            : Color.fromHex(color).darken(10).toString(),
-        color: unavailable
-          ? '#616161' // Dark grey font
-          : Color.fromHex(color).darken(90).toString(),
-        fontSize: '1.1rem',
-        cursor: unavailable ? 'initial' : 'pointer',
-      }}
+      aria-disabled={unavailable}
+      style={buttonStyle}
       tooltip={
         job.unavailable_reason ||
+        (disabled && JOIN_DISABLED_REASON) ||
         (job.prioritized ? (
           <>
             <p style={{ marginTop: '0px' }}>
-              <b>The HoP wants more people in this job!</b>
+              <b>Глава персонала ищет сотрудников на эту должность.</b>
             </p>
             {details?.description}
           </>
@@ -106,7 +111,7 @@ function JobEntry(props: JobEntryProps) {
     >
       <Stack fill>
         {(details?.job_icon || jobIcon) && (
-          <Stack.Item>
+          <Stack.Item shrink={0}>
             {details?.job_icon ? (
               <img
                 src={`data:image/png;base64,${details.job_icon}`}
@@ -120,22 +125,19 @@ function JobEntry(props: JobEntryProps) {
             )}
           </Stack.Item>
         )}
-        <Stack.Item grow>
+        <Stack.Item
+          grow
+          minWidth={0}
+          style={{ whiteSpace: 'normal', overflowWrap: 'anywhere' }}
+        >
           {details?.command ? <b>{title}</b> : title}
           {job.character_profile && (
-            <Box fontSize={0.8} opacity={0.75}>
-              {job.character_profile}
-            </Box>
+            <Box fontSize={0.9}>{job.character_profile}</Box>
           )}
         </Stack.Item>
-        <Stack.Item>
-          <span
-            style={{
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {job.used_slots} / {job.open_slots}
-          </span>
+        <Stack.Item shrink={0} nowrap>
+          {unavailable && <Icon name="lock" mr={0.5} aria-hidden />}
+          {job.used_slots} / {job.open_slots}
         </Stack.Item>
       </Stack>
     </Button>
@@ -152,25 +154,20 @@ function DepartmentEntry(props: DepartmentEntryProps) {
   const { name, department, details } = props;
   const { act, data } = useBackend<Data>();
   const { color } = details;
+  const disabled = !!data.disable_jobs_for_non_observers;
 
   return (
     <Box minWidth="30%">
       <StyleableSection
         title={
-          <>
-            {name}
-            <span
-              style={{
-                fontSize: '1rem',
-                whiteSpace: 'nowrap',
-                position: 'absolute',
-                right: '1em',
-                color: Color.fromHex(color).darken(60).toString(),
-              }}
-            >
-              {`позиций доступно: ${department.open_slots}`}
-            </span>
-          </>
+          <Stack wrap align="baseline" justify="space-between" gr={0.5}>
+            <Stack.Item minWidth={0} style={{ overflowWrap: 'anywhere' }}>
+              {name}
+            </Stack.Item>
+            <Stack.Item fontSize={1} nowrap>
+              позиций доступно: {disabled ? 0 : department.open_slots}
+            </Stack.Item>
+          </Stack>
         }
         style={{
           backgroundColor: color,
@@ -181,7 +178,7 @@ function DepartmentEntry(props: DepartmentEntryProps) {
           borderBottomColor: Color.fromHex(color).darken(50).toString(),
         }}
         textStyle={{
-          color: Color.fromHex(color).darken(80).toString(),
+          color: Color.fromHex(color).darken(90).toString(),
         }}
       >
         <Stack vertical>
@@ -193,7 +190,7 @@ function DepartmentEntry(props: DepartmentEntryProps) {
                 job={job}
                 details={details.jobs[name]}
                 color={color}
-                disabled={!!data.disable_jobs_for_non_observers}
+                disabled={disabled}
                 onClick={() =>
                   act('select_job', { job: name, edit_slot: data.edit_slot })
                 }
@@ -226,28 +223,34 @@ export function JobSelection(props) {
     <Window width={1012} height={shuttle_status ? 690 : 666 /* Hahahahahaha */}>
       <Window.Content>
         <Section
-          buttons={
-            <Button
-              disabled={disabled}
-              onClick={() => act('select_job', { job: 'Random', edit_slot })}
-              tooltip="Случайно выбрать профессию. Вы можете повторно выбирать случайную профессию или отказаться от этого."
-            >
-              Случайная профессия!
-            </Button>
-          }
           fill
           scrollable
           title={
             <>
               {shuttle_status && <NoticeBox info>{shuttle_status}</NoticeBox>}
-              {disabled && (
-                <NoticeBox danger>
-                  Вход в раунд временно отключён администрацией.
-                </NoticeBox>
-              )}
-              <Box as="span" color="label">
-                It is currently {round_duration} into the shift.
-              </Box>
+              {disabled && <NoticeBox danger>{JOIN_DISABLED_REASON}</NoticeBox>}
+              <Stack wrap align="center" justify="space-between">
+                <Stack.Item color="label">
+                  Время с начала смены: {round_duration}
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    disabled={disabled}
+                    aria-disabled={disabled}
+                    fontWeight="normal"
+                    onClick={() =>
+                      act('select_job', { job: 'Random', edit_slot })
+                    }
+                    tooltip={
+                      disabled
+                        ? JOIN_DISABLED_REASON
+                        : 'Случайно выбрать профессию. Вы можете повторно выбирать случайную профессию или отказаться от этого.'
+                    }
+                  >
+                    Случайная профессия!
+                  </Button>
+                </Stack.Item>
+              </Stack>
             </>
           }
         >
