@@ -27,6 +27,7 @@
 #include "code/items/secret_documents.dm"
 #include "code/items/centcom_tacvisor.dm"
 #include "code/items/clothing/belt.dm"
+#include "code/items/clothing/donor_costumes.dm"
 #include "code/items/clothing/accessories/accessories.dm"
 #include "code/items/clothing/accessories/gloves_accessories.dm"
 #include "code/items/clothing/accessories/holsters.dm"
