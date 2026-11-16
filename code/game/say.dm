@@ -189,6 +189,8 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 	// The actual message part.
 	var/messagepart = speaker.generate_messagepart(raw_message, spans, message_mods)
+	if(radio_freq)
+		messagepart = "[speaker.get_radio_voice_label(message_mods)] [messagepart]"
 	messagepart = " <span class='message'>[messagepart]</span></span>"
 
 	if(radio_freq)
