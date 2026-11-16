@@ -5513,6 +5513,8 @@
 #include "code\modules\mob\living\basic\farm_animals\gorilla\gorilla_accessories.dm"
 #include "code\modules\mob\living\basic\farm_animals\gorilla\gorilla_ai.dm"
 #include "code\modules\mob\living\basic\farm_animals\gorilla\gorilla_emotes.dm"
+#include "code\modules\mob\living\basic\farm_animals\gorilla\gorilla_inventory.dm"
+#include "code\modules\mob\living\basic\farm_animals\gorilla\gorilla_riding.dm"
 #include "code\modules\mob\living\basic\guardian\guardian.dm"
 #include "code\modules\mob\living\basic\guardian\guardian_creator.dm"
 #include "code\modules\mob\living\basic\guardian\guardian_fluff.dm"
