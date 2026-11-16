@@ -28,6 +28,21 @@
 	item_path = /obj/item/clothing/head/costume/yuri
 
 // MARK: Tier 1
+/datum/loadout_item/head/primera_villager
+	name = "Деревенская шляпа"
+	item_path = /obj/item/clothing/head/primera/villager
+	donator_level = DONATOR_TIER_1
+
+/datum/loadout_item/head/primera_villager_circlet
+	name = "Деревенский обруч"
+	item_path = /obj/item/clothing/head/primera/villager_circlet
+	donator_level = DONATOR_TIER_1
+
+/datum/loadout_item/head/primera_sailor
+	name = "Матросская шапочка"
+	item_path = /obj/item/clothing/head/primera/sailor
+	donator_level = DONATOR_TIER_1
+
 /datum/loadout_item/head/ratge_helmet
 	name = "Крысоголов"
 	item_path = /obj/item/clothing/head/ratge

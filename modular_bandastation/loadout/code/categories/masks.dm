@@ -29,6 +29,21 @@
 	item_path = /obj/item/clothing/mask/facescarf
 
 // MARK: Tier 1
+/datum/loadout_item/masks/primera_villager
+	name = "Маска деревенского жителя"
+	item_path = /obj/item/clothing/mask/primera/villager
+	donator_level = DONATOR_TIER_1
+
+/datum/loadout_item/masks/primera_bubba
+	name = "Маска Буббы"
+	item_path = /obj/item/clothing/mask/primera/bubba
+	donator_level = DONATOR_TIER_1
+
+/datum/loadout_item/masks/primera_sailor
+	name = "Матросская маска"
+	item_path = /obj/item/clothing/mask/primera/sailor
+	donator_level = DONATOR_TIER_1
+
 /datum/loadout_item/masks/breathscarf
 	name = "Шарф с системой дыхания"
 	item_path = /obj/item/clothing/mask/breath/breathscarf
