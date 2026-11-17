@@ -1,0 +1,17 @@
+Спрайты Midnight luxurious cloak
+
+Источник — fleet officer's luxurious cloak из BandaStation/Primera:
+modular_bandastation/aesthetics/clothing/centcom/icons/obj/clothing/cloaks/cloaks.dmi
+modular_bandastation/aesthetics/clothing/centcom/icons/mob/clothing/cloaks/cloaks.dmi
+Состояние centcom_admiral, исходная ревизия базы 7c9a87a8c5829eaa0e036dd12fc365473a702758.
+Набор одежды CentCom добавлен konushi (9974e2f2b3f, PR #842);
+последующие изменения исходных атласов — Fullonibus (7ffca90862b, PR #2341).
+
+Сохранены исходные контуры, складки и прозрачность. Ткань переведена в
+чёрно-графитовую палитру Midnight MOD. Золотая фурнитура заменена графитовой
+отделкой с небольшими красными акцентами на застёжках и нижних концах плаща.
+В новых DMI используется состояние midnight_luxurious: предмет — 1 направление,
+надетый плащ — 4 направления; кадры 32x32, без анимации.
+
+Лицензия ресурсов — CC BY-SA 3.0, согласно README и CONTRIBUTING исходного проекта.
+https://creativecommons.org/licenses/by-sa/3.0/
