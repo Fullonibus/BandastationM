@@ -780,6 +780,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/trurl/control)
+"cu" = (
+/obj/structure/cable/layer1,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/ship_engine_heater/large/layer4,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/stationtrauma_space/trurl/engine)
 "cv" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/railing{
@@ -8867,6 +8874,12 @@
 	dir = 8
 	},
 /area/shuttle/stationtrauma_space/trurl/hallway)
+"AV" = (
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/components/unary/ship_engine_heater/large/layer4,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/shuttle/stationtrauma_space/trurl/engine)
 "AY" = (
 /obj/machinery/modular_computer/preset/id/centcom{
 	dir = 4
@@ -16037,13 +16050,6 @@
 /obj/structure/sign/flag/nanotrasen/directional/north,
 /turf/open/floor/iron/smooth_half,
 /area/shuttle/stationtrauma_space/trurl/armory)
-"Wy" = (
-/obj/structure/cable/layer1,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/ship_engine_heater/layer4,
-/obj/structure/window/reinforced/plasma/spawner/directional/north,
-/turf/open/floor/catwalk_floor,
-/area/shuttle/stationtrauma_space/trurl/engine)
 "WA" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/wood{
@@ -17113,6 +17119,12 @@
 /obj/structure/mirror/directional/north,
 /turf/open/floor/wood/large,
 /area/shuttle/stationtrauma_space/trurl/cabin/captain)
+"Zq" = (
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/components/unary/ship_engine_heater/large/layer4,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/turf/open/floor/catwalk_floor,
+/area/shuttle/stationtrauma_space/trurl/engine)
 "Zr" = (
 /obj/effect/turf_decal/siding/wood/end,
 /obj/structure/railing{
@@ -47808,7 +47820,7 @@ Jh
 vG
 Bf
 Bf
-wx
+AV
 qH
 fr
 Hh
@@ -48416,7 +48428,7 @@ Bf
 Bf
 Bf
 Bf
-wx
+AV
 qH
 ym
 Hh
@@ -50541,7 +50553,7 @@ Fr
 Jh
 Oq
 fU
-lM
+Zq
 ad
 fr
 FM
@@ -51149,7 +51161,7 @@ bF
 Jh
 Jk
 fU
-Wy
+cu
 ad
 ym
 FM
@@ -53280,7 +53292,7 @@ Bf
 Bf
 Bf
 Bf
-wx
+AV
 Fi
 fr
 Hh
@@ -53888,7 +53900,7 @@ Jh
 vG
 Bf
 Bf
-wx
+AV
 Fi
 ym
 Hh
