@@ -324,7 +324,7 @@
 			if(!akimbo_gun.can_shoot())
 				addtimer(CALLBACK(akimbo_gun, TYPE_PROC_REF(/obj/item/gun, shoot_with_empty_chamber), shooter), 0.1 SECONDS)
 			else
-				bonus_spread = dual_wield_spread
+				bonus_spread = ignores_dual_wield_spread(shooter) ? 0 : dual_wield_spread
 				addtimer(CALLBACK(akimbo_gun, TYPE_PROC_REF(/obj/item/gun, process_fire), target, shooter, TRUE, params, null, bonus_spread), 0.1 SECONDS)
 	process_fire(target, shooter, TRUE, params, null, bonus_spread)
 
