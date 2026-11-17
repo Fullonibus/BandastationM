@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 20 160 185">
+  <defs>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7F6F0"/>
+      <stop offset="0.45" stop-color="#D4D8D4"/>
+      <stop offset="0.74" stop-color="#AFB8B6"/>
+      <stop offset="1" stop-color="#E1E1DD"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E6C76E"/>
+      <stop offset="0.34" stop-color="#C6A34D"/>
+      <stop offset="0.7" stop-color="#A88336"/>
+      <stop offset="1" stop-color="#D6B85D"/>
+    </linearGradient>
+    <linearGradient id="star-silver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8F8F5"/>
+      <stop offset="0.6" stop-color="#CED3D0"/>
+      <stop offset="1" stop-color="#9EA9A8"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(20 49) scale(1.6)">
+    <polygon points="50,0 100,46.5 50,93 0,46.5" fill="url(#silver)"/>
+    <path d="M 50,14.5 85,46.5 50,78.5 15,46.5 Z M 50,22.5 76.5,46.5 50,70.5 23.5,46.5 Z" fill="url(#gold)" fill-rule="evenodd"/>
+  </g>
+  <polygon points="100.000,27.500 102.674,34.319 109.986,34.755 104.327,39.406 106.172,46.495 100.000,42.550 93.828,46.495 95.673,39.406 90.014,34.755 97.326,34.319" fill="url(#star-silver)"/>
+  <polygon points="68.500,47.500 71.174,54.319 78.486,54.755 72.827,59.406 74.672,66.495 68.500,62.550 62.328,66.495 64.173,59.406 58.514,54.755 65.826,54.319" fill="url(#star-silver)"/>
+  <polygon points="131.500,47.500 134.174,54.319 141.486,54.755 135.827,59.406 137.672,66.495 131.500,62.550 125.328,66.495 127.173,59.406 121.514,54.755 128.826,54.319" fill="url(#star-silver)"/>
+  <polygon points="44.500,70.500 47.174,77.319 54.486,77.755 48.827,82.406 50.672,89.495 44.500,85.550 38.328,89.495 40.173,82.406 34.514,77.755 41.826,77.319" fill="url(#star-silver)"/>
+  <polygon points="155.500,70.500 158.174,77.319 165.486,77.755 159.827,82.406 161.672,89.495 155.500,85.550 149.328,89.495 151.173,82.406 145.514,77.755 152.826,77.319" fill="url(#star-silver)"/>
+</svg>

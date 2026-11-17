@@ -1,0 +1,466 @@
+$elysium-emblem-dim: 0.70;
+$elysium-title-font: Georgia, 'Times New Roman', serif;
+
+:root.theme-ELYSIUM {
+  --elysium-accent-rgb: 198, 163, 77;
+  --elysium-highlight-rgb: 224, 196, 119;
+  --color-base: #0b1a11;
+  --color-secondary: #233d2a;
+  --color-primary: #648167;
+  --color-text: #ecece3;
+  --color-text-translucent: rgba(236, 236, 227, 0.72);
+  --color-section: rgba(11, 24, 14, 0.84);
+  --color-label: #cfd4c6;
+  --base-gradient-spread: 1;
+  --color-action: #dec67e;
+  --section-title-color: #edd79a;
+  --section-separator-color: #d4b45c;
+  --tab-color-selected: #f0e5c7;
+  --color-border: rgba(var(--elysium-accent-rgb), 0.45);
+  --border-primary-saturation: 24;
+  --border-primary-lightness: 61;
+  --border-primary-alpha: 0.75;
+  --button-background-default: #36513c;
+  --button-background-selected: #5f7150;
+  --input-background-lightness: 6;
+  --tooltip-background-lightness: 12;
+  --progress-bar-background: rgba(4, 13, 7, 0.72);
+  --candystripe-odd: rgba(var(--elysium-accent-rgb), 0.06);
+
+  --color-scrollbar-thumb: rgba(var(--elysium-accent-rgb), 0.36);
+  --color-scrollbar-base: var(--color-section);
+
+  color: var(--color-text);
+
+  .Layout__content {
+    background-color: #0b1a11;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(235, 227, 202, 0.03) 0,
+        transparent 24px,
+        transparent calc(100% - 24px),
+        rgba(0, 0, 0, 0.15) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(2, 8, 4, 0.52),
+        transparent 12%,
+        transparent 88%,
+        rgba(2, 8, 4, 0.52)
+      ),
+      linear-gradient(
+        90deg,
+        transparent 0 4%,
+        rgba(206, 187, 132, 0.03) 4% 4.4%,
+        transparent 4.4% 95.6%,
+        rgba(206, 187, 132, 0.03) 95.6% 96%,
+        transparent 96% 100%
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(223, 214, 187, 0.01) 0 1px,
+        transparent 1px 7px
+      ),
+      radial-gradient(
+        ellipse at 50% -16%,
+        rgba(98, 137, 85, 0.17) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse at 50% 125%,
+        rgba(0, 0, 0, 0.4) 0%,
+        transparent 68%
+      ),
+      linear-gradient(
+        rgba(11, 26, 17, $elysium-emblem-dim),
+        rgba(11, 26, 17, $elysium-emblem-dim)
+      ),
+      url('../assets/ELYSIUM.svg');
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: center;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 7px 100%, 100% 100%, 100% 100%, 100% 100%, 60% auto;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  }
+
+  .NtosWindow__header {
+    background-color: #263f2c;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(243, 235, 207, 0.6) 0 1px,
+        rgba(255, 255, 255, 0.09) 1px 3px,
+        transparent 3px 100%
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 38px,
+        rgba(226, 207, 154, 0.035) 38px 39px,
+        rgba(2, 14, 7, 0.12) 39px 40px,
+        transparent 40px 80px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(223, 203, 148, 0.12),
+        transparent 22%,
+        transparent 78%,
+        rgba(223, 203, 148, 0.12)
+      ),
+      linear-gradient(
+        180deg,
+        #718172 0%,
+        #4d6752 11%,
+        #304d38 44%,
+        #1b3224 76%,
+        #11251a 100%
+      );
+    border-top: 1px solid #a1aca0;
+    border-bottom: 3px double #d4b45c;
+    box-shadow:
+      inset 0 1px 0 rgba(252, 249, 232, 0.27),
+      inset 0 3px 0 rgba(7, 22, 12, 0.23),
+      inset 0 -2px 0 rgba(9, 18, 10, 0.89),
+      inset 0 -5px 0 rgba(var(--elysium-accent-rgb), 0.23),
+      0 1px 0 rgba(236, 221, 167, 0.17),
+      0 4px 10px rgba(0, 0, 0, 0.48);
+  }
+
+  .Section {
+    position: relative;
+    background-color: rgba(8, 20, 12, 0.84);
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(231, 216, 164, 0.075) 0,
+        rgba(231, 216, 164, 0.015) 19px,
+        transparent 46px
+      ),
+      linear-gradient(
+        180deg,
+        rgba(232, 222, 186, 0.05),
+        transparent 13%,
+        transparent 87%,
+        rgba(0, 0, 0, 0.15)
+      ),
+      linear-gradient(
+        145deg,
+        rgba(121, 145, 103, 0.12),
+        rgba(32, 56, 35, 0.055) 36%,
+        transparent 76%
+      );
+    border-radius: 2px;
+    box-shadow:
+      inset 0 1px 0 rgba(240, 229, 195, 0.13),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.36),
+      0 3px 7px rgba(0, 0, 0, 0.28);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 1px;
+      background-image:
+        linear-gradient(135deg, rgba(var(--elysium-highlight-rgb), 0.76) 0 4px, transparent 4px),
+        linear-gradient(225deg, rgba(var(--elysium-highlight-rgb), 0.76) 0 4px, transparent 4px),
+        linear-gradient(45deg, rgba(var(--elysium-highlight-rgb), 0.65) 0 4px, transparent 4px),
+        linear-gradient(315deg, rgba(var(--elysium-highlight-rgb), 0.65) 0 4px, transparent 4px),
+        linear-gradient(90deg, rgba(var(--elysium-accent-rgb), 0.46), rgba(var(--elysium-accent-rgb), 0.10)),
+        linear-gradient(270deg, rgba(var(--elysium-accent-rgb), 0.46), rgba(var(--elysium-accent-rgb), 0.10)),
+        linear-gradient(90deg, rgba(var(--elysium-accent-rgb), 0.34), transparent),
+        linear-gradient(270deg, rgba(var(--elysium-accent-rgb), 0.34), transparent);
+      background-size:
+        9px 9px, 9px 9px, 9px 9px, 9px 9px,
+        21px 1px, 21px 1px, 14px 1px, 14px 1px;
+      background-position:
+        top left, top right, bottom left, bottom right,
+        top 2px left 8px, top 2px right 8px,
+        bottom 2px left 8px, bottom 2px right 8px;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+  }
+
+  .Section .Section {
+    background-color: rgba(5, 15, 9, 0.55);
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(230, 223, 196, 0.025),
+        transparent 18%,
+        transparent 82%,
+        rgba(0, 0, 0, 0.14)
+      );
+    box-shadow: none;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .Section__title {
+    color: var(--section-title-color);
+    background-color: rgba(48, 64, 41, 0.3);
+    background-image:
+      linear-gradient(
+        135deg,
+        rgba(var(--elysium-highlight-rgb), 0.70) 0 5px,
+        transparent 5px 100%
+      ),
+      linear-gradient(
+        225deg,
+        rgba(var(--elysium-highlight-rgb), 0.70) 0 5px,
+        transparent 5px 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(248, 239, 206, 0.22) 0 1px,
+        transparent 1px 3px,
+        rgba(0, 0, 0, 0.16) 3px 4px,
+        transparent 4px 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(171, 160, 117, 0.12),
+        transparent 55%,
+        rgba(5, 12, 6, 0.17)
+      ),
+      linear-gradient(
+        90deg,
+        rgba(124, 133, 90, 0.46) 0%,
+        rgba(60, 79, 48, 0.28) 69%,
+        rgba(31, 45, 28, 0.15) 100%
+      );
+    background-repeat: no-repeat;
+    background-position: top left, top right, center, center, center;
+    background-size: 12px 12px, 12px 12px, 100% 100%, 100% 100%, 100% 100%;
+    border-bottom: 3px double rgba(var(--elysium-accent-rgb), 0.74);
+    border-radius: 1px 1px 0 0;
+    box-shadow:
+      inset 0 1px 0 rgba(238, 232, 206, 0.15),
+      inset 0 -2px 0 rgba(4, 12, 6, 0.46),
+      0 1px 0 rgba(8, 15, 8, 0.55);
+  }
+
+  .Section__titleText {
+    font-family: $elysium-title-font;
+    font-size: 1.035em;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    color: #eddfb6;
+    text-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.76),
+      0 0 6px rgba(var(--elysium-highlight-rgb), 0.10);
+  }
+
+  .Divider,
+  hr {
+    border-color: rgba(var(--elysium-accent-rgb), 0.39);
+    box-shadow: 0 1px 0 rgba(5, 12, 6, 0.48);
+  }
+
+  .LabeledList__label {
+    color: var(--color-label);
+  }
+
+  .Button:not(.Button--disabled):not(.Button--color--transparent) {
+    border-radius: 2px;
+    outline: 1px solid rgba(var(--elysium-highlight-rgb), 0.52);
+    outline-offset: -1px;
+    box-shadow:
+      inset 0 1px 0 rgba(246, 240, 218, 0.43),
+      inset 1px 0 0 rgba(233, 224, 193, 0.14),
+      inset -1px 0 0 rgba(0, 9, 4, 0.31),
+      inset 0 -2px 1px rgba(0, 7, 3, 0.7),
+      0 2px 4px rgba(0, 0, 0, 0.42);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.56);
+    transition:
+      background-color 0.12s ease,
+      box-shadow 0.12s ease,
+      outline-color 0.12s ease,
+      transform 0.08s ease;
+
+    &:hover {
+      outline-color: rgba(var(--elysium-highlight-rgb), 0.69);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 250, 231, 0.57),
+        inset 1px 0 0 rgba(243, 234, 201, 0.17),
+        inset 0 -2px 1px rgba(0, 8, 3, 0.57),
+        0 0 8px rgba(var(--elysium-accent-rgb), 0.23),
+        0 2px 4px rgba(0, 0, 0, 0.34);
+    }
+
+    &:active,
+    &.Button--selected {
+      transform: translateY(1px);
+      box-shadow:
+        inset 0 2px 5px rgba(0, 9, 4, 0.79),
+        inset 0 -1px 0 rgba(236, 216, 155, 0.16),
+        0 0 0 1px rgba(var(--elysium-accent-rgb), 0.20);
+    }
+  }
+
+  .Button--color--default:not(.Button--disabled) {
+    background-color: #36523b;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(255, 249, 220, 0.22) 0 1px,
+        transparent 1px 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(8, 17, 9, 0.22),
+        rgba(237, 234, 215, 0.07) 6px,
+        transparent 10px,
+        transparent calc(100% - 10px),
+        rgba(237, 234, 215, 0.055) calc(100% - 6px),
+        rgba(8, 17, 9, 0.24)
+      ),
+      linear-gradient(
+        180deg,
+        #a4b0a3 0%,
+        #748f79 14%,
+        #4b6a50 43%,
+        #34523a 68%,
+        #203627 100%
+      );
+    color: #f3f2e9;
+
+    &:hover {
+      background-color: #496b4c;
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(255, 250, 229, 0.3) 0 1px,
+          transparent 1px 100%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(8, 17, 9, 0.19),
+          rgba(241, 236, 207, 0.09) 6px,
+          transparent 10px,
+          transparent calc(100% - 10px),
+          rgba(241, 236, 207, 0.07) calc(100% - 6px),
+          rgba(8, 17, 9, 0.2)
+        ),
+        linear-gradient(
+          180deg,
+          #bcc3ac 0%,
+          #89a18a 15%,
+          #5c7c5e 44%,
+          #3a5b40 70%,
+          #274331 100%
+        );
+      color: #fff9ec;
+    }
+
+    &:active,
+    &.Button--selected {
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.17),
+          rgba(255, 240, 200, 0.025)
+        ),
+        linear-gradient(
+          180deg,
+          #203625 0%,
+          #39583c 100%
+        );
+    }
+  }
+
+  .Button--color--transparent.Button--selected {
+    color: #f0d78c;
+
+    .Icon {
+      color: #7caf70;
+    }
+  }
+
+  .Button--color--transparent:hover:not(.Button--disabled) {
+    box-shadow: inset 0 0 0 1px rgba(var(--elysium-accent-rgb), 0.42);
+  }
+
+  .Button--disabled,
+  .Button:disabled {
+    opacity: 0.67;
+  }
+
+  .Tab,
+  .Tabs__Tab {
+    border-radius: 3px 3px 1px 1px;
+  }
+
+  .Tab--selected,
+  .Tabs__Tab--selected {
+    color: #f1e3bd;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(var(--elysium-accent-rgb), 0.18),
+        rgba(37, 57, 33, 0.13)
+      );
+    box-shadow:
+      inset 0 -2px 0 rgba(var(--elysium-highlight-rgb), 0.66),
+      inset 0 1px 0 rgba(253, 243, 210, 0.13),
+      0 0 4px rgba(var(--elysium-accent-rgb), 0.07);
+  }
+
+  .Input,
+  .TextArea,
+  .NumberInput__input {
+    background-color: rgba(4, 14, 8, 0.94);
+    color: var(--color-text);
+    border: 1px solid rgba(var(--elysium-accent-rgb), 0.55);
+    border-radius: 1px;
+    box-shadow:
+      inset 2px 2px 5px rgba(0, 0, 0, 0.64),
+      inset 0 0 0 1px rgba(206, 205, 172, 0.09),
+      0 1px 0 rgba(231, 218, 178, 0.07);
+
+    &:focus-within {
+      border-color: rgba(var(--elysium-highlight-rgb), 0.80);
+      box-shadow:
+        inset 2px 2px 4px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(var(--elysium-accent-rgb), 0.52),
+        0 0 7px rgba(var(--elysium-accent-rgb), 0.16);
+    }
+  }
+
+  .Input::placeholder,
+  .TextArea::placeholder {
+    color: rgba(227, 226, 214, 0.45);
+  }
+
+  .ProgressBar {
+    background: rgba(0, 12, 5, 0.68);
+    border: 1px solid rgba(var(--elysium-accent-rgb), 0.39);
+    border-radius: 2px;
+    box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.54);
+  }
+
+  .ProgressBar__fill {
+    background: linear-gradient(
+      180deg,
+      #f0d78c 0%,
+      #967534 100%
+    );
+    border-radius: 1px;
+  }
+
+  .Table__row:nth-child(even) {
+    background-color: rgba(223, 220, 193, 0.04);
+  }
+
+  .Layout__content,
+  .Layout__content * {
+    scrollbar-width: thin;
+  }
+
+  .Layout__content::-webkit-scrollbar,
+  .Layout__content *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}

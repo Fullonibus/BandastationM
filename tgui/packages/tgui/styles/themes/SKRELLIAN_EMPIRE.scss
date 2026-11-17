@@ -1,0 +1,288 @@
+$skrellian-empire-emblem-dim: 0.85;
+
+:root.theme-SKRELLIAN_EMPIRE {
+  --skrellian-empire-accent-rgb: 126, 209, 197;
+  --skrellian-empire-highlight-rgb: 159, 233, 220;
+  --color-base: #0a1b22;
+  --color-secondary: #19343b;
+  --color-primary: #58bdb0;
+  --color-text: #e6f1ed;
+  --color-text-translucent: rgba(230, 241, 237, 0.68);
+  --color-section: rgba(10, 29, 35, 0.70);
+  --color-label: #b8d5d0;
+  --base-gradient-spread: 1;
+
+  --color-action: #97e5d6;
+  --section-title-color: #c6efe6;
+  --section-separator-color: #4b8d86;
+  --tab-color-selected: #e3fbf6;
+  --color-border: rgba(var(--skrellian-empire-accent-rgb), 0.31);
+  --border-primary-saturation: 31;
+  --border-primary-lightness: 66;
+  --border-primary-alpha: 0.72;
+
+  --button-background-default: #2b5f65;
+  --button-background-selected: #347872;
+  --input-background-lightness: 7;
+  --tooltip-background-lightness: 13;
+  --progress-bar-background: rgba(1, 13, 18, 0.58);
+  --candystripe-odd: rgba(126, 199, 187, 0.05);
+
+  --color-scrollbar-thumb: rgba(var(--skrellian-empire-accent-rgb), 0.36);
+  --color-scrollbar-base: var(--color-section);
+
+  color: var(--color-text);
+
+  .Layout__content {
+    background-color: #0a1b22;
+    background-image:
+      radial-gradient(
+        ellipse at 50% 0%,
+        rgba(120, 220, 205, 0.10) 0%,
+        transparent 62%
+      ),
+      radial-gradient(
+        ellipse at 50% 115%,
+        rgba(78, 122, 215, 0.09) 0%,
+        transparent 45%
+      ),
+      linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(113, 217, 196, 0.028) 35%,
+        transparent 72%
+      ),
+      linear-gradient(
+        rgba(10, 27, 34, $skrellian-empire-emblem-dim),
+        rgba(10, 27, 34, $skrellian-empire-emblem-dim)
+      ),
+      url('../assets/SKRELLIAN_EMPIRE.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 43% auto;
+    background-position: center;
+  }
+
+  .NtosWindow__header {
+    background-color: #17353a;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(122, 223, 207, 0.07),
+        transparent 28%,
+        transparent 72%,
+        rgba(83, 132, 214, 0.08)
+      ),
+      linear-gradient(
+        180deg,
+        #396466 0%,
+        #264c50 34%,
+        #16343b 100%
+      );
+    border-bottom: 1px solid rgba(154, 227, 216, 0.39);
+    box-shadow:
+      inset 0 1px 0 rgba(227, 255, 249, 0.23),
+      inset 0 -1px 0 rgba(0, 12, 17, 0.50),
+      0 2px 8px rgba(0, 0, 0, 0.22);
+  }
+
+  .Section {
+    background-color: rgba(9, 26, 32, 0.62);
+    background-image:
+      linear-gradient(
+        145deg,
+        rgba(112, 203, 191, 0.10) 0%,
+        rgba(48, 110, 111, 0.045) 42%,
+        transparent 76%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(159, 232, 221, 0.035) 0%,
+        transparent 18%,
+        transparent 82%,
+        rgba(91, 134, 212, 0.05) 100%
+      );
+    border-radius: 10px;
+    box-shadow:
+      inset 0 1px 0 rgba(214, 255, 248, 0.14),
+      inset 1px 0 0 rgba(214, 255, 248, 0.04),
+      inset 0 -1px 0 rgba(0, 10, 14, 0.42),
+      0 3px 8px rgba(0, 0, 0, 0.18);
+  }
+
+  .Section .Section {
+    background-color: rgba(8, 24, 29, 0.26);
+    background-image: none;
+    box-shadow: none;
+  }
+
+  .Section__title {
+    color: var(--section-title-color);
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(104, 199, 186, 0.24),
+        rgba(62, 147, 141, 0.08) 60%,
+        rgba(76, 114, 194, 0.03) 82%,
+        transparent
+      );
+    border-bottom: 1px solid rgba(146, 220, 207, 0.25);
+    border-radius: 7px 7px 2px 2px;
+    box-shadow:
+      inset 2px 0 0 rgba(162, 229, 217, 0.39),
+      inset 0 1px 0 rgba(224, 255, 250, 0.07);
+  }
+
+  .Section__titleText {
+    letter-spacing: 0.025em;
+    text-shadow: 0 0 6px rgba(139, 216, 204, 0.13);
+  }
+
+  .Divider,
+  hr {
+    border-color: rgba(141, 215, 202, 0.18);
+  }
+
+  .LabeledList__label {
+    color: var(--color-label);
+  }
+
+  .Button:not(.Button--disabled):not(.Button--color--transparent) {
+    border-radius: 7px;
+    outline: 1px solid rgba(151, 227, 216, 0.25);
+    outline-offset: -1px;
+    box-shadow:
+      inset 0 1px 0 rgba(233, 255, 251, 0.35),
+      inset 0 -2px 1px rgba(0, 18, 22, 0.61),
+      0 2px 4px rgba(0, 0, 0, 0.23);
+    text-shadow: 0 1px 1px rgba(0, 14, 18, 0.5);
+    transition:
+      background-color 0.12s ease,
+      box-shadow 0.12s ease,
+      outline-color 0.12s ease;
+
+    &:hover {
+      outline-color: rgba(169, 242, 231, 0.34);
+      box-shadow:
+        inset 0 1px 0 rgba(241, 255, 252, 0.50),
+        inset 0 -2px 1px rgba(0, 18, 22, 0.50),
+        0 0 7px rgba(112, 215, 201, 0.27);
+    }
+
+    &:active,
+    &.Button--selected {
+      box-shadow:
+        inset 0 2px 5px rgba(0, 11, 16, 0.68),
+        inset 0 -1px 0 rgba(196, 255, 244, 0.18),
+        0 0 6px rgba(101, 148, 219, 0.10);
+    }
+  }
+
+  .Button--color--default:not(.Button--disabled) {
+    background-color: #2a5d62;
+    background-image: linear-gradient(
+      180deg,
+      #63a6a1 0%,
+      #518f8d 15%,
+      #397477 52%,
+      #234c52 100%
+    );
+    color: #edf9f5;
+
+    &:hover {
+      background-color: #3d8480;
+      background-image: linear-gradient(
+        180deg,
+        #7ab9b1 0%,
+        #63a8a0 15%,
+        #478788 52%,
+        #2d6266 100%
+      );
+    }
+
+    &:active,
+    &.Button--selected {
+      background-image: linear-gradient(
+        180deg,
+        #21484d 0%,
+        #377170 100%
+      );
+    }
+  }
+
+  .Button--color--transparent:hover:not(.Button--disabled) {
+    box-shadow: inset 0 0 0 1px rgba(140, 229, 216, 0.36);
+  }
+
+  .Button--disabled,
+  .Button:disabled {
+    opacity: 0.65;
+  }
+
+  .Tab,
+  .Tabs__Tab {
+    border-radius: 8px 8px 3px 3px;
+  }
+
+  .Tab--selected,
+  .Tabs__Tab--selected {
+    background-image: linear-gradient(
+      180deg,
+      rgba(126, 219, 204, 0.12),
+      rgba(20, 53, 57, 0.09)
+    );
+    box-shadow:
+      inset 0 -2px 0 rgba(var(--skrellian-empire-highlight-rgb), 0.54),
+      0 0 4px rgba(var(--skrellian-empire-accent-rgb), 0.08);
+  }
+
+  .Input,
+  .TextArea,
+  .NumberInput__input {
+    background-color: rgba(4, 20, 25, 0.91);
+    color: var(--color-text);
+    border: 1px solid rgba(106, 174, 168, 0.36);
+    border-radius: 6px;
+    box-shadow:
+      inset 0 2px 5px rgba(0, 0, 0, 0.45),
+      inset 0 0 0 1px rgba(178, 239, 224, 0.06);
+
+    &:focus-within {
+      box-shadow:
+        inset 0 2px 5px rgba(0, 0, 0, 0.33),
+        0 0 0 1px rgba(150, 228, 215, 0.58),
+        0 0 6px rgba(94, 201, 188, 0.15);
+    }
+  }
+
+  .Input::placeholder,
+  .TextArea::placeholder {
+    color: rgba(225, 242, 236, 0.46);
+  }
+
+  .ProgressBar {
+    background: rgba(0, 13, 17, 0.55);
+    border: 1px solid rgba(112, 186, 174, 0.28);
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.41);
+  }
+
+  .ProgressBar__fill {
+    background: linear-gradient(180deg, #abeee0, #52b3a7);
+    border-radius: 4px;
+  }
+
+  .Table__row:nth-child(even) {
+    background-color: rgba(198, 245, 234, 0.028);
+  }
+
+  .Layout__content,
+  .Layout__content * {
+    scrollbar-width: thin;
+  }
+
+  .Layout__content::-webkit-scrollbar,
+  .Layout__content *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
