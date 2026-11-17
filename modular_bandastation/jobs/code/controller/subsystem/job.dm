@@ -24,6 +24,8 @@
 		if(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND) //If you want a command position, select it!
 			job_debug("GRJ: Skipping command role, Player: [player], Job: [job]")
 			continue
+		if(job.required_donator_level)
+			continue
 
 		// This check handles its own output to job_debug.
 		if(check_job_eligibility(player, job, "GRJ", add_job_to_log = TRUE) != JOB_AVAILABLE)

@@ -91,7 +91,7 @@ const CrewTab = (props: { record: MedicalRecord }) => {
   const { act, data } = useBackend<MedicalRecordData>();
   const { assigned_view } = data;
   const { record } = props;
-  const { crew_ref, name, trim } = record;
+  const { crew_ref, job_icon, name, trim } = record;
 
   /** Sets the record to preview */
   const selectRecord = (record: MedicalRecord) => {
@@ -123,7 +123,8 @@ const CrewTab = (props: { record: MedicalRecord }) => {
       selected={selectedRecord?.crew_ref === crew_ref}
     >
       <Box>
-        <Icon name={JOB2ICON[ReverseJobsRu(trim)] || 'question'} /> {name}
+        <Icon name={JOB2ICON[ReverseJobsRu(trim)] || job_icon || 'question'} />{' '}
+        {name}
       </Box>
     </Tabs.Tab>
   );

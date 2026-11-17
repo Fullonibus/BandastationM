@@ -45,6 +45,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		return save_version
 	return SAVE_DATA_EMPTY
 
+/// Whether an assigned job profile refers to a character that can still be loaded.
+/datum/preferences/proc/can_load_job_profile(list/profile)
+	return islist(profile) && !!profile["real_name"] && !IS_DATA_OBSOLETE(check_savedata_version(profile))
+
 //should these procs get fairly long
 //just increase SAVEFILE_VERSION_MIN so it's not as far behind
 //SAVEFILE_VERSION_MAX and then delete any obsolete if clauses
@@ -507,6 +511,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		return
 
 	savefile.remove_entry("character[default_slot]")
+	for(var/job_title in job_assigned_profiles?.Copy())
+		if(job_assigned_profiles[job_title] == default_slot)
+			job_assigned_profiles -= job_title
+	for(var/job_title in pref_job_slots?.Copy())
+		if(pref_job_slots[job_title] == default_slot)
+			pref_job_slots -= job_title
 	tainted_character_profiles = TRUE
 	switch_to_slot(closest_slot)
 

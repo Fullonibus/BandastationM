@@ -5,7 +5,7 @@
 	return TRUE
 
 ///Remove target limb from its owner, with side effects.
-/obj/item/bodypart/proc/dismember(dam_type = BRUTE, silent=TRUE, wounding_type)
+/obj/item/bodypart/proc/dismember(dam_type = BRUTE, silent = TRUE, wounding_type, dismember_sound = 'sound/effects/dismember.ogg')
 	if(!owner || (bodypart_flags & BODYPART_UNREMOVABLE))
 		return FALSE
 	var/mob/living/carbon/limb_owner = owner
@@ -17,7 +17,7 @@
 	if(!silent)
 		limb_owner.visible_message(span_danger("<B>[limb_owner]'s [name] is violently dismembered!</B>"))
 	INVOKE_ASYNC(limb_owner, TYPE_PROC_REF(/mob, emote), "scream")
-	playsound(limb_owner, 'sound/effects/dismember.ogg', 80, TRUE)
+	playsound(limb_owner, dismember_sound, 80, TRUE)
 	limb_owner.add_mood_event("dismembered_[body_zone]", /datum/mood_event/dismembered, src)
 	limb_owner.add_mob_memory(/datum/memory/was_dismembered, lost_limb = src)
 
@@ -51,7 +51,7 @@
 
 	return TRUE
 
-/obj/item/bodypart/chest/dismember(dam_type = BRUTE, silent=TRUE, wounding_type)
+/obj/item/bodypart/chest/dismember(dam_type = BRUTE, silent = TRUE, wounding_type, dismember_sound = 'sound/misc/splort.ogg')
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/chest_owner = owner
@@ -63,7 +63,7 @@
 	. = list()
 	if(wounding_type != WOUND_BURN && isturf(chest_owner.loc) && can_bleed())
 		chest_owner.add_splatter_floor(chest_owner.loc)
-	playsound(get_turf(chest_owner), 'sound/misc/splort.ogg', 80, TRUE)
+	playsound(get_turf(chest_owner), dismember_sound, 80, TRUE)
 
 	for(var/obj/item/organ/organ in contents)
 		var/org_zone = check_zone(organ.zone)

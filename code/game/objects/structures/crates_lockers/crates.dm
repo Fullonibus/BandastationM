@@ -296,6 +296,7 @@
 	new /obj/item/reagent_containers/blood/skrell(src)
 	new /obj/item/reagent_containers/blood/moth(src)
 	new /obj/item/reagent_containers/blood/vox(src)
+	new /obj/item/reagent_containers/blood/resomi(src)
 	/// BANDASTATION ADDITION END - Species
 	for(var/i in 1 to 3)
 		new /obj/item/reagent_containers/blood/random(src)

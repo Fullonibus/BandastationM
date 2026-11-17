@@ -19,6 +19,7 @@ GLOBAL_LIST_INIT(strippable_gorilla_items, create_strippable_list(list(
 	icon_living = "crawling"
 	icon_dead = "dead"
 	health_doll_icon = "crawling"
+	hud_type = /datum/hud/dextrous
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	maxHealth = 220
 	health = 220
@@ -47,6 +48,8 @@ GLOBAL_LIST_INIT(strippable_gorilla_items, create_strippable_list(list(
 	var/paralyze_chance = 20
 	/// A counter for when we can scream again
 	var/oogas = 0
+	/// Optional replacement for the default strippable hand slots.
+	var/list/strippable_inventory_slots = list()
 	/// Types of things we want to find and eat
 	var/static/list/gorilla_food = list(
 		/obj/item/food/bread/banana,
@@ -63,7 +66,7 @@ GLOBAL_LIST_INIT(strippable_gorilla_items, create_strippable_list(list(
 	. = ..()
 	add_traits(list(TRAIT_SIMIAN, TRAIT_ADVANCEDTOOLUSER, TRAIT_CAN_STRIP, TRAIT_CHUNKYFINGERS), INNATE_TRAIT)
 	AddElement(/datum/element/wall_tearer, allow_reinforced = FALSE)
-	AddElement(/datum/element/dextrous, can_throw = TRUE)
+	AddElement(/datum/element/dextrous, hud_type = hud_type, can_throw = TRUE)
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_BAREFOOT)
 	AddElement(/datum/element/basic_eating, heal_amt = 10, food_types = gorilla_food)
 	AddComponent(
@@ -73,7 +76,7 @@ GLOBAL_LIST_INIT(strippable_gorilla_items, create_strippable_list(list(
 	)
 	AddComponent(/datum/component/personal_crafting)
 	AddComponent(/datum/component/basic_inhands, y_offset = -1)
-	AddElement(/datum/element/strippable, GLOB.strippable_gorilla_items)
+	AddElement(/datum/element/strippable, length(strippable_inventory_slots) ? create_strippable_list(strippable_inventory_slots) : GLOB.strippable_gorilla_items)
 
 	RegisterSignal(src, COMSIG_MOB_EMOTED("ooga"), PROC_REF(check_kong_state))
 
@@ -86,16 +89,20 @@ GLOBAL_LIST_INIT(strippable_gorilla_items, create_strippable_list(list(
 	. += span_notice("This animal appears to be in peak physical condition and yet it has probably never worked out a day in its life. \
 		The untapped potential is almost frightening.")
 
+/// Whether our hands are raised for carrying something.
+/mob/living/basic/gorilla/proc/is_standing()
+	return is_holding_items()
+
 /mob/living/basic/gorilla/update_overlays()
 	. = ..()
-	if (is_holding_items())
+	if (is_standing())
 		. += "standing_overlay"
 
 /mob/living/basic/gorilla/update_icon_state()
 	. = ..()
 	if (stat == DEAD)
 		return
-	icon_state = is_holding_items() ? "standing" : "crawling"
+	icon_state = is_standing() ? "standing" : "crawling"
 
 /mob/living/basic/gorilla/update_held_items()
 	. = ..()
@@ -177,11 +184,30 @@ GLOBAL_LIST_INIT(strippable_gorilla_items, create_strippable_list(list(
 	faction = list(FACTION_NEUTRAL, FACTION_MONKEY, FACTION_JUNGLE)
 	unique_name = FALSE
 	ai_controller = null
+	hud_type = /datum/hud/dextrous/cargorilla
+	strippable_inventory_slots = list(
+		/datum/strippable_item/hand/left,
+		/datum/strippable_item/hand/right,
+		/datum/strippable_item/mob_item_slot/id,
+	)
+	/// ID worn independently of our hands.
+	var/obj/item/card/id/wear_id
 
 /mob/living/basic/gorilla/cargorilla/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_PACIFISM, INNATE_TRAIT)
 	AddComponent(/datum/component/crate_carrier)
+	AddElement(/datum/element/ridable, /datum/component/riding/creature/human/gorilla)
+
+/mob/living/basic/gorilla/cargorilla/is_standing()
+	var/datum/component/crate_carrier/carrier = GetComponent(/datum/component/crate_carrier)
+	return ..() || length(carrier?.crates_in_hand)
+
+/mob/living/basic/gorilla/cargorilla/update_overlays()
+	. = ..()
+	var/datum/component/crate_carrier/carrier = GetComponent(/datum/component/crate_carrier)
+	if (length(carrier?.crates_in_hand))
+		. -= "standing_overlay"
+		. += "crate_overlay"
 
 /// big fucking gorilla version of pun pun. be afraid.
 /mob/living/basic/gorilla/bar

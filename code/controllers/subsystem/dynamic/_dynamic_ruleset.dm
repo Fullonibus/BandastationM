@@ -17,6 +17,8 @@
 	/// Required if the antag has an associated preference, and must be unique
 	/// (unless RULESET_VARIATION is set in ruleset_flags)
 	var/pref_flag
+	/// Set only on a separate token ruleset: the explicit request replaces random-roll opt-ins.
+	var/antag_token_ckey
 	/// Flags for this ruleset
 	var/ruleset_flags = NONE
 	/// Points to what antag datum this ruleset will use for generating a preview icon in the prefs menu
@@ -100,6 +102,7 @@
 		NAMEOF_STATIC(src, config_tag),
 		NAMEOF_STATIC(src, jobban_flag),
 		NAMEOF_STATIC(src, pref_flag),
+		NAMEOF_STATIC(src, antag_token_ckey),
 		NAMEOF_STATIC(src, preview_antag_datum),
 		NAMEOF_STATIC(src, ruleset_flags),
 		NAMEOF_STATIC(src, ruleset_lazy_templates),
@@ -280,13 +283,17 @@
 		var/client/candidate_client = GET_CLIENT(candidate)
 		if(isnull(candidate_client))
 			continue
-		if(!candidate_client.prefs.read_preference(/datum/preference/toggle/antag_roll))
+		if(antag_token_ckey && candidate_client.ckey != antag_token_ckey)
+			continue
+		if(!antag_token_ckey && !candidate_client.prefs.read_preference(/datum/preference/toggle/antag_roll))
 			continue
 		if(candidate_client.get_remaining_days(minimum_required_age) > 0)
 			continue
-		if(pref_flag && !(pref_flag in candidate_client.prefs.be_special))
+		if(!antag_token_ckey && pref_flag && !(pref_flag in candidate_client.prefs.be_special))
 			continue
 		if(is_banned_from(candidate.ckey, list(ROLE_SYNDICATE, jobban_flag || pref_flag)))
+			continue
+		if(antag_token_ckey && (!candidate || GET_CLIENT(candidate) != candidate_client))
 			continue
 		if(!is_valid_candidate(candidate, candidate_client))
 			continue

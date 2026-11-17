@@ -423,6 +423,7 @@ SUBSYSTEM_DEF(id_access)
 	if(!id_card.can_add_wildcards(trim.wildcard_access))
 		return FALSE
 
+	id_card.clear_job_variant_title()
 	id_card.clear_access()
 	id_card.trim = trim
 	id_card.big_pointer = trim.big_pointer
@@ -457,6 +458,7 @@ SUBSYSTEM_DEF(id_access)
  * * id_card - The ID card to remove the trim from.
  */
 /datum/controller/subsystem/id_access/proc/remove_trim_from_card(obj/item/card/id/id_card)
+	id_card.clear_job_variant_title()
 	id_card.trim = null
 	id_card.clear_access()
 	id_card.update_label()

@@ -1,0 +1,53 @@
+{
+	"sombrero": [
+		{
+			"type": "icon_state",
+			"icon_state": "cloth_worn",
+			"blend_mode": "overlay",
+			"color_ids": [
+				1
+			]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "ornamentation_worn",
+			"blend_mode": "overlay",
+			"color_ids": [
+				2
+			]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "plate_worn",
+			"blend_mode": "overlay"
+		}
+	],
+	"shamebrero": [
+		{
+			"type": "icon_state",
+			"icon_state": "cloth_worn",
+			"blend_mode": "overlay",
+			"color_ids": [
+				1
+			]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "ornamentation_worn",
+			"blend_mode": "overlay",
+			"color_ids": [
+				2
+			]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "plate_worn",
+			"blend_mode": "overlay"
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "dongles_worn",
+			"blend_mode": "overlay"
+		}
+	]
+}

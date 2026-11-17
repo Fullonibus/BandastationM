@@ -275,7 +275,8 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 
 	if(SScentral.can_run())
 		SScentral.update_player_discord_async(ckey)
-		SScentral.update_player_donate_tier_blocking(src)
+		if(SScentral.update_player_donate_tier_blocking(src))
+			SScentral.grant_monthly_antag_tokens(src)
 
 	winset(src, null, list("browser-options" = "find")) // BANDASTATION EDIT - Removed 'refresh'
 

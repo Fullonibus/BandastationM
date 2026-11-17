@@ -1,0 +1,19 @@
+Drask body, eyes and arm spines drawn by @cluwnya (t_ch42).
+Source: ImOnMinimal/BandaStation, feature/drask-species, 5391d46fc786777eaa31f8bb42c4c08baed3a7cf.
+https://github.com/ImOnMinimal/BandaStation/commit/45769125858207e2a1440bbcf0d492d6e69bda2f
+
+Fitted clothing and organ art adapted from ParadiseSS13/Paradise and
+ss220club/Paradise-SS220 contributors, revision 0fffca1f1f29a63aff49d9b56524813eedf82c6d.
+Organ art history includes HugoLuman, Aurorablade and B.A.L.
+Selected clothing states were aligned to the BandaStation Drask sprites
+in four directions. The closed standard MODsuit was fitted to the new
+silhouette. The smooth brain is adapted from PrimeDream's generic organ atlas.
+
+License: Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0).
+https://creativecommons.org/licenses/by-sa/3.0/
+https://github.com/ss220club/Paradise-SS220/blob/0fffca1f1f29a63aff49d9b56524813eedf82c6d/README.md#licenses
+
+Source files and contributor histories:
+https://github.com/ss220club/Paradise-SS220/commits/0fffca1f1f29a63aff49d9b56524813eedf82c6d/icons/obj/species_organs/drask.dmi
+https://github.com/ss220club/Paradise-SS220/tree/0fffca1f1f29a63aff49d9b56524813eedf82c6d/icons/mob/clothing/species/drask
+https://github.com/ss220club/Paradise-SS220/commits/0fffca1f1f29a63aff49d9b56524813eedf82c6d/icons/mob/clothing/modsuit/species/drask_modsuits.dmi

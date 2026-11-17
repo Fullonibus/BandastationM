@@ -44,6 +44,7 @@ Voidcrew собрал их из NovaSector (порт TauCeti), Polaris и VORESt
 NovaSector `5ce2bd2215c0`, `modular_nova/modules/xenoarchartifacts/icons/machinery.dmi` (через TauCetiClassic,
 CC BY-SA 3.0); состояния без питания, с открытой панелью и свечения отредактированы для
 [Voidcrew PR #506](https://github.com/voidcrew/Voidcrew/pull/506). Маркировщик и ленты — Voidcrew PR #506.
+Состояние `scanpad_map` объединяет исходные `scanpad_bottom` и `scanpad` для редактора карт.
 
 ## Использование (`icons/use.dmi`)
 

@@ -133,73 +133,162 @@
 			return "[job_title_ru(jobtitle)] несовместим с некоторыми выбранными вами ролями антагонистов."
 		if(JOB_UNAVAILABLE_AGE)
 			return "Ваш персонаж недостаточно стар для игры за [job_title_ru(jobtitle)]."
+		if(JOB_UNAVAILABLE_DONATOR)
+			var/datum/job/job = SSjob.get_job(jobtitle)
+			return "Для выбора профессии [job_title_ru(jobtitle)] нужен уровень доната [job.required_donator_level]."
+		if(JOB_UNAVAILABLE_PROFILE)
+			return "Для профессии [job_title_ru(jobtitle)] выбран недоступный профиль персонажа."
+		if(JOB_UNAVAILABLE_SPECIES)
+			return "Раса выбранного персонажа несовместима с профессией [job_title_ru(jobtitle)]."
 
 	return GENERIC_JOB_UNAVAILABLE_ERROR
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
-	var/datum/job/job = SSjob.get_job(rank)
-	if(!(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
+	var/datum/job/job = istext(rank) ? SSjob.get_job(rank) : null
+	var/client/requester = client
+	if(!job || !requester || !(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
 		return JOB_UNAVAILABLE_GENERIC
-	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
-		if(is_assistant_job(job))
-			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
-				return JOB_AVAILABLE
-			for(var/datum/job/other_job as anything in SSjob.joinable_occupations)
-				if(other_job.current_positions < other_job.total_positions && other_job != job)
-					return JOB_UNAVAILABLE_SLOTFULL
-		else
-			return JOB_UNAVAILABLE_SLOTFULL
+	if(!has_latejoin_job_capacity(job))
+		return JOB_UNAVAILABLE_SLOTFULL
 
-	var/eligibility_check = SSjob.check_job_eligibility(src, job, "Mob IsJobUnavailable")
+	var/eligibility_check = SSjob.check_job_eligibility(src, job, "Mob IsJobUnavailable", latejoin = latejoin)
 	if(eligibility_check != JOB_AVAILABLE)
 		return eligibility_check
+	if(QDELETED(src) || !requester || client != requester)
+		return JOB_UNAVAILABLE_GENERIC
+	if(!has_latejoin_job_capacity(job))
+		return JOB_UNAVAILABLE_SLOTFULL
 
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE
 
+/// Synchronous vacancy check for the menu and final role assignment.
+/mob/dead/new_player/proc/has_latejoin_job_capacity(datum/job/job)
+	if(job.total_positions == -1 || job.current_positions < job.total_positions)
+		return TRUE
+	if(!is_assistant_job(job))
+		return FALSE
+	if(isnum(client?.player_age) && client.player_age <= 14)
+		return TRUE
+	for(var/datum/job/other_job as anything in SSjob.joinable_occupations)
+		if(other_job != job && other_job.current_positions < other_job.total_positions && other_job.can_access_donor_job(client))
+			return FALSE
+	return TRUE
+
+/// Modal replies and SQL results belong to the lobby and profile that opened them.
+/mob/dead/new_player/proc/is_latejoin_request_current(client/requester, datum/mind/request_mind, editing_slot)
+	return !QDELETED(src) && requester && client == requester && requester.mob == src && !requester.interviewee \
+		&& !QDELETED(request_mind) && mind == request_mind && requester.prefs?.default_slot == editing_slot
+
+/// Shared admission checks before reserving a slot or handing the body over.
+/mob/dead/new_player/proc/get_latejoin_block_message()
+	if(!SSticker?.IsRoundInProgress())
+		return "Раунд ещё не начался или уже закончился."
+	if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
+		return "Вход в раунд временно отключён администрацией."
+	if(!(ckey(key) in GLOB.admin_datums))
+		if(length(SSticker.queued_players) && SSticker.queued_players[1] != src)
+			return "Сервер заполнен. Дождитесь своей очереди."
+		var/hard_cap = CONFIG_GET(number/hard_popcap)
+		var/extreme_cap = CONFIG_GET(number/extreme_popcap)
+		var/popcap = hard_cap && extreme_cap ? min(hard_cap, extreme_cap) : max(hard_cap, extreme_cap)
+		if(popcap)
+			var/occupants = living_player_count()
+			for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
+				if(player != src && player.client && player.spawning && player.mind?.late_joiner)
+					occupants++
+			if(occupants >= popcap)
+				return "Сервер заполнен. Дождитесь своей очереди."
+	if(SSshuttle.arrivals?.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
+		return "В данный момент шаттл прибытия сломан. Вы не сможете присоединиться."
+	return null
+
+/mob/dead/new_player/proc/check_latejoin_request(client/requester, datum/mind/request_mind, editing_slot)
+	if(!is_latejoin_request_current(requester, request_mind, editing_slot) || spawning || new_character || !is_unassigned_job(request_mind.assigned_role))
+		return FALSE
+	var/message = get_latejoin_block_message()
+	if(!message)
+		return TRUE
+	to_chat(src, span_warning(message))
+	return FALSE
+
+/// Release an occupied vacancy when latejoin body creation did not finish.
+/mob/dead/new_player/proc/release_latejoin_assignment(datum/job/job, datum/mind/request_mind, previous_mind_activity)
+	job.current_positions = max(0, job.current_positions - 1)
+	if(!QDELETED(request_mind) && request_mind.assigned_role == job)
+		request_mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
+		request_mind.late_joiner = FALSE
+		request_mind.active = previous_mind_activity
+	if(QDELETED(src))
+		return
+	QDEL_NULL(assigned_job_character)
+	spawning = FALSE
+	if(!client)
+		QDEL_NULL(mind)
+		qdel(src)
+
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
+	var/client/requester = client
+	var/datum/mind/request_mind = mind
+	var/editing_slot = requester?.prefs?.default_slot
+	var/datum/job/job = istext(rank) ? SSjob.get_job(rank) : null
+	if(!job || !check_latejoin_request(requester, request_mind, editing_slot))
+		return FALSE
+	var/datum/job_character_selection/selection = requester.prefs.select_job_character(job, latejoin = TRUE)
+	var/selected_slot = selection?.slot
+	var/profile_error = selection?.error
+	qdel(selection)
+	if(profile_error || !isnum(selected_slot))
+		to_chat(src, span_warning(profile_error || get_job_unavailable_error_message(JOB_UNAVAILABLE_PROFILE, rank)))
+		return FALSE
+
 	// Check that they're picking someone new for new character respawning
 	if(CONFIG_GET(flag/allow_respawn) == RESPAWN_FLAG_NEW_CHARACTER)
-		if(client?.is_localhost())
-			to_chat(client.mob, span_notice("Этот персонаж уже участвовал в данном раунде, однако это ограничение обходится при использовании localhost."))
-			log_admin("[key_name_and_tag(client)] пропускает повторное присоединение к раунду тем же персонажем.")
-		else if("[client.prefs.default_slot]" in persistent_client.joined_as_slots)
-			tgui_alert(usr, "Вы уже играли на данном персонаже в этом раунде!")
+		if(requester.is_localhost())
+			to_chat(src, span_notice("Этот персонаж уже участвовал в данном раунде, однако это ограничение обходится при использовании localhost."))
+			log_admin("[key_name_and_tag(requester)] пропускает повторное присоединение к раунду тем же персонажем.")
+		else if("[selected_slot]" in persistent_client.joined_as_slots)
+			to_chat(src, span_warning("Вы уже играли на данном персонаже в этом раунде!"))
 			return FALSE
 
-	var/error = IsJobUnavailable(rank)
+	var/error = IsJobUnavailable(rank, latejoin = TRUE)
 	if(error != JOB_AVAILABLE)
-		tgui_alert(usr, get_job_unavailable_error_message(error, rank))
+		if(is_latejoin_request_current(requester, request_mind, editing_slot))
+			to_chat(src, span_warning(get_job_unavailable_error_message(error, rank)))
+		return FALSE
+	if(!check_latejoin_request(requester, request_mind, editing_slot))
 		return FALSE
 
-	if(SSshuttle.arrivals)
-		if(SSshuttle.arrivals.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
-			tgui_alert(usr,"В данный момент шаттл прибытия сломан. Вы не сможете присоединится.")
+	if(SSshuttle.arrivals && CONFIG_GET(flag/arrivals_shuttle_require_undocked))
+		SSshuttle.arrivals.RequireUndocked(src)
+		if(!check_latejoin_request(requester, request_mind, editing_slot))
 			return FALSE
 
-		if(CONFIG_GET(flag/arrivals_shuttle_require_undocked))
-			SSshuttle.arrivals.RequireUndocked(src)
+	var/previous_mind_activity = request_mind.active
+	if(!SSjob.assign_role(src, job, latejoin = TRUE, expected_slot = selected_slot))
+		if(is_latejoin_request_current(requester, request_mind, editing_slot))
+			to_chat(src, span_warning(get_latejoin_block_message() || "Эта должность больше недоступна. Выберите профессию повторно."))
+		return FALSE
+	if(!is_latejoin_request_current(requester, request_mind, editing_slot))
+		release_latejoin_assignment(job, request_mind, previous_mind_activity)
+		if(client && client == requester)
+			to_chat(src, span_warning("Настройки персонажа изменились. Выберите профессию повторно."))
+		return FALSE
 
-	//Remove the player from the join queue if he was in one and reset the timer
+	request_mind.late_joiner = TRUE
+	var/atom/destination = job.get_latejoin_spawn_point()
+	var/mob/living/character = destination ? create_character(destination) : null
+	if(QDELETED(character))
+		release_latejoin_assignment(job, request_mind, previous_mind_activity)
+		if(client && client == requester)
+			to_chat(src, span_warning(get_latejoin_block_message() || "Не удалось создать персонажа. Выберите профессию повторно."))
+		return FALSE
+
 	SSticker.queued_players -= src
 	SSticker.queue_delay = 4
-
-	var/datum/job/job = SSjob.get_job(rank)
-
-	if(!SSjob.assign_role(src, job, TRUE))
-		tgui_alert(usr, "Возникла непредвиденная ошибка при выдаче роли, выбранной вами. Если вы не можете зайти, обратитесь к администрации.")
-		return FALSE
-
 	var/latejoin_period = CEILING(STATION_TIME_PASSED() / (5 MINUTES), 5)
 	SSblackbox.record_feedback("tally", "latejoin_time", 1, latejoin_period)
-	mind.late_joiner = TRUE
-	var/atom/destination = mind.assigned_role.get_latejoin_spawn_point()
-	if(!destination)
-		CRASH("Failed to find a latejoin spawn point.")
-	var/mob/living/character = create_character(destination, forced_slot = client.prefs.default_slot)
-	if(!character)
-		CRASH("Failed to create a character for latejoin.")
 	transfer_character()
 
 	SSjob.equip_rank(character, job, character.client)
@@ -256,7 +345,7 @@
 			humanc.clear_personalities()
 
 	if(humanc) // Quirks may change manifest datapoints, so inject only after assigning quirks
-		GLOB.manifest.inject(humanc)
+		GLOB.manifest.inject(humanc, initial_join = TRUE)
 		SEND_SIGNAL(humanc, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
 	var/area/station/arrivals = GLOB.areas_by_type[/area/station/hallway/secondary/entry]
 	if(humanc && arrivals && !arrivals.power_environ) //arrivals depowered
@@ -278,20 +367,55 @@
  * * forced_slot - if provided, will load whatever character is in that slot instead of their active slot
  */
 /mob/dead/new_player/proc/create_character(atom/destination, forced_slot)
+	var/client/requester = client
+	var/datum/preferences/preferences = requester?.prefs
+	var/datum/mind/request_mind = mind
+	var/datum/job/job = request_mind?.assigned_role
+	if(!preferences || !job)
+		return
+	var/spawned_slot = forced_slot
+	if(!isnum(spawned_slot))
+		var/datum/job_character_selection/selection = assigned_job_character || preferences.select_job_character(job, latejoin = request_mind.late_joiner)
+		spawned_slot = selection?.slot
+		var/profile_error = selection?.error
+		if(selection != assigned_job_character)
+			qdel(selection)
+		if(profile_error || !isnum(spawned_slot))
+			return
+
+	var/editing_slot = preferences.default_slot
+	if(editing_slot != spawned_slot)
+		if(!preferences.save_character())
+			return
+		if(!preferences.load_character(spawned_slot))
+			preferences.load_character(editing_slot)
+			return
+
 	spawning = TRUE
-
-	var/spawned_slot = isnum(forced_slot) ? forced_slot : LAZYACCESS(client.prefs.job_assigned_profiles, mind.assigned_role.title)
-	if(isnum(spawned_slot) && client.prefs.default_slot != spawned_slot)
-		client.prefs.load_character(spawned_slot) // if this fails, we will simply load their current slot anyways
-
-	mind.active = FALSE //we wish to transfer the key manually
-	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
+	request_mind.active = FALSE //we wish to transfer the key manually
+	var/mob/living/spawning_mob = job.get_spawn_mob(requester, destination)
 	if(QDELETED(src))
+		if(!QDELETED(spawning_mob) && !spawning_mob.client)
+			qdel(spawning_mob)
+		return
+	if(!QDELETED(spawning_mob) && ishuman(spawning_mob))
+		var/mob/living/carbon/human/body = spawning_mob
+		if((isnum(job.required_character_age) && body.age < job.required_character_age) || !job.is_character_species_allowed(body.dna?.species?.type))
+			qdel(spawning_mob)
+
+	// AI initialization can already hand the client to the body.
+	var/client/player_client = src.client || spawning_mob?.client
+	if(!QDELETED(spawning_mob) && (player_client != requester || (!isAI(spawning_mob) && (mind != request_mind || preferences.default_slot != spawned_slot))))
+		qdel(spawning_mob)
+	if(!QDELETED(spawning_mob) && request_mind?.late_joiner && !isAI(spawning_mob) && get_latejoin_block_message())
+		qdel(spawning_mob)
+	if(QDELETED(spawning_mob))
+		if(client && client == requester && editing_slot != spawned_slot && preferences.default_slot == spawned_slot)
+			preferences.load_character(editing_slot)
 		return
 
-	// Annoyingly the AI mob yoinks our client on init so we have to check for it here
-	var/client/player_client = src.client || spawning_mob.client
 	if(isnull(player_client))
+		qdel(spawning_mob)
 		return
 
 	if(!isAI(spawning_mob)) // Unfortunately there's still snowflake AI code out there.
@@ -344,7 +468,13 @@
 		return TRUE
 	// If they have antags enabled, they're potentially doing this on purpose instead of by accident. Notify admins if so.
 	var/has_antags = length(client.prefs.be_special) > 0
-	if(client.prefs.job_preferences.len == 0)
+	var/has_available_preferences = FALSE
+	for(var/job_title in client.prefs.job_preferences)
+		var/datum/job/job = SSjob.get_job(job_title)
+		if(job && job.can_access_donor_job(client))
+			has_available_preferences = TRUE
+			break
+	if(!has_available_preferences)
 		if(warn)
 			to_chat(src, span_danger("You have no jobs enabled, along with return to lobby if job is unavailable. \
 				This makes you ineligible for any round start role, please update your job preferences."))

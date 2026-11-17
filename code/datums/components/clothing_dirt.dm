@@ -95,7 +95,8 @@
 	if (isinhands || !dirtiness || !dirt_state || !(source.flags_cover & PEPPERPROOF))
 		return
 
-	var/mutable_appearance/dirt_overlay = mutable_appearance(source.worn_icon, dirt_state)
+	var/dirt_icon = icon_exists(icon_file, dirt_state) ? icon_file : source.worn_icon
+	var/mutable_appearance/dirt_overlay = mutable_appearance(dirt_icon, dirt_state)
 	dirt_overlay.color = dirt_color
 	overlays += dirt_overlay
 

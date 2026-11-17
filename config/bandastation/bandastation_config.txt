@@ -32,6 +32,8 @@ AI_SECRETARY_MODEL gpt-oss:20b-cloud
 ROUNDSTART_RACES vulpkanin
 ROUNDSTART_RACES tajaran
 ROUNDSTART_RACES vox
+ROUNDSTART_RACES resomi
+ROUNDSTART_RACES drask
 
 ## Automatic crew transfer
 

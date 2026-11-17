@@ -10,6 +10,12 @@
 
 /datum/unit_test/khaaroot_hivemind/Destroy()
 	QDEL_NULL(hive)
+	// Replaced fixture bodies can still reference the minds that the test owns.
+	for(var/mob/living/carbon/human/person in allocated)
+		if(person.mind in allocated)
+			person.mind = null
+		if(person.last_mind in allocated)
+			person.last_mind = null
 	source = null
 	member = null
 	return ..()

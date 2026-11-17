@@ -21,6 +21,7 @@
 		/obj/item/reagent_containers/blood/skrell,
 		/obj/item/reagent_containers/blood/moth,
 		/obj/item/reagent_containers/blood/vox,
+		/obj/item/reagent_containers/blood/resomi,
 		/// BANDASTATION ADDITION END - Species
 		/obj/item/paper/fluff/jobs/medical/blood_types,
 	)

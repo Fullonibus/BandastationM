@@ -36,7 +36,10 @@ type Data = {
   exhaust_pressure: number;
   room_temperature: number | null;
   radiation: number;
-  fuel: { name: string; amount: number; capacity: number }[];
+  fuel: { name: string; amount: number; capacity: number; unit?: string }[];
+  /** Installation-specific names for the fuel injector and the outlet line. */
+  fuel_label?: string;
+  exhaust_label?: string;
 };
 
 const heatRanges = {
@@ -148,7 +151,12 @@ function Reaction() {
             {data.heat} %
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label={data.electric ? 'Подача плазмы' : 'Впрыск трития'}>
+        <LabeledList.Item
+          label={
+            data.fuel_label ??
+            (data.electric ? 'Подача плазмы' : 'Впрыск трития')
+          }
+        >
           {data.fuel_flow} моль/с, предел{' '}
           <NumberInput
             value={data.injection_limit}
@@ -169,11 +177,16 @@ function Reaction() {
                 bad: [-Infinity, 0.2],
               }}
             >
-              {gauge.amount} моль
+              {gauge.amount} {gauge.unit ?? 'моль'}
             </ProgressBar>
           </LabeledList.Item>
         ))}
-        <LabeledList.Item label={data.electric ? 'Магистраль плазмы' : 'Магистраль гелия'}>
+        <LabeledList.Item
+          label={
+            data.exhaust_label ??
+            (data.electric ? 'Магистраль плазмы' : 'Магистраль гелия')
+          }
+        >
           {data.exhaust_pressure} кПа
         </LabeledList.Item>
       </LabeledList>

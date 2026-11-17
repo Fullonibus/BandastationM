@@ -56,6 +56,21 @@ export const JOBS_RU = {
   // Event jobs
   'Veteran Security Advisor': 'Ветеран советчик СБ',
   'Bridge Assistant': 'Адъютант',
+  'Cargo Gorilla': 'Карго-горилла',
+  'Big Brother': 'Большой брат',
+  // Donor jobs
+  Barber: 'Парикмахер',
+  Waiter: 'Официант',
+  'Tourist TSF': 'Турист ТСФ',
+  'Tourist USSP': 'Турист СССП',
+  Migrant: 'Мигрант',
+  Administrator: 'Сервис-администратор',
+  Guard: 'Охранник сервиса',
+  'Representative TSF': 'Представитель ТСФ',
+  'Representative USSP': 'Представитель СССП',
+  Dealer: 'Торговец',
+  Banker: 'Банкир',
+  'Nanotrasen Navy Junior Officer': 'Младший офицер Центрального командования',
 };
 
 const REVERSED_JOBS_RU = Object.entries(JOBS_RU).reduce(

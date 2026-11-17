@@ -24,7 +24,7 @@
 /obj/structure/spider/eggcluster/examine_more(mob/user)
 	. = ..()
 
-	if(istype(user, /mob/living/basic/spider/giant/midwife))
+	if(spawner && istype(user, /mob/living/basic/spider/giant/midwife))
 		switch(spawner.amount_grown)
 			if(0 to 24)
 				. += span_info("These eggs look shrunken and dormant.")
@@ -49,9 +49,6 @@
 	icon = 'icons/mob/simple/meteor_heart.dmi'
 	icon_state = "eggs"
 	name = "bloody egg cluster"
-
-/obj/structure/spider/eggcluster/midwife
-	name = "midwife egg cluster"
 
 /obj/effect/mob_spawn/ghost_role/spider
 	name = "egg cluster"
@@ -105,12 +102,10 @@
 	return ..()
 
 /obj/effect/mob_spawn/ghost_role/spider/process(seconds_per_tick)
-	amount_grown += rand(5, 15) * seconds_per_tick
+	amount_grown += growth_progress(seconds_per_tick)
 	if(amount_grown >= 100 && !ready)
 		ready = TRUE
-		var/notify_flags_to_pass = NOTIFY_CATEGORY_NOFLASH
-		if(flash_window)
-			notify_flags_to_pass &= GHOST_NOTIFY_FLASH_WINDOW
+		var/notify_flags_to_pass = flash_window ? NOTIFY_CATEGORY_DEFAULT : NOTIFY_CATEGORY_NOFLASH
 		notify_ghosts(
 			"[src] is ready to hatch!",
 			source = src,
@@ -120,6 +115,10 @@
 			notify_flags = notify_flags_to_pass,
 		)
 		STOP_PROCESSING(SSobj, src)
+
+/// Incubation progress gained during one processing interval.
+/obj/effect/mob_spawn/ghost_role/spider/proc/growth_progress(seconds_per_tick)
+	return rand(5, 15) * seconds_per_tick
 
 /obj/effect/mob_spawn/ghost_role/spider/Topic(href, href_list)
 	. = ..()
@@ -145,8 +144,12 @@
 	. = ..()
 	if (isspider(spawned_mob))
 		spawned_mob.directive = directive
-	egg.spawner = null
-	QDEL_NULL(egg)
+	if(egg)
+		// Keep the spawner alive until create_from_ghost() signals the hatch.
+		if(loc == egg)
+			forceMove(get_turf(egg))
+		egg.spawner = null
+		QDEL_NULL(egg)
 	var/datum/antagonist/spider/spider_antag = new granted_datum(directive)
 	spawned_mob.mind.add_antag_datum(spider_antag)
 
@@ -186,17 +189,6 @@
 	)
 	flash_window = TRUE
 	granted_datum = /datum/antagonist/spider/flesh
-
-/obj/effect/mob_spawn/ghost_role/spider/midwife
-	name = "midwife egg cluster"
-	you_are_text = "You are a midwife spider."
-	flavour_text = "The crux of the spider horde. You have the ability to reproduce and create more spiders, and turn victims into special spider eggs."
-	directive = "Ensure the survival of the spider species and overtake whatever structure you find yourself in."
-	cluster_type = /obj/structure/spider/eggcluster/midwife
-	potentialspawns = list(
-		/mob/living/basic/spider/growing/spiderling/midwife, // We don't want the event to end instantly because broodmothers got a bad spawn
-	)
-	flash_window = TRUE
 
 /obj/effect/mob_spawn/ghost_role/spider/pre_ghost_take(mob/dead/observer/user)
 	var/chosen_spider = length(potentialspawns) > 1 ? get_radial_choice(user) : potentialspawns[1]

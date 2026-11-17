@@ -9,6 +9,16 @@ CREATE TABLE `schema_revision_220` (
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `schema_revision_220` (`major`, `minor`) VALUES (1, 4);
+
+-- Token accounts are created only by an actual grant.
+CREATE TABLE IF NOT EXISTS `antag_tokens` (
+	`ckey` VARCHAR(32) NOT NULL,
+	`tokens` INT UNSIGNED NOT NULL DEFAULT 0,
+	`last_token_at` DATETIME NULL DEFAULT NULL,
+	PRIMARY KEY (`ckey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Table structure for table `ckey_whitelist`
 --

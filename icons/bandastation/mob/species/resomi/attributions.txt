@@ -1,0 +1,22 @@
+Resomi sprites adapted from SierraBay12 at 40edecd4203679a060f826f00ff773964582a4c2.
+The SierraBay12 module credits LordNest, SurEugene, Daeberdir and UEDHighCommand
+and identifies Infinity as the source of the original Resomi content.
+https://github.com/SierraBay/SierraBay12/tree/40edecd4203679a060f826f00ff773964582a4c2/mods/resomi
+https://github.com/SierraBay/SierraBay12/pull/2054
+
+License: Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0).
+https://creativecommons.org/licenses/by-sa/3.0/
+https://github.com/SierraBay/SierraBay12/blob/40edecd4203679a060f826f00ff773964582a4c2/README.md
+
+Original sprite locations:
+https://github.com/SierraBay/SierraBay12/tree/40edecd4203679a060f826f00ff773964582a4c2/packs/infinity/icons/mob/human_races/species/resomi
+https://github.com/SierraBay/SierraBay12/blob/40edecd4203679a060f826f00ff773964582a4c2/icons/effects/species.dmi
+
+Adaptations: combined torso and groin, legs and feet, and the tail and its
+feathers. Integrated hand and foot plumage, split eyes by side, and centered
+the detached tail sprite. Renamed states and adjusted grayscale for native
+color multiplication while preserving the original poses and pixel positions.
+
+The fitted damage sheet uses PrimeDream's icons/mob/effects/dam_mob.dmi for
+wounds and burns, refitted to the bodypart silhouettes. Husk shading is
+adapted from the SierraBay12 Resomi husk.dmi in the species source above.

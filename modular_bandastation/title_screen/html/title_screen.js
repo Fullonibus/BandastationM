@@ -21,6 +21,16 @@ function toggleAntagRoll(enabled) {
   }
 }
 
+function updateAntagTokens(payload) {
+  const button = document.querySelector('.lobby-antag_tokens');
+  if (!button) {
+    return;
+  }
+  const data = JSON.parse(payload);
+  button.querySelector('.lobby-text').textContent = data.tokens ?? '?';
+  button.classList.toggle('selected', !!data.selected);
+}
+
 const noticeElement = document.getElementById('container_notice');
 function updateNotice(notice) {
   const emptyNotice = notice === undefined;

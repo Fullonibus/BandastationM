@@ -1,0 +1,8 @@
+Original Drask speech, scream, cough and sneeze recordings, copied unchanged.
+Introduced by Aurorablade in Paradise SS220 commit 4fc35a68b1902902420f8b4f2c633a58108cf043.
+https://github.com/ss220club/Paradise-SS220/commit/4fc35a68b1902902420f8b4f2c633a58108cf043
+
+Files: drasktalk.ogg, drasktalk2.ogg, draskcough.ogg, drasksneeze.ogg.
+Source: ss220club/Paradise-SS220 revision 0fffca1f1f29a63aff49d9b56524813eedf82c6d, sound/voice/.
+License: Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0).
+https://github.com/ss220club/Paradise-SS220/blob/0fffca1f1f29a63aff49d9b56524813eedf82c6d/README.md#licenses

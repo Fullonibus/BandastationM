@@ -15,8 +15,15 @@
 /datum/preference/choiced/species/create_default_value()
 	return /datum/species/human
 
+/datum/preference/choiced/species/is_valid(value, datum/preferences/preferences)
+	return ..() && preferences.can_select_character_species(value)
+
 /datum/preference/choiced/species/create_random_value(datum/preferences/preferences)
-	return pick(get_choices())
+	var/list/available_species = list()
+	for (var/species_type in get_choices())
+		if (preferences.can_select_character_species(species_type))
+			available_species += species_type
+	return length(available_species) ? pick(available_species) : create_default_value()
 
 /datum/preference/choiced/species/init_possible_values()
 	var/list/values = list()
@@ -46,5 +53,11 @@
 		data[species_id]["enabled_features"] = species.get_features()
 		data[species_id]["perks"] = species.get_species_perks()
 		data[species_id]["diet"] =  species.get_species_diet()
+		data[species_id]["required_donator_level"] = species.required_donator_level
 
 	return data
+
+/// Checks the current account tier for a species in the character preferences catalog.
+/datum/preferences/proc/can_select_character_species(datum/species/species_type)
+	var/required_level = initial(species_type.required_donator_level)
+	return !required_level || parent?.get_donator_level() >= required_level

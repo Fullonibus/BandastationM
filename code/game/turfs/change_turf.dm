@@ -148,16 +148,13 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	new_turf.weak_reference = old_ref
 
 	if(SSlighting.initialized)
+		if(old_lighting_object)
+			lighting_object = old_lighting_object
 		// Space tiles should never have lighting objects
-		if(!space_lit)
-			if(old_lighting_object)
-				lighting_object = old_lighting_object
-			// Should have a lighting object if we never had one
-			// New turf init could have ALSO created a lighting object so we have to double check
-			else if(!lighting_object)
-				new /atom/movable/lighting_object(src)
-		else if (old_lighting_object)
-			qdel(old_lighting_object, force = TRUE)
+		if(space_lit)
+			lighting_clear_overlay()
+		else if(!lighting_object)
+			lighting_build_overlay()
 
 		directional_opacity = old_directional_opacity
 		recalculate_directional_opacity()

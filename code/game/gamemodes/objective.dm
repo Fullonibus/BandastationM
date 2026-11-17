@@ -81,7 +81,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	if(SSticker.force_ending || GLOB.station_was_nuked)
 		return TRUE
 	// Escape hasn't happened yet
-	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
+	if(SSshuttle.emergency?.mode != SHUTTLE_ENDGAME)
 		return FALSE
 	var/area/current_area = get_area(escapee.current)
 	// In custody (shuttle brig) does not count as escaping

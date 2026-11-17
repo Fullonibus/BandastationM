@@ -3,8 +3,10 @@
 	description = "Помогайте экипажу, открывайте шлюзы, следуйте своему своду законов и координируйтесь с другими киборгами."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	faction = FACTION_STATION
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 1
+	spawn_positions = 1
+	required_donator_level = DONATOR_TIER_5
+	donor_unlock_trait = /datum/station_trait/job/human_ai
 	supervisors = "Капитаном, Директором Исследований и вашим сводом законов"
 	minimal_player_age = 7
 	exp_requirements = 180
@@ -42,48 +44,32 @@
 	human_authority = JOB_AUTHORITY_NON_HUMANS_ALLOWED //we can safely assume NT doesn't care what species AIs are made of, much less if they can't even afford an AI.
 	tgui_icon = /datum/job/ai::tgui_icon
 
+/datum/job/human_ai/config_check()
+	return CONFIG_GET(flag/allow_ai)
+
 /datum/job/human_ai/get_roundstart_spawn_point()
 	return get_latejoin_spawn_point()
 
+/// Use an accessible AI chamber floor without taking a spawn reserved for the station AI.
 /datum/job/human_ai/get_latejoin_spawn_point()
-	for(var/obj/structure/ai_core/latejoin_inactive/inactive_core as anything in GLOB.latejoin_ai_cores)
-		if(!inactive_core.is_available())
-			continue
-		GLOB.latejoin_ai_cores -= inactive_core
-		inactive_core.available = FALSE
-		var/turf/core_turf = get_turf(inactive_core)
-		qdel(inactive_core)
-		return core_turf
-	var/list/primary_spawn_points = list() // Ideal locations.
-	var/list/secondary_spawn_points = list() // Fallback locations.
-	for(var/obj/effect/landmark/start/ai/spawn_point in GLOB.landmarks_list)
-		if(spawn_point.used)
-			secondary_spawn_points += list(spawn_point)
-			continue
-		if(spawn_point.primary_ai)
-			primary_spawn_points = list(spawn_point)
-			break // Bingo.
-		primary_spawn_points += spawn_point
-	var/obj/effect/landmark/start/ai/chosen_spawn_point
-	if(length(primary_spawn_points))
-		chosen_spawn_point = pick(primary_spawn_points)
-	else if(length(secondary_spawn_points))
-		chosen_spawn_point = pick(secondary_spawn_points)
-	else
-		CRASH("Failed to find any AI spawn points.")
-	chosen_spawn_point.used = TRUE
-	return chosen_spawn_point
+	if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title])
+	var/area/spawn_area = GLOB.areas_by_type[/area/station/ai/satellite/chamber]
+	if(!spawn_area)
+		return ..()
 
-/datum/job/human_ai/special_check_latejoin(client/latejoin_client)
-	for(var/obj/structure/ai_core/latejoin_inactive/latejoin_core as anything in GLOB.latejoin_ai_cores)
-		if(latejoin_core.is_available())
-			return TRUE
-	return FALSE
+	var/list/available_turfs = list()
+	for(var/turf/open/floor/spawn_turf in spawn_area.get_turfs_from_all_zlevels())
+		if((locate(/obj/effect/landmark/start/ai) in spawn_turf) || (locate(/obj/structure/ai_core) in spawn_turf))
+			continue
+		if(is_safe_turf(spawn_turf, extended_safety_checks = TRUE))
+			available_turfs += spawn_turf
+	return length(available_turfs) ? pick(available_turfs) : ..()
 
 /datum/job/human_ai/announce_job(mob/living/joining_mob)
 	. = ..()
 	if(SSticker.HasRoundStarted())
-		minor_announce("Из-за неудачного опыта [joining_mob] был отправлен в качестве замены вашего ИИ в [AREACOORD(joining_mob)]. Пожалуйста, относитесь к нему с уважанием.")
+		minor_announce("[joining_mob] прибыл для помощи станционному ИИ. Место прибытия: [AREACOORD(joining_mob)].")
 
 /datum/job/human_ai/get_radio_information()
 	return "<b>Prefix your message with :b to speak with cyborgs.</b>"
@@ -117,7 +103,7 @@
 	. = ..()
 	if(visuals_only)
 		return
-	if(is_safe_turf(equipped.loc, dense_atoms = TRUE)) //skip this if it's safe. We allow dense atoms because we spawn out of the inactive core.
+	if(is_safe_turf(equipped.loc, dense_atoms = TRUE))
 		return
 	if(isnull(equipped.dna.species.outfit_important_for_life)) //custom species stuff will handle this for us.
 		internals_slot = ITEM_SLOT_SUITSTORE

@@ -82,3 +82,20 @@
 
 Состав [шкафчиков](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/sierra/structures/closets/exploration.dm)
 по Sierra, переписан на системах TG. Авторство SierraBay/Baystation, лицензия графики CC BY-SA 3.0.
+
+## Иконки маппинга
+
+`mapping.dmi` — перекраска штатных иконок TG/BandaStation из `icons/area/areas_station.dmi`
+(`lounge`, `storage`, `cargo_office`, надпись кабинета заменена на EXP) и
+`icons/effects/mapping_helpers.dmi` (`access_helper_eng`). Лицензия CC BY-SA 3.0.
+
+## Шлюзы и табличка отдела
+
+`airlock.dmi` — перекраска местного инженерного шлюза с буквой E
+`modular_bandastation/aesthetics/airlocks/icons/station/engineering.dmi` в тёмно-пурпурный и графитовый.
+Сохранены исходные кадры и тайминги анимаций. Локальный исходник BandaStation —
+коммит `c38ef4d9f27` (dj-34, «Update fake airlocks sprites to ours (#1445)»).
+
+`signs.dmi`, `expedition` — рамка таблички TG `icons/obj/signs.dmi`, `xenobio2`,
+с оригинальной пиксельной эмблемой компаса со звездой и надписью EXP, Primera, 2026-11-14.
+Лицензия графики CC BY-SA 3.0.

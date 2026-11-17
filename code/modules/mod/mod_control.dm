@@ -838,4 +838,9 @@
 	SEND_SIGNAL(src, COMSIG_MOD_GET_VISOR_OVERLAY, standing, overrides)
 	if (length(overrides))
 		return overrides[1]
-	return mutable_appearance(worn_icon, "[skin]-helmet-visor", layer = standing.layer + 0.1)
+	var/visor_state = "[skin]-helmet-visor"
+	var/visor_icon = worn_icon
+	if(wearer?.get_bodypart(BODY_ZONE_HEAD)?.limb_id == SPECIES_RESOMI)
+		var/obj/item/helmet = get_part_from_slot(ITEM_SLOT_HEAD)
+		visor_icon = helmet?.get_species_worn_icon(SPECIES_RESOMI, visor_state, ITEM_SLOT_HEAD) || worn_icon
+	return mutable_appearance(visor_icon, visor_state, layer = standing.layer + 0.1)

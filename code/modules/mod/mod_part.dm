@@ -52,7 +52,7 @@
 			else
 				species_id = wearer.dna?.species?.id
 	// AI EDIT START - Render exposed MOD clothing using its actual equipment slot
-	var/species_icon = overslotting.get_species_worn_icon(species_id, overslotting.get_worn_icon_state(checked_slot))
+	var/species_icon = overslotting.get_species_worn_icon(species_id, overslotting.get_worn_icon_state(checked_slot), checked_slot)
 	var/mutable_appearance/worn_overlay = overslotting.build_worn_icon(default_layer = -draw_target.layer + 0.1, default_icon_file = get_default_icon_by_slot(checked_slot), override_file = species_icon, bodyshape = bodyshape, slot_id = checked_slot)
 	// AI EDIT END
 	// BANDASTATION EDIT END - Species clothing icons

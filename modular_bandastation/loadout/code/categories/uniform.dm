@@ -185,6 +185,31 @@
 	item_path = /obj/item/clothing/under/rank/civilian/purple_bartender
 
 // MARK: Tier 1
+/datum/loadout_item/uniforms/primera_villager
+	name = "Костюм деревенского жителя"
+	item_path = /obj/item/clothing/under/costume/primera/villager
+	donator_level = DONATOR_TIER_1
+
+/datum/loadout_item/uniforms/primera_villager_dress
+	name = "Деревенское платье"
+	item_path = /obj/item/clothing/under/costume/primera/villager_dress
+	donator_level = DONATOR_TIER_1
+
+/datum/loadout_item/uniforms/primera_villager_sailor
+	name = "Матросский костюм"
+	item_path = /obj/item/clothing/under/costume/primera/villager_sailor
+	donator_level = DONATOR_TIER_1
+
+/datum/loadout_item/uniforms/primera_bubba
+	name = "Костюм Буббы"
+	item_path = /obj/item/clothing/under/costume/primera/bubba
+	donator_level = DONATOR_TIER_1
+
+/datum/loadout_item/uniforms/primera_sailor
+	name = "Платье Сейлор"
+	item_path = /obj/item/clothing/under/costume/primera/sailor
+	donator_level = DONATOR_TIER_1
+
 /datum/loadout_item/uniforms/etamin_suit
 	name = "Костюм Etamin Industries"
 	item_path = /obj/item/clothing/under/rank/etamin_ind/suit
@@ -196,12 +221,37 @@
 	donator_level = DONATOR_TIER_1
 
 // MARK: Tier 2
+/datum/loadout_item/uniforms/primera_mel
+	name = "Платье Мэл"
+	item_path = /obj/item/clothing/under/costume/primera/mel
+	donator_level = DONATOR_TIER_2
+
+/datum/loadout_item/uniforms/primera_tyler
+	name = "Костюм Тайлера"
+	item_path = /obj/item/clothing/under/costume/primera/tyler
+	donator_level = DONATOR_TIER_2
+
 /datum/loadout_item/uniforms/etamin_skirt_alt
 	name = "Юбка \"Солнце\" Etamin Industries"
 	item_path = /obj/item/clothing/under/rank/etamin_ind/skirt_alt
 	donator_level = DONATOR_TIER_2
 
 // MARK: Tier 3
+/datum/loadout_item/uniforms/primera_jinx
+	name = "Костюм Джинкс"
+	item_path = /obj/item/clothing/under/costume/primera/jinx
+	donator_level = DONATOR_TIER_3
+
+/datum/loadout_item/uniforms/primera_joker
+	name = "Костюм Джокера"
+	item_path = /obj/item/clothing/under/costume/primera/joker
+	donator_level = DONATOR_TIER_3
+
+/datum/loadout_item/uniforms/primera_silco
+	name = "Костюм Силко"
+	item_path = /obj/item/clothing/under/costume/primera/silco
+	donator_level = DONATOR_TIER_3
+
 /datum/loadout_item/uniforms/maid_costume
 	name = "Костюм горничной"
 	item_path = /obj/item/clothing/under/costume/maid

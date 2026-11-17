@@ -37,6 +37,7 @@
 		/datum/design/board/stationtrauma_ship_generator,
 		/datum/design/board/stationtrauma_plasma_core,
 		/datum/design/board/stationtrauma_plasma_converter,
+		/datum/design/board/stationtrauma_compact_core,
 	)
 
 /obj/machinery/computer/stationtrauma_space_navigation/post_machine_initialize()

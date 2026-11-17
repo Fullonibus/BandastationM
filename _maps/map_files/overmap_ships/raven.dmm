@@ -111,15 +111,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
-"ap" = (
-/obj/machinery/light/directional/north,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/structure/closet/secure_closet/expedition/engineer,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
 "aq" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Emergency Shutle Engineering";
@@ -348,9 +339,14 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
 "aM" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
+/obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/airalarm/directional/north,
+/obj/structure/closet/secure_closet/engineering_electrical,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/life_support)
 "aN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
@@ -959,6 +955,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
+"cg" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/closet/crate/specimen,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "ch" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -1044,8 +1049,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/airalarm/directional/north,
-/obj/structure/rack/gunrack,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/stationtrauma_space/raven/brig)
 "ct" = (
@@ -1053,13 +1058,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
-"cu" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/item/radio/intercom/directional/west,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "cv" = (
 /obj/structure/cable/layer1,
 /obj/structure/cable,
@@ -1072,13 +1070,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
-"cw" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "cx" = (
 /obj/machinery/button/door/directional/south{
 	id = "raven_core_shutters";
@@ -1094,6 +1085,14 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+"cz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/radio/intercom/directional/west,
+/obj/structure/rack,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "cA" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -1101,11 +1100,58 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
+"cB" = (
+/obj/structure/table/reinforced,
+/obj/item/field_collector{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/field_collector{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/item/field_collector{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
+"cC" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/storage/field_bolts{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/item/storage/field_bolts{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/obj/item/storage/field_bolts{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/storage/field_bolts{
+	pixel_x = 5;
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "cD" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
+"cE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "cG" = (
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/stationtrauma_bluespace_drive{
@@ -1642,15 +1688,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
-"ho" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/obj/structure/closet/crate/stationtrauma_space_eva,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "hp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -1723,11 +1760,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 2
 	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"hG" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
 "hM" = (
@@ -2638,22 +2670,6 @@
 /obj/effect/turf_decal/stripes/full,
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/combustion)
-"QZ" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/item/field_collector,
-/obj/item/field_collector,
-/obj/item/storage/field_bolts,
-/obj/item/storage/field_bolts,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
 
 (1,1,1) = {"
 ab
@@ -2765,8 +2781,8 @@ ab
 ab
 bu
 bD
-cw
-cu
+cC
+cz
 eH
 eI
 bD
@@ -2834,7 +2850,7 @@ gz
 bD
 cl
 gB
-aM
+cB
 gD
 gE
 gF
@@ -2866,7 +2882,7 @@ gS
 gT
 bj
 gz
-cs
+cE
 gW
 gX
 gY
@@ -2886,7 +2902,7 @@ he
 ch
 ar
 ey
-ap
+aM
 hi
 br
 ck
@@ -2901,7 +2917,7 @@ hm
 bh
 gz
 bD
-ho
+cs
 hp
 hq
 bD
@@ -2942,7 +2958,7 @@ dA
 hE
 hF
 gH
-cU
+cg
 cT
 bU
 hM
@@ -3010,7 +3026,7 @@ ix
 iy
 hb
 iz
-QZ
+cV
 gI
 cS
 cJ

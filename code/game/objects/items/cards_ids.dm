@@ -77,6 +77,8 @@
 
 	/// The job name registered on the card (for example: Assistant).
 	var/assignment
+	/// A job's public variant title, tied to the trim that was issued at spawn.
+	var/job_variant_title
 
 	/// Trim datum associated with the card. Controls which job icon is displayed on the card and which accesses do not require wildcards.
 	var/datum/id_trim/trim
@@ -875,7 +877,13 @@
 
 /// Returns the trim assignment name.
 /obj/item/card/id/proc/get_trim_assignment()
-	return trim?.assignment || assignment
+	return job_variant_title || trim?.assignment || assignment
+
+/obj/item/card/id/proc/clear_job_variant_title()
+	if(!job_variant_title)
+		return
+	assignment = trim?.assignment
+	job_variant_title = null
 
 /// Returns the trim sechud icon state.
 /obj/item/card/id/proc/get_trim_sechud_icon()

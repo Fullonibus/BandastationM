@@ -82,30 +82,11 @@ GAME_VERB_DESC(/client, fix_title_screen, "Fix Lobby Screen", "Lobbyscreen broke
 	if(SSticker.current_state >= GAME_STATE_SETTING_UP)
 		return
 
-	if(locate(/datum/station_trait/xenobureaucracy_error) in GLOB.lobby_station_traits)
-		return
-
-	var/prefs_species = src.prefs.read_preference(/datum/preference/choiced/species)
-	var/list/prefs_jobs = src.prefs.job_preferences
-	var/list/job_restrictions = CONFIG_GET(str_list/job_restrictions)
-	var/list/allowed_species = CONFIG_GET(str_list/allowed_species)
-
-	if(!prefs_species)
-		return
-
-	if(allowed_species && length(allowed_species))
-		if("[prefs_species]" in allowed_species)
-			return
-
-	for(var/job_id in prefs_jobs)
-		if(job_id in job_restrictions)
-			to_chat(src, span_alertwarning("Выбранная раса несовместима с одной или более выбранных профессий."))
-			SStitle.title_output(src, FALSE, "toggleReady")
-			if(!usr)
-				return
-			var/mob/dead/new_player/player = usr
-			player.ready = PLAYER_NOT_READY
-			return
+	var/mob/dead/new_player/player = mob
+	if(istype(player) && prefs.has_species_restricted_job_preferences())
+		to_chat(src, span_alertwarning("Раса назначенного персонажа несовместима с одной или более выбранных профессий."))
+		SStitle.title_output(src, FALSE, "toggleReady")
+		player.ready = PLAYER_NOT_READY
 
 /datum/client_interface/proc/validate_job_restrictions()
 	return TRUE

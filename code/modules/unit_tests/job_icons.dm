@@ -3,7 +3,7 @@
 
 /datum/unit_test/job_icons/Run()
 	for(var/datum/job/job as anything in subtypesof(/datum/job))
-		if(!(job::job_flags & JOB_CREW_MANIFEST))
+		if(job == job::abstract_type || !(job::job_flags & JOB_CREW_MANIFEST))
 			continue
 		if(isnull(job::tgui_icon))
 			TEST_FAIL("[job::type] ([job::title]) does not have a valid job icon.")

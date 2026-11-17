@@ -196,7 +196,7 @@
 	#define TREAT_TTS_FILTER_ARG 3
 	#define TREAT_CAPITALIZE_MESSAGE 4
 
-/// From mob/living/send_speech(): (atom/source, list/listeners)
+/// From mob/living/send_speech(): (mob/living/source, list/listeners, list/message_mods, message_range, atom/speech_origin)
 #define COMSIG_LIVING_SEND_SPEECH "living_send_speech"
 
 ///From obj/item/toy/crayon/spraycan

@@ -1,3 +1,5 @@
+#define SPACEPOD_CAMERA_VIEW_BONUS 10
+
 /obj/vehicle/sealed/spacepod/generate_actions()
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/spacepod/status)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/spacepod/eject)
@@ -7,6 +9,7 @@
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/systems, VEHICLE_CONTROL_SETTINGS)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/brakes, VEHICLE_CONTROL_SETTINGS)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/turbo, VEHICLE_CONTROL_SETTINGS)
+	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/camera_zoom, VEHICLE_CONTROL_DRIVE)
 
 /datum/action/vehicle/sealed/spacepod
 	button_icon = 'icons/mob/actions/actions_mecha.dmi'
@@ -80,7 +83,7 @@
 
 /datum/action/vehicle/sealed/spacepod/brakes
 	name = "Тормоз челнока"
-	desc = "Включает или отключает тормозную тягу. Для торможения нужен заряд батареи."
+	desc = "Гасит инерцию, когда отпущены клавиши движения. Встречная тяга расходует вдвое больше заряда при той же силе."
 	button_icon_state = "mech_safeties_off"
 
 /datum/action/vehicle/sealed/spacepod/brakes/Grant(mob/grant_to)
@@ -92,7 +95,7 @@
 	if(. && pod.can_control(owner) && pod.flight.toggle_brakes())
 		button_icon_state = pod.flight.brakes ? "mech_safeties_on" : "mech_safeties_off"
 		build_all_button_icons()
-		pod.balloon_alert(owner, pod.flight.brakes ? "тормоз включён" : "тормоз выключен")
+		pod.balloon_alert(owner, pod.flight.brakes ? "автотормоз включён" : "автотормоз выключен")
 
 /datum/action/vehicle/sealed/spacepod/turbo
 	name = "ТУРБО"
@@ -109,6 +112,64 @@
 		button_icon_state = pod.flight.turbo ? "mech_overload_on" : "mech_overload_off"
 		build_all_button_icons()
 		pod.balloon_alert(owner, pod.flight.turbo ? "турбо включено" : "турбо выключено")
+
+/datum/action/vehicle/sealed/spacepod/camera_zoom
+	name = "Отдалить камеру"
+	desc = "Расширяет обзор вокруг челнока. Повторное нажатие возвращает прежний масштаб."
+	button_icon_state = "mech_zoom_off"
+	check_flags = AB_CHECK_CONSCIOUS
+	/// The viewport this action changed, even if the pilot has since lost their client.
+	var/datum/view_data/zoomed_view
+	/// View offsets after applying the zoom, used to detect an override by another effect.
+	var/zoomed_width
+	/// See zoomed_width.
+	var/zoomed_height
+
+/datum/action/vehicle/sealed/spacepod/camera_zoom/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	var/client/viewer = owner?.client
+	if(!. || !viewer?.view_size || viewer.eye != pod || !pod?.can_control(owner))
+		return FALSE
+	if(zoomed_view)
+		restore_view(owner)
+		return TRUE
+
+	zoomed_view = viewer.view_size
+	zoomed_width = zoomed_view.width + SPACEPOD_CAMERA_VIEW_BONUS
+	zoomed_height = zoomed_view.height + SPACEPOD_CAMERA_VIEW_BONUS
+	RegisterSignal(owner, COMSIG_MOB_LOGOUT, PROC_REF(on_view_lost))
+	RegisterSignal(owner, COMSIG_VIEWDATA_UPDATE, PROC_REF(on_view_size_changed))
+	RegisterSignal(viewer, COMSIG_CLIENT_SET_EYE, PROC_REF(on_view_lost))
+	button_icon_state = "mech_zoom_on"
+	zoomed_view.add(SPACEPOD_CAMERA_VIEW_BONUS)
+	build_all_button_icons()
+
+/datum/action/vehicle/sealed/spacepod/camera_zoom/Remove(mob/remove_from)
+	restore_view(remove_from)
+	return ..()
+
+/datum/action/vehicle/sealed/spacepod/camera_zoom/proc/on_view_lost()
+	SIGNAL_HANDLER
+	restore_view(owner)
+
+/datum/action/vehicle/sealed/spacepod/camera_zoom/proc/on_view_size_changed()
+	SIGNAL_HANDLER
+	if(zoomed_view && (zoomed_view.width != zoomed_width || zoomed_view.height != zoomed_height))
+		restore_view(owner)
+
+/datum/action/vehicle/sealed/spacepod/camera_zoom/proc/restore_view(mob/pilot)
+	if(!zoomed_view)
+		return
+	var/datum/view_data/previous_view = zoomed_view
+	zoomed_view = null
+	var/client/viewer = previous_view.chief
+	UnregisterSignal(pilot, list(COMSIG_MOB_LOGOUT, COMSIG_VIEWDATA_UPDATE))
+	if(!QDELETED(viewer))
+		UnregisterSignal(viewer, COMSIG_CLIENT_SET_EYE)
+		if(viewer.mob && previous_view.width == zoomed_width && previous_view.height == zoomed_height)
+			previous_view.add(-SPACEPOD_CAMERA_VIEW_BONUS)
+	button_icon_state = "mech_zoom_off"
+	build_all_button_icons()
 
 /// Mouse steering is scoped to a conscious pilot inside their own pod.
 /client/MouseMove(object, location, control, params)
@@ -171,3 +232,5 @@
 			pod.checkSeat(owner)
 		if("Сканировать сектор")
 			pod.startScan(owner)
+
+#undef SPACEPOD_CAMERA_VIEW_BONUS

@@ -288,6 +288,31 @@ html.loading {
   margin: var(--indent-default);
 }
 
+.lobby-antag-row {
+  display: flex;
+  gap: 3px;
+
+  .lobby-toggle_antag_roll {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .lobby-antag_tokens {
+    min-width: 3.5rem;
+    text-align: center;
+    color: var(--color-text-gold);
+
+    &.selected {
+      border-color: var(--color-text-gold);
+      background-color: var(--color-hover);
+    }
+
+    .lobby-text:before {
+      content: "\f51e";
+    }
+  }
+}
+
 .lobby_buttons-end {
   display: flex;
   gap: var(--indent-default);

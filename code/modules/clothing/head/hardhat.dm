@@ -170,7 +170,10 @@
 		return
 
 	if(!up)
-		. += mutable_appearance('icons/mob/clothing/head/utility.dmi', visor_state)
+		var/visor_icon = 'icons/mob/clothing/head/utility.dmi'
+		if(icon_file == 'icons/bandastation/mob/species/resomi/clothing/head.dmi' && icon_exists(icon_file, visor_state))
+			visor_icon = icon_file
+		. += mutable_appearance(visor_icon, visor_state)
 
 /obj/item/clothing/head/utility/hardhat/welding/update_overlays()
 	. = ..()

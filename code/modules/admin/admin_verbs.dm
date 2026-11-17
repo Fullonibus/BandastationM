@@ -128,6 +128,11 @@ ADMIN_VERB(check_antagonists, R_ADMIN, "Check Antagonists", "See all antagonists
 		message_admins("[key_name_admin(user)] checked antagonists.")
 	BLACKBOX_LOG_ADMIN_VERB("Check Antagonists")
 
+ADMIN_VERB(antag_winloss_stats, R_ADMIN, "Antagonist Win/Loss Stats", "View antagonist win/loss statistics and round results.", ADMIN_CATEGORY_GAME)
+	user.holder.open_antag_winloss_stats(user.mob)
+	log_admin("[key_name(user)] viewed antagonist win/loss stats.")
+	BLACKBOX_LOG_ADMIN_VERB("Antagonist Win/Loss Stats")
+
 ADMIN_VERB(list_bombers, R_ADMIN, "List Bombers", "Look at all bombs and their likely culprit.", ADMIN_CATEGORY_GAME)
 	user.holder.list_bombers()
 	BLACKBOX_LOG_ADMIN_VERB("List Bombers")
@@ -609,7 +614,7 @@ ADMIN_VERB(spawn_debug_full_crew, R_DEBUG, "Spawn Debug Full Crew", "Creates a f
 		new_guy.mind.name = "[rank] Dummy"
 
 		// Assign the rank to the new player dummy.
-		if(!SSjob.assign_role(new_guy, job, do_eligibility_checks = FALSE))
+		if(!SSjob.assign_role(new_guy, job, do_eligibility_checks = FALSE, debug_spawn = TRUE))
 			qdel(new_guy)
 			to_chat(user, "[rank] wasn't able to be spawned.")
 			continue

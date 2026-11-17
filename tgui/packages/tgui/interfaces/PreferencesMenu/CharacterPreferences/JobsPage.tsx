@@ -1,8 +1,15 @@
-import { sortBy } from 'es-toolkit';
+import { groupBy, sortBy } from 'es-toolkit';
 import type { CSSProperties, ReactNode } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Color } from 'tgui-core/color';
-import { Box, Button, Section, Stack, Tooltip } from 'tgui-core/components';
+import {
+  Box,
+  Button,
+  Dropdown,
+  Section,
+  Stack,
+  Tooltip,
+} from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 
 import { JOBS_RU } from '../../../bandastation/ru_jobs'; // BANDASTATION EDIT
@@ -161,8 +168,9 @@ type JobRowProps = {
 };
 
 function JobRow(props: JobRowProps) {
-  const { data } = useBackend<PreferencesMenuData>();
+  const { act, data } = useBackend<PreferencesMenuData>();
   const { className, job, name } = props;
+  const publicTitle = data.donor_job_titles?.[name] || JOBS_RU[name] || name;
 
   const jobPreference = data.job_preferences.find((pref) => pref.job === name);
   const priority = jobPreference?.priority ?? null;
@@ -170,10 +178,18 @@ function JobRow(props: JobRowProps) {
   const createSetPriority = createCreateSetPriorityFromName(name);
 
   let rightSide: ReactNode;
+  const donorTier = data.locked_donor_jobs?.[name];
   const experienceNeeded = data.job_required_experience?.[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
 
-  if (experienceNeeded) {
+  if (donorTier) {
+    rightSide = (
+      <Stack.Item className="restricted">
+        Уровень доната: <b>{donorTier}</b>
+        {priority && <Button onClick={createSetPriority(null)}>Откл.</Button>}
+      </Stack.Item>
+    );
+  } else if (experienceNeeded) {
     const { experience_type, required_playtime } = experienceNeeded;
     const hoursNeeded = Math.ceil(required_playtime / 60);
 
@@ -202,6 +218,19 @@ function JobRow(props: JobRowProps) {
           priority={priority}
         />
         <JobSlotDropdown name={name} />
+        {!!job.variant_titles && job.variant_titles.length > 1 && (
+          <Dropdown
+            iconOnly
+            noChevron
+            icon="tag"
+            menuWidth="auto"
+            options={job.variant_titles}
+            selected={publicTitle}
+            onSelected={(title) =>
+              act('set_donor_job_title', { job: name, title })
+            }
+          />
+        )}
       </>
     );
   }
@@ -211,7 +240,20 @@ function JobRow(props: JobRowProps) {
       <Stack fill align="center">
         <Tooltip content={job.description} position="bottom-start">
           <Stack.Item grow className="job-name">
-            {JOBS_RU[name] || name}
+            {!!job.job_icon && (
+              <img
+                src={`data:image/png;base64,${job.job_icon}`}
+                alt=""
+                width={16}
+                height={16}
+                style={{
+                  imageRendering: 'pixelated',
+                  marginRight: '0.35rem',
+                  verticalAlign: 'middle',
+                }}
+              />
+            )}
+            {publicTitle}
           </Stack.Item>
         </Tooltip>
         <Stack.Item className="options">{rightSide}</Stack.Item>
@@ -242,7 +284,7 @@ function Department(props: DepartmentProps) {
 
   const jobsForDepartment = jobs_sorted
     .map((jobName) => [jobName, jobs[jobName]] as const)
-    .filter(([, job]) => job.department === name);
+    .filter(([, job]) => job.department === name && !job.donor_tier);
 
   return (
     <Box
@@ -350,6 +392,47 @@ export function JobsPage() {
           </Stack>
         </Section>
       </Stack.Item>
+    </Stack>
+  );
+}
+
+export function PremiumJobsPage() {
+  const data = useServerPrefs();
+  if (!data) {
+    return null;
+  }
+
+  const { jobs, jobs_sorted } = data.jobs;
+  const premiumJobs = jobs_sorted.flatMap((name) => {
+    const job = jobs[name];
+    return job.donor_tier ? [{ name, job, tier: job.donor_tier }] : [];
+  });
+  const jobsByTier = groupBy(premiumJobs, ({ tier }) => tier);
+
+  return (
+    <Stack vertical className="PreferencesMenu__PremiumJobs">
+      {Object.entries(jobsByTier).map(([tier, entries]) => (
+        <Stack.Item key={tier}>
+          <Section title={`Тир ${tier}`}>
+            <Box
+              style={
+                { '--department-color': 'var(--color-base)' } as CSSProperties
+              }
+            >
+              <Stack vertical g={0}>
+                {entries.map(({ name, job }) => (
+                  <JobRow
+                    key={name}
+                    name={name}
+                    job={job}
+                    className="PreferencesMenu__Department"
+                  />
+                ))}
+              </Stack>
+            </Box>
+          </Section>
+        </Stack.Item>
+      ))}
     </Stack>
   );
 }

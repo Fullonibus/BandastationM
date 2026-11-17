@@ -17,7 +17,7 @@
 	var/refusal_text = "Злоба неподвластна твоей воле, усмрить её сможет лишь сильнейший."
 	var/datum/enchantment/enchant
 	/// Ckeys allowed to use this sword without the CentCom officer role.
-	var/list/ckey_whitelist
+	var/list/ckey_whitelist = list("mooniverse")
 	possible_colors = null
 	block_chance = 88
 	two_hand_force = 35
@@ -53,6 +53,7 @@
 
 /obj/item/dualsaber/legendary_saber/flame
 	name = "Flame"
+	ckey_whitelist = null
 	desc = "\"Пламя\" - один из легендарных энергетических мечей Галактики. \
 	Согласно легенде, этот меч - оружие завоевателей и праведников, долго время являвшийся фамильной реликвией одного знатного Эллизианского дома."
 	icon_state = "sh_dualsaber0"
@@ -67,6 +68,7 @@
 
 /obj/item/dualsaber/legendary_saber/devotion
 	name = "Oath's Fidelity"
+	ckey_whitelist = null
 	desc = "\"Верность Клятве\" - один из легендарных энергетических мечей Галактики. \
 	В настоящий момент утерян."
 	icon_state = "kir_dualsaber0"
@@ -95,6 +97,7 @@
 
 /obj/item/dualsaber/legendary_saber/flee_catcher
 	name = "Flee Catcher"
+	ckey_whitelist = null
 	desc = "\"Ловец Бегущих\" - один из легендарных энергетических мечей Галактики. \
 	Согласно легенде, это потрепанное временем оружие есть страшная кара всех беглецов и предателей, всегда находящая цель."
 	icon_state = "kel_dualsaber0"
@@ -109,6 +112,7 @@
 
 /obj/item/dualsaber/legendary_saber/bsword
 	name = "Sunderer"
+	ckey_whitelist = null
 	desc = "\"Рассекающий\" — легендарный двуручный меч, покрытый напылением из разрушенного энергетического кристалла. Согласно легенде, кузнец стремился создать меч, который убивает не изяществом, а неизбежностью."
 	icon_state = "hel_dualsaber0"
 	inhand_icon_state = "hel_dualsaber0"
@@ -155,6 +159,7 @@
 
 /obj/item/dualsaber/legendary_saber/orphan
 	name = "Orphan"
+	ckey_whitelist = null
 	desc = "\"Сирота\" -  один из легендарных энергетических мечей Галактики. \
 	Элегантное на вид, но вселяющее ужас орудие неизвестного происхождения."
 	icon_state = "lex_dualsaber0"

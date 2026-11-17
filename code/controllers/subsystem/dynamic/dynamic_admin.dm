@@ -84,6 +84,7 @@ ADMIN_VERB(dynamic_panel, R_ADMIN, "Dynamic Panel", "Mess with dynamic.", ADMIN_
 	data["next_dynamic_tick"] = SSdynamic.next_fire ? SSdynamic.next_fire - world.time : SSticker.GetTimeLeft()
 
 	data["antag_events_enabled"] = SSdynamic.antag_events_enabled
+	data["antag_tokens_enabled"] = SSdynamic.antag_tokens_enabled
 
 	return data
 
@@ -109,6 +110,18 @@ ADMIN_VERB(dynamic_panel, R_ADMIN, "Dynamic Panel", "Mess with dynamic.", ADMIN_
 	if(.)
 		return
 	switch(action)
+		if("toggle_antag_tokens")
+			SSdynamic.antag_tokens_enabled = !SSdynamic.antag_tokens_enabled
+			if(!SSdynamic.antag_tokens_enabled)
+				SScentral.antag_token_requests.Cut()
+				SScentral.antag_token_selecting.Cut()
+				SSdynamic.cancel_antag_token_rulesets()
+				for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
+					SScentral.update_antag_token_lobby(player.ckey)
+			message_admins("[key_name_admin(ui.user)] [SSdynamic.antag_tokens_enabled ? "включил" : "выключил"] антагонистов за антаг токены.")
+			log_admin("[key_name(ui.user)] [SSdynamic.antag_tokens_enabled ? "enabled" : "disabled"] antag token roles.")
+			SStgui.update_uis(SScentral)
+			return TRUE
 		if("remove_queued_ruleset")
 			var/index = params["ruleset_index"]
 			if(length(SSdynamic.queued_rulesets) < index)

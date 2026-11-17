@@ -8,6 +8,7 @@
 	overlay_icon_state = "bg_alien_border"
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "wrap_0"
+	active_icon_state = "wrap_1"
 	click_to_activate = TRUE
 	ranged_mousepointer = 'icons/effects/mouse_pointers/wrap_target.dmi'
 	shared_cooldown = NONE
@@ -40,7 +41,6 @@
 		return
 
 	on_who.balloon_alert(on_who, "prepared to wrap")
-	button_icon_state = "wrap_1"
 	build_all_button_icons()
 
 /datum/action/cooldown/mob_cooldown/wrap/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
@@ -50,7 +50,6 @@
 
 	if (refund_cooldown)
 		on_who.balloon_alert(on_who, "wrap cancelled")
-	button_icon_state = "wrap_0"
 	build_all_button_icons()
 
 /datum/action/cooldown/mob_cooldown/wrap/Activate(atom/to_wrap)

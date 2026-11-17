@@ -1,0 +1,39 @@
+Worn Resomi clothing adapted from SierraBay12 at
+40edecd4203679a060f826f00ff773964582a4c2, whose Resomi module is based on Infinity.
+https://github.com/SierraBay/SierraBay12/tree/40edecd4203679a060f826f00ff773964582a4c2/mods/resomi/icons/clothing
+See ../attributions.txt for source credits and the CC BY-SA 3.0 license.
+
+Changes: selected corresponding item sprites, renamed equivalent states for
+PrimeDream, retained the first fitted version of repeated states, and mirrored
+the headset for the left slot. Composited the source hardhat lamp effect for lit
+states. Split the fitted jumpsuit and sneakers into the existing recolorable
+layers. Fitted the native rolled uniform variants and welding visor to Resomi.
+PrimeDream source for the latter states: icons/mob/clothing/under/color.dmi and
+icons/mob/clothing/head/utility.dmi.
+
+The fitted underwear sheet derives from PrimeDream's icons/mob/clothing/underwear.dmi.
+It retains the selectable state names, palette pixels and directions. Existing
+styles were fitted at the shoulders, waist and legs to follow the Resomi silhouette.
+
+The additional fitted clothing uses PrimeDream worn artwork, including the
+64-pixel shoes in icons/mob/large-worn-icons/64x64/feet.dmi. Other sources are
+icons/mob/clothing, icons/obj/clothing/head/beret.dmi and the modular wintercoat
+and hood sheets. The adapted states retain the native palettes and animations.
+
+Further fitted states use native PrimeDream worn artwork for departmental
+clothes, masks, glasses, spacesuits, neckwear, backpack equipment and suit
+storage. Base sprites, active variants and overlay layers retain their original
+state names and colors.
+
+seifuku_gags.dmi adapts the school uniform layers from PrimeDream's
+icons/mob/clothing/under/costume.dmi. The same pixel mapping is applied to the
+shirt, ribbon and skirt in both worn styles to preserve their GAGS colors.
+
+The generated/ sheets use the native PrimeDream worn sprites listed in
+modular_bandastation/species/code/clothing/resomi_generated.dm. GAGS variants
+inherit the original configuration and palette layers. The generator remaps
+pixels for Resomi proportions and retains the original animation metadata.
+
+The nitrogen tank worn state combines the standard oxygen tank silhouette in
+icons/mob/clothing/back.dmi with the paint colors from the native nitrogen tank
+in modular_bandastation/species/icons/tanks/tank.dmi.

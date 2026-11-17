@@ -43,6 +43,7 @@
 
 	var/list/records = list()
 	for(var/datum/record/crew/target in GLOB.manifest.general)
+		var/datum/job/job = SSjob.get_job(job_title_ru_to_en(target.trim))
 		var/list/notes = list()
 		for(var/datum/medical_note/note in target.medical_notes)
 			notes += list(list(
@@ -58,6 +59,7 @@
 			crew_ref = REF(target),
 			dna = target.dna_string,
 			gender = target.gender,
+			job_icon = job?.tgui_icon,
 			major_disabilities = target.major_disabilities_desc,
 			minor_disabilities = target.minor_disabilities_desc,
 			physical_status = target.physical_status,

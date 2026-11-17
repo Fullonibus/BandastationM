@@ -8,6 +8,9 @@
 #define JOB_UNAVAILABLE_ANTAG_INCOMPAT 6
 /// Checks for character age.
 #define JOB_UNAVAILABLE_AGE 7
+#define JOB_UNAVAILABLE_DONATOR 8
+#define JOB_UNAVAILABLE_PROFILE 9
+#define JOB_UNAVAILABLE_SPECIES 10
 
 /// Used when the `get_job_unavailable_error_message` proc can't make sense of a given code.
 #define GENERIC_JOB_UNAVAILABLE_ERROR "Error: Unknown job availability."

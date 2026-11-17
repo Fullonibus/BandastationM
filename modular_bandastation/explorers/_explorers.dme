@@ -12,6 +12,7 @@
 #include "code\department.dm"
 #include "code\equipment.dm"
 #include "code\field_gear.dm"
+#include "code\fixtures.dm"
 #include "code\gps.dm"
 #include "code\jobs.dm"
 #include "code\journal.dm"

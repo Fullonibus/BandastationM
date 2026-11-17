@@ -2,16 +2,32 @@ Any time you make a change to the schema files, remember to increment the databa
 
 Make sure to also update `DB_MAJOR_VERSION_220` and `DB_MINOR_VERSION_220`, which can be found in `code/modular_bandastation/_defines220/code/defines/subsystems.dm`.
 
-The latest database version is 1.3; The query to update the schema revision table is:
+The latest database version is 1.4; The query to update the schema revision table is:
 
 ```sql
-INSERT INTO `schema_revision_220` (`major`, `minor`) VALUES (1, 3);
+INSERT INTO `schema_revision_220` (`major`, `minor`) VALUES (1, 4);
 ```
 
 or
 
 ```sql
-INSERT INTO `SS13_schema_revision_220` (`major`, `minor`) VALUES (1, 3);
+INSERT INTO `SS13_schema_revision_220` (`major`, `minor`) VALUES (1, 4);
+```
+
+---
+
+Version 1.4, 10 November 2026
+Created token accounts. Apply the table prefix used by your deployment to both table names.
+
+```sql
+CREATE TABLE IF NOT EXISTS `antag_tokens` (
+	`ckey` VARCHAR(32) NOT NULL,
+	`tokens` INT UNSIGNED NOT NULL DEFAULT 0,
+	`last_token_at` DATETIME NULL DEFAULT NULL,
+	PRIMARY KEY (`ckey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `schema_revision_220` (`major`, `minor`) VALUES (1, 4);
 ```
 
 ---

@@ -294,4 +294,43 @@
 /datum/dna_block/feature/vox_body_markings_color/apply_to_mob(mob/living/carbon/human/target, dna_hash)
 	target.dna.features[feature_key] = sanitize_hexcolor(get_block(dna_hash))
 
+/datum/dna_block/feature/accessory/resomi_crest
+	feature_key = FEATURE_RESOMI_CREST
+
+/datum/dna_block/feature/resomi_crest_color
+	parent_type = /datum/dna_block/feature/mutant_color
+	feature_key = FEATURE_RESOMI_CREST_COLOR
+
+/datum/dna_block/feature/accessory/resomi_markings
+	feature_key = FEATURE_RESOMI_MARKINGS
+
+/datum/dna_block/feature/resomi_markings_color
+	parent_type = /datum/dna_block/feature/mutant_color
+	feature_key = FEATURE_RESOMI_MARKINGS_COLOR
+
+/datum/dna_block/feature/drask_arm_spines_color
+	block_length = DNA_BLOCK_SIZE_COLOR
+	feature_key = FEATURE_DRASK_ARM_SPINES_COLOR
+
+/datum/dna_block/feature/drask_arm_spines_color/create_unique_block(mob/living/carbon/human/target)
+	return sanitize_hexcolor(target.dna.features[feature_key], include_crunch = FALSE)
+
+/datum/dna_block/feature/drask_arm_spines_color/apply_to_mob(mob/living/carbon/human/target, dna_hash)
+	target.dna.features[feature_key] = sanitize_hexcolor(get_block(dna_hash))
+
+/datum/dna_block/feature/drask_skin_tone
+	feature_key = FEATURE_DRASK_SKIN_TONE
+
+/datum/dna_block/feature/drask_skin_tone/create_unique_block(mob/living/carbon/human/target)
+	var/list/tones = GLOB.drask_skin_tones
+	var/tone_index = tones.Find(target.dna.features[feature_key]) || tones.Find("drask_mid")
+	return construct_block(tone_index, length(tones))
+
+/datum/dna_block/feature/drask_skin_tone/apply_to_mob(mob/living/carbon/human/target, dna_hash)
+	var/list/tones = GLOB.drask_skin_tones
+	var/tone_index = deconstruct_block(get_block(dna_hash), length(tones))
+	target.dna.features[feature_key] = tones[tone_index]
+	if(istype(target.dna.species, /datum/species/drask))
+		target.dna.features[FEATURE_MUTANT_COLOR] = get_drask_tone_color(tones[tone_index])
+
 // BANDASTATION ADD END - Species

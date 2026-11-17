@@ -84,6 +84,7 @@ GLOBAL_PROTECT(href_token)
 		alert_to_permissions_elevation_attempt(usr)
 		return QDEL_HINT_LETMELIVE
 	QDEL_NULL(path_debug)
+	QDEL_NULL(antag_winloss_panel)
 	return ..()
 
 /datum/admins/can_vv_get(var_name)
@@ -113,6 +114,7 @@ GLOBAL_PROTECT(href_token)
 	QDEL_NULL(plane_debug)
 	QDEL_NULL(appearance_debug)
 	QDEL_NULL(path_debug)
+	QDEL_NULL(antag_winloss_panel)
 	deadmined = TRUE
 
 	var/client/client = owner || GLOB.directory[target]

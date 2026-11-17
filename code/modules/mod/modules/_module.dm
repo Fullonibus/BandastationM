@@ -393,6 +393,22 @@
 	if (!added_overlays)
 		return
 
+	var/mob/living/carbon/human/wearer = mod.wearer
+	if(wearer)
+		var/slot = wearer.get_slot_by_item(source)
+		var/species_id = wearer.dna?.species?.id
+		switch(slot)
+			if(ITEM_SLOT_HEAD, ITEM_SLOT_MASK, ITEM_SLOT_EYES)
+				species_id = wearer.get_bodypart(BODY_ZONE_HEAD)?.limb_id
+			if(ITEM_SLOT_OCLOTHING)
+				species_id = wearer.get_bodypart(BODY_ZONE_CHEST)?.limb_id
+		if(species_id == SPECIES_RESOMI)
+			for(var/mutable_appearance/overlay as anything in added_overlays)
+				if(overlay.icon == overlay_icon_file)
+					var/fitted = get_generated_resomi_worn_icon(slot, overlay_icon_file, overlay.icon_state)
+					if(fitted)
+						overlay.icon = fitted
+
 	if (!mask_worn_overlay)
 		overlays += added_overlays
 		return

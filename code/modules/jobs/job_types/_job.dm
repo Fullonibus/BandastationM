@@ -29,6 +29,10 @@
 
 	/// How many players have this job
 	var/current_positions = 0
+	/// Minimum effective donation tier required to select this job. Zero means unrestricted.
+	var/required_donator_level = BASIC_DONATOR_LEVEL
+	/// Station trait that also opens this job to players below its donation tier.
+	var/datum/station_trait/job/donor_unlock_trait
 
 	/// Supervisors, who this person answers to directly
 	var/supervisors = ""
@@ -138,6 +142,14 @@
 
 	///If set, adds this as the job icon map (from fontawesome5)
 	var/tgui_icon
+
+/// Whether the player meets the job's donation or station trait requirement.
+/datum/job/proc/can_access_donor_job(client/player_client)
+	if(!required_donator_level)
+		return TRUE
+	if(donor_unlock_trait && (locate(donor_unlock_trait) in SSstation.station_traits))
+		return TRUE
+	return player_client && player_client.get_donator_level() >= required_donator_level
 
 /datum/job/New()
 	. = ..()
@@ -530,10 +542,10 @@
 		spawn_instance = new spawn_type(get_turf(spawn_point), player_client.mob, null, null, TRUE)
 	else
 		spawn_instance = spawn_point.JoinPlayerHere(spawn_type, TRUE)
-	spawn_instance.apply_prefs_job(player_client, src)
-	if(!player_client)
+	var/preference_status = spawn_instance.apply_prefs_job(player_client, src)
+	if(!player_client || (!isnull(preference_status) && preference_status == FALSE))
 		qdel(spawn_instance)
-		return // Disconnected while checking for the appearance ban.
+		return
 	return spawn_instance
 
 
@@ -542,9 +554,16 @@
 
 
 /mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
+	var/mob/dead/new_player/lobby_player = player_client.mob
+	var/datum/job_character_selection/selection = istype(lobby_player) ? lobby_player.assigned_job_character : null
 	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
 	if(!player_client)
-		return // Disconnected while checking for the appearance ban.
+		return FALSE
+	if(selection)
+		if(QDELETED(lobby_player) || lobby_player.assigned_job_character != selection || !job.can_access_donor_job(player_client))
+			return FALSE
+		if(player_client.prefs.default_slot != selection.slot && !player_client.prefs.load_character(selection.slot))
+			return FALSE
 
 	var/human_authority_setting = CONFIG_GET(string/human_authority)
 	var/require_human = FALSE
@@ -571,7 +590,7 @@
 
 	src.job = job.title
 
-	var/randomise_job_slot = player_client.prefs.set_assigned_slot(job.title, player_client.mob?.mind?.late_joiner) // BANDASTATION ADDITION - Pref Job Slots
+	var/randomise_job_slot = selection ? selection.randomized : player_client.prefs.set_assigned_slot(job.title, player_client.mob?.mind?.late_joiner)
 	if(fully_randomize || randomise_job_slot)  // BANDASTATION EDIT - Pref Job Slots - OLD: if(fully_randomize)
 		player_client.prefs.apply_prefs_to(src)
 
@@ -603,6 +622,7 @@
 			)
 	dna.update_dna_identity()
 	updateappearance()
+	return TRUE
 
 /mob/living/silicon/ai/apply_prefs_job(client/player_client, datum/job/job)
 	if(GLOB.current_anonymous_theme)

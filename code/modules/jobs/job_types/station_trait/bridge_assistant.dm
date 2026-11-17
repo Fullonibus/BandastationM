@@ -3,8 +3,10 @@
 	description = "Следите за мостиком, управляйте консолями на нем и проводите дни, варя кофе для вышестоящих лиц."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD //not really a head but close enough
 	faction = FACTION_STATION
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 1
+	spawn_positions = 1
+	required_donator_level = DONATOR_TIER_4
+	donor_unlock_trait = /datum/station_trait/job/bridge_assistant
 	supervisors = "Капитаном, а в ситуациях, не связанных с мостиком, другими главами"
 	minimal_player_age = 7
 	exp_requirements = 300
@@ -42,6 +44,8 @@
 		bridgie.gain_trauma(/datum/brain_trauma/special/axedoration)
 
 /datum/job/bridge_assistant/get_roundstart_spawn_point()
+	if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title])
 	var/list/chair_turfs = list()
 	var/list/possible_turfs = list()
 	var/area/bridge = GLOB.areas_by_type[/area/station/command/bridge]

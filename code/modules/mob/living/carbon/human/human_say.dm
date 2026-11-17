@@ -29,9 +29,12 @@
 		return "gurgles"
 	return  ru_say_verb(tongue.temp_say_mod) || ru_say_verb(tongue.say_mod) || ..()
 
+/// A covered face is identified only by the worn ID, never by the underlying voice name.
 /mob/living/carbon/human/get_voice(add_id_name = FALSE)
 	if(HAS_TRAIT(src, TRAIT_UNKNOWN_VOICE))
 		return "Unknown"
+	if(obscured_slots & HIDEFACE)
+		return get_id_name("Неизвестный", honorifics = add_id_name)
 	var/id_name = get_id_name("")
 	if(HAS_TRAIT(src, TRAIT_VOICE_MATCHES_ID) && id_name)
 		return id_name

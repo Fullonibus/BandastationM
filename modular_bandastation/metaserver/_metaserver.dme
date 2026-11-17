@@ -1,5 +1,7 @@
 #include "_metaserver.dm"
 
+#include "code/antag_tokens.dm"
+#include "code/antag_tokens_menu.dm"
 #include "code/discord_link.dm"
 #include "code/interview.dm"
 #include "code/ss_central.dm"

@@ -654,20 +654,25 @@
 		pod.relaymove(pod.pilot, WEST)
 		advance_flight(pod)
 	TEST_ASSERT(pod.flight.velocity_y > 1.4 && pod.flight.velocity_y < 1.6, "Left strafe did not accelerate north relative to an east-facing hull.")
-	var/charge_before_braking = pod.battery.charge
-	pod.flight.toggle_brakes()
-	for(var/tick in 1 to 20)
+	pod.battery.charge = 100 * SPACEPOD_ENERGY_UNIT
+	TEST_ASSERT(pod.flight.toggle_brakes(), "The pilot could not enable automatic braking.")
+	for(var/tick in 1 to 5)
 		advance_flight(pod)
-	TEST_ASSERT(abs(pod.flight.velocity_x) < 0.00001 && abs(pod.flight.velocity_y) < 0.00001, "Powered brakes did not stop the existing velocity vector within one second.")
-	TEST_ASSERT(pod.battery.charge < charge_before_braking, "Braking applied thrust without consuming energy.")
-	pod.flight.toggle_brakes()
+	TEST_ASSERT(abs(pod.flight.velocity_x) < 0.00001 && abs(pod.flight.velocity_y) < 0.00001, "Automatic braking did not stop the diagonal drift within a quarter second.")
+	var/charge_at_rest = pod.battery.charge
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(pod.battery.charge, charge_at_rest, "The enabled brake drew power while stopped.")
 	for(var/tick in 1 to 10)
-		pod.relaymove(pod.pilot, NORTH)
+		TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "The enabled brake rejected manual thrust.")
 		advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.velocity_x - 2) < 0.001, "The enabled brake opposed manual thrust.")
+	TEST_ASSERT(abs(charge_at_rest - pod.battery.charge - 20 * SPACEPOD_ENERGY_UNIT) < 0.001, "The enabled brake changed the cost of manual thrust.")
+	var/charge_before_braking = pod.battery.charge
+	advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.velocity_x - 1.55) < 0.001, "Releasing movement did not apply the stronger counter-thrust.")
+	TEST_ASSERT(abs(charge_before_braking - pod.battery.charge - 9 * SPACEPOD_ENERGY_UNIT) < 0.001, "Counter-thrust did not cost twice as much as equivalent manual thrust.")
 	var/unpowered_velocity = pod.flight.velocity_x
-	TEST_ASSERT(unpowered_velocity > 0, "The cabin did not resume thrust after releasing its brakes.")
 	pod.battery.charge = 0
-	pod.flight.toggle_brakes()
 	var/start_x = pod.x + pod.flight.offset_x
 	for(var/tick in 1 to 10)
 		advance_flight(pod)

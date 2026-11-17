@@ -1,0 +1,11 @@
+Resomi sounds copied unchanged from SierraBay12 at
+40edecd4203679a060f826f00ff773964582a4c2.
+https://github.com/SierraBay/SierraBay12/tree/40edecd4203679a060f826f00ff773964582a4c2/mods/resomi/sound
+
+The SierraBay12 Resomi module credits LordNest, SurEugene, Daeberdir and
+UEDHighCommand for the port from Infinity.
+https://github.com/SierraBay/SierraBay12/blob/40edecd4203679a060f826f00ff773964582a4c2/mods/resomi/README.md
+
+License: Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0).
+https://creativecommons.org/licenses/by-sa/3.0/
+https://github.com/SierraBay/SierraBay12/blob/40edecd4203679a060f826f00ff773964582a4c2/README.md
