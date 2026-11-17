@@ -81,7 +81,7 @@
 /obj/item/gun/energy/emp_act(severity)
 	. = ..()
 	if(!(. & EMP_PROTECT_CONTENTS))
-		cell.use(round(cell.charge / emp_resistance / severity))
+		cell?.use(round(cell.charge / emp_resistance / severity))
 		chambered = null //we empty the chamber
 		recharge_newshot() //and try to charge a new shot
 		update_appearance()
@@ -330,7 +330,7 @@ GLOBAL_LIST_INIT(ammo_mode_translations, list(
 			user.visible_message(span_suicide("[capitalize(user.declent_ru(NOMINATIVE))] расплавляет себе лицо с помощью [declent_ru(GENITIVE)]!"))
 			playsound(loc, fire_sound, 50, TRUE, -1)
 			var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-			cell.use(shot.e_cost)
+			cell?.use(shot.e_cost)
 			update_appearance()
 			return FIRELOSS
 		else
