@@ -9,12 +9,6 @@
 	var/viewing_category
 	/// What market is currently being bought from by the uplink?
 	var/viewing_market
-	/// the identifier of the item that the current uplink is attempting to buy
-	var/selected_item
-	/// Is the uplink in the process of buying the selected item?
-	var/buying
-	///Reference to the currently logged in user's bank account.
-	var/datum/bank_account/current_user
 	/// List of typepaths for "/datum/market"s that this uplink can access.
 	var/list/accessible_markets = list(/datum/market/blackmarket)
 
@@ -30,7 +24,7 @@
 /obj/item/market_uplink/proc/update_viewing_category()
 	if(accessible_markets.len)
 		viewing_market = accessible_markets[1]
-		var/list/categories = SSmarket.markets[viewing_market].categories
+		var/list/categories = SSmarket.markets[viewing_market]?.categories
 		if(categories?.len)
 			viewing_category = categories[1]
 
@@ -46,49 +40,35 @@
 /obj/item/market_uplink/ui_data(mob/user)
 	var/list/data = list()
 	var/datum/market/market = viewing_market ? SSmarket.markets[viewing_market] : null
-	var/obj/item/card/id/id_card
-	if(isliving(user))
-		var/mob/living/livin = user
-		id_card = livin.get_idcard()
-	if(id_card?.registered_account)
-		current_user = id_card.registered_account
-	else
-		current_user = null
-	data["categories"] = market ? market.categories : null
-	data["delivery_methods"] = list()
-	data["money"] = "N/A[MONEY_SYMBOL]"
-	if(current_user)
-		data["money"] = current_user.account_balance
-	data["buying"] = buying
-	if(buying && market)
-		var/datum/market_item/target_item = market.available_items[viewing_category][selected_item]
-		var/list/shipping_list = market.shipping
-		if(length(target_item?.shipping_override))
-			shipping_list = target_item.shipping_override
-		for(var/delivery in shipping_list)
-			UNTYPED_LIST_ADD(data["delivery_methods"], list("name" = delivery, "price" = shipping_list[delivery]))
+	var/datum/bank_account/account = astype(user, /mob/living)?.get_bank_account()
+	data["categories"] = market?.categories
+	data["money"] = account?.account_balance || 0
+	data["has_account"] = !QDELETED(account) ? TRUE : FALSE
+	data["ltsrbt_built"] = !!length(SSmarket.telepads)
 	data["items"] = list()
-	data["viewing_category"] = market.categories[viewing_category] ? viewing_category : null
+	data["viewing_category"] = viewing_category
 	data["viewing_market"] = viewing_market
-	if(viewing_category && market)
-		if(market.available_items[viewing_category])
-			var/list/market_category = market.available_items[viewing_category]
-			for(var/id in market_category)
-				var/datum/market_item/item = market_category[id]
-				data["items"] += list(list(
-					"id" = id,
-					"name" = item.name,
-					"cost" = item.price,
-					"amount" = item.stock,
-					"desc" = item.desc || item.name,
-					"html_icon" = item.html_icon,
-				))
+	var/list/market_category = market?.available_items?[viewing_category]
+	for(var/id in market_category)
+		var/datum/market_item/item = market_category[id]
+		var/list/shipping_methods = market.get_shipping_methods(item)
+		var/list/delivery_methods = list()
+		for(var/method in shipping_methods)
+			delivery_methods += list(list("name" = method, "price" = shipping_methods[method]))
+		data["items"] += list(list(
+			"id" = id,
+			"name" = item.name,
+			"cost" = item.get_purchase_price(account),
+			"amount" = item.stock,
+			"desc" = item.desc || item.name,
+			"html_icon" = item.html_icon,
+			"delivery_methods" = delivery_methods,
+		))
 	return data
 
 /obj/item/market_uplink/ui_static_data(mob/user)
 	var/list/data = list()
 	data["delivery_method_description"] = SSmarket.shipping_method_descriptions
-	data["ltsrbt_built"] = SSmarket.telepads.len
 	data["markets"] = list()
 	for(var/M in accessible_markets)
 		var/datum/market/BM = SSmarket.markets[M]
@@ -104,50 +84,36 @@
 		return
 	switch(action)
 		if("set_category")
-			if(isnull(params["category"]))
-				return
-			if(isnull(viewing_market))
-				return
-			if(!(params["category"] in SSmarket.markets[viewing_market].categories))
-				return
-			viewing_category = params["category"]
-			. = TRUE
-		if("set_market")
-			if(isnull(params["market"]))
-				return
-			var/market = text2path(params["market"])
-			if(!(market in accessible_markets))
-				return
-
-			viewing_market = market
-
-			var/list/categories = SSmarket.markets[viewing_market].categories
-			if(categories?.len)
-				viewing_category = categories[1]
-			else
-				viewing_category = null
-			. = TRUE
-		if("select")
-			if(isnull(params["item"]))
-				return
-			selected_item = params["item"]
-			buying = TRUE
-			. = TRUE
-		if("cancel")
-			selected_item = null
-			buying = FALSE
-			. = TRUE
-		if("buy")
-			if(isnull(params["method"]))
-				return
-			if(isnull(selected_item))
-				buying = FALSE
-				return
+			var/category = params["category"]
 			var/datum/market/market = SSmarket.markets[viewing_market]
-			market.purchase(selected_item, viewing_category, params["method"], src, usr)
-
-			buying = FALSE
-			selected_item = null
+			if(!istext(category) || !(category in market?.categories))
+				return FALSE
+			viewing_category = category
+			return TRUE
+		if("set_market")
+			if(!istext(params["market"]))
+				return FALSE
+			var/market_path = text2path(params["market"])
+			if(!(market_path in accessible_markets))
+				return FALSE
+			var/datum/market/market = SSmarket.markets[market_path]
+			if(isnull(market))
+				return FALSE
+			viewing_market = market_path
+			viewing_category = length(market.categories) ? market.categories[1] : null
+			return TRUE
+		if("buy")
+			var/identifier = params["item"]
+			var/category = params["category"]
+			var/method = params["method"]
+			var/quoted_total = params["total"]
+			if(!istext(params["market"]) || !istext(identifier) || !istext(category) || !istext(method) || !isnum(quoted_total))
+				return FALSE
+			var/market_path = text2path(params["market"])
+			if(!(market_path in accessible_markets))
+				return FALSE
+			var/datum/market/market = SSmarket.markets[market_path]
+			return market?.purchase(identifier, category, method, src, ui.user, quoted_total)
 
 /obj/item/market_uplink/blackmarket
 	name = "\improper Black Market Uplink"

@@ -41,38 +41,45 @@
  * @param method The shipping method to use to get the item on the station.
  * @param uplink The uplink object that is buying the item.
  * @param user The mob that is buying the item.
+ * @param quoted_total If supplied, the total price the buyer confirmed.
  */
-/datum/market/proc/purchase(identifier, category, method, obj/item/market_uplink/uplink, user)
-	var/datum/market_item/item = available_items[category][identifier]
+/datum/market/proc/purchase(identifier, category, method, obj/item/market_uplink/uplink, mob/living/user, quoted_total)
+	if(!istype(uplink) || !isliving(user))
+		return FALSE
+
+	var/list/category_items = available_items[category]
+	var/datum/market_item/item = category_items?[identifier]
 	if(isnull(item))
 		return FALSE
 
-	if(!istype(uplink) || !((method in shipping) || (method in item.shipping_override)))
+	var/list/shipping_methods = get_shipping_methods(item)
+	if(!(method in shipping_methods))
 		return FALSE
 
-	var/shipment_fee = item.shipping_override?[method]
-	if(isnull(shipment_fee))
-		shipment_fee = shipping[method]
-	var/price = item.price + shipment_fee
-
-	if(!uplink.current_user)///There is no ID card on the user, or the ID card has no account
+	var/datum/bank_account/account = user.get_bank_account()
+	if(QDELETED(account))
 		to_chat(user, span_warning("The uplink sparks, as it can't identify an ID card with a bank account on you."))
 		return FALSE
-	var/balance = uplink?.current_user.account_balance
 
-	// I can't get the price of the item and shipping in a clean way to the UI, so I have to do this.
-	if(balance < price)
+	var/price = item.get_purchase_price(account) + shipping_methods[method]
+	if(!isnull(quoted_total) && price != quoted_total)
+		to_chat(user, span_warning("Цена заказа изменилась. Подтвердите покупку заново."))
+		return FALSE
+	if(!account.has_money(price))
 		to_chat(user, span_warning("You don't have enough credits in [uplink] for [item] with [method] shipping."))
 		return FALSE
 
-	if(item.buy(uplink, user, method, legal_status))
-		uplink.current_user.adjust_money(-price, "Other: Third Party Transaction")
-		if(ismob(user))
-			var/mob/m_user = user
-			m_user.playsound_local(get_turf(m_user), 'sound/machines/beep/twobeep_high.ogg', 50, TRUE)
-		return TRUE
+	if(!item.buy(uplink, user, method, legal_status))
+		return FALSE
 
-	return FALSE
+	if(price)
+		account.adjust_money(-price, "Other: Third Party Transaction")
+	user.playsound_local(get_turf(user), 'sound/machines/beep/twobeep_high.ogg', 50, TRUE)
+	return TRUE
+
+/// Returns the offered delivery methods and fees for this item.
+/datum/market/proc/get_shipping_methods(datum/market_item/item)
+	return length(item.shipping_override) ? item.shipping_override : shipping
 
 /**
  * A proc that restocks only the EXISTING items of this market.

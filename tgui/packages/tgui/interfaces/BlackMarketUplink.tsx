@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   AnimatedNumber,
   Box,
@@ -14,15 +15,14 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Data = {
-  categories: string[];
+  categories: string[] | null;
   markets: Market[];
   items: Item[];
   money: number;
+  has_account: boolean;
   viewing_market: string;
   viewing_category: string;
-  buying: boolean;
   ltsrbt_built: boolean;
-  delivery_methods: DeliveryMethod[];
   delivery_method_description: Record<string, string>;
 };
 
@@ -38,6 +38,7 @@ type Item = {
   amount: number;
   cost: number;
   html_icon: string;
+  delivery_methods: DeliveryMethod[];
 };
 
 type DeliveryMethod = {
@@ -47,17 +48,24 @@ type DeliveryMethod = {
 
 export const BlackMarketUplink = (props) => {
   const { act, data } = useBackend<Data>();
+  const [selection, setSelection] = useState<Selection | null>(null);
   const {
-    categories = [],
+    categories,
     markets = [],
     items = [],
     money,
+    has_account,
     viewing_market,
     viewing_category,
   } = data;
   return (
     <Window width={670} height={480} theme="hackerman">
-      <ShipmentSelector />
+      {!!selection && (
+        <ShipmentSelector
+          selection={selection}
+          onClose={() => setSelection(null)}
+        />
+      )}
       <Window.Content scrollable>
         <Section
           title="Black Market Uplink"
@@ -88,7 +96,7 @@ export const BlackMarketUplink = (props) => {
         <Stack>
           <Stack.Item>
             <Tabs vertical>
-              {categories.map((category) => (
+              {categories?.map((category) => (
                 <Tabs.Tab
                   key={category}
                   mt={0.5}
@@ -106,7 +114,7 @@ export const BlackMarketUplink = (props) => {
           </Stack.Item>
           <Stack.Item grow>
             {items.map((item) => (
-              <Box key={item.name} className="candystripe" p={1} pb={2}>
+              <Box key={item.id} className="candystripe" p={1} pb={2}>
                 <Stack align="baseline">
                   <Stack.Item grow>
                     <Stack align="horizontal">
@@ -132,10 +140,14 @@ export const BlackMarketUplink = (props) => {
                   <Stack.Item>
                     <Button
                       content="Buy"
-                      disabled={!item.amount || item.cost > money}
+                      disabled={
+                        !has_account || !item.amount || item.cost > money
+                      }
                       onClick={() =>
-                        act('select', {
-                          item: item.id,
+                        setSelection({
+                          item,
+                          market: viewing_market,
+                          category: viewing_category,
                         })
                       }
                     />
@@ -151,45 +163,53 @@ export const BlackMarketUplink = (props) => {
   );
 };
 
-const ShipmentSelector = (props) => {
+type Selection = {
+  item: Item;
+  market: string;
+  category: string;
+};
+
+type ShipmentSelectorProps = {
+  selection: Selection;
+  onClose: () => void;
+};
+
+const ShipmentSelector = (props: ShipmentSelectorProps) => {
+  const { selection, onClose } = props;
   const { act, data } = useBackend<Data>();
-  const { buying, ltsrbt_built, money } = data;
-  if (!buying) {
-    return null;
-  }
-  const deliveryMethods = data.delivery_methods.map((method) => {
-    const description = data.delivery_method_description[method.name];
-    return {
-      ...method,
-      description,
-    };
-  });
+  const { has_account, ltsrbt_built, money } = data;
   return (
     <Modal textAlign="center">
       <Stack mb={1}>
-        {deliveryMethods.map((method) => {
+        {selection.item.delivery_methods.map((method) => {
           if (method.name === 'LTSRBT' && !ltsrbt_built) {
             return null;
           }
+          const totalCost = selection.item.cost + method.price;
           return (
             <Stack.Item key={method.name} mx={1} width="17.5rem">
               <Box fontSize="30px">{method.name}</Box>
-              <Box mt={1}>{method.description}</Box>
+              <Box mt={1}>{data.delivery_method_description[method.name]}</Box>
               <Button
                 mt={2}
-                content={`${formatMoney(method.price)} cr`}
-                disabled={money < method.price}
-                onClick={() =>
+                content={`${formatMoney(totalCost)} cr`}
+                disabled={!has_account || money < totalCost}
+                onClick={() => {
                   act('buy', {
+                    item: selection.item.id,
+                    market: selection.market,
+                    category: selection.category,
                     method: method.name,
-                  })
-                }
+                    total: totalCost,
+                  });
+                  onClose();
+                }}
               />
             </Stack.Item>
           );
         })}
       </Stack>
-      <Button content="Cancel" color="bad" onClick={() => act('cancel')} />
+      <Button content="Cancel" color="bad" onClick={onClose} />
     </Modal>
   );
 };
