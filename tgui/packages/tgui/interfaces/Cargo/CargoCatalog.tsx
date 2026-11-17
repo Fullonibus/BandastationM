@@ -213,7 +213,8 @@ function CatalogList(props: CatalogListProps) {
     cart = [],
     max_order,
     self_paid,
-    app_cost,
+    goody_order_cost_modifier = 1,
+    private_order_cost_modifier = 1,
     displayed_currency_name,
   } = data;
   const { packs = [], openContents } = props;
@@ -231,7 +232,11 @@ function CatalogList(props: CatalogListProps) {
           color = 'bad';
         }
 
-        const privateBuy = (self_paid && !pack.goody) || app_cost;
+        const priceModifier = pack.goody
+          ? goody_order_cost_modifier
+          : private_order_cost_modifier;
+        const finalCost = Math.floor(pack.cost * priceModifier);
+        const priceVariation = priceModifier !== 1;
         const tooltipIcon = (content: string, icon: string, color: string) => (
           <Stack.Item>
             <Tooltip content={content}>
@@ -289,15 +294,19 @@ function CatalogList(props: CatalogListProps) {
               <Stack.Item align="center" width={5.5} mt={-0.75} mb={-0.75}>
                 <Stack vertical color="gold" lineHeight={0.75} fontSize={0.85}>
                   <Stack.Item
-                    opacity={privateBuy && 0.75}
-                    style={{ textDecoration: privateBuy && 'red line-through' }}
+                    opacity={priceVariation ? 0.75 : undefined}
+                    style={{
+                      textDecoration: priceVariation
+                        ? 'red line-through'
+                        : undefined,
+                    }}
                   >
                     {formatMoney(pack.cost)}
                     {displayed_currency_name}
                   </Stack.Item>
-                  {!!privateBuy && (
+                  {priceVariation && (
                     <Stack.Item>
-                      {formatMoney(Math.round(pack.cost * 1.1))}
+                      {formatMoney(finalCost)}
                       {displayed_currency_name}
                     </Stack.Item>
                   )}

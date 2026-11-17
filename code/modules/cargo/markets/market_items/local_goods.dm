@@ -14,6 +14,11 @@
 	if(seller)
 		RegisterSignal(seller, COMSIG_QDELETING, PROC_REF(delete_reference))
 
+// The seller receives the listing price minus withholding tax.
+// Discounting the buyer below the payout would create credits on resale.
+/datum/market_item/local_good/get_purchase_price(datum/bank_account/account)
+	return price
+
 /datum/market_item/local_good/buy(obj/item/market_uplink/uplink, mob/buyer, shipping_method, legal_status)
 	. = ..()
 	if(. && seller)
