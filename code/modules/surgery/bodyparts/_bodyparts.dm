@@ -121,6 +121,8 @@
 
 	///the type of damage overlay (if any) to use when this bodypart is bruised/burned.
 	var/dmg_overlay_type = "human"
+	/// Sheet containing the blood, wound and burn states for this limb.
+	VAR_PROTECTED/damage_overlay_icon = 'icons/mob/effects/dam_mob.dmi'
 	/// If we're bleeding, which icon are we displaying on this part
 	var/bleed_overlay_icon
 
@@ -1155,7 +1157,7 @@
 	var/list/overlays
 	if(brutestate)
 		var/mutable_appearance/blood_overlay = mutable_appearance(
-			icon = 'icons/mob/effects/dam_mob.dmi',
+			icon = damage_overlay_icon,
 			icon_state = "[dmg_overlay_type]_[body_zone]_[brutestate]0",
 			layer = -DAMAGE_LAYER,
 		)
@@ -1163,7 +1165,7 @@
 		LAZYADD(overlays, blood_overlay)
 
 		var/mutable_appearance/brute_damage_overlay = mutable_appearance(
-			icon = 'icons/mob/effects/dam_mob.dmi',
+			icon = damage_overlay_icon,
 			icon_state = "[dmg_overlay_type]_[body_zone]_[brutestate]0_overlay",
 			layer = -DAMAGE_OVERLAY_LAYER,
 			appearance_flags = RESET_COLOR,
@@ -1172,7 +1174,7 @@
 
 	if(burnstate)
 		var/mutable_appearance/burn_overlay = mutable_appearance(
-			icon = 'icons/mob/effects/dam_mob.dmi',
+			icon = damage_overlay_icon,
 			icon_state = "[dmg_overlay_type]_[body_zone]_0[burnstate]",
 			layer = -DAMAGE_LAYER,
 		)
@@ -1372,14 +1374,14 @@
 	if(dropped && dmg_overlay_type)
 		if(brutestate)
 			// divided into two overlays: one that gets colored and one that doesn't.
-			var/image/brute_damage_overlay = mutable_appearance('icons/mob/effects/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_[brutestate]0_overlay", -DAMAGE_LAYER)
+			var/image/brute_damage_overlay = mutable_appearance(damage_overlay_icon, "[dmg_overlay_type]_[body_zone]_[brutestate]0_overlay", -DAMAGE_LAYER)
 			brute_damage_overlay.appearance_flags |= RESET_COLOR
-			var/image/brute_blood_overlay = image('icons/mob/effects/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_[brutestate]0", -DAMAGE_LAYER, dir = SOUTH)
+			var/image/brute_blood_overlay = image(damage_overlay_icon, "[dmg_overlay_type]_[body_zone]_[brutestate]0", -DAMAGE_LAYER, dir = SOUTH)
 			brute_blood_overlay.color = get_color_from_blood_list(blood_dna_info)
 			brute_blood_overlay.overlays += brute_damage_overlay
 			.[brute_blood_overlay] = NONE
 		if(burnstate)
-			var/image/burn_damage_overlay = image('icons/mob/effects/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER, dir = SOUTH)
+			var/image/burn_damage_overlay = image(damage_overlay_icon, "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER, dir = SOUTH)
 			.[burn_damage_overlay] = NONE
 
 	var/atom/location = loc || owner || src

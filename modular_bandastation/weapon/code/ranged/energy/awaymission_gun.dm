@@ -18,6 +18,8 @@
 	charge_delay = 10
 	selfcharge = TRUE
 	can_charge = FALSE
+	/// The miniature reactor blows up under EMP.
+	var/has_reactor = TRUE
 	var/going_boom = FALSE
 
 /obj/projectile/beam/laser/awaymission_aeg
@@ -32,7 +34,7 @@
 
 /obj/item/gun/energy/laser/awaymission_aeg/emp_act(severity)
 	. = ..()
-	if(. & EMP_PROTECT_SELF || going_boom)
+	if(. & EMP_PROTECT_SELF || going_boom || !has_reactor)
 		return
 	var/turf/current_turf = get_turf(src)
 	going_boom = TRUE
@@ -135,18 +137,19 @@
 	. = ..()
 	unlocked_designs |= /datum/design/exploreverse_mk2
 
-/// Third prototype: the Mk.I's reactor in a Sierra laser carbine body, with a heavy shot against large fauna.
+/// Third prototype in a Sierra laser carbine body: no self-charge, it fires from swappable battery magazines.
 /obj/item/gun/energy/laser/awaymission_aeg/mk3
 	name = "Exploreverse Mk.III"
-	desc = "Третий прототип оружия с миниатюрным реактором, в корпусе лазерного карабина. \
-	\nКроме обычного луча стреляет тяжёлым зарядом против крупной фауны: он съедает четверть батареи. Переключение режимов — в руке."
+	desc = "Третий прототип линейки Exploreverse в корпусе лазерного карабина. Самозарядки нет: питается от сменных батарей, \
+		которые вставляются и извлекаются как магазин и заряжаются в обычном зарядном устройстве для батарей."
 	icon_state = "laser_gate_mk3"
 	inhand_icon_state = "laser"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/awaymission_aeg/mk3, /obj/item/ammo_casing/energy/lasergun/awaymission_heavy)
-	// The carbine's charge strip is drawn into whole sprites, one per level, rather than overlays.
-	automatic_charge_overlays = FALSE
+	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/awaymission_aeg/mk3)
+	cell_type = /obj/item/stock_parts/power_store/cell/exploreverse
+	selfcharge = FALSE
+	has_reactor = FALSE
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4,
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
@@ -155,34 +158,97 @@
 		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 
+// Without its magazine the carbine shows the empty well and no charge strip.
 /obj/item/gun/energy/laser/awaymission_aeg/mk3/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[get_charge_ratio()]"
+	icon_state = cell ? initial(icon_state) : "[initial(icon_state)]_nomag"
 
-// After a heavy shot the reactor audibly charges up; the reload sound (1.14 s) ends as the next heavy shot is ready.
-/obj/item/gun/energy/laser/awaymission_aeg/mk3/shoot_live_shot(mob/living/user, pointblank = FALSE, atom/pbtarget = null, message = TRUE)
+/obj/item/gun/energy/laser/awaymission_aeg/mk3/update_overlays()
 	. = ..()
-	if(istype(ammo_type[select], /obj/item/ammo_casing/energy/lasergun/awaymission_heavy))
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, 'sound/items/weapons/kinetic_reload.ogg', 50, TRUE), fire_delay - 1.15 SECONDS)
+	if(!cell)
+		. -= "[icon_state]_empty"
+
+/obj/item/gun/energy/laser/awaymission_aeg/mk3/examine(mob/user)
+	. = ..()
+	if(!cell)
+		. += span_warning("Батарея не вставлена.")
+		return
+	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+	. += span_notice("Батарея: [round(cell.charge / shot.e_cost)] из [round(cell.maxcharge / shot.e_cost)] выстрелов.")
+
+/obj/item/gun/energy/laser/awaymission_aeg/mk3/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!istype(tool, /obj/item/stock_parts/power_store/cell))
+		return ..()
+	if(!istype(tool, /obj/item/stock_parts/power_store/cell/exploreverse))
+		balloon_alert(user, "не подходит!")
+		return ITEM_INTERACT_BLOCKING
+	var/obj/item/stock_parts/power_store/cell/old_cell = cell
+	if(!user.transferItemToLoc(tool, src))
+		return ITEM_INTERACT_BLOCKING
+	// A loaded gun swaps magazines; the old one leaving clears `cell` through Exited().
+	if(old_cell)
+		user.put_in_hands(old_cell)
+	cell = tool
+	recharge_newshot(TRUE)
+	update_appearance()
+	playsound(src, 'sound/items/weapons/gun/general/magazine_insert_full.ogg', 40, TRUE)
+	balloon_alert(user, old_cell ? "батарея заменена" : "батарея вставлена")
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/gun/energy/laser/awaymission_aeg/mk3/attack_self(mob/living/user)
+	. = ..()
+	if(.)
+		return
+	if(!cell)
+		balloon_alert(user, "нет батареи!")
+		return
+	var/obj/item/stock_parts/power_store/cell/old_cell = cell
+	user.put_in_hands(old_cell)
+	playsound(src, 'sound/items/weapons/gun/general/magazine_remove_full.ogg', 40, TRUE)
+	balloon_alert(user, "батарея извлечена")
+
+/// Battery magazine of the Exploreverse Mk.III: a quarter more shots than the Mk.I, charged like any other cell.
+/obj/item/stock_parts/power_store/cell/exploreverse
+	name = "Exploreverse Mk.III battery"
+	desc = "Сменная батарея-магазин для Exploreverse Mk.III. Заряжается в обычном зарядном устройстве для батарей."
+	icon = 'modular_bandastation/weapon/icons/ranged/energy.dmi'
+	icon_state = "exploreverse_battery"
+	maxcharge = STANDARD_CELL_CHARGE * 1.25
+	// Its own three lights replace the standard cell charge light.
+	charge_light_type = null
+	custom_materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
+	)
+
+/obj/item/stock_parts/power_store/cell/exploreverse/update_overlays()
+	. = ..()
+	if(charge >= 0.01)
+		. += "[icon_state]_charge[clamp(CEILING(percent() / (100 / 3), 1), 1, 3)]"
+
+/obj/item/stock_parts/power_store/cell/exploreverse/empty
+	empty = TRUE
+
+/datum/design/exploreverse_battery
+	name = "Exploreverse Mk.III Battery"
+	desc = "Сменная батарея-магазин для Exploreverse Mk.III. Печатается разряженной."
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(
+		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
+	)
+	build_path = /obj/item/stock_parts/power_store/cell/exploreverse/empty
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_RANGED,
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_SECURITY
 
 /obj/item/ammo_casing/energy/lasergun/awaymission_aeg/mk3
 	fire_sound = 'modular_bandastation/weapon/sound/ranged/exploreverse_mk3_fire.ogg'
 
-/obj/item/ammo_casing/energy/lasergun/awaymission_heavy
-	projectile_type = /obj/projectile/beam/laser/heavylaser/awaymission
-	e_cost = LASER_SHOTS(4, STANDARD_CELL_CHARGE)
-	select_name = "тяжёлый"
-	fire_sound = 'sound/items/weapons/lasercannonfire.ogg'
-	// The reactor needs time to charge the next heavy shot.
-	delay = 2 SECONDS
-
-/obj/projectile/beam/laser/heavylaser/awaymission
-	wound_bonus = -100
-	exposed_wound_bonus = -100
-
 /datum/design/exploreverse_mk3
 	name = "Exploreverse Mk.III"
-	desc = "Энергетическое оружие с экспериментальным миниатюрным реактором и тяжёлым режимом огня против крупной фауны."
+	desc = "Лазерный карабин на сменных батареях-магазинах."
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4.5,
@@ -195,9 +261,8 @@
 	transfered_materials = list(
 		/obj/item/gun/energy/laser/awaymission_aeg/mk3 = /obj/item/gun/energy/laser/awaymission_aeg/mk3::custom_materials,
 		/obj/item/firing_pin/explorer = /obj/item/firing_pin/explorer::custom_materials,
-		/obj/item/stock_parts/power_store/cell = list(),
+		/obj/item/stock_parts/power_store/cell/exploreverse = list(),
 		/obj/item/ammo_casing/energy/lasergun/awaymission_aeg/mk3 = list(),
-		/obj/item/ammo_casing/energy/lasergun/awaymission_heavy = list(),
 	)
 	build_path = /obj/item/gun/energy/laser/awaymission_aeg/mk3
 	category = list(
@@ -207,4 +272,4 @@
 
 /datum/techweb_node/mining_adv/New()
 	. = ..()
-	unlocked_designs |= /datum/design/exploreverse_mk3
+	unlocked_designs |= list(/datum/design/exploreverse_mk3, /datum/design/exploreverse_battery)

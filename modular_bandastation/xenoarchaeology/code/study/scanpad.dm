@@ -16,7 +16,8 @@
 	name = "сканирующая площадка"
 	desc = "Напольная плита под низкой аркой сенсорных стержней с наконечниками из фиолетового стекла."
 	icon = 'modular_bandastation/xenoarchaeology/icons/study.dmi'
-	icon_state = "scanpad"
+	// The map editor needs the plate and arch together; Initialize rebuilds their separate layers.
+	icon_state = "scanpad_map"
 	base_icon_state = "scanpad"
 	// The arch draws over whatever stands under it; the plate is an overlay beneath.
 	layer = ABOVE_MOB_LAYER

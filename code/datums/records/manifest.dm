@@ -18,7 +18,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			log_manifest(readied_player.ckey, readied_player.new_character.mind, readied_player.new_character)
 			players_to_log[readied_player.ckey] = readied_player.new_character
 		if(ishuman(readied_player.new_character))
-			inject(readied_player.new_character)
+			inject(readied_player.new_character, initial_join = TRUE)
 		CHECK_TICK
 	if(length(players_to_log))
 		SSblackbox.ReportRoundstartManifest(players_to_log)
@@ -102,8 +102,8 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	return dat
 
 
-/// Injects a record into the manifest.
-/datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy)
+/// Injects a record into the manifest. Only the initial player spawn sets initial_join.
+/datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy, initial_join = FALSE)
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -138,7 +138,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		mind_ref = person.mind,
 	)
 
-	new /datum/record/crew(
+	var/datum/record/crew/crew_record = new(
 		age = person.age,
 		blood_type = person.get_bloodtype()?.name || "UNKNOWN",
 		character_appearance = character_appearance,
@@ -158,6 +158,9 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
 	)
+	var/datum/job/prisoner/prisoner_job = person.mind.assigned_role
+	if(initial_join && istype(prisoner_job))
+		prisoner_job.register_initial_prisoner_record(person, crew_record)
 
 /// Edits the rank and trim of the found record.
 /datum/manifest/proc/modify(name, assignment, trim)

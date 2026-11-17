@@ -1,0 +1,19 @@
+# Источники пауков террора
+
+Состав каст, способности и выбор основателей основаны на [коде SS1984 Paradise](https://github.com/ss220-space/Paradise/tree/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/code/modules/mob/living/simple_animal/hostile/terror_spiders) под [AGPL-3.0](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/LICENSE-AGPLv3.txt).
+
+В `icons/terrorspider.dmi` и `icons/terrorspider64.dmi` перенесены игровые состояния из [terrorspider.dmi](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/icons/mob/terrorspider.dmi) и [terrorspider64.dmi](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/icons/mob/terrorspider64.dmi), а также `spiderjelly` и `terror_shield` из [effects.dmi](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/icons/effects/effects.dmi). Пиксели, направления и порядок кадров сохранены. Лицензия графики — [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+
+- **IK3I** — Разрушитель и Королева.
+- **Travelling Merchant** — принц.
+- **FoS** — Рыцарь, Наблюдатель, Лекарь, Вдова, Осквернитель, Защитник, Принцесса, Мать и Императрица.
+
+Дрон, Жнец, переработанные атласы и большая часть звуков вошли в SS1984 через [PR #1894](https://github.com/ss220-space/Paradise/pull/1894). Реплики добавлены в [PR #2073](https://github.com/ss220-space/Paradise/pull/2073). Звуки стоек, невидимости и вскрытия вентиляции обновлены в [PR #2795](https://github.com/ss220-space/Paradise/pull/2795), топот Принца — в [PR #1981](https://github.com/ss220-space/Paradise/pull/1981), оповещение станции — в [PR #7002](https://github.com/ss220-space/Paradise/pull/7002).
+
+`icons/actions.dmi` содержит оригинальные состояния кнопок и фон `bg_terror` из атласов SS1984. Для плевков Дрона и королевских каст, которые в исходнике выполняются обычной дальнобойной атакой, кнопки используют оригинальные состояния соответствующих снарядов. [Кнопки](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/icons/mob/actions/actions.dmi), [дополнительные атласы](https://github.com/ss220-space/Paradise/tree/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/icons), [снаряды](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/icons/obj/weapons/guns/projectiles.dmi).
+
+В `sound/` сохранены исходные Ogg-файлы из [набора звуков пауков SS1984](https://github.com/ss220-space/Paradise/tree/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/sound/creatures/terrorspiders) и пять использованных общих звуков того же коммита. Это [оповещение](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/sound/AI/outbreak_terror.ogg), [сирена](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/sound/effects/siren-spooky.ogg), [сигнал готовности яиц](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/sound/effects/ping.ogg) и реакция синтетиков на визг ([помехи](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/sound/misc/interference.ogg), [зуммер](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/sound/machines/warning-buzzer.ogg)).
+
+В README SS1984 для ресурсов указана [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) с исключениями, указанными в файлах и каталогах. [Лицензия исходного репозитория](https://github.com/ss220-space/Paradise/blob/3cde89d9f4d7894c740f7fa1e2eb1a3446278e8e/README.md#license).
+
+Плевки и дым используют штатные звуки Primera. Метаданные трёх соответствующих файлов SS1984 указывают на BOOM Library Creatures, условия которой ограничивают распространение отдельных звуковых файлов. [Каталог BOOM Library](https://www.boomlibrary.com/metadata/00_Creatures_DS_Metadata.pdf), [условия лицензии](https://www.boomlibrary.com/terms-conditions-regular/).

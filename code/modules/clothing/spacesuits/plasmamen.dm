@@ -183,12 +183,14 @@
 /obj/item/clothing/head/helmet/space/plasmaman/worn_overlays(mutable_appearance/standing, isinhands, icon_file, bodyshape = NONE)
 	. = ..()
 	if(!isinhands && !up)
-		. += mutable_appearance('icons/mob/clothing/head/plasmaman_head.dmi', visor_icon)
+		var/visor_file = icon_exists(icon_file, visor_icon) ? icon_file : 'icons/mob/clothing/head/plasmaman_head.dmi'
+		. += mutable_appearance(visor_file, visor_icon)
 
 /obj/item/clothing/head/helmet/space/plasmaman/separate_worn_overlays(mutable_appearance/standing, mutable_appearance/draw_target, isinhands = FALSE, icon_file, bodyshape = NONE)
 	. = ..()
 	if(!isinhands && smile)
-		var/mutable_appearance/smiley = mutable_appearance('icons/mob/clothing/head/plasmaman_head.dmi', smile_state)
+		var/smile_file = icon_exists(icon_file, smile_state) ? icon_file : 'icons/mob/clothing/head/plasmaman_head.dmi'
+		var/mutable_appearance/smiley = mutable_appearance(smile_file, smile_state)
 		smiley.color = smile_color
 		. += smiley
 

@@ -1,0 +1,7 @@
+donor_id_trims.dmi and donor_job_hud.dmi contain selected states from Primera PR #108:
+https://github.com/SpaceStation220/Primera/pull/108
+https://github.com/PhantornRU/BandaStation/tree/43e0d44ff2242393b7170d123c7841b3877907f5/modular_bandastation/donor_jobs/icons
+
+The donor art comes from Paradise-SS220 under CC BY-SA 3.0:
+https://github.com/ss220club/Paradise-SS220/tree/0fffca1f1f29a63aff49d9b56524813eedf82c6d
+https://creativecommons.org/licenses/by-sa/3.0/

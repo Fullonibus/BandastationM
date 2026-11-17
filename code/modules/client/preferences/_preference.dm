@@ -269,17 +269,19 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 		CRASH("Preference type `[preference_type]` is invalid! [extra_info]")
 
-	if (preference_type in value_cache)
-		return value_cache[preference_type]
-
-	var/value = preference_entry.read(get_save_data_for_savefile_identifier(preference_entry.savefile_identifier), src)
-	if (isnull(value))
-		value = preference_entry.create_informed_default_value(src)
-		if (write_preference(preference_entry, value))
-			return value
+	var/value = value_cache[preference_type]
+	if (!(preference_type in value_cache))
+		value = preference_entry.read(get_save_data_for_savefile_identifier(preference_entry.savefile_identifier), src)
+		if (isnull(value))
+			value = preference_entry.create_informed_default_value(src)
+			if (!write_preference(preference_entry, value))
+				CRASH("Couldn't write the default value for [preference_type] (received [value])")
 		else
-			CRASH("Couldn't write the default value for [preference_type] (received [value])")
-	value_cache[preference_type] = value
+			value_cache[preference_type] = value
+
+	// Use a human until the tier is available again, while retaining the saved species.
+	if (preference_type == /datum/preference/choiced/species && !can_select_character_species(value))
+		return /datum/species/human
 	return value
 
 /// Set a /datum/preference entry.

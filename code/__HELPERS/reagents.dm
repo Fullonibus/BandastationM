@@ -159,7 +159,7 @@
 	if(shortcuts[input_reagent])
 		input_reagent = shortcuts[input_reagent]
 	else
-		input_reagent = get_chem_id(input_reagent)
+		input_reagent = get_chem_id(string)
 	return input_reagent
 
 ///
@@ -181,12 +181,23 @@
 			reagent_list_to_process += reagent_path
 	return pick(reagent_list_to_process)
 
-///Returns reagent datum from reagent name string
+/// Returns a reagent typepath by name, accepting case, whitespace and punctuation variations.
 /proc/get_chem_id(chem_name)
-	for(var/X in GLOB.chemical_reagents_list)
-		var/datum/reagent/R = GLOB.chemical_reagents_list[X]
-		if(ckey(chem_name) == ckey(LOWER_TEXT(R.name)))
-			return X
+	if(!istext(chem_name))
+		return null
+	var/exact_match = GLOB.name2reagent[chem_name]
+	if(exact_match)
+		return exact_match
+
+	// ckey() discards Cyrillic letters, so preserve them when comparing translated names.
+	var/static/regex/reagent_name_punctuation = new(@"[^\wА-Яа-яЁё]", "g")
+	var/normalized_name = reagent_name_punctuation.Replace(LOWER_TEXT(chem_name), "")
+	if(!length(normalized_name))
+		return null
+	for(var/datum/reagent/reagent_type as anything in GLOB.chemical_reagents_list)
+		if(normalized_name == reagent_name_punctuation.Replace(LOWER_TEXT(initial(reagent_type.name)), ""))
+			return reagent_type
+	return null
 
 /proc/reagent_paths_list_to_text(list/reagents, addendum)
 	var/list/temp = list()

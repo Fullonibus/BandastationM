@@ -1,0 +1,4 @@
+author: "mo0niverse"
+delete-after: True
+changes:
+  - qol: "При включённом тормозе под гасит инерцию после отпускания клавиш движения."

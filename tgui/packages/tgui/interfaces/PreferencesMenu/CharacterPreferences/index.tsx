@@ -7,7 +7,7 @@ import { PageButton } from '../components/PageButton';
 import type { PreferencesMenuData } from '../types';
 import { AntagsPage } from './AntagsPage';
 import { BackgroundPage } from './BackgroundPage'; // BANDASTATION ADDITION - Sierra background
-import { JobsPage } from './JobsPage';
+import { JobsPage, PremiumJobsPage } from './JobsPage';
 import { LoadoutPage } from './loadout';
 import { MainPage } from './MainPage';
 import { QuirkPersonalityPage } from './QuirksPage';
@@ -23,6 +23,7 @@ enum Page {
   Loadout,
   Voice,
   Background, // BANDASTATION ADDITION - Sierra background
+  PremiumJobs,
 }
 
 type ProfileProps = {
@@ -69,6 +70,10 @@ export function CharacterPreferenceWindow(props) {
 
     case Page.Jobs:
       pageContents = <JobsPage />;
+      break;
+
+    case Page.PremiumJobs:
+      pageContents = <PremiumJobsPage />;
       break;
 
     case Page.Main:
@@ -172,6 +177,14 @@ export function CharacterPreferenceWindow(props) {
               setPage={setCurrentPage}
             >
               Должности
+            </PageButton>
+            <PageButton
+              icon="star"
+              currentPage={currentPage}
+              page={Page.PremiumJobs}
+              setPage={setCurrentPage}
+            >
+              Премиальные Роли
             </PageButton>
             <PageButton
               icon="skull"

@@ -14,6 +14,8 @@ The `anaconda` and `rsh12` sprites in `icons/ranged/ballistic.dmi`, and the adde
 
 # Exploreverse Mk.III
 
-The `laser_gate_mk3` and `laser_gate_mk3_0`…`_4` states in `icons/ranged/energy.dmi` are the laser carbine sprites (`laser`, `laser0`…`laser100`) of [SierraBay/SierraBay12 `icons/obj/guns/laser_carbine.dmi`](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/guns/laser_carbine.dmi), commit `c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037`, renamed without pixel or timing changes. Authorship belongs to the SierraBay/Baystation contributors; CC BY-SA 3.0.
+The `laser_gate_mk3`, `laser_gate_mk3_charge1`…`_charge4`, `laser_gate_mk3_empty` and `laser_gate_mk3_nomag` states in `icons/ranged/energy.dmi` are cut from the laser carbine sprites (`laser`, `laser0`…`laser100`) of [SierraBay/SierraBay12 `icons/obj/guns/laser_carbine.dmi`](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/guns/laser_carbine.dmi), commit `c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037`: the base is the empty-charge frame, the charge and empty overlays are the indicator pixels of each level, and the no-magazine body has the indicator strip removed; no other pixel or timing changes. Authorship belongs to the SierraBay/Baystation contributors; CC BY-SA 3.0.
+
+The `exploreverse_battery` and `exploreverse_battery_charge1`…`_charge3` states were drawn for this repository in the carbine's palette.
 
 `sound/ranged/exploreverse_mk3_fire.ogg` is [prifle_flash0_by_OnlyTheGhosts.wav](https://freesound.org/people/onlytheghosts/sounds/251430/) by **OnlyTheGhosts** on Freesound, licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), converted from WAV to Ogg Vorbis without other changes.

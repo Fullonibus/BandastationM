@@ -2,6 +2,7 @@
 /datum/species/human/felinid
 	name = "Felinid"
 	id = SPECIES_FELINE
+	required_donator_level = DONATOR_TIER_5
 	examine_limb_id = SPECIES_HUMAN
 	mutantbrain = /obj/item/organ/brain/felinid
 	mutanttongue = /obj/item/organ/tongue/cat

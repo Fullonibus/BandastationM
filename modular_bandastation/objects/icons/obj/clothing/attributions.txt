@@ -1,0 +1,11 @@
+primera_costumes.dmi — Sprites by Fridhelm, created for SS220 PRIMERA.
+Provided as Set.dmi; original pixels and DMI states preserved.
+
+primera_inventory.dmi, ../../mob/inhands/primera_left.dmi and primera_right.dmi:
+Inventory and held-item adaptations derived from Fridhelm's original SS220 PRIMERA sprites.
+Original inventory frames are preserved; missing icons and held views reuse the source pixels and palette.
+
+../../mob/clothing/primera/{resomi,vox,drask,vulpkanin,tajaran,digitigrade}.dmi:
+Species and leg-shape adaptations derived from Fridhelm's original SS220 PRIMERA sprites.
+Source pixels and palette fitted to PrimeDream's existing body and clothing templates.
+Resomi fitting uses the project's tools/resomi/fit_clothing.py.

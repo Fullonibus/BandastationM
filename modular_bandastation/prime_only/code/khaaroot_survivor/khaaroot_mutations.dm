@@ -346,6 +346,7 @@
 /** Directional world animation shared by mutation reveals. */
 /obj/effect/temp_visual/khaaroot_mutation_reveal
 	icon = 'modular_bandastation/prime_only/icons/khaaroot_mutations.dmi'
+	icon_state = "reveal_spike"
 	duration = 0.8 SECONDS
 	randomdir = FALSE
 

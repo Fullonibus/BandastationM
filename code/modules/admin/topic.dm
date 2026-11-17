@@ -78,6 +78,11 @@
 	else if(href_list["gamemode_panel"])
 		dynamic_panel(usr)
 
+	else if(href_list["antag_winloss_stats"])
+		if(!check_rights(R_ADMIN))
+			return
+		open_antag_winloss_stats(usr)
+
 	else if(href_list["call_shuttle"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -618,6 +623,20 @@
 
 	else if(href_list["adminplayeropts"])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/show_player_panel, locate(href_list["adminplayeropts"]))
+
+	else if(href_list["antag_tokens"])
+		if(rank_flags() != R_EVERYTHING)
+			return
+		var/player_ckey = ckey(href_list["antag_tokens"])
+		var/token_action = href_list["token_action"]
+		if(!player_ckey || !(token_action in list("grant", "remove")))
+			return
+		SScentral.prompt_antag_token_adjustment(owner, player_ckey, remove = token_action == "remove")
+		if(!owner || owner.holder != src || rank_flags() != R_EVERYTHING)
+			return
+		var/mob/player = get_mob_by_ckey(player_ckey)
+		if(player)
+			SSadmin_verbs.dynamic_invoke_verb(owner, /datum/admin_verb/show_player_panel, player)
 
 	else if(href_list["ppbyckey"])
 		var/target_ckey = href_list["ppbyckey"]

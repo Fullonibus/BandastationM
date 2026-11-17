@@ -38,6 +38,7 @@
 		species_choices_overridden = TRUE
 	if(!mock_client)
 		mock_client = allocate(/datum/client_interface)
+		mock_client.donator_level = DONATOR_TIER_5
 	var/datum/preferences/preferences = allocate(/datum/preferences/sierra_background_test, mock_client)
 	test_save_paths |= preferences.path
 	return preferences
@@ -62,6 +63,90 @@
 	for(var/datum/preference_middleware/sierra_background/middleware in preferences.middleware)
 		return middleware
 	return null
+
+/datum/unit_test/premium_species_preferences
+	parent_type = /datum/unit_test/sierra_background_fixture
+
+/datum/unit_test/premium_species_preferences/Run()
+	var/datum/client_interface/mock_client = allocate(/datum/client_interface)
+	var/datum/preferences/preferences = make_preferences(mock_client)
+	var/datum/preference/choiced/species/species_preference = GLOB.preference_entries[/datum/preference/choiced/species]
+	var/list/species_choices = species_preference.get_choices()
+	var/mob/living/carbon/human/character = allocate(/mob/living/carbon/human/consistent)
+
+	var/list/required_tiers = list(
+		SPECIES_FELINE = DONATOR_TIER_5,
+		SPECIES_CERULEAN = DONATOR_TIER_5,
+		SPECIES_RESOMI = DONATOR_TIER_4,
+		SPECIES_DRASK = DONATOR_TIER_2,
+	)
+	for(var/species_id in required_tiers)
+		var/required_tier = required_tiers[species_id]
+		var/species_type = GLOB.species_list[species_id]
+		mock_client.donator_level = required_tier
+		TEST_ASSERT(preferences.update_preference(species_preference, species_id), "T[required_tier] could not choose [species_id].")
+		TEST_ASSERT(preferences.save_character(), "Could not save the premium character.")
+		preferences.apply_prefs_to(character)
+		TEST_ASSERT_EQUAL(character.dna.species.type, species_type, "T[required_tier] did not get the selected [species_id] body.")
+
+		mock_client.donator_level = required_tier - 1
+		TEST_ASSERT_EQUAL(preferences.read_preference(species_preference.type), /datum/species/human, "Dropping below T[required_tier] did not lock the cached [species_id] species.")
+		TEST_ASSERT(preferences.load_character(), "Could not reload the existing premium character.")
+		TEST_ASSERT(!preferences.update_preference(species_preference, species_id), "A tier below T[required_tier] could choose [species_id].")
+		TEST_ASSERT(!preferences.write_preference(species_preference, species_id), "A tier below T[required_tier] could write [species_id].")
+		TEST_ASSERT_EQUAL(preferences.read_preference(species_preference.type), /datum/species/human, "A tier below T[required_tier] could read [species_id] as an effective preference.")
+		preferences.apply_prefs_to(character)
+		TEST_ASSERT_EQUAL(character.dna.species.type, /datum/species/human, "A tier below T[required_tier] could spawn as [species_id].")
+		TEST_ASSERT(preferences.save_character(), "Could not save the character after dropping below T[required_tier].")
+		var/list/save_data = preferences.get_save_data_for_savefile_identifier(PREFERENCE_CHARACTER)
+		TEST_ASSERT_EQUAL(save_data[species_preference.savefile_key], species_id, "The temporary fallback replaced the saved species.")
+		TEST_ASSERT_EQUAL(preferences.value_cache[species_preference.type], species_type, "The temporary fallback replaced the cached species.")
+
+		species_preference.cached_values = list(species_type)
+		TEST_ASSERT_EQUAL(species_preference.create_random_value(preferences), /datum/species/human, "A tier below T[required_tier] could roll [species_id].")
+		mock_client.donator_level = required_tier
+		TEST_ASSERT_EQUAL(species_preference.create_random_value(preferences), species_type, "T[required_tier] could not roll [species_id].")
+		TEST_ASSERT_EQUAL(preferences.read_preference(species_preference.type), species_type, "Regaining T[required_tier] did not restore [species_id].")
+		species_preference.cached_values = species_choices
+
+	mock_client.donator_level = DONATOR_TIER_4
+	TEST_ASSERT(preferences.update_preference(species_preference, SPECIES_LIZARD), "Tier 4 could not choose a free species.")
+	TEST_ASSERT_EQUAL(preferences.read_preference(species_preference.type), /datum/species/lizard, "The free species was not effective.")
+
+/datum/unit_test/donor_job_assigned_profile
+	parent_type = /datum/unit_test/sierra_background_fixture
+
+/datum/unit_test/donor_job_assigned_profile/Run()
+	var/datum/preferences/preferences = make_preferences()
+	var/datum/job/donor/waiter/job = allocate(/datum/job/donor/waiter)
+	var/datum/preference/age = GLOB.preference_entries[/datum/preference/numeric/age]
+	var/datum/preference/title = GLOB.preference_entries[/datum/preference/donor_job_titles]
+	var/datum/preference/use_current_slot = GLOB.preference_entries[/datum/preference/toggle/late_join_always_current_slot]
+	var/first_slot = preferences.default_slot
+	var/assigned_slot = first_slot == 1 ? 2 : 1
+	preferences.write_preference(age, 45)
+	preferences.save_character()
+	preferences.switch_to_slot(assigned_slot)
+	preferences.write_preference(age, 23)
+	preferences.write_preference(title, list(job.title = "Хост сервиса"))
+	preferences.save_character()
+	preferences.switch_to_slot(first_slot)
+	preferences.job_assigned_profiles = list(job.title = assigned_slot)
+	preferences.write_preference(use_current_slot, FALSE)
+	job.required_character_age = 30
+
+	var/datum/job_character_selection/selection = preferences.select_job_character(job, latejoin = TRUE)
+	TEST_ASSERT_EQUAL(preferences.default_slot, first_slot, "Checking a job changed the selected profile.")
+	TEST_ASSERT_EQUAL(selection.slot, assigned_slot, "Latejoin ignored the job's assigned profile.")
+	TEST_ASSERT_EQUAL(selection.get_eligibility(job), JOB_UNAVAILABLE_AGE, "The active profile's age bypassed the assigned profile's restriction.")
+	TEST_ASSERT_EQUAL(preferences.get_donor_job_title(job, selection.slot), "Хост сервиса", "The role variant was read from the wrong slot.")
+	qdel(selection)
+
+	preferences.write_preference(use_current_slot, TRUE)
+	selection = preferences.select_job_character(job, latejoin = TRUE)
+	TEST_ASSERT_EQUAL(selection.slot, first_slot, "Latejoin ignored the explicit current-slot preference.")
+	TEST_ASSERT_EQUAL(selection.get_eligibility(job), JOB_AVAILABLE, "Latejoin checked a different profile while using the current slot.")
+	qdel(selection)
 
 /// Every native species needs four valid defaults without inheriting human-only lore.
 /datum/unit_test/sierra_background_defaults

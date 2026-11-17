@@ -54,3 +54,10 @@
 
 
 #include "code/job_types/job_staffing_priority.dm"
+
+// Donor jobs
+#include "code/job_types/donor/_donor.dm"
+#include "code/job_types/donor/landmarks.dm"
+#include "code/job_types/donor/titles.dm"
+#include "code/job_types/donor/service.dm"
+#include "code/job_types/donor/visitors.dm"

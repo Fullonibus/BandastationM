@@ -1,6 +1,7 @@
 /datum/species/human/cerulean
 	name = "\improper Cerulean"
 	id = SPECIES_CERULEAN
+	required_donator_level = DONATOR_TIER_5
 	mutant_organs = list(/obj/item/organ/tail/fish/cerulean = /datum/sprite_accessory/tails/fish/cerulean::name)
 	mutanttongue = /obj/item/organ/tongue/fish
 	mutantlungs = /obj/item/organ/lungs/fish

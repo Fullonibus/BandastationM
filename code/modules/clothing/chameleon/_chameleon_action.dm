@@ -21,6 +21,12 @@
 	/// What chameleon is active right now?
 	/// Can be set in the declaration to update in init
 	var/active_type
+	/// Species overlays from the selected appearance.
+	var/list/disguise_species_icons
+	/// Worn greyscale configuration and palette of the selected appearance.
+	var/disguise_worn_config
+	/// Color string passed to the selected worn greyscale configuration.
+	var/disguise_worn_colors
 	/// Cooldown from when we started being EMP'd
 	COOLDOWN_DECLARE(emp_timer)
 
@@ -151,6 +157,9 @@
 	if(isitem(atom_target))
 		var/obj/item/item_target = target
 		item_target.worn_icon = picked_item::worn_icon
+		item_target.worn_x_dimension = picked_item::worn_x_dimension
+		item_target.worn_y_dimension = picked_item::worn_y_dimension
+		item_target.worn_y_offset = picked_item::worn_y_offset
 		item_target.lefthand_file = picked_item::lefthand_file
 		item_target.righthand_file = picked_item::righthand_file
 
@@ -159,6 +168,9 @@
 		// BANDASTATION ADDITION START - Slot-specific worn states
 		var/obj/item/picked_item_prototype = new picked_item(null)
 		item_target.worn_icon_state_by_slot = picked_item_prototype.get_worn_icon_state_by_slot()
+		disguise_species_icons = picked_item_prototype.worn_icon_species
+		disguise_worn_config = picked_item::greyscale_config_worn
+		disguise_worn_colors = picked_item::greyscale_colors
 		qdel(picked_item_prototype)
 		// BANDASTATION ADDITION END
 		// AI EDIT END

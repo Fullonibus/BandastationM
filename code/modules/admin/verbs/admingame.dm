@@ -146,6 +146,16 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_ADMIN, "Show Player Panel", /m
 			body += "<A href='byond://?_src_=holder;[HrefToken()];tdomeobserve=[REF(player)]'>Thunderdome Observer</A> | "
 		body += "<A href='byond://?_src_=holder;[HrefToken()];admincommend=[REF(player)]'>Commend Behavior</A> | "
 
+	if(player.ckey && user.holder?.rank_flags() == R_EVERYTHING)
+		var/player_ckey = player.ckey
+		var/list/account = SScentral.load_antag_tokens(player_ckey)
+		if(!user || QDELETED(player) || player.ckey != player_ckey || user.holder?.rank_flags() != R_EVERYTHING)
+			return
+		body += "<br><br><b>Антаг токены:</b> [account ? account["tokens"] : "недоступно"]"
+		body += " | <a href='byond://?_src_=holder;[HrefToken()];antag_tokens=[player_ckey];token_action=grant'>Начислить</a>"
+		body += " | <a href='byond://?_src_=holder;[HrefToken()];antag_tokens=[player_ckey];token_action=remove'>Списать</a>"
+		body += " | <a href='byond://?_src_=holder;[HrefToken()];adminplayeropts=[REF(player)]'>Обновить</a>"
+
 	body += "<br>"
 	body += "</body></html>"
 

@@ -1,8 +1,3 @@
-///all the employers that are syndicate
-#define FLAVOR_FACTION_SYNDICATE "syndicate"
-///all the employers that are Nanotrasen
-#define FLAVOR_FACTION_NANOTRASEN "nanotrasen"
-
 /datum/antagonist/traitor
 	name = "\proper Предатель"
 	roundend_category = "Предатели"
@@ -100,22 +95,16 @@
 
 /datum/antagonist/traitor/proc/pick_employer()
 	if(!employer)
-		var/faction = prob(75) ? FLAVOR_FACTION_SYNDICATE : FLAVOR_FACTION_NANOTRASEN
-		var/list/possible_employers = list()
-
-		possible_employers.Add(GLOB.syndicate_employers, GLOB.nanotrasen_employers)
+		var/list/eligible_employers = GLOB.syndicate_employers | GLOB.nanotrasen_employers
 
 		if(istype(ending_objective, /datum/objective/hijack))
-			possible_employers -= GLOB.normal_employers
+			eligible_employers -= GLOB.normal_employers
 		else //escape or martyrdom
-			possible_employers -= GLOB.hijack_employers
+			eligible_employers -= GLOB.hijack_employers
 
-		switch(faction)
-			if(FLAVOR_FACTION_SYNDICATE)
-				possible_employers -= GLOB.nanotrasen_employers
-			if(FLAVOR_FACTION_NANOTRASEN)
-				possible_employers -= GLOB.syndicate_employers
-		employer = pick(possible_employers)
+		var/list/preferred_faction = prob(75) ? GLOB.syndicate_employers : GLOB.nanotrasen_employers
+		var/list/preferred_employers = eligible_employers & preferred_faction
+		employer = pick(length(preferred_employers) ? preferred_employers : eligible_employers)
 	traitor_flavor = strings(TRAITOR_FLAVOR_FILE, employer)
 
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
@@ -342,9 +331,6 @@
 		sword.worn_icon_state = "e_sword_on_red"
 
 		H.update_held_items()
-
-#undef FLAVOR_FACTION_SYNDICATE
-#undef FLAVOR_FACTION_NANOTRASEN
 
 /datum/antagonist/traitor/on_respawn(mob/new_character)
 	SSjob.equip_rank(new_character, new_character.mind.assigned_role, new_character.client)

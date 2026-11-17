@@ -49,37 +49,28 @@ GLOBAL_LIST_INIT(inventory_slot_datums, initialize_inventory_slots())
 		return
 
 	var/obj/item/slot_item = get_slot_item(owner)
-	// AI EDIT START - Multi-slot clothing
-	update_slot_icon_contents(slot, slot_item, slot_item && owner.get_slot_by_item(slot_item) != slot_id) // BANDASTATION EDIT - Multi-slot clothing
-	// AI EDIT END
-
-/// Updates the slot icon and its contents
-// AI EDIT START - Multi-slot clothing
-/datum/inventory_slot/proc/update_slot_icon_contents(atom/movable/screen/inventory/slot, obj/item/slot_item, secondary = FALSE) // BANDASTATION EDIT - Multi-slot clothing
-// AI EDIT END
-	// AI EDIT START - Keep the reserved icon separate from hover overlays.
-	// BANDASTATION ADDITION START - Keep the reserved icon separate from hover overlays.
+	var/secondary = slot_item && owner.get_slot_by_item(slot_item) != slot_id
 	if(slot.occupied_slot_overlay)
 		slot.cut_overlay(slot.occupied_slot_overlay)
 		slot.occupied_slot_overlay = null
-	// BANDASTATION ADDITION END
-	// AI EDIT END
-	slot.update_appearance(UPDATE_ICON)
-	// AI EDIT START - Secondary slots copy the sprite without changing the actual item's alpha.
-	// BANDASTATION ADDITION START - Secondary slots copy the sprite without changing the actual item's alpha.
-	if(secondary && slot_item)
-		slot.vis_contents.Cut()
-		var/mutable_appearance/ghost = new(slot_item.appearance)
-		ghost.alpha = round(slot_item.alpha * 0.5)
-		ghost.layer = FLOAT_LAYER
-		ghost.plane = FLOAT_PLANE
-		ghost.pixel_x = slot_item.base_pixel_x
-		ghost.pixel_y = slot_item.base_pixel_y
-		slot.occupied_slot_overlay = ghost
-		slot.add_overlay(ghost)
+
+	update_slot_icon_contents(slot, secondary ? null : slot_item)
+	if(!secondary)
 		return
-	// BANDASTATION ADDITION END
-	// AI EDIT END
+
+	// Copy the appearance so the item's alpha stays unchanged.
+	var/mutable_appearance/ghost = new(slot_item.appearance)
+	ghost.alpha = round(slot_item.alpha * 0.5)
+	ghost.layer = FLOAT_LAYER
+	ghost.plane = FLOAT_PLANE
+	ghost.pixel_x = slot_item.base_pixel_x
+	ghost.pixel_y = slot_item.base_pixel_y
+	slot.occupied_slot_overlay = ghost
+	slot.add_overlay(ghost)
+
+/// Updates the slot icon and its contents
+/datum/inventory_slot/proc/update_slot_icon_contents(atom/movable/screen/slot, obj/item/slot_item)
+	slot.update_appearance(UPDATE_ICON)
 	if (!slot_item)
 		slot.vis_contents.Cut()
 		return
@@ -112,7 +103,7 @@ GLOBAL_LIST_INIT(inventory_slot_datums, initialize_inventory_slots())
 			update_inventory_slot(hud, owner, i)
 		return
 
-	var/atom/movable/screen/inventory/slot = get_screen_slot(hud, hand_index)
+	var/atom/movable/screen/slot = get_screen_slot(hud, hand_index)
 	if (!slot)
 		return
 

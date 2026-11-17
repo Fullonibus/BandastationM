@@ -25,29 +25,43 @@
 	job_flags = (STATION_JOB_FLAGS | JOB_CANNOT_OPEN_SLOTS | JOB_ANTAG_PROTECTED) & ~JOB_REOPEN_ON_ROUNDSTART_LOSS
 	tgui_icon = FA_ICON_LOCK
 
+/mob/living/carbon/human
+	/// The crime selected for this prisoner at spawn, shared by the record and outfit.
+	var/datum/prisoner_crime/initial_prisoner_crime
+	/// Whether this body has already received its prison tattoos.
+	var/prison_tattoos_applied = FALSE
+
+/datum/job/prisoner/get_spawn_mob(client/player_client, atom/spawn_point)
+	. = ..()
+	var/mob/living/carbon/human/prisoner = .
+	if(!istype(prisoner))
+		return
+	var/crime_name = player_client?.prefs?.read_preference(/datum/preference/choiced/prisoner_crime)
+	prisoner.initial_prisoner_crime = GLOB.prisoner_crimes[crime_name] || pick(assoc_to_values(GLOB.prisoner_crimes))
+
 /datum/job/prisoner/New()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_CREWMEMBER_JOINED, PROC_REF(handle_prisoner_joining))
 
 /datum/job/prisoner/proc/handle_prisoner_joining(datum/source, mob/living/crewmember, rank)
 	SIGNAL_HANDLER
-	if(rank != title)
-		return //not a prisoner
+	if(rank != title || !ishuman(crewmember))
+		return
+	var/mob/living/carbon/human/prisoner = crewmember
+	if(prisoner.initial_prisoner_crime)
+		to_chat(prisoner, span_warning("You are imprisoned for \"[prisoner.initial_prisoner_crime.name]\"."))
 
-	var/crime_name = crewmember.client?.prefs?.read_preference(/datum/preference/choiced/prisoner_crime)
-	if(!crime_name)
-		stack_trace("[crewmember] joined as a Prisoner without having a prisoner crime set.")
-		crime_name = pick(assoc_to_keys(GLOB.prisoner_crimes))
-	else if(crime_name == "Random")
-		crime_name = pick(assoc_to_keys(GLOB.prisoner_crimes))
-
-	var/datum/prisoner_crime/crime = GLOB.prisoner_crimes[crime_name]
+/// Sets up the exact record created by the initial spawn, before any in-game edits.
+/datum/job/prisoner/proc/register_initial_prisoner_record(mob/living/carbon/human/prisoner, datum/record/crew/crew_record)
+	var/datum/prisoner_crime/crime = prisoner.initial_prisoner_crime
+	if(!crime)
+		return
 	var/datum/crime/past_crime = new(crime.name, crime.desc, "Central Command", "Indefinite.")
-	var/datum/record/crew/target_record = find_record(crewmember.real_name)
-	target_record.crimes += past_crime
-	target_record.recreate_manifest_photos(add_height_chart = TRUE)
-	to_chat(crewmember, span_warning("You are imprisoned for \"[crime_name]\"."))
-	crewmember.add_mob_memory(/datum/memory/key/permabrig_crimes, crimes = crime_name)
+	crew_record.crimes += past_crime
+	crew_record.wanted_status = WANTED_PRISONER
+	prisoner.sec_hud_set_security_status()
+	crew_record.recreate_manifest_photos(add_height_chart = TRUE)
+	prisoner.add_mob_memory(/datum/memory/key/permabrig_crimes, crimes = crime.name)
 
 /datum/outfit/job/prisoner
 	name = "Prisoner"
@@ -72,13 +86,13 @@
 /datum/outfit/job/prisoner/post_equip(mob/living/carbon/human/new_prisoner, visuals_only)
 	. = ..()
 
-	var/crime_name = new_prisoner.client?.prefs?.read_preference(/datum/preference/choiced/prisoner_crime)
-	var/datum/prisoner_crime/crime = GLOB.prisoner_crimes[crime_name]
-	if (isnull(crime))
+	var/datum/prisoner_crime/crime = new_prisoner.initial_prisoner_crime
+	if(visuals_only || !crime || new_prisoner.prison_tattoos_applied)
 		return
+	new_prisoner.prison_tattoos_applied = TRUE
 	var/list/limbs_to_tat = new_prisoner.get_bodyparts()
 	for(var/i in 1 to crime.tattoos)
-		if(!length(SSpersistence.prison_tattoos_to_use) || visuals_only)
+		if(!length(SSpersistence.prison_tattoos_to_use) || !length(limbs_to_tat))
 			return
 		var/obj/item/bodypart/tatted_limb = pick_n_take(limbs_to_tat)
 		var/list/tattoo = pick_n_take(SSpersistence.prison_tattoos_to_use)

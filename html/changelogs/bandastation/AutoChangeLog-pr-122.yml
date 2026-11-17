@@ -1,0 +1,4 @@
+author: "mo0niverse"
+delete-after: True
+changes:
+  - bugfix: "Убрана краткая вспышка экрана при отслеживании цели «Живым сердцем»."

@@ -1,20 +1,13 @@
-/// Keep the native material, stock-part, queue and output machinery with an engineering-only catalog.
+/// Keep the native material, stock-part, queue and output machinery with a pod-only catalog.
 /obj/machinery/mecha_part_fabricator/spacepod
 	name = "spacepod fabricator"
 	desc = "Фабрикатор деталей, брони и оборудования космических челноков."
-	req_access = list(ACCESS_ENGINE_EQUIP)
+	req_access = list()
 	circuit = /obj/item/circuitboard/machine/mechfab/spacepod
 	allowed_buildtypes = PODFAB
 
-/obj/machinery/mecha_part_fabricator/spacepod/ui_interact(mob/user, datum/tgui/ui)
-	if(!allowed(user))
-		balloon_alert(user, "в доступе отказано!")
-		return
-	return ..()
-
 /obj/machinery/mecha_part_fabricator/spacepod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	// Revalidate the current ID for every request, including an already-open interface.
-	if(QDELETED(ui) || QDELETED(ui.user) || !allowed(ui.user))
+	if(QDELETED(ui) || QDELETED(ui.user))
 		return FALSE
 	return ..()
 

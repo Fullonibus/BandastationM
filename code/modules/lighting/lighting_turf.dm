@@ -6,13 +6,17 @@
 	lighting_corner_NW?.vis_update()
 
 /turf/proc/lighting_clear_overlay()
-	if (lighting_object)
-		qdel(lighting_object, force=TRUE)
+	var/atom/movable/lighting_object/overlay = lighting_object || (locate(/atom/movable/lighting_object) in src)
+	if (overlay)
+		qdel(overlay, force = TRUE)
 
-// Builds a lighting object for us, but only if our area is dynamic.
+/// Builds or replaces the turf's static lighting object.
 /turf/proc/lighting_build_overlay()
 	if (lighting_object)
-		qdel(lighting_object, force=TRUE) //Shitty fix for lighting objects persisting after death
+		lighting_clear_overlay()
+	else if (locate(/atom/movable/lighting_object) in src)
+		// Map loading can leave the object in contents before Initialize registers it.
+		return
 
 	new /atom/movable/lighting_object(src)
 

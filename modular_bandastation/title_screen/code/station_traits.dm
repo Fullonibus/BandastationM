@@ -3,7 +3,7 @@
 
 // STANDARD JOB TRAIT HANDLING
 /datum/station_trait/job/on_lobby_button_click(mob/dead/new_player/user, button_id)
-	if(SSticker.HasRoundStarted())
+	if(!sign_up_button || SSticker.current_state >= GAME_STATE_SETTING_UP)
 		to_chat(user, span_redtext("Раунд уже начался!"))
 		return
 

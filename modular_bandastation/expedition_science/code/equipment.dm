@@ -74,7 +74,7 @@
 
 /** Laboratory analyzer requiring a held specimen throughout the analysis. */
 /obj/machinery/stationtrauma_sample_analyzer
-	name = "анализатор экспедиционных проб"
+	name = "лабораторный анализатор образцов"
 	desc = "Приложите запечатанную экспедиционную пробу для анализа и печати отчёта."
 	icon = 'icons/obj/science/vatgrowing.dmi'
 	icon_state = "microscope"
@@ -136,7 +136,7 @@
 
 /** Construction board for the sample analyzer. */
 /obj/item/circuitboard/machine/stationtrauma_sample_analyzer
-	name = "Анализатор экспедиционных проб"
+	name = "Лабораторный анализатор образцов"
 	build_path = /obj/machinery/stationtrauma_sample_analyzer
 	req_components = list(/datum/stock_part/scanning_module = 1, /datum/stock_part/servo = 1)
 

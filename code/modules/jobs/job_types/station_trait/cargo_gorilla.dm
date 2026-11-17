@@ -2,8 +2,10 @@
 	title = JOB_CARGO_GORILLA
 	description = "Помогайте отделу поставок в перемещении грузов и утилизации ненужных фруктов."
 	faction = FACTION_STATION
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 1
+	spawn_positions = 1
+	required_donator_level = DONATOR_TIER_2
+	donor_unlock_trait = /datum/station_trait/job/cargorilla
 	supervisors = JOB_QUARTERMASTER_RU
 	spawn_type = /mob/living/basic/gorilla/cargorilla
 	config_tag = "CARGO_GORILLA"
@@ -19,6 +21,8 @@
 	tgui_icon = FA_ICON_PAW
 
 /datum/job/cargo_gorilla/get_roundstart_spawn_point()
+	if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title])
 	if (length(GLOB.gorilla_start))
 		return pick(GLOB.gorilla_start)
 	return ..()
@@ -29,6 +33,9 @@
 	var/mob/living/the_big_man = new spawn_type(get_turf(spawn_point))
 	the_big_man.fully_replace_character_name(the_big_man.real_name, pick(GLOB.cargorilla_names))
 	return the_big_man
+
+/datum/job/cargo_gorilla/get_lobby_icon()
+	return icon(DEFAULT_HUDS_DMI, SECHUD_CARGO_TECHNICIAN)
 
 /datum/job/cargo_gorilla/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
@@ -42,7 +49,7 @@
 	gorilla_id.registered_name = spawned.name
 	gorilla_id.update_label()
 	gorilla_id.set_account(bank_account)
-	spawned.put_in_hands(gorilla_id, del_on_fail = TRUE)
+	spawned.equip_to_slot_or_del(gorilla_id, ITEM_SLOT_ID, initial = TRUE)
 
 	to_chat(spawned, span_boldnotice("Вы Каргорила, дружелюбный член станции и грузоперевозчик."))
 	to_chat(spawned, span_notice("Вы можете поднимать ящики, кликая на них, и класть их на пол, кликая по нему."))

@@ -1,0 +1,4 @@
+author: "mo0niverse"
+delete-after: True
+changes:
+  - rscadd: "Пилоты космических подов могут отдалить камеру во время полёта."

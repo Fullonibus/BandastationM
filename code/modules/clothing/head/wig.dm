@@ -45,6 +45,10 @@
 	var/mutable_appearance/hair_overlay = mutable_appearance(hair.icon, hair.icon_state, layer = -HAIR_LAYER, appearance_flags = RESET_COLOR)
 	hair_overlay.color = color
 	hair_overlay.pixel_z = hair.y_offset
+	var/mob/living/carbon/human/wearer = loc
+	if(ishuman(wearer) && icon_file != worn_icon && wearer.get_bodypart(BODY_ZONE_HEAD)?.limb_id == SPECIES_RESOMI)
+		// The fitted wig state is blank. Its selected hairstyle is a separate layer.
+		hair_overlay.pixel_z -= 5
 	. += hair_overlay
 
 	// So that the wig actually blocks emissives.

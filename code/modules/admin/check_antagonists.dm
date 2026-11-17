@@ -96,6 +96,7 @@
 		return
 	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Round Status</title></head><body><h1><B>Round Status</B></h1>")
 	dat += "<a href='byond://?_src_=holder;[HrefToken()];gamemode_panel=1'>Dynamic Panel</a><br>"
+	dat += "<a href='byond://?_src_=holder;[HrefToken()];antag_winloss_stats=1'>Antagonist Win/Loss Stats</a><br>"
 	dat += "Round Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B><BR>"
 	dat += "<B>Emergency shuttle</B><BR>"
 	if(EMERGENCY_IDLE_OR_RECALLED)

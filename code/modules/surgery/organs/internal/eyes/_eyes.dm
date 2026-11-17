@@ -39,15 +39,20 @@
 	var/eye_icon = 'icons/mob/human/human_eyes.dmi'
 	/// The icon state of that eyes as its applied to the mob
 	var/eye_icon_state = "eyes"
+	/// Whether this organ also draws an eye with the _c suffix.
+	var/has_center_eye = FALSE
+	/// Optional sprite file for eyelids that use species-specific eye shapes.
+	var/eyelid_icon
 	/// Do these eyes have blinking animations
 	var/blink_animation = TRUE
 	/// Icon state for iris overlays
 	var/iris_overlay = "eyes_iris"
 	/// Should our blinking be synchronized or can separate eyes have (slightly) separate blinking times
 	var/synchronized_blinking = TRUE
-	// A pair of abstract eyelid objects (yes, really) used to animate blinking
+	// Abstract eyelid objects used to animate blinking
 	var/obj/effect/abstract/eyelid_effect/eyelid_left
 	var/obj/effect/abstract/eyelid_effect/eyelid_right
+	var/obj/effect/abstract/eyelid_effect/eyelid_center
 
 	/// Glasses cannot be worn over these eyes.
 	var/no_glasses = FALSE
@@ -71,12 +76,15 @@
 /obj/item/organ/eyes/Initialize(mapload)
 	. = ..()
 	if (blink_animation)
-		eyelid_left = new(src, "[eye_icon_state]_l")
-		eyelid_right = new(src, "[eye_icon_state]_r")
+		eyelid_left = new(src, "[eye_icon_state]_l", eyelid_icon)
+		eyelid_right = new(src, "[eye_icon_state]_r", eyelid_icon)
+		if (has_center_eye)
+			eyelid_center = new(src, "[eye_icon_state]_c", eyelid_icon)
 
 /obj/item/organ/eyes/Destroy()
 	QDEL_NULL(eyelid_left)
 	QDEL_NULL(eyelid_right)
+	QDEL_NULL(eyelid_center)
 	return ..()
 
 /obj/item/organ/eyes/on_mob_insert(mob/living/carbon/receiver, special, movement_flags)
@@ -139,6 +147,8 @@
 	// Don't forget about the eyelids
 	organ_owner.vis_contents -= eyelid_left
 	organ_owner.vis_contents -= eyelid_right
+	if (eyelid_center)
+		organ_owner.vis_contents -= eyelid_center
 
 	if(ishuman(organ_owner))
 		var/mob/living/carbon/human/human_owner = organ_owner
@@ -316,14 +326,21 @@
 	eye_right.dir = eye_dir
 
 	var/list/overlays = list(eye_left, eye_right)
+	var/mutable_appearance/eye_center
+	if (has_center_eye)
+		eye_center = mutable_appearance(eye_icon, "[eye_icon_state]_c", -EYES_LAYER)
+		eye_center.dir = eye_dir
+		overlays += eye_center
 
 	if(my_head.owner && !(my_head.owner.obscured_slots & HIDEEYES))
-		overlays += get_emissive_overlays(eye_left, eye_right, my_head)
+		overlays += get_emissive_overlays(eye_left, eye_right, my_head, eye_center)
 
 	if((my_head.head_flags & HEAD_EYECOLOR) && my_head.is_husked != HUSKED_ZOMBIE)
 		eye_right.color = my_head.owner?.get_right_eye_color() || eye_color_right
 		eye_left.color = my_head.owner?.get_left_eye_color() || eye_color_left
-		var/list/eyelids = get_eyelid_overlays(eye_left, eye_right, my_head)
+		if (eye_center)
+			eye_center.color = eye_left.color
+		var/list/eyelids = get_eyelid_overlays(eye_left, eye_right, my_head, eye_center)
 		if (LAZYLEN(eyelids))
 			overlays += eyelids
 
@@ -343,8 +360,8 @@
 
 	return overlays
 
-///Returns the two emissive overlays built for the left and right eyes, in order.
-/obj/item/organ/eyes/proc/get_emissive_overlays(mutable_appearance/eye_left, mutable_appearance/eye_right, atom/spokesman)
+///Returns the emissive overlays built for the eyes, from left to right, then center if present.
+/obj/item/organ/eyes/proc/get_emissive_overlays(mutable_appearance/eye_left, mutable_appearance/eye_right, atom/spokesman, mutable_appearance/eye_center)
 	var/list/return_list = list()
 	var/emissive_effect
 	if((owner && HAS_TRAIT(owner, TRAIT_LUMINESCENT_EYES)) || (TRAIT_LUMINESCENT_EYES in organ_traits))
@@ -355,9 +372,13 @@
 	if(emissive_effect)
 		return_list += emissive_appearance(eye_left.icon, eye_left.icon_state, spokesman, -EYES_LAYER, alpha = eye_left.alpha, effect_type = emissive_effect)
 		return_list += emissive_appearance(eye_right.icon, eye_right.icon_state, spokesman, -EYES_LAYER, alpha = eye_right.alpha, effect_type = emissive_effect)
+		if (eye_center)
+			return_list += emissive_appearance(eye_center.icon, eye_center.icon_state, spokesman, -EYES_LAYER, alpha = eye_center.alpha, effect_type = emissive_effect)
 	else
 		return_list += emissive_blocker(eye_left.icon, eye_left.icon_state, spokesman, -EYES_LAYER, alpha = eye_left.alpha)
 		return_list += emissive_blocker(eye_right.icon, eye_right.icon_state, spokesman, -EYES_LAYER, alpha = eye_right.alpha)
+		if (eye_center)
+			return_list += emissive_blocker(eye_center.icon, eye_center.icon_state, spokesman, -EYES_LAYER, alpha = eye_center.alpha)
 
 	return return_list
 
@@ -472,10 +493,10 @@
 #define BLINK_LOOPS 5
 
 /// Modifies eye overlays to also act as eyelids, both for blinking and for when you're knocked out cold
-/obj/item/organ/eyes/proc/get_eyelid_overlays(mutable_appearance/eye_left, mutable_appearance/eye_right, obj/item/bodypart/head/my_head)
+/obj/item/organ/eyes/proc/get_eyelid_overlays(mutable_appearance/eye_left, mutable_appearance/eye_right, obj/item/bodypart/head/my_head, mutable_appearance/eye_center)
 	var/mob/living/carbon/human/parent = my_head.owner
-	// Robotic eyes or colorless heads don't get the privelege of having eyelids
-	if (isnull(parent) || IS_ROBOTIC_ORGAN(src) || !my_head.draw_color || HAS_TRAIT(parent, TRAIT_NO_EYELIDS))
+	// During removal, the eyes can still be inside the head when its overlays are refreshed.
+	if (isnull(parent) || owner != parent || IS_ROBOTIC_ORGAN(src) || !my_head.draw_color || HAS_TRAIT(parent, TRAIT_NO_EYELIDS))
 		return
 
 	var/list/base_color = rgb2num(my_head.draw_color, COLORSPACE_HSL)
@@ -486,6 +507,8 @@
 	if (IS_DEAD_OR_FAKING(parent) || IS_UNCONSCIOUS(parent))
 		eye_right.color = eyelid_color
 		eye_left.color = eyelid_color
+		if (eye_center)
+			eye_center.color = eyelid_color
 		return
 
 	if (!blink_animation || HAS_TRAIT(parent, TRAIT_PREVENT_BLINKING))
@@ -495,14 +518,21 @@
 	eyelid_right.color = eyelid_color
 	eyelid_left.render_target = "*[REF(parent)]_eyelid_left"
 	eyelid_right.render_target = "*[REF(parent)]_eyelid_right"
-	parent.vis_contents += eyelid_left
-	parent.vis_contents += eyelid_right
-	animate_eyelids(parent)
+	parent.vis_contents |= eyelid_left
+	parent.vis_contents |= eyelid_right
 	var/mutable_appearance/left_eyelid_overlay = mutable_appearance(layer = -EYES_LAYER, offset_spokesman = parent)
 	var/mutable_appearance/right_eyelid_overlay = mutable_appearance(layer = -EYES_LAYER, offset_spokesman = parent)
 	left_eyelid_overlay.render_source = "*[REF(parent)]_eyelid_left"
 	right_eyelid_overlay.render_source = "*[REF(parent)]_eyelid_right"
-	return list(left_eyelid_overlay, right_eyelid_overlay)
+	. = list(left_eyelid_overlay, right_eyelid_overlay)
+	if (eyelid_center)
+		eyelid_center.color = eyelid_color
+		eyelid_center.render_target = "*[REF(parent)]_eyelid_center"
+		parent.vis_contents |= eyelid_center
+		var/mutable_appearance/center_eyelid_overlay = mutable_appearance(layer = -EYES_LAYER, offset_spokesman = parent)
+		center_eyelid_overlay.render_source = eyelid_center.render_target
+		. += center_eyelid_overlay
+	animate_eyelids(parent)
 
 /// Animates one eyelid at a time, thanks BYOND and thanks animation chains
 /obj/item/organ/eyes/proc/animate_eyelid(obj/effect/abstract/eyelid_effect/eyelid, mob/living/carbon/human/parent, sync_blinking = TRUE, list/anim_times = null)
@@ -544,7 +574,7 @@
 			animate(time = wait_time)
 
 /obj/item/organ/eyes/proc/blink(duration = BLINK_DURATION, restart_animation = TRUE)
-	if(!blink_animation)
+	if(!blink_animation || !owner)
 		return
 	var/left_delayed = prob(50)
 	// Storing blink delay so mistimed blinks of lizards don't get cut short
@@ -562,18 +592,28 @@
 	animate(alpha = 255, time = 0)
 	animate(time = duration)
 	animate(alpha = 0, time = 0)
+	if (eyelid_center)
+		animate(eyelid_center, alpha = 0, time = 0)
+		animate(alpha = 255, time = 0)
+		animate(time = duration)
+		animate(alpha = 0, time = 0)
 	if (restart_animation)
 		addtimer(CALLBACK(src, PROC_REF(animate_eyelids), owner), blink_delay + duration)
 
 /obj/item/organ/eyes/proc/animate_eyelids(mob/living/carbon/human/parent)
+	if (owner != parent)
+		return
 	var/sync_blinking = synchronized_blinking && (parent.get_organ_loss(ORGAN_SLOT_BRAIN) < BRAIN_DAMAGE_ASYNC_BLINKING)
+	var/list/anim_times
 	// Randomize order for unsynched animations
 	if (sync_blinking || prob(50))
-		var/list/anim_times = animate_eyelid(eyelid_left, parent, sync_blinking)
+		anim_times = animate_eyelid(eyelid_left, parent, sync_blinking)
 		animate_eyelid(eyelid_right, parent, sync_blinking, anim_times)
 	else
-		var/list/anim_times = animate_eyelid(eyelid_right, parent, sync_blinking)
+		anim_times = animate_eyelid(eyelid_right, parent, sync_blinking)
 		animate_eyelid(eyelid_left, parent, sync_blinking, anim_times)
+	if (eyelid_center)
+		animate_eyelid(eyelid_center, parent, sync_blinking, anim_times)
 
 /obj/effect/abstract/eyelid_effect
 	name = "eyelid"
@@ -581,9 +621,11 @@
 	layer = -EYES_LAYER
 	vis_flags = VIS_INHERIT_DIR | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
-/obj/effect/abstract/eyelid_effect/Initialize(mapload, new_state)
+/obj/effect/abstract/eyelid_effect/Initialize(mapload, new_state, new_icon)
 	. = ..()
 	icon_state = new_state
+	if (new_icon)
+		icon = new_icon
 
 #undef BASE_BLINKING_DELAY
 #undef RAND_BLINKING_DELAY

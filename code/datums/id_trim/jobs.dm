@@ -239,10 +239,12 @@
 
 /datum/id_trim/job/bridge_assistant
 	assignment = JOB_BRIDGE_ASSISTANT
-	trim_state = "trim_assistant"
+	trim_icon = 'modular_bandastation/jobs/icons/obj/donor_id_trims.dmi'
+	trim_state = "trim_adjutant"
 	department_color = COLOR_COMMAND_BLUE
 	subdepartment_color = COLOR_COMMAND_BLUE
-	sechud_icon_state = SECHUD_BRIDGE_ASSISTANT
+	sechud_icon = 'modular_bandastation/jobs/icons/donor_job_hud.dmi'
+	sechud_icon_state = "hudadjutant"
 	minimal_access = list(
 		ACCESS_COMMAND,
 		ACCESS_EVA,
@@ -280,12 +282,17 @@
 
 /// Captain gets all station accesses hardcoded in because it's the Captain.
 /datum/id_trim/job/captain/New()
-	extra_access |= (SSid_access.get_flag_access_list(ACCESS_FLAG_COMMON) + SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND))
-	extra_wildcard_access |= (SSid_access.get_flag_access_list(ACCESS_FLAG_PRV_COMMAND) + SSid_access.get_flag_access_list(ACCESS_FLAG_CAPTAIN))
-	minimal_access |= (SSid_access.get_flag_access_list(ACCESS_FLAG_COMMON) + SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND))
-	minimal_wildcard_access |= (SSid_access.get_flag_access_list(ACCESS_FLAG_PRV_COMMAND) + SSid_access.get_flag_access_list(ACCESS_FLAG_CAPTAIN))
-
+	add_captain_station_access()
 	return ..()
+
+/// Adds the station accesses and wildcard grants carried by the Captain's ID.
+/datum/id_trim/job/proc/add_captain_station_access()
+	var/list/station_access = SSid_access.get_flag_access_list(ACCESS_FLAG_COMMON) + SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND)
+	var/list/station_wildcard_access = SSid_access.get_flag_access_list(ACCESS_FLAG_PRV_COMMAND) + SSid_access.get_flag_access_list(ACCESS_FLAG_CAPTAIN)
+	minimal_access |= station_access
+	extra_access |= station_access
+	minimal_wildcard_access |= station_wildcard_access
+	extra_wildcard_access |= station_wildcard_access
 
 /datum/id_trim/job/cargo_technician
 	assignment = JOB_CARGO_TECHNICIAN

@@ -988,25 +988,28 @@
 /// Updates the icon of our overlay and applies the animation
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/rust/proc/update_rust()
 	// Animation + Update the overlay sprite on our armor
+	var/robe_state = get_worn_icon_state(ITEM_SLOT_OCLOTHING)
 	if(!rusted)
 		rust_overlay?.icon_state = null
-		flick("[worn_icon_state]"+"_off", rust_overlay)
+		flick("[robe_state]_off", rust_overlay)
 		cut_overlay(object_overlay)
 		hood?.cut_overlay(hood_object_overlay)
 		return
-	rust_overlay?.icon_state = "[worn_icon_state]" + "_overlay"
-	flick("[worn_icon_state]"+"_on", rust_overlay)
+	rust_overlay?.icon_state = "[robe_state]_overlay"
+	flick("[robe_state]_on", rust_overlay)
 	add_overlay(object_overlay)
 	hood?.add_overlay(hood_object_overlay)
 
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/rust/worn_overlays(mutable_appearance/standing, isinhands, icon_file, bodyshape = NONE)
 	. = ..()
 	// Visual-only previews and non-heretics have no animated rust target.
-	if(isnull(rust_overlay))
+	if(isinhands || isnull(rust_overlay))
 		return
+	var/rust_state = "[get_worn_icon_state(ITEM_SLOT_OCLOTHING)]_overlay"
+	rust_overlay.icon = icon_exists(icon_file, rust_state) ? icon_file : 'icons/mob/clothing/suits/armor.dmi'
 	// Should basically catch toggling the hood on/off while standing on rust
 	if(rusted)
-		rust_overlay.icon_state = "[worn_icon_state]" + "_overlay"
+		rust_overlay.icon_state = rust_state
 	else
 		rust_overlay.icon_state = null
 	var/mutable_appearance/rust_appearance = mutable_appearance()

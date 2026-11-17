@@ -90,11 +90,11 @@
 	if(discord_linked && !player.client.interviewee)
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
 			html += create_button(player, "toggle_ready", "Готов", advanced_classes = "[player.ready == PLAYER_READY_TO_PLAY ? "good" : "bad"] checkbox")
-			html += create_button(player, "toggle_antag_roll", "Антагонисты", tooltip = "Разрешить выбирать вас для ролей антагонистов", advanced_classes = "[player.client.prefs.read_preference(/datum/preference/toggle/antag_roll) ? "good" : "bad"] checkbox")
+			html += create_antag_buttons(player)
 			html += create_public_traits(player)
 		else
 			html += create_button(player, "late_join", "Присоединиться")
-			html += create_button(player, "toggle_antag_roll", "Антагонисты", tooltip = "Разрешить выбирать вас для ролей антагонистов", advanced_classes = "[player.client.prefs.read_preference(/datum/preference/toggle/antag_roll) ? "good" : "bad"] checkbox")
+			html += create_antag_buttons(player)
 			html += create_public_traits(player)
 
 		html += create_button(player, "observe", "Наблюдать")
@@ -110,6 +110,19 @@
 		return create_button(player, "interview", "Пройти интервью")
 
 	return "<button class='lobby_element lobby-auth' onclick='toggleAuthModal()'><span class='lobby-text'>Авторизация</span></button>"
+
+/** Keep the paid-role menu beside the independent random-antagonist preference. */
+/datum/title_screen/proc/create_antag_buttons(mob/dead/new_player/player)
+	var/list/account = SScentral.antag_token_balances[player.ckey]
+	if(!account || world.time >= account["updated_at"] + 10 SECONDS)
+		SScentral.refresh_antag_tokens(player.ckey)
+	var/balance = isnum(account?["tokens"]) ? "[account["tokens"]]" : "?"
+	return {"
+		<div class='lobby-antag-row'>
+			[create_button(player, "toggle_antag_roll", "Антагонисты", tooltip = "Разрешить выбирать вас для ролей антагонистов", advanced_classes = "[player.client.prefs.read_preference(/datum/preference/toggle/antag_roll) ? "good" : "bad"] checkbox")]
+			[create_button(player, "antag_tokens", balance, tooltip = "Антаг токены: выбрать дополнительную роль", tooltip_position = "top-end", advanced_classes = SScentral.antag_token_requests[player.ckey] ? "selected" : "")]
+		</div>
+	"}
 
 /datum/title_screen/proc/create_trait_buttons(mob/dead/new_player/player)
 	if(!length(GLOB.lobby_station_traits))

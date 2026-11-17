@@ -267,7 +267,8 @@
 /obj/item/clothing/neck/link_scryer/worn_overlays(mutable_appearance/standing, isinhands, icon_file, bodyshape = NONE)
 	. = ..()
 	if(!QDELETED(mod_link.link_call))
-		. += mutable_appearance('icons/mob/clothing/neck.dmi', "modlink_active")
+		var/indicator_icon = icon_exists(icon_file, "modlink_active") ? icon_file : 'icons/mob/clothing/neck.dmi'
+		. += mutable_appearance(indicator_icon, "modlink_active")
 
 /obj/item/clothing/neck/link_scryer/ui_action_click(mob/user)
 	if(mod_link.link_call)

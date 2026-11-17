@@ -9,12 +9,15 @@
 	var/datum/action/vehicle/sealed/spacepod/internals/internals = locate() in pilot.actions
 	var/datum/action/vehicle/sealed/spacepod/brakes/brakes = locate() in pilot.actions
 	var/datum/action/vehicle/sealed/spacepod/turbo/turbo = locate() in pilot.actions
+	var/datum/action/vehicle/sealed/spacepod/camera_zoom/camera_zoom = locate() in pilot.actions
 	var/datum/action/vehicle/sealed/spacepod/eject/pilot_exit = locate() in pilot.actions
 	var/datum/action/vehicle/sealed/spacepod/eject/passenger_exit = locate() in passenger.actions
 	TEST_ASSERT_NOTNULL(lights, "Boarding did not grant the actual pilot light action.")
 	TEST_ASSERT_NOTNULL(internals, "Boarding did not grant the actual pilot air action.")
 	TEST_ASSERT_NOTNULL(brakes, "Boarding did not grant the actual pilot brake action.")
 	TEST_ASSERT_NOTNULL(turbo, "Boarding did not grant the actual pilot TURBO action.")
+	TEST_ASSERT_NOTNULL(camera_zoom, "Boarding did not grant the pilot's camera zoom action.")
+	TEST_ASSERT("mech_zoom_on" in icon_states(camera_zoom.button_icon), "The enabled camera zoom HUD icon does not exist.")
 	TEST_ASSERT_NOTNULL(pilot_exit, "Boarding did not grant the actual pilot exit action.")
 	TEST_ASSERT_NOTNULL(passenger_exit, "Boarding did not grant the actual passenger exit action.")
 	for(var/datum/action/vehicle/sealed/spacepod/action in pilot.actions)
@@ -25,6 +28,8 @@
 	TEST_ASSERT(!(locate(/datum/action/vehicle/sealed/spacepod/internals) in passenger.actions), "A passenger received the cabin air button.")
 	TEST_ASSERT(!(locate(/datum/action/vehicle/sealed/spacepod/brakes) in passenger.actions), "A passenger received the brake button.")
 	TEST_ASSERT(!(locate(/datum/action/vehicle/sealed/spacepod/turbo) in passenger.actions), "A passenger received the TURBO button.")
+	TEST_ASSERT(!(locate(/datum/action/vehicle/sealed/spacepod/camera_zoom) in passenger.actions), "A passenger received the camera zoom button.")
+	TEST_ASSERT(!camera_zoom.Trigger(pilot), "A pilot without a client activated camera zoom.")
 	turbo.Trigger(pilot)
 	TEST_ASSERT(pod.flight.turbo, "Pressing the real TURBO action did not enable turbo.")
 	var/enabled_turbo_icon = turbo.button_icon_state
@@ -53,6 +58,7 @@
 	pilot_exit.Trigger(pilot)
 	TEST_ASSERT(pilot.loc != pod, "Pressing the pilot exit button did not exit the pod.")
 	TEST_ASSERT(QDELETED(lights) && QDELETED(internals) && QDELETED(brakes) && QDELETED(turbo) && QDELETED(pilot_exit), "An exited pilot retained live pod actions.")
+	TEST_ASSERT(QDELETED(camera_zoom), "An exited pilot retained the camera zoom action.")
 	var/turbo_after_exit = pod.flight.turbo
 	TEST_ASSERT(!turbo.Trigger(pilot), "An exited pilot activated their stale TURBO button.")
 	TEST_ASSERT_EQUAL(pod.flight.turbo, turbo_after_exit, "A stale exited TURBO button changed the flight setting.")

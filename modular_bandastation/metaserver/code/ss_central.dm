@@ -213,6 +213,7 @@ SUBSYSTEM_DEF(central)
 	var/list/data = json_decode(response.body)
 	player.donator_level = get_max_donation_tier_from_response_data(data)
 
+/** Refresh the subscription and report whether the login-time check succeeded. */
 /datum/controller/subsystem/central/proc/update_player_donate_tier_blocking(client/player)
 	var/endpoint = "[CONFIG_GET(string/ss_central_url)]/donates?ckey=[player.ckey]&active_only=true&page=1&page_size=50"
 	var/datum/http_response/response = SShttp.make_sync_request(RUSTG_HTTP_METHOD_GET, endpoint, "", list())
@@ -220,8 +221,11 @@ SUBSYSTEM_DEF(central)
 		stack_trace("Failed to get player donate tier: HTTP status code [response.status_code] - [response.error] - [response.body]")
 		return
 
+	if(!player)
+		return FALSE
 	var/list/data = json_decode(response.body)
 	player.donator_level = get_max_donation_tier_from_response_data(data)
+	return TRUE
 
 /datum/controller/subsystem/central/proc/get_max_donation_tier_from_response_data(list/data)
 	if(!length(data["items"]))

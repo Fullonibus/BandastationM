@@ -41,6 +41,10 @@
 			open_interview()
 		return
 
+	if(href_list["antag_tokens"])
+		SScentral.ui_interact(src)
+		return
+
 	if(href_list["toggle_antag_roll"])
 		var/datum/preference/toggle/antag_roll/antag_roll_preference = GLOB.preference_entries[/datum/preference/toggle/antag_roll]
 		var/new_value = !client.prefs.read_preference(/datum/preference/toggle/antag_roll)
@@ -58,21 +62,14 @@
 			SStitle.title_output(client, FALSE, "toggleReady")
 			return
 
-		var/prefs_specie = client.prefs.read_preference(/datum/preference/choiced/species)
 		var/list/prefs_jobs = client.prefs.job_preferences
-		if(!prefs_specie || !islist(prefs_jobs) || !length(prefs_jobs))
+		if(!length(prefs_jobs))
 			to_chat(usr, span_boldwarning("Ошибка настроек персонажа. Выберите предпочитаемую должность."))
 			return
 
-		var/ignore_restrictions = locate(/datum/station_trait/xenobureaucracy_error) in GLOB.lobby_station_traits
-		if(!ignore_restrictions)
-			var/list/allowed_species = CONFIG_GET(str_list/allowed_species)
-			var/list/job_restrictions = CONFIG_GET(str_list/job_restrictions)
-			if(length(allowed_species) && !("[prefs_specie]" in allowed_species))
-				for(var/job_id in prefs_jobs)
-					if(job_id in job_restrictions)
-						to_chat(usr, span_alertwarning("Выбранная раса несовместима с одной или более выбранных профессий."))
-						return
+		if(client.prefs.has_species_restricted_job_preferences())
+			to_chat(usr, span_alertwarning("Раса назначенного персонажа несовместима с одной или более выбранных профессий."))
+			return
 
 		ready = PLAYER_READY_TO_PLAY
 		SStitle.title_output(client, TRUE, "toggleReady")

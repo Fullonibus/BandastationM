@@ -6,6 +6,8 @@
 #define SPACEPOD_FLIGHT_IMPACT_DAMAGE 1
 #define SPACEPOD_FLIGHT_BREACH_SPEED 5
 #define SPACEPOD_FLIGHT_REINFORCED_WALL_DAMAGE 0.5
+#define SPACEPOD_FLIGHT_BRAKE_THRUST_MULTIPLIER 3
+#define SPACEPOD_FLIGHT_BRAKE_ENERGY_MULTIPLIER 2
 
 /**
  * Pixel flight with relative thrusters, adapted from the Yogstation/Paradise spacepod physics.
@@ -28,7 +30,7 @@
 	var/desired_heading
 	/// Clockwise degrees per second.
 	var/angular_velocity = 0
-	/// Braking uses the same finite thrusters as manual input.
+	/// Apply powered counter-thrust when the pilot releases directional controls.
 	var/brakes = FALSE
 	/// Doubles linear thruster output and the speed limit; energy follows actual thrust.
 	var/turbo = FALSE
@@ -84,7 +86,7 @@
 	START_PROCESSING(SSnewtonian_movement, src)
 	return TRUE
 
-/// Toggle powered counter-thrust; changing the setting itself needs no energy.
+/// Toggle automatic counter-thrust; changing the setting itself needs no energy.
 /datum/spacepod_flight/proc/toggle_brakes()
 	if(QDELETED(pod) || !pod.can_control(pod.pilot))
 		return FALSE
@@ -271,10 +273,12 @@
 	var/forward_thrust = 0
 	var/right_thrust = 0
 	var/thrust_multiplier = turbo ? 2 : 1
+	var/braking = brakes && !relative_input
 	if(controlled)
-		if(brakes)
-			forward_thrust = clamp(-(forward_x * velocity_x + forward_y * velocity_y) / seconds_per_tick, -3 * thrust_multiplier, 4 * thrust_multiplier)
-			right_thrust = clamp(-(forward_y * velocity_x - forward_x * velocity_y) / seconds_per_tick, -3 * thrust_multiplier, 3 * thrust_multiplier)
+		if(braking)
+			var/brake_thrust_multiplier = thrust_multiplier * SPACEPOD_FLIGHT_BRAKE_THRUST_MULTIPLIER
+			forward_thrust = clamp(-(forward_x * velocity_x + forward_y * velocity_y) / seconds_per_tick, -3 * brake_thrust_multiplier, 4 * brake_thrust_multiplier)
+			right_thrust = clamp(-(forward_y * velocity_x - forward_x * velocity_y) / seconds_per_tick, -3 * brake_thrust_multiplier, 3 * brake_thrust_multiplier)
 		else
 			if(relative_input & NORTH)
 				forward_thrust += 4 * thrust_multiplier
@@ -287,7 +291,8 @@
 	var/thrust_x = forward_thrust * forward_x + right_thrust * forward_y
 	var/thrust_y = forward_thrust * forward_y - right_thrust * forward_x
 	var/thrust_magnitude = sqrt(thrust_x ** 2 + thrust_y ** 2)
-	var/powered_thrust = thrust_magnitude && use_power(10 * SPACEPOD_ENERGY_UNIT * thrust_magnitude * seconds_per_tick)
+	var/energy_multiplier = braking ? SPACEPOD_FLIGHT_BRAKE_ENERGY_MULTIPLIER : 1
+	var/powered_thrust = thrust_magnitude && use_power(10 * SPACEPOD_ENERGY_UNIT * thrust_magnitude * seconds_per_tick * energy_multiplier)
 	if(QDELETED(src) || QDELETED(pod))
 		return PROCESS_KILL
 	if(pod.loc != previous_turf)
@@ -420,3 +425,5 @@
 #undef SPACEPOD_FLIGHT_IMPACT_DAMAGE
 #undef SPACEPOD_FLIGHT_BREACH_SPEED
 #undef SPACEPOD_FLIGHT_REINFORCED_WALL_DAMAGE
+#undef SPACEPOD_FLIGHT_BRAKE_THRUST_MULTIPLIER
+#undef SPACEPOD_FLIGHT_BRAKE_ENERGY_MULTIPLIER

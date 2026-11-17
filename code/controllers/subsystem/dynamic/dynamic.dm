@@ -145,6 +145,7 @@ SUBSYSTEM_DEF(dynamic)
 	// we got what we needed, reset so we can do real job selection later
 	// reset only happens AFTER roundstart selection so we can verify stuff like "can we get 3 heads of staff for revs?"
 	SSjob.reset_occupations()
+	prepare_antag_token_rulesets(antag_candidates)
 	// finally, run through the queue and prepare rulesets for execution
 	// (actual execution, ie assigning antags, will happen after job assignment)
 	for(var/datum/dynamic_ruleset/roundstart/ruleset in queued_rulesets)
@@ -164,6 +165,7 @@ SUBSYSTEM_DEF(dynamic)
 	COOLDOWN_START(src, light_ruleset_start, current_tier.ruleset_type_settings[LIGHT_MIDROUND][TIME_THRESHOLD])
 	COOLDOWN_START(src, heavy_ruleset_start, current_tier.ruleset_type_settings[HEAVY_MIDROUND][TIME_THRESHOLD])
 	COOLDOWN_START(src, latejoin_ruleset_start, current_tier.ruleset_type_settings[LATEJOIN][TIME_THRESHOLD])
+	antag_token_candidates = null
 
 	return TRUE
 

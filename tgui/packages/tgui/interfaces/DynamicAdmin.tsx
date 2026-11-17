@@ -68,6 +68,7 @@ type Data = {
   latejoin_chance_maxxed: BooleanLike;
   next_dynamic_tick: number;
   antag_events_enabled: BooleanLike;
+  antag_tokens_enabled: BooleanLike;
 };
 
 function formatTime(seconds: number): string {
@@ -665,7 +666,8 @@ enum TABS {
 
 export const DynamicAdmin = () => {
   const { act, data } = useBackend<Data>();
-  const { config_even_enabled, antag_events_enabled } = data;
+  const { config_even_enabled, antag_events_enabled, antag_tokens_enabled } =
+    data;
 
   // disable config tab if config_even_enabled is false
   const tabs_filtered = Object.keys(TABS).filter(
@@ -703,6 +705,13 @@ export const DynamicAdmin = () => {
           width="100%"
           buttons={
             <>
+              <Button.Checkbox
+                checked={antag_tokens_enabled}
+                tooltip="Выдавать дополнительные роли за токены. При выключении заявки отменяются, токены сохраняются."
+                onClick={() => act('toggle_antag_tokens')}
+              >
+                Антагонисты за антаг токены
+              </Button.Checkbox>
               <Button.Checkbox
                 checked={antag_events_enabled}
                 tooltip="If checked, random events that spawn antags

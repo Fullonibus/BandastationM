@@ -13,6 +13,8 @@
 	var/egg_lay_time = 4 SECONDS
 	///The type of egg we create
 	var/egg_type = /obj/effect/mob_spawn/ghost_role/spider
+	/// Whether this spider can lay another clutch on the same turf.
+	var/allow_egg_stacking = FALSE
 
 /datum/action/cooldown/mob_cooldown/lay_eggs/Grant(mob/grant_to)
 	. = ..()
@@ -32,8 +34,7 @@
 		if (feedback)
 			owner.balloon_alert(owner, "busy!")
 		return FALSE
-	var/obj/structure/spider/eggcluster/eggs = locate() in get_turf(owner)
-	if(eggs)
+	if(!allow_egg_stacking && (locate(/obj/structure/spider/eggcluster) in get_turf(owner)))
 		if (feedback)
 			owner.balloon_alert(owner, "already eggs here!")
 		return FALSE
@@ -46,8 +47,7 @@
 		owner.balloon_alert(owner, "interrupted!")
 		StartCooldown(0 SECONDS)
 		return
-	var/obj/structure/spider/eggcluster/eggs = locate() in get_turf(owner)
-	if(eggs)
+	if(!allow_egg_stacking && (locate(/obj/structure/spider/eggcluster) in get_turf(owner)))
 		owner.balloon_alert(owner, "already eggs here!")
 	else
 		lay_egg()

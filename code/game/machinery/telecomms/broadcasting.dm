@@ -213,6 +213,7 @@
 	// Render the message and have everybody hear it.
 	// Always call this on the virtualspeaker to avoid issues.
 	var/spans = data["spans"]
+	virt.radio_voice_label = virt.get_radio_voice_label(message_mods)
 
 	// BANDASTATION EDIT START: TTS radio playback
 	if(should_do_modular_radio_tts && length(receive_radios))

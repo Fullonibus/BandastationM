@@ -133,6 +133,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	alert = FALSE //We're checking our messages!
 	update_icon()
 
+/// Donor cards with library access can enter the library without gaining news moderation.
+/obj/machinery/newscaster/proc/has_moderation_access(obj/item/card/id/card)
+	return (admin_access in card?.GetAccess()) && !istype(card.trim, /datum/id_trim/job/donor)
+
 /obj/machinery/newscaster/ui_data(mob/user)
 	var/list/data = list()
 	var/list/message_list = list()
@@ -168,7 +172,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		data["user"]["job"] = "N/A"
 		data["user"]["department"] = "N/A"
 
-	data["admin_mode"] = (admin_access in card?.GetAccess())
+	data["admin_mode"] = has_moderation_access(card)
 	data["security_mode"] = (security_access in card?.GetAccess())
 	data["photo_data"] = !isnull(current_image)
 	data["creating_channel"] = creating_channel
@@ -349,7 +353,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			if(isliving(user))
 				var/mob/living/living_user = user
 				id_card = living_user.get_idcard(hand_first = TRUE)
-			if(!(admin_access in id_card?.GetAccess()))
+			if(!has_moderation_access(id_card))
 				say("Clearance not found.")
 				return TRUE
 			var/questionable_message = params["messageID"]
@@ -363,7 +367,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			if(isliving(user))
 				var/mob/living/living_user = user
 				id_card = living_user.get_idcard(hand_first = TRUE)
-			if(!(admin_access in id_card?.GetAccess()))
+			if(!has_moderation_access(id_card))
 				say("Clearance not found.")
 				return TRUE
 			var/questionable_message = params["messageID"]
@@ -377,7 +381,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			if(isliving(user))
 				var/mob/living/living_user = user
 				id_card = living_user.get_idcard(hand_first = TRUE)
-			if(!(admin_access in id_card?.GetAccess()))
+			if(!has_moderation_access(id_card))
 				say("Clearance not found.")
 				return TRUE
 			var/selected_channel_id = (params["channel"])

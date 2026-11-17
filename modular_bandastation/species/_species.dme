@@ -3,9 +3,11 @@
 #include "code/_globalvars/lists.dm"
 
 #include "code/clothing/items.dm"
+#include "code/clothing/resomi_generated.dm"
 
 #include "code/human/species/skills.dm"
 #include "code/human/species_type/moth.dm"
+#include "code/human/species_type/drask.dm"
 #include "code/human/species_type/ipc.dm"
 #include "code/human/species_type/skrell.dm"
 #include "code/human/species_type/tajaran.dm"
@@ -15,6 +17,7 @@
 #include "code/human/sprite_accessories/skrell/skrell_cloth_wrap_toggle.dm"
 #include "code/human/sprite_accessories/skrell/skrell_head_tentacles.dm"
 #include "code/human/sprite_accessories/skrell/skrell_ornament.dm"
+#include "code/human/sprite_accessories/drask/drask_arm_spines.dm"
 
 #include "code/human/sprite_accessories/vulpkanin/vulpkanin_chest_markings.dm"
 #include "code/human/sprite_accessories/vulpkanin/vulpkanin_limb_markings.dm"
@@ -38,6 +41,7 @@
 #include "code/human/carbon.dm"
 
 #include "code/language/canilunzt.dm"
+#include "code/language/orluum.dm"
 #include "code/language/qurvolious.dm"
 #include "code/language/siiktajr.dm"
 #include "code/language/spinwarder.dm"
@@ -48,6 +52,8 @@
 #include "code/preferences/species_features/skrell/skrell_cloth_wrap_toggle.dm"
 #include "code/preferences/species_features/skrell/skrell_cloth_wrap_color.dm"
 #include "code/preferences/species_features/ipc.dm"
+#include "code/preferences/species_features/drask/drask_arm_spines_color.dm"
+#include "code/preferences/species_features/drask/drask_skin_tone.dm"
 
 #include "code/preferences/species_features/tajaran/body_markings/tajaran_chest_markings.dm"
 #include "code/preferences/species_features/tajaran/body_markings/tajaran_limb_markings.dm"
@@ -74,6 +80,7 @@
 #include "code/reagents/mutation.dm"
 
 #include "code/surgery/bodyparts/skrell_bodyparts.dm"
+#include "code/surgery/bodyparts/drask_bodyparts.dm"
 #include "code/surgery/bodyparts/ipc_bodyparts.dm"
 #include "code/surgery/bodyparts/tajaran_bodyparts.dm"
 #include "code/surgery/bodyparts/vulpkanin_bodyparts.dm"
@@ -84,6 +91,9 @@
 #include "code/surgery/organs/external/tajaran_external.dm"
 #include "code/surgery/organs/internal/tajaran_internal.dm"
 #include "code/surgery/organs/internal/skrell_internal.dm"
+#include "code/surgery/organs/external/drask_external.dm"
+#include "code/surgery/organs/internal/drask_internal.dm"
+
 #include "code/surgery/organs/internal/ipc_internal.dm"
 #include "code/surgery/organs/internal/ipc_upgrades.dm"
 #include "code/items/ipc_power_cord.dm"
@@ -123,3 +133,12 @@
 
 #include "code/preferences/species_features/vox/body_markings/vox_body_markings.dm"
 #include "code/preferences/species_features/vox/body_markings/vox_body_markings_color.dm"
+
+#include "code/human/species_type/resomi.dm"
+#include "code/human/resomi_abilities.dm"
+#include "code/human/sprite_accessories/resomi.dm"
+#include "code/language/schechi.dm"
+#include "code/preferences/species_features/resomi.dm"
+#include "code/surgery/bodyparts/resomi_bodyparts.dm"
+#include "code/surgery/organs/external/resomi_external.dm"
+#include "code/surgery/organs/internal/resomi_internal.dm"

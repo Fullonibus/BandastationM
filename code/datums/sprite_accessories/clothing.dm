@@ -23,8 +23,9 @@
  * * color - if this is NOT a statically colored clothing article and NOT gags, uses this color.
  * * physique - physique of the wearer (male or female)
  * * bodyshape - bodyshape of the wearer (humanoid, digitigrade, etc)
+ * * species_id - species of the wearer, if this appearance is being drawn on a mob.
  */
-/datum/sprite_accessory/clothing/proc/make_appearance(color = COLOR_WHITE, physique = MALE, bodyshape = BODYSHAPE_HUMANOID)
+/datum/sprite_accessory/clothing/proc/make_appearance(color = COLOR_WHITE, physique = MALE, bodyshape = BODYSHAPE_HUMANOID, species_id)
 	var/static/list/cached_icons = list()
 	var/use_female = physique == FEMALE && female_sprite_flags
 	var/use_digi = digi_icon_state && (bodyshape & BODYSHAPE_DIGITIGRADE)
@@ -35,7 +36,10 @@
 
 	var/key = "[icon_state_to_use]-[greyscale_config || "ng"]-[use_female]-[use_digi]-[greyscale_colors]"
 	var/mutable_appearance/result
-	if(cached_icons[key]) // it's already cached
+	var/fitted_icon = 'icons/bandastation/mob/species/resomi/clothing/underwear.dmi'
+	if(species_id == SPECIES_RESOMI && icon_state_to_use && icon_exists(fitted_icon, icon_state_to_use))
+		result = mutable_appearance(fitted_icon, icon_state_to_use)
+	else if(cached_icons[key]) // it's already cached
 		result = mutable_appearance(icon(cached_icons[key]))
 
 	else if(greyscale_config || use_female || use_digi) // icon ops ahead

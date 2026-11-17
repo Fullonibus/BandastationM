@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		// BANDASTATION EDIT START - Species clothing icons
 		var/mob/living/carbon/human/wearer = loc
 		// AI EDIT START - Resolve fitted and worn cigarette states for the mask slot
-		var/species_icon = istype(wearer) ? cig.get_species_worn_icon(wearer.get_bodypart(BODY_ZONE_HEAD)?.limb_id, cig.get_worn_icon_state(ITEM_SLOT_MASK)) : null
+		var/species_icon = istype(wearer) ? cig.get_species_worn_icon(wearer.get_bodypart(BODY_ZONE_HEAD)?.limb_id, cig.get_worn_icon_state(ITEM_SLOT_MASK), ITEM_SLOT_MASK) : null
 		. += cig.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi', override_file = species_icon, bodyshape = bodyshape, slot_id = ITEM_SLOT_MASK)
 		// AI EDIT END
 		// BANDASTATION EDIT END - Species clothing icons

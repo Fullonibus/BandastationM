@@ -4,8 +4,10 @@
 		Lay back in your wheelchair and say \"I told you\" to the HoS when all of the station collapses."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_STATION
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 1
+	spawn_positions = 1
+	required_donator_level = DONATOR_TIER_3
+	donor_unlock_trait = /datum/station_trait/job/veteran_advisor
 	supervisors = JOB_HEAD_OF_SECURITY_RU
 	minimal_player_age = 7
 	exp_requirements = 6000 //100 HOURS! We want really hard boiled people
@@ -36,6 +38,11 @@
 	allow_bureaucratic_error = FALSE
 	job_flags = (STATION_JOB_FLAGS | STATION_TRAIT_JOB_FLAGS | JOB_ANTAG_PROTECTED) & ~JOB_REOPEN_ON_ROUNDSTART_LOSS
 	tgui_icon = FA_ICON_RIBBON
+
+/datum/job/veteran_advisor/get_roundstart_spawn_point()
+	if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title])
+	return ..()
 
 /datum/job/veteran_advisor/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)

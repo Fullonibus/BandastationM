@@ -17,7 +17,6 @@
 /datum/station_trait/job/New()
 	. = ..()
 	blacklist += subtypesof(/datum/station_trait/job) - type // All but ourselves
-	RegisterSignal(SSdcs, COMSIG_GLOB_PRE_JOBS_ASSIGNED, PROC_REF(pre_jobs_assigned))
 
 /* BANDASTATION REMOVAL - HTML Title Screen
 /datum/station_trait/job/setup_lobby_button(atom/movable/screen/lobby/button/sign_up/lobby_button)
@@ -49,29 +48,41 @@
 	overlays += LAZYFIND(lobby_candidates, lobby_button.get_mob()) ? "tick" : "cross"
 */
 
-/// Called before we start assigning roles, assign ours first
-/datum/station_trait/job/proc/pre_jobs_assigned()
-	SIGNAL_HANDLER
-	sign_up_button = FALSE
-	destroy_lobby_buttons()
-	for (var/mob/dead/new_player/signee as anything in lobby_candidates)
-		if (isnull(signee) || !signee.client || !signee.mind || signee.ready != PLAYER_READY_TO_PLAY)
-			LAZYREMOVE(lobby_candidates, signee)
-
+/// Assign eligible volunteers before normal job selection. Eligibility can query the database.
+/datum/station_trait/job/proc/assign_lobby_candidates()
 	var/datum/job/our_job = SSjob.get_job_type(job_to_add)
+	if(!our_job)
+		return
 	our_job.total_positions = position_amount
 	our_job.spawn_positions = position_amount
-	while(length(lobby_candidates) && position_amount > 0)
-		var/mob/dead/new_player/picked_player = pick_n_take(lobby_candidates)
-		picked_player.mind.set_assigned_role(our_job)
-		our_job.current_positions++
-		position_amount--
+	var/list/candidates = lobby_candidates?.Copy()
+	while(length(candidates) && our_job.current_positions < our_job.spawn_positions)
+		var/mob/dead/new_player/picked_player = pick_n_take(candidates)
+		if(QDELETED(picked_player) || !picked_player.client || picked_player.ready != PLAYER_READY_TO_PLAY || !is_unassigned_job(picked_player.mind?.assigned_role))
+			continue
+		var/datum/mind/candidate_mind = picked_player.mind
+		if(LAZYACCESS(SSjob.forced_occupations, candidate_mind))
+			continue
+		var/client/player_client = picked_player.client
+		var/eligibility = SSjob.check_job_eligibility(picked_player, our_job, "Trait signup", add_job_to_log = TRUE)
+		if(QDELETED(src))
+			return
+		if(eligibility != JOB_AVAILABLE)
+			continue
+		if(QDELETED(picked_player) || picked_player.client != player_client || picked_player.ready != PLAYER_READY_TO_PLAY || picked_player.mind != candidate_mind || !is_unassigned_job(candidate_mind.assigned_role))
+			continue
+		if(LAZYACCESS(SSjob.forced_occupations, candidate_mind))
+			continue
+		SSjob.assign_role(picked_player, our_job, do_eligibility_checks = FALSE)
 
+/datum/station_trait/job/on_round_start()
+	sign_up_button = FALSE
 	lobby_candidates = null
+	return ..()
 
 /datum/station_trait/job/can_display_lobby_button(client/player)
 	var/datum/job/our_job = SSjob.get_job_type(job_to_add)
-	return our_job.player_old_enough(player) && ..()
+	return our_job && our_job.player_old_enough(player) && ..()
 
 /// Adds a gorilla to the cargo department, replacing the sloth and the mech
 /datum/station_trait/job/cargorilla
@@ -181,18 +192,15 @@
 	button_desc = "Sign up to become the \"AI\"."
 	weight = 1
 	trait_flags = parent_type::trait_flags | STATION_TRAIT_REQUIRES_AI
-	report_message = "Our recent technological advancements in machine Artificial Intelligence has proven futile. In the meantime, we're sending an Intern to help out."
+	report_message = "We're sending an intern to assist your station's AI and cyborgs."
 	show_in_report = TRUE
 	job_to_add = /datum/job/human_ai
-	trait_to_give = STATION_TRAIT_HUMAN_AI
 
 /datum/station_trait/job/human_ai/New()
 	. = ..()
-	RegisterSignal(SSjob, COMSIG_OCCUPATIONS_SETUP, PROC_REF(remove_ai_job))
 	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(give_fax_machine))
 
 /datum/station_trait/job/human_ai/revert()
-	UnregisterSignal(SSjob, COMSIG_OCCUPATIONS_SETUP)
 	UnregisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE)
 	return ..()
 
@@ -201,13 +209,6 @@
 	. = ..()
 	overlays += LAZYFIND(lobby_candidates, lobby_button.get_mob()) ? "human_ai_on" : "human_ai_off"
 */
-
-/datum/station_trait/job/human_ai/proc/remove_ai_job(datum/source)
-	SIGNAL_HANDLER
-	var/datum/job_department/department = SSjob.joinable_departments_by_type[/datum/job_department/silicon]
-	department.remove_job(/datum/job/ai)
-	if(GLOB.triple_ai_controller)
-		position_amount = 3
 
 /// Gives the AI SAT a fax machine if it doesn't have one. This is copy pasted from Bridge Assistant's coffee maker.
 /datum/station_trait/job/human_ai/proc/give_fax_machine(datum/source)

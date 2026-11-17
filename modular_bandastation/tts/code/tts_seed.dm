@@ -26,6 +26,43 @@
 	if(tts_component)
 		return tts_component.tts_seed
 
+/// Describes the radio voice after TTS overrides, even for listeners with playback disabled.
+/atom/movable/proc/get_radio_voice_label(list/message_mods)
+	var/datum/tts_seed/seed = get_tts_seed()
+	if(!seed || HAS_TRAIT(src, TRAIT_UNKNOWN_VOICE))
+		return "Неизвестный голос"
+
+	var/list/tts_args = list(
+		TTS_CAST_SPEAKER = src,
+		TTS_CAST_SEED = LAZYACCESS(message_mods, MODE_TTS_SEED_OVERRIDE) || seed,
+		TTS_PRIORITY = TTS_PRIORITY_VOICE,
+		TTS_CAST_EFFECTS = list(),
+		TTS_CHANNEL_OVERRIDE = CHANNEL_TTS_RADIO,
+	)
+	SEND_SIGNAL(src, COMSIG_TTS_COMPONENT_PRE_CAST_TTS, tts_args)
+	seed = tts_args[TTS_CAST_SEED]
+	if(ispath(seed, /datum/tts_seed))
+		seed = SStts220.tts_seeds[initial(seed.name)]
+	if(!istype(seed))
+		return "Неизвестный голос"
+	switch(seed.gender)
+		if(TTS_GENDER_FEMALE)
+			return "Женский голос"
+		if(TTS_GENDER_MALE)
+			return "Мужской голос"
+	return "Неизвестный голос"
+
+/atom/movable/virtualspeaker
+	/// Resolved once per broadcast so all listeners see the same description.
+	var/radio_voice_label
+
+/atom/movable/virtualspeaker/get_radio_voice_label(list/message_mods)
+	if(radio_voice_label)
+		return radio_voice_label
+	if(radio?.anonymize || QDELETED(source))
+		return "Неизвестный голос"
+	return source.get_radio_voice_label(message_mods)
+
 /atom/proc/get_tts_effects(list/additional_effects)
 	var/datum/component/tts_component/tts_component = GetComponent(/datum/component/tts_component)
 	return tts_component.get_effects(additional_effects)
