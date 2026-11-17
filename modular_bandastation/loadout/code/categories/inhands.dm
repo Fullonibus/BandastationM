@@ -109,29 +109,34 @@
 		return pet_type
 	return /mob/living/basic/pet/dog/corgi
 
+/datum/loadout_item/inhand/pet_carrier/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
+	// Give the job outfit first use of the hands.
+	return
+
 /datum/loadout_item/inhand/pet_carrier/on_equip_item(obj/item/equipped_item, list/item_details, mob/living/carbon/human/equipper, datum/outfit/outfit, visuals_only = FALSE)
-	if(visuals_only || isdummy(equipper))
-		return ..()
 	var/turf/spawn_turf = get_turf(equipper)
-	if(!spawn_turf)
-		return ..()
+	if(!visuals_only && (isdummy(equipper) || !spawn_turf))
+		return NONE
+	var/list/empty_hands = equipper.get_empty_held_indexes()
+	if(visuals_only && !length(empty_hands))
+		return NONE
 
-	// An outfit leaves the item in contents if its assigned hand is unavailable.
-	if(!equipped_item)
-		equipped_item = locate(item_path) in equipper.contents
-		if(equipped_item)
-			equipper.put_in_hands(equipped_item)
-	. = ..(equipped_item, item_details, equipper, outfit, visuals_only)
-	var/obj/item/pet_carrier/carrier = equipped_item
-	if(!istype(carrier) || length(carrier.occupants))
-		return
+	var/obj/item/pet_carrier/carrier = new item_path(visuals_only ? equipper : spawn_turf)
+	if(!visuals_only)
+		var/pet_type = get_pet_type(item_details)
+		var/mob/living/pet = new pet_type(spawn_turf)
+		pet.befriend(equipper)
+		carrier.add_occupant(pet)
+		carrier.open = FALSE
+		carrier.unload_on_open = TRUE
+		carrier.update_appearance()
 
-	var/pet_type = get_pet_type(item_details)
-	var/mob/living/pet = new pet_type(spawn_turf)
-	pet.befriend(equipper)
-	carrier.add_occupant(pet)
-	carrier.open = FALSE
-	carrier.unload_on_open = TRUE
-	carrier.update_appearance()
+	for(var/hand_index in empty_hands)
+		if(equipper.put_in_hand(carrier, hand_index, visuals_only = visuals_only))
+			break
+	if(visuals_only && !equipper.is_holding(carrier))
+		qdel(carrier)
+		return NONE
+	return ..(carrier, item_details, equipper, outfit, visuals_only)
 
 #undef INFO_PET_TYPE
