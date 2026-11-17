@@ -58,7 +58,7 @@
 /// NT paddles cannot stun or overload hearts; EMP shielding preserves their charge and medical operation.
 /datum/unit_test/nanotrasen_defib_medical_only/Run()
 	// Teardown deletes allocations in order; the unit must return its paddles before their holder is deleted.
-	var/obj/item/defibrillator/compact/combat/loaded/nanotrasen/defib = allocate(/obj/item/defibrillator/compact/combat/loaded/nanotrasen)
+	var/obj/item/defibrillator/compact/combat/nanotrasen/defib = allocate(/obj/item/defibrillator/compact/combat/nanotrasen)
 	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
 	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
 	click_wrapper(user, defib)

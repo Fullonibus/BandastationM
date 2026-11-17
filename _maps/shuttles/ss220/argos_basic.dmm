@@ -659,10 +659,10 @@
 /obj/item/storage/medkit/tactical/premium{
 	pixel_y = 9
 	},
-/obj/item/defibrillator/compact/combat/loaded/nanotrasen{
+/obj/item/defibrillator/compact/combat/nanotrasen{
 	pixel_y = -4
 	},
-/obj/item/defibrillator/compact/combat/loaded/nanotrasen,
+/obj/item/defibrillator/compact/combat/nanotrasen,
 /obj/item/reagent_containers/hypospray/combat/nanites,
 /obj/item/reagent_containers/hypospray/combat/nanites{
 	pixel_y = 4

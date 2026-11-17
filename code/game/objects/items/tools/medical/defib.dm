@@ -337,24 +337,22 @@
 	cell = new /obj/item/stock_parts/power_store/cell/infinite(src)
 	update_power()
 
-/obj/item/defibrillator/compact/combat/loaded/nanotrasen
+/obj/item/defibrillator/compact/combat/nanotrasen
 	name = "elite Nanotrasen defibrillator"
 	desc = "A belt-equipped defibrillator with standard medical safeties and a replaceable battery. Its electronics and battery compartment are shielded against electromagnetic pulses."
 	combat = FALSE
 	safety = TRUE
-	cell_removable = TRUE
 	cooldown_duration = 5 SECONDS
 	icon_state = "defibnt" //needs defib inhand sprites
 	inhand_icon_state = null
 	worn_icon_state = "defibnt"
-	paddle_type = /obj/item/shockpaddles/syndicate/nanotrasen
+	paddle_type = /obj/item/shockpaddles/nanotrasen
 	paddle_state = "defibnt-paddles"
 
-/// Keep the NT casing and marking, but replace the inherited infinite cell with shielded standard electronics.
-/obj/item/defibrillator/compact/combat/loaded/nanotrasen/Initialize(mapload)
+/// Sets up the NT unit's regular battery and EMP protection.
+/obj/item/defibrillator/compact/combat/nanotrasen/Initialize(mapload)
 	. = ..()
-	QDEL_NULL(cell)
-	cell = new /obj/item/stock_parts/power_store/cell(src)
+	cell = new(src)
 	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF|EMP_PROTECT_CONTENTS)
 	update_power()
 
@@ -754,10 +752,9 @@
 	inhand_icon_state = "syndiepaddles0"
 	base_icon_state = "syndiepaddles"
 
-/obj/item/shockpaddles/syndicate/nanotrasen
+/obj/item/shockpaddles/nanotrasen
 	name = "elite Nanotrasen defibrillator paddles"
 	desc = "A pair of paddles used to revive deceased ERT members. Standard medical safeties prevent offensive shocks."
-	combat = FALSE
 	icon_state = "ntpaddles0"
 	inhand_icon_state = "ntpaddles0"
 	base_icon_state = "ntpaddles"
