@@ -9,6 +9,7 @@ import {
   ImageButton,
   Section,
   Stack,
+  Tabs,
   Tooltip,
 } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
@@ -246,6 +247,17 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
   const currentSpecies = species.filter(([speciesKey]) => {
     return speciesKey === data.character_preferences.misc.species;
   })[0][1];
+  const currentSpeciesIsPremium =
+    (currentSpecies.required_donator_level ?? 0) > 0;
+  const [showPremium, setShowPremium] = useState(currentSpeciesIsPremium);
+
+  useEffect(() => {
+    setShowPremium(currentSpeciesIsPremium);
+  }, [data.character_preferences.misc.species, currentSpeciesIsPremium]);
+
+  const visibleSpecies = species.filter(
+    ([, species]) => (species.required_donator_level ?? 0) > 0 === showPremium,
+  );
 
   function SpeciesInfo(props) {
     return (
@@ -297,7 +309,7 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(false);
     const [savedScroll, setSavedScroll] = useSessionStorage(
-      'species-scroll',
+      showPremium ? 'species-scroll-premium' : 'species-scroll-standard',
       0,
     );
 
@@ -335,7 +347,7 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
 
     const scrollSize = 220;
     return (
-      <Stack justify="center">
+      <Stack justify="center" position="relative">
         {canScrollLeft && (
           <Stack.Item
             className="PreferencesMenu__Species__OverflowButton left"
@@ -345,7 +357,7 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
           </Stack.Item>
         )}
         <div ref={scrollRef} className="PreferencesMenu__Species">
-          {species.map(([speciesKey, species]) => {
+          {visibleSpecies.map(([speciesKey, species]) => {
             const donatorTier = species.required_donator_level ?? 0;
             const locked = (data.donator_level ?? 0) < donatorTier;
             return (
@@ -404,6 +416,21 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
       </Stack.Item>
       <Stack.Item>
         <Section fill overflow="hidden">
+          <Tabs>
+            <Tabs.Tab
+              selected={!showPremium}
+              onClick={() => setShowPremium(false)}
+            >
+              Обычные расы
+            </Tabs.Tab>
+            <Tabs.Tab
+              icon="star"
+              selected={showPremium}
+              onClick={() => setShowPremium(true)}
+            >
+              Премиальные расы
+            </Tabs.Tab>
+          </Tabs>
           <SpeciesSelection />
         </Section>
       </Stack.Item>
