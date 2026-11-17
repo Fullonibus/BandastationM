@@ -352,7 +352,7 @@
 /// Sets up the NT unit's regular battery and EMP protection.
 /obj/item/defibrillator/compact/combat/nanotrasen/Initialize(mapload)
 	. = ..()
-	cell = new(src)
+	cell = new /obj/item/stock_parts/power_store/cell/high(src)
 	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF|EMP_PROTECT_CONTENTS)
 	update_power()
 
