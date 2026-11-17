@@ -18,7 +18,6 @@
 	var/datum/song/sequence_master
 	var/list/sequence_followers = list()
 	var/channel_starvation = 0
-	var/list/music_sources = list()
 
 /// Canonical note times are seconds; the tempo map is preserved for MIDI export.
 /datum/song/proc/load_sequence(list/document)
@@ -206,8 +205,10 @@
 	voice_levels[text_channel] = instrument.volume_multiplier * note["velocity"] / 127
 	var/sound/voice = sound(sample)
 	voice.frequency = frequency
+	var/turf/origin = get_turf(parent)
+	var/output_volume = get_output_volume(volume * voice_levels[text_channel])
 	for(var/mob/listener as anything in hearing_mobs)
-		listener.playsound_local(nearest_music_source(listener), null, get_output_volume(volume * instrument.volume_multiplier * note["velocity"] / 127) * get_listener_volume_multiplier(listener), frequency = frequency, sound_to_use = voice, channel = channel, pressure_affected = FALSE, max_distance = instrument_range, falloff_distance = get_sound_falloff_distance(), falloff_exponent = INSTRUMENT_FALLOFF_EXPONENT)
+		listener.playsound_local(origin, null, output_volume * get_listener_volume_multiplier(listener), frequency = frequency, sound_to_use = voice, channel = channel, pressure_affected = FALSE, max_distance = instrument_range, falloff_distance = get_sound_falloff_distance(), falloff_exponent = INSTRUMENT_FALLOFF_EXPONENT)
 
 /// Unison follows the leader's notes but keeps the follower's own timbre.
 /datum/song/proc/get_sequence_instrument(track)
@@ -238,10 +239,12 @@
 
 /datum/song/proc/refresh_music_spatial()
 	listener_spatial.Cut()
+	var/turf/source = get_turf(parent)
+	if(!source)
+		return
 	for(var/mob/listener as anything in hearing_mobs)
-		var/turf/source = nearest_music_source(listener)
 		var/turf/destination = get_turf(listener)
-		if(!source || !destination)
+		if(!destination)
 			continue
 		var/distance = get_dist_euclidean(source, destination)
 		listener_spatial[listener] = list("x" = source.x - destination.x, "z" = source.y - destination.y, "ratio" = max(0, 1 - CALCULATE_SOUND_VOLUME_RATIO(100, distance, instrument_range, get_sound_falloff_distance(), INSTRUMENT_FALLOFF_EXPONENT)))

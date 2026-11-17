@@ -1,11 +1,13 @@
 /// OGG sync requires bilateral consent and never replaces the follower's track or cues.
+/datum/unit_test/music_ogg_unison
+	parent_type = /datum/unit_test/music_with_test_minds
+
 /datum/unit_test/music_ogg_unison/Run()
 	var/datum/job/musician = allocate(/datum/job/donor/musician)
 	var/list/players = list()
 	var/list/songs = list()
 	for(var/index in 1 to 2)
-		var/mob/living/carbon/human/consistent/player = allocate(/mob/living/carbon/human/consistent, run_loc_floor_bottom_left)
-		player.mind_initialize()
+		var/mob/living/carbon/human/consistent/player = allocate_player()
 		player.mind.assigned_role = musician
 		var/obj/item/instrument/guitar/instrument = allocate(/obj/item/instrument/guitar, run_loc_floor_bottom_left)
 		if(!player.put_in_active_hand(instrument))
@@ -48,13 +50,15 @@
 	leader.stop_playing()
 
 /// Removing groups must preserve MIDI unison and release the follower on stop.
+/datum/unit_test/music_midi_unison
+	parent_type = /datum/unit_test/music_with_test_minds
+
 /datum/unit_test/music_midi_unison/Run()
 	var/datum/job/musician = allocate(/datum/job/donor/musician)
 	var/list/players = list()
 	var/list/songs = list()
 	for(var/index in 1 to 2)
-		var/mob/living/carbon/human/consistent/player = allocate(/mob/living/carbon/human/consistent, run_loc_floor_bottom_left)
-		player.mind_initialize()
+		var/mob/living/carbon/human/consistent/player = allocate_player()
 		player.mind.assigned_role = musician
 		var/obj/item/instrument/guitar/instrument = allocate(/obj/item/instrument/guitar, run_loc_floor_bottom_left)
 		if(!player.put_in_active_hand(instrument))

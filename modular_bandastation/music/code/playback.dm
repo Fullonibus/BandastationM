@@ -31,13 +31,16 @@
 	last_hearcheck = world.time
 	var/list/old = hearing_mobs.Copy()
 	hearing_mobs.len = 0
-	for(var/atom/source as anything in get_instrument_sources())
-		for(var/mob/M in get_hearers_in_view(instrument_range, get_turf(source)))
-			hearing_mobs[M] = get_dist(M, source)
+	var/list/sources = get_instrument_sources()
+	for(var/turf/origin as anything in sources)
+		for(var/mob/listener in get_hearers_in_view(instrument_range, origin))
+			hearing_mobs[listener] = get_dist(listener, origin)
 	var/list/exited = old - hearing_mobs
 	for(var/i in exited)
 		terminate_sound_mob(i)
-	if(playback_mode != "file")
+	if(playback_mode == "file")
+		update_file_listeners(sources)
+	else
 		refresh_music_spatial()
 
 /// Dispatch playback engines; the base text-note start cannot initialize MIDI/OGG or exact deadlines.
@@ -215,7 +218,7 @@
 	if(!..())
 		return FALSE
 	var/mob/user = music_player
-	if(src in user.held_items)
+	if(user.is_holding(src))
 		return TRUE
 	if(playable_while_worn && (user.get_slot_by_item(src) & slot_flags))
 		return TRUE

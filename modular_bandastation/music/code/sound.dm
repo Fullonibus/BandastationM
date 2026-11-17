@@ -36,12 +36,14 @@
 	if((world.time - SSinstruments.musician_hearcheck_mindelay) > last_hearcheck)
 		do_hearcheck()
 	var/sound/music_played = sound(soundfile)
+	var/turf/origin = get_turf(parent)
+	var/output_volume = get_output_volume(volume * using_instrument.volume_multiplier)
 	for(var/i in hearing_mobs)
 		var/mob/M = i
 		var/listener_volume = get_listener_volume_multiplier(M)
 		if(!listener_volume)
 			continue
-		M.playsound_local(nearest_music_source(M), null, get_output_volume(volume * using_instrument.volume_multiplier) * listener_volume, sound_to_use = music_played, pressure_affected = FALSE, max_distance = instrument_range, falloff_distance = get_sound_falloff_distance(), falloff_exponent = INSTRUMENT_FALLOFF_EXPONENT)
+		M.playsound_local(origin, null, output_volume * listener_volume, sound_to_use = music_played, pressure_affected = FALSE, max_distance = instrument_range, falloff_distance = get_sound_falloff_distance(), falloff_exponent = INSTRUMENT_FALLOFF_EXPONENT)
 		// Could do environment and echo later but not for now
 
 /datum/song/playkey_synth(key, atom/player)
@@ -62,12 +64,13 @@
 	var/channel_text = num2text(channel)
 	channels_playing[channel_text] = 100
 	last_channel_played = channel_text
+	var/turf/origin = get_turf(parent)
 	for(var/i in hearing_mobs)
 		var/mob/M = i
 		var/listener_volume = get_listener_volume_multiplier(M)
 		if(!listener_volume)
 			continue
-		M.playsound_local(nearest_music_source(M), null, volume * listener_volume, FALSE, K.frequency, INSTRUMENT_FALLOFF_EXPONENT, channel, FALSE, copy, instrument_range, get_sound_falloff_distance())
+		M.playsound_local(origin, null, volume * listener_volume, FALSE, K.frequency, INSTRUMENT_FALLOFF_EXPONENT, channel, FALSE, copy, instrument_range, get_sound_falloff_distance())
 		// Could do environment and echo later but not for now
 
 /datum/song/process_decay(wait_ds)
@@ -104,7 +107,7 @@
 	src.volume = clamp(round(volume, 1), max(0, min_volume), max_volume)
 	update_sustain()
 	if(playing && playback_mode == "file")
-		update_file_playback_volume()
+		update_file_listeners(get_instrument_sources())
 	else if(playing)
 		refresh_music_spatial()
 
@@ -164,4 +167,3 @@
 	if(!instrument_volume)
 		return 0
 	return instrument_volume / 100
-

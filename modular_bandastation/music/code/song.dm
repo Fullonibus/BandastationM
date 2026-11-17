@@ -125,10 +125,11 @@
 	data["multi_tracks"] = out
 	return music_ui_data(data, user)
 
-/datum/song/ui_act(action, list/params)
-	if(!authorize_music_action(action, params, usr))
-		return TRUE
-	if(handle_music_action(action, params, usr))
+/datum/song/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	var/mob/user = ui?.user
+	if(!can_use_music_ui(ui, user))
+		return FALSE
+	if(handle_music_action(action, params, user, ui))
 		return TRUE
 	switch(action)
 		if("toggle_auto_unison")

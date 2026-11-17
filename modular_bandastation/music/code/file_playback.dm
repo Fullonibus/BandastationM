@@ -20,38 +20,18 @@
 	var/next_music_upload = 0
 	var/cue_spacing = 5
 
+/// Snapshot of sound origin turfs and their gains for this update.
 /datum/song/proc/get_instrument_sources()
-	var/list/sources = list(parent)
-	for(var/atom/source as anything in music_sources.Copy())
-		if(QDELETED(source))
-			music_sources -= source
-			continue
-		sources |= source
+	var/list/sources = list()
+	var/turf/origin = get_turf(parent)
+	if(origin)
+		sources[origin] = 1
 	return sources
-
-/// Ordinary instruments have no per-source mixer; concert receivers may attenuate it.
-/datum/song/proc/get_music_source_gain(atom/source)
-	return 1
-
-/datum/song/proc/nearest_music_source(mob/listener)
-	var/turf/destination = get_turf(listener)
-	var/turf/nearest = get_turf(parent)
-	var/distance = INFINITY
-	for(var/atom/source as anything in get_instrument_sources())
-		var/turf/origin = get_turf(source)
-		if(!origin || !destination || origin.z != destination.z)
-			continue
-		var/current = get_dist_euclidean(origin, destination)
-		if(current < distance)
-			distance = current
-			nearest = origin
-	return nearest
 
 /datum/song/proc/cleanup_music_uploads()
 	for(var/path in music_uploads)
 		fdel(path)
 	music_uploads.Cut()
-	music_sources.Cut()
 
 /datum/song/proc/set_file_track(new_file, mob/user)
 	if(!can_use_advanced_music(user))
@@ -130,7 +110,6 @@
 	playback_started_at = world.time
 	file_track_finish_time = playback_started_at + file_track_length
 	next_cue = 1
-	do_hearcheck()
 	if(!play_file_to_current_listeners(player))
 		stop_playing()
 		return FALSE
@@ -151,17 +130,13 @@
 	channels_playing[channel_text] = 100
 	last_channel_played = channel_text
 	file_listeners.Cut()
-	update_file_listeners()
+	do_hearcheck()
 	return TRUE
 
-/datum/song/proc/update_file_playback_volume()
-	update_file_listeners()
-
 /// Recompute audibility and location, without restarting existing listeners.
-/datum/song/proc/update_file_listeners()
-	if(!playing || playback_mode != "file")
+/datum/song/proc/update_file_listeners(list/sources)
+	if(!playing || playback_mode != "file" || !last_channel_played)
 		return
-	var/list/sources = get_instrument_sources()
 	for(var/mob/listener as anything in file_listeners.Copy())
 		if(QDELETED(listener))
 			file_listeners -= listener
@@ -172,31 +147,28 @@
 	for(var/mob/listener as anything in hearing_mobs)
 		var/turf/destination = get_turf(listener)
 		var/turf/nearest
-		var/atom/nearest_source
 		var/distance = INFINITY
-		for(var/atom/source as anything in sources)
-			var/turf/origin = get_turf(source)
-			if(!origin || !destination || origin.z != destination.z)
+		for(var/turf/origin as anything in sources)
+			if(!destination || origin.z != destination.z)
 				continue
 			var/new_distance = get_dist_euclidean(destination, origin)
 			if(new_distance < distance)
 				distance = new_distance
 				nearest = origin
-				nearest_source = source
 		var/multiplier = get_listener_volume_multiplier(listener)
 		if(!nearest || distance > instrument_range || !multiplier || HAS_TRAIT(listener, TRAIT_DEAF))
 			if(listener in file_listeners)
 				terminate_sound_mob(listener)
 				file_listeners -= listener
 			continue
-		var/sound/track = make_file_sound(listener, nearest_source, distance, multiplier)
+		var/sound/track = make_file_sound(listener, nearest, distance, multiplier, sources[nearest])
 		SEND_SOUND(listener, track)
 
 /** Prepare the actual sound packet; replace the channel at its current offset on 2D/3D changes. */
-/datum/song/proc/make_file_sound(mob/listener, atom/source, distance, multiplier)
+/datum/song/proc/make_file_sound(mob/listener, turf/origin, distance, multiplier, gain = 1)
 	var/sound/track = sound(file_track)
 	track.channel = text2num(last_channel_played)
-	var/stereo = configure_file_sound(track, source, get_turf(listener), distance, multiplier)
+	var/stereo = configure_file_sound(track, origin, get_turf(listener), distance, multiplier, gain)
 	if((listener in file_listeners) && file_listeners[listener] == stereo)
 		track.status = SOUND_UPDATE
 	else
@@ -206,9 +178,8 @@
 	return track
 
 /** Default instrument policy is positional audio at every distance; return its playback mode. */
-/datum/song/proc/configure_file_sound(sound/track, atom/source, turf/destination, distance, multiplier)
-	var/turf/origin = get_turf(source)
-	track.volume = max(0, get_file_output_volume() * get_music_source_gain(source) * multiplier * (1 - CALCULATE_SOUND_VOLUME_RATIO(100, distance, instrument_range, get_sound_falloff_distance(), INSTRUMENT_FALLOFF_EXPONENT)))
+/datum/song/proc/configure_file_sound(sound/track, turf/origin, turf/destination, distance, multiplier, gain = 1)
+	track.volume = max(0, get_file_output_volume() * gain * multiplier * (1 - CALCULATE_SOUND_VOLUME_RATIO(100, distance, instrument_range, get_sound_falloff_distance(), INSTRUMENT_FALLOFF_EXPONENT)))
 	track.x = origin.x - destination.x
 	track.z = origin.y - destination.y
 	track.y = 0
@@ -221,7 +192,6 @@
 		return
 	if(world.time >= last_hearcheck + 5)
 		do_hearcheck()
-		update_file_listeners()
 	if(!can_use_advanced_music(music_player))
 		stop_playing()
 		return
@@ -280,13 +250,13 @@
 		if(cue["time"] > elapsed)
 			break
 		next_cue++
-		if(!auto_sing || emitted >= 2 || elapsed - cue["time"] > 2 || !(parent in singer.held_items) || singer.incapacitated)
+		if(!auto_sing || emitted >= 2 || elapsed - cue["time"] > 2 || !singer.is_holding(parent) || singer.incapacitated)
 			continue
 		emitted++
 		INVOKE_ASYNC(src, PROC_REF(emit_song_cue), singer, cue["text"], singing_tts)
 
 /datum/song/proc/emit_song_cue(mob/living/singer, text, use_tts)
-	if(!QDELETED(singer) && can_use_advanced_music(singer) && playing && (parent in singer.held_items) && !singer.incapacitated)
+	if(!QDELETED(singer) && can_use_advanced_music(singer) && playing && singer.is_holding(parent) && !singer.incapacitated)
 		singer.say(text, forced = "instrument auto song", message_mods = list("music_no_tts" = !use_tts))
 
 /// Retain an uploaded track in the instrument's library.
@@ -336,4 +306,3 @@
 	next_cue = 1
 	if(playback_mode == "file")
 		playback_mode = "midi"
-

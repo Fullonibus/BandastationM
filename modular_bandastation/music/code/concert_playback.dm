@@ -26,11 +26,12 @@
 
 /datum/song/concert/get_instrument_sources()
 	var/obj/machinery/concert_player/player = parent
-	var/list/sources = list(parent)
+	var/list/sources = ..()
 	for(var/obj/item/circuit_component/concert_listener/receiver as anything in player.get_receivers())
-		var/atom/movable/source = receiver.get_source()
-		if(source && source != parent)
-			sources |= source
+		var/turf/origin = get_turf(receiver.get_source())
+		// The local player and then the first receiver win ties at the same location.
+		if(origin && !sources[origin])
+			sources[origin] = receiver.gain.value / 100
 	return sources
 
 /datum/song/concert/get_file_output_volume(base_volume = volume)
@@ -39,25 +40,16 @@
 /datum/song/concert/get_sound_falloff_distance()
 	return min(CONCERT_STEREO_RADIUS, max(0, instrument_range - 1))
 
-/datum/song/concert/configure_file_sound(sound/track, atom/source, turf/destination, distance, multiplier)
+/datum/song/concert/configure_file_sound(sound/track, turf/origin, turf/destination, distance, multiplier, gain = 1)
 	if(distance > CONCERT_STEREO_RADIUS)
 		return ..()
-	track.volume = max(0, get_file_output_volume() * get_music_source_gain(source) * multiplier)
+	track.volume = max(0, get_file_output_volume() * gain * multiplier)
 	track.x = 0
 	track.y = 0
 	track.z = 0
 	track.pan = 0
 	track.environment = SOUND_ENVIRONMENT_NONE
 	return TRUE
-
-/datum/song/concert/get_music_source_gain(atom/source)
-	if(source == parent)
-		return 1
-	var/obj/machinery/concert_player/player = parent
-	for(var/obj/item/circuit_component/concert_listener/receiver as anything in player.get_receivers())
-		if(receiver.get_source() == source)
-			return receiver.gain.value / 100
-	return 0
 
 /datum/song/concert/get_listener_volume_multiplier(mob/listener)
 	return (listener?.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_jukebox) || 0) / 100
@@ -72,5 +64,4 @@
 /obj/machinery/concert_player/proc/refresh_sources()
 	if(song?.playing)
 		song.do_hearcheck()
-		song.update_file_listeners()
 	SStgui.update_uis(src)

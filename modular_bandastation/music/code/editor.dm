@@ -47,7 +47,14 @@
 	data["cue_document"] = list("version" = 1, "audio_hash" = file_track_hash, "spacing_seconds" = cue_spacing, "cues" = song_cues)
 	return data
 
-/datum/song/proc/handle_music_action(action, list/params, mob/user)
+/// A queued action or file picker may outlive the window's interactive state.
+/datum/song/proc/can_use_music_ui(datum/tgui/ui, mob/user)
+	if(QDELETED(ui) || ui.closing || ui.status != UI_INTERACTIVE || QDELETED(user) || ui.user != user)
+		return FALSE
+	var/datum/window_source = ui.src_object
+	return !QDELETED(window_source) && (window_source == src || window_source == piano_roll) && window_source.ui_status(user, ui.state) == UI_INTERACTIVE
+
+/datum/song/proc/handle_music_action(action, list/params, mob/user, datum/tgui/ui)
 	if(!authorize_music_action(action, params, user))
 		return TRUE
 	if(!user || !user.client || !in_range(parent, user))
@@ -55,7 +62,7 @@
 	switch(action)
 		if("import_file_song")
 			var/new_file = input(user, "Select an OGG file to play through this instrument.", name) as sound|null
-			if(!new_file || !in_range(parent, user))
+			if(!new_file || QDELETED(src) || QDELETED(parent) || !can_use_music_ui(ui, user) || !in_range(parent, user))
 				return TRUE
 			set_file_track(new_file, user)
 			update_static_data_for_all_viewers()
@@ -289,6 +296,7 @@
 /datum/music_piano_roll/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
-	if(QDELETED(song) || !song.can_use_advanced_music(usr))
-		return TRUE
-	return song.handle_music_action(action, params, usr)
+	var/mob/user = ui.user
+	if(QDELETED(song) || !song.can_use_music_ui(ui, user))
+		return FALSE
+	return song.handle_music_action(action, params, user, ui)
