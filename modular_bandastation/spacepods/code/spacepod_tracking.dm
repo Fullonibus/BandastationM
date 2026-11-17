@@ -4,13 +4,9 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "rdcomp"
 	light_color = LIGHT_COLOR_ORANGE
-	req_one_access = list(ACCESS_ENGINE_EQUIP, ACCESS_ROBOTICS)
 	circuit = /obj/item/circuitboard/computer/podtracker
 
 /obj/machinery/computer/podtracker/ui_interact(mob/user, datum/tgui/ui)
-	if(!allowed(user))
-		balloon_alert(user, "доступ запрещён!")
-		return
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -18,8 +14,6 @@
 		ui.open()
 
 /obj/machinery/computer/podtracker/ui_data(mob/user)
-	if(!allowed(user))
-		return list("pods" = list())
 	var/list/pods = list()
 	for(var/obj/item/spacepod_equipment/misc/tracker/tracker as anything in GLOB.pod_trackers)
 		var/obj/vehicle/sealed/spacepod/pod = tracker.my_atom

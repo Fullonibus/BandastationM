@@ -433,6 +433,21 @@ GAME_VERB(/mob/living/silicon/ai, toggle_anchor, "Toggle Floor Bolts", "AI Comma
 /mob/living/silicon/ai/Topic(href, href_list)
 	..()
 
+	if(href_list["track_radio"])
+		if((usr != src && (!deployed_shell || usr != deployed_shell)) || incapacitated || control_disabled)
+			return
+		var/mob/living/target = locate(href_list["track_radio"]) in GLOB.mob_living_list
+		if(!target || QDELETED(target))
+			return
+		if(!target.can_track(src))
+			to_chat(usr, span_info("This person is not currently on cameras."))
+			return
+		if(usr == deployed_shell)
+			deployed_shell.undeploy()
+		// Radio identifies the body, even when several speakers share a disguised name.
+		ai_tracking_tool.set_tracked_mob(target, src)
+		return
+
 	// BANDA STATION ADDITION - AI DOOR
 	if(href_list["open"])
 		if(usr == src || (deployed_shell && usr == deployed_shell))

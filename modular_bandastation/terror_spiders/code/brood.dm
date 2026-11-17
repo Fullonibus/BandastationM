@@ -84,6 +84,29 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 /obj/effect/mob_spawn/ghost_role/spider/terror/growth_progress(seconds_per_tick)
 	return 100 * (seconds_per_tick SECONDS) / incubation_time
 
+/obj/effect/mob_spawn/ghost_role/spider/terror/process(seconds_per_tick)
+	if(amount_grown >= 100)
+		return PROCESS_KILL
+	amount_grown += growth_progress(seconds_per_tick)
+	if(amount_grown < 100)
+		return
+	INVOKE_ASYNC(src, PROC_REF(poll_for_hatch))
+	return PROCESS_KILL
+
+/// Makes a mature egg claimable only after the ghost poll has finished.
+/obj/effect/mob_spawn/ghost_role/spider/terror/proc/poll_for_hatch()
+	var/list/candidates = poll_terror_spider_candidates(src, mob_type)
+	if(QDELETED(src) || !get_turf(src))
+		return
+
+	ready = TRUE
+	while(length(candidates) && uses > 0 && SSticker.HasRoundStarted())
+		var/mob/dead/observer/candidate = pick_n_take(candidates)
+		if(QDELETED(candidate) || !isobserver(candidate) || !candidate.client || !candidate.ckey || !can_ghost_take(candidate))
+			continue
+		create_from_ghost(candidate, apply_prefs = FALSE)
+		return
+
 /obj/effect/mob_spawn/ghost_role/spider/terror/Destroy()
 	var/obj/structure/spider/eggcluster/physical_egg = egg
 	// Let movable destruction remove the spawner from the clutch before deleting it.
@@ -135,14 +158,6 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 		playsound(hatch_turf, 'modular_bandastation/terror_spiders/sound/eggburst.ogg', 100)
 		for(var/index in 1 to brood_size)
 			new /mob/living/basic/spider/growing/spiderling/terror(hatch_turf, caste, directive, terror_queen_ref)
-		if((GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !is_away_level(hatch_turf.z))
-			notify_ghosts(
-				"Из кладки пауков террора вылупились паучата. После взросления их можно занять через меню спавнеров.",
-				source = hatch_turf,
-				header = "Пауки террора",
-				ignore_key = POLL_IGNORE_SPIDER,
-				notify_flags = NOTIFY_CATEGORY_NOFLASH,
-			)
 	qdel(src)
 	return PROCESS_KILL
 

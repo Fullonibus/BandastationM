@@ -219,7 +219,7 @@
 
 /datum/component/riding/creature/human/Initialize(mob/living/riding_mob, force = FALSE, ride_check_flags = NONE)
 	. = ..()
-	var/mob/living/carbon/human/human_parent = parent
+	var/mob/living/human_parent = parent
 	human_parent.add_movespeed_modifier(/datum/movespeed_modifier/human_carry)
 
 	if(ride_check_flags & RIDER_NEEDS_ARMS) // piggyback
@@ -258,7 +258,7 @@
 
 /datum/component/riding/creature/human/vehicle_mob_unbuckle(datum/source, mob/living/former_rider, force = FALSE)
 	unequip_buckle_inhands(parent)
-	var/mob/living/carbon/human/H = parent
+	var/mob/living/H = parent
 	H.remove_movespeed_modifier(/datum/movespeed_modifier/human_carry)
 	REMOVE_TRAIT(former_rider, TRAIT_UNDENSE, VEHICLE_TRAIT)
 	return ..()
@@ -273,7 +273,7 @@
 	return NONE
 
 /// If the carrier gets knocked over, force the rider(s) off and see if someone got hurt
-/datum/component/riding/creature/human/proc/check_carrier_fall_over(mob/living/carbon/human/human_parent)
+/datum/component/riding/creature/human/proc/check_carrier_fall_over(mob/living/human_parent)
 	SIGNAL_HANDLER
 
 	for(var/mob/living/rider as anything in human_parent.buckled_mobs)
@@ -291,7 +291,7 @@
 		to_chat(rider, span_danger("[human_parent] falls to the ground, bringing you with [human_parent.p_them()]!"))
 
 /datum/component/riding/creature/human/get_rider_offsets_and_layers(pass_index, mob/offsetter)
-	var/mob/living/carbon/human/seat = parent
+	var/mob/living/seat = parent
 	// fireman carry
 	if(seat.buckle_lying)
 		return list(

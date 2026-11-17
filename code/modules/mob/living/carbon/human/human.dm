@@ -892,10 +892,6 @@
 		fireman_carry(M)
 		return TRUE
 
-//src is the user that will be carrying, target is the mob to be carried
-/mob/living/carbon/human/proc/can_piggyback(mob/living/carbon/target)
-	return (istype(target) && !IS_UNCONSCIOUS_OR_CRIT(target))
-
 /mob/living/carbon/human/proc/can_be_firemanned(mob/living/carbon/target)
 	return ishuman(target) && target.body_position == LYING_DOWN
 
@@ -942,22 +938,6 @@
 	mind?.adjust_experience(/datum/skill/athletics, round(experience_reward/(fitness_level || 1), 1)) //Get a bit fitter every time we fireman carry successfully. Deadlift your friends for gains!
 
 	return buckle_mob(target, TRUE, TRUE, CARRIER_NEEDS_ARM)
-
-/mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
-	if(!can_piggyback(target))
-		to_chat(target, span_warning("Вы не можете сейчас прокатиться на [declent_ru(PREPOSITIONAL)]!"))
-		return
-
-	visible_message(span_notice("[capitalize(target.declent_ru(NOMINATIVE))] начинает залазить на [declent_ru(ACCUSATIVE)]..."))
-	if(!do_after(target, 1.5 SECONDS, target = src) || !can_piggyback(target))
-		visible_message(span_warning("[capitalize(target.declent_ru(DATIVE))] не удается залезь на [target.declent_ru(ACCUSATIVE)]!"))
-		return
-
-	if(INCAPACITATED_IGNORING(target, INCAPABLE_GRAB) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB))
-		target.visible_message(span_warning("[capitalize(target.declent_ru(NOMINATIVE))] не может удержаться на [declent_ru(PREPOSITIONAL)]!"))
-		return
-
-	return buckle_mob(target, TRUE, TRUE, RIDER_NEEDS_ARMS)
 
 /mob/living/carbon/human/is_buckle_possible(mob/living/target, force, check_loc)
 	if(!HAS_TRAIT(target, TRAIT_CAN_MOUNT_HUMANS))

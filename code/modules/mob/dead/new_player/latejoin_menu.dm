@@ -41,7 +41,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			user.jobs_menu_mounted = FALSE
 			addtimer(CALLBACK(src, PROC_REF(scream_at_player), user), 5 SECONDS)
 
-		ui = new(user, src, "JobSelection", "Latejoin Menu")
+		ui = new(user, src, "JobSelection", "Позднее присоединение")
 		ui.open()
 
 /datum/latejoin_menu/proc/scream_at_player(mob/dead/new_player/player)
@@ -58,18 +58,19 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 	if(!owner.is_latejoin_request_current(requester, request_mind, editing_slot))
 		return list()
 	var/list/departments = list()
+	var/round_duration = world.time - SSticker.round_start_time
 	var/list/data = list(
 		"disable_jobs_for_non_observers" = SSlag_switch.measures[DISABLE_NON_OBSJOBS],
-		"round_duration" = DisplayTimeText(world.time - SSticker.round_start_time, round_seconds_to = 1),
+		"round_duration" = round_duration < 1 SECONDS ? "0 секунд" : DisplayTimeText(round_duration, round_seconds_to = 1),
 		"edit_slot" = editing_slot,
 		"departments" = departments,
 	)
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
-				data["shuttle_status"] = "The station has been evacuated."
+				data["shuttle_status"] = "Станция эвакуирована."
 			if(SHUTTLE_CALL, SHUTTLE_DOCKED, SHUTTLE_IGNITING, SHUTTLE_ESCAPE)
-				data["shuttle_status"] = "The station is currently undergoing evacuation procedures."
+				data["shuttle_status"] = "На станции идёт эвакуация."
 
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)

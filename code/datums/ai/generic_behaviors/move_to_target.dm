@@ -13,7 +13,7 @@
 	/// Optional ai_movement type override; resets to the initial type on finish.
 	var/movement_type = null
 	/// Tracks the last atom we started moving toward so we can retarget when the key changes.
-	VAR_PRIVATE/atom/tracked_target
+	VAR_PROTECTED/atom/tracked_target
 
 /datum/bt_node/ai_behavior/move_to_target/setup(datum/ai_controller/controller)
 	var/atom/target = controller.blackboard[target_key]
