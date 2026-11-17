@@ -11,7 +11,7 @@
 		"children": [
 			{
 				"type": "leaf",
-				"behavior": "/datum/bt_node/ai_behavior/move_to_target",
+				"behavior": "/datum/bt_node/ai_behavior/move_to_target/monkey_pickup",
 				"vars": {
 					"target_key": "BB_monkey_pickuptarget",
 					"required_dist": 1,
