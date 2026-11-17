@@ -4,6 +4,8 @@
 #define COMPARTMENT_CELL_CODES "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 /area/shuttle/stationtrauma_space
+	/// Exterior equipment and trim still belong to the ship, but are not sealed compartments.
+	var/monitored_compartment = TRUE
 	/// Mapped airless (external airlock chambers): never reported as depressurised.
 	var/vacuum_by_design = FALSE
 	/// Burner compartments where flame is the working state: never reported as on fire.
@@ -30,9 +32,11 @@
 		var/area/room = get_area(tile)
 		if(!shuttle_areas[room])
 			continue
+		var/area/shuttle/stationtrauma_space/ship_room = room
+		if(istype(ship_room) && !ship_room.monitored_compartment)
+			continue
 		var/list/entry = rooms[room]
 		if(!entry)
-			var/area/shuttle/stationtrauma_space/ship_room = room
 			entry = list("name" = room.name, "airless" = istype(ship_room) && ship_room.vacuum_by_design, "burner" = istype(ship_room) && ship_room.fire_by_design, "breaches" = 0, "fire" = FALSE, "floor_tiles" = 0, "vacuum_tiles" = 0, "total_pressure" = 0)
 			entry["code"] = copytext(COMPARTMENT_CELL_CODES, length(rooms) + 1, length(rooms) + 2) || "?"
 			rooms[room] = entry

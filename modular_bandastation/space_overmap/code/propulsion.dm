@@ -320,6 +320,14 @@
 	circuit = /obj/item/circuitboard/machine/engine/heater/combustion/large
 	rated_thrust = 8
 
+/** Mapping preset for receivers connected to the fourth pipe layer. */
+/obj/machinery/atmospherics/components/unary/ship_engine_heater/layer4
+	piping_layer = 4
+
+/** Mapping preset for heavy converters connected to the fourth pipe layer. */
+/obj/machinery/atmospherics/components/unary/ship_engine_heater/large/layer4
+	piping_layer = 4
+
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/Initialize(mapload)
 	. = ..()
 	var/datum/gas_mixture/air = airs[1]

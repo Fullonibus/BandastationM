@@ -45,6 +45,7 @@
 				{ "value": "kilostation", "label": "Kilostation" },
 				{ "value": "catwalkstation", "label": "Catwalk Station" },
 				{ "value": "space_overmap", "label": "Cyberiad Overmap" },
+				{ "value": "space_overmap_trurl", "label": "Cyberiad Overmap + Trurl" },
 				{ "value": "gateway_test", "label": "Gateway Test (test)" },
 				{ "value": "multiz_debug", "label": "MultiZ Debug (test)" },
 				{ "value": "runtimestation", "label": "Runtime Station (low memory)" },

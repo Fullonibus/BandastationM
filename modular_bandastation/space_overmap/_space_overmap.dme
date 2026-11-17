@@ -1,5 +1,6 @@
 #include "_space_overmap.dm"
 #include "code/areas.dm"
+#include "code/trurl_areas.dm"
 #include "code/docking_port.dm"
 #include "code/map_loading.dm"
 #include "code/orbital_ship_loading.dm"

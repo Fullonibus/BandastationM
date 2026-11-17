@@ -54,6 +54,30 @@
 		{
 			"type": "process",
 			"command": "tools/build/build.sh",
+			"args": ["-DFORCE_MAP=\"space_overmap_trurl\""],
+			"windows": {
+				"command": "powershell.exe",
+				"args": [
+					"-NoProfile",
+					"-Command",
+					"& .\\tools\\build\\build.bat ('-DFORCE_MAP=\\{0}space_overmap_trurl\\{0}' -f [char]34); exit $LASTEXITCODE"
+				]
+			},
+			"options": {
+				"env": {
+					"DM_EXE": "${config:dreammaker.byondPath}"
+				}
+			},
+			"problemMatcher": ["$dreammaker", "$tsc", "$eslint-stylish"],
+			"group": {
+				"kind": "build"
+			},
+			"dependsOn": "dm: reparse",
+			"label": "Build All (Cyberiad Overmap + Trurl)"
+		},
+		{
+			"type": "process",
+			"command": "tools/build/build.sh",
 			"args": [
 				"-DSKIP_LAVALAND",
 				"-DSKIP_SPACE_LEVELS",
