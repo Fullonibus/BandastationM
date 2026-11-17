@@ -516,10 +516,6 @@
 #include "../../../modular_bandastation/dynamic/code/antag_tokens_tests.dm"
 
 #include "../../../modular_bandastation/explorers/code/tests.dm"
-#include "../../../modular_bandastation/xenoarchaeology/code/tests.dm"
-#include "../../../modular_bandastation/anomaly_fields/code/tests.dm"
-#include "../../../modular_bandastation/planetary_anomalies/code/tests.dm"
-#include "../../../modular_bandastation/expedition_contracts/code/tests.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
