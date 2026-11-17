@@ -29,9 +29,10 @@
 
 	var/list/item_details = preference_source.read_preference(/datum/preference/loadout)
 	var/list/loadout_datums = loadout_list_to_datums(item_details)
+	var/donator_level = preference_source.parent?.get_donator_level() || BASIC_DONATOR_LEVEL
 	// Slap our things into the outfit given
 	for(var/datum/loadout_item/item as anything in loadout_datums)
-		if(!item.is_equippable(src, item_details?[item.item_path] || list()))
+		if(item.donator_level > donator_level || !item.is_equippable(src, item_details?[item.item_path] || list()))
 			loadout_datums -= item
 			continue
 
