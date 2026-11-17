@@ -57,6 +57,11 @@
 /** Assemble the native turbine's three existing sprites without separate invisible machinery. */
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/plasma/update_overlays()
 	. = ..()
+	. += casing_overlays()
+
+/** The compressor, outlet turbine and their indicators around the rotor. */
+/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/plasma/proc/casing_overlays()
+	. = list()
 	var/list/offset = dir2offset(dir)
 	for(var/side in list(-1, 1))
 		var/mutable_appearance/casing = mutable_appearance(icon, side < 0 ? "inlet_compressor" : "turbine_outlet")
@@ -227,8 +232,8 @@
 		return
 	rupturing = TRUE
 	var/turf/ground = get_turf(src)
-	message_admins("Plasma propulsion block ruptured at [ADMIN_VERBOSEJMP(ground)].")
-	log_game("Plasma propulsion block ruptured at [AREACOORD(ground)].")
+	message_admins("[src] ruptured at [ADMIN_VERBOSEJMP(ground)].")
+	log_game("[src] ruptured at [AREACOORD(ground)].")
 	leak_gas(INFINITY)
 	qdel(src)
 	explosion(ground, devastation_range = 1, heavy_impact_range = 3, light_impact_range = 5, flame_range = 4)

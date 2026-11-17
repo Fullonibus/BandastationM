@@ -1383,6 +1383,22 @@
 			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
 			"source": null,
 			"changes": "Original trade outpost layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/icons/compact_core.dmi",
+			"sha256": "fe9094749d5026e2fa84a7908a3d15f1b1e172fef25164d5daeccce2b4a64747",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Baystation12 contributors (source artwork)", "StationTrauma contributors (recolour and state assembly)"],
+			"source": {
+				"repository": "Baystation12/Baystation12",
+				"commit": "a50f180528a54d72f08ddad2f49a8c994fd24185",
+				"path": "icons/obj/machines/research/suspension_generator.dmi",
+				"url": "https://github.com/Baystation12/Baystation12/blob/a50f180528a54d72f08ddad2f49a8c994fd24185/icons/obj/machines/research/suspension_generator.dmi",
+				"sha256": "22b3dd1840c855bfab36209fc6558c29e9850dc8c0f2cd977c28bda240a0ade9",
+				"license_policy_url": "https://github.com/Baystation12/Baystation12/blob/a50f180528a54d72f08ddad2f49a8c994fd24185/README.md#license"
+			},
+			"changes": "States renamed to the ship core's operating states: idle from suspension_wrenched with its teal emitter recoloured dim violet, open from suspension_wrenched with suspension_panel composited, normal/quiet/overdrive/emergency from the five suspension_on frames with the cyan field light recoloured per state and new frame delays, plus emissive *_glow masks holding only the field light. The machine body pixels are unchanged.",
+			"byte_identical": false
 		}
 	]
 }

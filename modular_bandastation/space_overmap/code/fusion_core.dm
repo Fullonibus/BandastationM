@@ -40,6 +40,8 @@
 	var/connection_description = "Тритий подаётся во вход, горячий гелий уходит из выхода к преобразователям. Электричество идёт в кабель под ядром."
 	/// Icon-space origin of pipe sleeves; the fusion casing uses a centred 96px image.
 	var/sleeve_origin = ICON_SIZE_X
+	/// Tiles from the centre to the pipe beyond each port: 2 past a three-tile casing, 1 for a single tile.
+	var/port_reach = 2
 	/// Local machine sound profiles; electrical heaters supply their own recordings.
 	var/soundloop_type = /datum/looping_sound/stationtrauma_fusion
 	var/overdrive_sound_type = /datum/looping_sound/stationtrauma_fusion/overdrive
@@ -128,8 +130,8 @@
 		var/connection = node ? "intact" : "exposed"
 		var/mutable_appearance/sleeve = mutable_appearance('icons/obj/pipes_n_cables/pipe_underlays.dmi', "[connection]_[port_direction]_[piping_layer]", appearance_flags = RESET_COLOR|KEEP_APART)
 		sleeve.color = node ? SELECT_ATMOS_NODE_COLOR(src, node) : pipe_color
-		sleeve.pixel_x = sleeve_origin + ICON_SIZE_X * ((port_direction == EAST) - (port_direction == WEST))
-		sleeve.pixel_y = sleeve_origin + ICON_SIZE_Y * ((port_direction == NORTH) - (port_direction == SOUTH))
+		sleeve.pixel_x = sleeve_origin + ICON_SIZE_X * (port_reach - 1) * ((port_direction == EAST) - (port_direction == WEST))
+		sleeve.pixel_y = sleeve_origin + ICON_SIZE_Y * (port_reach - 1) * ((port_direction == NORTH) - (port_direction == SOUTH))
 		if(underfloor_state == UNDERFLOOR_VISIBLE || uncovered_turf)
 			sleeve.layer = BELOW_CATWALK_LAYER + get_pipe_layer_offset()
 			SET_PLANE_EXPLICIT(sleeve, FLOOR_PLANE, src)
@@ -140,7 +142,7 @@
 	if(!node_connects)
 		node_connects = get_node_connects()
 	for(var/index in 1 to device_type)
-		for(var/obj/machinery/atmospherics/target in get_ranged_target_turf(src, node_connects[index], 2))
+		for(var/obj/machinery/atmospherics/target in get_ranged_target_turf(src, node_connects[index], port_reach))
 			if(can_be_node(target))
 				nodes[index] = target
 				break
@@ -149,16 +151,16 @@
 /** Only the middle of each inlet/outlet edge is a port, even though this atom occupies nine turfs. */
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/is_connectable(obj/machinery/atmospherics/target, given_layer)
 	var/turf/target_turf = get_turf(target)
-	if(get_dist(get_turf(src), target_turf) != 2)
+	if(get_dist(get_turf(src), target_turf) != port_reach)
 		return FALSE
 	var/list/directions = get_node_connects()
-	if(target_turf != get_ranged_target_turf(src, directions[1], 2) && target_turf != get_ranged_target_turf(src, directions[2], 2))
+	if(target_turf != get_ranged_target_turf(src, directions[1], port_reach) && target_turf != get_ranged_target_turf(src, directions[2], port_reach))
 		return FALSE
 	return ..()
 
 /** Ventcrawl routing uses the same two exterior ports as gas network discovery. */
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/find_connecting(direction, prompted_layer)
-	for(var/obj/machinery/atmospherics/target in get_ranged_target_turf(src, direction, 2))
+	for(var/obj/machinery/atmospherics/target in get_ranged_target_turf(src, direction, port_reach))
 		if(connection_check(target, prompted_layer))
 			return target
 
@@ -175,7 +177,7 @@
 	var/missing_nodes = FALSE
 	for(var/index in 1 to device_type)
 		var/obj/machinery/atmospherics/node = nodes[index]
-		if(node && get_turf(node) != get_ranged_target_turf(src, directions[index], 2))
+		if(node && get_turf(node) != get_ranged_target_turf(src, directions[index], port_reach))
 			var/datum/gas_mixture/stored = airs[index]
 			nullify_node(index)
 			// Disconnect the pipe without losing the core's internal tank.

@@ -18,6 +18,7 @@
 | SierraBay/SierraBay12, участники SierraBay и Baystation | [8623b35f6943130998002e94cf001a9c6ccb3f4c](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md#лизцензия) |
 | Void-Crew/Voidcrew-LRP, участники Voidcrew, Shiptest, Whitesands и TG | [66c552922bf2a28963c2a8f5d89993623a141a1f](https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md#license) |
 | CeladonSS13/Shiptest, участники Celadon, Shiptest, Whitesands и TG | [4214796c7289b74779f10dd25df2d695c264aa8f](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md) |
+| Baystation12/Baystation12, участники Baystation | [a50f180528a54d72f08ddad2f49a8c994fd24185](https://github.com/Baystation12/Baystation12/blob/a50f180528a54d72f08ddad2f49a8c994fd24185/README.md#license) |
 | ParadiseSS13/Paradise, участники Paradise | [8e4ad940e497f64443c3fc635a09840a8fa7a1d2](https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md#licenses) |
 | TG, BandaStation и Primera contributors | [65a9bd040b816783f0b6c24ba1e84ee7aab48456](https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md#license) |
 
@@ -52,6 +53,18 @@ BandaStation. Корпус неподвижен; анимируются толь
 `sound/machines/sm/loops/{calm_start,calm_end,delamming}.ogg`.
 Их исходные авторство и лицензии сохраняются; новых аудиофайлов не добавлено.
 
+## Компактное каталитическое ядро
+
+`icons/compact_core.dmi` собран из
+[`icons/obj/machines/research/suspension_generator.dmi`](https://github.com/Baystation12/Baystation12/blob/a50f180528a54d72f08ddad2f49a8c994fd24185/icons/obj/machines/research/suspension_generator.dmi)
+участников Baystation12, коммит `a50f180528a54d72f08ddad2f49a8c994fd24185`, лицензия CC BY-SA 3.0.
+Корпус машины не изменён. Состояния переименованы под режимы ядра: покой из `suspension_wrenched`
+(бирюзовый эмиттер перекрашен в тусклый фиолетовый),
+открытая панель — он же с наложенным `suspension_panel`, рабочие режимы — пять кадров `suspension_on`
+с перекрашенным свечением поля (фиолетовое, бледное, яркое, красное) и своими задержками кадров.
+Маски `*_glow` для emissive содержат только свечение поля. Звуки ядра — существующие звуки
+термоядерного ядра сборки.
+
 ## Космические локации
 
 | Локальный файл | Источник |
@@ -63,12 +76,12 @@ BandaStation. Корпус неподвижен; анимируются толь
 ресурсах. Существующие TG-руины подключаются по исходным шаблонам без копирования
 графики и изменения их лицензий.
 
-[ASSETS.json](ASSETS.json) перечисляет 92 неаудиоресурса: две карты локаций,
+[ASSETS.json](ASSETS.json) перечисляет 93 неаудиоресурса: две карты локаций,
 семь карт аванпостов, тестовый зал,
 78 деталей рельефа планет (их источники указаны в
 [expedition_planets/ATTRIBUTION.md](../expedition_planets/ATTRIBUTION.md)),
-`icons/obj/fluff/map_previews.dmi`, `icons/fusion_core.dmi`, `icons/planets.dmi`
-и `icons/trade_terminal.dmi`.
+`icons/obj/fluff/map_previews.dmi`, `icons/fusion_core.dmi`, `icons/compact_core.dmi`,
+`icons/planets.dmi` и `icons/trade_terminal.dmi`.
 Реестр содержит permalink, коммиты и SHA-256
 исходников и локальных файлов.
 Превью карт создаётся штатным генератором и сохраняет авторство исходных карт и
