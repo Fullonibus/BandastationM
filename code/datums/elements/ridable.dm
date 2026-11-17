@@ -106,6 +106,7 @@
 			amount_equipped++
 		else
 			qdel(inhand)
+			unequip_buckle_inhands(user, target_movable)
 			return FALSE
 
 	if(amount_equipped >= amount_required)

@@ -223,6 +223,7 @@ function JobRow(props: JobRowProps) {
             iconOnly
             noChevron
             icon="tag"
+            menuWidth="auto"
             options={job.variant_titles}
             selected={publicTitle}
             onSelected={(title) =>
@@ -409,7 +410,7 @@ export function PremiumJobsPage() {
   const jobsByTier = groupBy(premiumJobs, ({ tier }) => tier);
 
   return (
-    <Stack vertical>
+    <Stack vertical className="PreferencesMenu__PremiumJobs">
       {Object.entries(jobsByTier).map(([tier, entries]) => (
         <Stack.Item key={tier}>
           <Section title={`Тир ${tier}`}>

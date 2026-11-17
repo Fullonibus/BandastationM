@@ -805,6 +805,7 @@
 	desc = "Бронированный челнок службы безопасности с усиленной бронёй."
 	icon_state = "pod_dece"
 	max_integrity = 600
+	battery_type = /obj/item/stock_parts/power_store/cell/super
 
 /obj/vehicle/sealed/spacepod/sec/Initialize(mapload)
 	. = ..()

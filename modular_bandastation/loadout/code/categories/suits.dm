@@ -128,6 +128,11 @@
 	item_path = /obj/item/clothing/suit/hooded/wintercoat
 
 // MARK: Tier 1
+/datum/loadout_item/suits/primera_bubba
+	name = "Фартук Буббы"
+	item_path = /obj/item/clothing/suit/costume/primera/bubba
+	donator_level = DONATOR_TIER_1
+
 /datum/loadout_item/suits/soundhand_white_jacket
 	name = "Саундхэнд (Белая)"
 	item_path = /obj/item/clothing/suit/soundhand_white_jacket/tag
@@ -154,6 +159,16 @@
 	donator_level = DONATOR_TIER_1
 
 // MARK: Tier 2
+/datum/loadout_item/suits/primera_drive
+	name = "Куртка водителя"
+	item_path = /obj/item/clothing/suit/costume/primera/drive
+	donator_level = DONATOR_TIER_2
+
+/datum/loadout_item/suits/primera_tyler
+	name = "Куртка Тайлера"
+	item_path = /obj/item/clothing/suit/costume/primera/tyler
+	donator_level = DONATOR_TIER_2
+
 /datum/loadout_item/suits/shark_suit
 	name = "Костюм акулы"
 	item_path = /obj/item/clothing/suit/hooded/shark_costume
@@ -165,6 +180,16 @@
 	donator_level = DONATOR_TIER_2
 
 // MARK: Tier 3
+/datum/loadout_item/suits/primera_joker
+	name = "Пальто Джокера"
+	item_path = /obj/item/clothing/suit/costume/primera/joker
+	donator_level = DONATOR_TIER_3
+
+/datum/loadout_item/suits/primera_silco
+	name = "Пальто Силко"
+	item_path = /obj/item/clothing/suit/costume/primera/silco
+	donator_level = DONATOR_TIER_3
+
 /datum/loadout_item/suits/v_jacket
 	name = "Куртка V"
 	item_path = /obj/item/clothing/suit/v_jacket

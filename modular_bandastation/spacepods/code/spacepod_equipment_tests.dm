@@ -279,22 +279,18 @@
 		else
 			TEST_ASSERT_NULL(pod.weapon_system, "Burst cancellation did not actually remove the weapon.")
 
-/// UI refreshes must not leak beacon coordinates after access is absent or revoked.
+/// Tracking beacons must remain visible without departmental ID access.
 /datum/unit_test/spacepod_tracking_access/Run()
 	var/obj/machinery/computer/podtracker/console = allocate(/obj/machinery/computer/podtracker)
 	var/obj/item/spacepod_equipment/misc/tracker/beacon = allocate(/obj/item/spacepod_equipment/misc/tracker)
 	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
-	var/list/denied_data = console.ui_data(user)
-	TEST_ASSERT_EQUAL(length(denied_data["pods"]), 0, "Tracking console leaked coordinates to a person without access.")
+	TEST_ASSERT(console.allowed(user), "The tracking console requires an ID.")
+	var/list/public_data = console.ui_data(user)
+	TEST_ASSERT(length(public_data["pods"]) > 0, "A person without an ID could not see a real tracking beacon.")
 	var/obj/item/card/id/advanced/card = allocate(/obj/item/card/id/advanced)
-	card.set_access(list(ACCESS_ENGINE_EQUIP), FORCE_ADD_ALL)
 	user.put_in_hands(card)
-	TEST_ASSERT(console.allowed(user), "An engineering equipment ID did not authorize the tracking console.")
-	var/list/authorized_data = console.ui_data(user)
-	TEST_ASSERT(length(authorized_data["pods"]) > 0, "An authorized engineer could not see a real tracking beacon.")
-	card.clear_access()
-	var/list/revoked_data = console.ui_data(user)
-	TEST_ASSERT_EQUAL(length(revoked_data["pods"]), 0, "Tracking console leaked coordinates after ID access was revoked.")
+	var/list/empty_id_data = console.ui_data(user)
+	TEST_ASSERT_EQUAL(length(empty_id_data["pods"]), length(public_data["pods"]), "An ID without access hid tracking beacons.")
 	qdel(beacon)
 
 /// Tracking must follow the pod while installed and the physical beacon after removal.

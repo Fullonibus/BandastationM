@@ -154,3 +154,10 @@
 		TEST_ASSERT_EQUAL(beep_entry["key"], "beep", "Changing the filtered beep changed its saved entry.")
 		TEST_ASSERT_EQUAL(beep_entry["message_override"], "signals readiness.", "Filtering changed a saved custom emote's text.")
 		TEST_ASSERT_EQUAL(me_entry["message"], "checks the surroundings.", "Changing the filtered roleplay changed its saved text.")
+
+	for(var/mob_type in list(/mob/dead/new_player, /mob/dead/observer))
+		var/mob/user = allocate(mob_type)
+		var/list/available = get_available_emote_panel_entries(user, saved)
+		for(var/emote_name in saved)
+			TEST_ASSERT(emote_name in available, "[mob_type] could not manage a saved favorite: [emote_name].")
+		TEST_ASSERT(isnull(get_available_emote(user, "me")), "Editing favorites enabled out-of-body roleplay.")

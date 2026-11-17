@@ -3165,6 +3165,34 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 	INVOKE_ASYNC(src, PROC_REF(emote), "scream")
 
+/// Whether a conscious passenger can climb onto the mob currently holding them.
+/mob/living/proc/can_piggyback(mob/living/carbon/target)
+	if(!istype(target) || QDELETED(target) || !can_buckle)
+		return FALSE
+	if(IS_UNCONSCIOUS_OR_CRIT(src) || IS_UNCONSCIOUS_OR_CRIT(target))
+		return FALSE
+	return pulling == target && grab_state == GRAB_AGGRESSIVE && is_buckle_possible(target, force = TRUE)
+
+/// Let a passenger climb onto our back, keeping both of their hands occupied.
+/mob/living/proc/piggyback(mob/living/carbon/target)
+	if(!can_piggyback(target))
+		to_chat(target, span_warning("Вы не можете сейчас прокатиться на [declent_ru(PREPOSITIONAL)]!"))
+		return
+
+	visible_message(span_notice("[capitalize(target.declent_ru(NOMINATIVE))] начинает залазить на [declent_ru(ACCUSATIVE)]..."))
+	var/climbed = do_after(target, 1.5 SECONDS, target = src)
+	if(QDELETED(src) || QDELETED(target))
+		return
+	if(!climbed || !can_piggyback(target))
+		visible_message(span_warning("[capitalize(target.declent_ru(DATIVE))] не удается залезь на [target.declent_ru(ACCUSATIVE)]!"))
+		return
+
+	if(INCAPACITATED_IGNORING(target, INCAPABLE_GRAB) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB))
+		target.visible_message(span_warning("[capitalize(target.declent_ru(NOMINATIVE))] не может удержаться на [declent_ru(PREPOSITIONAL)]!"))
+		return
+
+	return buckle_mob(target, TRUE, TRUE, RIDER_NEEDS_ARMS)
+
 /mob/living/proc/set_pull_force(new_pull_force)
 	if(pull_force == new_pull_force)
 		return

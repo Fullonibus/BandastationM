@@ -586,10 +586,36 @@
     }
   }
 
+  &__PremiumJobs {
+    .PreferencesMenu__Department > .Stack {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0;
+    }
+
+    .job-name {
+      flex-basis: 10rem;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .options {
+      max-width: 100%;
+    }
+
+    .options,
+    .PreferencesMenu__Priority {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: var(--button-gap);
+    }
+  }
+
   &__Priority {
     position: relative;
 
-    &:hover .PreferencesMenu__PriorityButton {
+    .PreferencesMenu__Jobs &:hover .PreferencesMenu__PriorityButton {
       transform: translateX(
         calc(
           -1 * (var(--button-width) - var(--button-gap) * -1) *
@@ -606,7 +632,7 @@
     &Button {
       width: var(--button-width);
 
-      &:not(.selected) {
+      .PreferencesMenu__Jobs &:not(.selected) {
         position: absolute !important;
       }
 
@@ -629,6 +655,15 @@
         }
       }
     }
+  }
+}
+
+:root:has(.PreferencesMenu__PremiumJobs) .Dropdown__menu--wrapper {
+  max-width: calc(100vw - 1rem);
+
+  .Dropdown__menu--entry {
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 

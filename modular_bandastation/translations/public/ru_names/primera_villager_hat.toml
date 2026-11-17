@@ -1,0 +1,8 @@
+["primera villager hat"]
+nominative = "деревенская шляпа"
+genitive = "деревенской шляпы"
+dative = "деревенской шляпе"
+accusative = "деревенскую шляпу"
+instrumental = "деревенской шляпой"
+prepositional = "деревенской шляпе"
+gender = "female"

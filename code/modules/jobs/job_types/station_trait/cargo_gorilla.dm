@@ -49,7 +49,7 @@
 	gorilla_id.registered_name = spawned.name
 	gorilla_id.update_label()
 	gorilla_id.set_account(bank_account)
-	spawned.put_in_hands(gorilla_id, del_on_fail = TRUE)
+	spawned.equip_to_slot_or_del(gorilla_id, ITEM_SLOT_ID, initial = TRUE)
 
 	to_chat(spawned, span_boldnotice("Вы Каргорила, дружелюбный член станции и грузоперевозчик."))
 	to_chat(spawned, span_notice("Вы можете поднимать ящики, кликая на них, и класть их на пол, кликая по нему."))
