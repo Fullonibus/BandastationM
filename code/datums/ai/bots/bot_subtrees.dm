@@ -149,7 +149,7 @@
 	var/atom/previous_target = controller.blackboard[BB_PREVIOUS_BEACON_TARGET]
 	for(var/obj/machinery/navbeacon/beacon as anything in GLOB.navbeacons["[bot_pawn.z]"])
 		var/dist = get_dist(bot_pawn, beacon)
-		if(beacon == previous_target || dist <= 1)
+		if(beacon == previous_target || dist <= 1 || LAZYACCESS(controller.blackboard[BB_TEMPORARY_IGNORE_LIST], beacon))
 			continue
 		if(dist > closest_distance)
 			continue
@@ -158,6 +158,7 @@
 
 	if(isnull(final_target))
 		EVLOG_TEXT(controller, EVLOG_CATEGORY_AI_BEHAVIORS, "[bot_pawn] find_first_beacon_target: no beacon found on z=[bot_pawn.z] (previous=[previous_target])")
+		controller.set_blackboard_key(BB_BOT_BEACON_COOLDOWN, world.time + BOT_NO_BEACON_PATH_PENALTY)
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 	EVLOG_MAPTEXT(controller, EVLOG_CATEGORY_AI_BEHAVIORS, "[bot_pawn] first beacon target: [final_target]", get_turf(final_target), "Beacon")
 	EVLOG_LINES(controller, EVLOG_CATEGORY_AI_BEHAVIORS, "Beacon path", get_turf(bot_pawn), get_turf(final_target))
@@ -187,6 +188,8 @@
 		EVLOG_TEXT(controller, EVLOG_CATEGORY_AI_BEHAVIORS, "[bot_pawn] find_next_beacon_target: no beacon with location=[prev_beacon.codes[NAVBEACON_PATROL_NEXT]] (prev=[prev_beacon])")
 		controller.clear_blackboard_key(BB_PREVIOUS_BEACON_TARGET)
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
+	if(LAZYACCESS(controller.blackboard[BB_TEMPORARY_IGNORE_LIST], final_target))
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
 	controller.set_blackboard_key(BB_PREVIOUS_BEACON_TARGET, final_target)
 	controller.set_blackboard_key(target_key, final_target)
@@ -194,6 +197,22 @@
 
 /datum/bt_node/ai_behavior/find_next_beacon_target/finish_action(datum/ai_controller/controller, succeeded)
 	. = ..()
+
+
+/// Uses the patrol path budget and backs off only when movement actually fails, not when interrupted.
+/datum/bt_node/ai_behavior/move_to_target/bot_patrol
+
+/datum/bt_node/ai_behavior/move_to_target/bot_patrol/finish_action(datum/ai_controller/basic_controller/bot/controller, succeeded)
+	var/failed_to_reach = movement_failed
+	var/atom/failed_target = tracked_target
+	. = ..()
+	if(!failed_to_reach)
+		return
+	controller.set_blackboard_key(BB_BOT_BEACON_COOLDOWN, world.time + BOT_NO_BEACON_PATH_PENALTY)
+	controller.add_to_blacklist(failed_target, 3 MINUTES)
+	if(controller.blackboard[target_key] == failed_target)
+		controller.set_blackboard_key(BB_PREVIOUS_BEACON_TARGET, failed_target)
+		controller.clear_blackboard_key(target_key)
 
 
 /// Records the beacon as visited and clears the target key once the bot is on the same turf.

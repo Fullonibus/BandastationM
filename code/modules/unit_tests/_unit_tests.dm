@@ -134,6 +134,7 @@
 #include "abductor_baton_spell.dm"
 #include "ablative_hud.dm"
 #include "achievements.dm"
+#include "ai_pathfinding.dm"
 #include "alerts.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
