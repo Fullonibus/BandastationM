@@ -100106,6 +100106,109 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/robotics/lab)
+"aah" = (
+/obj/docking_port/stationary/stationtrauma_space_station/standard_s{
+	dir = 1;
+	name = "Кибериада: грузовой причал S";
+	shuttle_id = "cyberiad_cargo_s_dock";
+	site_id = "cyberiad_cargo_s_dock";
+	station_name = "Кибериада: грузовой причал S"
+	},
+/turf/open/space/basic,
+/area/space)
+"aai" = (
+/obj/machinery/door/airlock/stationtrauma_docking/wall{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/cargo/storage/ghetto)
+"aak" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aan" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aas" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aat" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aau" = (
+/obj/machinery/door/airlock/maintenance{
+	air_tight = 1;
+	dir = 4;
+	name = "Грузовой причал S"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aav" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aax" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aay" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aaD" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aaE" = (
+/obj/machinery/door/airlock/external/glass,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/plating,
+/area/station/maintenance/ghetto/port)
+"aaF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aaG" = (
+/obj/machinery/light/cold/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/ghetto/port)
+"aaI" = (
+/turf/open/floor/plating/reinforced/airless,
+/area/space)
 
 (1,1,1) = {"
 doz
@@ -114890,7 +114993,7 @@ mQU
 mQU
 eHR
 mQU
-aoJ
+aaE
 jEk
 doz
 doz
@@ -115147,8 +115250,6 @@ tWQ
 tWQ
 tWQ
 tWQ
-tWQ
-ceC
 doz
 doz
 doz
@@ -115162,6 +115263,8 @@ doz
 doz
 doz
 doz
+doz
+aah
 rmU
 tlF
 hqK
@@ -117203,21 +117306,21 @@ had
 nYx
 nuu
 xWL
-xWL
-tWQ
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
+aai
+aai
+aai
+aai
+aai
+aai
+aai
+aai
+aai
+aai
+aai
+aai
+aai
+aai
+aai
 rmU
 riw
 aec
@@ -117459,22 +117562,22 @@ ceC
 had
 jkc
 mkn
-aTQ
-gIV
 tWQ
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
-doz
+aaF
+aak
+aak
+aak
+aak
+aas
+aas
+aas
+aak
+aak
+aak
+aak
+aak
+aan
+aak
 rmU
 oLG
 pIQ
@@ -117717,21 +117820,21 @@ had
 ttJ
 mYm
 rgO
-uMP
 tWQ
-doz
-doz
-doz
-doz
-doz
-doz
+tWQ
+oBo
+oBo
+oBo
+aay
+aav
+aat
 jJz
 jJz
 jJz
 jJz
 jJz
-doz
-doz
+rQU
+rQU
 rmU
 rmU
 rmU
@@ -117974,14 +118077,14 @@ had
 had
 had
 sYG
-rgO
+aaG
 tWQ
-doz
-doz
-doz
-doz
-doz
-doz
+oBo
+oBo
+oBo
+aaD
+aax
+aat
 jJz
 ghT
 hbc
@@ -118238,7 +118341,7 @@ rQU
 rQU
 rQU
 rQU
-rQU
+aau
 jJz
 apZ
 ifO
@@ -182748,11 +182851,11 @@ dMR
 tVg
 dhI
 iPs
-ets
-ets
-ets
-ets
-ets
+aaI
+aaI
+aaI
+aaI
+aaI
 eJo
 vVL
 loB
@@ -183005,11 +183108,11 @@ dMR
 cup
 nyz
 iPs
-ets
-ets
-ets
-ets
-ets
+aaI
+aaI
+aaI
+aaI
+aaI
 oXc
 hoZ
 mBd

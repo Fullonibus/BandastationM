@@ -64,7 +64,7 @@
 	overmap_x = 1000;
 	ship_class = "small";
 	shuttle_id = "overmap_cargo_s";
-	starting_dock = "cyberiad_s_dock"
+	starting_dock = "cyberiad_cargo_s_dock"
 	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
@@ -92,7 +92,7 @@
 	overmap_x = 1000;
 	ship_class = "small";
 	shuttle_id = "overmap_cargo_s";
-	starting_dock = "cyberiad_s_dock"
+	starting_dock = "cyberiad_cargo_s_dock"
 	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
@@ -177,7 +177,7 @@
 	overmap_x = 1000;
 	ship_class = "small";
 	shuttle_id = "overmap_cargo_s";
-	starting_dock = "cyberiad_s_dock"
+	starting_dock = "cyberiad_cargo_s_dock"
 	},
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/cargo_s)
@@ -346,7 +346,7 @@
 	overmap_x = 1000;
 	ship_class = "small";
 	shuttle_id = "overmap_cargo_s";
-	starting_dock = "cyberiad_s_dock"
+	starting_dock = "cyberiad_cargo_s_dock"
 	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
