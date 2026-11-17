@@ -1110,9 +1110,9 @@
 "adI" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/effect/turf_decal/bot,
+/obj/machinery/suit_storage_unit/expedition,
 /turf/open/floor/iron/dark/smooth_large,
-/area/station/expedition/storage,
-/obj/machinery/suit_storage_unit/expedition)
+/area/station/expedition/storage)
 "adJ" = (
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
@@ -1265,14 +1265,14 @@
 /area/station/maintenance/starboard/fore)
 "aeo" = (
 /obj/effect/turf_decal/bot,
+/obj/machinery/suit_storage_unit/expedition/engineer,
 /turf/open/floor/iron/dark/smooth_large,
-/area/station/expedition/storage,
-/obj/machinery/suit_storage_unit/expedition/engineer)
+/area/station/expedition/storage)
 "aep" = (
 /obj/effect/turf_decal/bot,
+/obj/machinery/suit_storage_unit/expedition/medic,
 /turf/open/floor/iron/dark/smooth_large,
-/area/station/expedition/storage,
-/obj/machinery/suit_storage_unit/expedition/medic)
+/area/station/expedition/storage)
 "aeq" = (
 /obj/machinery/newscaster/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
@@ -1379,16 +1379,16 @@
 /obj/machinery/light/cold/dim/directional/west,
 /obj/effect/turf_decal/bot,
 /obj/structure/sign/nanotrasen/directional/north,
+/obj/machinery/suit_storage_unit/expedition,
 /turf/open/floor/iron/dark/smooth_large,
-/area/station/expedition/storage,
-/obj/machinery/suit_storage_unit/expedition)
+/area/station/expedition/storage)
 "aeH" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/light/directional/east,
 /obj/structure/sign/nanotrasen/directional/north,
+/obj/machinery/suit_storage_unit/expedition/pilot,
 /turf/open/floor/iron/dark/smooth_large,
-/area/station/expedition/storage,
-/obj/machinery/suit_storage_unit/expedition/pilot)
+/area/station/expedition/storage)
 "aeI" = (
 /obj/structure/cable,
 /obj/machinery/light/cold/dim/directional/west,
