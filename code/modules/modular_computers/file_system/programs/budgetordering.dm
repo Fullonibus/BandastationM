@@ -106,8 +106,8 @@
 			can_approve_requests = FALSE
 	else
 		requestonly = TRUE
-	if(buyer)
-		data["points"] = buyer.account_balance
+
+	data["points"] = buyer?.account_balance || 0
 	// To recap above because it's kind of a mess, here's all the options:
 		//Head of staff ID card: Can approve, buy, and make purchases using their own departmental budgets.
 		//ID card, not a head of staff: can request items from cargo using departmental budget.
@@ -118,12 +118,15 @@
 	//Data regarding the User's capability to buy things.
 	data["away"] = SSshuttle.supply.getDockedId() == docking_away
 	data["self_paid"] = self_paid
+	var/obj/item/card/id/customer_id = id_card || astype(user, /mob/living/carbon/human)?.get_idcard(TRUE)
+	var/datum/bank_account/payer = self_paid ? customer_id?.registered_account : buyer
+	data["goody_order_cost_modifier"] = payer ? payer.get_cargo_order_cost_modifier(TRUE) : 1
+	data["private_order_cost_modifier"] = payer ? payer.get_cargo_order_cost_modifier(FALSE) : 1
 	data["docked"] = SSshuttle.supply.mode == SHUTTLE_IDLE
 	data["loan"] = !!SSshuttle.shuttle_loan
 	data["loan_dispatched"] = SSshuttle.shuttle_loan && SSshuttle.shuttle_loan.dispatched
 	data["can_send"] = FALSE //There is no situation where I want the app to be able to send the shuttle AWAY from the station, but conversely is fine.
 	data["can_approve_requests"] = can_approve_requests
-	data["app_cost"] = TRUE
 	var/message = "Remember to stamp and send back the supply manifests."
 	if(SSshuttle.centcom_message)
 		message = SSshuttle.centcom_message
@@ -286,7 +289,7 @@
 			var/obj/item/card/id/id_card_customer = computer.stored_id?.GetID()
 			if(!id_card_customer)
 				id_card_customer = hwoman?.get_idcard(TRUE) //Grab from hands/mob if there's no id_card slot to prioritize.
-			name = id_card_customer?.registered_account.account_holder
+			name = id_card_customer?.registered_account?.account_holder
 
 			if(self_paid)
 				if(!istype(id_card_customer))
@@ -296,13 +299,13 @@
 					computer.say("[id_card_customer] cannot be used to make purchases.")
 					return
 				account = id_card_customer.registered_account
-				name = id_card_customer.registered_account.account_holder
 				if(!istype(account))
 					computer.say("Invalid bank account.")
 					return
 
 			var/reason = ""
 			var/datum/bank_account/personal_department
+			var/was_self_paid = self_paid
 			if((requestonly && !self_paid) || !(computer.stored_id?.GetID()))
 				reason = tgui_input_text(user, "Reason", name, max_length = MAX_MESSAGE_LEN)
 				if(isnull(reason) || ..())
@@ -316,6 +319,13 @@
 						return
 					if(dept_choice == "Cargo Budget")
 						personal_department = null
+
+			if(was_self_paid != self_paid)
+				return
+			if(self_paid)
+				var/obj/item/card/id/current_id = computer.stored_id?.GetID() || hwoman?.get_idcard(TRUE)
+				if(current_id != id_card_customer || QDELETED(account) || current_id?.registered_account != account || ..())
+					return
 
 			if((pack.order_flags & ORDER_GOODY) && !self_paid)
 				playsound(computer, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)

@@ -246,7 +246,11 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			paying_for_this.bank_card_talk(receiver_message)
 			SSeconomy.add_audit_entry(paying_for_this, price, spawning_order.pack.name)
 			var/datum/bank_account/department/cargo = SSeconomy.get_dep_account(ACCOUNT_CAR)
-			cargo.adjust_money(price - pack_cost) //Cargo gets the handling fee
+			var/handling_fee = price - pack_cost
+			// The personal discount doesn't charge the Cargo Department for the difference.
+			if(spawning_order.uses_catalog_discount && paying_for_this.cargo_order_cost_modifier < 1)
+				handling_fee = max(0, handling_fee)
+			cargo.adjust_money(handling_fee)
 		value += pack_cost
 
 		if(!(spawning_order.pack.order_flags & ORDER_GOODY)) //we handle goody crates below

@@ -140,14 +140,17 @@
 	* COMPTYPE: How should the values be compared? Either COMPARE_KEY or COMPARE_VALUE.
 	*/
 #define BINARY_INSERT(INPUT, LIST, TYPECONT, COMPARE, COMPARISON, COMPTYPE) \
+	BINARY_INSERT_FROM(INPUT, LIST, TYPECONT, COMPARE, COMPARISON, COMPTYPE, 1)
+
+/// Binary insert into the sorted suffix starting at START_INDEX, or append if it is empty.
+#define BINARY_INSERT_FROM(INPUT, LIST, TYPECONT, COMPARE, COMPARISON, COMPTYPE, START_INDEX) \
 	do {\
 		var/list/__BIN_LIST = LIST;\
-		var/__BIN_CTTL = length(__BIN_LIST);\
-		if(!__BIN_CTTL) {\
+		var/__BIN_LEFT = (START_INDEX);\
+		var/__BIN_RIGHT = length(__BIN_LIST);\
+		if(__BIN_LEFT > __BIN_RIGHT) {\
 			__BIN_LIST += INPUT;\
 		} else {\
-			var/__BIN_LEFT = 1;\
-			var/__BIN_RIGHT = __BIN_CTTL;\
 			var/__BIN_MID = (__BIN_LEFT + __BIN_RIGHT) >> 1;\
 			var ##TYPECONT/__BIN_ITEM;\
 			while(__BIN_LEFT < __BIN_RIGHT) {\

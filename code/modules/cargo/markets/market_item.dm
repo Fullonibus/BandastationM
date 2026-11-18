@@ -70,6 +70,10 @@
 	SIGNAL_HANDLER
 	qdel(src)
 
+/// Returns the buyer's price for the item before shipping.
+/datum/market_item/proc/get_purchase_price(datum/bank_account/account)
+	return round(price * (account ? account.black_market_cost_modifier : 1))
+
 /// Used for spawning the wanted item, override if you need to do something special with the item.
 /datum/market_item/proc/spawn_item(loc, datum/market_purchase/purchase)
 	SHOULD_CALL_PARENT(TRUE)

@@ -446,7 +446,9 @@
 
 		var/gun_count = length(valid_guns)
 		if(gun_count)
-			bonus_spread += src.dual_wield_spread // no scaling since it's technically the first shot
+			bonus_spread += src.dual_wield_spread // Only offhand guns increase the penalty multiplier.
+			if(ignores_dual_wield_spread(user))
+				bonus_spread = 0
 			for(var/i in 1 to gun_count)
 				var/obj/item/gun/gun = valid_guns[i]
 				addtimer(CALLBACK(gun, TYPE_PROC_REF(/obj/item/gun, process_fire), target, user, TRUE, params, null, bonus_spread), i)
@@ -454,6 +456,11 @@
 	return process_fire(target, user, TRUE, params, null, bonus_spread)
 
 #undef AKIMBO_PENALTY_SCALING
+
+/// Whether the shooter is smoking a holo-cigar that cancels extra spread from dual wielding.
+/obj/item/gun/proc/ignores_dual_wield_spread(mob/living/user)
+	var/obj/item/cigarette/holo_cigar/cigar = user.get_item_by_slot(ITEM_SLOT_MASK)
+	return istype(cigar) && cigar.lit
 
 /obj/item/gun/proc/check_botched(mob/living/user, atom/target)
 	if(clumsy_check)

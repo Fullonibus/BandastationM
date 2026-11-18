@@ -5,6 +5,22 @@
 	screeches = list("roar", "screech")
 
 
+/// Excludes an unreachable item even when movement fails before the equip behavior can run.
+/datum/bt_node/ai_behavior/move_to_target/monkey_pickup
+
+/datum/bt_node/ai_behavior/move_to_target/monkey_pickup/finish_action(datum/ai_controller/controller, succeeded)
+	var/failed_to_reach = movement_failed
+	var/atom/failed_target = tracked_target
+	. = ..()
+	if(!failed_to_reach)
+		return
+	if(!QDELETED(failed_target))
+		controller.set_blackboard_key_assoc(BB_MONKEY_BLACKLISTITEMS, failed_target, TRUE)
+	if(controller.blackboard[target_key] == failed_target)
+		controller.clear_blackboard_key(target_key)
+		controller.clear_blackboard_key(BB_MONKEY_PICKUP_IS_PICKPOCKET)
+
+
 /// Base equip behavior; handles blacklist updates and key cleanup on finish
 /datum/bt_node/ai_behavior/monkey_equip
 	var/target_key

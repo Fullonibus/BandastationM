@@ -44,6 +44,13 @@
 	/// How many paychecks to skip when payday is called.
 	var/paydays_to_skip = 0
 
+	/// Discount multiplier for cargo orders made with this account.
+	var/cargo_order_cost_modifier = 1
+	/// Modifier to black market orders made with this account.
+	var/black_market_cost_modifier = 1.0
+	/// Modifier to the amount of money lost per CRAB-17 drain.
+	var/crab_17_drain_rate_modifier = 1.0
+
 /datum/bank_account/New(newname, job, modifier = 1, player_account = TRUE)
 	account_holder = newname
 	account_job = job
@@ -52,6 +59,11 @@
 	setup_unique_account_id()
 	update_account_job_lists(job)
 	pay_token = uppertext("[copytext_char(newname, 1, 2)][copytext_char(newname, -1)]-[random_capital_letter()]-[rand(1111,9999)]") // BANDASTATION EDIT - _char
+
+/// Returns the multiplier for a cargo order, including the personal-account surcharge on full crates.
+/datum/bank_account/proc/get_cargo_order_cost_modifier(goody, use_catalog_discount = TRUE)
+	var/catalog_discount = use_catalog_discount ? cargo_order_cost_modifier : 1
+	return catalog_discount * ((add_to_accounts && !goody) ? 1.1 : 1)
 
 /datum/bank_account/Destroy()
 	if(add_to_accounts)

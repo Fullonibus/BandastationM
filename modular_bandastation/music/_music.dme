@@ -1,3 +1,22 @@
+#include "code/defines.dm"
 #include "_music.dm"
 
 #include "code/song.dm"
+#include "code/playback.dm"
+#include "code/sequence.dm"
+#include "code/editor.dm"
+#include "code/file_playback.dm"
+#include "code/legacy_samples.dm"
+#include "code/access.dm"
+#include "code/sound.dm"
+#include "code/concert_disk.dm"
+#include "code/concert_playback.dm"
+#include "code/concert_player.dm"
+#include "code/concert_speakers.dm"
+#include "code/concert_circuits.dm"
+
+#ifdef UNIT_TESTS
+#include "code/access_tests.dm"
+#include "code/sync_tests.dm"
+#include "code/concert_tests.dm"
+#endif

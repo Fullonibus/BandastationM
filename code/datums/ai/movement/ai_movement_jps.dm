@@ -39,10 +39,10 @@
 	return loop
 
 /datum/ai_movement/jps/update_movement_target(datum/ai_controller/controller, atom/new_target)
-	. = ..()
-	var/datum/move_loop/has_target/jps/loop = GLOB.move_manager.processing_on(controller.pawn, SSai_movement)
-	if(loop)
-		INVOKE_ASYNC(loop, TYPE_PROC_REF(/datum/move_loop/has_target/jps, recalculate_path))
+	var/min_distance = controller.blackboard[BB_CURRENT_MIN_MOVE_DISTANCE]
+	// Replacing the loop also releases pending path callbacks and the old target's deletion signal.
+	stop_moving_towards(controller)
+	start_moving_towards(controller, new_target, min_distance)
 
 /datum/ai_movement/jps/proc/repath_incoming(datum/move_loop/has_target/jps/source)
 	SIGNAL_HANDLER
@@ -59,7 +59,7 @@
 /datum/ai_movement/jps/bot/start_moving_towards(datum/ai_controller/controller, atom/current_movement_target, min_distance, delay_override)
 	var/datum/move_loop/loop = ..()
 	var/atom/our_pawn = controller.pawn
-	if(isnull(our_pawn))
+	if(!loop || isnull(our_pawn))
 		return null
 	our_pawn.RegisterSignal(loop, COMSIG_MOVELOOP_JPS_FINISHED_PATHING, TYPE_PROC_REF(/mob/living/basic/bot, generate_bot_path))
 	return loop
@@ -91,4 +91,6 @@
 /datum/ai_movement/jps/bot/mulebot/start_moving_towards(datum/ai_controller/controller, atom/current_movement_target, min_distance)
 	var/datum/move_loop/loop = ..()
 	var/atom/our_pawn = controller.pawn
+	if(!loop || isnull(our_pawn))
+		return null
 	our_pawn.RegisterSignal(loop, COMSIG_MOVELOOP_JPS_FRUSTRATION_INCREMENTED, TYPE_PROC_REF(/mob/living/basic/bot/mulebot, handle_buzzing))

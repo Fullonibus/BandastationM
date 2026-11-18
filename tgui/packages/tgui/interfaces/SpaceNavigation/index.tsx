@@ -319,6 +319,31 @@ function Navigation({ data }: { data: NavigationData }) {
             </Button>
           </div>
 
+          {data.board && (
+            <div className="SpaceNavigation__engine-control">
+              {data.board.jumps.map((route) => (
+                <Button
+                  key={route.id}
+                  icon="meteor"
+                  disabled={!route.available}
+                  tooltip="Блюспейс-переход"
+                  onClick={() => act('jump', { value: route.id })}
+                >
+                  {route.name}
+                </Button>
+              ))}
+              {data.board.transponder && (
+                <Button
+                  icon="broadcast-tower"
+                  selected={!!data.board.transponder.enabled}
+                  tooltip={data.board.transponder.callsign || 'Транспондер'}
+                  onClick={() => act('transponder')}
+                >
+                  Транспондер
+                </Button>
+              )}
+            </div>
+          )}
           <div className="SpaceNavigation__gauges">
             <AnalogDial
               label="СКОРОСТЬ"
