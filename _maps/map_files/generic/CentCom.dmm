@@ -11097,10 +11097,10 @@
 	pixel_y = 9
 	},
 /obj/effect/turf_decal/tile/blue/full,
-/obj/item/defibrillator/compact/combat/loaded/nanotrasen{
+/obj/item/defibrillator/compact/combat/nanotrasen{
 	pixel_y = -4
 	},
-/obj/item/defibrillator/compact/combat/loaded/nanotrasen,
+/obj/item/defibrillator/compact/combat/nanotrasen,
 /turf/open/floor/iron/dark/smooth_large,
 /area/centcom/central_command_areas/hospital)
 "aWx" = (

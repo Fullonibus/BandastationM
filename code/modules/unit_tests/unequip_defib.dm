@@ -54,3 +54,63 @@
 	TEST_ASSERT(!HAS_TRAIT(defib.paddles, TRAIT_WIELDED), "The user kept wielding the paddles after they returned to the main unit.")
 // BANDASTATION ADDITION END
 // AI EDIT END
+
+/// NT paddles cannot stun or overload hearts; EMP shielding preserves their charge and medical operation.
+/datum/unit_test/nanotrasen_defib_medical_only/Run()
+	// Teardown deletes allocations in order; the unit must return its paddles before their holder is deleted.
+	var/obj/item/defibrillator/compact/combat/nanotrasen/defib = allocate(/obj/item/defibrillator/compact/combat/nanotrasen)
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
+	var/obj/item/clothing/suit/space/suit = allocate(/obj/item/clothing/suit/space)
+	patient.equip_to_slot(suit, ITEM_SLOT_OCLOTHING)
+	TEST_ASSERT(patient.wear_suit == suit, "Could not equip the patient's space suit.")
+	click_wrapper(user, defib)
+	defib.paddles.attack_self(user)
+	user.set_combat_mode(TRUE)
+	click_wrapper(user, patient, list(RIGHT_CLICK = TRUE))
+	TEST_ASSERT_EQUAL(patient.get_stamina_loss(), 0, "NT paddles still inflicted stamina damage.")
+	TEST_ASSERT(!patient.has_status_effect(/datum/status_effect/incapacitating/knockdown), "NT paddles still knocked the patient down.")
+	click_wrapper(user, patient)
+	TEST_ASSERT_EQUAL(patient.get_fire_loss(), 0, "NT paddles still inflicted combat burns.")
+	TEST_ASSERT(!patient.undergoing_cardiac_arrest(), "NT paddles still overloaded the patient's heart.")
+
+	var/charge_before_emp = defib.cell.charge
+	defib.emp_act(EMP_HEAVY)
+	TEST_ASSERT_EQUAL(defib.cell.charge, charge_before_emp, "An EMP drained the shielded NT battery.")
+	click_wrapper(user, patient, list(RIGHT_CLICK = TRUE))
+	TEST_ASSERT_EQUAL(patient.get_stamina_loss(), 0, "An EMP disabled the NT medical safeties.")
+	user.set_combat_mode(FALSE)
+	patient.set_heartattack(TRUE)
+	click_wrapper(user, patient)
+	TEST_ASSERT(!patient.undergoing_cardiac_arrest(), "Shielded NT paddles could not restart the patient's heart.")
+	TEST_ASSERT(defib.cell.charge < charge_before_emp, "NT defibrillation still used an infinite battery.")
+
+/// Reviving a dead patient must also work through a space suit without offensive shocks.
+/datum/unit_test/nanotrasen_defib_medical_only/revive_in_spacesuit/Run()
+	var/obj/item/defibrillator/compact/combat/nanotrasen/defib = allocate(/obj/item/defibrillator/compact/combat/nanotrasen)
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
+	var/obj/item/clothing/suit/space/suit = allocate(/obj/item/clothing/suit/space)
+	patient.equip_to_slot(suit, ITEM_SLOT_OCLOTHING)
+	TEST_ASSERT(patient.wear_suit == suit, "Could not equip the patient's space suit.")
+	patient.death()
+	TEST_ASSERT(patient.stat == DEAD && patient.can_defib() == DEFIB_POSSIBLE, "Fresh corpse fixture cannot be revived.")
+	click_wrapper(user, defib)
+	defib.paddles.attack_self(user)
+	click_wrapper(user, patient)
+	TEST_ASSERT(patient.stat != DEAD, "NT defibrillation could not revive a patient through a space suit.")
+	TEST_ASSERT_EQUAL(patient.get_stamina_loss(), 0, "Medical revival inflicted stamina damage.")
+	TEST_ASSERT_EQUAL(patient.get_fire_loss(), 0, "Medical revival inflicted combat burns.")
+	TEST_ASSERT(!patient.undergoing_cardiac_arrest(), "Medical revival left the patient's heart stopped.")
+
+/// Nerfing NT's child type must not disable the Syndicate defibrillator's offensive shock.
+/datum/unit_test/syndicate_defib_still_offensive/Run()
+	// Teardown deletes allocations in order; the unit must return its paddles before their holder is deleted.
+	var/obj/item/defibrillator/compact/combat/loaded/defib = allocate(/obj/item/defibrillator/compact/combat/loaded)
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
+	click_wrapper(user, defib)
+	defib.paddles.attack_self(user)
+	user.set_combat_mode(TRUE)
+	click_wrapper(user, patient, list(RIGHT_CLICK = TRUE))
+	TEST_ASSERT_EQUAL(patient.get_stamina_loss(), 60, "Syndicate paddles lost their offensive stamina shock.")

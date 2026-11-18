@@ -433,7 +433,7 @@
 				/obj/item/storage/medkit/toxin = 2,
 				/obj/item/storage/medkit/tactical = 2,
 				/obj/item/storage/medkit/tactical/premium = 1,
-				/obj/item/defibrillator/compact/combat/loaded/nanotrasen = 1,
+				/obj/item/defibrillator/compact/combat/nanotrasen = 1,
 				/obj/item/reagent_containers/hypospray/combat = 3,
 				/obj/item/reagent_containers/hypospray/combat/medical = 2,
 				/obj/item/reagent_containers/hypospray/medipen/stimpack = 5,
@@ -631,7 +631,7 @@
 			"products" = list(
 				/obj/item/storage/medkit/tactical = 5,
 				/obj/item/storage/medkit/tactical/premium = 5,
-				/obj/item/defibrillator/compact/combat/loaded/nanotrasen = 2,
+				/obj/item/defibrillator/compact/combat/nanotrasen = 2,
 				/obj/item/reagent_containers/hypospray/combat/medical = 5,
 				/obj/item/reagent_containers/hypospray/combat/nanites = 1,
 				/obj/item/reagent_containers/hypospray/combat/heresypurge = 1,
