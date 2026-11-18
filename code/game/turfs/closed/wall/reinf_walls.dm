@@ -190,6 +190,16 @@
 				return TRUE
 	return FALSE
 
+/turf/closed/wall/r_wall/copyTurf(turf/copy_to_turf, copy_air = FALSE, flags = null)
+	. = ..()
+	var/turf/closed/wall/r_wall/copied_wall = .
+	copied_wall.d_state = d_state
+	if(d_state != INTACT)
+		copied_wall.smoothing_flags = NONE
+	else if(!(copied_wall.smoothing_flags & USES_SMOOTHING))
+		copied_wall.smoothing_flags = initial(smoothing_flags)
+		QUEUE_SMOOTH(copied_wall)
+
 /turf/closed/wall/r_wall/update_icon(updates=ALL)
 	. = ..()
 	if(d_state != INTACT)
