@@ -31,16 +31,21 @@ GAME_VERB_DESC(/client, ticket_manager, "Ticket Manager", "Открыть инт
 			)
 		return
 
+	var/subject_ckey = subject.ckey
 	var/message_to_send = tgui_input_text(
 		src,
-		"Введите сообщения для [subject.ckey]",
+		"Введите сообщения для [subject_ckey]",
 		"Личное сообщение",
 		multiline = TRUE,
 		encode = FALSE,
 		ui_state = ADMIN_STATE(R_ADMIN)
 	)
 
-	if(!message_to_send)
+	if(!message_to_send || !check_rights_for(src, R_ADMIN))
+		return
+
+	subject = GLOB.directory[subject_ckey]
+	if(QDELETED(subject))
 		return
 
 	// Double check if user created a ticket during PM writing

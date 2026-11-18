@@ -38,4 +38,4 @@
 	..()
 
 /datum/objective/sunwalker/check_completion()
-	return owner.current.stat != DEAD
+	return owner.current && owner.current.stat != DEAD

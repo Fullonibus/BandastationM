@@ -140,6 +140,7 @@
 #include "anonymous_themes.dm"
 #include "antag_conversion.dm"
 #include "antag_moodlets.dm"
+#include "antag_winloss_panel.dm"
 #include "area_contents.dm"
 #include "armor_verification.dm"
 #include "asset_smart_cache.dm"

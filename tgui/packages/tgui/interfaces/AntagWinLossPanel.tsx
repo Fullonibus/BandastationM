@@ -17,11 +17,12 @@ import { Window } from '../layouts';
 
 type Objective = {
 	text: string;
-	completed: boolean;
+	completed: boolean | null;
 	context?: string | null;
 };
 
 type Antagonist = {
+	antag_ref: string;
 	key: string;
 	ckey: string | null;
 	char_name: string;
@@ -103,10 +104,10 @@ type AntagWinLossData = {
 	summary: Summary;
 	categories: Category[];
 	teams: AntagTeam[];
-	db_connected: boolean;
+	can_view_variables: boolean;
 	history: HistoryData | null;
 	history_limit: number;
-	history_loading?: boolean;
+	history_status: 'idle' | 'loading' | 'ready' | 'unavailable' | 'error';
 };
 
 type RoleSortField = 'name' | 'total' | 'wins' | 'losses' | 'winrate';
@@ -199,16 +200,19 @@ function StatusBadge({ status }: { status: Antagonist['status'] }) {
 }
 
 function ObjectiveItem({ objective }: { objective: Objective }) {
+	const { completed } = objective;
 	return (
 		<Box
-			color={objective.completed ? 'good' : 'bad'}
+			color={completed === null ? 'label' : completed ? 'good' : 'bad'}
 			fontSize="11px"
 		>
 			<Icon
 				name={
-					objective.completed
-						? 'check-circle'
-						: 'times-circle'
+					completed === null
+						? 'minus-circle'
+						: completed
+							? 'check-circle'
+							: 'times-circle'
 				}
 				mr={0.5}
 			/>
@@ -276,10 +280,10 @@ export function AntagWinLossPanel() {
 		},
 		categories = [],
 		teams = [],
-		db_connected = false,
+		can_view_variables = false,
 		history = null,
 		history_limit = 25,
-		history_loading = false,
+		history_status = 'idle',
 	} = data;
 
 	const query = searchQuery.trim().toLowerCase();
@@ -373,11 +377,27 @@ export function AntagWinLossPanel() {
 					<Tabs.Tab
 						icon="database"
 						selected={activeTab === 'history'}
-						onClick={() => setActiveTab('history')}
+						onClick={() => {
+						setActiveTab('history');
+						if (history_status === 'idle') {
+							act('load_history');
+						}
+					}}
 					>
 						История (БД)
 					</Tabs.Tab>
 				</Tabs>
+
+				{activeTab === 'current' && (
+					<Button
+						icon="sync"
+						compact
+						mb={1}
+						onClick={() => act('refresh_current')}
+					>
+						Обновить текущий раунд
+					</Button>
+				)}
 
 				{activeTab === 'current' &&
 					(!round_started ? (
@@ -390,20 +410,7 @@ export function AntagWinLossPanel() {
 						</NoticeBox>
 					) : (
 						<>
-							<Section
-								title="Сводка по текущему раунду"
-								mb={1.5}
-								buttons={
-									<Button
-										icon="sync"
-										compact
-										tooltip="Обновить данные текущего раунда"
-										onClick={() => act('refresh_current')}
-									>
-										Обновить
-									</Button>
-								}
-							>
+							<Section title="Сводка по текущему раунду" mb={1.5}>
 									<Stack g={1} mb={1.5}>
 										<Stack.Item grow>
 											<Box
@@ -724,14 +731,16 @@ export function AntagWinLossPanel() {
 														Действия
 													</Table.Cell>
 												</Table.Row>
-												{category.antagonists.map((antag, idx) => {
+												{category.antagonists.map((antag) => {
 													const completedCount = antag.objectives.filter(
 														(o) => o.completed
 													).length;
-													const totalCount = antag.objectives.length;
+													const totalCount = antag.objectives.filter(
+													(objective) => objective.completed !== null
+												).length;
 
 													return (
-														<Table.Row key={`${antag.key}-${idx}`}>
+														<Table.Row key={antag.antag_ref}>
 															<Table.Cell bold py={0.5} verticalAlign="middle">
 																{antag.key}
 															</Table.Cell>
@@ -764,10 +773,10 @@ export function AntagWinLossPanel() {
 																			? 'average'
 																			: undefined
 																	}
-																	disabled={!antag.mind_ref && !antag.mob_ref}
+																	disabled={!antag.mind_ref}
 																	compact
 																	tooltip={
-																		totalCount === 0 ? (
+																		antag.objectives.length === 0 ? (
 																			<Box italic>Нет целей</Box>
 																		) : (
 																			<Stack
@@ -789,7 +798,7 @@ export function AntagWinLossPanel() {
 																		})
 																	}
 																>
-																	Цели ({completedCount}/{totalCount})
+																	Цели{totalCount > 0 && ` (${completedCount}/${totalCount})`}
 																</Button>
 															</Table.Cell>
 															<Table.Cell py={0.5} textAlign="center" verticalAlign="middle">
@@ -820,7 +829,7 @@ export function AntagWinLossPanel() {
 																	<Button
 																		icon="user"
 																		tooltip="Панель игрока"
-																		disabled={!antag.mob_ref && !antag.mind_ref}
+																		disabled={!antag.mob_ref}
 																		compact
 																		onClick={() =>
 																			act('player_panel', {
@@ -831,20 +840,22 @@ export function AntagWinLossPanel() {
 																	>
 																		PP
 																	</Button>
-																	<Button
-																		icon="wrench"
-																		tooltip="Просмотр переменных (VV)"
-																		disabled={!antag.mob_ref && !antag.mind_ref}
-																		compact
-																		onClick={() =>
-																			act('vv', {
-																				target_ref:
-																					antag.mob_ref || antag.mind_ref,
-																			})
-																		}
-																	>
-																		VV
-																	</Button>
+																	{can_view_variables && (
+																		<Button
+																			icon="wrench"
+																			tooltip="Просмотр переменных (VV)"
+																			disabled={!antag.mob_ref && !antag.mind_ref}
+																			compact
+																			onClick={() =>
+																				act('vv', {
+																					target_ref:
+																						antag.mob_ref || antag.mind_ref,
+																				})
+																			}
+																		>
+																			VV
+																		</Button>
+																	)}
 																</Stack>
 															</Table.Cell>
 														</Table.Row>
@@ -859,60 +870,57 @@ export function AntagWinLossPanel() {
 							</>
 						))}
 
-				{activeTab === 'history' &&
-					(!db_connected ? (
-						<NoticeBox danger mb={1.5}>
-							<b>База данных не подключена.</b> Историческая статистика недоступна без
-							активного подключения к базе данных MySQL.
-						</NoticeBox>
-					) : !history || history.rounds.length === 0 ? (
-						<Section
-							title="История (БД)"
-							buttons={
+				{activeTab === 'history' && (
+					<Section
+						title="История выполнения целей"
+						mb={1.5}
+						buttons={
+							<Stack align="center" g={1.5}>
+								<Stack align="center" g={0.75}>
+									<Box color="label" fontSize="11px" nowrap>
+										Лимит раундов
+									</Box>
+									{[10, 25, 50, 100].map((limit) => (
+										<Button
+											key={limit}
+											selected={history_limit === limit}
+											disabled={history_status === 'loading'}
+											compact
+											onClick={() => act('set_limit', { limit })}
+										>
+											{limit}
+										</Button>
+									))}
+								</Stack>
 								<HistoryRefreshButton
-									loading={Boolean(history_loading)}
+									loading={history_status === 'loading'}
 									onRefresh={() => act('refresh_history')}
 								/>
-							}
-						>
-							<NoticeBox info mb={1.5}>
-								В базе данных нет сохранённых записей статистики антагонистов (key_name =
-								&apos;antagonists&apos;).
-							</NoticeBox>
-							<Box color="label" fontSize="11px">
-								Записи создаются автоматически в конце каждой смены при наличии активных антагонистов.
-								Нажмите кнопку &laquo;Обновить данные из БД&raquo; для повторного запроса.
-							</Box>
-						</Section>
-					) : (
-						<>
-							<Section
-								title="Историческая сводка"
-								mb={1.5}
-								buttons={
-									<Stack inlineFlex align="center" g={1.5}>
-										<Stack inlineFlex align="center" g={0.75}>
-											<Box color="label" fontSize="11px" nowrap>
-												Лимит раундов:
-											</Box>
-											{[10, 25, 50, 100].map((lim) => (
-												<Button
-													key={lim}
-													selected={history_limit === lim}
-													compact
-													onClick={() => act('set_limit', { limit: lim })}
-												>
-													{lim}
-												</Button>
-											))}
-										</Stack>
-										<HistoryRefreshButton
-											loading={Boolean(history_loading)}
-											onRefresh={() => act('refresh_history')}
-										/>
-									</Stack>
-								}
-							>
+							</Stack>
+						}
+					>
+						<Box color="label" mb={1}>
+							Победа в этой сводке означает, что все записанные
+							цели антагониста выполнены.
+						</Box>
+						{history_status === 'unavailable' && (
+							<NoticeBox danger>База данных недоступна.</NoticeBox>
+						)}
+						{history_status === 'error' && (
+							<NoticeBox danger>Не удалось загрузить статистику из базы данных.</NoticeBox>
+						)}
+						{history_status === 'loading' && (
+							<NoticeBox info>Загружаем статистику из базы данных.</NoticeBox>
+						)}
+						{history_status === 'ready' && !history?.rounds.length && (
+							<NoticeBox info>Нет сохранённых записей о целях антагонистов.</NoticeBox>
+						)}
+					</Section>
+				)}
+				{activeTab === 'history' &&
+					(history && history.rounds.length > 0 ? (
+							<>
+								<Section title="Историческая сводка" mb={1.5}>
 									<Stack g={1} mb={1.5}>
 										<Stack.Item grow>
 											<Box
@@ -1139,29 +1147,7 @@ export function AntagWinLossPanel() {
 									</Section>
 								)}
 
-								<Section
-									title={`Последние раунды (лимит: ${history_limit})`}
-									mb={1.5}
-									buttons={
-										<Stack inlineFlex align="center" g={1}>
-											<Box color="label" fontSize="11px" nowrap>
-												Лимит записей:
-											</Box>
-											<Stack inlineFlex align="center" g={0.75}>
-												{[10, 25, 50, 100].map((lim) => (
-													<Button
-														key={lim}
-														selected={history_limit === lim}
-														compact
-														onClick={() => act('set_limit', { limit: lim })}
-													>
-														{lim}
-													</Button>
-												))}
-											</Stack>
-										</Stack>
-									}
-								>
+								<Section title="Последние раунды" mb={1.5}>
 									<Table>
 										<Table.Row header>
 											<Table.Cell width="140px">Номер смены</Table.Cell>
@@ -1210,10 +1196,8 @@ export function AntagWinLossPanel() {
 										))}
 									</Table>
 								</Section>
-
-								<Box />
 							</>
-						))}
+						) : null)}
 			</Window.Content>
 		</Window>
 	);
