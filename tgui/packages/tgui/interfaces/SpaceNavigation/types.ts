@@ -53,6 +53,10 @@ export type Compartment = {
   breaches: number;
 };
 export type NavigationData = Position & {
+  board?: {
+    jumps: { id: string; name: string; available: BooleanLike }[];
+    transponder: { callsign: string | null; enabled: BooleanLike } | null;
+  };
   vessel_name?: string;
   au_scale: number;
   status: string;

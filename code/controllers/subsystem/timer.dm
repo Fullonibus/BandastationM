@@ -40,8 +40,8 @@ SUBSYSTEM_DEF(timer)
 	var/list/clienttime_timers = list()
 	/// Contains the last time that a timer's callback was invoked, or the last tick the SS fired if no timers are being processed
 	var/last_invoke_tick = 0
-	/// Keeps track of the next index to work on for client timers
-	var/next_clienttime_timer_index = 0
+	/// Number of cleared slots at the start of the client-time queue, pending a bulk cut.
+	var/clienttime_processed_count = 0
 	/// Contains the last time that a warning was issued for not invoking callbacks
 	var/static/last_invoke_warning = 0
 	/// Boolean operator controlling if the timer SS will automatically reset buckets if it fails to invoke callbacks for an extended period of time
@@ -57,6 +57,10 @@ SUBSYSTEM_DEF(timer)
 /datum/controller/subsystem/timer/stat_entry(msg)
 	msg = "\n  B:[bucket_count] P:[length(second_queue)] H:[length(hashes)] C:[length(clienttime_timers)] S:[length(timer_id_dict)] RST:[bucket_reset_count]"
 	return ..()
+
+/// Adds a timer to the sorted part of the client-time queue.
+/datum/controller/subsystem/timer/proc/queue_clienttime_timer(datum/timedevent/timer)
+	BINARY_INSERT_FROM(timer, clienttime_timers, /datum/timedevent, timer, timeToRun, COMPARE_KEY, clienttime_processed_count + 1)
 
 /datum/controller/subsystem/timer/proc/dump_timer_buckets(full = TRUE)
 	var/list/to_log = list("Timer bucket reset. world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset]")
@@ -104,18 +108,21 @@ SUBSYSTEM_DEF(timer)
 		dump_timer_buckets(CONFIG_GET(flag/log_timers_on_bucket_reset))
 
 	// Process client-time timers
-	if (next_clienttime_timer_index)
-		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
-		next_clienttime_timer_index = 0
-	for (next_clienttime_timer_index in 1 to length(clienttime_timers))
+	if (clienttime_processed_count)
+		clienttime_timers.Cut(1, clienttime_processed_count + 1)
+		clienttime_processed_count = 0
+	var/initial_clienttime_count = length(clienttime_timers)
+	while (clienttime_processed_count < min(initial_clienttime_count, length(clienttime_timers)))
 		if (MC_TICK_CHECK)
-			next_clienttime_timer_index--
 			break
-		var/datum/timedevent/ctime_timer = clienttime_timers[next_clienttime_timer_index]
+		var/index = clienttime_processed_count + 1
+		var/datum/timedevent/ctime_timer = clienttime_timers[index]
 		if (ctime_timer.timeToRun > REALTIMEOFDAY)
-			next_clienttime_timer_index--
 			break
 
+		// Callbacks can mutate the queue. Clear this slot before invoking or rescheduling its timer.
+		clienttime_timers[index] = null
+		clienttime_processed_count = index
 		var/datum/callback/callBack = ctime_timer.callBack
 		if (!callBack)
 			CRASH("Invalid timer: [get_timer_debug_string(ctime_timer)] world.time: [world.time], \
@@ -129,14 +136,14 @@ SUBSYSTEM_DEF(timer)
 				continue
 			ctime_timer.spent = 0
 			ctime_timer.timeToRun = REALTIMEOFDAY + ctime_timer.wait
-			BINARY_INSERT(ctime_timer, clienttime_timers, /datum/timedevent, ctime_timer, timeToRun, COMPARE_KEY)
+			queue_clienttime_timer(ctime_timer)
 		else
 			qdel(ctime_timer)
 
 	// Remove invoked client-time timers
-	if (next_clienttime_timer_index)
-		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
-		next_clienttime_timer_index = 0
+	if (clienttime_processed_count)
+		clienttime_timers.Cut(1, clienttime_processed_count + 1)
+		clienttime_processed_count = 0
 
 	// Check for when we need to loop the buckets, this occurs when
 	// the head_offset is approaching BUCKET_LEN ticks in the past
@@ -550,13 +557,11 @@ SUBSYSTEM_DEF(timer)
 		stack_trace("Bucket already joined! [src]")
 
 	// Check if this timed event should be diverted to the client time bucket, or the secondary queue
-	var/list/L
 	if (flags & TIMER_CLIENT_TIME)
-		L = timer_subsystem.clienttime_timers
-	else if (timeToRun >= TIMER_MAX(timer_subsystem))
-		L = timer_subsystem.second_queue
-	if(L)
-		BINARY_INSERT(src, L, /datum/timedevent, src, timeToRun, COMPARE_KEY)
+		timer_subsystem.queue_clienttime_timer(src)
+		return
+	if (timeToRun >= TIMER_MAX(timer_subsystem))
+		BINARY_INSERT(src, timer_subsystem.second_queue, /datum/timedevent, src, timeToRun, COMPARE_KEY)
 		return
 
 	// Get a local reference to the bucket list, this is faster than referencing the datum

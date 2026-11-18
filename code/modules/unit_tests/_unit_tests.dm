@@ -208,6 +208,8 @@
 #include "door_control_assembly.dm"
 #include "dragon_expiration.dm"
 #include "drink_icons.dm"
+#include "droid_relay.dm"
+#include "droid_relay_control.dm"
 #include "dropper.dm"
 #include "dummy_spawn.dm"
 #include "dynamic_ruleset_sanity.dm"
