@@ -55,3 +55,30 @@
 				TEST_FAIL("[open_turf_path] has an invalid icon in broken_states - \"[state]\", in '[damaged_dmi]'")
 
 	run_loc_floor_bottom_left = run_loc_floor_bottom_left.ChangeTurf(initial_turf_type) //cleanup.
+
+
+/// Checks the appearance and repair of a partially dismantled wall after shuttle turf copying.
+/datum/unit_test/copied_reinforced_wall/Run()
+	var/source_type = run_loc_floor_bottom_left.type
+	var/destination_type = run_loc_floor_top_right.type
+	var/list/source_baseturfs = run_loc_floor_bottom_left.baseturfs
+	var/list/destination_baseturfs = run_loc_floor_top_right.baseturfs
+	var/mob/living/carbon/human/worker = allocate(/mob/living/carbon/human/consistent, get_step(run_loc_floor_bottom_left, EAST))
+	var/obj/item/wirecutters/cutters = allocate(/obj/item/wirecutters, worker)
+	var/turf/closed/wall/r_wall/source_wall = run_loc_floor_bottom_left.ChangeTurf(/turf/closed/wall/r_wall)
+	source_wall.try_decon(cutters, worker)
+	var/dismantled_icon_state = source_wall.icon_state
+
+	var/turf/closed/wall/r_wall/moved_wall = run_loc_floor_top_right.CopyOnTop(source_wall)
+	if(moved_wall.smoothing_flags & SMOOTH_QUEUED)
+		moved_wall.smooth_icon()
+	var/kept_dismantled_sprite = moved_wall.icon_state == dismantled_icon_state && icon_exists(moved_wall.icon, moved_wall.icon_state)
+	moved_wall.try_decon(cutters, worker)
+	var/repaired = moved_wall.d_state == INTACT
+
+	source_wall.ChangeTurf(source_type, source_baseturfs)
+	moved_wall.ChangeTurf(destination_type, destination_baseturfs)
+
+	if(!kept_dismantled_sprite)
+		TEST_FAIL("The copied wall lost its dismantled sprite after smoothing.")
+	TEST_ASSERT(repaired, "Wirecutters should repair the copied wall's cut grille.")
