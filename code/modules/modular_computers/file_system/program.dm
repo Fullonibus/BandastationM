@@ -175,15 +175,11 @@
 		return TRUE
 
 	if(!length(access))
-		var/obj/item/card/id/accesscard
-		if(computer)
-			accesscard = computer.stored_id?.GetID()
-
-		if(!accesscard)
+		access = computer?.GetAccess()
+		if(!length(access))
 			if(loud && user)
 				to_chat(user, span_danger("\The [computer] flashes an \"RFID Error - Unable to scan ID\" warning."))
 			return FALSE
-		access = accesscard.GetAccess()
 
 	for(var/singular_access in access_to_check)
 		if(singular_access in access) //For loop checks every individual access entry in the access list. If the user's ID has access to any entry, then we're good.

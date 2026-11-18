@@ -450,7 +450,8 @@
 	if(wear_id && !HAS_TRAIT(wear_id, TRAIT_EXAMINE_SKIP))
 		var/obj/item/card/id/id = wear_id.GetID()
 		if(id && get_dist(user, src) <= ID_EXAMINE_DISTANCE)
-			var/id_href = "<a href='byond://?src=[REF(src)];see_id=1;id_ref=[REF(id)];id_name=[id.registered_name];examine_time=[world.time]'>[wear_id.examine_title(user, declent = ACCUSATIVE)]</a>"
+			var/list/id_identity = get_id_examine_identity(id)
+			var/id_href = "<a href='byond://?src=[REF(src)];see_id=1;id_ref=[REF(id)];id_name=[url_encode(id_identity["name"])];examine_time=[world.time]'>[wear_id.examine_title(user, declent = ACCUSATIVE)]</a>"
 			. += "[t_He] носит [id_href]."
 
 		else

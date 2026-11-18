@@ -12,10 +12,14 @@
 	var/drawing_power = FALSE
 
 /obj/item/ipc_power_cord/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(ishuman(interacting_with) && ishuman(user))
+		return try_virus_kit(interacting_with, user)
+	if(istype(interacting_with, /obj/machinery/door/airlock) && ishuman(user))
+		return try_wall_breaker(interacting_with, user)
 	if(!istype(interacting_with, /obj/machinery/power/apc) || !iscarbon(user))
 		return NONE
 	if(drawing_power)
-		balloon_alert(user, "уже заряжается!")
+		balloon_alert(user, "разъём занят!")
 		return ITEM_INTERACT_BLOCKING
 	var/obj/machinery/power/apc/apc = interacting_with
 	var/mob/living/carbon/carbon_user = user
@@ -24,6 +28,39 @@
 	drawing_power = TRUE
 	INVOKE_ASYNC(src, PROC_REF(charge_from_apc), apc, carbon_user)
 	return ITEM_INTERACT_SUCCESS
+
+/// Software uses the same held, functioning adapter that performs normal APC charging.
+/obj/item/ipc_power_cord/proc/can_use_software(mob/living/carbon/human/user, atom/target, id, activation_id = null)
+	if(QDELETED(src) || QDELETED(target) || QDELETED(user) || !user.is_holding(src) || !user.can_perform_action(target, FORBID_TELEKINESIS_REACH))
+		return FALSE
+	var/obj/item/organ/cyberimp/arm/power_cord/ipc/adapter = user.get_organ_by_type(/obj/item/organ/cyberimp/arm/power_cord/ipc)
+	if(!adapter || adapter.owner != user || adapter.active_item != src || (adapter.organ_flags & (ORGAN_FAILING|ORGAN_EMP)))
+		return FALSE
+	var/datum/ipc_os/os = user.get_ipc_os()
+	var/datum/ipc_os_program/program = os?.programs[id]
+	return os?.can_use(user) && program?.installed && program.running && (isnull(activation_id) || program.activation_id == activation_id)
+
+/// Reserve the existing connector before yielding, so charging/hacking cannot overlap.
+/obj/item/ipc_power_cord/proc/try_wall_breaker(obj/machinery/door/airlock/door, mob/living/carbon/human/user)
+	if(!can_use_software(user, door, "wall_breaker"))
+		return NONE
+	if(drawing_power)
+		balloon_alert(user, "разъём занят!")
+		return ITEM_INTERACT_BLOCKING
+	drawing_power = TRUE
+	var/datum/ipc_os/os = user.get_ipc_os()
+	var/datum/ipc_os_program/program = os.programs["wall_breaker"]
+	INVOKE_ASYNC(src, PROC_REF(hack_airlock), door, user, program.activation_id)
+	return ITEM_INTERACT_SUCCESS
+
+/// After an uninterrupted thirteen seconds, delegate all door behavior to its native EMAG override.
+/obj/item/ipc_power_cord/proc/hack_airlock(obj/machinery/door/airlock/door, mob/living/carbon/human/user, activation_id)
+	if(do_after(user, 13 SECONDS, target = door, timed_action_flags = IGNORE_SLOWDOWNS, extra_checks = CALLBACK(src, PROC_REF(can_use_software), user, door, "wall_breaker", activation_id)))
+		if(can_use_software(user, door, "wall_breaker", activation_id) && door.emag_act(user))
+			log_combat(user, door, "hacked using WallBreaker")
+		else
+			balloon_alert(user, "взлом не удался!")
+	drawing_power = FALSE
 
 /// Revalidates the actual held connector, battery, and APC each time before transferring energy.
 /obj/item/ipc_power_cord/proc/can_charge(obj/machinery/power/apc/apc, mob/living/carbon/user)

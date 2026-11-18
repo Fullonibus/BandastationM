@@ -11,6 +11,8 @@ Use -IncludeHumanoidScreenshots to include the broader all-species visual suite.
 [CmdletBinding()]
 param(
     [string]$ByondBin,
+    # Narrow a regression run while retaining the baseline checks and IPC appearance comparison.
+    [string]$TestFilePattern = 'ipc*.dm',
     [switch]$IncludeHumanoidScreenshots,
     [ValidateRange(30, 3600)]
     [int]$TimeoutSeconds = 300
@@ -50,12 +52,12 @@ try {
         'species_unique_id', 'species_whitelist_check',
         'organ_sanity', 'designs', 'design_source', 'design_mats',
         'focus_only/invalid_research_designs', 'focus_only/invalid_emissives',
-        'missing_icons/icon_state'
+        'missing_icons/icon_state', 'ipc_appearance_screenshots'
     ) | ForEach-Object { '/datum/unit_test/' + $_ }
     if ($IncludeHumanoidScreenshots) {
         $baselineTests += '/datum/unit_test/screenshot_humanoids'
     }
-    $ipcTests = Get-ChildItem -LiteralPath 'modular_bandastation\species\code\tests' -Filter 'ipc*.dm' |
+    $ipcTests = Get-ChildItem -LiteralPath 'modular_bandastation\species\code\tests' -Filter $TestFilePattern |
         Select-String -Pattern '^(/datum/unit_test/ipc[^\s]*)/Run\(' |
         ForEach-Object { $_.Matches[0].Groups[1].Value }
     if (-not $ipcTests) {

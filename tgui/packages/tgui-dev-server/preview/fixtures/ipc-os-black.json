@@ -1,0 +1,46 @@
+{
+  "config": {
+    "interface": { "name": "IpcOS" },
+    "title": "Positronic OS",
+    "window": { "size": [720, 580] }
+  },
+  "data": {
+    "used": 14,
+    "capacity": 32,
+    "charge": 68,
+    "temperature": 41.2,
+    "frequency": 1457,
+    "code": 30,
+    "minFrequency": 1200,
+    "maxFrequency": 1600,
+    "spoof_name": "Алексей Иванов",
+    "spoof_job": "Инженер",
+    "stunned": 0,
+    "malware": [
+      { "id": "sensor_noise", "name": "SensorNoise.worm", "os_curable": 1, "treatments": 0, "cleaning": 0, "clean_duration": 60 },
+      { "id": "neural_hijack", "name": "NeuralHijack.exploit", "os_curable": 0, "treatments": 2 }
+    ],
+    "selected_virus": "neural_hijack",
+    "armed": 1,
+    "virus_choices": [
+      { "id": "display_glitch", "name": "DisplayGlitch.v2" },
+      { "id": "sensor_noise", "name": "SensorNoise.worm" },
+      { "id": "core_rot", "name": "CoreRot.rootkit" },
+      { "id": "neural_hijack", "name": "NeuralHijack.exploit" }
+    ],
+    "hijack_targets": [
+      { "ref": "preview-nearby", "name": "КПБ-17", "can_control": 1 },
+      { "ref": "preview-offline", "name": "КПБ-42", "can_control": 0 }
+    ],
+    "programs": [
+      { "id": "virus_kit", "name": "VirusKit", "description": "Выбор и передача одного из четырёх вирусов через штатный кабель питания за 10 секунд.", "icon": "virus", "size": 2, "illegal": 1, "installed": 1, "running": 1, "passive": 0, "ready": 1 },
+      { "id": "overclock", "name": "OverClock.exe", "description": "Ускоряет бег на 25%. Нагревает физическое тело до опасной температуры.", "icon": "fire", "size": 4, "illegal": 1, "installed": 1, "running": 0, "passive": 0, "ready": 1 },
+      { "id": "wall_breaker", "name": "WallBreaker", "description": "Взлом шлюза штатным кабелем за 13 секунд. Повреждает электронику шлюза.", "icon": "door-open", "size": 2, "illegal": 1, "installed": 1, "running": 0, "passive": 0, "ready": 1 },
+      { "id": "id_spoof", "name": "ID_Spoof v3", "description": "Подмена отображаемого имени на 15 минут. Не меняет ID или доступы.", "icon": "id-card", "size": 1, "illegal": 1, "installed": 1, "running": 0, "passive": 0, "ready": 1 },
+      { "id": "ghost_mode", "name": "GhostMode", "description": "Цифровая маскировка от ИИ. Увеличивает базовый расход питания на 30%.", "icon": "ghost", "size": 1, "illegal": 1, "installed": 1, "running": 0, "passive": 0, "ready": 1 },
+      { "id": "neural_crack", "name": "NeuralCrack", "description": "Снимает Stun, паралич и stamina-крит за 30 урона мозгу и 15 ожогов торсу. Откат 30 секунд. Не снимает сон.", "icon": "bolt", "size": 4, "illegal": 1, "installed": 1, "running": 1, "passive": 1, "ready": 1 }
+    ]
+  },
+  "static_data": {},
+  "shared": {}
+}

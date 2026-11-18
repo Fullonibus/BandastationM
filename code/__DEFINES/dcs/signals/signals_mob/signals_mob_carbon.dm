@@ -154,6 +154,9 @@
 	#define VISIBLE_NAME_ID 2
 	//Index for whether their name is being overridden instead of obfuscated
 	#define VISIBLE_NAME_FORCED 3
+
+/// From human/get_id_examine_identity(): (obj/item/card/id, list/identity). Display text only.
+#define COMSIG_HUMAN_GET_ID_EXAMINE "human_get_id_examine"
 ///from /mob/living/carbon/human/get_id_name; only returns if the mob has TRAIT_UNKNOWN and it's being overridden: (identity)
 #define COMSIG_HUMAN_GET_FORCED_NAME "human_get_forced_name"
 

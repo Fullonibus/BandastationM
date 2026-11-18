@@ -46,6 +46,10 @@
 
 /mob/living/carbon/human/get_message_voice(visible_name)
 	. = ..()
+	var/list/identity = list(null, null, null)
+	SEND_SIGNAL(src, COMSIG_HUMAN_GET_VISIBLE_NAME, identity)
+	if(identity[VISIBLE_NAME_ID])
+		return "[.] (as [identity[VISIBLE_NAME_ID]])"
 	if(. != name)
 		. += " (as [get_id_name("Unknown", honorifics = TRUE)])"
 

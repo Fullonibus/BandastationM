@@ -3,6 +3,18 @@
 #define IPC_CRITICAL_CHARGE 100
 #define IPC_CHARGE_ALERT "ipc_charge"
 
+/obj/item/organ/brain
+	/// Positronic cores retain software; organic brains erase it on physical extraction.
+	var/datum/ipc_os/operating_system
+
+/// Ordinary brains acquire an OS only while installed in a compatible chassis.
+/obj/item/organ/brain/proc/enable_ipc_os()
+	if(!ishuman(owner) || !is_species(owner, /datum/species/ipc))
+		return
+	if(!operating_system)
+		operating_system = new(src)
+	operating_system.bind(owner)
+
 /// An IPC's removable personality core lives in its chest, independently of its display.
 /obj/item/organ/brain/ipc
 	parent_type = /obj/item/organ/brain/cybernetic
@@ -15,6 +27,10 @@
 	can_smoothen_out = FALSE
 	/// Powers the existing brainmob while the core is outside a chassis; never creates a second personality.
 	var/obj/item/brain_processor/ipc_core/personal_processor
+
+/obj/item/organ/brain/ipc/Initialize(mapload)
+	. = ..()
+	operating_system = new(src)
 
 /obj/item/organ/brain/ipc/can_insert_into(mob/living/carbon/receiver, special, movement_flags)
 	if(!ishuman(receiver))
@@ -49,13 +65,20 @@
 	release_processor()
 	// Species changes can transfer existing traumas without consulting can_gain_trauma().
 	cure_all_traumas(TRAUMA_RESILIENCE_LOBOTOMY)
-	return ..()
+	. = ..()
+
+/datum/surgery_operation/organ/repair/brain/mechanic
+	required_organ_flag = NONE
+
+/datum/surgery_operation/organ/repair/brain/mechanic/state_check(obj/item/organ/brain/organ)
+	return (organ.organ_flags & ORGAN_ROBOTIC) || (organ.operating_system && is_species(organ.owner, /datum/species/ipc))
 
 /// Neural debugging can also repair ordinary deep-rooted errors left on older positronic cores.
 /datum/surgery_operation/organ/repair/brain/mechanic/on_success(obj/item/organ/brain/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
 	. = ..()
 	if(istype(organ, /obj/item/organ/brain/ipc))
 		organ.cure_all_traumas(TRAUMA_RESILIENCE_LOBOTOMY)
+	organ.operating_system?.multitool_treatment(tool)
 
 /obj/item/organ/brain/ipc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
@@ -175,7 +198,9 @@
 	// Paradise does not punish disconnected players for running out of power.
 	if(!owner.client)
 		return
-	adjust_charge(-HUNGER_FACTOR * seconds_per_tick)
+	var/obj/item/organ/brain/core = owner.get_organ_slot(ORGAN_SLOT_BRAIN)
+	var/power_multiplier = core?.operating_system ? core.operating_system.power_multiplier() : 1
+	adjust_charge(-HUNGER_FACTOR * seconds_per_tick * power_multiplier)
 	if(owner.nutrition >= IPC_CRITICAL_CHARGE)
 		return
 	if(SPT_PROB(3, seconds_per_tick))

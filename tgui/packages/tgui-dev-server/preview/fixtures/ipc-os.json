@@ -1,0 +1,25 @@
+{
+  "config": {
+    "interface": { "name": "IpcOS" },
+    "title": "Positronic OS",
+    "window": { "size": [720, 580] }
+  },
+  "data": {
+    "used": 22,
+    "capacity": 24,
+    "charge": 82,
+    "frequency": 1457,
+    "code": 30,
+    "minFrequency": 1200,
+    "maxFrequency": 1600,
+    "programs": [
+      { "id": "power_save", "name": "PowerSave 3.0", "description": "Снижает базовый расход микробатареи на 30% и скорость передвижения на 15%. Можно включать и выключать.", "icon": "battery-half", "size": 9, "illegal": 0, "installed": 0, "running": 0, "passive": 0, "ready": 1 },
+      { "id": "signal_boost", "name": "SignalBoost", "description": "Встроенный сигналлер: отправка по частоте и коду.", "icon": "satellite-dish", "size": 5, "illegal": 0, "installed": 1, "running": 1, "passive": 0, "ready": 1 },
+      { "id": "defrag", "name": "DefragMaster", "description": "Восстанавливает 2 brute каждые 25 секунд; базовый расход питания +35%.", "icon": "screwdriver-wrench", "size": 10, "illegal": 0, "installed": 1, "running": 0, "passive": 0, "ready": 1 },
+      { "id": "firewall", "name": "Firewall+", "description": "50% шанс блокировать завершённую передачу нового вируса. Не лечит заражение.", "icon": "shield-halved", "size": 6, "illegal": 0, "installed": 0, "running": 0, "passive": 1, "ready": 1 },
+      { "id": "pda", "name": "Digital PDA", "description": "Встроенный КПК: сообщения, заметки и манифест.", "icon": "tablet", "size": 7, "illegal": 0, "installed": 1, "running": 1, "passive": 0, "ready": 1 }
+    ]
+  },
+  "static_data": {},
+  "shared": {}
+}

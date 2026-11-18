@@ -114,8 +114,10 @@
 	//Update the body's icon so it doesnt appear debrained anymore
 	if(!special && !(brain_owner.living_flags & STOP_OVERLAY_UPDATE_BODY_PARTS))
 		brain_owner.update_body_parts()
+	enable_ipc_os()
 
 /obj/item/organ/brain/on_mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
+	operating_system?.unbind()
 	. = ..()
 	// Delete skillchips first as parent proc sets owner to null, and skillchips need to know the brain's owner.
 	if(!QDELETED(organ_owner) && length(skillchips))
@@ -138,6 +140,8 @@
 
 // BANDASTATION ADDITION START - Disabling cybernetics must not extract a still implanted mind
 /obj/item/organ/brain/on_physical_mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
+	if(organ_flags & ORGAN_ORGANIC)
+		QDEL_NULL(operating_system)
 	. = ..()
 	if((!QDELETED(src) || !QDELETED(owner)) && !(movement_flags & NO_ID_TRANSFER))
 		transfer_identity(organ_owner)
@@ -352,12 +356,14 @@
 		..()
 
 /obj/item/organ/brain/Destroy() //copypasted from MMIs.
+	operating_system?.unbind()
 	QDEL_NULL(brainmob)
 	QDEL_LIST(traumas)
 
 	destroy_all_skillchips()
 	owner?.mind?.set_current(null) //You aren't allowed to return to brains that don't exist
-	return ..()
+	. = ..()
+	QDEL_NULL(operating_system)
 
 /obj/item/organ/brain/on_life(seconds_per_tick)
 	. = ..()

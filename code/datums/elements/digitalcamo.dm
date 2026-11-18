@@ -1,15 +1,23 @@
 /datum/element/digitalcamo
-	element_flags = ELEMENT_DETACH_ON_HOST_DESTROY
+	element_flags = ELEMENT_DETACH_ON_HOST_DESTROY|ELEMENT_COMPLEX_DETACH
 	var/list/attached_mobs = list()
+	/// Multiple software/equipment sources share one image and restore visibility only after the last ends.
+	var/list/sources_by_mob = list()
 
 /datum/element/digitalcamo/New()
 	. = ..()
 	START_PROCESSING(SSdcs, src)
 
-/datum/element/digitalcamo/Attach(datum/target)
+/datum/element/digitalcamo/Attach(datum/target, source = /datum/element/digitalcamo)
 	. = ..()
-	if(!isliving(target) || (target in attached_mobs))
+	if(!isliving(target))
 		return ELEMENT_INCOMPATIBLE
+	if(target in attached_mobs)
+		var/list/sources = sources_by_mob[target]
+		sources |= source
+		sources_by_mob[target] = sources
+		return
+	sources_by_mob[target] = list(source)
 	RegisterSignal(target, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(target, COMSIG_LIVING_CAN_TRACK, PROC_REF(can_track))
 	var/image/img = image(loc = target)
@@ -17,7 +25,15 @@
 	attached_mobs[target] = img
 	HideFromAIHuds(target)
 
-/datum/element/digitalcamo/Detach(datum/target)
+/datum/element/digitalcamo/Detach(datum/target, source = /datum/element/digitalcamo)
+	if(!(target in attached_mobs))
+		return
+	var/list/sources = sources_by_mob[target]
+	if(!QDELING(target))
+		sources -= source
+		if(length(sources))
+			return
+	sources_by_mob -= target
 	. = ..()
 	UnregisterSignal(target, list(COMSIG_ATOM_EXAMINE, COMSIG_LIVING_CAN_TRACK))
 	for(var/mob/living/silicon/ai/AI in GLOB.player_list)
