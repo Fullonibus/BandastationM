@@ -72,6 +72,7 @@
 #include "music/_music.dme"
 #include "nanomap/_nanomap.dme"
 #include "navigator/_navigator.dme"
+#include "nutrient_paste/_nutrient_paste.dme"
 #include "objects/_objects.dme"
 #include "spacepods/_spacepods.dme"
 #include "orderables/_orderables.dme"

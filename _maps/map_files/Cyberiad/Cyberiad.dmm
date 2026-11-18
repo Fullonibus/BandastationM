@@ -29251,6 +29251,14 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/medical)
+"hbm" = (
+/obj/machinery/nutrient_paste/processor,
+/obj/effect/turf_decal/trimline/tram/line{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/dark/textured_edge,
+/area/station/service/kitchen/kitchen_backroom)
 "hbr" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 4
@@ -99443,6 +99451,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
+"yeC" = (
+/obj/machinery/nutrient_paste/dispenser,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood/large,
+/area/station/commons/lounge)
 "yeD" = (
 /turf/closed/wall,
 /area/station/medical/break_room)
@@ -201444,7 +201461,7 @@ fvT
 wWT
 xnD
 bqr
-qHX
+yeC
 sOi
 sOi
 sOi
@@ -203238,7 +203255,7 @@ rlr
 xFd
 pqR
 sTZ
-kAC
+hbm
 eMv
 qbT
 lNm
