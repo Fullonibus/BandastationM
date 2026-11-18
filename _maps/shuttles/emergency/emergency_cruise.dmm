@@ -227,7 +227,6 @@
 "dE" = (
 /obj/structure/table/reinforced/rglass,
 /obj/item/defibrillator/compact/combat/nanotrasen{
-	combat = 0;
 	safety = 1;
 	pixel_x = -3;
 	pixel_y = 5

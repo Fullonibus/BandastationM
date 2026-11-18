@@ -339,8 +339,8 @@
 
 /obj/item/defibrillator/compact/combat/nanotrasen
 	name = "elite Nanotrasen defibrillator"
-	desc = "A belt-equipped defibrillator with standard medical safeties and a replaceable battery. Its electronics and battery compartment are shielded against electromagnetic pulses."
-	combat = FALSE
+	desc = "A belt-equipped defibrillator that can revive through thick clothing, with standard medical safeties and a replaceable battery. Its electronics and battery compartment are shielded against electromagnetic pulses."
+	combat = TRUE
 	safety = TRUE
 	cooldown_duration = 5 SECONDS
 	icon_state = "defibnt" //needs defib inhand sprites
