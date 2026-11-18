@@ -4,6 +4,7 @@
 #include "code/stealthy.dm"
 #include "code/role_restricted.dm"
 #include "code/garrote.dm"
+#include "code/holo_cigar.dm"
 #include "code/binyat.dm"
 #include "code/razorwire.dm"
 #include "code/kaleido.dm"

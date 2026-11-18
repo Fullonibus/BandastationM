@@ -55,6 +55,8 @@
 	var/department_destination
 	var/datum/supply_pack/pack
 	var/datum/bank_account/paying_account
+	/// Whether account discounts for catalog orders apply to this order.
+	var/uses_catalog_discount = TRUE
 	var/obj/item/coupon/applied_coupon
 	///Boolean on whether the manifest can fail or not.
 	var/manifest_can_fail = TRUE
@@ -98,8 +100,8 @@
 	var/cost = pack.get_cost()
 	if(applied_coupon) //apply discount price
 		cost *= (1 - applied_coupon.discount_pct_off)
-	if(paying_account?.add_to_accounts && !(pack.order_flags & ORDER_GOODY)) //privately purchased and not a goody means 1.1x the cost
-		cost *= 1.1
+	if(paying_account)
+		cost *= paying_account.get_cargo_order_cost_modifier(pack.order_flags & ORDER_GOODY, uses_catalog_discount)
 	return round(cost)
 
 /datum/supply_order/proc/generateRequisition(turf/T)
@@ -216,6 +218,9 @@
 /datum/supply_order/disposable/Destroy(force)
 	QDEL_NULL(pack)
 	return ..()
+
+/datum/supply_order/disposable/materials
+	uses_catalog_discount = FALSE
 
 /// Custom material order to append cargo crate value to the final order cost
 /datum/supply_order/disposable/materials/get_final_cost()

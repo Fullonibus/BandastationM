@@ -86,16 +86,18 @@
 		ui = new(user, src, interface_type, name)
 		ui.open()
 
-/obj/machinery/computer/cargo/ui_data()
+/obj/machinery/computer/cargo/ui_data(mob/user)
 	var/list/data = list()
 	data["department"] = "Cargo" // Hardcoded here, for customization in budgetordering.dm AKA NT IRN
 	data["location"] = SSshuttle.supply.getStatusText()
 	var/datum/bank_account/bank = SSeconomy.get_dep_account(cargo_account)
-	if(bank)
-		data["points"] = bank.account_balance
+	var/datum/bank_account/buyer = self_paid ? astype(user, /mob/living)?.get_bank_account() : null
+	data["points"] = bank?.account_balance
 	data["grocery"] = SSshuttle.chef_groceries.len
 	data["away"] = SSshuttle.supply.getDockedId() == docking_away
 	data["self_paid"] = self_paid
+	data["goody_order_cost_modifier"] = buyer ? buyer.get_cargo_order_cost_modifier(TRUE) : 1
+	data["private_order_cost_modifier"] = buyer ? buyer.get_cargo_order_cost_modifier(FALSE) : 1
 	data["docked"] = SSshuttle.supply.mode == SHUTTLE_IDLE
 	data["loan"] = !!SSshuttle.shuttle_loan
 	data["loan_dispatched"] = SSshuttle.shuttle_loan && SSshuttle.shuttle_loan.dispatched
@@ -272,6 +274,7 @@
 				return
 
 	// The list we are operating on right now
+	var/was_self_paid = self_paid
 	var/list/working_list = SSshuttle.shopping_list
 	var/reason = ""
 	var/datum/bank_account/personal_department
@@ -305,6 +308,9 @@
 				// HOWEVER, this shouldn't prevent someone from buying something using their own personal funds.
 				say("ERROR: User lacks the requisite access for this purchase request.")
 				return
+
+	if(was_self_paid != self_paid || (self_paid && QDELETED(account)))
+		return
 
 	if((pack.order_flags & ORDER_GOODY) && !self_paid)
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
