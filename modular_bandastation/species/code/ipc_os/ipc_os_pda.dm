@@ -18,7 +18,7 @@
 	return TRUE
 
 /datum/ipc_os_program/pda/stop()
-	if(device)
+	if(running && device)
 		SStgui.close_uis(device)
 		device.shutdown_computer(loud = FALSE)
 		var/datum/computer_file/program/messenger/messenger = locate() in device.stored_files

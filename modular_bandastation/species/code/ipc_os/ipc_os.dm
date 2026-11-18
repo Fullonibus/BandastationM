@@ -34,7 +34,6 @@
 /datum/ipc_os/New(obj/item/organ/brain/core)
 	. = ..()
 	src.core = core
-	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_job_spawn))
 	for(var/program_type in subtypesof(/datum/ipc_os_program))
 		var/datum/ipc_os_program/program = new program_type(src)
 		programs[program.id] = program
@@ -43,7 +42,6 @@
 	if(neural_crack_timer)
 		deltimer(neural_crack_timer)
 		neural_crack_timer = null
-	UnregisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN)
 	unbind()
 	for(var/id in infections)
 		qdel(infections[id])
@@ -64,6 +62,7 @@
 	if(pda_job_title || !job || istype(job, /datum/job/unassigned))
 		return
 	pda_job_title = job.title
+	UnregisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN)
 	var/datum/outfit/job_outfit = job.outfit
 	if(!job_outfit || !job_outfit::id_trim)
 		return
@@ -79,6 +78,8 @@
 		return
 	unbind()
 	host = new_host
+	if(!pda_job_title)
+		RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_job_spawn))
 	open_action = new(src)
 	open_action.Grant(host)
 	RegisterSignal(host, COMSIG_LIVING_LIFE, PROC_REF(on_life))
@@ -94,6 +95,7 @@
 	stop_all()
 	SStgui.close_uis(src)
 	if(host)
+		UnregisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN)
 		UnregisterSignal(host, list(COMSIG_LIVING_LIFE, COMSIG_LIVING_DEATH, COMSIG_MOB_LOGOUT, COMSIG_LIVING_REVIVE, COMSIG_MOB_LOGIN, COMSIG_SPECIES_LOSS))
 	QDEL_NULL(open_action)
 	host = null
@@ -136,6 +138,8 @@
 
 /// Logout, death, core extraction and shutdown discard only the partial download.
 /datum/ipc_os/proc/cancel_download()
+	if(!downloading)
+		return
 	STOP_PROCESSING(SSfastprocess, src)
 	downloading = null
 	download_elapsed = 0
@@ -209,7 +213,8 @@
 		infection.cancel_cleaning()
 	for(var/id in programs)
 		var/datum/ipc_os_program/program = programs[id]
-		program.stop()
+		if(program.running)
+			program.stop()
 
 /// Passive applications resume after a valid boot; toggles require manual reactivation.
 /datum/ipc_os/proc/resume_passives()
@@ -217,7 +222,7 @@
 		return
 	for(var/id in programs)
 		var/datum/ipc_os_program/program = programs[id]
-		if(program.installed && program.passive)
+		if(program.installed && program.passive && !program.running)
 			program.start()
 
 /datum/ipc_os/proc/on_life(mob/source, seconds_per_tick)

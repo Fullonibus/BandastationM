@@ -88,7 +88,7 @@
 	if(!source_os.is_operational() || !target_os.is_operational() || !kit.installed || !target_os.infections["neural_hijack"])
 		end()
 		return PROCESS_KILL
-	if(attacker_mind.current != victim || victim_mind.current != backseat || !GET_CLIENT(victim) || !GET_CLIENT(backseat))
+	if(attacker.mind || attacker_mind.current != victim || victim_mind.current != backseat || !GET_CLIENT(victim) || !GET_CLIENT(backseat))
 		end()
 		return PROCESS_KILL
 	burn_elapsed += seconds_per_tick
@@ -111,14 +111,15 @@
 	SIGNAL_HANDLER
 	end()
 
-/// Never undo an unrelated external mind transfer, or transfer a player into a deleting body.
-/datum/ipc_os_control/proc/restore_mind(datum/mind/mind, mob/living/expected, mob/living/destination, datum/weakref/original)
+/// Restore control without displacing an unrelated mind that entered either chassis.
+/datum/ipc_os_control/proc/restore_mind(datum/mind/mind, mob/living/expected, mob/living/destination, datum/weakref/original, datum/mind/temporary_occupant)
 	if(QDELETED(mind) || mind.current != expected)
 		return
-	if(!QDELETED(destination))
+	var/datum/mind/occupant = destination?.mind
+	if(!QDELETED(destination) && (!occupant || occupant == mind || occupant == temporary_occupant))
 		mind.transfer_to(destination)
 		mind.original_character = original
-	else if(!QDELETED(expected))
+	else if(!QDELETED(expected) && expected.mind == mind)
 		expected.ghostize(can_reenter_corpse = FALSE)
 
 /// Every exit route uses the same restoration and ownership cleanup.
@@ -137,7 +138,8 @@
 	if(victim_mind)
 		UnregisterSignal(victim_mind, list(COMSIG_MIND_TRANSFERRED, COMSIG_QDELETING))
 	restore_mind(attacker_mind, victim, attacker, attacker_original)
-	restore_mind(victim_mind, backseat, victim, victim_original)
+	// The attacker's mind can still be in the victim when its original body is unavailable.
+	restore_mind(victim_mind, backseat, victim, victim_original, attacker_mind)
 	if(source_os?.control_session == src)
 		source_os.control_session = null
 	if(target_os?.control_session == src)
