@@ -38,7 +38,7 @@
 	icon_static = 'modular_bandastation/species/icons/ipc/morpheus.dmi'
 	brute_modifier = 1
 	burn_modifier = 1
-	head_flags = HEAD_NO_DISFIGURE
+	head_flags = HEAD_NO_DISFIGURE|HEAD_HAIR
 	/// These values belong to the head, not to whichever mob currently wears it.
 	var/ipc_head_name = /datum/ipc_chassis/morpheus::name
 	var/ipc_display_name = /datum/sprite_accessory/ipc_display/ipc_screen_blue::name
