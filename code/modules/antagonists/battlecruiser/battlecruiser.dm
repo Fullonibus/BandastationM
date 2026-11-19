@@ -21,6 +21,7 @@
 	antagpanel_category = ANTAG_GROUP_SYNDICATE
 	pref_flag = ROLE_BATTLECRUISER_CREW
 	stinger_sound = 'sound/music/antag/ops.ogg'
+	mental_conditioning = TRUE
 	/// Team to place the crewmember on.
 	var/datum/team/battlecruiser/battlecruiser_team
 

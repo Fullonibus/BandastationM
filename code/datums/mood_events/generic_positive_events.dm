@@ -212,6 +212,11 @@
 	mood_change = 8
 	hidden = TRUE
 
+/datum/mood_event/mental_conditioning
+	description = "Моё сознание прошло жёсткое кондиционирование - страх, боль и ужасы этого мира не способны сломить мою волю."
+	mood_change = 8
+	hidden = TRUE
+
 /datum/mood_event/badass_antag
 	description = "Какой же я зверь, и все вокруг это знают. Только посмотрите на то, как они чертовски дрожат от одной только мысли о том, что я рядом."
 	mood_change = 8

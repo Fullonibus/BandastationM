@@ -26,6 +26,8 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/antag_memory = ""
 	///typepath of moodlet that the mob will gain when granted this antagonist type.
 	var/antag_moodlet
+	/// Whether this antagonist grants [TRAIT_MENTALLY_CONDITIONED] to its owner while active.
+	var/mental_conditioning = FALSE
 	///If these antags are alone when a shuttle elimination happens.
 	var/can_elimination_hijack = ELIMINATION_NEUTRAL
 	///If above 0, this is the multiplier for the speed at which we hijack the shuttle. Do not directly read, use hijack_speed().
@@ -76,6 +78,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 /datum/antagonist/Destroy()
 	GLOB.antagonists -= src
 	if(owner)
+		clear_mental_conditioning()
 		LAZYREMOVE(owner.antag_datums, src)
 	QDEL_NULL(team_hud_ref)
 	owner = null
@@ -200,6 +203,10 @@ GLOBAL_LIST_EMPTY(antagonists)
 		if (old_body)
 			clear_antag_moodies(old_body)
 		give_antag_moodies(new_body)
+	if (mental_conditioning)
+		if (old_body)
+			clear_mental_conditioning(old_body)
+		give_mental_conditioning(new_body)
 	apply_innate_effects(new_body)
 	if(new_body.stat != DEAD)
 		new_body.add_to_current_living_antags()
@@ -267,6 +274,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	owner.desensitized_level *= max(DESENSITIZED_MINIMUM, desensitized_modifier)
 	apply_innate_effects()
 	give_antag_moodies()
+	give_mental_conditioning()
 	RegisterSignal(owner, COMSIG_PRE_MINDSHIELD_IMPLANT, PROC_REF(pre_mindshield))
 	RegisterSignal(owner, COMSIG_MINDSHIELD_IMPLANTED, PROC_REF(on_mindshield))
 	if(is_banned(owner.current) && replace_banned)
@@ -327,6 +335,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	if(owner.current)
 		remove_innate_effects()
 	clear_antag_moodies()
+	clear_mental_conditioning()
 	LAZYREMOVE(owner.antag_datums, src)
 	if(!LAZYLEN(owner.antag_datums) && owner.current)
 		owner.current.remove_from_current_living_antags()
@@ -385,6 +394,28 @@ GLOBAL_LIST_EMPTY(antagonists)
 		return
 	var/mob/living/target = mob_override || owner.current
 	target.clear_mood_event("antag_moodlet_[type]")
+
+/**
+ * Proc that grants [TRAIT_MENTALLY_CONDITIONED] to the antagonist's current or overridden mob.
+ */
+/datum/antagonist/proc/give_mental_conditioning(mob/living/mob_override)
+	if(!mental_conditioning)
+		return
+	var/mob/living/target = mob_override || owner.current
+	if(!target)
+		return
+	ADD_TRAIT(target, TRAIT_MENTALLY_CONDITIONED, REF(src))
+
+/**
+ * Proc that removes [TRAIT_MENTALLY_CONDITIONED] granted by this antagonist from the current or overridden mob.
+ */
+/datum/antagonist/proc/clear_mental_conditioning(mob/living/mob_override)
+	if(!mental_conditioning)
+		return
+	var/mob/living/target = mob_override || owner.current
+	if(!target)
+		return
+	REMOVE_TRAIT(target, TRAIT_MENTALLY_CONDITIONED, REF(src))
 
 /**
  * Proc that will return the team this antagonist belongs to, when called. Helpful with antagonists that may belong to multiple potential teams in a single round.

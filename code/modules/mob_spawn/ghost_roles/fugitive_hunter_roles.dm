@@ -28,6 +28,10 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 
+/obj/effect/mob_spawn/ghost_role/human/fugitive/spacepol/special(mob/living/carbon/human/spawned_human, mob/mob_possessor, apply_prefs)
+	. = ..()
+	ADD_TRAIT(spawned_human, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
+
 /obj/effect/mob_spawn/ghost_role/human/fugitive/russian
 	name = "russian pod"
 	desc = "A small sleeper typically used to make long distance travel a bit more bearable."
@@ -60,6 +64,10 @@
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
 	S.setDir(dir)
 	return ..()
+
+/obj/effect/mob_spawn/ghost_role/human/fugitive/bounty/special(mob/living/carbon/human/spawned_human, mob/mob_possessor, apply_prefs)
+	. = ..()
+	ADD_TRAIT(spawned_human, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
 
 /obj/effect/mob_spawn/ghost_role/human/fugitive/bounty/armor
 	outfit = /datum/outfit/bountyarmor
@@ -109,6 +117,10 @@
 		This is a stealth mission in enemy territory. Reinforcements will not be sent to save you. Microbombs have been implanted in case of capture. Do not disappoint."
 	back_story = HUNTER_PACK_MI13
 	outfit = /datum/outfit/mi13_hunter
+
+/obj/effect/mob_spawn/ghost_role/human/fugitive/mi13/special(mob/living/carbon/human/spawned_human, mob/mob_possessor, apply_prefs)
+	. = ..()
+	ADD_TRAIT(spawned_human, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
 
 /obj/effect/mob_spawn/ghost_role/human/fugitive/mi13/chef
 	outfit = /datum/outfit/mi13_hunter/chef

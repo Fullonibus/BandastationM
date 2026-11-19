@@ -6,6 +6,7 @@
 #define XENO_PRIORITY 35
 #define DONTCARE_PRIORITY 40
 #define ASHWALKER_PRIORITY 50
+#define CONDITIONED_PRIORITY 55
 #define GAMER_PRIORITY 80
 #define REVOLUTIONARY_PRIORITY 85
 #define CULT_PRIORITY 90
@@ -156,6 +157,28 @@
 	else
 		description = "Оу, %DEAD_MOB% умер. Досадно, наверное."
 
+/// Mentally conditioned mobs handle witnessing death without emotional distress
+/datum/mood_event/conditional/see_death/conditioned
+	priority = CONDITIONED_PRIORITY
+	mood_change = 0
+	timeout = parent_type::timeout * 0.5
+
+/datum/mood_event/conditional/see_death/conditioned/condition_fulfilled(mob/living/who, mob/dead_mob, dusted, gibbed)
+	return HAS_TRAIT(who, TRAIT_MENTALLY_CONDITIONED)
+
+/datum/mood_event/conditional/see_death/conditioned/be_replaced(datum/mood/home, datum/mood_event/new_event, mob/dead_mob, dusted, gibbed)
+	if(!HAS_TRAIT(owner, TRAIT_MENTALLY_CONDITIONED))
+		return ALLOW_NEW_MOOD
+	return ..()
+
+/datum/mood_event/conditional/see_death/conditioned/update_effect(mob/dead_mob, dusted, gibbed)
+	if(gibbed)
+		description = "%DEAD_MOB% разорван в клочья. Не отвлекаюсь."
+	else if(dusted)
+		description = "%DEAD_MOB% обращён в пепел. Не отвлекаюсь."
+	else
+		description = "%DEAD_MOB% мёртв. Не отвлекаюсь."
+
 /// Ashwalkers get a small boost from sacrificing people to the necropolis spire, and don't care otherwise
 /datum/mood_event/conditional/see_death/ashwalker
 	priority = ASHWALKER_PRIORITY
@@ -297,6 +320,7 @@
 #undef XENO_PRIORITY
 #undef DONTCARE_PRIORITY
 #undef ASHWALKER_PRIORITY
+#undef CONDITIONED_PRIORITY
 #undef GAMER_PRIORITY
 #undef REVOLUTIONARY_PRIORITY
 #undef CULT_PRIORITY

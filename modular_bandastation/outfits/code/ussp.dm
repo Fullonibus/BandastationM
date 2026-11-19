@@ -5,14 +5,19 @@
 	name = "USSP Base"
 
 /datum/outfit/ussp/post_equip(mob/living/carbon/human/H, visuals_only = FALSE)
+	. = ..()
 	if(visuals_only)
 		return
 
-	var/obj/item/card/id/W = H.wear_id
-	W.registered_name = H.real_name
-	W.update_label()
-	W.update_icon()
-	..()
+	var/obj/item/card/id/id_card = H.wear_id
+	if(istype(id_card))
+		id_card.registered_name = H.real_name
+		id_card.update_label()
+		id_card.update_icon()
+	H.grant_language(/datum/language/spinwarder)
+	H.grant_language(/datum/language/common)
+	H.remove_blocked_language(/datum/language/spinwarder)
+	H.set_active_language(/datum/language/spinwarder)
 
 /obj/item/card/id/advanced/ussp
 	name = "\improper USSP ID"
@@ -37,6 +42,7 @@
 // USSP Commander
 /datum/outfit/ussp/commander
 	name = "USSP - Commander"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/ussp
 	id_trim = /datum/id_trim/ussp/commander
 	uniform = /obj/item/clothing/under/rank/ussp/commander
@@ -71,6 +77,7 @@
 // USSP Soldier (Unarmed)
 /datum/outfit/ussp/soldier_unarmed
 	name = "USSP - Red Army Ryadovoy (Unarmed)"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/ussp
 	id_trim = /datum/id_trim/ussp/soldier
 	uniform = /obj/item/clothing/under/rank/ussp/soldier
@@ -122,6 +129,7 @@
 // USSP Officer (Unarmed)
 /datum/outfit/ussp/ussp_officer
 	name = "USSP - Red Army Officer (Unarmed)"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/ussp
 	id_trim = /datum/id_trim/ussp/soldier/officer
 	uniform = /obj/item/clothing/under/rank/ussp/officer
@@ -150,6 +158,7 @@
 // Rifleman
 /datum/outfit/ussp/military
 	name = "USSP - Red Army Ryadovoy"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/ussp
 	id_trim = /datum/id_trim/ussp/soldier
 	uniform = /obj/item/clothing/under/rank/ussp/soldier
@@ -360,6 +369,7 @@
 // USSP SPETSNAZ (Unarmed)
 /datum/outfit/ussp/spetsnaz_unarmed
 	name = "USSP - SPETSNAZ (Unarmed)"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/ussp
 	id_trim = /datum/id_trim/ussp/spetsnaz
 	uniform = /obj/item/clothing/under/rank/ussp/spetsnaz
@@ -394,6 +404,7 @@
 // USSP SPETSNAZ (MOD).
 /datum/outfit/ussp/spetsnaz
 	name = "USSP - SPETSNAZ"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/ussp
 	id_trim = /datum/id_trim/ussp/spetsnaz
 	uniform = /obj/item/clothing/under/rank/ussp/spetsnaz
@@ -434,6 +445,7 @@
 // USSP infiltrator
 /datum/outfit/ussp/infiltrator
 	name = "USSP - Infiltrator"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/ussp
 	id_trim = /datum/id_trim/ussp/infiltrator
 	uniform = /obj/item/clothing/under/syndicate/camo
@@ -546,12 +558,3 @@
 /obj/item/storage/box/survival/ussp/officer
 	medipen_type =  /obj/item/reagent_containers/hypospray/medipen/atropine
 	internal_type = /obj/item/tank/internals/emergency_oxygen/double
-
-/datum/outfit/ussp/post_equip(mob/living/carbon/human/translator, visuals_only = FALSE)
-	. = ..()
-	if(visuals_only)
-		return
-	translator.grant_language(/datum/language/spinwarder)
-	translator.grant_language(/datum/language/common)
-	translator.remove_blocked_language(/datum/language/spinwarder)
-	translator.set_active_language(/datum/language/spinwarder)

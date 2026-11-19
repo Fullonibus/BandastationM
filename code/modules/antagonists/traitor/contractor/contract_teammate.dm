@@ -6,6 +6,8 @@
 	show_in_roundend = FALSE
 	give_objectives = TRUE
 	give_uplink = FALSE
+	antag_moodlet = null
+	mental_conditioning = TRUE
 
 /datum/antagonist/traitor/contractor_support/forge_traitor_objectives()
 	var/datum/objective/generic_objective = new
@@ -19,6 +21,7 @@
 
 /datum/outfit/contractor_partner
 	name = "Contractor Support Unit"
+	mental_conditioning = TRUE
 
 	uniform = /obj/item/clothing/under/chameleon
 	suit = /obj/item/clothing/suit/chameleon

@@ -3,6 +3,8 @@
 	name = ROLE_CLOWN_OPERATIVE
 	roundend_category = "Клоуны-оперативники"
 	antagpanel_category = ANTAG_GROUP_CLOWNOPS
+	antag_moodlet = /datum/mood_event/focused
+	mental_conditioning = FALSE
 	nukeop_outfit = /datum/outfit/syndicate/clownop
 	job_type = /datum/job/nuclear_operative/clown_operative
 	suicide_cry = "HAPPY BIRTHDAY!!"
@@ -45,6 +47,8 @@
 	name = "Clown Operative Leader"
 	roundend_category = "Клоуны-оперативники"
 	antagpanel_category = ANTAG_GROUP_CLOWNOPS
+	antag_moodlet = /datum/mood_event/focused
+	mental_conditioning = FALSE
 	nukeop_outfit = /datum/outfit/syndicate/clownop/leader
 	challengeitem = /obj/item/nuclear_challenge/clownops
 	suicide_cry = "HAPPY BIRTHDAY!!"
@@ -69,6 +73,8 @@
 // Clown op reinforcements
 /datum/antagonist/nukeop/reinforcement/clownop
 	name = "Clown Operative Reinforcement"
+	antag_moodlet = /datum/mood_event/focused
+	mental_conditioning = FALSE
 	nukeop_outfit = /datum/outfit/syndicate/clownop/no_crystals
 
 /datum/outfit/clown_operative

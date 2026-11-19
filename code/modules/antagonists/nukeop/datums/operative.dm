@@ -4,7 +4,7 @@
 	antagpanel_category = ANTAG_GROUP_SYNDICATE
 	pref_flag = ROLE_OPERATIVE
 	antag_hud_name = "synd"
-	antag_moodlet = /datum/mood_event/focused
+	mental_conditioning = TRUE
 	show_to_ghosts = TRUE
 	hijack_speed = 2 //If you can't take out the station, take the shuttle instead.
 	suicide_cry = "ЗА СИНДИКАТ!!"
@@ -143,7 +143,7 @@
 	if(isnull(operative.client) || operative.client.prefs.read_preference(/datum/preference/toggle/nuke_ops_species))
 		operative.set_species(/datum/species/human)
 
-	operative.equip_species_outfit(nukeop_outfit)
+	operative.equip_species_outfit(nukeop_outfit, apply_mental_conditioning = !mental_conditioning)
 
 	return TRUE
 

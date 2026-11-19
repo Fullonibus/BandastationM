@@ -202,6 +202,7 @@
 // SpecOps Operatives
 /datum/outfit/centcom/specops
 	name = "NT SpecOps - Operative (Base)"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/black
 	id_trim = /datum/id_trim/centcom/specops
 	uniform = /obj/item/clothing/under/rank/centcom/military

@@ -46,6 +46,17 @@ export const OutfitEditor = (props) => {
                   tooltipPosition="bottom-start"
                 />
                 <Button
+                  color={outfit.mental_conditioning ? 'good' : undefined}
+                  icon="brain"
+                  tooltip={
+                    outfit.mental_conditioning
+                      ? 'Mental conditioning: ON (click to disable)'
+                      : 'Mental conditioning: OFF (click to enable)'
+                  }
+                  tooltipPosition="bottom-start"
+                  onClick={() => act('toggle_mental_conditioning')}
+                />
+                <Button
                   icon="code"
                   tooltip="Edit this outfit on a VV window"
                   tooltipPosition="bottom-start"

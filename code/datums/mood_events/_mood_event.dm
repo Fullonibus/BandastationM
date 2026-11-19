@@ -24,6 +24,26 @@
 	var/mob/living/owner
 	/// List of required jobs for this mood event
 	var/list/required_job
+	/// Typecache of mood event paths ignored by TRAIT_MENTALLY_CONDITIONED
+	var/static/list/conditioning_blocked_events = typecacheof(list(
+		/datum/mood_event/photophobia,
+		/datum/mood_event/nyctophobia,
+		/datum/mood_event/claustrophobia,
+		/datum/mood_event/pyrophobia,
+		/datum/mood_event/startled,
+		/datum/mood_event/phobia,
+		/datum/mood_event/spooked,
+		/datum/mood_event/paranoid/one_on_one,
+		/datum/mood_event/paranoid/large_group,
+		/datum/mood_event/encountered_evil,
+		/datum/mood_event/vomit,
+		/datum/mood_event/vomitself,
+		/datum/mood_event/gross,
+		/datum/mood_event/verygross,
+		/datum/mood_event/disgusted,
+		/datum/mood_event/disgust/bad_smell,
+		/datum/mood_event/disgust/nauseating_stench,
+	))
 
 /datum/mood_event/New(category)
 	src.category = category
@@ -62,6 +82,9 @@
 		return FALSE
 
 	if((event_flags & MOOD_EVENT_PAIN) && HAS_TRAIT(who, TRAIT_ANALGESIA))
+		return FALSE
+
+	if(HAS_TRAIT(who, TRAIT_MENTALLY_CONDITIONED) && is_type_in_typecache(src, conditioning_blocked_events))
 		return FALSE
 
 	return TRUE

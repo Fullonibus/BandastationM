@@ -1,5 +1,6 @@
 /datum/outfit/centcom/spec_ops
 	name = "Special Ops Officer"
+	mental_conditioning = TRUE
 
 	id = /obj/item/card/id/advanced/centcom
 	id_trim = /datum/id_trim/centcom/specops_officer
@@ -201,6 +202,7 @@
 
 /datum/outfit/assassin
 	name = "Assassin"
+	mental_conditioning = TRUE
 
 	id = /obj/item/card/id/advanced/chameleon/elite/black
 	id_trim = /datum/id_trim/reaper_assassin
@@ -244,6 +246,7 @@
 
 /datum/outfit/centcom/commander
 	name = "CentCom Commander"
+	mental_conditioning = TRUE
 
 	id = /obj/item/card/id/advanced/centcom
 	id_trim = /datum/id_trim/centcom/commander
@@ -363,6 +366,7 @@
 
 /datum/outfit/centcom/soviet
 	name = "Soviet Admiral"
+	mental_conditioning = TRUE
 
 	id = /obj/item/card/id/advanced/centcom
 	id_trim = /datum/id_trim/centcom/admiral
@@ -416,6 +420,7 @@
 
 /datum/outfit/chrono_agent
 	name = "Timeline Eradication Agent"
+	mental_conditioning = TRUE
 
 	uniform = /obj/item/clothing/under/color/white
 	suit_store = /obj/item/tank/internals/oxygen

@@ -8,6 +8,7 @@
 	antagpanel_category = ANTAG_GROUP_CREW
 	show_name_in_check_antagonists = TRUE
 	antag_flags = ANTAG_SKIP_GLOBAL_LIST
+	mental_conditioning = TRUE
 
 /datum/antagonist/evil_clone/on_gain()
 	if (owner.current)

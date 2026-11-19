@@ -93,6 +93,10 @@
 		if(HAS_TRAIT(owner, TRAIT_MORBID) || HAS_TRAIT(owner, TRAIT_EVIL) || (owner.mob_biotypes & MOB_UNDEAD))
 			description = "Ощущение прекрасного кровавого душа было великолепным."
 			mood_change = 6 // you sicko
+		else if(HAS_TRAIT(owner, TRAIT_MENTALLY_CONDITIONED))
+			description = "Недавно я принял душ из крови. Неприятно, но терпимо."
+			mood_change = 0
+			timeout = 3 MINUTES
 		else
 			description = "Недавно я принял ужасный душ, из которого лилась кровь!"
 			mood_change = -4

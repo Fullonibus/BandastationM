@@ -7,6 +7,7 @@
 	show_to_ghosts = TRUE
 	suicide_cry = "THERE CAN BE ONLY ONE!!"
 	preview_outfit = /datum/outfit/paradox_clone
+	mental_conditioning = TRUE
 
 /datum/antagonist/paradox_clone/get_preview_icon()
 	var/datum/universal_icon/final_icon = render_preview_outfit(preview_outfit)

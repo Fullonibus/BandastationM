@@ -9,6 +9,7 @@
 
 /datum/outfit/centcom/ert
 	name = "ERT Common"
+	mental_conditioning = TRUE
 
 	uniform = /obj/item/clothing/under/rank/centcom/officer
 	// AI EDIT START - Support independent left and right ear slots
@@ -246,6 +247,7 @@
 
 /datum/outfit/centcom/ert/janitor
 	name = "ERT Janitor"
+	mental_conditioning = FALSE
 
 	id = /obj/item/card/id/advanced/centcom/ert/janitor
 	back = /obj/item/mod/control/pre_equipped/responsory/janitor
@@ -279,6 +281,7 @@
 
 /datum/outfit/centcom/ert/clown
 	name = "ERT Clown"
+	mental_conditioning = FALSE
 
 	id = /obj/item/card/id/advanced/centcom/ert/clown
 	back = /obj/item/mod/control/pre_equipped/responsory/clown
@@ -377,6 +380,7 @@
 
 /datum/outfit/centcom/ert/security/party
 	name = "ERP Bouncer"
+	mental_conditioning = FALSE
 
 	uniform = /obj/item/clothing/under/misc/bouncer
 	suit = /obj/item/clothing/suit/armor/vest
@@ -392,6 +396,7 @@
 
 /datum/outfit/centcom/ert/engineer/party
 	name = "ERP Constructor"
+	mental_conditioning = FALSE
 
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/hazard
 	suit = /obj/item/clothing/suit/hazardvest
@@ -425,6 +430,7 @@
 
 /datum/outfit/centcom/ert/commander/party
 	name = "ERP Coordinator"
+	mental_conditioning = FALSE
 
 	uniform = /obj/item/clothing/under/misc/coordinator
 	suit = /obj/item/clothing/suit/coordinator
@@ -441,6 +447,7 @@
 
 /datum/outfit/centcom/death_commando
 	name = "Death Commando"
+	mental_conditioning = TRUE
 
 	id = /obj/item/card/id/advanced/black/deathsquad
 	id_trim = /datum/id_trim/centcom/deathsquad
@@ -580,6 +587,7 @@
 
 /datum/outfit/centcom/militia
 	name = "Militia Man"
+	mental_conditioning = TRUE
 
 	id = /obj/item/card/id/advanced/centcom/ert/militia
 	accessory = /obj/item/clothing/accessory/holster/energy/smoothborne //BANDASTATION EDIT: Accessory holsters

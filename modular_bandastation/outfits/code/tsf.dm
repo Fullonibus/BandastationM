@@ -5,14 +5,19 @@
 	name = "TSF Base"
 
 /datum/outfit/tsf/post_equip(mob/living/carbon/human/H, visuals_only = FALSE)
+	. = ..()
 	if(visuals_only)
 		return
 
-	var/obj/item/card/id/W = H.wear_id
-	W.registered_name = H.real_name
-	W.update_label()
-	W.update_icon()
-	..()
+	var/obj/item/card/id/id_card = H.wear_id
+	if(istype(id_card))
+		id_card.registered_name = H.real_name
+		id_card.update_label()
+		id_card.update_icon()
+	H.grant_language(/datum/language/uncommon)
+	H.grant_language(/datum/language/common)
+	H.remove_blocked_language(/datum/language/uncommon)
+	H.set_active_language(/datum/language/uncommon)
 
 /obj/item/card/id/advanced/tsf
 	name = "\improper TSF ID"
@@ -37,6 +42,7 @@
 // TSF Commander
 /datum/outfit/tsf/commander
 	name = "TSF - Commander"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/tsf
 	id_trim = /datum/id_trim/tsf/commander
 	uniform = /obj/item/clothing/under/rank/tsf/commander
@@ -70,6 +76,7 @@
 // TSF Marine (Unarmed)
 /datum/outfit/tsf/marine_unarmed
 	name = "TSF - Marine (Unarmed)"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/tsf
 	id_trim = /datum/id_trim/tsf/marine
 	uniform = /obj/item/clothing/under/rank/tsf/marine
@@ -98,6 +105,7 @@
 // TSF Marine Officer (Unarmed)
 /datum/outfit/tsf/marine_officer
 	name = "TSF - Marine Officer (Unarmed)"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/tsf
 	id_trim = /datum/id_trim/tsf/marine/officer
 	uniform = /obj/item/clothing/under/rank/tsf/marine_officer
@@ -124,6 +132,7 @@
 // Rifleman
 /datum/outfit/tsf/marine
 	name = "TSF - Marine Rifleman"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/tsf
 	id_trim = /datum/id_trim/tsf/marine
 	uniform = /obj/item/clothing/under/rank/tsf/marine
@@ -302,6 +311,7 @@
 // TSF MARSOC (Unarmed)
 /datum/outfit/tsf/marsoc_unarmed
 	name = "TSF - MARSOC (Unarmed)"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/tsf
 	id_trim = /datum/id_trim/tsf/marsoc
 	uniform = /obj/item/clothing/under/rank/tsf/marsoc
@@ -339,6 +349,7 @@
 // TSF MARSOC (MOD)
 /datum/outfit/tsf/marsoc
 	name = "TSF - MARSOC"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/tsf
 	id_trim = /datum/id_trim/tsf/marsoc/breacher
 	uniform = /obj/item/clothing/under/rank/tsf/marsoc
@@ -423,6 +434,7 @@
 // TSF infiltrator
 /datum/outfit/tsf/infiltrator
 	name = "TSF - Infiltrator"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/tsf
 	id_trim = /datum/id_trim/tsf/infiltrator
 	uniform = /obj/item/clothing/under/syndicate
@@ -538,12 +550,3 @@
 /obj/item/storage/box/survival/tsf/officer
 	medipen_type =  /obj/item/reagent_containers/hypospray/medipen/atropine
 	internal_type = /obj/item/tank/internals/emergency_oxygen/double
-
-/datum/outfit/tsf/post_equip(mob/living/carbon/human/translator, visuals_only = FALSE)
-	. = ..()
-	if(visuals_only)
-		return
-	translator.grant_language(/datum/language/uncommon)
-	translator.grant_language(/datum/language/common)
-	translator.remove_blocked_language(/datum/language/uncommon)
-	translator.set_active_language(/datum/language/uncommon)

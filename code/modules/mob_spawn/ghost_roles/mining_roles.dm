@@ -294,6 +294,7 @@
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/special(mob/living/new_spawn, mob/mob_possessor, apply_prefs)
 	. = ..()
 	new_spawn.grant_language(/datum/language/codespeak, source = LANGUAGE_MIND)
+	ADD_TRAIT(new_spawn, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/comms
 	name = "Syndicate Comms Agent"

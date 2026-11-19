@@ -98,6 +98,10 @@
 	spawner_job_path = /datum/job/space_syndicate
 	allow_custom_character = ALL
 
+/obj/effect/mob_spawn/ghost_role/human/syndicate/special(mob/living/new_spawn, mob/mob_possessor, apply_prefs)
+	. = ..()
+	ADD_TRAIT(new_spawn, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
+
 /datum/outfit/syndicate_empty
 	name = "Syndicate Operative Empty"
 	id = /obj/item/card/id/advanced/chameleon
@@ -186,6 +190,10 @@
 	outfit = /datum/outfit/nanotrasensoldier
 	allow_custom_character = ALL
 
+/obj/effect/mob_spawn/ghost_role/human/nanotrasensoldier/special(mob/living/new_spawn, mob/mob_possessor, apply_prefs)
+	. = ..()
+	ADD_TRAIT(new_spawn, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
+
 /obj/effect/mob_spawn/ghost_role/human/commander
 	name = "sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -195,6 +203,10 @@
 	flavour_text = "Upper-crusty of Nanotrasen. You should be given the respect you're owed."
 	outfit = /datum/outfit/nanotrasencommander
 	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
+
+/obj/effect/mob_spawn/ghost_role/human/commander/special(mob/living/new_spawn, mob/mob_possessor, apply_prefs)
+	. = ..()
+	ADD_TRAIT(new_spawn, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
 
 //space doctor, a rat with cancer, and bessie from an old removed lavaland ruin.
 
@@ -255,6 +267,10 @@
 	caves can be a deadly place even for a trained operative such as yourself."
 	allow_custom_character = ALL
 
+/obj/effect/mob_spawn/ghost_role/human/snow_operative/special(mob/living/new_spawn, mob/mob_possessor, apply_prefs)
+	. = ..()
+	ADD_TRAIT(new_spawn, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
+
 /datum/outfit/snowsyndie
 	name = "Syndicate Snow Operative"
 	id = /obj/item/card/id/advanced/chameleon
@@ -285,6 +301,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/syndicatespace/special(mob/living/new_spawn, mob/mob_possessor, apply_prefs)
 	. = ..()
+	ADD_TRAIT(new_spawn, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
 	new_spawn.grant_language(/datum/language/codespeak, source = LANGUAGE_MIND)
 	var/datum/job/spawn_job = SSjob.get_job_type(spawner_job_path)
 	var/policy = get_policy(spawn_job.policy_index)

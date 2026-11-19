@@ -141,6 +141,8 @@
 	outfit.implants = list()
 	for(var/obj/item/implant/implant in implants)
 		outfit.implants |= implant.type
+	if(HAS_TRAIT(src, TRAIT_MENTALLY_CONDITIONED))
+		outfit.mental_conditioning = TRUE
 	//Copy to outfit cache
 	var/outfit_name = stripped_input(usr,"Enter the outfit name")
 	outfit.name = outfit_name

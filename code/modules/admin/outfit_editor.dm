@@ -111,6 +111,8 @@
 		if("delete")
 			GLOB.custom_outfits -= drip
 			SStgui.update_user_uis(owner.mob)
+		if("toggle_mental_conditioning")
+			drip.mental_conditioning = !drip.mental_conditioning
 		if("vv")
 			owner.debug_variables(drip)
 

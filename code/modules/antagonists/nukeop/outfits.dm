@@ -26,6 +26,7 @@
 	var/command_radio = FALSE
 	/// The type of uplink to be given on equip.
 	var/uplink_type = /obj/item/uplink/nuclear
+	mental_conditioning = TRUE
 
 	id_trim = /datum/id_trim/chameleon/operative
 

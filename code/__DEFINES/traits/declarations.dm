@@ -1699,6 +1699,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Mob just doesn't fucking care. No mood and no sanity.
 #define TRAIT_APATHETIC "apathetic"
 
+/// Mob has undergone mental conditioning, reducing negative moodlets by 75% and granting a passive focus moodlet.
+#define TRAIT_MENTALLY_CONDITIONED "mentally_conditioned"
+
 /// Mob can't be inflicted with the split personality trauma.
 #define TRAIT_NO_SPLIT_PERSONALITY "no_split_personality"
 

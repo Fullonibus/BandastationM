@@ -102,3 +102,15 @@
 
 
 #undef CHECK_OUTFIT_SLOT
+
+
+/// The subtype default must not opt outfits saved before conditioning into the new trait.
+/datum/unit_test/outfit_conditioning_import/Run()
+	var/datum/outfit/outfit = allocate(/datum/outfit/centcom/ert/security)
+	var/list/saved_outfit = list("name" = "Legacy ERT Outfit")
+	TEST_ASSERT(outfit.load_from(saved_outfit), "The legacy outfit failed to load.")
+	TEST_ASSERT(!outfit.mental_conditioning, "The legacy outfit acquired conditioning from its subtype's default.")
+
+	saved_outfit["mental_conditioning"] = TRUE
+	TEST_ASSERT(outfit.load_from(saved_outfit), "The outfit with explicit conditioning failed to load.")
+	TEST_ASSERT(outfit.mental_conditioning, "The explicitly saved conditioning setting was not restored.")

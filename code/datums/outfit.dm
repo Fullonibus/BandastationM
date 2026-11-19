@@ -130,6 +130,9 @@
 	///Should we preload some of this job's items?
 	var/preload = FALSE
 
+	/// Whether this outfit grants [TRAIT_MENTALLY_CONDITIONED] upon non-visual equip.
+	var/mental_conditioning = FALSE
+
 	/// Any undershirt. While on humans it is a string, here we use paths to stay consistent with the rest of the equips.
 	var/datum/sprite_accessory/clothing/undershirt = null
 	var/datum/sprite_accessory/clothing/underwear = null
@@ -178,10 +181,11 @@
  *
  * Extra Arguments
  * * visuals_only true if this is only for display (in the character setup screen)
+ * * apply_mental_conditioning false if the antagonist role manages its own conditioning
  *
  * If visuals_only is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/equip(mob/living/carbon/human/user, visuals_only = FALSE)
+/datum/outfit/proc/equip(mob/living/carbon/human/user, visuals_only = FALSE, apply_mental_conditioning = TRUE)
 	pre_equip(user, visuals_only)
 
 	//Start with uniform,suit,backpack for additional slots
@@ -284,6 +288,8 @@
 
 	if(!visuals_only)
 		apply_fingerprints(user)
+		if(apply_mental_conditioning && mental_conditioning)
+			ADD_TRAIT(user, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
 		if(internals_slot)
 			if(internals_slot & ITEM_SLOT_HANDS)
 				var/obj/item/tank/internals/internals = user.is_holding_item_of_type(/obj/item/tank/internals)
@@ -463,6 +469,7 @@
 	.["box"] = box
 	.["implants"] = implants
 	.["accessory"] = accessory
+	.["mental_conditioning"] = mental_conditioning
 
 /// Copy most vars from another outfit to this one
 /datum/outfit/proc/copy_from(datum/outfit/target)
@@ -496,6 +503,7 @@
 	box = target.box
 	implants = target.implants
 	accessory = target.accessory
+	mental_conditioning = target.mental_conditioning
 
 /// Prompt the passed in mob client to download this outfit as a json blob
 /datum/outfit/proc/save_to_file(mob/admin)
@@ -557,6 +565,7 @@
 		if(imptype)
 			implants += imptype
 	accessory = text2path(outfit_data["accessory"])
+	mental_conditioning = outfit_data["mental_conditioning"] == TRUE
 	return TRUE
 
 /datum/outfit/vv_get_dropdown()

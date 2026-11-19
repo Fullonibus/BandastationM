@@ -277,6 +277,11 @@
 	mood_change = -10
 	event_flags = MOOD_EVENT_FEAR
 
+/datum/mood_event/gunpoint/add_effects()
+	if(HAS_TRAIT(owner, TRAIT_MENTALLY_CONDITIONED))
+		mood_change = 0
+		description = "Меня держат на прицеле. Нужно сохранять хладнокровие."
+
 /datum/mood_event/tripped
 	description = "Не могу поверить, что я попался на самый старый прикол!"
 	mood_change = -5
@@ -632,6 +637,10 @@
 	if(HAS_TRAIT(owner, TRAIT_MORBID) || HAS_TRAIT(owner, TRAIT_EVIL) || HAS_TRAIT(owner, TRAIT_DRINKS_BLOOD))
 		mood_change = 0
 		description = "Я покрыт кровью. Очаровательно!"
+		return
+	if(HAS_TRAIT(owner, TRAIT_MENTALLY_CONDITIONED))
+		mood_change = 0
+		description = "Кровь на форме - обычные издержки работы."
 		return
 	if(IS_DESENSITIZED(owner))
 		mood_change *= 0.5
