@@ -72,5 +72,16 @@
 			TEST_ASSERT_EQUAL(body.mind, original_mind, "[role_path] changed the player's mind during organ replacement.")
 			if(tongue_path == /obj/item/organ/tongue/abductor)
 				TEST_ASSERT_EQUAL(tongue, original_tongue, "[role_path] unnecessarily replaced a valid abductor tongue.")
+
+		if(role_path == /datum/antagonist/abductor/agent)
+			var/mob/living/carbon/human/headless_body = allocate(/mob/living/carbon/human/consistent)
+			var/obj/item/bodypart/head = headless_body.get_bodypart(BODY_ZONE_HEAD)
+			head.drop_limb()
+			headless_body.mind_initialize()
+			role.owner = headless_body.mind
+			headless_body.moveToNullspace()
+			role.finalize_abductor()
+			TEST_ASSERT_NULL(headless_body.get_organ_slot(ORGAN_SLOT_TONGUE), "Finalization implanted a tongue without a head to hold it.")
+			TEST_ASSERT_EQUAL(get_turf(headless_body), get_turf(spawn_point), "A headless abductor did not reach the spawn point.")
 		role.owner = null
 		qdel(spawn_point)

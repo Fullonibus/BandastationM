@@ -92,11 +92,12 @@
 	//Equip
 	var/mob/living/carbon/human/new_abductor = owner.current
 	new_abductor.set_species(/datum/species/abductor)
-	var/obj/item/organ/tongue/abductor/abductor_tongue = new_abductor.get_organ_slot(ORGAN_SLOT_TONGUE)
-	if(!istype(abductor_tongue))
-		abductor_tongue = new()
-		abductor_tongue.replace_into(new_abductor)
-	abductor_tongue.mothership = "[team.name]"
+	if(new_abductor.get_bodypart(BODY_ZONE_HEAD))
+		var/obj/item/organ/tongue/abductor/abductor_tongue = new_abductor.get_organ_slot(ORGAN_SLOT_TONGUE)
+		if(!istype(abductor_tongue))
+			abductor_tongue = new()
+			abductor_tongue.replace_into(new_abductor)
+		abductor_tongue.mothership = "[team.name]"
 
 	new_abductor.real_name = "[team.name] [sub_role]"
 	new_abductor.equipOutfit(outfit)
