@@ -218,16 +218,18 @@
 
 	return ..()
 
-///Try to attach this bodypart to a mob, while replacing one if it exists, does nothing if it fails. Returns TRUE on success, FALSE on failure.
-/obj/item/bodypart/proc/replace_limb(mob/living/carbon/limb_owner)
+/// Tries to replace a bodypart. The old limb is restored on failure, or deleted on success when drop_old_limb is false.
+/obj/item/bodypart/proc/replace_limb(mob/living/carbon/limb_owner, drop_old_limb = TRUE)
 	if(!istype(limb_owner))
 		return FALSE
 	var/obj/item/bodypart/old_limb = limb_owner.get_bodypart(body_zone)
-	old_limb?.drop_limb(TRUE)
+	old_limb?.drop_limb(TRUE, move_to_floor = drop_old_limb)
 
 	if(!try_attach_limb(limb_owner, TRUE)) //If it failed to replace, re-attach their old limb as if nothing happened.
 		old_limb?.try_attach_limb(limb_owner, TRUE)
 		return FALSE
+	if(!drop_old_limb && old_limb)
+		qdel(old_limb)
 	return TRUE
 
 ///Checks if a limb qualifies as a BODYPART_IMPLANTED

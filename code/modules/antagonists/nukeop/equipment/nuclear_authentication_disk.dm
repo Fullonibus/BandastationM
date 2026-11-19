@@ -21,6 +21,10 @@
 	. = ..()
 	AddElement(/datum/element/bed_tuckable, mapload, 6, -6, 0)
 
+	// A disk created as part of a visual fitting must stay with the dummy.
+	if(get(src, /mob/living/carbon/human/dummy))
+		return
+
 	if(!fake)
 		AddComponent(/datum/component/stationloving, !fake)
 		AddComponent(/datum/component/keep_me_secure, CALLBACK(src, PROC_REF(secured_process)), CALLBACK(src, PROC_REF(unsecured_process)), 10)

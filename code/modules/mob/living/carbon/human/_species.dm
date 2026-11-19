@@ -308,7 +308,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			continue
 
 		var/used_neworgan = FALSE
-		new_organ = SSwardrobe.provide_type(new_organ)
+		if(istype(organ_holder, /mob/living/carbon/human/dummy/outfit_check))
+			new_organ = new new_organ
+		else
+			new_organ = SSwardrobe.provide_type(new_organ)
 		var/should_have = new_organ.get_availability(src, organ_holder) && should_visual_organ_apply_to(new_organ, organ_holder)
 
 		// Check for an existing organ, and if there is one check to see if we should remove it
@@ -538,12 +541,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/can_equip(obj/item/I, slot, disable_warning, mob/living/carbon/human/H, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE, indirect_action = FALSE)
 	if(no_equip_flags & slot)
 		if(!I.species_exception || !is_type_in_list(src, I.species_exception))
-			return FALSE
+			return H.inventory_rejected("Этот слот недоступен для вида манекена.")
 
 	// if there's an item in the slot we want, fail
 	if(!ignore_equipped)
-		if(H.get_item_by_slot(slot))
-			return FALSE
+		var/obj/item/occupied = H.get_item_by_slot(slot)
+		if(occupied)
+			return H.inventory_rejected("Слот уже занят предметом [occupied.name].")
 
 	// this check prevents us from equipping something to a slot it doesn't support, WITH the exceptions of storage slots (pockets, suit storage, and backpacks)
 	// we don't require having those slots defined in the item's slot_flags, so we'll rely on their own checks further down
@@ -555,7 +559,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		else if(slot & (ITEM_SLOT_SUITSTORE|ITEM_SLOT_HANDS))
 			excused = TRUE
 		if(!excused)
-			return FALSE
+			return H.inventory_rejected(slot & (ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET) ? "Предмет слишком большой для кармана." : "Предмет не подходит для этого слота.")
 
 	switch(slot)
 		// BANDASTATION ADDITION START - Removable underclothing
@@ -570,7 +574,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return FALSE
 		if(ITEM_SLOT_MASK)
 			if(!H.get_bodypart(BODY_ZONE_HEAD))
-				return FALSE
+				return H.inventory_rejected("Для этого слота нужна голова.")
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_NECK)
 			return TRUE
@@ -580,40 +584,40 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_GLOVES)
 			if(H.num_hands == 0)
-				return FALSE
+				return H.inventory_rejected("На манекене нет рук.")
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_FEET)
 			if(H.num_legs < 2)
-				return FALSE
+				return H.inventory_rejected("Для этой экипировки нужны обе ноги.")
 			if((H.bodytype & BODYTYPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
 				if(!(I.supports_variations_flags & DIGITIGRADE_VARIATIONS))
 					if(!disable_warning)
 						to_chat(H, span_warning("Обувь здесь не подходит к вашим ступам!"))
-					return FALSE
+					return H.inventory_rejected("Обувь не подходит к форме стоп манекена.")
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_BELT)
 			var/obj/item/bodypart/O = H.get_bodypart(BODY_ZONE_CHEST)
 			if(!H.w_uniform && !HAS_TRAIT(H, TRAIT_NO_JUMPSUIT) && (!O || IS_ORGANIC_LIMB(O)))
 				if(!disable_warning)
 					to_chat(H, span_warning("Вам нужно сперва надеть комбинезон, чтобы прикрепить [I.declent_ru(ACCUSATIVE)]"))
-				return FALSE
+				return H.inventory_rejected("Сначала нужно надеть форму.")
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_EYES)
 			if(!H.get_bodypart(BODY_ZONE_HEAD))
-				return FALSE
+				return H.inventory_rejected("Для этого слота нужна голова.")
 			var/obj/item/organ/eyes/eyes = H.get_organ_slot(ORGAN_SLOT_EYES)
 			if(eyes?.no_glasses)
-				return FALSE
+				return H.inventory_rejected("Глаза манекена не позволяют надеть очки.")
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_HEAD)
 			if(!H.get_bodypart(BODY_ZONE_HEAD))
-				return FALSE
+				return H.inventory_rejected("Для этого слота нужна голова.")
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		// AI EDIT START - Support independent left and right ear slots
 		if(ITEM_SLOT_EAR_RIGHT, ITEM_SLOT_EAR_LEFT) // BANDASTATION EDIT - Separate ear slots
 		// AI EDIT END
 			if(!H.get_bodypart(BODY_ZONE_HEAD))
-				return FALSE
+				return H.inventory_rejected("Для этого слота нужна голова.")
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_ICLOTHING)
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
@@ -622,11 +626,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(!H.w_uniform && !HAS_TRAIT(H, TRAIT_NO_JUMPSUIT) && (!O || IS_ORGANIC_LIMB(O)))
 				if(!disable_warning)
 					to_chat(H, span_warning("Вам нужно сперва надеть комбинезон, чтобы прикрепить [I.declent_ru(ACCUSATIVE)]!"))
-				return FALSE
+				return H.inventory_rejected("Сначала нужно надеть форму.")
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_LPOCKET)
 			if(HAS_TRAIT(I, TRAIT_NODROP)) //Pockets aren't visible, so you can't move TRAIT_NODROP items into them.
-				return FALSE
+				return H.inventory_rejected("Этот предмет нельзя убрать в карман.")
 			if(!isnull(H.l_store) && H.l_store != I) // no pocket swaps at all
 				return FALSE
 
@@ -635,11 +639,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(!H.w_uniform && !HAS_TRAIT(H, TRAIT_NO_JUMPSUIT) && (!O || IS_ORGANIC_LIMB(O)))
 				if(!disable_warning)
 					to_chat(H, span_warning("Вам нужно сперва надеть комбинезон, чтобы прикрепить [I.declent_ru(ACCUSATIVE)]!"))
-				return FALSE
+				return H.inventory_rejected("Сначала нужно надеть форму.")
 			return TRUE
 		if(ITEM_SLOT_RPOCKET)
 			if(HAS_TRAIT(I, TRAIT_NODROP))
-				return FALSE
+				return H.inventory_rejected("Этот предмет нельзя убрать в слот хранения.")
 			if(!isnull(H.r_store) && H.r_store != I)
 				return FALSE
 
@@ -648,26 +652,26 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(!H.w_uniform && !HAS_TRAIT(H, TRAIT_NO_JUMPSUIT) && (!O || IS_ORGANIC_LIMB(O)))
 				if(!disable_warning)
 					to_chat(H, span_warning("Вам нужно сперва надеть комбинезон, чтобы прикрепить [I.declent_ru(ACCUSATIVE)]!"))
-				return FALSE
+				return H.inventory_rejected("Сначала нужно надеть форму.")
 			return TRUE
 		if(ITEM_SLOT_SUITSTORE)
 			if(HAS_TRAIT(I, TRAIT_NODROP))
-				return FALSE
+				return H.inventory_rejected("Этот предмет нельзя убрать в слот хранения.")
 			var/obj/item/clothing/suit/suit = H.get_item_by_slot(ITEM_SLOT_OCLOTHING)
 			if(!istype(suit))
 				if(!disable_warning)
 					to_chat(H, span_warning("Вам нужно сперва надеть костюм, чтобы прикрепить [I.declent_ru(ACCUSATIVE)]!"))
-				return FALSE
+				return H.inventory_rejected("Сначала нужно надеть костюм.")
 			var/any_suit_storage = (is_type_in_typecache(I, GLOB.any_suit_storage) || I.w_class == WEIGHT_CLASS_TINY)
 			if(any_suit_storage)
 				return TRUE
 			if(I.w_class > WEIGHT_CLASS_BULKY)
 				if(!disable_warning)
 					to_chat(H, span_warning("[capitalize(I.declent_ru(NOMINATIVE))] имеет слишком большой размер!")) //should be src?
-				return FALSE
+				return H.inventory_rejected("Предмет слишком большой для слота костюма.")
 			if(is_type_in_list(I, suit.allowed))
 				return TRUE
-			return FALSE
+			return H.inventory_rejected("Этот костюм не принимает такой предмет.")
 		if(ITEM_SLOT_HANDCUFFED)
 			if(!istype(I, /obj/item/restraints/handcuffs))
 				return FALSE
@@ -678,7 +682,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(!istype(I, /obj/item/restraints/legcuffs))
 				return FALSE
 			if(H.num_legs < 2)
-				return FALSE
+				return H.inventory_rejected("Для этой экипировки нужны обе ноги.")
 			return TRUE
 	return FALSE //Unsupported slot
 

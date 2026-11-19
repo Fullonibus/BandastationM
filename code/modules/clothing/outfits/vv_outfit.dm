@@ -162,6 +162,8 @@
 				item = human.get_item_for_held_index(RIGHT_HANDS)
 			else
 				item = human.get_item_by_slot(text2num(slot))
+		if(!item)
+			continue
 		for(var/vname in edits)
 			item.vv_edit_var(vname,edits[vname])
 	//Apply access
@@ -174,6 +176,20 @@
 			card.registered_name = human.real_name
 			card.update_label()
 			card.update_icon()
+
+/datum/outfit/varedit/copy_from(datum/outfit/target)
+	. = ..()
+	var/datum/outfit/varedit/source = target
+	if(!istype(source))
+		return
+	stored_access = source.stored_access?.Copy()
+	update_id_name = source.update_id_name
+	vv_values = deep_copy_list(source.vv_values)
+	for(var/slot in vv_values)
+		var/list/edits = vv_values[slot]
+		for(var/edit in edits)
+			if(isicon(edits[edit]))
+				edits[edit] = icon(edits[edit])
 
 /datum/outfit/varedit/get_json_data()
 	. = .. ()

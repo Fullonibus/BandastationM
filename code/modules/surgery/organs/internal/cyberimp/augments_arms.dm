@@ -9,6 +9,8 @@
 		BODY_ZONE_R_ARM = ORGAN_SLOT_RIGHT_ARM_AUG,
 		BODY_ZONE_L_ARM = ORGAN_SLOT_LEFT_ARM_AUG,
 	)
+	/// Set by implants with separate left and right models so type-based pickers only offer the matching side.
+	var/fixed_arm_side = FALSE
 	///A ref for the arm we're taking up. Mostly for the unregister signal upon removal
 	var/obj/hand
 

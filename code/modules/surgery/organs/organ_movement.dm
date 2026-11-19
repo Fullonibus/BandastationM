@@ -114,7 +114,9 @@
 
 	var/obj/item/organ/replaced = receiver.get_organ_slot(slot)
 	if(replaced)
-		replaced.Remove(receiver, special = TRUE)
+		if((movement_flags & (NO_ID_TRANSFER | DELETE_IF_REPLACED)) == (NO_ID_TRANSFER | DELETE_IF_REPLACED))
+			replaced.before_organ_replacement(src)
+		replaced.Remove(receiver, special = TRUE, movement_flags = movement_flags & NO_ID_TRANSFER)
 		if(movement_flags & DELETE_IF_REPLACED)
 			qdel(replaced)
 		else

@@ -84,6 +84,46 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 		update_hair()
 	return TRUE
 
+/// A disposable visual mannequin that records why normal inventory operations failed.
+/mob/living/carbon/human/dummy/outfit_check
+	visual_only_organs = FALSE
+
+	/// Failure detail from the current inventory operation, reset before every attempt.
+	var/rejection_reason
+	/// Aggregated failures keyed by destination, item type and reason.
+	var/list/outfit_issues = list()
+
+/mob/living/carbon/human/dummy/outfit_check/harvest_organs()
+	// Species regeneration owns these organs. Keep them out of the live wardrobe's cache.
+	return
+
+/mob/living/carbon/human/dummy/outfit_check/inventory_rejected(reason)
+	rejection_reason = reason
+	return FALSE
+
+/mob/living/carbon/human/dummy/outfit_check/has_equipped(obj/item/item, slot, initial = FALSE)
+	. = ..()
+	if(!.)
+		return
+	// Multi-slot clothes normally reserve secondary slots from the non-visual equip hook.
+	var/datum/component/occupies_slots/reservation = item.GetComponent(/datum/component/occupies_slots)
+	reservation?.reserve_slots(src, slot)
+
+/// Records a failed attempt without retaining references to temporary items.
+/mob/living/carbon/human/dummy/outfit_check/proc/add_outfit_issue(destination, obj/item/item_path, reason, count = 1)
+	var/key = "[destination]|[item_path]|[reason]"
+	var/list/issue = outfit_issues[key]
+	if(issue)
+		issue["count"] += count
+		return
+	outfit_issues[key] = list(
+		"destination" = destination,
+		"path" = "[item_path]",
+		"name" = ispath(item_path, /obj/item) ? initial(item_path.name) : "[item_path]",
+		"reason" = reason,
+		"count" = count,
+	)
+
 /mob/living/carbon/human/dummy/proc/wipe_state()
 	dna.species.create_fresh_body(src) // BANDASTATION ADDITION - Add body modifications
 	delete_equipment()
@@ -179,11 +219,10 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	D.in_use = TRUE
 	return D
 
-/proc/generate_dummy_lookalike(slotkey, mob/target)
+/proc/generate_dummy_lookalike(slotkey, mob/target, mob/living/carbon/human/dummy/copycat)
+	copycat ||= generate_or_wait_for_human_dummy(slotkey)
 	if(!istype(target))
-		return generate_or_wait_for_human_dummy(slotkey)
-
-	var/mob/living/carbon/human/dummy/copycat = generate_or_wait_for_human_dummy(slotkey)
+		return copycat
 
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target

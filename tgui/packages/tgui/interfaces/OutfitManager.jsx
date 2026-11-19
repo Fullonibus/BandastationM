@@ -23,7 +23,8 @@ export const OutfitManager = (props) => {
               />
               <Button
                 icon="copy"
-                tooltip="Copy an already existing outfit"
+                aria-label="Copy a built-in outfit template"
+                tooltip="Copy a built-in outfit template"
                 tooltipPosition="left"
                 onClick={() => act('copy')}
               />
@@ -40,27 +41,26 @@ export const OutfitManager = (props) => {
             {outfits?.map((outfit) => (
               <Stack.Item key={outfit.ref}>
                 <Stack>
-                  <Stack.Item
-                    grow={1}
-                    shrink={1}
-                    style={{
-                      overflow: 'hidden',
-                      whiteSpace: 'nowrap',
-                      textOverflow: 'ellipsis',
-                    }}
-                  >
+                  <Stack.Item grow={1} minWidth={0}>
                     <Button
                       fluid
-                      style={{
-                        overflow: 'hidden',
-                        whiteSpace: 'nowrap',
-                        textOverflow: 'ellipsis',
-                      }}
+                      ellipsis
+                      title={outfit.name.trim()}
                       content={outfit.name}
                       onClick={() => act('edit', { outfit: outfit.ref })}
                     />
                   </Stack.Item>
-                  <Stack.Item ml={0.5}>
+                  <Stack.Item ml={0.5} shrink={0}>
+                    <Button
+                      icon="copy"
+                      role="button"
+                      aria-label={`Copy ${outfit.name.trim()}`}
+                      tooltip="Copy this outfit"
+                      tooltipPosition="left"
+                      onClick={() => act('duplicate', { outfit: outfit.ref })}
+                    />
+                  </Stack.Item>
+                  <Stack.Item ml={0.5} shrink={0}>
                     <Button
                       icon="save"
                       tooltip="Save this outfit to a file"
@@ -68,7 +68,7 @@ export const OutfitManager = (props) => {
                       onClick={() => act('save', { outfit: outfit.ref })}
                     />
                   </Stack.Item>
-                  <Stack.Item ml={0.5}>
+                  <Stack.Item ml={0.5} shrink={0}>
                     <Button
                       color="bad"
                       icon="trash-alt"

@@ -1,5 +1,8 @@
 /*ALL DEFINES RELATED TO INVENTORY OBJECTS, MANAGEMENT, ETC, GO HERE*/
 
+/// Maximum quantity of an item type set in the outfit editor or imported for a custom box.
+#define MAX_OUTFIT_ITEM_COUNT 100
+
 //ITEM INVENTORY WEIGHT, FOR w_class
 /// Usually items smaller then a human hand, (e.g. playing cards, lighter, scalpel, coins/holochips)
 #define WEIGHT_CLASS_TINY 1
