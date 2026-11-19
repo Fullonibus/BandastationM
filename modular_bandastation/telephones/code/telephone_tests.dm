@@ -211,12 +211,19 @@
 	impacts++
 
 /datum/unit_test/telephone/z_transition/Run()
-	phone_reservation = SSmapping.request_turf_block_reservation(3, 3, 2, turf_type_override = /turf/open/indestructible)
+	// Split one reservation into two virtual decks so the upper exit is physically within cord range.
+	phone_reservation = SSmapping.request_turf_block_reservation(3, 7, turf_type_override = /turf/open/indestructible)
 	TEST_ASSERT_NOTNULL(phone_reservation, "Could not reserve two floors for telephone transport.")
-	var/turf/lower_corner = phone_reservation.bottom_left_turfs[2]
+	var/turf/upper_corner = phone_reservation.bottom_left_turfs[1]
+	var/turf/lower_corner = locate(upper_corner.x, upper_corner.y + 4, upper_corner.z)
+	phone_reservation.bottom_left_turfs += lower_corner
+	phone_reservation.top_right_turfs.Insert(1, locate(upper_corner.x + 2, upper_corner.y + 2, upper_corner.z))
+	phone_reservation.height = 3
+	phone_reservation.z_size = 2
 	var/turf/origin = locate(lower_corner.x + 1, lower_corner.y + 1, lower_corner.z)
 	var/turf/destination = get_step(GET_TURF_ABOVE(origin), NORTH)
-	TEST_ASSERT_NOTNULL(destination, "The telephone fixture must expose its native upper floor.")
+	TEST_ASSERT_NOTNULL(destination, "The telephone fixture must expose its virtual upper floor.")
+	TEST_ASSERT(origin.z == destination.z && get_dist(origin, destination) <= PHONE_MAX_RANGE, "The upper exit must share the physical Z-level and be within the handset's range.")
 	calling_phone.forceMove(origin)
 	calling_user.forceMove(origin)
 	calling_phone.set_anchored(FALSE)
