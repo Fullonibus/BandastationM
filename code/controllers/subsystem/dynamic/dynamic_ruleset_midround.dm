@@ -293,9 +293,14 @@
  *
  * Applies prefs to a given body. Usually that's what you want, but sometimes you don't, in which case you can override this proc.
  * Returns TRUE if prefs were applied
+ *
+ * Arguments:
+ * * body - The newly created body receiving character preferences.
+ * * do_not_apply - Preference types that this role must not inherit.
  */
-/datum/dynamic_ruleset/midround/from_ghosts/proc/apply_prefs_to_body(mob/living/carbon/human/body)
-	body.client?.prefs.safe_transfer_prefs_to(body)
+/datum/dynamic_ruleset/midround/from_ghosts/proc/apply_prefs_to_body(mob/living/carbon/human/body, list/do_not_apply)
+	var/client/body_client = GET_CLIENT(body)
+	body_client?.prefs.safe_transfer_prefs_to(body, do_not_apply = do_not_apply)
 	body.dna.remove_all_mutations()
 	body.dna.update_dna_identity()
 	return TRUE
@@ -632,6 +637,11 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors/create_execute_args()
 	return list(new /datum/team/abductor_team())
+
+/// A fresh abductor must receive its species' anatomy rather than the crew character's augmentations.
+/datum/dynamic_ruleset/midround/from_ghosts/abductors/apply_prefs_to_body(mob/living/carbon/human/body, list/do_not_apply)
+	do_not_apply = do_not_apply ? (do_not_apply | list(/datum/preference/body_modifications)) : list(/datum/preference/body_modifications)
+	return ..(body, do_not_apply)
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors/assign_role(datum/mind/candidate, datum/team/abductor_team/team)
 	if(candidate == selected_minds[1])

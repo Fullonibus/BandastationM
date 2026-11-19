@@ -132,6 +132,7 @@
 #include "../../../modular_bandastation/species/code/tests/ipc_upgrade_tests.dm"
 #include "aas_configs.dm"
 #include "abductor_baton_spell.dm"
+#include "abductor_spawn.dm"
 #include "ablative_hud.dm"
 #include "achievements.dm"
 #include "ai_pathfinding.dm"

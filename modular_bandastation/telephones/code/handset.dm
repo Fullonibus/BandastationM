@@ -161,12 +161,14 @@
 		balloon_alert(source, "шнур натянут!")
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
-/** Vertical movement must check the cord before forceMove separates its endpoints. */
-/obj/item/telephone/proc/on_tether_z_move(atom/movable/source, turf/start, turf/destination)
+/** Virtual decks can be within the cord's physical range, but moving between them still requires docking the handset. */
+/obj/item/telephone/proc/on_tether_z_move(atom/movable/source)
 	SIGNAL_HANDLER
-	if(on_tether_pre_move(source, destination) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
-		return COMPONENT_CANT_Z_MOVE
-	return NONE
+	if(!attached_to || loc == attached_to)
+		return NONE
+	if(ismob(source))
+		balloon_alert(source, "шнур натянут!")
+	return COMPONENT_CANT_Z_MOVE
 
 /** Keeps container handling, but never docks a handset because its distance changed. */
 /obj/item/telephone/proc/check_tether()
