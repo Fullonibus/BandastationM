@@ -6,7 +6,6 @@
 	hijack_speed = 1
 	show_name_in_check_antagonists = TRUE
 	show_to_ghosts = TRUE
-	antag_moodlet = null
 	mental_conditioning = TRUE
 	suicide_cry = "ЗА КЛАН ПАУКА!!"
 	preview_outfit = /datum/outfit/ninja_preview

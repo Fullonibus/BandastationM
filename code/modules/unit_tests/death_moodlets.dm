@@ -123,3 +123,19 @@
 
 	desensitized_dummy.remove_status_effect(/datum/status_effect/desensitized, TRAIT_SOURCE_UNIT_TESTS)
 	TEST_ASSERT_EQUAL(desensitized_dummy.mind.desensitized_level, 1.0, "Desensitized level not reset to normal on removal of desensitized status effect.")
+
+/// Seeing another death after losing conditioning should have the normal effect immediately.
+/datum/unit_test/death_moodlets/human/conditioning_removed/Run()
+	var/mob/living/carbon/human/consistent/witness = allocate(__IMPLIED_TYPE__)
+	witness.mind_initialize()
+	ADD_TRAIT(witness, TRAIT_MENTALLY_CONDITIONED, TRAIT_ADMIN_GRANTED)
+	var/mob/living/first_casualty = get_dying_mob()
+	first_casualty.death()
+	var/datum/mood_event/first_reaction = witness.mob_mood.get_mood_event("saw_death")
+	TEST_ASSERT_EQUAL(first_reaction?.type, /datum/mood_event/conditional/see_death/conditioned, "The witness did not receive the conditioned reaction to the first death.")
+
+	REMOVE_TRAIT(witness, TRAIT_MENTALLY_CONDITIONED, TRAIT_ADMIN_GRANTED)
+	var/mob/living/second_casualty = get_dying_mob()
+	second_casualty.death()
+	var/datum/mood_event/second_reaction = witness.mob_mood.get_mood_event("saw_death")
+	TEST_ASSERT_EQUAL(second_reaction?.type, /datum/mood_event/conditional/see_death, "The conditioned reaction blocked the normal reaction to the next death.")

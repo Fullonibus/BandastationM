@@ -8,7 +8,6 @@
 	can_elimination_hijack = ELIMINATION_PREVENT
 	show_in_antagpanel = FALSE
 	show_to_ghosts = TRUE
-	antag_moodlet = null
 	mental_conditioning = TRUE
 	antagpanel_category = ANTAG_GROUP_ERT
 	suicide_cry = "FOR NANOTRASEN!!"
@@ -265,7 +264,7 @@
 		H.dna.species.outfit_important_for_life = plasmaman_outfit
 
 	H.dna.species.give_important_for_life(H)
-	H.equipOutfit(outfit)
+	H.equipOutfit(outfit, apply_mental_conditioning = !mental_conditioning)
 
 	if(isplasmaman(H))
 		var/obj/item/mod/control/our_modsuit = locate() in H.get_equipped_items()

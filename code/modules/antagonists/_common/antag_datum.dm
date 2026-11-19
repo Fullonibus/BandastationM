@@ -78,6 +78,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 /datum/antagonist/Destroy()
 	GLOB.antagonists -= src
 	if(owner)
+		clear_mental_conditioning()
 		LAZYREMOVE(owner.antag_datums, src)
 	QDEL_NULL(team_hud_ref)
 	owner = null

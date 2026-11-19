@@ -7,4 +7,5 @@
 
 /datum/antagonist/nukeop/reinforcement/cyborg
 	name = "Киборг поддержки ядерных оперативников"
+	antag_moodlet = /datum/mood_event/focused
 	mental_conditioning = FALSE

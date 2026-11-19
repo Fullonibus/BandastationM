@@ -9,11 +9,11 @@
 	if(visuals_only)
 		return
 
-	var/obj/item/card/id/W = H.wear_id
-	if(W)
-		W.registered_name = H.real_name
-		W.update_label()
-		W.update_icon()
+	var/obj/item/card/id/id_card = H.wear_id
+	if(istype(id_card))
+		id_card.registered_name = H.real_name
+		id_card.update_label()
+		id_card.update_icon()
 	H.grant_language(/datum/language/uncommon)
 	H.grant_language(/datum/language/common)
 	H.remove_blocked_language(/datum/language/uncommon)

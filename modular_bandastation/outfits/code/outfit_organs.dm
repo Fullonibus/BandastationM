@@ -1,7 +1,7 @@
 /datum/outfit
 	var/list/organs = null
 
-/datum/outfit/equip(mob/living/carbon/human/user, visuals_only = FALSE)
+/datum/outfit/equip(mob/living/carbon/human/user, visuals_only = FALSE, apply_mental_conditioning = TRUE)
 	. = ..()
 	if(!.)
 		return

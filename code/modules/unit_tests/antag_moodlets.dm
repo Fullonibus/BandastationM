@@ -62,3 +62,23 @@
 
 #undef HAS_HERETIC_MOODLET
 #undef HAS_TRAITOR_MOODLET
+
+/// A standard ERT outfit must not leave role conditioning on the previous body.
+/datum/unit_test/ert_mental_conditioning/Run()
+	var/mob/living/carbon/human/original = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/replacement = allocate(/mob/living/carbon/human/consistent)
+	original.mind_initialize()
+	var/datum/mind/ert_mind = original.mind
+	var/datum/antagonist/ert/security/ert_antag = allocate(/datum/antagonist/ert/security)
+	ert_antag.random_names = FALSE
+	ert_mind.add_antag_datum(ert_antag)
+	TEST_ASSERT(HAS_TRAIT(original, TRAIT_MENTALLY_CONDITIONED), "The ERT member did not receive conditioning.")
+
+	ert_mind.transfer_to(replacement)
+	TEST_ASSERT(!HAS_TRAIT(original, TRAIT_MENTALLY_CONDITIONED), "The ERT outfit left conditioning on the previous body.")
+	TEST_ASSERT(HAS_TRAIT(replacement, TRAIT_MENTALLY_CONDITIONED), "Conditioning did not follow the ERT member's mind.")
+	ert_mind.remove_antag_datum(ert_antag.type)
+	TEST_ASSERT(!HAS_TRAIT(replacement, TRAIT_MENTALLY_CONDITIONED), "The replacement body kept conditioning after removal of the ERT role.")
+
+	replacement.equipOutfit(/datum/outfit/centcom/ert/security)
+	TEST_ASSERT(HAS_TRAIT(replacement, TRAIT_MENTALLY_CONDITIONED), "Equipping an ERT outfit separately did not grant conditioning.")

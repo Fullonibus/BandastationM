@@ -166,6 +166,11 @@
 /datum/mood_event/conditional/see_death/conditioned/condition_fulfilled(mob/living/who, mob/dead_mob, dusted, gibbed)
 	return HAS_TRAIT(who, TRAIT_MENTALLY_CONDITIONED)
 
+/datum/mood_event/conditional/see_death/conditioned/be_replaced(datum/mood/home, datum/mood_event/new_event, mob/dead_mob, dusted, gibbed)
+	if(!HAS_TRAIT(owner, TRAIT_MENTALLY_CONDITIONED))
+		return ALLOW_NEW_MOOD
+	return ..()
+
 /datum/mood_event/conditional/see_death/conditioned/update_effect(mob/dead_mob, dusted, gibbed)
 	if(gibbed)
 		description = "%DEAD_MOB% разорван в клочья. Не отвлекаюсь."

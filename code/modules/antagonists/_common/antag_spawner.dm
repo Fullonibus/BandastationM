@@ -378,7 +378,7 @@
 	else
 		spawned_mob.forceMove(locate(1,1,1))
 
-	op_mind.add_antag_datum(antag_datum)
+	var/datum/antagonist/assigned_antag = op_mind.add_antag_datum(antag_datum)
 
 	if(ishuman(spawned_mob))
 		var/mob/living/carbon/human/human_mob = spawned_mob
@@ -386,7 +386,7 @@
 		if(human_mob.dna.species != species_type)
 			human_mob.set_species(species_type)
 
-		human_mob.equipOutfit(outfit)
+		human_mob.equipOutfit(outfit, apply_mental_conditioning = !assigned_antag?.mental_conditioning)
 
 	LAZYADD(op_mind.special_roles, role_to_play)
 

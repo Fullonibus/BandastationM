@@ -3,6 +3,8 @@
 #define MOOD_CATEGORY_NUTRITION "nutrition"
 #define MOOD_CATEGORY_AREA_BEAUTY "area_beauty"
 #define MOOD_CATEGORY_MENTAL_CONDITIONING "mental_conditioning"
+/// Fraction of each negative moodlet applied to mentally conditioned mobs.
+#define CONDITIONED_NEGATIVE_MOOD_MULTIPLIER 0.25
 
 /**
  * Mood datum
@@ -135,17 +137,16 @@
 /datum/mood/proc/on_mental_conditioning_gained()
 	SIGNAL_HANDLER
 
-	negative_mood_modifier -= 0.75
 	add_mood_event(MOOD_CATEGORY_MENTAL_CONDITIONING, /datum/mood_event/mental_conditioning)
-	update_mood()
 
 /// Reverts negative mood resistance and removes the conditioning moodlet when [TRAIT_MENTALLY_CONDITIONED] is lost.
 /datum/mood/proc/on_mental_conditioning_lost()
 	SIGNAL_HANDLER
 
-	negative_mood_modifier += 0.75
-	clear_mood_event(MOOD_CATEGORY_MENTAL_CONDITIONING)
-	update_mood()
+	if(get_mood_event(MOOD_CATEGORY_MENTAL_CONDITIONING))
+		clear_mood_event(MOOD_CATEGORY_MENTAL_CONDITIONING)
+	else
+		update_mood()
 
 /datum/mood/process(seconds_per_tick)
 	switch(mood_level)
@@ -339,10 +340,14 @@
 	shown_mood = 0
 
 	if (!HAS_TRAIT(mob_parent, TRAIT_APATHETIC))
+		var/positive_multiplier = max(positive_mood_modifier, 0)
+		var/negative_multiplier = max(negative_mood_modifier, 0)
+		if(HAS_TRAIT(mob_parent, TRAIT_MENTALLY_CONDITIONED))
+			negative_multiplier *= CONDITIONED_NEGATIVE_MOOD_MULTIPLIER
 		for(var/category in mood_events)
 			var/datum/mood_event/the_event = mood_events[category]
 			var/event_mood = the_event.mood_change
-			event_mood *= max((event_mood > 0) ? positive_mood_modifier : negative_mood_modifier, 0)
+			event_mood *= (event_mood > 0) ? positive_multiplier : negative_multiplier
 			mood += event_mood
 			if (!the_event.hidden)
 				shown_mood += event_mood
@@ -773,3 +778,4 @@
 #undef MOOD_CATEGORY_NUTRITION
 #undef MOOD_CATEGORY_AREA_BEAUTY
 #undef MOOD_CATEGORY_MENTAL_CONDITIONING
+#undef CONDITIONED_NEGATIVE_MOOD_MULTIPLIER

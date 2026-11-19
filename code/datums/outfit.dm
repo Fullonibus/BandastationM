@@ -181,10 +181,11 @@
  *
  * Extra Arguments
  * * visuals_only true if this is only for display (in the character setup screen)
+ * * apply_mental_conditioning false if the antagonist role manages its own conditioning
  *
  * If visuals_only is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/equip(mob/living/carbon/human/user, visuals_only = FALSE)
+/datum/outfit/proc/equip(mob/living/carbon/human/user, visuals_only = FALSE, apply_mental_conditioning = TRUE)
 	pre_equip(user, visuals_only)
 
 	//Start with uniform,suit,backpack for additional slots
@@ -287,7 +288,7 @@
 
 	if(!visuals_only)
 		apply_fingerprints(user)
-		if(mental_conditioning)
+		if(apply_mental_conditioning && mental_conditioning)
 			ADD_TRAIT(user, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
 		if(internals_slot)
 			if(internals_slot & ITEM_SLOT_HANDS)
@@ -564,8 +565,7 @@
 		if(imptype)
 			implants += imptype
 	accessory = text2path(outfit_data["accessory"])
-	if("mental_conditioning" in outfit_data)
-		mental_conditioning = !!outfit_data["mental_conditioning"]
+	mental_conditioning = outfit_data["mental_conditioning"] == TRUE
 	return TRUE
 
 /datum/outfit/vv_get_dropdown()
