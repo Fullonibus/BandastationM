@@ -1,6 +1,18 @@
 /// A ghost role must not inherit crew augmentations or remove them from saved preferences.
+/datum/unit_test/abductor_spawn_preferences
+	/// Client fixture whose preferences are also owned by this test.
+	var/datum/client_interface/mock_client
+
+/datum/unit_test/abductor_spawn_preferences/Destroy()
+	if(mock_client)
+		mock_client.prefs?.parent = null
+		mock_client.prefs = null
+		mock_client.mob = null
+		mock_client = null
+	return ..()
+
 /datum/unit_test/abductor_spawn_preferences/Run()
-	var/datum/client_interface/mock_client = allocate(/datum/client_interface)
+	mock_client = allocate(/datum/client_interface)
 	var/datum/preferences/preferences = allocate(/datum/preferences, mock_client)
 	mock_client.prefs = preferences
 	preferences.randomise = list()
@@ -38,7 +50,6 @@
 	TEST_ASSERT(IS_ROBOTIC_LIMB(crew_body.get_bodypart(BODY_ZONE_L_ARM)), "The default role path stopped applying the prosthetic arm preference.")
 	TEST_ASSERT_EQUAL(json_encode(preferences.read_preference(/datum/preference/body_modifications)), original_preferences, "Spawning an abductor modified the saved augmentation choices.")
 	crew_body.mock_client = null
-	mock_client.mob = null
 
 /// Finalizing any abductor role must handle a replaced or missing tongue and finish the spawn.
 /datum/unit_test/abductor_spawn_tongue/Run()
