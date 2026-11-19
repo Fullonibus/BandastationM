@@ -1,0 +1,27 @@
+@use './KSSP';
+@use './TSF';
+@use './SKRELLIAN_EMPIRE';
+@use './ELYSIUM';
+@use './FREEDOM';
+
+:root:is(
+  .theme-KSSP,
+  .theme-TSF,
+  .theme-SKRELLIAN_EMPIRE,
+  .theme-ELYSIUM,
+  .theme-FREEDOM
+) {
+  // Transparent buttons use a foreground accent instead of an opaque button fill.
+  .Button--color--transparent.Button--selected:not(.Button--disabled) {
+    --button-color: var(--tab-color-selected);
+  }
+
+  .NtosWindow__content .Layout__content--scrollable {
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+  }
+}

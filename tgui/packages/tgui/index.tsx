@@ -6,13 +6,7 @@
 
 // Themes
 import './styles/main.scss';
-// BANDASTATION ADDITION START - National PDA themes
-import './styles/themes/KSSP.scss';
-import './styles/themes/TSF.scss';
-import './styles/themes/SKRELLIAN_EMPIRE.scss';
-import './styles/themes/ELYSIUM.scss';
-import './styles/themes/FREEDOM.scss';
-// BANDASTATION ADDITION END
+import './styles/themes/national-pda.scss';
 import './styles/themes/paper220.scss';
 import './styles/themes/ss220.scss';
 
