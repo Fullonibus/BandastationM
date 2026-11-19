@@ -141,7 +141,7 @@
 /obj/item/gun/energy/laser/awaymission_aeg/mk3
 	name = "Exploreverse Mk.III"
 	desc = "Третий прототип линейки Exploreverse в корпусе лазерного карабина. Самозарядки нет: питается от сменных батарей, \
-		которые вставляются и извлекаются как магазин и заряжаются в обычном зарядном устройстве для батарей."
+		которые вставляются и извлекаются как магазин и заряжаются в оружейном зарядном устройстве."
 	icon_state = "laser_gate_mk3"
 	inhand_icon_state = "laser"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -210,7 +210,7 @@
 /// Battery magazine of the Exploreverse Mk.III: a quarter more shots than the Mk.I, charged like any other cell.
 /obj/item/stock_parts/power_store/cell/exploreverse
 	name = "Exploreverse Mk.III battery"
-	desc = "Сменная батарея-магазин для Exploreverse Mk.III. Заряжается в обычном зарядном устройстве для батарей."
+	desc = "Сменная батарея-магазин для Exploreverse Mk.III. Заряжается в оружейном зарядном устройстве."
 	icon = 'modular_bandastation/weapon/icons/ranged/energy.dmi'
 	icon_state = "exploreverse_battery"
 	maxcharge = STANDARD_CELL_CHARGE * 1.25
@@ -228,6 +228,13 @@
 
 /obj/item/stock_parts/power_store/cell/exploreverse/empty
 	empty = TRUE
+
+// The magazine charges on a weapon recharger, which also draws on the APC's cell; the cell charger takes only grid surplus.
+/obj/machinery/cell_charger/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(istype(tool, /obj/item/stock_parts/power_store/cell/exploreverse))
+		balloon_alert(user, "нужна оружейная зарядка!")
+		return ITEM_INTERACT_BLOCKING
+	return ..()
 
 /datum/design/exploreverse_battery
 	name = "Exploreverse Mk.III Battery"
