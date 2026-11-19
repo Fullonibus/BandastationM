@@ -1,3 +1,27 @@
+/datum/unit_test/security_equipment_contraband/Run()
+	var/obj/item/inspector/scanner = allocate(/obj/item/inspector)
+	var/obj/item/service_pistol = allocate(/obj/item/gun/ballistic/automatic/pistol/gp9/sec)
+	TEST_ASSERT(!scanner.contraband_scan(service_pistol), "Scanner flagged a standard security GP-9.")
+
+	var/obj/item/detective_revolver = allocate(/obj/item/gun/ballistic/revolver/c38/detective)
+	TEST_ASSERT(!scanner.contraband_scan(detective_revolver), "Scanner flagged the detective's service revolver.")
+
+	var/obj/item/assault_belt = allocate(/obj/item/storage/belt/military/assault)
+	TEST_ASSERT(!scanner.contraband_scan(assault_belt), "Scanner flagged the assault belt issued in the security crate.")
+
+	var/obj/item/corporate_defib = allocate(/obj/item/defibrillator/compact/combat/nanotrasen)
+	TEST_ASSERT(!scanner.contraband_scan(corporate_defib), "Scanner flagged the Nanotrasen combat defibrillator.")
+
+	var/obj/item/makarov = allocate(/obj/item/gun/ballistic/automatic/pistol)
+	TEST_ASSERT(scanner.contraband_scan(makarov), "Scanner missed a Makarov listed in the uplink.")
+
+	var/obj/item/syndicate_defib = allocate(/obj/item/defibrillator/compact/combat/loaded)
+	TEST_ASSERT(scanner.contraband_scan(syndicate_defib), "Scanner missed the Syndicate combat defibrillator.")
+
+	ADD_TRAIT(service_pistol, TRAIT_CONTRABAND, INNATE_TRAIT)
+	TEST_ASSERT(scanner.contraband_scan(service_pistol), "Scanner ignored the explicit marker on a GP-9.")
+
+
 /datum/unit_test/syndicate_items_contraband/Run()
 	var/obj/item/inspector/scanner = allocate(/obj/item/inspector)
 	scanner.scans_correctly = TRUE

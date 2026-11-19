@@ -1949,12 +1949,25 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 	return TRUE
 
 /**
- * Used to determine if an item should be considered contraband by N-spect scanners or scanner gates.
- * Returns true when an item has the contraband trait, or is included in the traitor uplink.
+ * Returns whether an N-spect scanner should detect this item as contraband.
+ * Checks the item's trait, then looks for a match in the uplink catalog.
  */
 /obj/item/proc/is_contraband()
 	if(HAS_TRAIT(src, TRAIT_CONTRABAND))
 		return TRUE
+
+	// These service sidearms and the SWAT crate's assault belt share parent types with uplink items.
+	var/static/list/service_sidearms = typecacheof(list(
+		/obj/item/gun/ballistic/automatic/pistol/cm23,
+		/obj/item/gun/ballistic/automatic/pistol/cm357,
+		/obj/item/gun/ballistic/automatic/pistol/cm70,
+		/obj/item/gun/ballistic/automatic/pistol/gp9,
+		/obj/item/gun/ballistic/automatic/pistol/pdh,
+		/obj/item/gun/ballistic/revolver/c38/detective,
+	))
+	if(service_sidearms[type] || type == /obj/item/storage/belt/military/assault)
+		return FALSE
+
 	for(var/datum/uplink_item/traitor_item as anything in SStraitor.uplink_items)
 		if(istype(src, traitor_item.item))
 			if(!(traitor_item.uplink_item_flags & SYNDIE_TRIPS_CONTRABAND))
