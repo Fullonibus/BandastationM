@@ -1,0 +1,269 @@
+$kssp-emblem-dim: 0.80;
+
+:root.theme-KSSP {
+  --kssp-gold-rgb: 214, 190, 133;
+  --kssp-burgundy-rgb: 126, 45, 56;
+  --kssp-border-rgb: 170, 145, 98;
+  --color-base: #101417;
+  --color-secondary: #242a2f;
+  --color-primary: #8e3944;
+  --color-text: #e1dbce;
+  --color-text-translucent: rgba(225, 219, 206, 0.68);
+  --color-section: rgba(13, 17, 21, 0.72);
+  --color-label: #c9c0af;
+  --base-gradient-spread: 1;
+
+  --color-action: #d1b36c;
+  --section-title-color: #d6be86;
+  --section-separator-color: #70303a;
+  --tab-color-selected: #e0ca91;
+
+  --color-border: rgba(191, 161, 103, 0.24);
+  --border-primary-saturation: 22;
+  --border-primary-lightness: 56;
+  --border-primary-alpha: 0.7;
+
+  --button-background-default: #596165;
+  --button-background-selected: #6c2e37;
+  --input-background-lightness: 7;
+  --notice-box-background: rgba(17, 22, 26, 0.94);
+  --tooltip-background-lightness: 14;
+  --progress-bar-background: rgba(0, 0, 0, 0.45);
+  --candystripe-odd: rgba(210, 185, 124, 0.035);
+
+  --color-scrollbar-thumb: rgba(var(--kssp-gold-rgb), 0.36);
+  --color-scrollbar-base: var(--color-section);
+
+  color: var(--color-text);
+  .Layout__content {
+    background-color: #101417;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        rgba(214, 190, 134, 0.009) 0 1px,
+        transparent 1px 5px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.008) 0 24px,
+        rgba(0, 0, 0, 0.038) 24px 48px
+      ),
+      radial-gradient(
+        ellipse at center,
+        transparent 35%,
+        rgba(0, 0, 0, 0.18) 100%
+      ),
+      linear-gradient(
+        rgba(16, 20, 23, $kssp-emblem-dim),
+        rgba(16, 20, 23, $kssp-emblem-dim)
+      ),
+      url('../assets/KSSP.svg');
+
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 5px 100%, 48px 100%, 100% 100%, 100% 100%, 60% auto;
+    background-position: center, center, center, center, center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+  }
+
+  .NtosWindow__header {
+    background-color: #341920;
+    background-image: linear-gradient(
+      180deg,
+      #69303a 0%,
+      #4a232b 52%,
+      #2d171d 100%
+    );
+    border-bottom: 1px solid rgba(var(--kssp-gold-rgb), 0.38);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 235, 187, 0.10),
+      0 1px 3px rgba(0, 0, 0, 0.28);
+  }
+  .Section {
+    background-color: rgba(13, 17, 21, 0.72);
+    border-radius: 1px;
+    box-shadow:
+      inset 1px 1px 0 rgba(230, 223, 192, 0.05),
+      inset -1px -1px 0 rgba(0, 0, 0, 0.32),
+      0 1px 3px rgba(0, 0, 0, 0.18);
+  }
+
+  .Section .Section {
+    box-shadow: none;
+    background-color: transparent;
+  }
+  .Section__title {
+    color: var(--section-title-color);
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(var(--kssp-gold-rgb), 0.72) 0 4px,
+        transparent 4px 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(var(--kssp-burgundy-rgb), 0.62) 0%,
+        rgba(var(--kssp-burgundy-rgb), 0.22) 72%,
+        transparent 100%
+      );
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100% 100%, 100% 100%;
+    background-position: left top, left top;
+    border-bottom: 1px solid rgba(var(--kssp-gold-rgb), 0.18);
+    text-shadow: 0 0 4px rgba(var(--kssp-gold-rgb), 0.12);
+  }
+
+  .Section__titleText {
+    letter-spacing: 0.04em;
+  }
+
+  .Divider,
+  hr {
+    border-color: rgba(var(--kssp-gold-rgb), 0.14);
+  }
+
+  .LabeledList__label {
+    color: var(--color-label);
+  }
+  .Button:not(.Button--disabled):not(.Button--color--transparent) {
+    border-radius: 1px;
+    outline: 1px solid rgba(12, 13, 15, 0.65);
+    outline-offset: -1px;
+    box-shadow:
+      inset 1px 1px 0 rgba(239, 236, 222, 0.24),
+      inset -1px -1px 0 rgba(0, 0, 0, 0.58),
+      0 1px 1px rgba(0, 0, 0, 0.30);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.65);
+
+    &:hover {
+      box-shadow:
+        inset 1px 1px 0 rgba(247, 243, 227, 0.34),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.50),
+        0 0 4px rgba(var(--kssp-gold-rgb), 0.14);
+    }
+
+    &:active,
+    &.Button--selected {
+      box-shadow:
+        inset 2px 2px 4px rgba(0, 0, 0, 0.70),
+        inset -1px -1px 0 rgba(220, 198, 147, 0.14);
+    }
+  }
+  .Button--color--default:not(.Button--disabled) {
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.14),
+        transparent 7px,
+        transparent calc(100% - 7px),
+        rgba(0, 0, 0, 0.18)
+      ),
+      linear-gradient(
+        180deg,
+        #747d80 0%,
+        #60696d 44%,
+        #434b50 100%
+      );
+    &:hover {
+      color: #f5e8e0;
+      background-color: #742b39;
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.16),
+          transparent 7px,
+          transparent calc(100% - 7px),
+          rgba(0, 0, 0, 0.20)
+        ),
+        linear-gradient(
+          180deg,
+          #984553 0%,
+          #7d3240 44%,
+          #4b1d28 100%
+        );
+      box-shadow:
+        inset 1px 1px 0 rgba(255, 218, 207, 0.30),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.64),
+        0 0 6px rgba(151, 53, 74, 0.32);
+    }
+
+    &:active,
+    &.Button--selected {
+      background-image: linear-gradient(
+        180deg,
+        #4d2229 0%,
+        #6e313a 100%
+      );
+    }
+  }
+
+  .Button--disabled {
+    opacity: 0.72;
+  }
+
+  .Button--color--transparent:hover:not(.Button--disabled) {
+    box-shadow:
+      inset 0 0 0 1px rgba(var(--kssp-gold-rgb), 0.30);
+  }
+  .Input,
+  .TextArea,
+  .NumberInput__input {
+    background-color: rgba(8, 12, 15, 0.88);
+    color: var(--color-text);
+    border: 1px solid rgba(var(--kssp-border-rgb), 0.24);
+    box-shadow:
+      inset 2px 2px 4px rgba(0, 0, 0, 0.52),
+      inset 0 0 0 1px rgba(196, 167, 112, 0.12);
+
+    &:focus-within {
+      box-shadow:
+        inset 2px 2px 4px rgba(0, 0, 0, 0.36),
+        0 0 0 1px rgba(var(--kssp-gold-rgb), 0.58),
+        0 0 5px rgba(var(--kssp-gold-rgb), 0.12);
+    }
+  }
+
+  .Input::placeholder,
+  .TextArea::placeholder {
+    color: rgba(225, 219, 206, 0.42);
+  }
+  .Tab {
+    border-radius: 1px;
+  }
+
+  .Tab--selected {
+    box-shadow:
+      inset 0 -2px 0 rgba(var(--kssp-gold-rgb), 0.52),
+      inset 1px 1px 0 rgba(0, 0, 0, 0.20);
+    text-shadow: 0 0 3px rgba(var(--kssp-gold-rgb), 0.10);
+  }
+
+  .ProgressBar {
+    background: rgba(0, 0, 0, 0.42);
+    box-shadow:
+      inset 1px 1px 2px rgba(0, 0, 0, 0.62),
+      0 0 0 1px rgba(var(--kssp-gold-rgb), 0.04);
+  }
+
+  .ProgressBar--color--default {
+    border-color: rgba(var(--kssp-border-rgb), 0.24);
+
+    .ProgressBar__fill {
+      background-image: linear-gradient(
+        180deg,
+        #e0ca8b 0%,
+        #b89754 100%
+      );
+    }
+  }
+
+  .Table__row:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.015);
+  }
+
+  .Tooltip,
+  .Modal {
+    background-color: rgba(17, 22, 26, 0.94);
+    border: 1px solid rgba(var(--kssp-border-rgb), 0.24);
+    color: var(--color-text);
+  }
+}
