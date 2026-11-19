@@ -81,6 +81,11 @@
 /// MODsuits can overslot these items
 #define CAN_BE_OVERSLOT (1<<19)
 
+// Flags for contraband_type_categories on /obj/item.
+
+/// Detectable contraband without a specific category.
+#define CONTRABAND_CATEGORY_UNCLASSIFIED (1<<0)
+
 // Flags for the clothing_flags var on /obj/item/clothing
 
 /// SUIT and HEAD items which stop lava from hurting the wearer

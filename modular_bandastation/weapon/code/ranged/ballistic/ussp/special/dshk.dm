@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/dshk
 	name = "DKSH-12.7 'Dushka' HMG"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Тяжелый стационарный пулемет калибра 12.7x108мм переоснащенный в ручной вариант, мощное оружие поддержки для пехоты. \
 	За свои характеристики солдаты часто дают ему более ласковое название - \"Душка\""
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
@@ -40,7 +41,6 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
 	AddElement(/datum/element/drag_pickup)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/dshk/examine(mob/user)
 	. = ..()

@@ -1,3 +1,2 @@
-/obj/item/fireaxe/boardingaxe/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
+/obj/item/fireaxe/boardingaxe
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED

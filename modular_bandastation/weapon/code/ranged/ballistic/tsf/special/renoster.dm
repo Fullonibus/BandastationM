@@ -14,6 +14,7 @@
 // MARK: SolFed shotgun (this was gonna be in a proprietary shotgun shell type outside of 12ga at some point, wild right?)
 /obj/item/gun/ballistic/shotgun/riot/renoster
 	name = "Renoster shotgun"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Тяжелый дробовик двенадцатого калибра, вмещающий шесть патронов. Производится для различных военных подразделений ТСФ и используется ими."
 	sawn_desc = "Обрез тяжелого дробовика двенадцатого калибра, вмещающий шесть патронов. Главное не сломать себе руки."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
@@ -42,7 +43,6 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/renoster)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/shotgun/riot/renoster/update_icon_state()
 	. = ..()

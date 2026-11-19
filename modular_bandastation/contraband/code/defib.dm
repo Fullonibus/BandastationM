@@ -1,7 +1,2 @@
-/obj/item/defibrillator/compact/combat/loaded/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
-
-/obj/item/defibrillator/compact/combat/nanotrasen/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
+/obj/item/defibrillator/compact/combat/loaded
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED

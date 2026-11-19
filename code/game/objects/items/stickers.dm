@@ -136,12 +136,9 @@
 
 /obj/item/sticker/syndicate
 	name = "syndicate sticker"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	icon_state = "synd"
 	exclude_from_random = TRUE
-
-/obj/item/sticker/syndicate/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/sticker/syndicate/c4
 	name = "C-4 sticker"

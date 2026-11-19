@@ -425,6 +425,7 @@
 
 /obj/item/storage/belt/military/assault
 	name = "assault belt"
+	contraband_type_categories = NONE
 	desc = "A tactical assault belt."
 	icon_state = "assault"
 	inhand_icon_state = "security"

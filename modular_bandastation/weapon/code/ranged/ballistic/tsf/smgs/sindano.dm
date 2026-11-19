@@ -1,6 +1,7 @@
 // MARK: Base TSF SMG
 /obj/item/gun/ballistic/automatic/sindano
 	name = "Sindano submachine gun"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Небольшой пистолет-пулемет, стреляющий патронами калибра .35 Sol. Часто встречается в руках ЧВК и других неблагонадежных корпораций. Принимает любой стандартный магазин от пистолетов ТСФ."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic.dmi'
 	icon_state = "sindano"
@@ -35,7 +36,6 @@
 /obj/item/gun/ballistic/automatic/sindano/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/automatic_fire, fire_delay)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/sindano/add_deep_lore()
 	AddElement(/datum/element/examine_lore, \

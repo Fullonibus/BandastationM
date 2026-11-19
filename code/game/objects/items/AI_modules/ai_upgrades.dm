@@ -54,13 +54,10 @@
 /// AI module which gives some ALL malf ai abilities when installed in a law rack
 /obj/item/ai_module/combat
 	name = "combat software module"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "A highly illegal, highly dangerous upgrade for artificial intelligence units, granting them a variety of powers as well as the ability to hack APCs."
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "secmodschematic"
-
-/obj/item/ai_module/combat/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/ai_module/combat/examine(mob/user)
 	. = ..()
@@ -103,6 +100,7 @@
 //Lipreading
 /obj/item/ai_module/upgrade/surveillance
 	name = "surveillance software upgrade"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "An illegal software package that will allow an artificial intelligence to 'hear' from its cameras via lip reading and hidden microphones."
 	upgrade_type = /datum/ai_module/malf/upgrade/eavesdrop
 	custom_materials = list(
@@ -113,10 +111,6 @@
 		/datum/material/diamond = SHEET_MATERIAL_AMOUNT * 10,
 		/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 5
 	)
-
-/obj/item/ai_module/upgrade/surveillance/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/ai_module/upgrade/power_transfer
 	name = "power transfer upgrade"

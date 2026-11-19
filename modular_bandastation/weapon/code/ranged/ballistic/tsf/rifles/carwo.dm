@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/carwo
 	name = "Carwo-Cawil battle rifle"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Тяжелая боевая винтовка, стреляющая патронами калибра .40 Sol. Часто встречается в руках военных ТСФ. Принимает любой стандартный магазин от винтовок ТСФ."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
 	icon_state = "infanterie"
@@ -29,7 +30,6 @@
 /obj/item/gun/ballistic/automatic/carwo/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/carwo/add_seclight_point()
 	AddComponent(\

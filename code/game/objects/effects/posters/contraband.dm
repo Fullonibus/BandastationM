@@ -1,12 +1,9 @@
 // These icon_states may be overridden, but are for mapper's convinence
 /obj/item/poster/random_contraband
 	name = "random contraband poster"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	poster_type = /obj/structure/sign/poster/contraband/random
 	icon_state = "rolled_poster"
-
-/obj/item/poster/random_contraband/Initialize(mapload, obj/structure/sign/poster/new_poster_structure)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /// Creates a random poster designed for a certain audience
 /obj/item/poster/random_contraband/pinup

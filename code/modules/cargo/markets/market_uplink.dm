@@ -117,16 +117,13 @@
 
 /obj/item/market_uplink/blackmarket
 	name = "\improper Black Market Uplink"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "An illegal black market uplink. If command wanted you to have these, they wouldn't have made it so hard to get one."
 	icon = 'icons/obj/devices/blackmarket.dmi'
 	icon_state = "uplink"
 	//The original black market uplink
 	accessible_markets = list(/datum/market/blackmarket)
 	custom_premium_price = PAYCHECK_CREW * 2.5
-
-/obj/item/market_uplink/blackmarket/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /datum/crafting_recipe/radio_containing/blackmarket_uplink
 	name = "Black Market Uplink"

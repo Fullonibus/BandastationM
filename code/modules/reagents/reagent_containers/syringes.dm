@@ -428,11 +428,8 @@
 
 /obj/item/reagent_containers/syringe/contraband
 	name = "unlabeled syringe"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "A syringe containing some sort of unknown chemical cocktail."
-
-/obj/item/reagent_containers/syringe/contraband/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/reagent_containers/syringe/contraband/space_drugs
 	list_reagents = list(/datum/reagent/drug/space_drugs = 15)

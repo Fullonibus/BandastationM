@@ -1,3 +1,2 @@
-/obj/item/claymore/cutlass/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
+/obj/item/claymore/cutlass
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED

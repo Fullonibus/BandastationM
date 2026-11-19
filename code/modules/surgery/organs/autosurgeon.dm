@@ -154,13 +154,10 @@
 
 /obj/item/autosurgeon/syndicate
 	name = "suspicious autosurgeon"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	icon_state = "autosurgeon_syndicate"
 	surgery_speed = 0.75
 	loaded_overlay = "autosurgeon_syndicate_loaded_overlay"
-
-/obj/item/autosurgeon/syndicate/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/autosurgeon/syndicate/laser_arm
 	desc = "Одноразовый автохирург, который содержит аугментацию боевого лазера в руку. Отверткой можно достать имплант, но нельзя вставить обратно."

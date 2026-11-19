@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/rifle/hlrm
 	name = "HLR-M2"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Cнайперская винтовка в калибре .338 используемая в вооруженных силах Республики Элизиум."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
 	icon_state = "hlrm"
@@ -33,7 +34,6 @@
 /obj/item/gun/ballistic/rifle/hlrm/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 4)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/rifle/hlrm/no_mag
 	spawnwithmagazine = FALSE

@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/pistol/cm357
 	name = "GP-357"
+	contraband_type_categories = NONE
 	desc = "Стандартный служебный пистолет Нанотрейзен под патроны калибра .357."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
 	icon_state = "cm357"

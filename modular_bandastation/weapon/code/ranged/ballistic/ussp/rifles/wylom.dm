@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/wylom
 	name = "AMV-90 'Wyłom'"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Массивное чудовище в виде анти-материальной винтовки, предназначенное для уничтожения вражеской легкой техники и экзокостюмов, а также для «контроля агрессивной фауны». Стреляет разрушительными безгильзовыми патронами калибра .60 Стрела, \
 		чрезвычайно высокая пробивная способность которых стала причиной того, что в конечном итоге это оружие было запрещено к торговле в галактике."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic64x32.dmi'
@@ -47,7 +48,6 @@
 /obj/item/gun/ballistic/automatic/wylom/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 2)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/wylom/bulpup
 	name = "AMV/B-92 'Wyłom'"

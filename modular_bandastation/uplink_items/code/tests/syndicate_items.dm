@@ -1,3 +1,56 @@
+/datum/unit_test/security_equipment_contraband/Run()
+	var/obj/item/inspector/scanner = allocate(/obj/item/inspector)
+	var/obj/item/service_pistol = allocate(/obj/item/gun/ballistic/automatic/pistol/gp9/sec)
+	TEST_ASSERT(!scanner.contraband_scan(service_pistol), "Scanner flagged a standard security GP-9.")
+	TEST_ASSERT_EQUAL(service_pistol.get_contraband_categories(), NONE, "A clean service pistol has a contraband category.")
+
+	var/obj/item/detective_revolver = allocate(/obj/item/gun/ballistic/revolver/c38/detective)
+	TEST_ASSERT(!scanner.contraband_scan(detective_revolver), "Scanner flagged the detective's service revolver.")
+
+	var/obj/item/assault_belt = allocate(/obj/item/storage/belt/military/assault)
+	TEST_ASSERT(!scanner.contraband_scan(assault_belt), "Scanner flagged the assault belt issued in the security crate.")
+
+	var/obj/item/ert_belt = allocate(/obj/item/storage/belt/military/assault/ert)
+	TEST_ASSERT(!scanner.contraband_scan(ert_belt), "Scanner flagged the ERT subtype of the standard assault belt.")
+
+	var/obj/item/fisher_belt = allocate(/obj/item/storage/belt/military/assault/fisher)
+	TEST_ASSERT(scanner.contraband_scan(fisher_belt), "The Syndicate belt failed to re-enable catalog detection.")
+	TEST_ASSERT(!HAS_TRAIT(fisher_belt, TRAIT_CONTRABAND), "Catalog-only detection gave the belt an instance trait.")
+	TEST_ASSERT_EQUAL(fisher_belt.get_contraband_categories(), CONTRABAND_CATEGORY_UNCLASSIFIED, "Catalog detection lost the unclassified category.")
+
+	var/obj/item/corporate_defib = allocate(/obj/item/defibrillator/compact/combat/nanotrasen)
+	TEST_ASSERT(!scanner.contraband_scan(corporate_defib), "Scanner flagged the Nanotrasen combat defibrillator.")
+
+	var/obj/item/makarov = allocate(/obj/item/gun/ballistic/automatic/pistol)
+	TEST_ASSERT(scanner.contraband_scan(makarov), "Scanner missed a Makarov listed in the uplink.")
+
+	var/obj/item/syndicate_defib = allocate(/obj/item/defibrillator/compact/combat/loaded)
+	TEST_ASSERT(scanner.contraband_scan(syndicate_defib), "Scanner missed the Syndicate combat defibrillator.")
+
+	var/datum/bounty/item/contraband/bounty = allocate(/datum/bounty/item/contraband)
+	var/obj/item/energy_sword = allocate(/obj/item/melee/energy/sword/saber)
+	TEST_ASSERT(bounty.applies_to(energy_sword), "The energy sword did not inherit its family's innate trait.")
+
+	var/obj/item/chaplain_sword = allocate(/obj/item/melee/energy/sword/nullrod)
+	TEST_ASSERT(!bounty.applies_to(chaplain_sword), "The chaplain's sword inherited the innate trait despite opting out.")
+	TEST_ASSERT(!scanner.contraband_scan(chaplain_sword), "Scanner flagged the chaplain's sword.")
+
+	ADD_TRAIT(service_pistol, TRAIT_CONTRABAND, TRAIT_GENERIC)
+	TEST_ASSERT(scanner.contraband_scan(service_pistol), "Scanner ignored the explicit marker on a GP-9.")
+	TEST_ASSERT_EQUAL(service_pistol.get_contraband_categories(), CONTRABAND_CATEGORY_UNCLASSIFIED, "The explicit marker did not supply the unclassified category.")
+	TEST_ASSERT(bounty.applies_to(service_pistol), "The contraband bounty missed an explicitly marked GP-9.")
+
+	REMOVE_TRAIT(service_pistol, TRAIT_CONTRABAND, TRAIT_GENERIC)
+	TEST_ASSERT(!scanner.contraband_scan(service_pistol), "Scanner still flagged the GP-9 after removing its instance trait.")
+
+	var/obj/item/classified_sword = allocate(/obj/item/melee/energy/sword/nullrod/contraband_category_test)
+	TEST_ASSERT_EQUAL(classified_sword.get_contraband_categories(), (1<<1) | (1<<2), "The subtype lost one or more configured contraband categories.")
+	TEST_ASSERT(scanner.contraband_scan(classified_sword), "Scanner missed an item with specific contraband categories.")
+	TEST_ASSERT(bounty.applies_to(classified_sword), "A categorized item lost its innate contraband marker.")
+
+/obj/item/melee/energy/sword/nullrod/contraband_category_test
+	contraband_type_categories = (1<<1) | (1<<2)
+
 /datum/unit_test/syndicate_items_contraband/Run()
 	var/obj/item/inspector/scanner = allocate(/obj/item/inspector)
 	scanner.scans_correctly = TRUE

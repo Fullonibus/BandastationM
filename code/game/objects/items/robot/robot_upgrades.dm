@@ -241,14 +241,11 @@
 
 /obj/item/borg/upgrade/syndicate
 	name = "illegal equipment module"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Unlocks the hidden, deadlier functions of a cyborg."
 	icon_state = "module_illegal"
 	require_model = TRUE
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 7.5, /datum/material/diamond = SHEET_MATERIAL_AMOUNT * 5)
-
-/obj/item/borg/upgrade/syndicate/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/borg/upgrade/syndicate/action(mob/living/silicon/robot/borg, mob/living/user = usr)
 	. = ..()

@@ -1,15 +1,12 @@
 /obj/item/organ/cyberimp/arm/toolkit/mantis
 	name = "'Naginata' mantis blade implant"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Скрытый клинок предплечья. Пара клинков позволяет наносить двойные удары и вскрывать двери. ЭМИ вызывает ожоги руки."
 	icon = 'modular_bandastation/uplink_items/icons/items.dmi'
 	icon_state = "syndie_mantis"
 	items_to_create = list(/obj/item/melee/mantis_blade)
 	valid_zones = list(BODY_ZONE_R_ARM = ORGAN_SLOT_RIGHT_ARM_AUG)
 	hand_state = FALSE
-
-/obj/item/organ/cyberimp/arm/toolkit/mantis/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/organ/cyberimp/arm/toolkit/mantis/emp_act(severity)
 	. = ..()
@@ -24,6 +21,7 @@
 
 /obj/item/melee/mantis_blade
 	name = "'Naginata' mantis blade"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Выдвижной клинок предплечья. Пара позволяет наносить двойные удары, вскрывать двери и блокировать атаки с вероятностью 50%."
 	icon = 'modular_bandastation/uplink_items/icons/items.dmi'
 	icon_state = "syndie_mantis"
@@ -43,7 +41,6 @@
 
 /obj/item/melee/mantis_blade/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 	RegisterSignal(src, COMSIG_TOOL_FORCE_OPEN_AIRLOCK, PROC_REF(check_prying))
 
 /obj/item/melee/mantis_blade/attack(mob/living/victim, mob/living/user, list/modifiers, list/attack_modifiers)

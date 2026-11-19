@@ -1,6 +1,7 @@
 // MARK: Civilian AMK(AK) rifle
 /obj/item/gun/ballistic/automatic/sabel
 	name = "Sabel-42 carbine"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Нестареющий дизайн карабина под патрон калибра 7.62x39мм. Оружие настолько простое и надежное что им сможет пользоватся любой.<br>\
 	Внесенные в оружие для невоенного использования лишили возможности вести автоматический огонь."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
@@ -38,7 +39,6 @@
 /obj/item/gun/ballistic/automatic/sabel/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/sabel/add_seclight_point()
 	AddComponent(\

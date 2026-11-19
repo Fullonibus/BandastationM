@@ -15,16 +15,14 @@
 
 /obj/item/food/drug/saturnx
 	name = "saturnX glob"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "A congealed glob of pure saturnX.\nThis compound was first discovered during the infancy of cloaking technology and at the time thought to be a promising candidate agent. It was withdrawn for consideration after the researchers discovered a slew of associated safety issues including thought disorders and hepatoxicity.\nIt has since attained some limited popularity as a street drug."
 	icon_state = "saturnx_glob" //tell kryson to sprite two more variants in the future.
 	food_reagents = list(/datum/reagent/drug/saturnx = 10)
 
-/obj/item/food/drug/saturnx/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
-
 /obj/item/food/drug/moon_rock
 	name = "moon rock"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "A small hard lump of kronkaine freebase.\nIt is said the average kronkaine addict causes as much criminal damage as four cat burglars, two arsonists and one rabid pit bull terrier combined.\n\nNotorious in the medical community for causing dangerous interactions with purging meds!"
 	icon_state = "moon_rock1"
 	food_reagents = list(/datum/reagent/drug/kronkaine = 10)
@@ -33,10 +31,10 @@
 	. = ..()
 	icon_state = pick("moon_rock1", "moon_rock2", "moon_rock3")
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_MOONICORN, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/reagent_containers/cup/blastoff_ampoule
 	name = "bLaSToFF ampoule" //stylized name
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "A small ampoule. The liquid inside appears to be boiling violently.\nYou suspect it contains bLasSToFF; the drug thought to be the cause of the infamous Luna nightclub mass casualty incident."
 	icon = 'icons/obj/medical/drugs.dmi'
 	icon_state = "blastoff_ampoule"
@@ -75,12 +73,9 @@
 	splash_reagents(hit_atom, throwingdatum?.get_thrower(), was_thrown = TRUE, allow_closed_splash = FALSE)
 	qdel(src)
 
-/obj/item/reagent_containers/cup/blastoff_ampoule/Initialize(mapload, vol)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
-
 /obj/item/food/drug/meth_crystal
 	name = "crystal meth"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "A clear, sad, fake looking crystal substance."
 	icon_state = "meth_crystal1"
 	tastes = list("awfulness", "burning")
@@ -116,11 +111,11 @@
 /obj/item/food/drug/meth_crystal/Initialize(mapload)
 	. = ..()
 	icon_state = pick("meth_crystal1", "meth_crystal2", "meth_crystal3", "meth_crystal4", "meth_crystal5")
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 	reagents.add_reagent(/datum/reagent/drug/methamphetamine, 10)
 
 /obj/item/food/drug/opium
 	name = "opium"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "A little of it, taken as much as a grain of ervum is a pain-easer, and a sleep-causer, and a digester... \
 	but being drank too much it hurts, making spacemen lethargical, and it kills."
 	icon_state = "opium1"
@@ -140,7 +135,6 @@
 /obj/item/food/drug/opium/Initialize(mapload) // For narcotics and black market purchases, pure and proper.
 	. = ..()
 	icon_state = pick("opium1", "opium2", "opium3", "opium4", "opium5")
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/food/drug/opium/raw/Initialize(mapload, potency) // Randomizes amount depending upon potency.
 	. = ..()

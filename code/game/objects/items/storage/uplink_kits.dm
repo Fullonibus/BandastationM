@@ -325,6 +325,7 @@
 	new /obj/item/stack/telecrystal(src) //The failsafe/self destruct isn't an item we can physically include in the kit, but 1 TC is technically enough to buy the equivalent.
 
 /obj/item/storage/belt/military/assault/fisher
+	contraband_type_categories = null
 
 /obj/item/storage/belt/military/assault/fisher/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/clandestine/fisher(src) // 11 TC: 7 (pistol) + 3 (suppressor) + lightbreaker (1 TC, black market meme/util item)

@@ -1,5 +1,6 @@
 /obj/item/garrote
 	name = "fiber wire garrote"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Тонкая проволока с деревянными рукоятками. Возьмите её в обе руки и атакуйте жертву со спины. Повторная атака мгновенно усиливает захват до удушения."
 	icon = 'modular_bandastation/uplink_items/icons/items.dmi'
 	icon_state = "garrot_wrap"
@@ -12,7 +13,6 @@
 
 /obj/item/garrote/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 	AddComponent(/datum/component/two_handed, unwield_callback = CALLBACK(src, PROC_REF(stop_strangling)))
 
 /obj/item/garrote/Destroy()
