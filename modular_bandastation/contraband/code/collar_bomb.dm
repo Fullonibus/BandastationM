@@ -1,3 +1,2 @@
-/obj/item/clothing/neck/collar_bomb/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
+/obj/item/clothing/neck/collar_bomb
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED

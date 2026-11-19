@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/vityaz
 	name = "PP-694 'Vityaz' submachine gun"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Пистолет-пулемет калибра 10мм, используемый специальными силами СССП."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
 	icon_state = "vityaz"
@@ -49,7 +50,6 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 	AddComponent(/datum/component/automatic_fire, fire_delay)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/vityaz/update_icon_state()
 	. = ..()

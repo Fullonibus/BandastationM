@@ -414,14 +414,11 @@ effective or pretty fucking useless.
 
 /obj/item/jammer/makeshift
 	name = "makeshift radio jammer"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "A jury-rigged device that disrupts nearby radio communication. Its crude construction provides a significantly smaller area of effect compared to its Syndicate counterpart."
 	range = 5
 	disruptor_range = 3
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 0.8, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.55)
-
-/obj/item/jammer/makeshift/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/machinery/porta_turret/syndicate/toolbox
 	integrity_failure = 0

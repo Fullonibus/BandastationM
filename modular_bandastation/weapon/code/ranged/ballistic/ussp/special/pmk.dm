@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/pmk
 	name = "PMK light machine gun"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Легкий ручной пулемет калибра 7.62x54ммР, разработанный в СССП как надежное оружие поддержки пехоты."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic64x32.dmi'
 	icon_state = "pmk"
@@ -39,7 +40,6 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 	AddComponent(/datum/component/automatic_fire, 0.18 SECONDS)
 	AddElement(/datum/element/drag_pickup)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/pmk/examine(mob/user)
 	. = ..()

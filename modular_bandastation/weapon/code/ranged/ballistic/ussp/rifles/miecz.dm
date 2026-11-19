@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/miecz
 	name = "AMC-874 'Miecz' assault rifle"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Модернизированный дизайн штурмовой винтовки под патрон 7.62x39мм."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
 	icon_state = "miecz"
@@ -47,7 +48,6 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 	AddComponent(/datum/component/automatic_fire, fire_delay)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/miecz/update_icon_state()
 	. = ..()

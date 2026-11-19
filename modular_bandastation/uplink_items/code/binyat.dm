@@ -1,5 +1,6 @@
 /obj/item/organ/cyberimp/brain/binyat
 	name = "Binyat wireless hacking system"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Нейронный имплант для дистанционного взлома машинерии и дверей. Взлом занимает три секунды, работает в радиусе трёх клеток и вызывает ожоги."
 	icon = 'modular_bandastation/uplink_items/icons/items.dmi'
 	icon_state = "hackerman"
@@ -11,7 +12,6 @@
 
 /obj/item/organ/cyberimp/brain/binyat/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 	sequencer = new(src)
 
 /obj/item/organ/cyberimp/brain/binyat/Destroy()

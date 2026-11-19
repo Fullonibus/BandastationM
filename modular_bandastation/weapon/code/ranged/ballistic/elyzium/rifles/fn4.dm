@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/fn4
 	name = "FN-VI \"Sharp\""
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Стандартная боевая винтовка вооруженных сил Республики Элизиум в калибре 7.62x51мм."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
 	icon_state = "fn4"
@@ -38,7 +39,6 @@
 /obj/item/gun/ballistic/automatic/fn4/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/automatic_fire, fire_delay)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/fn4/no_mag
 	spawnwithmagazine = FALSE

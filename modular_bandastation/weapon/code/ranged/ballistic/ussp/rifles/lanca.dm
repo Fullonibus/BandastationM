@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/lanca
 	name = "BV-27 'Lanca' battle rifle"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Боевая винтовка под патрон .310 Стрилка. Имеет встроенный прицел с удивительно высокой кратностью увеличения, учитывая его происхождение."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
 	icon_state = "lanca"
@@ -41,7 +42,6 @@
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
 	AddElement(/datum/element/update_icon_updates_onmob)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/gun/ballistic/automatic/lanca/update_icon_state()
 	. = ..()

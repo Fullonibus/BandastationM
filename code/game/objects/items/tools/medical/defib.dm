@@ -339,6 +339,7 @@
 
 /obj/item/defibrillator/compact/combat/nanotrasen
 	name = "elite Nanotrasen defibrillator"
+	contraband_type_categories = NONE
 	desc = "A belt-equipped defibrillator that can revive through thick clothing, with standard medical safeties and a replaceable battery. Its electronics and battery compartment are shielded against electromagnetic pulses."
 	combat = TRUE
 	safety = TRUE

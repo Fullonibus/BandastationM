@@ -80,6 +80,10 @@
 	///Item flags for the item
 	var/item_flags = NONE
 
+	/// Inherited contraband categories. A nonzero bitfield grants TRAIT_CONTRABAND on initialization.
+	/// NONE uses only the instance trait. Null also allows catalog matching.
+	var/contraband_type_categories
+
 	///Sound played when you hit something with the item
 	var/hitsound
 	///Played when the item is used, for example tools
@@ -292,6 +296,9 @@
 			hitsound = 'sound/items/tools/welder.ogg'
 		if(damtype == BRUTE)
 			hitsound = SFX_SWING_HIT
+
+	if(contraband_type_categories)
+		ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_ITEM, src)
 
@@ -1948,32 +1955,24 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 		SEND_SIGNAL(loc, COMSIG_ATOM_CONTENTS_WEIGHT_CLASS_CHANGED, src, old_w_class, new_w_class)
 	return TRUE
 
-/**
- * Returns whether an N-spect scanner should detect this item as contraband.
- * Checks the item's trait, then looks for a match in the uplink catalog.
- */
+/// Returns whether an N-spect scanner should detect this item as contraband.
 /obj/item/proc/is_contraband()
-	if(HAS_TRAIT(src, TRAIT_CONTRABAND))
-		return TRUE
+	return get_contraband_categories() != NONE
 
-	// These service sidearms and the SWAT crate's assault belt share parent types with uplink items.
-	var/static/list/service_sidearms = typecacheof(list(
-		/obj/item/gun/ballistic/automatic/pistol/cm23,
-		/obj/item/gun/ballistic/automatic/pistol/cm357,
-		/obj/item/gun/ballistic/automatic/pistol/cm70,
-		/obj/item/gun/ballistic/automatic/pistol/gp9,
-		/obj/item/gun/ballistic/automatic/pistol/pdh,
-		/obj/item/gun/ballistic/revolver/c38/detective,
-	))
-	if(service_sidearms[type] || type == /obj/item/storage/belt/military/assault)
-		return FALSE
+/**
+ * Returns the detectable contraband categories as a bitfield, or NONE.
+ * Instance markers use the configured categories when present. Other hits are unclassified.
+ */
+/obj/item/proc/get_contraband_categories()
+	if(HAS_TRAIT(src, TRAIT_CONTRABAND))
+		return contraband_type_categories ? contraband_type_categories : CONTRABAND_CATEGORY_UNCLASSIFIED
+	if(!isnull(contraband_type_categories))
+		return NONE
 
 	for(var/datum/uplink_item/traitor_item as anything in SStraitor.uplink_items)
 		if(istype(src, traitor_item.item))
-			if(!(traitor_item.uplink_item_flags & SYNDIE_TRIPS_CONTRABAND))
-				return FALSE
-			return TRUE
-	return FALSE
+			return (traitor_item.uplink_item_flags & SYNDIE_TRIPS_CONTRABAND) ? CONTRABAND_CATEGORY_UNCLASSIFIED : NONE
+	return NONE
 
 /obj/item/apply_main_material_effects(datum/material/main_material, amount, multiplier)
 	. = ..()

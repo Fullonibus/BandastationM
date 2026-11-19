@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/pistol/pdh
 	name = "PDH-A2 'Osprey'"
+	contraband_type_categories = NONE
 	desc = "Крупнокалиберный пистолет PDH-A2 'Osprey' - это тяжелое полуавтоматическое оружие личной защиты, созданное для гарантированного поражения тяжелобронированных целей в замкнутых пространствах."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic40x32.dmi'
 	icon_state = "pdh_alt"

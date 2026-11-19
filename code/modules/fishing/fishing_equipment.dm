@@ -588,6 +588,7 @@
 ///A modified mining capsule from the black market and sometimes random loot.
 /obj/item/survivalcapsule/fishing
 	name = "fishing spot capsule"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "An illegally modified mining capsule containing a small fishing spot connected to some faraway place."
 	icon_state = "capsule_fishing"
 	initial_language_holder = /datum/language_holder/speaking_machine
@@ -599,7 +600,6 @@
 
 /obj/item/survivalcapsule/fishing/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 	register_context()
 	voice = SStts.random_tts_voice()
 

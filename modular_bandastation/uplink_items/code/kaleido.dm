@@ -1,5 +1,6 @@
 /obj/item/organ/eyes/robotic/kaleido
 	name = "Hardened Kaleido Optics eyes"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Укреплённые кибернетические глаза с оптическим приближением. Используйте действие импланта для включения и отключения приближения."
 	icon = 'modular_bandastation/uplink_items/icons/items.dmi'
 	icon_state = "eyes-c-kaleido"
@@ -11,7 +12,6 @@
 
 /obj/item/organ/eyes/robotic/kaleido/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 	scope = AddComponent(/datum/component/scope, range_modifier = 4, zoom_method = null)
 	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF)
 

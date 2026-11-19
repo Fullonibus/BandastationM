@@ -1,3 +1,2 @@
-/obj/item/energy_katana/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
+/obj/item/energy_katana
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED

@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic/automatic/pistol/gp9
 	name = "GP-9"
+	contraband_type_categories = NONE
 	desc = "Стандартный служебный пистолет общего назначения под малоимпульсные патроны калибра 9x25мм НТ."
 	icon = 'modular_bandastation/weapon/icons/ranged/ballistic40x32.dmi'
 	icon_state = "gp9"

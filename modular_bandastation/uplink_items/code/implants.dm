@@ -19,15 +19,12 @@
 
 /obj/item/storage/box/syndie_kit/mantis
 	name = "'Naginata' mantis blades kit"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Набор одноразовых автохирургов с парой клинков Богомола «Нагината»."
 
 /obj/item/storage/box/syndie_kit/mantis/PopulateContents()
 	new /obj/item/autosurgeon/syndicate/mantis(src)
 	new /obj/item/autosurgeon/syndicate/mantis/left(src)
-
-/obj/item/storage/box/syndie_kit/mantis/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /datum/uplink_item/implants/binyat
 	name = "Binyat Wireless Hacking System"

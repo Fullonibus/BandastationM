@@ -1,3 +1,2 @@
-/obj/item/grenade/c4/ninja/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
+/obj/item/grenade/c4/ninja
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
