@@ -394,3 +394,37 @@
 	payphone.end_call()
 	receiving_phone.recall_phone()
 	TEST_ASSERT(!payphone.start_call(calling_user, receiving_phone.phone_id), "Another call must require a new payment.")
+
+/// A mobile handset must ring while held, then shut down both ends when its battery runs out.
+/datum/unit_test/telephone/mobile_battery/Run()
+	var/obj/structure/transmitter/command/wired_phone = allocate(/obj/structure/transmitter/command)
+	var/obj/item/telephone/mobile/magistrate/mobile_phone = allocate(/obj/item/telephone/mobile/magistrate)
+	var/obj/item/stock_parts/power_store/battery = mobile_phone.get_cell()
+	TEST_ASSERT_NOTNULL(battery, "A mobile phone must have a rechargeable battery.")
+	var/obj/structure/transmitter/mobile_line = mobile_phone.attached_to
+	TEST_ASSERT_NOTNULL(mobile_line, "The mobile phone must have a station telephone line.")
+	TEST_ASSERT(calling_user.put_in_hands(wired_phone.handset), "The caller must hold the wired handset.")
+	TEST_ASSERT(receiving_user.put_in_hands(mobile_phone), "The recipient must hold the mobile phone.")
+
+	mobile_phone.process(60)
+	TEST_ASSERT(battery.charge < battery.maxcharge, "A phone in standby must use charge.")
+	TEST_ASSERT(battery.percent() > 98, "A minute of standby should make a small dent in the battery.")
+	battery.give(battery.maxcharge)
+
+	TEST_ASSERT(wired_phone.start_call(calling_user, mobile_line.phone_id), "The wired phone must be able to ring a mobile phone already in hand.")
+	mobile_phone.attack_self(receiving_user)
+	TEST_ASSERT_EQUAL(wired_phone.status, PHONE_CONNECTED, "Using a ringing mobile phone in hand must answer the call.")
+	for(var/tick in 1 to 145)
+		mobile_phone.process(2)
+	TEST_ASSERT_EQUAL(wired_phone.status, PHONE_CONNECTED, "A fresh battery should support almost five minutes of talking.")
+	for(var/tick in 1 to 5)
+		mobile_phone.process(2)
+	TEST_ASSERT_EQUAL(battery.charge, 0, "Five minutes of connected talk must exhaust a fresh battery.")
+	TEST_ASSERT_NULL(wired_phone.current_call, "Power loss must release the remote line.")
+	TEST_ASSERT_NULL(mobile_line.current_call, "Power loss must release the mobile line.")
+	TEST_ASSERT(!wired_phone.start_call(calling_user, mobile_line.phone_id), "A discharged mobile phone must not ring.")
+
+	battery.give(battery.maxcharge)
+	TEST_ASSERT(wired_phone.start_call(calling_user, mobile_line.phone_id), "Recharging must make the mobile phone reachable again.")
+	wired_phone.recall_phone()
+	TEST_ASSERT(mobile_line.start_call(receiving_user, wired_phone.phone_id), "The recharged mobile phone must also be able to call the wired line.")

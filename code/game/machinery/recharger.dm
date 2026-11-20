@@ -18,6 +18,7 @@
 		/obj/item/melee/baton/security,
 		/obj/item/ammo_box/magazine/recharge,
 		/obj/item/modular_computer,
+		/obj/item/telephone/mobile,
 		/obj/item/gun/ballistic/automatic/battle_rifle,
 	))
 

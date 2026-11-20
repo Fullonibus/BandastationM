@@ -14,6 +14,7 @@
 	l_pocket = /obj/item/laser_pointer/red
 	r_pocket = /obj/item/clothing/accessory/lawyers_badge
 	l_hand = /obj/item/storage/briefcase/lawyer
+	backpack_contents = list(/obj/item/telephone/mobile/lawyer = 1)
 
 	chameleon_extras = /obj/item/stamp/law
 

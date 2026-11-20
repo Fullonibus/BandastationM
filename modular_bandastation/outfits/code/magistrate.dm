@@ -20,7 +20,8 @@
 
 	belt = /obj/item/modular_computer/pda/crew/heads/magistrate
 	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/telephone/mobile/magistrate = 1
 	)
 	implants = list(/obj/item/implant/mindshield)
 

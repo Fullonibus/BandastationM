@@ -8,7 +8,11 @@
 	lefthand_file = 'modular_bandastation/telephones/icons/phone_lefthand.dmi'
 	righthand_file = 'modular_bandastation/telephones/icons/phone_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
-	/// The base owns this handset; its cord limits ordinary movement.
+	/// Whether the handset is physically tethered to an installed telephone.
+	var/has_cord = TRUE
+	/// In-hand state for the handset held against the ear.
+	var/raised_inhand_icon_state = "rpb_phone_ear"
+	/// Exchange endpoint; fixed bases own their handsets, mobile handsets own their endpoint.
 	var/obj/structure/transmitter/attached_to
 	/// The living mob currently holding the receiver in a hand.
 	var/mob/living/holder
@@ -19,13 +23,16 @@
 
 /obj/item/telephone/Initialize(mapload, obj/structure/transmitter/base)
 	. = ..()
-	if(!istype(base))
-		return INITIALIZE_HINT_QDEL
-	attached_to = base
-	icon = base.icon
+	if(has_cord)
+		if(!istype(base))
+			return INITIALIZE_HINT_QDEL
+		attached_to = base
+		icon = base.icon
 	var/datum/component/two_handed/cover = AddComponent(/datum/component/two_handed)
 	// The primary self action already raises/lowers the receiver; covering uses the secondary action.
 	cover.UnregisterSignal(src, COMSIG_ITEM_ATTACK_SELF)
+	if(!has_cord)
+		return
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_tether_pre_move))
 	RegisterSignal(src, COMSIG_CAN_Z_MOVE, PROC_REF(on_tether_z_move))
 	RegisterSignal(base, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_tether_pre_move))
@@ -46,39 +53,41 @@
 	. = ..()
 	clear_holder()
 	if(!(slot & ITEM_SLOT_HANDS) || !isliving(user))
-		attached_to?.recall_phone()
+		if(has_cord)
+			attached_to?.recall_phone()
 		return
 	holder = user
-	raised = TRUE
-	inhand_icon_state = "rpb_phone_ear"
 	become_hearing_sensitive(ROUNDSTART_TRAIT)
+	RegisterSignal(holder, COMSIG_QDELETING, PROC_REF(on_holder_deleted))
+	if(!has_cord)
+		return
+	raised = TRUE
+	inhand_icon_state = raised_inhand_icon_state
 	RegisterSignal(holder, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_tether_pre_move))
 	RegisterSignal(holder, COMSIG_CAN_Z_MOVE, PROC_REF(on_tether_z_move))
 	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, PROC_REF(on_holder_moved))
-	RegisterSignal(holder, COMSIG_QDELETING, PROC_REF(on_holder_deleted))
 	check_tether()
 	update_beam()
 
 /obj/item/telephone/dropped(mob/user, silent = FALSE)
 	. = ..()
 	clear_holder()
-	if(!QDELING(src))
+	if(has_cord && !QDELING(src))
 		update_beam()
 
 /obj/item/telephone/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(holder && loc != holder)
 		clear_holder()
-	check_tether()
-	update_beam()
+	if(has_cord)
+		check_tether()
+		update_beam()
 
 /obj/item/telephone/attack_self(mob/user)
 	. = ..()
 	if(!attached_to?.can_use_handset(user))
 		return
-	raised = !raised
-	inhand_icon_state = raised ? "rpb_phone_ear" : "rpb_phone"
-	user.update_held_items()
+	set_raised(!raised)
 	balloon_alert(user, raised ? "трубка у уха" : "трубка опущена")
 
 /// Reserves the other hand to cover only the microphone, leaving incoming speech audible.
@@ -110,7 +119,7 @@
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/telephone/attempt_pickup(mob/living/user, skip_grav = FALSE)
-	if(!cord_reaches(user, attached_to))
+	if(has_cord && !cord_reaches(user, attached_to))
 		balloon_alert(user, "шнур не дотягивается!")
 		return TRUE
 	return ..()
@@ -119,9 +128,17 @@
 	. = ..()
 	if(.)
 		return
-	if(!cord_reaches(taker, attached_to))
+	if(has_cord && !cord_reaches(taker, attached_to))
 		balloon_alert(taker, "шнур не дотягивается!")
 		return TRUE
+
+/// Changes the speaking position and redraws the held item.
+/obj/item/telephone/proc/set_raised(new_raised)
+	if(raised == new_raised)
+		return
+	raised = new_raised
+	inhand_icon_state = raised ? raised_inhand_icon_state : initial(inhand_icon_state)
+	holder?.update_held_items()
 
 /** Releases the holder, movement listeners and cord before recall or deletion. */
 /obj/item/telephone/proc/clear_holder()
@@ -129,7 +146,7 @@
 		UnregisterSignal(holder, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_CAN_Z_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 		holder = null
 	raised = FALSE
-	inhand_icon_state = "rpb_phone"
+	inhand_icon_state = initial(inhand_icon_state)
 	lose_hearing_sensitivity(ROUNDSTART_TRAIT)
 	QDEL_NULL(telephone_beam)
 
@@ -190,7 +207,10 @@
 
 /obj/item/telephone/proc/on_holder_deleted()
 	SIGNAL_HANDLER
-	attached_to?.recall_phone()
+	if(has_cord)
+		attached_to?.recall_phone()
+	else
+		clear_holder()
 
 /obj/item/telephone/Hear(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range = 0)
 	. = ..()

@@ -47,7 +47,7 @@
 	/// Prevents dropped() reentering recall while the handset is being returned.
 	var/recalling = FALSE
 
-/obj/structure/transmitter/Initialize(mapload)
+/obj/structure/transmitter/Initialize(mapload, obj/item/telephone/portable_handset)
 	. = ..()
 	var/static/next_phone_id = 1000
 	while(!phone_id || GLOB.telephones[phone_id])
@@ -55,7 +55,9 @@
 	GLOB.telephones[phone_id] = src
 	if(!display_name)
 		display_name = get_area_name(src, TRUE)
-	handset = new(src, src)
+	handset = portable_handset
+	if(!handset)
+		handset = new(src, src)
 	update_appearance()
 
 /obj/structure/transmitter/Destroy()
@@ -99,10 +101,10 @@
 
 /// Only the conscious, capable mob actually holding this handset can control it.
 /obj/structure/transmitter/proc/can_use_handset(mob/user)
-	if(!isliving(user) || !ISADVANCEDTOOLUSER(user) || QDELETED(handset))
+	if(!isliving(user) || !ISADVANCEDTOOLUSER(user) || !has_working_handset())
 		return FALSE
 	var/mob/living/living_user = user
-	return !living_user.incapacitated && living_user.is_holding(handset) && get_dist(src, user) <= PHONE_MAX_RANGE && z == user.z
+	return !living_user.incapacitated && living_user.is_holding(handset) && (!handset.has_cord || (get_dist(src, user) <= PHONE_MAX_RANGE && z == user.z))
 
 /obj/structure/transmitter/ui_host(mob/user)
 	return handset || src
@@ -174,9 +176,13 @@
 			return candidate
 	return null
 
+/// An endpoint with no working handset must not accept calls or appear in the directory.
+/obj/structure/transmitter/proc/has_working_handset()
+	return !QDELETED(handset)
+
 /// Shared directory and server-side dialing permission check.
 /obj/structure/transmitter/proc/can_dial(obj/structure/transmitter/target)
-	return !QDELETED(target) && target != src && target.handset && (target.phone_category in networks_transmit) && (!target.do_not_disturb || phone_category == PHONE_NET_CENTCOM)
+	return !QDELETED(target) && target != src && target.has_working_handset() && (target.phone_category in networks_transmit) && (!target.do_not_disturb || phone_category == PHONE_NET_CENTCOM)
 
 /// Reserves both ends atomically, rejecting repeated requests before changing any state.
 /obj/structure/transmitter/proc/start_call(mob/user, target_id)
@@ -186,7 +192,7 @@
 	var/obj/machinery/central_telephone_exchange/connection = find_exchange()
 	if(!connection || !can_dial(target))
 		return FALSE
-	if(target.current_call || target.status != PHONE_IDLE || target.handset.loc != target)
+	if(target.current_call || target.status != PHONE_IDLE || (target.handset.has_cord && target.handset.loc != target))
 		to_chat(user, span_warning("Линия занята."))
 		set_call_sound(/datum/looping_sound/telephone/busy)
 		return FALSE
@@ -214,14 +220,17 @@
 	if(calling_phone.call_timer != TIMER_ID_NULL)
 		deltimer(calling_phone.call_timer)
 	calling_phone.call_timer = TIMER_ID_NULL
-	status = PHONE_CONNECTED
-	calling_phone.status = PHONE_CONNECTED
 	calling_phone.is_paid = FALSE
-	set_call_sound(null)
-	calling_phone.set_call_sound(null)
+	connect_call()
+	calling_phone.connect_call()
 	update_appearance()
 	calling_phone.update_appearance()
 	return TRUE
+
+/// Switches from signalling to conversation after both endpoints are validated.
+/obj/structure/transmitter/proc/connect_call()
+	status = PHONE_CONNECTED
+	set_call_sound(null)
 
 /// Clears this end before visiting the peer, so teardown cannot recurse or affect a later call.
 /obj/structure/transmitter/proc/end_call()
@@ -301,6 +310,8 @@
 
 /obj/structure/transmitter/update_overlays()
 	. = ..()
+	if(!icon)
+		return
 	var/wall_phone = istype(src, /obj/structure/transmitter/mounted)
 	var/prefix = wall_phone ? "wall" : "rotary"
 	if(handset?.loc == src)

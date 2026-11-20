@@ -32,3 +32,9 @@ Greyscale Previews subsystem from the telephone sprites credited above.
 
 sound/disconnected.ogg: first three seconds of sound/phone_busy.ogg above,
 converted to Vorbis; three 0.5-second tones separated by 0.5-second pauses.
+
+icons/mobile_phone.dmi, icons/mobile_phone_lefthand.dmi and
+icons/mobile_phone_righthand.dmi: original artwork created for the BandaStation
+mobile telephone feature, inspired by early handheld cellular phones. The held
+frames use the PDA grip positions and existing telephone earpiece positions
+as references. Licensed under CC BY-SA 3.0.
