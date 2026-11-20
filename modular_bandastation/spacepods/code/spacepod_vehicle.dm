@@ -18,6 +18,8 @@
 	exit_sound = 'sound/machines/airlock/airlock.ogg'
 	/// Only this occupant can operate the console; the other seats are passengers.
 	var/mob/living/pilot
+	/// A disconnected pilot keeps their seat, but no longer operates the pod.
+	var/pilot_disconnected = FALSE
 	var/list/mob/living/passengers = list()
 	var/max_passengers = 0
 	var/list/installed_modules = list()
@@ -194,7 +196,7 @@
 
 /// Sealed vehicles block hands themselves; only additional restraint blocks controls.
 /obj/vehicle/sealed/spacepod/proc/can_control(mob/living/user)
-	return !melting_down && !QDELETED(user) && user == pilot && user.loc == src && is_driver(user) && !user.incapacitated && !HAS_TRAIT(user, TRAIT_RESTRAINED) && (!HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || HAS_TRAIT_FROM_ONLY(user, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT))
+	return !melting_down && !pilot_disconnected && !QDELETED(user) && user == pilot && user.loc == src && is_driver(user) && !user.incapacitated && !HAS_TRAIT(user, TRAIT_RESTRAINED) && (!HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || HAS_TRAIT_FROM_ONLY(user, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT))
 
 /obj/vehicle/sealed/spacepod/auto_assign_occupant_flags(mob/living/occupant)
 	if(!pilot && !occupant.incapacitated && occupant.stat == STABLE)
@@ -205,6 +207,8 @@
 
 /obj/vehicle/sealed/spacepod/after_add_occupant(mob/living/occupant)
 	. = ..()
+	if(occupant != pilot || flight?.parked)
+		REMOVE_TRAIT(occupant, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 	ADD_TRAIT(occupant, TRAIT_RUNECHAT_HIDDEN, REF(src))
 	occupant.reset_perspective(src)
 	RegisterSignal(occupant, COMSIG_MOB_LOGOUT, PROC_REF(on_occupant_logout))
@@ -213,6 +217,16 @@
 	on_occupant_login(occupant)
 	if(occupant == pilot)
 		RegisterSignal(occupant, COMSIG_MOVABLE_KEYBIND_FACE_DIR, PROC_REF(on_pilot_turn))
+		RegisterSignal(occupant, COMSIG_MOB_CLICKON, PROC_REF(on_pilot_click))
+
+/// Parking only changes the hand restriction imposed by the cabin.
+/obj/vehicle/sealed/spacepod/proc/update_pilot_hands()
+	if(QDELETED(pilot) || pilot.loc != src || !is_occupant(pilot))
+		return
+	if(flight?.parked)
+		REMOVE_TRAIT(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
+	else
+		ADD_TRAIT(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 
 /obj/vehicle/sealed/spacepod/after_remove_occupant(mob/living/occupant)
 	. = ..()
@@ -228,7 +242,7 @@
 		flight?.aim(null)
 		set_thruster_flame(FALSE)
 		stop_engine_sound()
-		UnregisterSignal(occupant, COMSIG_MOVABLE_KEYBIND_FACE_DIR)
+		UnregisterSignal(occupant, list(COMSIG_MOVABLE_KEYBIND_FACE_DIR, COMSIG_MOB_CLICKON))
 		pilot = null
 	else
 		stop_engine_sound(occupant)
@@ -243,7 +257,10 @@
 	return NONE
 
 /obj/vehicle/sealed/spacepod/setDir(newdir)
+	var/old_dir = dir
 	. = ..()
+	if(dir != old_dir && flight?.parked)
+		flight.reset_motion()
 	if(flight && animate_movement != NO_STEPS)
 		flight.heading = dir2angle(newdir)
 	if(!QDELETED(src) && thruster_flame_active)
@@ -298,7 +315,7 @@
 		add_fingerprint(user)
 
 /obj/vehicle/sealed/spacepod/mouse_drop_receive(atom/dropping, mob/living/user, params)
-	if(!isliving(user) || user.incapacitated || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !Adjacent(user))
+	if(!isliving(user) || user.loc == src || user.incapacitated || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !Adjacent(user))
 		return
 	if(dropping == user)
 		return enter_pod(user)
@@ -372,6 +389,11 @@
 	if(forced && !inertia_moving)
 		flight?.reset_motion()
 
+/obj/vehicle/sealed/spacepod/set_anchored(anchorvalue)
+	. = ..()
+	if(!anchored && flight?.parked)
+		flight.release_parking()
+
 /obj/vehicle/sealed/spacepod/proc/on_occupant_view_changed(mob/listener)
 	SIGNAL_HANDLER
 	flight?.release_camera(listener)
@@ -379,6 +401,8 @@
 
 /obj/vehicle/sealed/spacepod/proc/on_occupant_login(mob/listener)
 	SIGNAL_HANDLER
+	if(listener == pilot)
+		pilot_disconnected = FALSE
 	if(listener.client)
 		RegisterSignal(listener.client, COMSIG_CLIENT_SET_EYE, PROC_REF(on_cabin_eye_changed))
 	flight?.attach_camera(listener)
@@ -399,12 +423,16 @@
 	flight?.release_camera(listener)
 	if(listener.client)
 		UnregisterSignal(listener.client, COMSIG_CLIENT_SET_EYE)
-	if(listener == pilot && flight)
-		flight.set_input(NONE)
-		flight.aim(null)
+	if(listener == pilot)
+		pilot_disconnected = TRUE
+		flight?.set_input(NONE)
+		flight?.aim(null)
 		set_thruster_flame(FALSE)
+		stop_engine_sound()
 
 /obj/vehicle/sealed/spacepod/Move(atom/newloc, direct, glide_size_override = 0, update_dir = TRUE)
+	if(flight?.parked)
+		return FALSE
 	var/collect_drifting_ore = inertia_moving && !moving_diagonally
 	var/atom/old_loc = loc
 	. = ..()
@@ -418,6 +446,8 @@
 	return vehicle_move(direction)
 
 /obj/vehicle/sealed/spacepod/vehicle_move(direction)
+	if(flight?.parking)
+		return FALSE
 	if(!can_control(pilot) || !direction)
 		set_thruster_flame(FALSE)
 		stop_engine_sound()
@@ -518,6 +548,8 @@
 	return target
 
 /obj/vehicle/sealed/spacepod/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(user.loc == src)
+		return ITEM_INTERACT_BLOCKING
 	if(user.combat_mode)
 		return ..()
 	if(user.incapacitated || !Adjacent(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
@@ -540,6 +572,8 @@
 	return ..()
 
 /obj/vehicle/sealed/spacepod/attack_hand(mob/living/user, list/modifiers)
+	if(user.loc == src)
+		return TRUE
 	. = ..()
 	if(. || user.incapacitated || !Adjacent(user))
 		return
@@ -547,7 +581,7 @@
 		var/mob/living/target = pilot || passengers[1]
 		if(!target || !do_after(user, 5 SECONDS, src))
 			return
-		if(user.incapacitated || !Adjacent(user) || !unlocked || !is_occupant(target) || target.loc != src)
+		if(user.loc == src || user.incapacitated || !Adjacent(user) || !unlocked || !is_occupant(target) || target.loc != src)
 			return
 		mob_exit(target)
 		target.Stun(2 SECONDS)
@@ -583,7 +617,7 @@
 	for(var/obj/item/spacepod_equipment/module as anything in installed_modules)
 		choices["[module.name] ([module.slot])"] = module
 	var/choice = tgui_input_list(user, "Какое оборудование извлечь?", "Технический люк", choices)
-	if(!choice || user.incapacitated || !Adjacent(user) || !hatch_open || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+	if(!choice || user.loc == src || user.incapacitated || !Adjacent(user) || !hatch_open || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		return
 	var/atom/movable/selected = choices[choice]
 	if(QDELETED(selected) || selected.loc != src)
@@ -599,6 +633,8 @@
 		remove_equipment(user, module, module.slot)
 
 /obj/vehicle/sealed/spacepod/crowbar_act(mob/living/user, obj/item/tool)
+	if(user.loc == src)
+		return TRUE
 	if(user.combat_mode)
 		return
 	if(lock_system && !unlocked && !hatch_open)
@@ -611,6 +647,8 @@
 	return TRUE
 
 /obj/vehicle/sealed/spacepod/welder_act(mob/living/user, obj/item/tool)
+	if(user.loc == src)
+		return TRUE
 	if(user.combat_mode)
 		return
 	if(melting_down || get_integrity() >= max_integrity || DOING_INTERACTION(user, src))
@@ -620,7 +658,7 @@
 	while(!melting_down && get_integrity() < max_integrity)
 		if(!tool.use_tool(src, user, 2 SECONDS, volume = 50))
 			break
-		if(QDELETED(src) || melting_down || user.incapacitated || !Adjacent(user))
+		if(QDELETED(src) || user.loc == src || melting_down || user.incapacitated || !Adjacent(user))
 			break
 		repair_damage(10)
 	return TRUE
@@ -655,23 +693,53 @@
 	set_light(lights ? lights_power : 0)
 	return TRUE
 
+/// Toggle the nearest accessible local door group, without linking separate airlock rows by name.
 /obj/vehicle/sealed/spacepod/proc/toggleDoors(mob/living/user)
 	if(!can_control(user))
 		return FALSE
-	for(var/obj/machinery/door/poddoor/door in range(3, src))
+	var/list/nearby_doors = list()
+	var/obj/machinery/door/nearest_door
+	var/nearest_distance = INFINITY
+	for(var/obj/machinery/door/door in range(3, src))
+		if(!istype(door, /obj/machinery/door/airlock) && !istype(door, /obj/machinery/door/poddoor))
+			continue
 		var/has_access = door.allowed(user)
 		for(var/mob/living/passenger as anything in passengers)
 			if(door.allowed(passenger))
 				has_access = TRUE
+				break
 		if(!has_access)
 			continue
-		if(door.density)
-			door.open()
-		else
-			door.close()
-		return TRUE
-	balloon_alert(user, "нет доступного шлюза рядом!")
-	return FALSE
+		nearby_doors += door
+		var/distance = get_dist(src, door)
+		if(distance < nearest_distance)
+			nearest_door = door
+			nearest_distance = distance
+	if(!nearest_door)
+		balloon_alert(user, "нет доступного шлюза рядом!")
+		return FALSE
+
+	var/list/door_group = list(nearest_door)
+	if(istype(nearest_door, /obj/machinery/door/poddoor))
+		var/obj/machinery/door/poddoor/nearest_blastdoor = nearest_door
+		if(nearest_blastdoor.id)
+			for(var/obj/machinery/door/poddoor/door in nearby_doors)
+				if(door.id == nearest_blastdoor.id)
+					door_group |= door
+	else
+		// Autoname can give both rows of an airlock cycle the same name.
+		for(var/index in 1 to length(nearby_doors))
+			if(index > length(door_group))
+				break
+			var/obj/machinery/door/group_member = door_group[index]
+			for(var/obj/machinery/door/airlock/door in nearby_doors)
+				if(door.name == nearest_door.name && get_dist(group_member, door) <= 1)
+					door_group |= door
+
+	var/open_doors = nearest_door.density
+	for(var/obj/machinery/door/door as anything in door_group)
+		INVOKE_ASYNC(door, open_doors ? TYPE_PROC_REF(/obj/machinery/door, open) : TYPE_PROC_REF(/obj/machinery/door, close))
+	return TRUE
 
 /obj/vehicle/sealed/spacepod/proc/checkSeat(mob/living/user)
 	if(!can_control(user))
@@ -696,10 +764,10 @@
 		return
 	var/list/parts = list("Фары" = "LIGHTS", "Окантовка" = "RIM", "Основной цвет" = "PAINT", "Стёкла" = "Windows")
 	var/part = tgui_input_list(user, "Выберите элемент", "Покраска челнока", parts)
-	if(!part || !parts[part] || user.incapacitated || !Adjacent(user))
+	if(!part || !parts[part] || user.loc == src || user.incapacitated || !Adjacent(user))
 		return
 	var/color = tgui_color_picker(user, "Выберите цвет", "Цвет")
-	if(!color || user.incapacitated || !Adjacent(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+	if(!color || user.loc == src || user.incapacitated || !Adjacent(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		return
 	paint_colors[parts[part]] = color
 	if(parts[part] == "LIGHTS")

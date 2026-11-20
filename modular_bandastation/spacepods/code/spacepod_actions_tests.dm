@@ -8,14 +8,12 @@
 	var/datum/action/vehicle/sealed/spacepod/lights/lights = locate() in pilot.actions
 	var/datum/action/vehicle/sealed/spacepod/internals/internals = locate() in pilot.actions
 	var/datum/action/vehicle/sealed/spacepod/brakes/brakes = locate() in pilot.actions
-	var/datum/action/vehicle/sealed/spacepod/turbo/turbo = locate() in pilot.actions
 	var/datum/action/vehicle/sealed/spacepod/camera_zoom/camera_zoom = locate() in pilot.actions
 	var/datum/action/vehicle/sealed/spacepod/eject/pilot_exit = locate() in pilot.actions
 	var/datum/action/vehicle/sealed/spacepod/eject/passenger_exit = locate() in passenger.actions
 	TEST_ASSERT_NOTNULL(lights, "Boarding did not grant the actual pilot light action.")
 	TEST_ASSERT_NOTNULL(internals, "Boarding did not grant the actual pilot air action.")
 	TEST_ASSERT_NOTNULL(brakes, "Boarding did not grant the actual pilot brake action.")
-	TEST_ASSERT_NOTNULL(turbo, "Boarding did not grant the actual pilot TURBO action.")
 	TEST_ASSERT_NOTNULL(camera_zoom, "Boarding did not grant the pilot's camera zoom action.")
 	TEST_ASSERT("mech_zoom_on" in icon_states(camera_zoom.button_icon), "The enabled camera zoom HUD icon does not exist.")
 	TEST_ASSERT_NOTNULL(pilot_exit, "Boarding did not grant the actual pilot exit action.")
@@ -24,22 +22,12 @@
 		var/atom/movable/screen/movable/action_button/button = allocate(__IMPLIED_TYPE__)
 		action.build_button_icon(button, ALL, TRUE)
 		TEST_ASSERT(button.icon_state && (button.icon_state in icon_states(button.icon)), "[action.type] rendered a missing icon state and would display the ERROR placeholder.")
-	TEST_ASSERT(!(locate(/datum/action/vehicle/sealed/spacepod/fire) in passenger.actions), "A passenger received the fire button.")
 	TEST_ASSERT(!(locate(/datum/action/vehicle/sealed/spacepod/internals) in passenger.actions), "A passenger received the cabin air button.")
 	TEST_ASSERT(!(locate(/datum/action/vehicle/sealed/spacepod/brakes) in passenger.actions), "A passenger received the brake button.")
-	TEST_ASSERT(!(locate(/datum/action/vehicle/sealed/spacepod/turbo) in passenger.actions), "A passenger received the TURBO button.")
 	TEST_ASSERT(!(locate(/datum/action/vehicle/sealed/spacepod/camera_zoom) in passenger.actions), "A passenger received the camera zoom button.")
 	TEST_ASSERT(!camera_zoom.Trigger(pilot), "A pilot without a client activated camera zoom.")
-	turbo.Trigger(pilot)
-	TEST_ASSERT(pod.flight.turbo, "Pressing the real TURBO action did not enable turbo.")
-	var/enabled_turbo_icon = turbo.button_icon_state
-	TEST_ASSERT(enabled_turbo_icon in icon_states(turbo.button_icon), "The enabled TURBO HUD icon does not exist.")
-	turbo.Trigger(pilot)
-	TEST_ASSERT(!pod.flight.turbo, "Pressing the real TURBO action again did not disable turbo.")
-	TEST_ASSERT(turbo.button_icon_state != enabled_turbo_icon && (turbo.button_icon_state in icon_states(turbo.button_icon)), "Disabling TURBO did not render a valid disabled icon.")
-	turbo.Trigger(pilot)
 	brakes.Trigger(pilot)
-	TEST_ASSERT(pod.flight.brakes, "Pressing the real brake action did not enable braking.")
+	TEST_ASSERT(pod.flight.brakes, "Pressing the real brake action did not enable stronger braking.")
 	var/enabled_brake_icon = brakes.button_icon_state
 	TEST_ASSERT(enabled_brake_icon in icon_states(brakes.button_icon), "The enabled brake HUD icon does not exist.")
 	var/initial_lights = pod.lights
@@ -57,21 +45,89 @@
 	TEST_ASSERT(QDELETED(passenger_exit), "An exited passenger retained a live pod action.")
 	pilot_exit.Trigger(pilot)
 	TEST_ASSERT(pilot.loc != pod, "Pressing the pilot exit button did not exit the pod.")
-	TEST_ASSERT(QDELETED(lights) && QDELETED(internals) && QDELETED(brakes) && QDELETED(turbo) && QDELETED(pilot_exit), "An exited pilot retained live pod actions.")
+	TEST_ASSERT(QDELETED(lights) && QDELETED(internals) && QDELETED(brakes) && QDELETED(pilot_exit), "An exited pilot retained live pod actions.")
 	TEST_ASSERT(QDELETED(camera_zoom), "An exited pilot retained the camera zoom action.")
-	var/turbo_after_exit = pod.flight.turbo
-	TEST_ASSERT(!turbo.Trigger(pilot), "An exited pilot activated their stale TURBO button.")
-	TEST_ASSERT_EQUAL(pod.flight.turbo, turbo_after_exit, "A stale exited TURBO button changed the flight setting.")
 	var/mob/living/carbon/human/replacement = allocate(/mob/living/carbon/human/consistent)
 	TEST_ASSERT(pod.mob_enter(replacement, silent = TRUE), "The replacement pilot could not board for the brake HUD test.")
 	var/datum/action/vehicle/sealed/spacepod/brakes/replacement_brakes = locate() in replacement.actions
 	TEST_ASSERT_NOTNULL(replacement_brakes, "Boarding did not grant the replacement pilot a brake action.")
-	TEST_ASSERT(pod.flight.brakes, "Changing pilots unexpectedly cleared the enabled brake setting.")
+	TEST_ASSERT(pod.flight.brakes, "Changing pilots unexpectedly cleared the stronger brake setting.")
 	TEST_ASSERT_EQUAL(replacement_brakes.button_icon_state, enabled_brake_icon, "The replacement pilot's brake icon does not show the already enabled brakes.")
-	var/datum/action/vehicle/sealed/spacepod/turbo/replacement_turbo = locate() in replacement.actions
-	TEST_ASSERT_NOTNULL(replacement_turbo, "Boarding did not grant the replacement pilot a TURBO action.")
-	TEST_ASSERT(pod.flight.turbo, "Changing pilots unexpectedly cleared the enabled TURBO setting.")
-	TEST_ASSERT_EQUAL(replacement_turbo.button_icon_state, enabled_turbo_icon, "The replacement pilot's TURBO icon does not show the already enabled mode.")
+
+/// Controls in the shared monitor can only affect the pod from its pilot's seat.
+/datum/unit_test/spacepod_monitor_controls/Run()
+	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__)
+	var/turf/boarding_turf = get_step(pod, SOUTH)
+	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, boarding_turf)
+	var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, boarding_turf)
+	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE) && pod.mob_enter(passenger, silent = TRUE), "Could not board both occupants.")
+	var/datum/tgui/pilot_ui = allocate(/datum/tgui, pilot, pod, "SpacepodStatus")
+	var/datum/tgui/passenger_ui = allocate(/datum/tgui, passenger, pod, "SpacepodStatus")
+	var/list/passenger_selection = list("passenger" = REF(passenger))
+	TEST_ASSERT(!pod.ui_act("turbo", list(), passenger_ui, null), "A passenger could control turbo.")
+	TEST_ASSERT(!pod.ui_act("eject_passenger", passenger_selection, passenger_ui, null), "A passenger could access pilot ejection controls.")
+	TEST_ASSERT(pod.ui_act("turbo", list(), pilot_ui, null) && pod.flight.turbo, "The pilot could not toggle turbo in the monitor.")
+	TEST_ASSERT(!pod.ui_act("eject_passenger", list("passenger" = REF(pilot)), pilot_ui, null), "Passenger ejection accepted the pilot's reference.")
+	TEST_ASSERT(pod.ui_act("eject_passenger", passenger_selection, pilot_ui, null), "The pilot could not eject the current passenger.")
+	TEST_ASSERT(!pod.is_occupant(passenger) && passenger.loc != pod && pilot.loc == pod, "Ejection did not remove only the chosen passenger.")
+	TEST_ASSERT(!pod.ui_act("eject_passenger", passenger_selection, pilot_ui, null), "A stale passenger reference was accepted.")
+	TEST_ASSERT(pod.mob_exit(pilot, silent = TRUE), "The pilot failed to exit.")
+	TEST_ASSERT(!pod.ui_act("turbo", list(), pilot_ui, null) && pod.flight.turbo, "A former pilot could still control turbo.")
+
+/// Keep the real preferences tree without writing player saves.
+/datum/preferences/spacepod_key_test
+	load_and_save = FALSE
+
+/datum/preferences/spacepod_key_test/Destroy(force)
+	if(parent?.prefs == src)
+		parent.prefs = null
+	parent = null
+	return ..()
+
+/// Reboarding recreates the HUD action and restores the player's own binding.
+/datum/unit_test/spacepod_action_key/Run()
+	var/obj/vehicle/sealed/spacepod/pod = allocate(__IMPLIED_TYPE__)
+	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(pod, SOUTH))
+	var/datum/client_interface/viewer = allocate(__IMPLIED_TYPE__)
+	viewer.prefs = allocate(/datum/preferences/spacepod_key_test, viewer)
+	pilot.mock_client = viewer
+	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "Could not board for the hotkey test.")
+	var/datum/action/vehicle/sealed/spacepod/brakes/brake_action = locate() in pilot.actions
+	brake_action.set_key("ShiftK")
+	TEST_ASSERT(pod.mob_exit(pilot, silent = TRUE) && QDELETED(brake_action), "Leaving did not destroy the old action.")
+	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "Could not reboard for the hotkey test.")
+	brake_action = locate() in pilot.actions
+	TEST_ASSERT_EQUAL(brake_action.full_key, "ShiftK", "The new HUD action lost the saved hotkey.")
+	brake_action.set_key(null)
+	TEST_ASSERT(pod.mob_exit(pilot, silent = TRUE) && pod.mob_enter(pilot, silent = TRUE), "Could not reboard after clearing the binding.")
+	brake_action = locate() in pilot.actions
+	TEST_ASSERT_NULL(brake_action.full_key, "The cleared key reappeared after reboarding.")
+
+/// Dragging a pod onto oneself unloads its passenger only when its hatch is accessible.
+/datum/unit_test/spacepod_external_ejection/Run()
+	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__)
+	var/turf/boarding_turf = get_step(pod, SOUTH)
+	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, boarding_turf)
+	var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, boarding_turf)
+	var/mob/living/carbon/human/consistent/rescuer = allocate(__IMPLIED_TYPE__, boarding_turf)
+	rescuer.mock_client = allocate(/datum/client_interface)
+	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE) && pod.mob_enter(passenger, silent = TRUE), "Could not board both occupants.")
+	var/obj/item/crowbar/crowbar = allocate(__IMPLIED_TYPE__, pod)
+	passenger.set_combat_mode(FALSE)
+	TEST_ASSERT(passenger.put_in_active_hand(crowbar), "The passenger could not handle an inventory item.")
+	click_wrapper(passenger, pod)
+	TEST_ASSERT(!pod.hatch_open, "The passenger could open the outside maintenance hatch from inside.")
+	pod.unlocked = FALSE
+	var/mob/previous_usr = usr
+	usr = rescuer
+	pod.MouseDrop(rescuer)
+	usr = previous_usr
+	TEST_ASSERT_EQUAL(passenger.loc, pod, "An outsider could unload a passenger through a locked door.")
+	pod.unlocked = TRUE
+	usr = rescuer
+	pod.MouseDrop(rescuer)
+	usr = previous_usr
+	TEST_ASSERT(!pod.is_occupant(passenger) && passenger.loc != pod && pilot.loc == pod, "Native drag did not eject only the passenger.")
 
 /// Replace only the radial UI boundary; native MOD click routing remains intact.
 /obj/item/mod/control/pre_equipped/engineering/spacepod_radial_test
@@ -147,10 +203,8 @@
 	var/initial_damage = target.get_fire_loss()
 	var/hull_before = pod.get_integrity()
 	var/pilot_damage = pilot.get_fire_loss()
-	var/datum/action/vehicle/sealed/spacepod/fire/fire_action = locate() in pilot.actions
-	TEST_ASSERT_NOTNULL(fire_action, "Boarding did not grant the actual fire action.")
-	TEST_ASSERT(fire_action.IsAvailable(), "The real fire action is unavailable to the pilot.")
-	fire_action.Trigger(pilot)
+	TEST_ASSERT(!(SEND_SIGNAL(pilot, COMSIG_MOB_CLICKON, target, list(LEFT_CLICK = TRUE, SHIFT_CLICK = TRUE)) & COMSIG_MOB_CANCEL_CLICKON), "Shift-click was intercepted as a shot.")
+	click_wrapper(pilot, target)
 	sleep(1 SECONDS)
 	TEST_ASSERT(target.get_fire_loss() > initial_damage, "The actual laser projectiles did not damage a target beyond the hull.")
 	TEST_ASSERT_EQUAL(pod.get_integrity(), hull_before, "The pod shot its own hull.")

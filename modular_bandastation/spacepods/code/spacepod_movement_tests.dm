@@ -1,3 +1,58 @@
+/// Parking brakes real motion before releasing the pilot's hands and holding the hull.
+/datum/unit_test/spacepod_parking/Run()
+	var/turf/origin = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
+	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, origin)
+	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
+	var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
+	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "The parking test pilot could not board.")
+	TEST_ASSERT(pod.mob_enter(passenger, silent = TRUE), "The parking test passenger could not board.")
+	TEST_ASSERT(HAS_TRAIT_FROM_ONLY(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT), "A pilot had free hands in flight.")
+	TEST_ASSERT(!HAS_TRAIT(passenger, TRAIT_HANDS_BLOCKED), "The flight cabin blocked the passenger's hands.")
+
+	var/datum/spacepod_flight/flight = pod.flight
+	pod.setDir(NORTH)
+	TEST_ASSERT(pod.relaymove(pilot, NORTH) && flight.aim(90), "The pilot could not queue movement and rotation.")
+	STOP_PROCESSING(SSnewtonian_movement, flight)
+	flight.process(0.2)
+	TEST_ASSERT((flight.velocity_x || flight.velocity_y) && flight.angular_velocity, "The input fixture did not create linear and angular motion.")
+	TEST_ASSERT(flight.toggle_brakes(), "The pilot could not enable stronger brakes before parking.")
+	TEST_ASSERT(flight.toggle_parking(), "The pilot could not start parking while moving.")
+	TEST_ASSERT(!pod.relaymove(pilot, NORTH) && !pod.relaymove(pilot, UP) && !flight.aim(180), "Parking accepted new flight inputs.")
+	STOP_PROCESSING(SSnewtonian_movement, flight)
+	var/available_charge = pod.battery.charge
+	pod.battery.charge = 0
+	flight.process(0.05)
+	TEST_ASSERT(!flight.parked && !pod.anchored && HAS_TRAIT_FROM_ONLY(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT), "An unpowered coasting pod anchored or released the pilot's hands.")
+	pod.battery.charge = available_charge
+	for(var/tick in 1 to 10)
+		if(flight.process(0.05) == PROCESS_KILL)
+			break
+	TEST_ASSERT(flight.parked && pod.anchored, "The parking brake did not stabilize and anchor the pod.")
+	TEST_ASSERT(!flight.velocity_x && !flight.velocity_y && !flight.angular_velocity, "The anchored pod retained motion.")
+	TEST_ASSERT(!HAS_TRAIT(pilot, TRAIT_HANDS_BLOCKED), "A parked cabin still blocked the pilot's hands.")
+	TEST_ASSERT(flight.brakes, "Parking cleared the pilot's stronger brake setting.")
+	TEST_ASSERT(pod.battery.charge < available_charge, "The active braking did not consume charge.")
+
+	var/turf/parked_location = pod.loc
+	var/parked_heading = flight.heading
+	var/parked_charge = pod.battery.charge
+	TEST_ASSERT(!pod.Move(get_step(parked_location, NORTH), NORTH), "A normal native move displaced the parked cabin.")
+	flight.process(0.1)
+	TEST_ASSERT_EQUAL(pod.loc, parked_location, "The parked pod drifted.")
+	TEST_ASSERT_EQUAL(flight.heading, parked_heading, "The parked pod rotated.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, parked_charge, "Holding a parked pod spent flight power.")
+	TEST_ASSERT(flight.toggle_parking() && !pod.anchored, "The pilot could not release the parking anchor.")
+	TEST_ASSERT(HAS_TRAIT_FROM_ONLY(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT), "The pilot kept free hands after releasing parking.")
+
+	TEST_ASSERT(flight.toggle_parking(), "The stopped pod could not park again.")
+	STOP_PROCESSING(SSnewtonian_movement, flight)
+	flight.process(0.05)
+	TEST_ASSERT(flight.parked, "A stopped pod did not finish parking.")
+	pod.forceMove(get_step(parked_location, NORTH))
+	TEST_ASSERT(!flight.parking && !flight.parked && !pod.anchored, "An external relocation left the parking state active.")
+	TEST_ASSERT(HAS_TRAIT_FROM_ONLY(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT), "A relocated pod left the pilot's hands unblocked.")
+	TEST_ASSERT(!HAS_TRAIT(passenger, TRAIT_HANDS_BLOCKED), "Changing parking state blocked the passenger's hands.")
+
 /// Diagonal thrust keeps the four-tile footprint and preserves the cabin and occupants' facing.
 /datum/unit_test/spacepod_diagonal_controls/Run()
 	var/turf/origin = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { AnimatedNumber, Icon, ProgressBar } from 'tgui-core/components';
+import { AnimatedNumber, Button, Icon, ProgressBar } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -20,6 +20,11 @@ type SpacepodStatusData = {
   locked: boolean;
   occupant_count: number;
   occupant_capacity: number;
+  pilot_controls: boolean;
+  turbo: boolean;
+  parking: boolean;
+  parked: boolean;
+  passengers: { name: string; ref: string }[];
 };
 
 const MINIMUM_OXYGEN_KPA = 16;
@@ -38,7 +43,7 @@ const Reading = (props: { value: number | null; unit?: string }) => (
 );
 
 export const SpacepodStatus = () => {
-  const { data } = useBackend<SpacepodStatusData>();
+  const { act, data } = useBackend<SpacepodStatusData>();
   const oxygenLow =
     data.active_oxygen_kpa !== null &&
     data.active_oxygen_kpa < MINIMUM_OXYGEN_KPA;
@@ -81,6 +86,62 @@ export const SpacepodStatus = () => {
               {alerts.length ? 'Требует внимания' : 'Текущие показатели'}
             </div>
           </header>
+
+          {data.pilot_controls && (
+            <section aria-label="Управление челноком">
+              <Button
+                icon="square-parking"
+                selected={data.parking}
+                tooltip="Гасит движение и вращение. После остановки фиксирует челнок и освобождает руки пилота."
+                onClick={() => act('parking')}
+              >
+                {data.parked
+                  ? 'Снять с парковки'
+                  : data.parking
+                    ? 'Отменить парковку'
+                    : 'Парковка'}
+              </Button>
+              <Button
+                icon="gauge-high"
+                selected={data.turbo}
+                disabled={data.parking}
+                tooltip="Удваивает скорость и ускорение. Тяга расходует вдвое больше заряда."
+                onClick={() => act('turbo')}
+              >
+                Турбо
+              </Button>
+              <Button
+                icon={data.locked ? 'lock-open' : 'lock'}
+                onClick={() => act('lock')}
+              >
+                {data.locked ? 'Разблокировать двери' : 'Заблокировать двери'}
+              </Button>
+              <Button icon="door-open" onClick={() => act('doors')}>
+                Шлюз отсека
+              </Button>
+              <Button icon="box" onClick={() => act('unload')}>
+                Сбросить груз
+              </Button>
+              <Button icon="chair" onClick={() => act('check_seat')}>
+                Проверить под сиденьем
+              </Button>
+              <Button icon="satellite-dish" onClick={() => act('scan')}>
+                Сканировать сектор
+              </Button>
+              {data.passengers.map((passenger) => (
+                <Button.Confirm
+                  key={passenger.ref}
+                  icon="person-walking-arrow-right"
+                  confirmContent="Подтвердить высадку"
+                  onClick={() =>
+                    act('eject_passenger', { passenger: passenger.ref })
+                  }
+                >
+                  Высадить: {passenger.name}
+                </Button.Confirm>
+              ))}
+            </section>
+          )}
 
           <div className="SpacepodStatus__overview">
             <div className="SpacepodStatus__systems">
@@ -215,7 +276,12 @@ export const SpacepodStatus = () => {
               <Icon name={data.locked ? 'lock' : 'lock-open'} />{' '}
               {data.locked ? 'Доступ закрыт' : 'Доступ открыт'}
             </span>
-            <span className="SpacepodStatus__readOnly">Только просмотр</span>
+            {data.parking && (
+              <span>
+                <Icon name="square-parking" />{' '}
+                {data.parked ? 'Припаркован' : 'Торможение'}
+              </span>
+            )}
           </footer>
         </div>
       </Window.Content>
