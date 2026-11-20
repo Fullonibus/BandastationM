@@ -19,7 +19,7 @@
 	var/obj/machinery/overmap_droid_relay/relay
 	/// One private set of images for each eligible viewer.
 	var/list/mob/viewers = list()
-	/// External mobile order targets whose movement can change the display.
+	/// External mobile order targets and marked hostiles that can change the display.
 	var/list/atom/movable/watched_targets = list()
 	/// Active JPS loops whose path calculation can finish without any unit movement.
 	var/list/datum/move_loop/has_target/jps/watched_loops = list()
@@ -33,10 +33,21 @@
 		COMSIG_MOB_RESET_PERSPECTIVE,
 		COMSIG_MOB_STATCHANGE,
 		COMSIG_MOB_SEE_INVIS_CHANGE,
+		COMSIG_MOB_CLIENT_CHANGE_VIEW,
 		COMSIG_VIEWDATA_UPDATE,
 		COMSIG_MOB_AI_MOVEMENT_STARTED,
 		COMSIG_AI_BLACKBOARD_KEY_SET(BB_CURRENT_PET_TARGET),
 		COMSIG_AI_BLACKBOARD_KEY_CLEARED(BB_CURRENT_PET_TARGET),
+	)
+	/// Changes to targets outside the deployment roster.
+	var/static/list/target_signals = list(
+		COMSIG_MOVABLE_MOVED,
+		COMSIG_QDELETING,
+		COMSIG_LIVING_DEATH,
+		COMSIG_ATOM_POST_DIR_CHANGE,
+		COMSIG_ATOM_UPDATED_ICON,
+		COMSIG_LIVING_POST_UPDATE_TRANSFORM,
+		COMSIG_LIVING_UPDATE_OFFSETS,
 	)
 
 /datum/component/relay_order_displays/Initialize()
@@ -62,7 +73,7 @@
 /// Watch changes made by a newly deployed body.
 /datum/component/relay_order_displays/proc/track_unit(mob/living/basic/relay_droid/unit)
 	if(unit in watched_targets)
-		UnregisterSignal(unit, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
+		UnregisterSignal(unit, target_signals)
 		watched_targets -= unit
 	RegisterSignals(unit, unit_signals, PROC_REF(queue_refresh))
 	RegisterSignal(unit, COMSIG_MOB_LOGOUT, PROC_REF(on_logout))
@@ -86,6 +97,21 @@
 /// Movement and blackboard signals can arrive before a new loop is fully installed.
 /datum/component/relay_order_displays/proc/queue_refresh(datum/source)
 	SIGNAL_HANDLER
+	schedule_refresh()
+
+/// Retire invalid outlines before a moved target can be drawn against stale fog.
+/datum/component/relay_order_displays/proc/on_target_change(atom/movable/target)
+	SIGNAL_HANDLER
+	if(QDELETED(target) || !isturf(target.loc) || !target.alpha)
+		for(var/mob/viewer as anything in viewers)
+			var/datum/relay_order_view/order_view = viewers[viewer]
+			order_view.remove_hostile_outline(target)
+	else
+		var/datum/relay_order_view/camera_display = viewers[relay.operator]
+		if(camera_display?.outline_appearances[REF(target)])
+			var/list/camera_turfs = relay.camera_view()
+			if(!camera_turfs[target.loc] || !relay.camera_sees(target))
+				camera_display.remove_hostile_outline(target)
 	schedule_refresh()
 
 /// Coalesce changes until the current operation has finished.
@@ -117,6 +143,7 @@
 		if(length(camera_turfs))
 			active_viewers += relay.operator
 			render_view(relay.operator, relay.operator.client, camera_turfs, relay.selected_units)
+		var/has_hostiles = length(relay.hostile_targets)
 		var/has_orders = FALSE
 		for(var/mob/living/basic/relay_droid/unit as anything in relay.droids)
 			if(unit.order != "hold" && unit.can_receive_relay_order())
@@ -124,25 +151,36 @@
 				break
 		for(var/mob/living/basic/relay_droid/guest as anything in relay.droids)
 			var/client/guest_client = guest.client
-			if(guest_client?.mob != guest || guest == relay.controlled || !relay.reaches(guest) || guest.stat != STABLE || guest.is_blind())
+			if(guest_client?.mob != guest || !relay.reaches(guest) || guest.stat != STABLE || guest.is_blind())
+				continue
+			var/draw_orders = has_orders && guest != relay.controlled
+			if(guest == relay.controlled && !has_hostiles)
 				continue
 			active_viewers += guest
 			// Keep listening to eye changes even while the guest is looking elsewhere.
-			var/list/guest_view = list()
-			if(has_orders && guest_client.eye == guest)
-				for(var/turf/tile in view(guest_client.view, guest))
+			var/list/guest_view
+			var/list/guest_turfs
+			if(guest_client.eye == guest && (draw_orders || has_hostiles))
+				guest_view = view(guest_client.view, guest)
+			if(draw_orders && length(guest_view))
+				guest_turfs = list()
+				for(var/turf/tile in guest_view)
 					if(tile.z == guest.z && guest.in_fov(tile))
-						guest_view[tile] = TRUE
-			render_view(guest, guest_client, guest_view)
+						guest_turfs[tile] = TRUE
+			render_view(guest, guest_client, guest_turfs, droid_view = guest_view)
 	for(var/mob/old_viewer as anything in viewers - active_viewers)
 		remove_viewer(old_viewer)
 	sync_order_sources(length(active_viewers))
 
-/// Keep subscriptions limited to order sources that can change an active display.
+/// Keep subscriptions limited to targets and paths that can change an active display.
 /datum/component/relay_order_displays/proc/sync_order_sources(has_viewers)
 	var/list/current_targets = list()
 	var/list/current_loops = list()
 	if(has_viewers)
+		for(var/datum/weakref/hostile_ref as anything in relay.hostile_targets)
+			var/mob/living/hostile = hostile_ref.resolve()
+			if(hostile && hostile.stat != DEAD && !(hostile in relay.droids))
+				current_targets |= hostile
 		for(var/mob/living/basic/relay_droid/unit as anything in relay.droids)
 			if(!unit.can_receive_relay_order() || !relay.reaches(unit) || unit.order == "hold")
 				continue
@@ -153,9 +191,9 @@
 			if(loop)
 				current_loops += loop
 	for(var/atom/movable/target as anything in watched_targets - current_targets)
-		UnregisterSignal(target, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
+		UnregisterSignal(target, target_signals)
 	for(var/atom/movable/target as anything in current_targets - watched_targets)
-		RegisterSignals(target, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING), PROC_REF(queue_refresh))
+		RegisterSignals(target, target_signals, PROC_REF(on_target_change))
 	watched_targets = current_targets
 	for(var/datum/move_loop/has_target/jps/loop as anything in watched_loops - current_loops)
 		UnregisterSignal(loop, list(COMSIG_MOVELOOP_STOP, COMSIG_MOVELOOP_JPS_FINISHED_PATHING, COMSIG_QDELETING))
@@ -170,30 +208,43 @@
 		return loop
 	return null
 
-/// Render orders issued to teammates the viewer can currently see.
-/datum/component/relay_order_displays/proc/render_view(mob/viewer, client/recipient, list/visible, list/selected)
+/// Render orders and marked hostiles the viewer can currently see.
+/datum/component/relay_order_displays/proc/render_view(mob/living/viewer, client/recipient, list/visible, list/selected, list/droid_view)
 	var/datum/relay_order_view/order_view = viewers[viewer]
 	if(order_view?.recipient != recipient)
 		remove_viewer(viewer)
 		order_view = new(recipient, src)
 		viewers[viewer] = order_view
-	if(!length(visible))
-		order_view.clear_images()
-		return
-
 	var/is_operator = viewer == relay.operator
-	for(var/mob/living/basic/relay_droid/unit as anything in relay.droids)
-		if(!relay.reaches(unit) || unit.invisibility > viewer.see_invisible)
-			continue
-		var/turf/unit_turf = unit.loc
-		if(!visible[unit_turf] || (is_operator && unit.invisibility && !relay.camera_sees(unit)))
-			continue
-		if(selected && (unit in selected))
-			order_view.add_marker(unit, unit_turf, "circle", COLOR_CYAN)
-		if(!unit.can_receive_relay_order() || unit.order == "hold")
-			continue
-		render_unit_order(order_view, unit, unit_turf, viewer.see_invisible, visible, is_operator)
+	if(length(visible))
+		for(var/mob/living/basic/relay_droid/unit as anything in relay.droids)
+			if(!relay.reaches(unit) || unit.invisibility > viewer.see_invisible)
+				continue
+			var/turf/unit_turf = unit.loc
+			if(!visible[unit_turf] || (is_operator && unit.invisibility && !relay.camera_sees(unit)))
+				continue
+			if(selected && (unit in selected))
+				order_view.add_marker(unit, unit_turf, "circle", COLOR_CYAN)
+			if(!unit.can_receive_relay_order() || unit.order == "hold")
+				continue
+			render_unit_order(order_view, unit, unit_turf, viewer.see_invisible, visible, is_operator)
+	if(is_operator || length(droid_view))
+		render_hostile_outlines(order_view, viewer, is_operator, visible, droid_view)
 	order_view.finish_frame()
+
+/// Draw tags only on living bodies visible through the current perspective.
+/datum/component/relay_order_displays/proc/render_hostile_outlines(datum/relay_order_view/order_view, mob/living/viewer, is_operator, list/camera_turfs, list/droid_view)
+	for(var/datum/weakref/hostile_ref as anything in relay.hostile_targets)
+		var/mob/living/hostile = hostile_ref.resolve()
+		if(!hostile || hostile == viewer || hostile.stat == DEAD || !isturf(hostile.loc) || !hostile.alpha || hostile.invisibility > viewer.see_invisible)
+			continue
+		var/turf/hostile_turf = hostile.loc
+		if(is_operator)
+			if(!camera_turfs[hostile_turf] || !relay.camera_sees(hostile))
+				continue
+		else if(hostile_turf.z != viewer.z || !(hostile in droid_view) || !viewer.in_fov(hostile_turf))
+			continue
+		order_view.add_hostile_outline(hostile)
 
 /// Draw the directive, visible endpoints, and only visible segments of its existing route.
 /datum/component/relay_order_displays/proc/render_unit_order(datum/relay_order_view/order_view, mob/living/basic/relay_droid/unit, turf/unit_turf, see_invisible, list/visible, is_operator)
@@ -219,10 +270,14 @@
 		order_view.add_marker(unit, destination, "end", marker_color)
 
 	var/datum/move_loop/has_target/jps/loop = active_jps_loop(unit)
-	if(!loop || loop.target != target || !length(loop.movement_path))
+	if(!loop || !length(loop.movement_path))
+		return
+	// A melee route leads to a reserved flank while the order remains aimed at the visible enemy.
+	var/turf/route_destination = get_turf(loop.target)
+	if(!route_destination || (loop.target != target && (unit.order != "attack" || route_destination.z != destination.z)))
 		return
 	var/turf/path_end = loop.movement_path[length(loop.movement_path)]
-	if(path_end.z != destination.z || get_dist(path_end, destination) > loop.minimum_distance)
+	if(path_end.z != route_destination.z || get_dist(path_end, route_destination) > loop.minimum_distance)
 		return
 	var/turf/previous = unit_turf
 	for(var/index in 1 to length(loop.movement_path))
@@ -245,6 +300,8 @@
 	var/list/current_images = list()
 	/// Images selected for the next frame, including reused images.
 	var/list/next_images = list()
+	/// Original appearances used to build each private outline, keyed like the images.
+	var/list/outline_appearances = list()
 	/// Parent renderer, which rechecks permission after an eye change.
 	var/datum/component/relay_order_displays/displays
 
@@ -271,6 +328,41 @@
 		recipient?.images -= current_images[key]
 	current_images.Cut()
 	next_images.Cut()
+	outline_appearances.Cut()
+
+/// Attach the outline to the target so engine visibility and fog still apply to it.
+/datum/relay_order_view/proc/add_hostile_outline(mob/living/hostile)
+	var/key = REF(hostile)
+	var/image/outline = current_images[key]
+	var/original_appearance = hostile.appearance
+	if(!outline || outline_appearances[key] != original_appearance)
+		var/mutable_appearance/outlined_appearance = new(original_appearance)
+		outlined_appearance.appearance_flags |= KEEP_APART | KEEP_TOGETHER
+		outlined_appearance.override = TRUE
+		outlined_appearance.add_filter("hostile_outline", 2, outline_filter(1, "#FF0022CC"))
+		// The image inherits movement and transforms from its host.
+		outlined_appearance.transform = null
+		outlined_appearance.pixel_x = 0
+		outlined_appearance.pixel_y = 0
+		if(outline)
+			outline.appearance = outlined_appearance
+		else
+			outline = image(outlined_appearance, hostile)
+			outline.override = TRUE
+			recipient.images += outline
+		outline_appearances[key] = original_appearance
+	current_images -= key
+	next_images[key] = outline
+
+/// Drop a target's outline before the next display refresh.
+/datum/relay_order_view/proc/remove_hostile_outline(atom/movable/target)
+	var/key = REF(target)
+	var/image/outline = current_images[key]
+	if(!outline)
+		return
+	recipient.images -= outline
+	current_images -= key
+	outline_appearances -= key
 
 /// Reuse the previous marker when its location, style and direction are unchanged.
 /datum/relay_order_view/proc/add_marker(mob/living/basic/relay_droid/unit, turf/location, icon_state, color, direction = SOUTH, previous_direction = NONE)
@@ -302,6 +394,7 @@
 /datum/relay_order_view/proc/finish_frame()
 	for(var/key in current_images)
 		recipient.images -= current_images[key]
+		outline_appearances -= key
 	current_images.Cut()
 	var/list/retired_images = current_images
 	current_images = next_images

@@ -44,6 +44,8 @@
 #include "code/relay.dm"
 #include "code/relay_camera.dm"
 #include "code/relay_droid.dm"
+#include "code/relay_engagements.dm"
+#include "code/relay_combat.dm"
 #include "code/relay_order_display.dm"
 #include "code/relay_orders.dm"
 #include "code/relay_fabricator.dm"

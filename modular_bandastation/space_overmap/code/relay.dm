@@ -28,6 +28,8 @@
 	var/mob/living/basic/relay_operator/operator
 	/// Active bodies and pending transports. Stored bodies are inside chassis items.
 	var/list/mob/living/basic/relay_droid/droids = list()
+	/// Explicitly marked bodies, keyed by weak reference with their name at identification.
+	var/list/datum/weakref/hostile_targets = list()
 	/// Optional peripherals, resolved again before use.
 	var/datum/weakref/board_ref
 	/// Optional fabricator.
@@ -63,6 +65,8 @@
 
 /obj/machinery/overmap_droid_relay/Destroy()
 	clear_camera()
+	for(var/datum/weakref/reference as anything in hostile_targets.Copy())
+		unmark_hostile(reference)
 	for(var/mob/living/basic/relay_droid/unit as anything in droids.Copy())
 		unit.clear_order()
 		remove_unit(unit)

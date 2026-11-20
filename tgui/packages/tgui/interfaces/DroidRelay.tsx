@@ -28,6 +28,7 @@ type Data = {
   watching: number;
   armedClick: string | null;
   patrolFirst: number;
+  hostileTargets: Option[];
   computer: number;
   factory: number | null;
   cost: number;
@@ -78,6 +79,7 @@ function RelayButton({
 export function DroidRelay() {
   const { act, data } = useBackend<Data>();
   const [page, setPage] = useState<'squad' | 'deployment'>('squad');
+  const [hostileListOpen, setHostileListOpen] = useState(false);
   const [transportId, setTransport] = useState('');
   const [mode, setMode] = useState('random');
   const [beaconId, setBeacon] = useState('');
@@ -95,6 +97,7 @@ export function DroidRelay() {
   const watching = !!data.watching;
   const chooseDrop = !!transport && mode === 'aimed';
   const dropArmed = data.armedClick === 'drop';
+  const markArmed = data.armedClick === 'mark_hostile';
   const slots = Math.max(0, data.limit - data.units.length);
   const launchCount = Math.min(prepared, slots);
   const launchAdvice = !slots
@@ -112,11 +115,13 @@ export function DroidRelay() {
               : '';
   const clickAdvice = dropArmed
     ? 'Нажмите на свободную площадку в игровом окне.'
-    : data.patrolFirst
-      ? 'Выберите вторую точку патруля.'
-      : data.armedClick === 'patrol'
-        ? 'Выберите первую точку патруля.'
-        : 'Укажите цель в игровом окне.';
+    : markArmed
+      ? 'Нажмите ЛКМ по видимой цели. ПКМ отменяет выбор.'
+      : data.patrolFirst
+        ? 'Выберите вторую точку патруля.'
+        : data.armedClick === 'patrol'
+          ? 'Выберите первую точку патруля.'
+          : 'Укажите цель в игровом окне.';
 
   return (
     <Window width={420} height={496}>
@@ -258,6 +263,53 @@ export function DroidRelay() {
                 </RelayButton>
               </div>
             )}
+          </Section>
+
+          <Section>
+            <div className="DroidRelay__hostileActions">
+              <RelayButton
+                tone="transparent"
+                icon={hostileListOpen ? 'chevron-down' : 'chevron-right'}
+                aria-expanded={hostileListOpen}
+                aria-controls="relay-hostile-list"
+                onClick={() => setHostileListOpen(!hostileListOpen)}
+              >
+                Враждебные цели · {data.hostileTargets.length}
+              </RelayButton>
+              <RelayButton
+                icon="flag"
+                disabled={!watching}
+                title={watching ? undefined : 'Откройте камеру дроида'}
+                aria-pressed={markArmed}
+                onClick={() => act(markArmed ? 'cancel_order' : 'mark_hostile')}
+              >
+                Отметить врага
+              </RelayButton>
+            </div>
+            <div id="relay-hostile-list" hidden={!hostileListOpen}>
+              {data.hostileTargets.length ? (
+                <ul className="DroidRelay__hostiles">
+                  {data.hostileTargets.map((target) => (
+                    <li key={target.id}>
+                      <span>{target.name}</span>
+                      <RelayButton
+                        tone="transparent"
+                        aria-label={`Снять отметку с цели ${target.name}`}
+                        onClick={() => act('unmark_hostile', { id: target.id })}
+                      >
+                        Снять
+                      </RelayButton>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>
+                  {watching
+                    ? 'Отметок нет.'
+                    : 'Откройте камеру дроида, чтобы отметить цель.'}
+                </p>
+              )}
+            </div>
           </Section>
 
           <Section

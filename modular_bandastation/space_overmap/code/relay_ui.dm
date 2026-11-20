@@ -38,6 +38,9 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 		var/turf/location = beacon.active_turf(src)
 		if(location)
 			beacons += list(list("id" = REF(beacon), "name" = "[beacon.name] · [get_area_name(location)]"))
+	var/list/hostile_marks = list()
+	for(var/datum/weakref/reference as anything in hostile_targets)
+		hostile_marks += list(list("id" = REF(reference), "name" = hostile_targets[reference]))
 	var/obj/machinery/computer/stationtrauma_space_navigation/relay_board/board = board_ref?.resolve()
 	var/obj/machinery/relay_fabricator/fabricator = fabricator_ref?.resolve()
 	var/obj/docking_port/mobile/stationtrauma_space/ship = linked_ship()
@@ -48,6 +51,7 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 		"transports" = transports, "beacons" = beacons, "sites" = chart?.known_sites() || list(),
 		"site" = chart?.knows_site(selected_site) ? selected_site.id : null, "watching" = !!camera_eye,
 		"armedClick" = click_order, "patrolFirst" = !!patrol_start,
+		"hostileTargets" = hostile_marks,
 		"computer" = !!(valid_link(board) && board.can_interact(user) && board.vessel == ship && chart),
 		"factory" = valid_link(fabricator) ? fabricator.iron_sheets : null, "cost" = profile.iron_sheets,
 	)
@@ -85,6 +89,20 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 			cancel_click_order()
 		if("cancel_order")
 			cancel_click_order()
+		if("mark_hostile")
+			if(!camera_eye || actor.client.eye != camera_eye)
+				return FALSE
+			cancel_click_order()
+			click_order = "mark_hostile"
+			to_chat(actor, span_notice("Кликните ЛКМ по видимой цели, чтобы отметить её как враждебную. ПКМ отменяет выбор."))
+		if("unmark_hostile")
+			var/id = params["id"]
+			if(!istext(id))
+				return FALSE
+			for(var/datum/weakref/reference as anything in hostile_targets)
+				if(REF(reference) == id)
+					return unmark_hostile(reference)
+			return FALSE
 		if("order")
 			var/command = params["command"]
 			if(!(command in list("move", "follow", "patrol", "attack", "hold")) || !length(selected_units))

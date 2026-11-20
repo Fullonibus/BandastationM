@@ -7,14 +7,15 @@
 	///how we deal with diagonal movement, whether we try to avoid them or follow through with them
 	var/diagonal_flags = DIAGONAL_REMOVE_CLUNKY
 
-/datum/ai_movement/jps/start_moving_towards(datum/ai_controller/controller, atom/current_movement_target, min_distance, delay_override)
+/// An optional route can seed the move loop when a behavior has its own passability rules.
+/datum/ai_movement/jps/start_moving_towards(datum/ai_controller/controller, atom/current_movement_target, min_distance, delay_override, list/initial_path)
 	. = ..()
 	if(!.)
 		return FALSE
 	var/atom/movable/moving = controller.pawn
 	var/delay = delay_override || controller.movement_delay
 
-	var/datum/move_loop/loop = setup_moveloop(controller, current_movement_target, moving, delay, min_distance)
+	var/datum/move_loop/loop = setup_moveloop(controller, current_movement_target, moving, delay, min_distance, initial_path)
 
 	RegisterSignal(loop, COMSIG_MOVELOOP_PREPROCESS_CHECK, PROC_REF(pre_move))
 	RegisterSignal(loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(post_move))
@@ -23,7 +24,7 @@
 	return loop
 
 
-/datum/ai_movement/jps/proc/setup_moveloop(datum/ai_controller/controller, atom/current_movement_target, atom/movable/moving, delay, min_distance)
+/datum/ai_movement/jps/proc/setup_moveloop(datum/ai_controller/controller, atom/current_movement_target, atom/movable/moving, delay, min_distance, list/initial_path)
 	var/datum/move_loop/has_target/jps/loop = GLOB.move_manager.jps_move(moving,
 		current_movement_target,
 		delay,
@@ -35,6 +36,7 @@
 		subsystem = SSai_movement,
 		diagonal_handling = diagonal_flags,
 		extra_info = controller,
+		initial_path = initial_path,
 	)
 	return loop
 
@@ -56,7 +58,7 @@
 	maximum_length = 25
 	diagonal_flags = DIAGONAL_REMOVE_ALL
 
-/datum/ai_movement/jps/bot/start_moving_towards(datum/ai_controller/controller, atom/current_movement_target, min_distance, delay_override)
+/datum/ai_movement/jps/bot/start_moving_towards(datum/ai_controller/controller, atom/current_movement_target, min_distance, delay_override, list/initial_path)
 	var/datum/move_loop/loop = ..()
 	var/atom/our_pawn = controller.pawn
 	if(!loop || isnull(our_pawn))
@@ -73,7 +75,7 @@
 	max_pathing_attempts = 10
 	maximum_length = AI_MULEBOT_PATH_LENGTH
 
-/datum/ai_movement/jps/bot/mulebot/setup_moveloop(datum/ai_controller/controller, atom/current_movement_target, atom/movable/moving, delay, min_distance)
+/datum/ai_movement/jps/bot/mulebot/setup_moveloop(datum/ai_controller/controller, atom/current_movement_target, atom/movable/moving, delay, min_distance, list/initial_path)
 	var/datum/move_loop/has_target/jps/frustrations/loop = GLOB.move_manager.frustrations_move(moving,
 		current_movement_target,
 		delay,
@@ -85,10 +87,11 @@
 		subsystem = SSai_movement,
 		diagonal_handling = diagonal_flags,
 		extra_info = controller,
+		initial_path = initial_path,
 	)
 	return loop
 
-/datum/ai_movement/jps/bot/mulebot/start_moving_towards(datum/ai_controller/controller, atom/current_movement_target, min_distance)
+/datum/ai_movement/jps/bot/mulebot/start_moving_towards(datum/ai_controller/controller, atom/current_movement_target, min_distance, delay_override, list/initial_path)
 	var/datum/move_loop/loop = ..()
 	var/atom/our_pawn = controller.pawn
 	if(!loop || isnull(our_pawn))

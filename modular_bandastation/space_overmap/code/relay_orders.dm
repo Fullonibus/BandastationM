@@ -49,7 +49,7 @@
 		update_order_displays()
 	return issued
 
-/// LMB selects, RMB moves or attacks, and MMB follows or patrols to the click.
+/// Handle an armed click mode or the default tactical mouse bindings.
 /obj/machinery/overmap_droid_relay/proc/handle_tactical_click(atom/target, list/modifiers)
 	if(!camera_eye || !can_operate(operator))
 		return
@@ -65,6 +65,15 @@
 		cancel_click_order()
 		return
 	if(!camera_sees(target))
+		return
+	if(click_order == "mark_hostile")
+		if(!left_click)
+			return
+		if(isliving(target) && mark_hostile(target))
+			cancel_click_order()
+			to_chat(operator, span_notice("Цель отмечена как враждебная."))
+		else
+			to_chat(operator, span_warning("Эту цель нельзя отметить."))
 		return
 	var/turf/target_turf = get_turf(target)
 	if(click_order == "drop")
