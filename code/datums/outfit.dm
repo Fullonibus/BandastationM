@@ -98,8 +98,10 @@
 	/// Any clothing accessory item
 	var/accessory = null
 
-	/// Internals box. Will be inserted at the start of backpack_contents
+	/// Internals box. Placed in the backpack before other contents.
 	var/box
+	/// Extra contents of the box, as a list of item type paths mapped to quantities.
+	var/list/box_contents
 
 	/**
 	  * extra types for chameleon outfit changes, mostly guns
@@ -168,14 +170,6 @@
 	//to be overridden for toggling internals, id binding, access etc
 	return
 
-#define EQUIP_OUTFIT_ITEM(item_path, slot_name) if(##item_path) { \
-	user.equip_to_slot_or_del(SSwardrobe.provide_type(##item_path, user), ##slot_name, TRUE, indirect_action = TRUE); \
-	var/obj/item/outfit_item = user.get_item_by_slot(##slot_name); \
-	if (outfit_item && outfit_item.type == ##item_path) { \
-		outfit_item.on_outfit_equip(user, visuals_only, ##slot_name); \
-	} \
-}
-
 /**
  * Equips all defined types and paths to the mob passed in
  *
@@ -188,6 +182,56 @@
 /datum/outfit/proc/equip(mob/living/carbon/human/user, visuals_only = FALSE, apply_mental_conditioning = TRUE)
 	pre_equip(user, visuals_only)
 
+	equip_items(user, visuals_only)
+
+	post_equip(user, visuals_only)
+	user.dna?.species?.post_equip_species_outfit(user, visuals_only)
+
+	if(!visuals_only)
+		apply_fingerprints(user)
+		if(apply_mental_conditioning && mental_conditioning)
+			ADD_TRAIT(user, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
+		if(internals_slot)
+			if(internals_slot & ITEM_SLOT_HANDS)
+				var/obj/item/tank/internals/internals = user.is_holding_item_of_type(/obj/item/tank/internals)
+				if(internals)
+					user.open_internals(internals)
+			else
+				user.open_internals(user.get_item_by_slot(internals_slot))
+		if(implants)
+			for(var/implant_type in implants)
+				var/obj/item/implant/implanter = SSwardrobe.provide_type(implant_type, user)
+				implanter.implant(user, null, TRUE)
+
+		// Insert the skillchips associated with this outfit into the target.
+		if(skillchips)
+			for(var/skillchip_path in skillchips)
+				var/obj/item/skillchip/skillchip_instance = SSwardrobe.provide_type(skillchip_path)
+				var/implant_msg = user.implant_skillchip(skillchip_instance)
+				if(implant_msg)
+					stack_trace("Failed to implant [user] with [skillchip_instance], on job [src]. Failure message: [implant_msg]")
+					qdel(skillchip_instance)
+					return
+
+				var/activate_msg = skillchip_instance.try_activate_skillchip(TRUE, TRUE)
+				if(activate_msg)
+					CRASH("Failed to activate [user]'s [skillchip_instance], on job [src]. Failure message: [activate_msg]")
+
+
+	user.update_body()
+	equip_outfit_legacy_organs(user)
+	return TRUE
+
+#define EQUIP_OUTFIT_ITEM(item_path, slot_name) if(##item_path) { \
+	equip_outfit_item(user, ##item_path, ##slot_name, #item_path, visuals_only, check); \
+}
+
+/// Equips the configured items in their normal order, without outfit or species outfit hooks.
+/datum/outfit/proc/equip_items(mob/living/carbon/human/user, visuals_only, mob/living/carbon/human/dummy/outfit_check/check)
+	equip_outfit_prosthetics(user, check)
+	// Normal visual previews reuse their dummy. Only fitting uses a disposable body for organs.
+	if(!visuals_only || check)
+		equip_outfit_organs(user, check)
 	//Start with uniform,suit,backpack for additional slots
 	if(uniform)
 		EQUIP_OUTFIT_ITEM(uniform, ITEM_SLOT_ICLOTHING)
@@ -246,81 +290,133 @@
 	if(accessory)
 		var/obj/item/clothing/under/U = user.w_uniform
 		if(istype(U))
-			U.attach_accessory(SSwardrobe.provide_type(accessory, user))
+			if(!check || ispath(accessory, /obj/item))
+				var/obj/item/accessory_item = provide_fitting_item(accessory, user, check)
+				if(!U.attach_accessory(accessory_item) && check)
+					check.add_outfit_issue("accessory", accessory, "Этот аксессуар нельзя прикрепить к выбранной форме.")
+					qdel(accessory_item)
+			else
+				check.add_outfit_issue("accessory", accessory, "Не удалось найти тип аксессуара.")
+		else if(check)
+			check.add_outfit_issue("accessory", accessory, "Для аксессуара нужно надеть форму.")
 		else if(!visuals_only)
 			WARNING("Unable to equip accessory [accessory] in outfit [name]. No uniform present!")
 
 	if(l_hand)
-		user.put_in_l_hand(SSwardrobe.provide_type(l_hand, user), visuals_only = visuals_only)
+		equip_outfit_hand(user, l_hand, LEFT_HANDS, "l_hand", visuals_only, check)
 	if(r_hand)
-		user.put_in_r_hand(SSwardrobe.provide_type(r_hand, user), visuals_only = visuals_only)
+		equip_outfit_hand(user, r_hand, RIGHT_HANDS, "r_hand", visuals_only, check)
 
-	if(!visuals_only) // Items in pockets or backpack don't show up on mob's icon.
-		if(l_pocket)
-			EQUIP_OUTFIT_ITEM(l_pocket, ITEM_SLOT_LPOCKET)
-		if(r_pocket)
-			EQUIP_OUTFIT_ITEM(r_pocket, ITEM_SLOT_RPOCKET)
+	if(!visuals_only || check)
+		EQUIP_OUTFIT_ITEM(l_pocket, ITEM_SLOT_LPOCKET)
+		EQUIP_OUTFIT_ITEM(r_pocket, ITEM_SLOT_RPOCKET)
 
-		if(box)
-			if(!backpack_contents)
-				backpack_contents = list()
-			backpack_contents.Insert(1, box)
-			backpack_contents[box] = 1
-
-		if(backpack_contents)
-			for(var/path in backpack_contents)
-				var/number = backpack_contents[path]
-				if(!isnum(number))//Default to 1
-					number = 1
-				for(var/i in 1 to number)
-					user.equip_to_storage(SSwardrobe.provide_type(path, user), ITEM_SLOT_BACK, indirect_action = TRUE, del_on_fail = TRUE)
-
-		if(belt_contents)
-			for(var/path in belt_contents)
-				var/number = belt_contents[path]
-				if(!isnum(number))//Default to 1
-					number = 1
-				for(var/i in 1 to number)
-					user.equip_to_storage(SSwardrobe.provide_type(path, user), ITEM_SLOT_BELT, indirect_action = TRUE, del_on_fail = TRUE)
-
-	post_equip(user, visuals_only)
-	user.dna?.species?.post_equip_species_outfit(user, visuals_only)
-
-	if(!visuals_only)
-		apply_fingerprints(user)
-		if(apply_mental_conditioning && mental_conditioning)
-			ADD_TRAIT(user, TRAIT_MENTALLY_CONDITIONED, INNATE_TRAIT)
-		if(internals_slot)
-			if(internals_slot & ITEM_SLOT_HANDS)
-				var/obj/item/tank/internals/internals = user.is_holding_item_of_type(/obj/item/tank/internals)
-				if(internals)
-					user.open_internals(internals)
-			else
-				user.open_internals(user.get_item_by_slot(internals_slot))
-		if(implants)
-			for(var/implant_type in implants)
-				var/obj/item/implant/implanter = SSwardrobe.provide_type(implant_type, user)
-				implanter.implant(user, null, TRUE)
-
-		// Insert the skillchips associated with this outfit into the target.
-		if(skillchips)
-			for(var/skillchip_path in skillchips)
-				var/obj/item/skillchip/skillchip_instance = SSwardrobe.provide_type(skillchip_path)
-				var/implant_msg = user.implant_skillchip(skillchip_instance)
-				if(implant_msg)
-					stack_trace("Failed to implant [user] with [skillchip_instance], on job [src]. Failure message: [implant_msg]")
-					qdel(skillchip_instance)
-					return
-
-				var/activate_msg = skillchip_instance.try_activate_skillchip(TRUE, TRUE)
-				if(activate_msg)
-					CRASH("Failed to activate [user]'s [skillchip_instance], on job [src]. Failure message: [activate_msg]")
-
-
-	user.update_body()
-	return TRUE
+		if(box || (check && length(box_contents)))
+			equip_backpack_box(user, check)
+		equip_storage_contents(user, backpack_contents, "backpack_contents", ITEM_SLOT_BACK, check = check)
+		equip_storage_contents(user, belt_contents, "belt_contents", ITEM_SLOT_BELT, check = check)
+	if(check)
+		equip_outfit_legacy_organs(user, check)
 
 #undef EQUIP_OUTFIT_ITEM
+
+/// Fitting uses fresh objects so the mannequin cannot consume or change the wardrobe's stock.
+/datum/outfit/proc/provide_fitting_item(item_path, mob/living/carbon/human/user, mob/living/carbon/human/dummy/outfit_check/check)
+	if(check)
+		return new item_path(user)
+	return SSwardrobe.provide_type(item_path, user)
+
+/// Places an item in the requested slot and observes the result when fitting on a mannequin.
+/datum/outfit/proc/equip_outfit_item(mob/living/carbon/human/user, item_path, slot, destination, visuals_only, mob/living/carbon/human/dummy/outfit_check/check)
+	var/obj/item/previous_item
+	if(check)
+		if(!ispath(item_path, /obj/item))
+			check.add_outfit_issue(destination, item_path, "Не удалось найти тип предмета.")
+			return
+		check.rejection_reason = null
+		previous_item = user.get_item_by_slot(slot)
+	user.equip_to_slot_or_del(provide_fitting_item(item_path, user, check), slot, TRUE, indirect_action = TRUE)
+	var/obj/item/outfit_item = user.get_item_by_slot(slot)
+	// Some randomized types equip their replacement during initialization.
+	if(check && (!outfit_item || outfit_item == previous_item))
+		check.add_outfit_issue(destination, item_path, check.rejection_reason || "Предмет не остался в выбранном слоте.")
+		return
+	if(outfit_item && outfit_item.type == item_path)
+		outfit_item.on_outfit_equip(user, visuals_only, slot)
+
+/// Places an item in a hand using the normal pickup and equipment checks.
+/datum/outfit/proc/equip_outfit_hand(mob/living/carbon/human/user, item_path, side, destination, visuals_only, mob/living/carbon/human/dummy/outfit_check/check)
+	if(check && !ispath(item_path, /obj/item))
+		check.add_outfit_issue(destination, item_path, "Не удалось найти тип предмета.")
+		return
+	var/obj/item/item = provide_fitting_item(item_path, user, check)
+	var/hand_index = user.get_empty_held_index_for_side(side)
+	if(check && QDELETED(item))
+		check.add_outfit_issue(destination, item_path, "Предмет не удалось создать.")
+		return
+	if(user.put_in_hand(item, hand_index, visuals_only = visuals_only) || !check)
+		return
+	check.add_outfit_issue(destination, item_path, hand_index ? "Манекен не может удержать этот предмет." : "Нет свободной руки с этой стороны.")
+	qdel(item)
+
+/// Inserts configured contents through the normal storage path for a worn container or nested box.
+/datum/outfit/proc/equip_storage_contents(mob/living/carbon/human/user, list/contents, destination, slot, datum/storage/box_storage, mob/living/carbon/human/dummy/outfit_check/check)
+	if(!slot && !box_storage && !check)
+		return
+	for(var/item_path in contents)
+		var/count = contents[item_path]
+		if(!isnum(count))
+			count = 1
+		if(count < 1)
+			continue
+		if(check)
+			if(!ispath(item_path, /obj/item))
+				check.add_outfit_issue(destination, item_path, "Не удалось найти тип предмета.", count)
+				continue
+			if(!slot && !box_storage)
+				check.add_outfit_issue(destination, item_path, "Коробка недоступна в рюкзаке.", count)
+				continue
+		var/box_limit = box_storage ? box_storage.max_slots : count
+		var/attempt_count = check ? min(count, MAX_OUTFIT_ITEM_COUNT) : min(count, box_limit)
+		for(var/i in 1 to attempt_count)
+			var/obj/item/item = provide_fitting_item(item_path, user, check)
+			if(check)
+				check.rejection_reason = null
+				if(QDELETED(item))
+					check.add_outfit_issue(destination, item_path, "Предмет не удалось создать.")
+					continue
+			var/inserted
+			if(slot)
+				inserted = user.equip_to_storage(item, slot, indirect_action = TRUE, del_on_fail = TRUE)
+			else
+				if(check && i > box_limit)
+					// Issuing an outfit caps copies per box. Ask the storage why any skipped copy wouldn't fit.
+					if(box_storage.can_insert(item, user, messages = FALSE, force = STORAGE_SOFT_LOCKED))
+						check.rejection_reason = "При выдаче достигнут предел количества копий одного предмета в коробке."
+				else
+					inserted = box_storage.attempt_insert(item, user, override = TRUE, force = STORAGE_SOFT_LOCKED, messages = FALSE)
+				if(!inserted)
+					qdel(item)
+			if(check && !inserted)
+				check.add_outfit_issue(destination, item_path, check.rejection_reason || "Хранилище не приняло предмет.")
+		if(check && count > attempt_count)
+			check.add_outfit_issue(destination, item_path, "Количество превышает лимит одной примерки.", count - attempt_count)
+
+/// Places the selected box in the backpack and fills it using normal storage restrictions.
+/datum/outfit/proc/equip_backpack_box(mob/living/carbon/human/user, mob/living/carbon/human/dummy/outfit_check/check)
+	var/datum/storage/box_storage
+	if(box)
+		if(check && !ispath(box, /obj/item))
+			check.add_outfit_issue("box", box, "Не удалось найти тип коробки.")
+		else
+			var/obj/item/outfit_box = provide_fitting_item(box, user, check)
+			if(check)
+				check.rejection_reason = null
+			if(user.equip_to_storage(outfit_box, ITEM_SLOT_BACK, indirect_action = TRUE, del_on_fail = TRUE))
+				box_storage = outfit_box?.atom_storage
+			else if(check)
+				check.add_outfit_issue("box", box, check.rejection_reason || "Рюкзак не принял коробку.")
+	equip_storage_contents(user, box_contents, "box_contents", box_storage = box_storage, check = check)
 
 /**
  * Apply a fingerprint from the passed in human to all items in the outfit
@@ -395,20 +491,13 @@
 	preload += suit
 	preload += suit_store
 	preload += back
-	//Load in backpack gear and shit
-	for(var/type_to_load in backpack_contents)
-		var/num_to_load = backpack_contents[type_to_load]
-		if(!isnum(num_to_load))
-			num_to_load = 1
-		for(var/i in 1 to num_to_load)
-			preload += type_to_load
-	//Load in belt gear and shit
-	for(var/type_to_load in belt_contents)
-		var/num_to_load = belt_contents[type_to_load]
-		if(!isnum(num_to_load))
-			num_to_load = 1
-		for(var/i in 1 to num_to_load)
-			preload += type_to_load
+	for(var/list/contents as anything in list(backpack_contents, belt_contents, box_contents))
+		for(var/type_to_load in contents)
+			var/num_to_load = contents[type_to_load]
+			if(!isnum(num_to_load))
+				num_to_load = 1
+			for(var/i in 1 to num_to_load)
+				preload += type_to_load
 	preload += belt
 	// AI EDIT START - Dual ear slots
 	// BANDASTATION EDIT START - Dual ear slots
@@ -467,11 +556,24 @@
 	.["backpack_contents"] = backpack_contents
 	.["belt_contents"] = belt_contents
 	.["box"] = box
+	.["box_contents"] = box_contents
 	.["implants"] = implants
 	.["accessory"] = accessory
 	.["mental_conditioning"] = mental_conditioning
+	.["undershirt"] = undershirt
+	.["underwear"] = underwear
+	.["socks"] = socks
 
-/// Copy most vars from another outfit to this one
+/// Creates an independent draft from a saved outfit, preserving its subtype.
+/datum/outfit/proc/duplicate()
+	var/datum/outfit/draft = new type
+	draft.copy_from(src)
+	var/suffix = " (copy)"
+	var/base_name = copytext_char(name, 1, MAX_NAME_LEN - length_char(suffix) + 1)
+	draft.name = "[base_name][suffix]"
+	return draft
+
+/// Copies the common outfit settings and their mutable lists.
 /datum/outfit/proc/copy_from(datum/outfit/target)
 	name = target.name
 	uniform = target.uniform
@@ -498,12 +600,19 @@
 	r_hand = target.r_hand
 	l_hand = target.l_hand
 	internals_slot = target.internals_slot
-	backpack_contents = target.backpack_contents
-	belt_contents = target.belt_contents
+	backpack_contents = target.backpack_contents?.Copy()
+	belt_contents = target.belt_contents?.Copy()
 	box = target.box
-	implants = target.implants
+	box_contents = target.box_contents?.Copy()
+	implants = target.implants?.Copy()
 	accessory = target.accessory
 	mental_conditioning = target.mental_conditioning
+	chameleon_extras = islist(target.chameleon_extras) ? target.chameleon_extras.Copy() : target.chameleon_extras
+	skillchips = target.skillchips?.Copy()
+	preload = target.preload
+	undershirt = target.undershirt
+	underwear = target.underwear
+	socks = target.socks
 
 /// Prompt the passed in mob client to download this outfit as a json blob
 /datum/outfit/proc/save_to_file(mob/admin)
@@ -543,30 +652,46 @@
 	r_hand = text2path(outfit_data["r_hand"])
 	l_hand = text2path(outfit_data["l_hand"])
 	internals_slot = outfit_data["internals_slot"]
-	var/list/backpack = outfit_data["backpack_contents"]
-	backpack_contents = list()
-	for(var/item in backpack)
-		var/itype = text2path(item)
-		if(itype)
-			backpack_contents[itype] = backpack[item]
-	var/list/beltpack = outfit_data["belt_contents"]
-	belt_contents = list()
-	// BANDASTATION EDIT START // TODO220: Check if it's working correctly
-	for(var/itype in beltpack)
-		var/inum = beltpack[itype] || 1
-		for(var/i in 1 to inum)
-			belt_contents += itype
-	// BANDASTATION EDIT END
+	backpack_contents = load_storage_contents(outfit_data["backpack_contents"])
+	belt_contents = load_storage_contents(outfit_data["belt_contents"])
 	box = text2path(outfit_data["box"])
-	var/list/impl = outfit_data["implants"]
+	box_contents = load_storage_contents(outfit_data["box_contents"], MAX_OUTFIT_ITEM_COUNT)
+	// Older equips wrote the selected box into the first backpack entry before exporting.
+	if(!("box_contents" in outfit_data) && box && length(backpack_contents) && backpack_contents[1] == box && backpack_contents[box] == 1)
+		backpack_contents.Remove(box)
+	var/list/saved_implants = outfit_data["implants"]
 	implants = list()
-	for(var/I in impl)
-		var/imptype = text2path(I)
-		if(imptype)
-			implants += imptype
+	if(islist(saved_implants))
+		for(var/path in saved_implants)
+			var/implant_type = istext(path) ? text2path(path) : null
+			if(ispath(implant_type, /obj/item/implant))
+				implants += implant_type
 	accessory = text2path(outfit_data["accessory"])
 	mental_conditioning = outfit_data["mental_conditioning"] == TRUE
+	undershirt = load_underclothing_style(outfit_data["undershirt"], /datum/sprite_accessory/clothing/undershirt)
+	underwear = load_underclothing_style(outfit_data["underwear"], /datum/sprite_accessory/clothing/underwear)
+	socks = load_underclothing_style(outfit_data["socks"], /datum/sprite_accessory/clothing/socks)
 	return TRUE
+
+/// Resolves a saved underwear style only within the matching appearance slot.
+/datum/outfit/proc/load_underclothing_style(path, family)
+	var/style = istext(path) ? text2path(path) : null
+	return ispath(style, family) && style != family ? style : null
+
+/// Decodes an item-to-quantity map or a legacy array of item paths (one item per element).
+/datum/outfit/proc/load_storage_contents(list/saved_contents, count_limit = INFINITY)
+	if(!islist(saved_contents))
+		return
+	. = list()
+	for(var/path in saved_contents)
+		var/item_type = istext(path) ? text2path(path) : null
+		if(!ispath(item_type, /obj/item))
+			continue
+		var/count = saved_contents[path]
+		if(!isnum(count))
+			.[item_type] = min((.[item_type] || 0) + 1, count_limit)
+		else if(IS_FINITE__UNSAFE(count) && count >= 1)
+			.[item_type] = min(round(count), count_limit)
 
 /datum/outfit/vv_get_dropdown()
 	. = ..()

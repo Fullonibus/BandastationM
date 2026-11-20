@@ -400,49 +400,49 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
  */
 /datum/storage/proc/can_insert(obj/item/to_insert, mob/user, messages = TRUE, force = STORAGE_NOT_LOCKED)
 	if(QDELETED(to_insert) || !istype(to_insert))
-		return FALSE
+		return user?.inventory_rejected("Предмет не удалось создать.") || FALSE
 
 	//stops you from putting stuff like off-hand thingy inside. Hologram storages can accept only hologram items
 	if(to_insert.item_flags & ABSTRACT)
-		return FALSE
+		return user?.inventory_rejected("Этот предмет нельзя убрать в хранилище.") || FALSE
 	if(parent.flags_1 & HOLOGRAM_1)
 		if(!(to_insert.flags_1 & HOLOGRAM_1))
-			return FALSE
+			return user?.inventory_rejected("Голографическое хранилище принимает только голограммы.") || FALSE
 	else if(to_insert.flags_1 & HOLOGRAM_1)
-		return FALSE
+		return user?.inventory_rejected("Голограмму нельзя положить в обычное хранилище.") || FALSE
 
 	if(locked > force)
 		if(messages && user)
 			user.balloon_alert(user, "closed!")
-		return FALSE
+		return user?.inventory_rejected("Контейнер закрыт.") || FALSE
 
 	if((to_insert == parent) || (to_insert == real_location))
-		return FALSE
+		return user?.inventory_rejected("Контейнер нельзя вложить в самого себя.") || FALSE
 
 	if(to_insert.w_class > max_specific_storage)
 		if(!is_type_in_typecache(to_insert, exception_hold))
 			if(messages && user)
 				user.balloon_alert(user, "не помещается!")
-			return FALSE
+			return user?.inventory_rejected("Предмет слишком большой для этого контейнера.") || FALSE
 		if(exception_max <= get_exception_count())
 			if(messages && user)
 				user.balloon_alert(user, "нет места!")
-			return FALSE
+			return user?.inventory_rejected("Нет места для крупного предмета.") || FALSE
 
 	if(real_location.contents.len >= max_slots)
 		if(messages && user && !silent_for_user)
 			user.balloon_alert(user, "нет места!")
-		return FALSE
+		return user?.inventory_rejected("В контейнере закончились свободные ячейки.") || FALSE
 
 	if(to_insert.w_class + get_total_weight() > max_total_storage)
 		if(messages && user && !silent_for_user)
 			user.balloon_alert(user, "нет места!")
-		return FALSE
+		return user?.inventory_rejected("Превышен общий предел вместимости контейнера.") || FALSE
 
 	if(to_insert.anchored)
 		if(messages && user && !silent_for_user)
 			user.balloon_alert(user, "anchored!")
-		return FALSE
+		return user?.inventory_rejected("Закреплённый предмет нельзя убрать в контейнер.") || FALSE
 
 	var/can_hold_it = isnull(can_hold) || is_type_in_typecache(to_insert, can_hold) || is_type_in_typecache(to_insert, exception_hold)
 	var/cant_hold_it = is_type_in_typecache(to_insert, cant_hold)
@@ -450,19 +450,19 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(!can_hold_it || cant_hold_it || trait_says_no)
 		if(messages && user)
 			user.balloon_alert(user, "не может вмещать!")
-		return FALSE
+		return user?.inventory_rejected("Контейнер не принимает предметы такого типа.") || FALSE
 
 	if(HAS_TRAIT(to_insert, TRAIT_NODROP))
 		if(messages && user)
 			user.balloon_alert(user, "застревает на руке!")
-		return FALSE
+		return user?.inventory_rejected("Этот предмет нельзя снять с руки.") || FALSE
 
 	// this is valid if the container our location is being held in is a storage item
 	var/datum/storage/bigger_fish = parent.loc.atom_storage
 	if(bigger_fish && bigger_fish.max_specific_storage < max_specific_storage)
 		if(messages && user)
 			user.balloon_alert(user, "[LOWER_TEXT(parent.loc.declent_ru(NOMINATIVE))] на пути!")
-		return FALSE
+		return user?.inventory_rejected("Внешний контейнер мешает доступу к вложенному хранилищу.") || FALSE
 
 	if(isitem(parent))
 		var/obj/item/item_parent = parent
@@ -470,7 +470,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		if(smaller_fish && !allow_big_nesting && to_insert.w_class >= item_parent.w_class)
 			if(messages && user)
 				user.balloon_alert(user, "слишком большое!")
-			return FALSE
+			return user?.inventory_rejected("Вложенный контейнер слишком большой.") || FALSE
 
 	return TRUE
 
@@ -505,9 +505,17 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(!can_insert(to_insert, user, messages = messages, force = force))
 		return FALSE
 	if(SEND_SIGNAL(parent, COMSIG_ATOM_PRE_STORED_ITEM, to_insert, user, force, messages) & BLOCK_STORAGE_INSERT)
-		return FALSE
+		return user?.inventory_rejected("Контейнер отклонил помещение предмета.") || FALSE
 	if(SEND_SIGNAL(to_insert, COMSIG_ITEM_PRE_STORAGE_INSERTION, parent, user, force, messages) & BLOCK_STORAGE_INSERT)
-		return FALSE
+		return user?.inventory_rejected("Предмет нельзя положить в этот контейнер.") || FALSE
+
+	var/fitting = istype(user, /mob/living/carbon/human/dummy/outfit_check)
+	var/stack_merge_type
+	var/expected_stack_amount
+	if(fitting && istype(to_insert, /obj/item/stack))
+		var/obj/item/stack/inserted_stack = to_insert
+		stack_merge_type = inserted_stack.merge_type
+		expected_stack_amount = get_fitting_stack_amount(stack_merge_type) + inserted_stack.get_amount()
 
 	SEND_SIGNAL(parent, COMSIG_ATOM_STORED_ITEM, to_insert, user, force)
 	SEND_SIGNAL(src, COMSIG_STORAGE_STORED_ITEM, to_insert, user, force)
@@ -516,11 +524,22 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		item_carrier.transferItemToLoc(to_insert, real_location, animated = FALSE) // This allows has_unequipped() to be properly called.
 	else
 		to_insert.forceMove(real_location)
+	if(fitting && (QDELETED(to_insert) || to_insert.loc != real_location))
+		if(QDELETED(to_insert) && stack_merge_type && get_fitting_stack_amount(stack_merge_type) >= expected_stack_amount)
+			return TRUE
+		return user.inventory_rejected("Предмет не остался в контейнере после переноса.")
 	if(get(real_location, /mob) != user)
 		to_insert.do_pickup_animation(real_location, user)
 	if (messages)
 		item_insertion_feedback(user, to_insert, override)
 	return TRUE
+
+/// A stack consumed by a merge still counts as fitted if its units reached the container.
+/datum/storage/proc/get_fitting_stack_amount(merge_type)
+	. = 0
+	for(var/obj/item/stack/stack in real_location)
+		if(stack.merge_type == merge_type)
+			. += stack.get_amount()
 
 /// Since items inside storages ignore transparency for QOL reasons, we're tracking when things are dropped onto them instead of our UI elements
 /datum/storage/proc/mousedrop_receive(atom/dropped_onto, atom/movable/target, mob/user, params)

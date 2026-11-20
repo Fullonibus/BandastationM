@@ -575,7 +575,7 @@
  */
 /mob/proc/equip_to_slot_if_possible(obj/item/W, slot, qdel_on_fail = FALSE, disable_warning = FALSE, redraw_mob = TRUE, bypass_equip_delay_self = FALSE, initial = FALSE, indirect_action = FALSE)
 	if(!istype(W) || QDELETED(W)) //This qdeleted is to prevent stupid behavior with things that qdel during init, like say stacks
-		return FALSE
+		return inventory_rejected("Предмет не удалось создать.")
 	if(!W.mob_can_equip(src, slot, disable_warning, bypass_equip_delay_self, indirect_action = indirect_action))
 		if(qdel_on_fail)
 			qdel(W)
@@ -693,12 +693,20 @@
 	to_chat(user, span_warning("Вы не можете экипировать это!"))
 	return FALSE
 
+/// Returns FALSE for a rejected inventory operation. Preview dummies can also retain the reason.
+/mob/proc/inventory_rejected(reason)
+	return FALSE
+
 /// Attempts to put an item into storage located in a given slot
 /// indirect_action - ignore "soft-locked" storages that can be easily opened
 /// del_on_fail - delete the item upon failure
 /mob/proc/equip_to_storage(obj/item/item, slot, indirect_action = FALSE, del_on_fail = FALSE, initial = FALSE)
 	var/obj/item/worn_item = get_item_by_slot(slot)
-	if (worn_item?.atom_storage?.attempt_insert(item, src, override = TRUE, force = indirect_action ? STORAGE_SOFT_LOCKED : STORAGE_NOT_LOCKED, messages = FALSE))
+	if(!worn_item)
+		inventory_rejected("Контейнер не надет.")
+	else if(!worn_item.atom_storage)
+		inventory_rejected("У предмета в этом слоте нет хранилища.")
+	else if(worn_item.atom_storage.attempt_insert(item, src, override = TRUE, force = indirect_action ? STORAGE_SOFT_LOCKED : STORAGE_NOT_LOCKED, messages = FALSE))
 		return TRUE
 
 	if (del_on_fail)

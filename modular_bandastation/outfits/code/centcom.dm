@@ -193,7 +193,8 @@
 	// By making it TRUE on init, we don't give it roundstart nuke disk safety measures, etc.
 	// So, this disk is just good for making bomb go boom
 	fake = FALSE
-	SSpoints_of_interest.make_point_of_interest(src)
+	if(!get(src, /mob/living/carbon/human/dummy))
+		SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/item/storage/box/survival/centcom
 	mask_type = /obj/item/clothing/mask/gas/sechailer

@@ -6,6 +6,7 @@
 	icon_state = "syndie_mantis"
 	items_to_create = list(/obj/item/melee/mantis_blade)
 	valid_zones = list(BODY_ZONE_R_ARM = ORGAN_SLOT_RIGHT_ARM_AUG)
+	fixed_arm_side = TRUE
 	hand_state = FALSE
 
 /obj/item/organ/cyberimp/arm/toolkit/mantis/emp_act(severity)

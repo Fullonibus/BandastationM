@@ -15,6 +15,8 @@
 		matching -= modsuit_or_module
 
 	if((istype(to_insert.atom_storage, /datum/storage/bag_of_holding) || length(matching)) && can_insert(to_insert, user))
+		if(istype(user, /mob/living/carbon/human/dummy/outfit_check))
+			return user.inventory_rejected("Блюспейс-контейнеры нельзя вкладывать друг в друга при примерке.")
 		INVOKE_ASYNC(src, PROC_REF(recursive_insertion), to_insert, user)
 		return FALSE
 

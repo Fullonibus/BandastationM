@@ -41,8 +41,10 @@ ADMIN_VERB(outfit_manager, R_DEBUG|R_ADMIN, "Outfit Manager", "View and edit out
 	switch(action)
 		if("new")
 			ui.user.client.open_outfit_editor(new /datum/outfit)
+			return TRUE
 		if("load")
 			ui.user.client.holder.load_outfit(ui.user)
+			return TRUE
 		if("copy")
 			var/datum/outfit/outfit = tgui_input_list(ui.user, "Pick an outfit to copy from", "Outfit Manager", subtypesof(/datum/outfit))
 			if(isnull(outfit))
@@ -50,13 +52,19 @@ ADMIN_VERB(outfit_manager, R_DEBUG|R_ADMIN, "Outfit Manager", "View and edit out
 			if(!ispath(outfit))
 				return
 			ui.user.client.open_outfit_editor(new outfit)
+			return TRUE
 
-	var/datum/outfit/target_outfit = locate(params["outfit"])
-	if(!istype(target_outfit))
-		return
-	switch(action) //wow we're switching through action again this is horrible optimization smh
+	var/outfit_ref = params["outfit"]
+	if(!istext(outfit_ref))
+		return FALSE
+	var/datum/outfit/target_outfit = locate(outfit_ref) in GLOB.custom_outfits
+	if(QDELETED(target_outfit))
+		return FALSE
+	switch(action)
 		if("edit")
 			ui.user.client.open_outfit_editor(target_outfit)
+		if("duplicate")
+			ui.user.client.open_outfit_editor(target_outfit.duplicate(), owns_draft = TRUE)
 		if("save")
 			ui.user.client.holder.save_outfit(ui.user, target_outfit)
 		if("delete")

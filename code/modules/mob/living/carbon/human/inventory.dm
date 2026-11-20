@@ -22,10 +22,10 @@
 		return FALSE
 	// BANDASTATION ADDITION END
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPING_ITEM, equip_target, slot) & COMPONENT_BLOCK_EQUIP)
-		return FALSE
+		return inventory_rejected("Другая вещь блокирует этот слот.")
 	// BANDASTATION ADDITION START - Let the candidate validate all required slots, even when dressing another mob.
 	if(SEND_SIGNAL(equip_target, COMSIG_ITEM_EQUIP_CHECK, src, slot) & COMPONENT_BLOCK_EQUIP)
-		return FALSE
+		return inventory_rejected("Предмет не может занять нужные ему слоты.")
 	// BANDASTATION ADDITION END
 	// AI EDIT END
 	if(HAS_TRAIT(equip_target, TRAIT_NODROP) && is_holding(equip_target))
