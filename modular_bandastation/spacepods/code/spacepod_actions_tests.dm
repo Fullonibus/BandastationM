@@ -78,6 +78,12 @@
 /datum/preferences/spacepod_key_test
 	load_and_save = FALSE
 
+/datum/preferences/spacepod_key_test/Destroy(force)
+	if(parent?.prefs == src)
+		parent.prefs = null
+	parent = null
+	return ..()
+
 /// Reboarding recreates the HUD action and restores the player's own binding.
 /datum/unit_test/spacepod_action_key/Run()
 	var/obj/vehicle/sealed/spacepod/pod = allocate(__IMPLIED_TYPE__)
