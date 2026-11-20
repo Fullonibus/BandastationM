@@ -1,5 +1,20 @@
 // Paradise material costs are expressed as sheet counts; tg uses smaller material units.
 
+/datum/design/basic_cell
+	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE | MECHFAB | PODFAB
+
+/datum/design/high_cell
+	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE | MECHFAB | PODFAB
+
+/datum/design/super_cell
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB | PODFAB
+
+/datum/design/hyper_cell
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB | PODFAB
+
+/datum/design/bluespace_cell
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB | PODFAB
+
 /datum/design/spacepod_main
 	name = "Space Pod Mainboard"
 	build_type = PODFAB

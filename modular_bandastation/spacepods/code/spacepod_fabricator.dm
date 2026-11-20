@@ -1,4 +1,4 @@
-/// Keep the native material, stock-part, queue and output machinery with a pod-only catalog.
+/// Keep the native material, stock-part, queue and output machinery for pod parts and power cells.
 /obj/machinery/mecha_part_fabricator/spacepod
 	name = "spacepod fabricator"
 	desc = "Фабрикатор деталей, брони и оборудования космических челноков."

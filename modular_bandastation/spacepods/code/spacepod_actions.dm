@@ -1,14 +1,12 @@
 #define SPACEPOD_CAMERA_VIEW_BONUS 10
+#define SPACEPOD_ACTION_KEYS "spacepod_action_keys"
 
 /obj/vehicle/sealed/spacepod/generate_actions()
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/spacepod/status)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/spacepod/eject)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/internals, VEHICLE_CONTROL_SETTINGS)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/lights, VEHICLE_CONTROL_SETTINGS)
-	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/fire, VEHICLE_CONTROL_EQUIPMENT)
-	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/systems, VEHICLE_CONTROL_SETTINGS)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/brakes, VEHICLE_CONTROL_SETTINGS)
-	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/turbo, VEHICLE_CONTROL_SETTINGS)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/camera_zoom, VEHICLE_CONTROL_DRIVE)
 
 /datum/action/vehicle/sealed/spacepod
@@ -29,9 +27,52 @@
 /datum/action/vehicle/sealed/spacepod/IsAvailable(feedback = FALSE)
 	return ..() && !QDELETED(pod) && pod.is_occupant(owner) && owner.loc == pod
 
+/datum/action/vehicle/sealed/spacepod/Grant(mob/grant_to)
+	if(!grant_to || grant_to == owner)
+		return ..()
+	var/client/viewer = GET_CLIENT(grant_to)
+	var/list/bindings = SANITIZE_LIST(viewer?.prefs?.savefile?.get_entry(SPACEPOD_ACTION_KEYS))
+	full_key = validated_key(bindings["[type]"])
+	return ..()
+
+/datum/action/vehicle/sealed/spacepod/begin_creating_bind(atom/movable/screen/movable/action_button/current_button, mob/user)
+	if(user != owner || !current_button || !IsAvailable())
+		return
+	var/datum/preferences/preferences = user.client?.prefs
+	if(!preferences?.savefile)
+		return
+	if(full_key)
+		set_key(null)
+		return
+	var/new_key = tgui_input_keycombo(user, "Пожалуйста, привяжите клавишу для этого действия.")
+	if(QDELETED(src) || QDELETED(user) || user != owner || user.client?.prefs != preferences || full_key || !IsAvailable())
+		return
+	if(validated_key(new_key))
+		set_key(new_key)
+
+/datum/action/vehicle/sealed/spacepod/set_key(new_full_key)
+	new_full_key = validated_key(new_full_key)
+	. = ..()
+	var/client/viewer = owner ? GET_CLIENT(owner) : null
+	var/datum/preferences/preferences = viewer?.prefs
+	if(!preferences?.savefile)
+		return
+	var/list/bindings = SANITIZE_LIST(preferences.savefile.get_entry(SPACEPOD_ACTION_KEYS))
+	if(new_full_key)
+		bindings["[type]"] = new_full_key
+	else
+		bindings -= "[type]"
+	preferences.savefile.set_entry(SPACEPOD_ACTION_KEYS, bindings)
+	preferences.save_preferences()
+
+/// Action buttons render the key in maptext, so saved values cannot contain markup.
+/datum/action/vehicle/sealed/spacepod/proc/validated_key(key)
+	var/static/regex/valid_key = regex(@"^[^<>&\r\n\t]{1,32}$")
+	return istext(key) && valid_key.Find(key) ? key : null
+
 /datum/action/vehicle/sealed/spacepod/status
 	name = "Состояние челнока"
-	desc = "Открывает бортовой монитор: батарея, прочность корпуса и атмосфера салона."
+	desc = "Открывает бортовой монитор с телеметрией и управлением системами челнока."
 	button_icon_state = "mech_view_stats"
 	check_flags = AB_CHECK_CONSCIOUS
 
@@ -71,19 +112,9 @@
 		button_icon_state = "mech_lights_[pod.lights ? "on" : "off"]"
 		build_all_button_icons()
 
-/datum/action/vehicle/sealed/spacepod/fire
-	name = "Стрелять"
-	desc = "Стреляет установленным оружием вперёд по курсу челнока."
-	button_icon_state = "mech_thrusters_off"
-
-/datum/action/vehicle/sealed/spacepod/fire/Trigger(mob/clicker, trigger_flags)
-	. = ..()
-	if(.)
-		pod.fireWeapon(owner)
-
 /datum/action/vehicle/sealed/spacepod/brakes
 	name = "Тормоз челнока"
-	desc = "Гасит инерцию, когда отпущены клавиши движения. Встречная тяга расходует вдвое больше заряда при той же силе."
+	desc = "Усиливает автоматическое торможение, когда отпущены клавиши движения."
 	button_icon_state = "mech_safeties_off"
 
 /datum/action/vehicle/sealed/spacepod/brakes/Grant(mob/grant_to)
@@ -95,23 +126,7 @@
 	if(. && pod.can_control(owner) && pod.flight.toggle_brakes())
 		button_icon_state = pod.flight.brakes ? "mech_safeties_on" : "mech_safeties_off"
 		build_all_button_icons()
-		pod.balloon_alert(owner, pod.flight.brakes ? "автотормоз включён" : "автотормоз выключен")
-
-/datum/action/vehicle/sealed/spacepod/turbo
-	name = "ТУРБО"
-	desc = "Удваивает скорость и ускорение челнока. Расход батареи на тягу увеличивается в два раза."
-	button_icon_state = "mech_overload_off"
-
-/datum/action/vehicle/sealed/spacepod/turbo/Grant(mob/grant_to)
-	button_icon_state = pod?.flight?.turbo ? "mech_overload_on" : "mech_overload_off"
-	return ..()
-
-/datum/action/vehicle/sealed/spacepod/turbo/Trigger(mob/clicker, trigger_flags)
-	. = ..()
-	if(. && pod.can_control(owner) && pod.flight.toggle_turbo())
-		button_icon_state = pod.flight.turbo ? "mech_overload_on" : "mech_overload_off"
-		build_all_button_icons()
-		pod.balloon_alert(owner, pod.flight.turbo ? "турбо включено" : "турбо выключено")
+		pod.balloon_alert(owner, pod.flight.brakes ? "усиленное торможение включено" : "усиленное торможение выключено")
 
 /datum/action/vehicle/sealed/spacepod/camera_zoom
 	name = "Отдалить камеру"
@@ -210,27 +225,17 @@
 		return flight.aim(null)
 	return flight.aim(delta_to_angle(dx, dy))
 
-/datum/action/vehicle/sealed/spacepod/systems
-	name = "Дополнительные системы"
-	button_icon_state = "mech_cycle_equip_off"
+/// Only an unmodified left click on the map fires along the current heading.
+/obj/vehicle/sealed/spacepod/proc/on_pilot_click(mob/living/user, atom/target, list/modifiers)
+	SIGNAL_HANDLER
+	if(!LAZYACCESS(modifiers, LEFT_CLICK) || modifiers[RIGHT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[SHIFT_CLICK] || modifiers[CTRL_CLICK] || modifiers[ALT_CLICK])
+		return NONE
+	if(!target || target == src || (!isturf(target) && !isturf(target.loc)) || target.z != z)
+		return NONE
+	if(flight.parking || !weapon_system || !can_control(user) || (user.client && user.client.eye != src))
+		return NONE
+	INVOKE_ASYNC(src, PROC_REF(fireWeapon), user)
+	return COMSIG_MOB_CANCEL_CLICKON
 
-/datum/action/vehicle/sealed/spacepod/systems/Trigger(mob/clicker, trigger_flags)
-	. = ..()
-	if(!. || !pod.can_control(owner))
-		return
-	var/selection = tgui_input_list(owner, "Выберите систему", "Управление челноком", list("Блокировка дверей", "Шлюз отсека", "Сбросить груз", "Проверить под сиденьем", "Сканировать сектор"))
-	if(!selection || QDELETED(src) || QDELETED(pod) || !pod.can_control(owner))
-		return
-	switch(selection)
-		if("Блокировка дверей")
-			pod.lock_pod(owner)
-		if("Шлюз отсека")
-			pod.toggleDoors(owner)
-		if("Сбросить груз")
-			pod.unload(owner)
-		if("Проверить под сиденьем")
-			pod.checkSeat(owner)
-		if("Сканировать сектор")
-			pod.startScan(owner)
-
+#undef SPACEPOD_ACTION_KEYS
 #undef SPACEPOD_CAMERA_VIEW_BONUS

@@ -24,7 +24,7 @@
 		for(var/mob/passenger as anything in pod?.passengers)
 			passenger_names += passenger.name
 		pods += list(list(
-			"name" = pod ? pod.name : tracker.name,
+			"name" = tracker.tracking_name,
 			"x" = position.x,
 			"y" = position.y,
 			"z" = position.z,

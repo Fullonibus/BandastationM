@@ -85,6 +85,8 @@
 	TEST_ASSERT_NOTNULL(pod, "Could not board the gravity transition pod.")
 	pod.forceMove(locate(boundary_x - 2, vacuum_origin.y, vacuum_origin.z))
 	TEST_ASSERT(pod.has_gravity(), "The hangar fixture does not have real gravity.")
+	var/available_charge = pod.battery.charge
+	pod.battery.charge = 0
 	for(var/direction in list(EAST, WEST))
 		pod.flight.velocity_x = direction == EAST ? 4 : -4
 		for(var/tick in 1 to 24)
@@ -105,12 +107,13 @@
 		advance_flight(pod)
 	TEST_ASSERT(abs(pod.x + pod.flight.offset_x - start_x + 0.5) < 0.001, "Coasting in the hangar stalled or snapped to a tile.")
 	TEST_ASSERT_EQUAL(pod.battery.charge, charge_before_coast, "Gravity coasting consumed propulsion energy.")
+	pod.battery.charge = available_charge
 	TEST_ASSERT(pod.flight.aim(45), "Returning to gravity disabled steering.")
 	TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "Returning to gravity disabled relative thrust.")
 	advance_flight(pod)
 	TEST_ASSERT(pod.flight.heading > 0 && pod.flight.heading < 45, "Gravity did not interpolate the requested heading.")
 	TEST_ASSERT(pod.flight.velocity_y > 0, "Gravity did not apply forward thrust relative to the nose.")
-	TEST_ASSERT(pod.battery.charge < charge_before_coast, "Powered gravity flight consumed no energy.")
+	TEST_ASSERT(pod.battery.charge < available_charge, "Powered gravity flight consumed no energy.")
 
 /// Turbo doubles translation and its power draw, while preserving angular controls and free momentum.
 /datum/unit_test/spacepod_vacuum/turbo_flight/Run()
@@ -127,6 +130,7 @@
 			TEST_ASSERT(pod.relaymove(pilot, NORTH), "The comparison pilot's forward thrust was rejected.")
 			advance_flight(pod)
 		var/list/outcome = list("velocity" = pod.flight.velocity_y, "distance" = pod.y + pod.flight.offset_y - start_y, "energy" = initial_charge - pod.battery.charge)
+		pod.flight.velocity_y = 0
 		var/charge_before_turn = pod.battery.charge
 		TEST_ASSERT(pod.flight.aim(90), "The comparison pilot could not aim the hull.")
 		advance_flight(pod)
@@ -156,6 +160,8 @@
 	var/velocity_x = pod.flight.velocity_x
 	var/velocity_y = pod.flight.velocity_y
 	TEST_ASSERT(pod.flight.toggle_turbo(), "The pilot could not disable turbo at speed.")
+	var/available_charge = pod.battery.charge
+	pod.battery.charge = 0
 	var/start_x = pod.x + pod.flight.offset_x
 	var/start_y = pod.y + pod.flight.offset_y
 	var/coast_charge = pod.battery.charge
@@ -164,6 +170,7 @@
 	TEST_ASSERT(abs(pod.flight.velocity_x - velocity_x) < 0.00001 && abs(pod.flight.velocity_y - velocity_y) < 0.00001, "Disabling turbo acted as a free brake on existing momentum.")
 	TEST_ASSERT(abs(pod.x + pod.flight.offset_x - start_x - velocity_x * 0.25) < 0.001 && abs(pod.y + pod.flight.offset_y - start_y - velocity_y * 0.25) < 0.001, "High-speed coasting lost or duplicated diagonal distance.")
 	TEST_ASSERT_EQUAL(pod.battery.charge, coast_charge, "High-speed coasting continued drawing turbo power.")
+	pod.battery.charge = available_charge
 	TEST_ASSERT(pod.relaymove(pilot, NORTHEAST), "Normal thrust was rejected after disabling turbo.")
 	advance_flight(pod)
 	TEST_ASSERT(abs(sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2) - speed) < 0.001, "Normal thrust accelerated past retained turbo speed or abruptly clamped it down.")
@@ -175,6 +182,7 @@
 	var/obj/structure/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
 	blocker.density = TRUE
 	blocker.anchored = TRUE
+	pod.battery.charge = 0
 	pod.flight.velocity_y = 13.333333
 	var/turf/origin = pod.loc
 	var/initial_integrity = pod.get_integrity()
@@ -195,7 +203,7 @@
 	TEST_ASSERT_EQUAL(pod.flight.velocity_x, 0, "Turbo braking overshot a short lateral velocity vector.")
 	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "Turbo braking overshot a short forward velocity vector.")
 	TEST_ASSERT(pod.battery.charge < initial_charge, "Turbo braking stopped momentum without paying for counter-thrust.")
-	TEST_ASSERT(pod.flight.toggle_brakes(), "The pilot could not release turbo brakes.")
+	TEST_ASSERT(pod.flight.toggle_brakes(), "The pilot could not switch back to standard turbo braking.")
 	pod.battery.charge = SPACEPOD_ENERGY_UNIT
 	TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "A positive but insufficient battery never reached the real payment boundary.")
 	advance_flight(pod)
@@ -241,13 +249,18 @@
 			TEST_ASSERT(abs(initial_charge - pod.battery.charge - 2 * normal_energy) < 0.001, "Gravity turbo did not double thrust energy consumption.")
 		else
 			normal_energy = initial_charge - pod.battery.charge
-		var/coast_charge = pod.battery.charge
+		var/velocity_x = pod.flight.velocity_x
+		var/velocity_y = pod.flight.velocity_y
+		var/charge_before_braking = pod.battery.charge
 		advance_flight(pod)
-		TEST_ASSERT(abs(sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2) - speed) < 0.001, "Releasing gravity thrust lost inertia.")
-		TEST_ASSERT_EQUAL(pod.battery.charge, coast_charge, "Gravity coasting consumed propulsion energy.")
-		TEST_ASSERT(pod.flight.toggle_brakes(), "Gravity flight rejected the brake control.")
+		var/automatic_braking_speed = sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2)
+		TEST_ASSERT(automatic_braking_speed < speed && pod.battery.charge < charge_before_braking, "Releasing gravity thrust did not apply paid automatic braking.")
+		pod.flight.velocity_x = velocity_x
+		pod.flight.velocity_y = velocity_y
+		TEST_ASSERT(pod.flight.toggle_brakes(), "Gravity flight rejected the stronger brake control.")
+		charge_before_braking = pod.battery.charge
 		advance_flight(pod)
-		TEST_ASSERT(sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2) < speed && pod.battery.charge < coast_charge, "Gravity brakes did not apply paid counter-thrust.")
+		TEST_ASSERT(sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2) < automatic_braking_speed && pod.battery.charge < charge_before_braking, "Stronger gravity brakes did not slow the same input speed faster.")
 		qdel(pod)
 		qdel(pilot)
 
@@ -270,6 +283,8 @@
 		var/obj/structure/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
 		blocker.density = TRUE
 		blocker.anchored = TRUE
+		// Compare collision damage at the stated speed, without powered counter-thrust.
+		pod.battery.charge = 0
 		pod.flight.velocity_y = impact["speed"]
 		if(impact["speed"] >= 5)
 			pilot.Unconscious(1 SECONDS)
@@ -290,6 +305,7 @@
 		qdel(pilot)
 	var/obj/vehicle/sealed/spacepod/rejected_pod = create_flight_pod()
 	TEST_ASSERT_NOTNULL(rejected_pod, "Could not prepare the movement-denial control.")
+	rejected_pod.battery.charge = 0
 	rejected_pod.flight.velocity_y = 4
 	RegisterSignal(rejected_pod, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(block_without_collision))
 	var/initial_integrity = rejected_pod.get_integrity()
@@ -306,6 +322,7 @@
 	fatal_blocker.density = TRUE
 	fatal_blocker.anchored = TRUE
 	fragile_pod.update_integrity(5)
+	fragile_pod.battery.charge = 0
 	fragile_pod.flight.velocity_y = 4
 	var/datum/spacepod_flight/fatal_flight = fragile_pod.flight
 	advance_flight(fragile_pod)
@@ -346,6 +363,7 @@
 		var/turf/right_wall = locate(pod.x + 1, pod.y + 2, pod.z)
 		left_wall = left_wall.ChangeTurf(scenario["wall"])
 		right_wall = right_wall.ChangeTurf(scenario["wall"])
+		pod.battery.charge = 0
 		pod.flight.velocity_y = scenario["speed"]
 		var/initial_integrity = pod.get_integrity()
 		advance_flight(pod)
@@ -381,7 +399,10 @@
 		pod.flight.velocity_y = 4
 		var/initial_integrity = pod.get_integrity()
 		var/initial_pilot_brute = pod.pilot.get_brute_loss()
+		var/available_charge = pod.battery.charge
+		pod.battery.charge = 0
 		advance_flight(pod)
+		pod.battery.charge = available_charge
 		TEST_ASSERT_EQUAL(initial_integrity - pod.get_integrity(), 7, "A staged wall impact lost or duplicated its hull damage.")
 		TEST_ASSERT(abs(pod.pilot.get_brute_loss() - initial_pilot_brute - 3.5) < 0.1, "A staged wall impact lost or duplicated the pilot's damage.")
 		if(impact < 3)
@@ -421,7 +442,10 @@
 		pod.flight.velocity_y = 4
 		var/initial_integrity = pod.get_integrity()
 		var/initial_pilot_brute = pod.pilot.get_brute_loss()
+		var/available_charge = pod.battery.charge
+		pod.battery.charge = 0
 		advance_flight(pod)
+		pod.battery.charge = available_charge
 		TEST_ASSERT_EQUAL(initial_integrity - pod.get_integrity(), 7, "A reinforced-wall impact lost or duplicated its hull damage.")
 		TEST_ASSERT(abs(pod.pilot.get_brute_loss() - initial_pilot_brute - 3.5) < 0.1, "A reinforced-wall impact lost or duplicated the pilot's damage.")
 		if(impact < 6)
@@ -464,6 +488,7 @@
 		window.setDir(NORTH)
 		if(scenario["indestructible"])
 			window.resistance_flags |= INDESTRUCTIBLE
+		pod.battery.charge = 0
 		pod.flight.velocity_y = scenario["speed"]
 		var/initial_integrity = pod.get_integrity()
 		var/initial_window_integrity = window.get_integrity()
@@ -498,6 +523,7 @@
 		var/obj/structure/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
 		blocker.density = TRUE
 		blocker.anchored = TRUE
+		pod.battery.charge = 0
 		pod.flight.velocity_x = 4
 		pod.flight.velocity_y = impact["normal"]
 		var/start_x = pod.x + pod.flight.offset_x
@@ -532,7 +558,10 @@
 	pod.flight.velocity_y = 3
 	RegisterSignal(pod, COMSIG_ATOM_TAKE_DAMAGE, PROC_REF(on_collision_damage))
 	var/initial_integrity = pod.get_integrity()
+	var/available_charge = pod.battery.charge
+	pod.battery.charge = 0
 	advance_flight(pod)
+	pod.battery.charge = available_charge
 	TEST_ASSERT_EQUAL(pod.flight.velocity_x, 0, "The corner did not stop eastward motion.")
 	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "The corner did not stop northward motion.")
 	TEST_ASSERT_EQUAL(damage_events, 1, "Two corner contacts applied more than one damage event in a physics tick.")
@@ -571,13 +600,14 @@
 	cargo.storage = ore_box
 	var/obj/item/stack/ore/iron/ore = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
 	allocate(/obj/structure/lattice, get_step(pod, SOUTH))
-	var/coast_charge = pod.battery.charge
+	var/available_charge = pod.battery.charge
+	pod.battery.charge = 0
 	var/coast_velocity = pod.flight.velocity_y
 	for(var/tick in 1 to 12)
 		advance_flight(pod)
 	TEST_ASSERT_EQUAL(ore.loc, ore_box, "The coasting cabin did not collect ore beneath its far corner.")
 	TEST_ASSERT(abs(pod.flight.velocity_y - coast_velocity) < 0.00001, "Coasting past a lattice changed the cabin's speed.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, coast_charge, "Passive flight consumed propulsion energy.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, 0, "Passive flight changed the empty cell's charge.")
 	var/turf/blocked_position = get_turf(pod)
 	var/obj/structure/window/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 1, pod.z))
 	blocker.setDir(NORTH)
@@ -585,6 +615,7 @@
 		advance_flight(pod)
 	TEST_ASSERT_EQUAL(pod.loc, blocked_position, "Coasting pushed the cabin's far corner through a directional window.")
 	TEST_ASSERT(abs(pod.flight.velocity_y) < 0.00001, "A collision retained velocity into the blocking window.")
+	pod.battery.charge = available_charge
 	var/lateral_start = pod.x + pod.flight.offset_x
 	for(var/tick in 1 to 3)
 		pod.relaymove(pod.pilot, NORTHEAST)
@@ -593,7 +624,7 @@
 	TEST_ASSERT(abs(pod.flight.velocity_y) < 0.00001, "Diagonal thrust crossed the blocking window instead of sliding along it.")
 	TEST_ASSERT_NULL(pod.drift_handler, "The flight controller also started a competing native drift loop.")
 
-/// Releasing cardinal or diagonal thrust preserves the vector and continuous displacement.
+/// Without power or a pilot, flight preserves the vector and continuous displacement.
 /datum/unit_test/spacepod_vacuum/linear_coast/Run()
 	for(var/direction in list(NORTH, NORTHEAST))
 		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
@@ -604,15 +635,19 @@
 		var/velocity_x = pod.flight.velocity_x
 		var/velocity_y = pod.flight.velocity_y
 		TEST_ASSERT(velocity_y > 0 && (direction == NORTH || velocity_x > 0), "The commanded flight did not build the required velocity vector.")
+		if(direction == NORTH)
+			pod.battery.charge = 0
+		else
+			TEST_ASSERT(pod.mob_exit(pod.pilot, silent = TRUE), "The diagonal coasting pilot could not leave.")
 		var/start_x = pod.x + pod.flight.offset_x
 		var/start_y = pod.y + pod.flight.offset_y
 		var/initial_charge = pod.battery.charge
 		for(var/tick in 1 to 10)
 			advance_flight(pod)
-		TEST_ASSERT(abs(pod.flight.velocity_x - velocity_x) < 0.00001 && abs(pod.flight.velocity_y - velocity_y) < 0.00001, "Releasing [direction] thrust changed the flight velocity.")
+		TEST_ASSERT(abs(pod.flight.velocity_x - velocity_x) < 0.00001 && abs(pod.flight.velocity_y - velocity_y) < 0.00001, "Coasting [direction] without control changed the flight velocity.")
 		TEST_ASSERT(abs(pod.x + pod.flight.offset_x - start_x - velocity_x * 0.5) < 0.001, "Coasting lost or duplicated horizontal distance.")
 		TEST_ASSERT(abs(pod.y + pod.flight.offset_y - start_y - velocity_y * 0.5) < 0.001, "Coasting lost or duplicated vertical distance.")
-		TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge, "Releasing [direction] thrust continued consuming propulsion power.")
+		TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge, "Coasting [direction] without control consumed propulsion power.")
 		qdel(pod)
 
 /// Mouse heading rotates gradually; keyboard thrust follows the hull and brakes require power.
@@ -655,10 +690,10 @@
 		advance_flight(pod)
 	TEST_ASSERT(pod.flight.velocity_y > 1.4 && pod.flight.velocity_y < 1.6, "Left strafe did not accelerate north relative to an east-facing hull.")
 	pod.battery.charge = 100 * SPACEPOD_ENERGY_UNIT
-	TEST_ASSERT(pod.flight.toggle_brakes(), "The pilot could not enable automatic braking.")
 	for(var/tick in 1 to 5)
 		advance_flight(pod)
 	TEST_ASSERT(abs(pod.flight.velocity_x) < 0.00001 && abs(pod.flight.velocity_y) < 0.00001, "Automatic braking did not stop the diagonal drift within a quarter second.")
+	TEST_ASSERT(pod.flight.toggle_brakes(), "The pilot could not enable stronger braking.")
 	var/charge_at_rest = pod.battery.charge
 	advance_flight(pod)
 	TEST_ASSERT_EQUAL(pod.battery.charge, charge_at_rest, "The enabled brake drew power while stopped.")
@@ -669,8 +704,14 @@
 	TEST_ASSERT(abs(charge_at_rest - pod.battery.charge - 20 * SPACEPOD_ENERGY_UNIT) < 0.001, "The enabled brake changed the cost of manual thrust.")
 	var/charge_before_braking = pod.battery.charge
 	advance_flight(pod)
-	TEST_ASSERT(abs(pod.flight.velocity_x - 1.55) < 0.001, "Releasing movement did not apply the stronger counter-thrust.")
-	TEST_ASSERT(abs(charge_before_braking - pod.battery.charge - 9 * SPACEPOD_ENERGY_UNIT) < 0.001, "Counter-thrust did not cost twice as much as equivalent manual thrust.")
+	TEST_ASSERT(abs(pod.flight.velocity_x - 1.4) < 0.001, "The stronger brake did not slow the pod with the fourfold thrust limit.")
+	TEST_ASSERT(abs(charge_before_braking - pod.battery.charge - 12 * SPACEPOD_ENERGY_UNIT) < 0.001, "Stronger braking did not use the standard counter-thrust energy rate.")
+	TEST_ASSERT(pod.flight.toggle_brakes(), "The pilot could not switch back to standard braking.")
+	pod.flight.velocity_x = 2
+	charge_before_braking = pod.battery.charge
+	advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.velocity_x - 1.55) < 0.001, "Standard braking did not slow the same velocity with the threefold thrust limit.")
+	TEST_ASSERT(abs(charge_before_braking - pod.battery.charge - 9 * SPACEPOD_ENERGY_UNIT) < 0.001, "Standard braking did not cost twice as much as equivalent manual thrust.")
 	var/unpowered_velocity = pod.flight.velocity_x
 	pod.battery.charge = 0
 	var/start_x = pod.x + pod.flight.offset_x
@@ -688,20 +729,14 @@
 	for(var/tick in 1 to 10)
 		TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "The scheduled pilot input was rejected.")
 		sleep(world.tick_lag)
-	var/coast_velocity = pod.flight.velocity_y
-	TEST_ASSERT(coast_velocity > 0.5, "The Newtonian subsystem did not process repeated pilot thrust.")
-	var/charge_before_coasting = pod.battery.charge
-	var/previous_y = pod.y + pod.flight.offset_y
-	var/continuous_steps = 0
+	TEST_ASSERT(pod.flight.velocity_y > 0.5, "The Newtonian subsystem did not process repeated pilot thrust.")
+	var/charge_before_braking = pod.battery.charge
+	var/start_y = pod.y + pod.flight.offset_y
 	for(var/tick in 1 to 8)
 		sleep(world.tick_lag)
-		var/current_y = pod.y + pod.flight.offset_y
-		if(current_y > previous_y)
-			continuous_steps++
-		previous_y = current_y
-	TEST_ASSERT(continuous_steps >= 6, "Coasting did not update continuously on the movement subsystem's ticks.")
-	TEST_ASSERT(abs(pod.flight.velocity_y - coast_velocity) < 0.00001, "The real scheduler slowed down flight after input stopped.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, charge_before_coasting, "Scheduled coasting continued drawing propulsion energy.")
+	TEST_ASSERT(pod.y + pod.flight.offset_y > start_y, "Scheduled braking froze the moving cabin without advancing it.")
+	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "The real scheduler did not finish braking after input stopped.")
+	TEST_ASSERT(pod.battery.charge < charge_before_braking, "Scheduled braking did not pay for counter-thrust.")
 	var/datum/spacepod_flight/flight = pod.flight
 	qdel(pod)
 	TEST_ASSERT(QDELETED(flight), "Deleting the cabin retained its flight controller.")
@@ -763,9 +798,10 @@
 			has_damage_overlay = TRUE
 	TEST_ASSERT(has_damage_overlay, "The damaged hull did not rebuild its damage appearance.")
 	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 1, "Rebuilding the damage appearance removed the active flame.")
+	var/forward_speed = pod.flight.velocity_y
 	advance_flight(pod)
-	TEST_ASSERT(pod.flight.velocity_y > 0, "The released-input fixture did not keep coasting.")
-	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "Releasing forward thrust left an attached flame on the coasting hull.")
+	TEST_ASSERT(pod.flight.velocity_y < forward_speed, "Releasing forward input did not begin braking.")
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "Counter-thrust left the rear flame on the braking hull.")
 	for(var/direction in list(EAST, SOUTH))
 		TEST_ASSERT(pod.relaymove(pod.pilot, direction), "A powered secondary thruster input was rejected.")
 		advance_flight(pod)
@@ -806,8 +842,8 @@
 	TEST_ASSERT(engine_sound.is_active(), "Paid thrust left its engine sound inactive.")
 	for(var/tick in 1 to 10)
 		advance_flight(pod)
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 0, "Coasting recreated the removed ion-particle trail.")
-	TEST_ASSERT(QDELETED(engine_sound) && !length(pod.engine_sounds), "Releasing thrust left engine sound playing during passive flight.")
+	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 0, "Automatic braking recreated the removed ion-particle trail.")
+	TEST_ASSERT(QDELETED(engine_sound) && !length(pod.engine_sounds), "Finishing automatic braking left engine sound playing.")
 	pod.battery.charge = 0
 	TEST_ASSERT(!pod.relaymove(pod.pilot, NORTH), "An empty battery accepted new thrust.")
 	advance_flight(pod)
@@ -901,6 +937,7 @@
 		var/channel = engine_sound.sound_channel
 		var/sound_stop_timer = pod.engine_sound_timer
 		var/obj/item/stock_parts/power_store/cell/cell = pod.battery
+		var/charge_before_interruption = cell.charge
 		var/mob/living/pilot = pod.pilot
 		var/datum/spacepod_flight/flight = pod.flight
 		switch(scenario)
@@ -949,6 +986,11 @@
 			TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "[scenario] left sound listeners registered in the cabin.")
 			TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "[scenario] left an attached engine flame after thrust stopped.")
 			TEST_ASSERT_NULL(pod.thruster_flame_timer, "[scenario] retained an attached-flame timer.")
+			if(scenario == "logout")
+				TEST_ASSERT_EQUAL(cell.charge, charge_before_interruption, "Automatic braking spent charge after the pilot logged out.")
+				TEST_ASSERT(!pod.relaymove(pilot, NORTH), "The disconnected pilot retained flight controls.")
+				SEND_SIGNAL(pilot, COMSIG_MOB_LOGIN)
+				TEST_ASSERT(pod.relaymove(pilot, NORTH), "The returning pilot did not recover flight controls.")
 			qdel(pod)
 		qdel(cell)
 		qdel(pilot)
@@ -1125,6 +1167,7 @@
 		var/turf/victim_turf = locate(pod.x + 1, pod.y + 2, pod.z)
 		var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, victim_turf)
 		TEST_ASSERT(victim.density && victim.body_position == STANDING_UP, "The exterior victim was not standing in the hull's path.")
+		pod.battery.charge = 0
 		pod.flight.velocity_y = impact["speed"]
 		advance_flight(pod)
 		TEST_ASSERT(abs(victim.get_brute_loss() - impact["damage"]) < 0.4, "Speed [impact["speed"]] inflicted the wrong run-over damage.")
@@ -1155,6 +1198,7 @@
 			TEST_ASSERT(victim.equip_to_slot_if_possible(suit, ITEM_SLOT_OCLOTHING), "Could not equip real riot body armor.")
 			TEST_ASSERT(victim.equip_to_slot_if_possible(helmet, ITEM_SLOT_HEAD), "Could not equip the real riot helmet.")
 			TEST_ASSERT_EQUAL(victim.getarmor(null, MELEE), 50, "The clothing fixture does not provide uniform melee protection.")
+		pod.battery.charge = 0
 		pod.flight.velocity_y = 5
 		advance_flight(pod)
 		if(godmode)
@@ -1185,7 +1229,10 @@
 	RegisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_victim_damage))
 	pod.flight.velocity_x = 4
 	pod.flight.velocity_y = 4
+	var/available_charge = pod.battery.charge
+	pod.battery.charge = 0
 	advance_flight(pod)
+	pod.battery.charge = available_charge
 	TEST_ASSERT_EQUAL(damage_events, 1, "Two cardinal halves applied multiple run-over hits to the same victim.")
 	TEST_ASSERT(abs(victim.get_brute_loss() - 7) < 0.4, "The resistant victim received duplicate or combined-axis damage.")
 	TEST_ASSERT(!victim.IsKnockdown() && victim.density, "The collision bypassed the victim's native knockdown resistance.")
@@ -1218,6 +1265,7 @@
 				ADD_TRAIT(victim, TRAIT_UNDENSE, TRAIT_GENERIC)
 			if("denied")
 				RegisterSignal(pod, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(block_without_collision))
+		pod.battery.charge = 0
 		pod.flight.velocity_y = 5
 		advance_flight(pod)
 		TEST_ASSERT_EQUAL(victim.get_brute_loss(), 0, "The [condition] control injured a person without a dense collision.")
@@ -1251,6 +1299,7 @@
 	var/mob/living/carbon/human/consistent/victim = allocate(__IMPLIED_TYPE__, locate(collision_pod.x + 1, collision_pod.y + 2, collision_pod.z))
 	RegisterSignal(victim, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_victim_damage))
 	var/initial_integrity = collision_pod.get_integrity()
+	collision_pod.battery.charge = 0
 	collision_pod.flight.velocity_y = 4
 	advance_flight(collision_pod)
 	TEST_ASSERT_EQUAL(collision_pod.loc, relocation_target, "The real victim damage callback did not relocate the hull.")

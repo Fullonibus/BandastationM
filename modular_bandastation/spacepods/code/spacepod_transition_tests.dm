@@ -205,7 +205,7 @@
 			TEST_ASSERT_EQUAL(length(movement_events), 4, "The complete round trip emitted unexpected extra movement events.")
 			for(var/mob/living/occupant as anything in crew)
 				TEST_ASSERT(pod.is_occupant(occupant) && occupant.loc == pod, "The sector round trip detached a crew member.")
-				TEST_ASSERT(HAS_TRAIT_FROM_ONLY(occupant, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT), "The sector round trip changed the crew's vehicle hand state.")
+				TEST_ASSERT_EQUAL(HAS_TRAIT_FROM(occupant, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT), occupant == pod.pilot, "The sector round trip changed the crew's vehicle hand state.")
 			if(pod)
 				TEST_ASSERT(pod.can_control(pod.pilot), "The sector round trip revoked the pilot's controls.")
 			UnregisterSignal(subject, COMSIG_MOVABLE_MOVED)

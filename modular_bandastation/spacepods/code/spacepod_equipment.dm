@@ -149,7 +149,7 @@
 
 /obj/item/spacepod_equipment/weaponry/proc/fire_weapons(mob/living/user)
 	var/obj/vehicle/sealed/spacepod/pod = my_atom
-	if(!pod?.can_control(user) || pod.hatch_open || pod.weapon_system != src || !COOLDOWN_FINISHED(src, weapon_cooldown))
+	if(!pod?.can_control(user) || pod.flight.parking || pod.hatch_open || pod.weapon_system != src || !COOLDOWN_FINISHED(src, weapon_cooldown))
 		return FALSE
 	if(harmful && HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("Вы не хотите причинять вред живым существам!"))
@@ -158,12 +158,12 @@
 		pod.balloon_alert(user, "недостаточно энергии!")
 		return FALSE
 	// Rigged cells can explode during use() and delete their owning vehicle.
-	if(QDELETED(src) || QDELETED(pod) || pod.weapon_system != src || !pod.can_control(user))
+	if(QDELETED(src) || QDELETED(pod) || pod.weapon_system != src || !pod.can_control(user) || pod.flight.parking)
 		return FALSE
 	COOLDOWN_START(src, weapon_cooldown, fire_delay)
 	for(var/shot in 1 to shots_per)
 		// Bursts yield. Never keep firing after an exit, module removal or deletion.
-		if(QDELETED(src) || QDELETED(pod) || my_atom != pod || pod.weapon_system != src || !pod.can_control(user) || pod.hatch_open)
+		if(QDELETED(src) || QDELETED(pod) || my_atom != pod || pod.weapon_system != src || !pod.can_control(user) || pod.flight.parking || pod.hatch_open)
 			break
 		var/turf/origin = get_turf(pod)
 		if(!origin)
@@ -286,8 +286,10 @@
 /obj/item/spacepod_equipment/misc/tracker
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5)
 	name = "spacepod tracking system"
-	desc = "Передаёт координаты и состояние челнока на консоль слежения."
+	desc = "Передаёт координаты и состояние челнока на консоль слежения. Снятый маяк можно подписать мультитулом."
 	icon_state = "pod_locator"
+	/// Console identifier stored separately from item and hull labels.
+	var/tracking_name = "Маяк челнока"
 
 /obj/item/spacepod_equipment/misc/tracker/Initialize(mapload)
 	. = ..()
@@ -296,6 +298,24 @@
 /obj/item/spacepod_equipment/misc/tracker/Destroy()
 	GLOB.pod_trackers -= src
 	return ..()
+
+/// Only a reachable, detached beacon can be programmed, including after the input wait.
+/obj/item/spacepod_equipment/misc/tracker/multitool_act(mob/living/user, obj/item/tool)
+	if(my_atom)
+		balloon_alert(user, "сначала снимите маяк!")
+		return ITEM_INTERACT_BLOCKING
+	if(QDELETED(user) || QDELETED(tool) || tool.tool_behaviour != TOOL_MULTITOOL || !user.is_holding(tool) || !user.can_perform_action(src, NEED_DEXTERITY | NEED_HANDS | FORBID_TELEKINESIS_REACH))
+		return ITEM_INTERACT_BLOCKING
+	var/new_name = tgui_input_text(user, "Подпись маяка на консоли слежения:", "Настройка маяка", tracking_name, max_length = MAX_LABEL_LEN, encode = FALSE)
+	if(isnull(new_name) || QDELETED(src) || QDELETED(user) || QDELETED(tool) || my_atom || tool.tool_behaviour != TOOL_MULTITOOL || !user.is_holding(tool) || !user.can_perform_action(src, NEED_DEXTERITY | NEED_HANDS | FORBID_TELEKINESIS_REACH))
+		return ITEM_INTERACT_BLOCKING
+	new_name = reject_bad_text(trim(new_name), max_length = MAX_LABEL_LEN, ascii_only = FALSE)
+	if(!new_name)
+		balloon_alert(user, "недопустимая подпись!")
+		return ITEM_INTERACT_BLOCKING
+	tracking_name = new_name
+	balloon_alert(user, "подпись сохранена")
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/spacepod_equipment/cargo
 	name = "spacepod cargo module"
