@@ -136,6 +136,8 @@
 /datum/unit_test/ipc_os_signaler/Run()
 	var/mob/living/carbon/human/ipc = allocate(/mob/living/carbon/human/consistent)
 	ipc.set_species(/datum/species/ipc)
+	// A radio broadcast can yield, giving the OS a life tick before the test sends again.
+	ipc.mock_client = allocate(/datum/client_interface)
 	var/obj/item/organ/brain/ipc/core = ipc.get_organ_slot(ORGAN_SLOT_BRAIN)
 	var/datum/ipc_os/os = core.operating_system
 	os.install("signal_boost")
