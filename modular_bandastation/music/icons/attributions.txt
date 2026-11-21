@@ -1,0 +1,8 @@
+concert.dmi
+    Concert equipment sprites from msw7007/BandaStation-KDEV, Soundhand stuff.
+    Source: https://github.com/ss220club/BandaStation/pull/2251
+    Source revision: ce791b6deed389d5125e872ad677d5c7c9717b17
+    Original path: modular_bandastation/objects/icons/obj/machines/jukebox.dmi
+    Source PR describes the speakers as based on Paradise, with updated sprites.
+    Distributed under the source repository's CC BY-SA 3.0 asset license.
+    No bundled music or album content is included in this port.

@@ -26,6 +26,8 @@
 	interaction_flags_mouse_drop = NEED_DEXTERITY
 	/// Is the pet carrier open? Allows you to collect/remove pets.
 	var/open = TRUE
+	/// Release occupants onto the floor when opened in hand.
+	var/unload_on_open = FALSE
 	/// Does this carrier allow locking? Disabled for the small pet carrier.
 	var/allows_locking = TRUE
 	/// Is this carrier locked? Locks don't require access, just an alt click.
@@ -72,7 +74,10 @@
 		. += span_notice("It has nothing inside.")
 
 	// At some point these need to be converted to contextual screentips
-	. += span_notice("Activate it in your hand to [open ? "close" : "open"] its door. Click-drag onto floor to release its occupants.")
+	if(unload_on_open)
+		. += span_notice("Откройте переноску в руке, чтобы выпустить питомца на пол.")
+	else
+		. += span_notice("Activate it in your hand to [open ? "close" : "open"] its door. Click-drag onto floor to release its occupants.")
 	if(!open && allows_locking)
 		. += span_notice("Alt-click to [locked ? "unlock" : "lock"] its door.")
 
@@ -88,6 +93,8 @@
 		to_chat(user, span_notice("You open [src]'s door."))
 		playsound(user, open_sound, 50, TRUE)
 		open = TRUE
+		if(unload_on_open)
+			unload_occupants(user, drop_location())
 	update_appearance()
 
 /obj/item/pet_carrier/click_alt(mob/living/user)
@@ -176,11 +183,17 @@
 		. += "[base_icon_state]_[locked ? "locked" : "unlocked"]"
 
 /obj/item/pet_carrier/mouse_drop_dragged(atom/over_atom, mob/user, src_location, over_location, params)
-	if(isopenturf(over_atom) && open && occupants.len)
-		user.visible_message(span_notice("[user] unloads [src]."), \
-		span_notice("You unload [src] onto [over_atom]."))
-		for(var/V in occupants)
-			remove_occupant(V, over_atom)
+	unload_occupants(user, over_atom)
+
+/// Release the occupants of an open carrier at the given floor tile.
+/obj/item/pet_carrier/proc/unload_occupants(mob/user, turf/destination)
+	PRIVATE_PROC(TRUE)
+	if(!open || !length(occupants) || !isopenturf(destination))
+		return
+	user.visible_message(span_notice("[user] unloads [src]."), \
+		span_notice("You unload [src] onto [destination]."))
+	for(var/mob/living/occupant as anything in occupants.Copy())
+		remove_occupant(occupant, destination)
 
 /obj/item/pet_carrier/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -222,8 +235,6 @@
 	if(!(occupant in occupants) || !istype(occupant))
 		return
 	occupant.forceMove(new_turf ? new_turf : drop_location())
-	occupants -= occupant
-	occupant_weight -= occupant.mob_size
 	occupant.setDir(SOUTH)
 
 /obj/item/pet_carrier/biopod

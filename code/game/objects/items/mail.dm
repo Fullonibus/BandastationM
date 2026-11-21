@@ -194,17 +194,15 @@
 				goodies += job_goodies
 
 	if(!is_mail_restricted)
-		// the weighted list is 50 (generic items) + 50 (job items)
-		// every quirk adds 5 to the final weighted list (regardless the number of items or weights in the quirk list)
-		// 5% is not too high or low so that stacking multiple quirks doesn't tilt the weighted list too much
 		for(var/datum/quirk/quirk as anything in body.quirks)
-			if(LAZYLEN(quirk.mail_goodies))
-				var/quirk_goodie = pick(quirk.mail_goodies)
-				goodies[quirk_goodie] = 5
+			var/list/quirk_goodies = quirk.get_mail_goodies(this_job)
+			if(length(quirk_goodies))
+				var/quirk_goodie = pick(quirk_goodies)
+				goodies[quirk_goodie] += quirk.mail_weight
 
-		if(LAZYLEN(GLOB.holiday_mail))
+		if(length(GLOB.holiday_mail))
 			var/holiday_goodie = pick(GLOB.holiday_mail)
-			goodies[holiday_goodie] = 5
+			goodies[holiday_goodie] += 5
 
 	for(var/iterator in 1 to goodie_count)
 		var/target_good = pick_weight(goodies)

@@ -252,4 +252,3 @@ def _render_native(root, jobs, capabilities, directory, snapshots, diagnostics, 
                     job['passes'] = passes
         except (OSError, KeyError, TypeError, json.JSONDecodeError, subprocess.SubprocessError) as exc:
             raise ValueError(f'Native renderer failed: {exc}') from exc
-

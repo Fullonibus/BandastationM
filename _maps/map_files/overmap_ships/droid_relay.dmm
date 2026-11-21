@@ -1,0 +1,594 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"dN" = (
+/obj/machinery/computer/stationtrauma_transponder{
+	dir = 2;
+	circuit = /obj/item/circuitboard/computer/stationtrauma_transponder/nt/droid_relay
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"fa" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"gm" = (
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"gz" = (
+/turf/closed/wall/mineral/titanium/nodiagonal{
+	color = "#a5b2c2"
+	},
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"gF" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/west{
+	start_charge = 100
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"hs" = (
+/obj/machinery/relay_transport/pod,
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"hQ" = (
+/obj/machinery/door/airlock/stationtrauma_docking/ship{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/full{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"it" = (
+/obj/machinery/relay_fabricator{
+	iron_sheets = 12
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"iK" = (
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"nk" = (
+/turf/closed/wall/mineral/titanium/nodiagonal{
+	color = "#a5b2c2"
+	},
+/area/shuttle/stationtrauma_space/droid_relay)
+"pi" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 2
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal{
+	color = "#a5b2c2"
+	},
+/area/shuttle/stationtrauma_space/droid_relay)
+"qd" = (
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"rG" = (
+/obj/machinery/atmospherics/components/binary/pump/on/layer4{
+	dir = 1;
+	target_pressure = 506.625
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"sY" = (
+/obj/machinery/light/directional/west{
+	brightness = 5;
+	bulb_colour = "#b8d1ff"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"tj" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"tp" = (
+/obj/machinery/door/airlock/external{
+	dir = 2;
+	air_tight = 1;
+	closeOtherId = "overmap_droid_relay_eva";
+	name = "Внутренний шлюз"
+	},
+/obj/effect/turf_decal/stripes/full{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"tN" = (
+/obj/effect/decal/nt_logo{
+	color = "#8eafda";
+	dir = 2;
+	pixel_x = 16
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"xi" = (
+/obj/machinery/door/airlock/shuttle/glass{
+	dir = 1;
+	air_tight = 1;
+	name = "Рубка"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"xM" = (
+/obj/docking_port/mobile/stationtrauma_space/droid_relay,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"xU" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"As" = (
+/obj/structure/cable,
+/obj/machinery/stationtrauma_bluespace_drive{
+	charges = 2
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Az" = (
+/obj/machinery/overmap_droid_relay,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"AF" = (
+/obj/machinery/light/directional/east{
+	brightness = 5;
+	bulb_colour = "#b8d1ff"
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Bb" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/turf/closed/wall/mineral/titanium/nodiagonal{
+	color = "#a5b2c2"
+	},
+/area/shuttle/stationtrauma_space/droid_relay)
+"Bk" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/effect/decal/nt_logo{
+	color = "#8eafda";
+	dir = 4;
+	pixel_x = 16
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Df" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Dr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Fg" = (
+/obj/machinery/light/directional/west{
+	brightness = 5;
+	bulb_colour = "#b8d1ff"
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Fu" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 2
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/droid_relay/exterior)
+"Fw" = (
+/obj/machinery/door/airlock/external{
+	dir = 2;
+	air_tight = 1;
+	closeOtherId = "overmap_droid_relay_eva";
+	name = "Наружный шлюз"
+	},
+/obj/effect/turf_decal/stripes/full{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Ho" = (
+/obj/machinery/atmospherics/components/tank/air/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"JW" = (
+/turf/open/space/basic,
+/area/space)
+"Km" = (
+/obj/machinery/atmospherics/components/tank/air/layer2{
+	dir = 1;
+	name = "Бак отходящих газов";
+	starting_pressure_percent = 0
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Kw" = (
+/obj/machinery/relay_transport/bluespace,
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"LN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/shuttle{
+	air_tight = 1;
+	dir = 1;
+	name = "Технический отсек"
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Nz" = (
+/obj/effect/turf_decal/stripes/full{
+	dir = 2
+	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/droid_relay)
+"OM" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east{
+	start_charge = 100
+	},
+/obj/machinery/light/directional/east{
+	brightness = 4;
+	bulb_colour = "#c4d8fb"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"OU" = (
+/obj/structure/cable,
+/turf/closed/wall/mineral/titanium/nodiagonal{
+	color = "#a5b2c2"
+	},
+/area/shuttle/stationtrauma_space/droid_relay)
+"Px" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"PC" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"PH" = (
+/obj/structure/closet{
+	anchored = 1;
+	name = "Аварийный и ремонтный запас"
+	},
+/obj/item/relay_beacon,
+/obj/item/relay_beacon,
+/obj/item/storage/medkit/regular,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/stack/cable_coil,
+/obj/item/stack/sheet/iron/ten,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 10
+	},
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"Qr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Sq" = (
+/obj/machinery/airalarm/directional/west,
+/obj/machinery/telecomms/allinone/ship,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"Ss" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman/ship{
+	active = 1;
+	anchored = 1;
+	sheets = 40
+	},
+/obj/machinery/airalarm/directional/west,
+/obj/machinery/light/directional/south{
+	brightness = 5;
+	bulb_colour = "#ffeecc"
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Tt" = (
+/obj/effect/decal/nt_logo{
+	color = "#8eafda";
+	dir = 1;
+	pixel_x = 16
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"TQ" = (
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Vj" = (
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"WZ" = (
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/east{
+	brightness = 5;
+	bulb_colour = "#ccd9ed"
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"Xi" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"Xr" = (
+/obj/machinery/computer/stationtrauma_space_navigation/relay_board{
+	dir = 2;
+	use_power = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"XQ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
+"YV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/effect/decal/nt_logo{
+	color = "#8eafda";
+	dir = 8;
+	pixel_x = 16
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+
+(1,1,1) = {"
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+"}
+(2,1,1) = {"
+JW
+JW
+gz
+gz
+nk
+nk
+nk
+nk
+nk
+nk
+nk
+nk
+nk
+nk
+JW
+JW
+JW
+"}
+(3,1,1) = {"
+JW
+gz
+Sq
+sY
+nk
+TQ
+Fg
+TQ
+it
+Vj
+TQ
+OU
+gF
+Ss
+nk
+JW
+JW
+"}
+(4,1,1) = {"
+JW
+qd
+Az
+gm
+xi
+Tt
+tN
+fa
+fa
+PC
+fa
+nk
+XQ
+As
+nk
+Fu
+JW
+"}
+(5,1,1) = {"
+JW
+qd
+Xr
+tj
+Bb
+YV
+Bk
+Qr
+Qr
+xM
+Qr
+LN
+rG
+Ho
+nk
+JW
+JW
+"}
+(6,1,1) = {"
+JW
+qd
+dN
+Xi
+pi
+Dr
+Dr
+Dr
+Dr
+Df
+Dr
+pi
+Km
+nk
+nk
+Fu
+JW
+"}
+(7,1,1) = {"
+JW
+gz
+PH
+OM
+nk
+WZ
+iK
+Kw
+hs
+Px
+AF
+Nz
+tp
+xU
+Fw
+JW
+JW
+"}
+(8,1,1) = {"
+JW
+JW
+gz
+gz
+nk
+nk
+nk
+nk
+nk
+hQ
+nk
+nk
+nk
+nk
+JW
+JW
+JW
+"}
+(9,1,1) = {"
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+JW
+"}

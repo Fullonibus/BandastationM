@@ -65,6 +65,21 @@ BandaStation. Корпус неподвижен; анимируются толь
 Маски `*_glow` для emissive содержат только свечение поля. Звуки ядра — существующие звуки
 термоядерного ядра сборки.
 
+## Корабельное реле дроидов
+
+[`icons/droid_relay.dmi`](icons/droid_relay.dmi) и
+[`icons/droid_relay_actions.dmi`](icons/droid_relay_actions.dmi) — оригинальная
+пиксельная графика 32×32, отрисованная для этой интеграции 2026-11-18.
+Для масштаба и манеры отрисовки использовались штатные
+[`hivebot.dmi`](../../icons/mob/simple/hivebot.dmi),
+[`robots.dmi`](../../icons/mob/silicon/robots.dmi),
+[`hivebot_fabricator.dmi`](../../icons/obj/machines/hivebot_fabricator.dmi),
+[`computer.dmi`](../../icons/obj/machines/computer.dmi) и
+[`backgrounds.dmi`](../../icons/mob/actions/backgrounds.dmi) участников TG,
+BandaStation и Primera, а также [спрайт компактного ядра](icons/compact_core.dmi)
+на основе работы участников Baystation12. Все кадры реле отрисованы с нуля.
+Лицензия новых ресурсов — CC BY-SA 3.0.
+
 ## Космические локации
 
 | Локальный файл | Источник |

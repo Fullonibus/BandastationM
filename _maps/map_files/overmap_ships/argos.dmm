@@ -71,17 +71,24 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/power)
+"ah" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/argos/engineering/power)
 "ai" = (
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/hallway)
 "aj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/hallway)
 "ak" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/obj/machinery/firealarm/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/life_support)
 "al" = (
 /obj/machinery/atmospherics/components/tank/air/layer4{
@@ -130,7 +137,8 @@
 /area/shuttle/stationtrauma_space/argos/engineering/power)
 "at" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/power)
 "au" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -145,7 +153,8 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 2
 	},
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/life_support)
 "ax" = (
 /obj/machinery/atmospherics/components/binary/pump/on/layer4{
@@ -195,7 +204,8 @@
 "aE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/power)
 "aF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -212,7 +222,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/life_support)
 "aI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -234,6 +245,13 @@
 /obj/machinery/telecomms/allinone/ship,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/life_support)
+"aM" = (
+/obj/machinery/door/airlock/stationtrauma_docking/ship{
+	dir = 8;
+	req_access = list("cent_general")
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/argos/hallway)
 "aN" = (
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/power)
@@ -260,6 +278,13 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/life_support)
+"aT" = (
+/obj/machinery/door/airlock/stationtrauma_docking/ship{
+	dir = 4;
+	req_access = list("cent_general")
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/argos/hallway)
 "aU" = (
 /turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
 /area/shuttle/stationtrauma_space/argos/exterior)
@@ -276,11 +301,27 @@
 /turf/closed/wall/r_wall/plastitanium/syndicate,
 /area/shuttle/stationtrauma_space/argos/medbay)
 "bb" = (
-/obj/machinery/firealarm/directional/west,
+/obj/machinery/airalarm/directional/west{
+	req_access = list("cent_general")
+	},
+/obj/machinery/suit_storage_unit/centcom,
+/obj/machinery/door/window/brigdoor/right/directional/east,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
 /turf/open/floor/mineral/plastitanium/pod/dark,
 /area/shuttle/stationtrauma_space/argos/eva)
 "bc" = (
-/turf/open/floor/mineral/plastitanium/pod/dark,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/machinery/power/apc/auto_name/directional/east{
+	start_charge = 100;
+	req_access = list("cent_general")
+	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/east,
+/turf/open/floor/catwalk_floor/iron_dark,
 /area/shuttle/stationtrauma_space/argos/eva)
 "bd" = (
 /obj/structure/cable,
@@ -337,8 +378,13 @@
 /turf/template_noop,
 /area/shuttle/stationtrauma_space/argos/exterior)
 "bk" = (
+/obj/machinery/firealarm/directional/west,
+/obj/machinery/suit_storage_unit/centcom,
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/left/directional/east{
+	req_access = list("cent_general")
 	},
 /turf/open/floor/mineral/plastitanium/pod/dark,
 /area/shuttle/stationtrauma_space/argos/eva)
@@ -909,17 +955,6 @@
 /obj/structure/secure_safe/directional/east,
 /turf/open/floor/carpet/royalblack,
 /area/shuttle/stationtrauma_space/argos/cabin)
-"cJ" = (
-/obj/machinery/airalarm/directional/west{
-	req_access = list("cent_general")
-	},
-/obj/machinery/suit_storage_unit/centcom,
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
-	},
-/obj/machinery/door/window/brigdoor/right/directional/north,
-/turf/open/floor/mineral/plastitanium/pod/dark,
-/area/shuttle/stationtrauma_space/argos/eva)
 "cK" = (
 /obj/structure/fake_stairs/directional/west{
 	color = "#6d6e73"
@@ -981,12 +1016,9 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/bridge)
 "cU" = (
+/obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
-	},
-/obj/machinery/door/window/brigdoor/left/directional/east{
-	req_access = list("cent_general");
-	dir = 2
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/bridge)
@@ -1160,20 +1192,6 @@
 /obj/effect/turf_decal/tile/blue/full,
 /turf/open/floor/iron/white/smooth_large,
 /area/shuttle/stationtrauma_space/argos/medbay)
-"dp" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/obj/machinery/power/apc/auto_name/directional/east{
-	start_charge = 100;
-	req_access = list("cent_general")
-	},
-/obj/structure/sign/poster/official/nanotrasen_logo/directional/east,
-/obj/machinery/suit_storage_unit/centcom,
-/obj/machinery/door/window/brigdoor/right/directional/north,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/shuttle/stationtrauma_space/argos/eva)
 "dq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/computer/operating,
@@ -1219,37 +1237,9 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/power)
-"qb" = (
-/obj/structure/sign/poster/official/nanotrasen_logo/directional/north,
-/turf/template_noop,
-/area/template_noop)
 "tI" = (
 /turf/template_noop,
 /area/template_noop)
-"CS" = (
-/obj/machinery/door/airlock/stationtrauma_docking/ship{
-	dir = 8;
-	req_access = list("cent_general")
-	},
-/turf/open/floor/mineral/plastitanium/pod/dark,
-/area/shuttle/stationtrauma_space/argos/eva)
-"ah" = (
-/obj/structure/sign/poster/official/nanotrasen_logo/directional/north,
-/turf/template_noop,
-/area/shuttle/stationtrauma_space/argos/exterior)
-"ao" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
-	},
-/obj/machinery/door/window/brigdoor/left/directional/south{
-	req_access = list("cent_general")
-	},
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/argos/bridge)
-"ar" = (
-/obj/structure/sign/poster/official/nanotrasen_logo,
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/shuttle/stationtrauma_space/argos/crew)
 
 (1,1,1) = {"
 bz
@@ -1264,12 +1254,12 @@ bz
 bz
 bz
 bz
-ar
-tI
+br
+bj
 aV
 aU
 ae
-bY
+aM
 ae
 ae
 ae
@@ -1289,7 +1279,7 @@ bQ
 bH
 bA
 br
-CS
+aW
 aV
 aV
 ae
@@ -1302,7 +1292,7 @@ aa
 (3,1,1) = {"
 bz
 dd
-ao
+cU
 cK
 cB
 cx
@@ -1315,7 +1305,7 @@ bB
 bs
 bk
 bb
-cJ
+aW
 ae
 aO
 aC
@@ -1339,7 +1329,7 @@ br
 bt
 bl
 bc
-dp
+aW
 ae
 aN
 aD
@@ -1368,7 +1358,7 @@ ae
 aP
 aE
 at
-ae
+ah
 ab
 "}
 (6,1,1) = {"
@@ -1533,7 +1523,7 @@ bj
 ba
 aU
 ap
-bY
+aT
 ap
 ap
 ap

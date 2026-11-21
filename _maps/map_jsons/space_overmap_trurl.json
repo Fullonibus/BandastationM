@@ -43,7 +43,8 @@
 			"spawn_positions": 1
 		},
 		"Explorer": {
-			"spawn_positions": 4
+			"total_positions": 3,
+			"spawn_positions": 3
 		}
 	},
 	"height_autosetup": true,

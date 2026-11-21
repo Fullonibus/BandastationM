@@ -6,6 +6,8 @@
 	var/obj/docking_port/mobile/stationtrauma_space/ship
 	/// Isolated sector; no live round sector is changed.
 	var/datum/stationtrauma_overmap_sector/space/sector
+	/// Native berth used by this test, including before it is moved into the loaded deck.
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/bay
 	/// Exterior created by attachment on this template's private level.
 	var/area/space/stationtrauma_space_home/exterior
 	/// Native registration counters survive port deletion and need restoring.
@@ -18,6 +20,15 @@
 	var/sound_loops_paused = FALSE
 
 /datum/unit_test/overmap_argos/Run()
+	try
+		exercise_argos()
+	catch(var/exception/failure)
+		discard_test_ship()
+		throw failure
+	discard_test_ship()
+
+/** Exercise the map while retaining its exact loaded footprint for teardown after a failed check. */
+/datum/unit_test/overmap_argos/proc/exercise_argos()
 	mobile_ids = SSshuttle.assoc_mobile.Copy()
 	stationary_ids = SSshuttle.assoc_stationary.Copy()
 	template = allocate(/datum/map_template/stationtrauma_space/ship, "_maps/map_files/overmap_ships/argos.dmm", "Argos integration test")
@@ -42,7 +53,7 @@
 	var/datum/stationtrauma_overmap/space/navigation = ship.overmap
 	exterior = navigation.exterior
 	STOP_PROCESSING(SSfastprocess, navigation)
-	var/obj/docking_port/stationary/stationtrauma_space_station/standard/bay = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard_m)
+	bay = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard_m)
 	TEST_ASSERT(bay.accepts(ship), "Native measured Argos bounds and class must fit a standard M berth")
 	ship.initialize_docking_layers()
 	var/list/hatches = list()
@@ -102,7 +113,7 @@
 	TEST_ASSERT_NOTNULL(smes.terminal?.powernet, "The mapped SMES input terminal must connect to a real powernet")
 	TEST_ASSERT_NOTNULL(smes.powernet, "The mapped SMES output must connect to a real powernet")
 	TEST_ASSERT_NOTEQUAL(smes.terminal.powernet, smes.powernet, "Input and output cables must not bypass the SMES")
-	TEST_ASSERT(smes.total_charge() > 0, "The initialized SMES must contain usable charge")
+	TEST_ASSERT(smes.ui_data()["charge"] > 0, "The initialized SMES must contain usable charge")
 	var/previous_output = smes.powernet.newavail
 	smes.process(1)
 	TEST_ASSERT(smes.powernet.newavail > previous_output, "The mapped SMES must actually supply its output network")
@@ -214,11 +225,15 @@
 	TEST_ASSERT(isspaceturf(bridge), "Argos departure must retract the actual gangway back to space")
 	navigation.stop()
 
-/datum/unit_test/overmap_argos/Destroy()
+/** The native loader sheds work across ticks, so clear its footprint before Destroy. */
+/datum/unit_test/overmap_argos/proc/discard_test_ship()
 	if(ship)
 		qdel(ship.overmap)
 		qdel(ship, force = TRUE)
 		ship = null
+	if(bay)
+		qdel(bay, force = TRUE)
+		bay = null
 	if(template)
 		var/list/loaded_levels = template.loaded_levels.Copy()
 		template.discard_loaded_ship()
@@ -227,6 +242,8 @@
 			for(var/turf/tile as anything in block(locate(1, 1, deck), locate(world.maxx, world.maxy, deck)))
 				if(get_area(tile) == exterior)
 					tile.change_area(exterior, GLOB.areas_by_type[/area/space])
+
+/datum/unit_test/overmap_argos/Destroy()
 	QDEL_NULL(exterior)
 	if(mobile_ids)
 		SSshuttle.assoc_mobile = mobile_ids

@@ -457,7 +457,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		hearflags |= HEAR_HEARD
 
 	// BANDASTATION ADDITION START - TTS
-	if((hearflags & HEAR_HEARD) && !radio_freq)
+	if((hearflags & HEAR_HEARD) && !radio_freq && !message_mods["music_no_tts"])
 		var/message_to_tts = message_mods[LANGUAGE_MESSAGE_SEGMENTS] ? raw_message : (LAZYACCESS(message_mods, MODE_TTS_MESSAGE_OVERRIDE) || raw_message)
 		speaker.cast_tts(
 			src,

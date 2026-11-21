@@ -60,4 +60,5 @@
 #include "code/job_types/donor/landmarks.dm"
 #include "code/job_types/donor/titles.dm"
 #include "code/job_types/donor/service.dm"
+#include "code/job_types/donor/musician.dm"
 #include "code/job_types/donor/visitors.dm"
