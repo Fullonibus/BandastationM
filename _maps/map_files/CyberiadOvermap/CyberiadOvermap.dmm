@@ -100218,6 +100218,48 @@
 "acb" = (
 /turf/open/floor/plating/reinforced/airless,
 /area/space)
+"deO" = (
+/obj/machinery/computer/stationtrauma_dock_controller/medium{
+	dir = 8;
+	dock_name = "Кибериада: M"
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/white/corner{
+	dir = 8
+	},
+/area/station/hallway/secondary/entry)
+"mZZ" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/white/corner{
+	dir = 4
+	},
+/area/station/hallway/secondary/entry)
+"qao" = (
+/obj/machinery/door/airlock/stationtrauma_docking/wall{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/station/hallway/secondary/entry)
+"uXI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
+"wQY" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/white/corner{
+	dir = 4
+	},
+/area/station/hallway/secondary/entry)
+"yly" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/space/nearstation)
 
 (1,1,1) = {"
 doz
@@ -170773,7 +170815,7 @@ tYD
 tYD
 tYD
 tYD
-tYD
+pUx
 tYD
 tYD
 tYD
@@ -171028,10 +171070,10 @@ tYD
 tYD
 tYD
 tYD
-tYD
-tYD
-tYD
-tYD
+ucN
+pfG
+pfG
+pop
 tYD
 tYD
 tYD
@@ -171285,10 +171327,10 @@ tYD
 tYD
 tYD
 tYD
-tYD
-tYD
-tYD
-tYD
+hbD
+tcN
+tcN
+hbD
 tYD
 tYD
 tYD
@@ -171542,10 +171584,10 @@ tYD
 tYD
 tYD
 tYD
-tYD
-tYD
-tYD
-tYD
+hbD
+wDi
+hBI
+pop
 tYD
 tYD
 tYD
@@ -171798,12 +171840,12 @@ tYD
 tYD
 tYD
 tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+pop
+pop
+rze
+rze
+pop
+pop
 tYD
 tYD
 tYD
@@ -172055,12 +172097,12 @@ tYD
 tYD
 tYD
 tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+pop
+npT
+hZL
+hZL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -172312,12 +172354,12 @@ tYD
 tYD
 tYD
 tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+pop
+npT
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -172569,12 +172611,12 @@ tYD
 tYD
 tYD
 tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+pop
+mZZ
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -172826,12 +172868,12 @@ tYD
 tYD
 tYD
 tYD
-tYD
-tYD
-tYD
-pUx
-tYD
-tYD
+pop
+jQr
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -173083,12 +173125,12 @@ tYD
 tYD
 tYD
 tYD
-kJd
-ucN
-pfG
-pfG
-pop
-kJd
+yly
+npT
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -173340,12 +173382,12 @@ kJd
 kJd
 kJd
 kJd
-kJd
-hbD
-tcN
-tcN
-hbD
-kJd
+yly
+fuk
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -173597,12 +173639,12 @@ tYD
 tYD
 tYD
 tYD
-kJd
-hbD
-wDi
-hBI
-pop
-kJd
+yly
+npT
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -173855,11 +173897,11 @@ tYD
 tYD
 tYD
 pop
-pop
-rze
-rze
-pop
-kJd
+fuk
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -174111,12 +174153,12 @@ tYD
 tYD
 tYD
 tYD
-pop
-npT
-hZL
-hZL
-pop
-kJd
+hbD
+fuk
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -174368,12 +174410,12 @@ tYD
 tYD
 tYD
 tYD
-pop
+hbD
 fuk
 xmL
+xmL
 kYz
-hbD
-kJd
+qao
 tYD
 tYD
 tYD
@@ -174625,12 +174667,12 @@ tYD
 tYD
 tYD
 tYD
-pop
-jQr
-tEG
 hbD
-hbD
-hbD
+fuk
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -174884,10 +174926,10 @@ tYD
 tYD
 pop
 bZs
-pIu
-qWz
-ntS
-qWz
+hoL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -175141,11 +175183,11 @@ tYD
 tYD
 hbD
 xyJ
-dCm
-qWz
-koS
-qWz
-xUv
+xmL
+xmL
+kYz
+qao
+ets
 tYD
 tYD
 tYD
@@ -175397,11 +175439,11 @@ tYD
 tYD
 tYD
 hbD
-xyJ
-bcK
-hbD
-hbD
-hbD
+eoS
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -175654,11 +175696,11 @@ tYD
 tYD
 tYD
 hbD
-xyJ
+ciU
 xmL
 oBx
-hbD
-kJd
+kYz
+qao
 tYD
 tYD
 tYD
@@ -175911,11 +175953,11 @@ tYD
 tYD
 tYD
 hbD
-dEs
+aji
 xmL
 aip
-hbD
-kJd
+kYz
+qao
 tYD
 tYD
 tYD
@@ -176169,10 +176211,10 @@ tYD
 tYD
 hbD
 xyJ
-tEG
-hbD
-hbD
-hbD
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -176426,10 +176468,10 @@ tYD
 tYD
 hbD
 xyJ
-dCm
-qWz
-ntS
-qWz
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -176683,10 +176725,10 @@ tYD
 tYD
 pop
 lbO
-jEB
-qWz
-koS
-qWz
+uXI
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -176940,10 +176982,10 @@ hbD
 eUz
 pop
 jAq
-bcK
-hbD
-hbD
-hbD
+xmL
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -177199,8 +177241,8 @@ pop
 lbZ
 xmL
 agl
-hbD
-kJd
+kYz
+qao
 tYD
 tYD
 tYD
@@ -177456,8 +177498,8 @@ pop
 gaL
 xmL
 xNf
-pop
-kJd
+kYz
+qao
 tYD
 tYD
 tYD
@@ -177712,9 +177754,9 @@ xmL
 nDR
 otq
 xmL
-eoS
-hbD
-kJd
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -177969,9 +178011,9 @@ olE
 olE
 olE
 nUu
-ciU
-pop
-kJd
+xmL
+kYz
+qao
 tYD
 tYD
 tYD
@@ -178225,11 +178267,11 @@ olE
 xFk
 jAy
 fZu
-hKS
-aji
-hbD
-kJd
-kJd
+wQY
+deO
+kYz
+qao
+gJs
 tYD
 tYD
 tYD
@@ -178485,7 +178527,7 @@ bWH
 xPx
 xPx
 xPx
-kJd
+hUE
 kJd
 kJd
 tYD

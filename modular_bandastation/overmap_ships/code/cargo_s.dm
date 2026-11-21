@@ -10,6 +10,7 @@
 /// Exposed engine mount moves with the hull and has no life support.
 /area/shuttle/stationtrauma_space/cargo_s/exterior
 	name = "Челнок: наружная обшивка"
+	monitored_compartment = FALSE
 	requires_power = FALSE
 	vacuum_by_design = TRUE
 

@@ -315,6 +315,7 @@
 #include "organs.dm"
 #include "orphaned_genturf.dm"
 #include "outfit_sanity.dm"
+#include "overmap_argos.dm"
 #include "overmap_docking.dm"
 #include "overmap_generator.dm"
 #include "overmap_standard_dock.dm"

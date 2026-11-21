@@ -335,8 +335,13 @@
 	var/datum/space_level/traffic_level
 	/// Previous value of the cached station trait.
 	var/previous_station_cache
+	/// Foreign berth owned by the fixture, even if an assertion fails.
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard_s/remote_berth
 
 /datum/unit_test/overmap_standard_dock/station_clearance/Destroy()
+	if(remote_berth)
+		qdel(remote_berth, force = TRUE)
+		remote_berth = null
 	if(traffic_level)
 		SSstationtrauma_space_voyage.sectors["epsilon_eridani"] = original_home
 		if(!original_home)
@@ -392,6 +397,27 @@
 	var/list/traffic_data = traffic.ui_data(operator)
 	TEST_ASSERT_EQUAL(length(traffic_data["requests"]), 1, "The command console must display the pending request")
 	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, stale_token, FALSE), "The dispatcher must be able to deny a pending request")
+
+	// A different fixed installation can register a berth in the same sector.
+	remote_berth = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard_s, locate(15, 19, flight_position.z))
+	var/datum/stationtrauma_overmap_site/space/remote_site = allocate(/datum/stationtrauma_overmap_site/space)
+	remote_site.id = "unit_test_remote_berth"
+	remote_site.name = "Remote installation"
+	remote_site.physical_docking = TRUE
+	remote_site.berth = remote_berth
+	home.sites[remote_site.id] = remote_site
+	TEST_ASSERT(!is_station_level(remote_berth.z), "The foreign berth must be outside the station levels")
+	TEST_ASSERT(navigation.select_site(remote_site.id), "The pilot must be able to select a berth at the other installation")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", remote_site.id), "The pilot must be able to request the foreign berth")
+	var/datum/stationtrauma_station_docking_request/remote_request = home.station_docking_requests[ship.shuttle_id]
+	TEST_ASSERT(remote_request?.is_current(), "The foreign request must be valid even though this console cannot manage it")
+	var/list/local_data = traffic.ui_data(operator)
+	var/foreign_denied = traffic.respond_to_request(operator, ship.shuttle_id, remote_request.token, FALSE)
+	TEST_ASSERT(!foreign_denied, "The station console must not be able to deny the other installation's request")
+	TEST_ASSERT_EQUAL(length(local_data["docks"]), 1, "The station console must only list its own berth")
+	TEST_ASSERT_EQUAL(length(local_data["requests"]), 0, "The station console must hide the other installation's request")
+	TEST_ASSERT(helm.navigation_command("cancel_station_dock", remote_site.id), "The pilot must still be able to cancel the foreign request")
+	TEST_ASSERT(navigation.select_site(site.id), "The pilot must be able to target the station again")
 	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "The pilot can send a new request after denial")
 	request = home.station_docking_requests[ship.shuttle_id]
 	TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, stale_token, TRUE), "A stale dispatcher action must not approve a replacement")
