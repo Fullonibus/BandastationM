@@ -331,6 +331,7 @@
 #include "overmap_power.dm"
 #include "overmap_ship_docking.dm"
 #include "trade_hub.dm"
+#include "../../../modular_bandastation/explorers/code/tests.dm"
 #include "oxyloss_suffocation.dm"
 #include "paintings.dm"
 #include "pills.dm"
@@ -519,8 +520,6 @@
 #include "../../../modular_bandastation/terror_spiders/tests/terror_spiders.dm"
 
 #include "../../../modular_bandastation/dynamic/code/antag_tokens_tests.dm"
-
-#include "../../../modular_bandastation/explorers/code/tests.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
