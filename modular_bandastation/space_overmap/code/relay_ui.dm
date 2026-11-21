@@ -17,6 +17,7 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 /obj/machinery/overmap_droid_relay/ui_data(mob/user)
 	if(!can_operate(user))
 		return list()
+	var/list/conduit_devices = refresh_device_links()
 	var/list/units = list()
 	for(var/mob/living/basic/relay_droid/unit as anything in droids)
 		units += list(list(
@@ -27,7 +28,14 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 		))
 	var/list/stock = list()
 	for(var/obj/item/relay_chassis/chassis in contents)
-		stock += list(list("id" = REF(chassis), "guest" = !!chassis.stored_unit?.mind, "prepared" = (WEAKREF(chassis) in prepared_chassis)))
+		var/mob/living/basic/relay_droid/droid_type = chassis.droid_type
+		stock += list(list(
+			"id" = REF(chassis),
+			"name" = capitalize(initial(droid_type.name)),
+			"portrait" = droid_relay_portrait(droid_type),
+			"guest" = !!chassis.stored_unit?.mind,
+			"prepared" = (WEAKREF(chassis) in prepared_chassis),
+		))
 	var/list/transports = list()
 	for(var/datum/weakref/ref as anything in transport_refs)
 		var/obj/machinery/relay_transport/transport = ref.resolve()
@@ -52,8 +60,8 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 		"site" = chart?.knows_site(selected_site) ? selected_site.id : null, "watching" = !!camera_eye,
 		"armedClick" = click_order, "patrolFirst" = !!patrol_start,
 		"hostileTargets" = hostile_marks,
-		"computer" = !!(valid_link(board) && board.can_interact(user) && board.vessel == ship && chart),
-		"factory" = valid_link(fabricator) ? fabricator.iron_sheets : null, "cost" = profile.iron_sheets,
+		"computer" = !!(valid_link(board, conduit_devices) && board.can_interact(user) && board.vessel == ship && chart),
+		"fabricator" = !!valid_link(fabricator, conduit_devices),
 	)
 
 /obj/machinery/overmap_droid_relay/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -155,13 +163,16 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 			INVOKE_ASYNC(src, PROC_REF(offer_droid), actor, unit)
 		if("detonate")
 			INVOKE_ASYNC(src, PROC_REF(confirm_detonation), actor, unit)
-		if("print")
+		if("fabricator")
+			var/list/conduit_devices = refresh_device_links()
 			var/obj/machinery/relay_fabricator/fabricator = fabricator_ref?.resolve()
-			if(!valid_link(fabricator) || !has_storage_space() || !fabricator.print_chassis(profile, src))
-				to_chat(actor, span_warning("Печать недоступна. Проверьте питание, запас железа и свободное место."))
+			if(!valid_link(fabricator, conduit_devices))
+				return FALSE
+			fabricator.ui_interact(actor)
 		if("ship")
+			var/list/conduit_devices = refresh_device_links()
 			var/obj/machinery/computer/stationtrauma_space_navigation/relay_board/board = board_ref?.resolve()
-			if(valid_link(board))
+			if(valid_link(board, conduit_devices))
 				board.ui_interact(actor)
 		if("message")
 			INVOKE_ASYNC(src, PROC_REF(hivemind), actor)
@@ -173,6 +184,7 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 /obj/machinery/overmap_droid_relay/proc/resolve_transport(transport_id)
 	if(!istext(transport_id))
 		return null
+	refresh_device_links()
 	for(var/datum/weakref/ref as anything in transport_refs)
 		var/obj/machinery/relay_transport/transport = ref.resolve()
 		if(transport?.is_link_ready(src) && REF(transport) == transport_id)
@@ -219,7 +231,7 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 			if(transport)
 				if(!transport.target_valid(src, site.id, tile) || (mode == "aimed" && !site_camera_sees(tile, site, transport)))
 					continue
-			else if(!is_safe_turf(tile, dense_atoms = TRUE))
+			else if(!local_deployment_turf(tile))
 				continue
 			destination = tile
 			break
@@ -230,6 +242,10 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 			deployed += 1
 	if(deployed < length(batch))
 		to_chat(actor, span_warning("Развёрнуто [deployed] из [length(batch)]. Проверьте свободные слоты и площадки."))
+
+/// Force-moved bodies need an actual clear tile, including when the floor itself is breathable beneath a window.
+/obj/machinery/overmap_droid_relay/proc/local_deployment_turf(turf/tile)
+	return tile && !tile.density && is_safe_turf(tile)
 
 /obj/machinery/overmap_droid_relay/proc/confirm_detonation(mob/actor, mob/living/basic/relay_droid/unit)
 	if(!can_operate(actor) || !reaches(unit))

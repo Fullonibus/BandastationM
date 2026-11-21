@@ -18,7 +18,11 @@ type Unit = Option & {
 
 type Data = {
   units: Unit[];
-  stock: { id: string; guest: number; prepared: number }[];
+  stock: (Option & {
+    guest: number;
+    prepared: number;
+    portrait: string | null;
+  })[];
   limit: number;
   storageLimit: number;
   transports: Option[];
@@ -30,8 +34,7 @@ type Data = {
   patrolFirst: number;
   hostileTargets: Option[];
   computer: number;
-  factory: number | null;
-  cost: number;
+  fabricator: number;
 };
 
 const statusLabels: Record<string, string> = {
@@ -147,6 +150,18 @@ export function DroidRelay() {
             </RelayButton>
           </nav>
           <div className="DroidRelay__tools">
+            <RelayButton
+              icon="industry"
+              className="DroidRelay__productionLink"
+              disabled={!data.fabricator}
+              aria-label="Производство дроидов"
+              title={
+                data.fabricator
+                  ? 'Производство дроидов'
+                  : 'Фабрикатор не подключён'
+              }
+              onClick={() => act('fabricator')}
+            />
             <RelayButton
               icon="comment"
               tone="transparent"
@@ -402,13 +417,7 @@ export function DroidRelay() {
           <Section
             title={`Корпуса · ${data.stock.length}/${data.storageLimit}`}
           >
-            {!data.stock.length && (
-              <p>
-                {data.factory !== null
-                  ? 'Запас пуст. Напечатайте первый корпус.'
-                  : 'В реле нет готовых корпусов.'}
-              </p>
-            )}
+            {!data.stock.length && <p>В реле нет готовых корпусов.</p>}
             <div className="DroidRelay__stock">
               {data.stock.map((entry, index) => (
                 <label className="DroidRelay__stockItem" key={entry.id}>
@@ -417,30 +426,21 @@ export function DroidRelay() {
                     checked={!!entry.prepared}
                     onChange={() => act('prepare', { chassis: entry.id })}
                   />
+                  {entry.portrait && (
+                    <img
+                      alt=""
+                      src={`data:image/png;base64,${entry.portrait}`}
+                      width={24}
+                      height={24}
+                    />
+                  )}
                   <span>
-                    Корпус {index + 1}
+                    {entry.name} {index + 1}
                     {entry.guest ? ' · игрок' : ''}
                   </span>
                 </label>
               ))}
             </div>
-            {data.factory !== null && (
-              <div className="DroidRelay__row DroidRelay__row--spaced">
-                <RelayButton
-                  icon="print"
-                  disabled={
-                    data.factory < data.cost ||
-                    data.stock.length >= data.storageLimit
-                  }
-                  onClick={() => act('print')}
-                >
-                  Напечатать корпус
-                </RelayButton>
-                <span>
-                  Железо: {data.factory} лист. · {data.cost} на корпус
-                </span>
-              </div>
-            )}
           </Section>
 
           <Section title="Маршрут высадки">

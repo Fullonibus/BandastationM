@@ -49,6 +49,8 @@
 #include "code/relay_order_display.dm"
 #include "code/relay_orders.dm"
 #include "code/relay_fabricator.dm"
+#include "code/relay_logistics.dm"
+#include "code/relay_fabricator_ui.dm"
 #include "code/relay_transport.dm"
 #include "code/relay_console.dm"
 #include "code/relay_ui.dm"

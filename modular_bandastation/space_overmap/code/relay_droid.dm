@@ -306,4 +306,4 @@
 /datum/action/innate/relay_return/Activate()
 	var/mob/living/basic/relay_droid/unit = owner
 	var/obj/machinery/overmap_droid_relay/relay = unit.relay_ref?.resolve()
-	relay?.release_control(unit)
+	relay?.release_control(unit, keep_camera = TRUE)

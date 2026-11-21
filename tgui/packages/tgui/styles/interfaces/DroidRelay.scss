@@ -64,6 +64,12 @@
     margin-top: 8px;
   }
 
+  .DroidRelay__productionLink:not(:disabled) {
+    color: var(--color-good);
+    border-color: var(--color-good);
+    background: color-mix(in srgb, var(--color-good) 16%, var(--color-base));
+  }
+
   &__nav {
     flex: 1;
     min-width: 0;
@@ -187,6 +193,11 @@
     input {
       accent-color: var(--color-primary);
     }
+
+    img {
+      flex: 0 0 auto;
+      image-rendering: pixelated;
+    }
   }
 
   &__form {
@@ -220,6 +231,152 @@
 
     .Button {
       min-height: 34px;
+    }
+  }
+}
+
+.DroidFabricator {
+  gap: 10px;
+  overflow-y: auto;
+
+  &__header,
+  &__job {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 10px;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--color-border-secondary);
+  }
+
+  &__header > div > i {
+    margin-inline-end: 8px;
+  }
+
+  &__delivery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+  }
+
+  &__stock {
+    flex: 0 0 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+    gap: 4px;
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__stockItem {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    padding: 2px 6px;
+    background: var(--color-base);
+    border: 1px solid var(--color-border);
+    overflow-wrap: anywhere;
+  }
+
+  &__materialName {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+
+    img {
+      flex: 0 0 auto;
+      image-rendering: pixelated;
+    }
+  }
+
+  &__job {
+    background: var(--color-base);
+
+    progress {
+      appearance: none;
+      flex: 0 0 100%;
+      height: 8px;
+      border: 0;
+      color: var(--color-primary);
+      background: var(--color-border);
+    }
+
+    progress::-webkit-progress-bar {
+      background: var(--color-border);
+    }
+
+    progress::-webkit-progress-value {
+      background: var(--color-primary);
+    }
+
+    progress::-moz-progress-bar {
+      background: var(--color-primary);
+    }
+  }
+
+  &__catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+    gap: 8px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background: var(--color-base);
+    border: 1px solid var(--color-border-secondary);
+    overflow-wrap: anywhere;
+  }
+
+  &__cardHeader {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    align-items: start;
+    gap: 8px;
+
+    h2 {
+      margin: 0;
+      font-size: 1.15em;
+    }
+  }
+
+  &__portrait {
+    display: grid;
+    min-height: 52px;
+    place-items: center;
+    background: hsl(from var(--color-base) h s calc(l - 5));
+
+    img {
+      image-rendering: pixelated;
+    }
+  }
+
+  &__requirements {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 5px 8px;
+    margin: auto 0 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
+
+    dd {
+      margin: 0;
+      text-align: right;
+    }
+  }
+
+  &__material {
+    display: contents;
+
+    &[data-shortage='true'] dd {
+      color: var(--color-bad);
     }
   }
 }

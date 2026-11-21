@@ -44,9 +44,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/droid_relay)
 "it" = (
-/obj/machinery/relay_fabricator{
-	iron_sheets = 12
-	},
+/obj/machinery/relay_fabricator,
 /obj/effect/turf_decal/trimline/blue/line{
 	dir = 4
 	},
@@ -371,7 +369,17 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/droid_relay)
+"Ub" = (
+/obj/machinery/relay_resource_storage{
+	iron_sheets = 12
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/droid_relay)
 "Vj" = (
+/obj/structure/relay_material_conduit,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/droid_relay)
 "WZ" = (
@@ -419,6 +427,119 @@
 	pixel_x = 16
 	},
 /turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"aa" = (
+/obj/structure/relay_material_conduit/junction{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"ab" = (
+/obj/structure/relay_material_conduit/junction{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"ac" = (
+/obj/structure/relay_material_conduit{
+	dir = 2
+	},
+/obj/machinery/door/airlock/shuttle/glass{
+	dir = 1;
+	air_tight = 1;
+	name = "Рубка"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"ad" = (
+/obj/structure/relay_material_conduit{
+	dir = 2
+	},
+/obj/effect/decal/nt_logo{
+	color = "#8eafda";
+	dir = 1;
+	pixel_x = 16
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"ae" = (
+/obj/structure/relay_material_conduit{
+	dir = 2
+	},
+/obj/effect/decal/nt_logo{
+	color = "#8eafda";
+	dir = 2;
+	pixel_x = 16
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"af" = (
+/obj/structure/relay_material_conduit{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"ag" = (
+/obj/structure/relay_material_conduit/junction{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"ah" = (
+/obj/structure/relay_material_conduit/corner{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay)
+"ai" = (
+/obj/structure/relay_material_conduit/corner{
+	dir = 9
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/droid_relay/bridge)
+"aj" = (
+/obj/structure/relay_material_conduit{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 2
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"ak" = (
+/obj/structure/relay_material_conduit/corner{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/droid_relay)
+"al" = (
+/obj/structure/relay_material_conduit/junction{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/droid_relay)
 
 (1,1,1) = {"
@@ -469,8 +590,8 @@ TQ
 Fg
 TQ
 it
-Vj
-TQ
+aa
+Ub
 OU
 gF
 Ss
@@ -482,13 +603,13 @@ JW
 JW
 qd
 Az
-gm
-xi
-Tt
-tN
-fa
-fa
-PC
+ab
+ac
+ad
+ae
+af
+ag
+ah
 fa
 nk
 XQ
@@ -501,12 +622,12 @@ JW
 JW
 qd
 Xr
-tj
+ai
 Bb
 YV
 Bk
 Qr
-Qr
+aj
 xM
 Qr
 LN
@@ -524,8 +645,8 @@ Xi
 pi
 Dr
 Dr
-Dr
-Dr
+ak
+al
 Df
 Dr
 pi
