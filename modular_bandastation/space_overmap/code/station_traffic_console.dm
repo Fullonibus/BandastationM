@@ -28,6 +28,15 @@
 	var/datum/stationtrauma_overmap_sector/space/sector = host ? host.sector : SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
 	return sector?.ready ? sector : null
 
+/** Only control berths owned by the console's carrier or by the station itself. */
+/obj/machinery/computer/stationtrauma_station_traffic/proc/controls_berth(datum/stationtrauma_overmap_sector/space/sector, datum/stationtrauma_overmap_site/space/site, datum/stationtrauma_overmap/space/host)
+	if(!sector.is_station_berth(site) || site.host != host)
+		return FALSE
+	if(host)
+		return TRUE
+	var/obj/docking_port/stationary/stationtrauma_space_station/berth = site.berth
+	return !berth.host_ship_id && is_station_level(berth.z)
+
 /obj/machinery/computer/stationtrauma_station_traffic/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 	if(!can_operate(user))
@@ -54,7 +63,7 @@
 	var/list/approvals = list()
 	for(var/ship_id in sector.station_docking_requests)
 		var/datum/stationtrauma_station_docking_request/request = sector.station_docking_requests[ship_id]
-		if(QDELETED(request) || !request.is_current() || request.site.host != host)
+		if(QDELETED(request) || !request.is_current() || !controls_berth(sector, request.site, host))
 			continue
 		if(request.approved)
 			approvals[request.site] = request
@@ -70,7 +79,7 @@
 	var/list/docks = list()
 	for(var/site_id in sector.sites)
 		var/datum/stationtrauma_overmap_site/space/site = sector.sites[site_id]
-		if(!sector.is_station_berth(site) || site.host != host)
+		if(!controls_berth(sector, site, host))
 			continue
 		docks += list(dock_data(site, approvals[site]))
 	return list("sector" = sector.name, "docks" = docks, "requests" = requests)
@@ -129,7 +138,7 @@
 	if(QDELETED(sector))
 		return FALSE
 	var/datum/stationtrauma_station_docking_request/request = sector.station_docking_requests[ship_id]
-	if(QDELETED(request) || !sector.is_station_berth(request.site) || request.site.host != host)
+	if(QDELETED(request) || !controls_berth(sector, request.site, host))
 		return FALSE
 	if(!sector.respond_station_docking(ship_id, token, approve))
 		to_chat(user, span_warning("Заявка или причал изменились. Проверьте актуальный статус."))
