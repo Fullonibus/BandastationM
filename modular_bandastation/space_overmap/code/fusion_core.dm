@@ -224,13 +224,13 @@
 	switch(next_state)
 		if("core_normal")
 			set_light(6, 2, "#ADFFE1")
-			hum_volume = 30
+			hum_volume = 24
 		if("core_overdrive")
 			set_light(7, 3, "#92FF52")
-			hum_volume = 45
+			hum_volume = 36
 		if("core_quiet")
 			set_light(3, 0.7, "#54A9BB")
-			hum_volume = 12
+			hum_volume = 10
 		if("core_emergency")
 			set_light(3, 1, "#FF4A36")
 		else
@@ -558,7 +558,9 @@
 	mid_sounds = list('sound/machines/hypertorus/loops/hypertorus_nominal.ogg')
 	mid_length = 6 SECONDS
 	end_sound = 'sound/machines/sm/loops/calm_end.ogg'
-	volume = 30
+	volume = 24
+	// Heard about nine tiles out, around the engine room rather than across the ship.
+	extra_range = -6
 	falloff_exponent = 2
 	falloff_distance = 2
 	use_sound_tokens = TRUE
@@ -568,4 +570,4 @@
 	start_sound = null
 	end_sound = null
 	mid_sounds = list('sound/machines/sm/loops/delamming.ogg')
-	volume = 22
+	volume = 18
