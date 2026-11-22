@@ -206,6 +206,43 @@
 	if(woke)
 		flick("[base_icon_state]_alert", src)
 		playsound(src, 'sound/machines/beep/twobeep.ogg', 25, FALSE)
+		roll_breakout(find, "artifact", find.origin_band)
+
+/// Time between the instability alarm and the breakout, for the crew to step back.
+#define XENOARCH_BREAKOUT_DELAY (4 SECONDS)
+
+/**
+ * Roll whether studying `find` here sets it loose; on a hit the find shakes and sparks, the analyser sounds the alarm,
+ * and the breakout follows a moment later. An open specimen crate on the same tile halves the chance.
+ *
+ * Arguments:
+ * * find - The large artifact, field artefact or anomaly core being studied
+ * * kind - "artifact", "field" or "core"
+ * * band - Danger band the find came from
+ */
+/obj/machinery/artifact_analyser/proc/roll_breakout(atom/movable/find, kind, band)
+	var/turf/spot = get_turf(find)
+	if(!spot || find.get_filter("xenoarch_breakout"))
+		return FALSE
+	var/obj/structure/closet/crate/specimen/container = find.loc
+	if(istype(container) && !container.opened)
+		return FALSE
+	var/chance = GLOB.xenoarch_breakout_chances[kind][XENOARCH_BAND_INDEX(band)]
+	for(var/obj/structure/closet/crate/specimen/crate in spot)
+		if(crate.opened)
+			chance /= 2
+			break
+	if(!prob(chance))
+		return FALSE
+	say("ВНИМАНИЕ: находка нестабильна!")
+	add_tape("НЕСТАБИЛЬНОСТЬ. Энергия выходит из-под контроля.", TAPE_FAULT)
+	playsound(src, 'sound/machines/warning-buzzer.ogg', 50, FALSE)
+	playsound(find, 'sound/effects/empulse.ogg', 40, TRUE)
+	find.Shake(2, 2, XENOARCH_BREAKOUT_DELAY)
+	find.add_filter("xenoarch_breakout", 2, outline_filter(1, "#ff3c3c"))
+	do_sparks(3, FALSE, find)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xenoarch_breakout), WEAKREF(find), kind, band), XENOARCH_BREAKOUT_DELAY)
+	return TRUE
 
 /// An emission rose. Held a moment, so the stimulus that caused it prints first.
 /obj/machinery/artifact_analyser/proc/on_effect_woke(datum/source, datum/artifact_effect/effect)
@@ -594,3 +631,4 @@
 #undef TAPE_RESPONSE
 #undef TAPE_QUIET
 #undef TAPE_FAULT
+#undef XENOARCH_BREAKOUT_DELAY
