@@ -18,4 +18,5 @@
 
 /datum/station_trait/job/New()
 	. = ..()
-	SStitle.title_output_to_all(list2params(list(src.name, src.button_desc)), "createTraitButton")
+	if(sign_up_button)
+		SStitle.title_output_to_all(list2params(list(src.name, src.button_desc)), "createTraitButton")

@@ -43,7 +43,9 @@
 	var/jobstext = file2text(jobsfile)
 	for(var/datum/job/occupation as anything in joinable_occupations)
 		var/regex/parser = new("[occupation.title]=(-1|\\d+),(-1|\\d+)")
-		parser.Find(jobstext)
+		// Keep the job defaults when an older config has no override.
+		if(!parser.Find(jobstext))
+			continue
 		occupation.total_positions = text2num(parser.group[1])
 		occupation.spawn_positions = text2num(parser.group[2])
 

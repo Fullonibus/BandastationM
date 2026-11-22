@@ -127,8 +127,17 @@
 	job_to_add = /datum/job/bridge_assistant
 
 /datum/station_trait/job/bridge_assistant/New()
+	var/list/map_changes = get_bridge_assistant_map_changes()
+	if(map_changes?["standard_role"])
+		sign_up_button = FALSE
 	. = ..()
 	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(add_coffeemaker))
+
+/// Let regular Bridge Assistants use standard job preferences and keep their map-configured slots.
+/datum/station_trait/job/bridge_assistant/assign_lobby_candidates()
+	if(!sign_up_button)
+		return
+	return ..()
 
 /* BANDASTATION REMOVAL - HTML Title Screen
 /datum/station_trait/job/bridge_assistant/on_lobby_button_update_overlays(atom/movable/screen/lobby/button/sign_up/lobby_button, list/overlays)

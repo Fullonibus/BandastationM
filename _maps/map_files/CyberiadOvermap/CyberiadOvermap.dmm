@@ -100261,6 +100261,10 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/space/nearstation)
+"acc" = (
+/obj/effect/landmark/start/bridge_assistant,
+/turf/open/floor/iron,
+/area/station/command/bridge)
 
 (1,1,1) = {"
 doz
@@ -193674,7 +193678,7 @@ acd
 emW
 ucY
 aCF
-owV
+acc
 fZj
 vmg
 iHv
@@ -194702,7 +194706,7 @@ gaM
 emW
 tOT
 uPS
-owV
+acc
 fZj
 aBi
 iHv
