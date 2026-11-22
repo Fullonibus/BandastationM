@@ -25,7 +25,8 @@
 /datum/stationtrauma_overmap_site/space/proc/fits_shuttle_offer(list/offer)
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = berth
 	if(istype(slot))
-		return offer["class"] == slot.accepted_ship_class && min(offer["width"], offer["height"]) <= slot.width && max(offer["width"], offer["height"]) <= slot.height
+		var/compatible_class = offer["class"] == slot.accepted_ship_class || (slot.hangar && offer["class"] == ST_SHIP_SMALL)
+		return compatible_class && min(offer["width"], offer["height"]) <= slot.width && max(offer["width"], offer["height"]) <= slot.height
 	return offer["dwidth"] <= berth.dwidth && offer["width"] - offer["dwidth"] <= berth.width - berth.dwidth \
 		&& offer["dheight"] <= berth.dheight && offer["height"] - offer["dheight"] <= berth.height - berth.dheight
 

@@ -161,6 +161,54 @@
 	folded_before_preflight = length(departure_passage.folded_path) && !length(departure_passage.floors)
 	departure_blocker = allocate(/obj/item, target)
 
+/** A roof berth accepts a direct arrival and releases the hull without either gangway endpoint. */
+/datum/unit_test/overmap_surface_dock/hangar_round_trip
+
+/datum/unit_test/overmap_surface_dock/hangar_round_trip/Run()
+	QDEL_NULL(hatch)
+	QDEL_LIST(station_objects)
+	balance_surface_test_air(ship.return_turfs())
+	var/obj/machinery/power/shuttle_engine/engine = allocate(/obj/machinery/power/shuttle_engine, locate(ship.x + 3, ship.y + 8, ship.z))
+	engine.anchored = TRUE
+	engine.engine_state = initial(engine.engine_state)
+	engine.connect_to_shuttle(TRUE, ship)
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "The hangar hull must have real propulsion for takeoff")
+	TEST_ASSERT(navigation.select_site(site.id), "The pad must be selectable")
+	TEST_ASSERT(!navigation.dock(instant = TRUE), "The same pad in standard S mode must still require docking endpoints")
+
+	bay.hangar = TRUE
+	var/turf/pad_anchor = get_turf(bay)
+	var/datum/space_level/lower_deck = test_levels[1]
+	var/turf/lower_anchor = locate(pad_anchor.x, pad_anchor.y, lower_deck.z_value)
+	bay.forceMove(lower_anchor)
+	var/accepted_without_link = navigation.can_dock(site, navigation.control_revision)
+	// Only the fixture deck's upward linkage changes while the same landing order is checked.
+	lower_deck.traits[ZTRAIT_UP] = TRUE
+	SSmapping.generate_linkages_for_z_level(lower_deck.z_value)
+	var/has_link = GET_TURF_ABOVE(lower_anchor) == pad_anchor
+	var/accepted_with_link = navigation.can_dock(site, navigation.control_revision)
+	lower_deck.traits -= ZTRAIT_UP
+	SSmapping.generate_linkages_for_z_level(lower_deck.z_value)
+	bay.forceMove(pad_anchor)
+	TEST_ASSERT(has_link && accepted_without_link && !accepted_with_link, "The same berth must be refused once another deck is linked above it")
+
+	var/turf/marked_pad = locate(bay.x + 1, bay.y + 1, bay.z)
+	TEST_ASSERT(navigation.dock(instant = TRUE), "The ship must land on clear solid ground without a wall or docking hatch. Status: [navigation.status]")
+	var/obj/docking_port/stationary/stationtrauma_space_site/standard/berth = bay.active_berth
+	TEST_ASSERT_NOTNULL(berth, "The hangar must reserve a native berth")
+	TEST_ASSERT_EQUAL(ship.get_docked(), berth, "The ship must physically occupy the reserved berth")
+	TEST_ASSERT(ship.has_docking_layer(marked_pad), "The landed hull must cover the original pad floor")
+	TEST_ASSERT(!length(berth.routes) && !length(berth.gangways), "A landing must neither reserve nor build a gangway")
+	TEST_ASSERT(!(locate(/obj/effect/temp_visual/stationtrauma_hangar_glow) in marked_pad), "Pad glow must never be added to a landed hull tile")
+	var/turf/cutout = locate(bay.x + 2, bay.y + 14, bay.z)
+	TEST_ASSERT((locate(/obj/effect/temp_visual/stationtrauma_hangar_glow) in cutout), "Exposed floor within the bounds of an irregular hull must still glow")
+
+	TEST_ASSERT(navigation.depart(instant = TRUE), "A hatchless ship must take off normally. Status: [navigation.status]")
+	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "The hull must physically return to its flight berth")
+	TEST_ASSERT_NULL(bay.active_berth, "Takeoff must release the hangar berth")
+	TEST_ASSERT((locate(/obj/effect/temp_visual/stationtrauma_hangar_glow) in marked_pad), "Takeoff must light the newly exposed floor")
+	assert_surface_restored(marked_pad, surface_records[marked_pad])
+
 /** A real M controller commissions a clear solid pad and rejects a loose object on the same floor. */
 /datum/unit_test/overmap_surface_dock/medium_registration
 	parent_type = /datum/unit_test/overmap_standard_dock/runtime_controller

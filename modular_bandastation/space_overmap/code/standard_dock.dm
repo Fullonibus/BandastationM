@@ -11,6 +11,8 @@
 	var/dock_class = "S"
 	/// Largest standard hull class admitted by the slot.
 	var/accepted_ship_class = ST_SHIP_SMALL
+	/// Land directly on a solid pad without a wall or gangway.
+	var/hangar = FALSE
 	/// The technical berth exists only for the current approach or occupant.
 	var/obj/docking_port/stationary/stationtrauma_space_site/standard/active_berth
 
@@ -28,6 +30,18 @@
 	dock_class = "M"
 	accepted_ship_class = ST_SHIP_MEDIUM
 
+/** Mapped landing pad on the highest deck of its linked stack. */
+/obj/docking_port/stationary/stationtrauma_space_station/standard/hangar
+	name = "Ангар"
+	station_name = "Ангар"
+	shuttle_id = "overmap_hangar"
+	site_id = "overmap_hangar"
+	width = ST_STANDARD_M_WIDTH
+	height = ST_STANDARD_M_HEIGHT
+	dock_class = "Ангар"
+	accepted_ship_class = ST_SHIP_MEDIUM
+	hangar = TRUE
+
 /obj/docking_port/stationary/stationtrauma_space_station/standard_s/trade_outpost
 	auto_approve_docking = TRUE
 
@@ -43,12 +57,14 @@
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/accepts(obj/docking_port/mobile/stationtrauma_space/ship)
 	if(QDELETED(ship) || (host_ship_id && (QDELETED(host) || host.sector?.sites[site_id] != carrier_site)))
 		return FALSE
+	if(hangar && !stationtrauma_hangar_top_level(get_turf(src), host))
+		return FALSE
 	var/compatible_class = ship.ship_class == accepted_ship_class || (ship.ship_class == ST_SHIP_SMALL && accepted_ship_class == ST_SHIP_MEDIUM)
 	return compatible_class && ship.width > 0 && ship.height > 0 \
 		&& min(ship.width, ship.height) <= width && max(ship.width, ship.height) <= height \
 		&& (dir in GLOB.cardinals) && (ship.dir in GLOB.cardinals)
 
-/** Fit the most gangways in the first viable orientation, favoring shorter paths on ties. */
+/** Fit a landing on the pad, or fit the most gangways in the first viable orientation. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/prepare_berth(obj/docking_port/mobile/stationtrauma_space/ship)
 	if(active_berth || !accepts(ship))
 		return null
@@ -57,6 +73,8 @@
 	var/list/slot = return_turfs()
 	if(length(slot) != width * height)
 		return null
+	if(hangar)
+		return fit_hangar_berth(ship, slot)
 	var/list/rotation = stationtrauma_port_rotation(dir)
 	var/wall_direction = turn(dir, 90)
 	var/toward_wall = REVERSE_DIR(wall_direction)
@@ -110,15 +128,7 @@
 				best_routes = routes_by_wall
 				best_total_length = total_length
 		if(best_anchor)
-			var/obj/docking_port/stationary/stationtrauma_space_site/standard/berth = new(best_anchor)
-			berth.width = ship.width
-			berth.height = ship.height
-			berth.dwidth = ship.dwidth
-			berth.dheight = ship.dheight
-			berth.setDir(facing)
-			berth.slot = src
-			berth.ship = ship
-			berth.order_revision = ship.overmap.control_revision
+			var/obj/docking_port/stationary/stationtrauma_space_site/standard/berth = create_berth(ship, best_anchor, facing)
 			for(var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall as anything in best_routes)
 				var/list/entry = best_routes[wall]
 				var/datum/stationtrauma_dock_route/route = new
@@ -126,9 +136,45 @@
 				route.wall = wall
 				route.path = entry[2]
 				berth.routes += route
-			active_berth = berth
 			return berth
 	return null
+
+/** Preserve the incoming heading when possible and land as close to the center of the pad as the hull permits. */
+/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/fit_hangar_berth(obj/docking_port/mobile/stationtrauma_space/ship, list/pad_tiles)
+	var/list/pad_bounds = return_coords()
+	var/pad_center_x = (pad_bounds[1] + pad_bounds[3]) / 2
+	var/pad_center_y = (pad_bounds[2] + pad_bounds[4]) / 2
+	for(var/facing in list(ship.dir, REVERSE_DIR(ship.dir), turn(ship.dir, 90), turn(ship.dir, -90)))
+		var/turf/best_anchor
+		var/best_distance = INFINITY
+		for(var/turf/anchor as anything in pad_tiles)
+			var/list/hull_bounds = ship.return_coords(anchor.x, anchor.y, facing)
+			if(!contains_projection(pad_bounds, hull_bounds))
+				continue
+			var/hull_center_x = (hull_bounds[1] + hull_bounds[3]) / 2
+			var/hull_center_y = (hull_bounds[2] + hull_bounds[4]) / 2
+			var/distance = abs(hull_center_x - pad_center_x) + abs(hull_center_y - pad_center_y)
+			if(distance >= best_distance || !length(project_hull(ship, anchor, facing)))
+				continue
+			best_distance = distance
+			best_anchor = anchor
+		if(best_anchor)
+			return create_berth(ship, best_anchor, facing)
+	return null
+
+/** Attach a native port to the current reservation using the incoming hull's actual dimensions. */
+/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/create_berth(obj/docking_port/mobile/stationtrauma_space/ship, turf/anchor, facing)
+	var/obj/docking_port/stationary/stationtrauma_space_site/standard/berth = new(anchor)
+	berth.width = ship.width
+	berth.height = ship.height
+	berth.dwidth = ship.dwidth
+	berth.dheight = ship.dheight
+	berth.setDir(facing)
+	berth.slot = src
+	berth.ship = ship
+	berth.order_revision = ship.overmap.control_revision
+	active_berth = berth
+	return berth
 
 /** Forget the technical berth after an aborted approach, departure or forced teardown. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/clear_berth()
@@ -153,10 +199,20 @@
 		if(!ship.has_docking_layer(source[index]))
 			continue
 		var/turf/tile = target[index]
-		if(!stationtrauma_standard_dock_clear_space(tile, host))
+		if((hangar && !isfloorturf(tile)) || !stationtrauma_standard_dock_clear_space(tile, host))
 			return null
 		projected[tile] = TRUE
 	return projected
+
+/** Unrelated world levels do not obstruct the top of a station or carrier stack. */
+/proc/stationtrauma_hangar_top_level(turf/anchor, datum/stationtrauma_overmap/space/host)
+	if(!anchor || GET_TURF_ABOVE(anchor))
+		return FALSE
+	if(!host)
+		return TRUE
+	var/obj/docking_port/mobile/stationtrauma_space/carrier = host.vessel
+	return !QDELETED(carrier) && carrier.contains_deck(anchor.z) \
+		&& (length(carrier.owned_z_levels) <= 1 || anchor.z == max(carrier.owned_z_levels))
 
 /** Solid ground and ordinary space can support a pad; transit edges cannot. */
 /proc/stationtrauma_standard_dock_surface(turf/tile)
@@ -250,7 +306,7 @@
 
 /** Recheck every reserved route before native movement commits. */
 /obj/docking_port/stationary/stationtrauma_space_site/standard/proc/route_clear(obj/docking_port/mobile/stationtrauma_space/arriving)
-	if(!length(routes) || arriving != ship || QDELETED(slot) || slot.active_berth != src || !slot.accepts(arriving) \
+	if(arriving != ship || QDELETED(slot) || slot.active_berth != src || !slot.accepts(arriving) || (!slot.hangar && !length(routes)) \
 		|| width != arriving.width || height != arriving.height || dwidth != arriving.dwidth || dheight != arriving.dheight \
 		|| z != slot.z || !slot.contains_projection(slot.return_coords(), return_coords()))
 		return FALSE
@@ -261,6 +317,8 @@
 	var/list/hull = slot.project_hull(arriving, get_turf(src), dir)
 	if(!length(hull))
 		return FALSE
+	if(slot.hangar)
+		return TRUE
 	var/wall_direction = turn(slot.dir, 90)
 	var/ship_rotation = dir2angle(arriving.dir) - dir2angle(dir)
 	for(var/datum/stationtrauma_dock_route/route as anything in routes)

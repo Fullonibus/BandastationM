@@ -266,7 +266,7 @@
 		return FALSE
 	if(istype(target, /obj/docking_port/stationary/stationtrauma_space_site/standard))
 		var/obj/docking_port/stationary/stationtrauma_space_site/standard/berth = target
-		return stationtrauma_standard_dock_clear_space(tile, berth.slot?.host)
+		return (!berth.slot?.hangar || isfloorturf(tile)) && stationtrauma_standard_dock_clear_space(tile, berth.slot?.host)
 	if(SSshuttle.get_containing_shuttle(tile))
 		return FALSE
 	for(var/atom/movable/occupant as anything in tile)

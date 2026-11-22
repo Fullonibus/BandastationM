@@ -189,6 +189,7 @@
 		/datum/design/board/shuttle/shuttle_docker,
 		/datum/design/board/shuttle/stationtrauma_dock_controller,
 		/datum/design/board/shuttle/stationtrauma_dock_controller/medium,
+		/datum/design/board/shuttle/stationtrauma_dock_controller/hangar,
 		/datum/design/board/shuttle/stationtrauma_dispatch,
 		/datum/design/board/shuttle/stationtrauma_station_traffic,
 		/datum/design/board/stationtrauma_ship_core,

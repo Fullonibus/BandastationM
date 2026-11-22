@@ -119,6 +119,9 @@
 
 /** Read current admission without attempting a ship-specific approach or scanning the landing footprint. */
 /proc/stationtrauma_berth_unavailable(obj/docking_port/stationary/berth)
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = berth
+	if(istype(slot) && slot.hangar && !stationtrauma_hangar_top_level(get_turf(slot), slot.host))
+		return TRUE
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/runtime_slot = berth
 	if(istype(runtime_slot))
 		return runtime_slot.retiring || !runtime_slot.controller_valid()

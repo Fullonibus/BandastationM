@@ -17,6 +17,16 @@
 	desc = "Сканирует и регистрирует построенный стыковочный слот M."
 	build_path = /obj/item/circuitboard/computer/stationtrauma_dock_controller/medium
 
+/** Circuitboard for a roof-level landing pad controller. */
+/obj/item/circuitboard/computer/stationtrauma_dock_controller/hangar
+	name = "контроллер ангара"
+	build_path = /obj/machinery/computer/stationtrauma_dock_controller/hangar
+
+/datum/design/board/shuttle/stationtrauma_dock_controller/hangar
+	name = "Плата контроллера ангара"
+	desc = "Регистрирует посадочную площадку для кораблей S и M на верхней палубе."
+	build_path = /obj/item/circuitboard/computer/stationtrauma_dock_controller/hangar
+
 /** A prefabricated endpoint installed on a free floor tile. */
 /obj/item/stationtrauma_docking_kit
 	name = "монтажный комплект стыковочного шлюза"
@@ -66,7 +76,7 @@
 /obj/item/stationtrauma_docking_kit/wall/installation_direction(turf/tile, mob/living/user)
 	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(tile)
 	for(var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot in SSshuttle.stationary_docking_ports)
-		if(QDELETED(slot) || slot.z != tile.z || slot.host != host || (slot.host_ship_id && !host))
+		if(QDELETED(slot) || slot.hangar || slot.z != tile.z || slot.host != host || (slot.host_ship_id && !host))
 			continue
 		var/facing = stationtrauma_standard_dock_wall_direction(tile, get_turf(slot), slot.dir, slot.width, slot.height)
 		if(facing)
@@ -78,7 +88,7 @@
 	// A prepared dock, such as Cyberiad's M dock, has only a controller until commissioning.
 	var/draft_facing
 	for(var/obj/machinery/computer/stationtrauma_dock_controller/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/stationtrauma_dock_controller))
-		if(QDELETED(controller) || !controller.anchored || controller.z != tile.z || controller.site_id || controller.owned_slot)
+		if(QDELETED(controller) || controller.hangar || !controller.anchored || controller.z != tile.z || controller.site_id || controller.owned_slot)
 			continue
 		var/facing = stationtrauma_standard_dock_wall_direction(tile, controller.proposed_anchor(), controller.dir, controller.slot_width, controller.slot_height)
 		if(!facing || stationtrauma_carrier_at(controller) != host)
@@ -114,6 +124,8 @@
 	circuit = /obj/item/circuitboard/computer/stationtrauma_dock_controller
 	/// Class and dimensions used when this controller creates a dock.
 	var/dock_class = "S"
+	/// Commission a floor-only hangar instead of a berth with a docking wall.
+	var/hangar = FALSE
 	/// Hull classification accepted by the controller's dock.
 	var/accepted_ship_class = ST_SHIP_SMALL
 	/// Width of the hull area, perpendicular to the wall.
@@ -137,6 +149,15 @@
 	slot_width = ST_STANDARD_M_WIDTH
 	slot_height = ST_STANDARD_M_HEIGHT
 
+/** Commissions an S/M landing pad directly beside the controller. */
+/obj/machinery/computer/stationtrauma_dock_controller/hangar
+	parent_type = /obj/machinery/computer/stationtrauma_dock_controller/medium
+	name = "контроллер ангара"
+	desc = "Проверяет и регистрирует посадочную площадку. Установите контроллер у её края на верхней палубе и проверьте разметку."
+	circuit = /obj/item/circuitboard/computer/stationtrauma_dock_controller/hangar
+	dock_class = "Ангар"
+	hangar = TRUE
+
 /obj/machinery/computer/stationtrauma_dock_controller/Destroy()
 	if(!QDELETED(owned_slot))
 		owned_slot.retire()
@@ -148,7 +169,10 @@
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = find_slot()
 	. += span_notice(dock_status(slot))
 	if(!slot && !site_id)
-		. += span_notice("Направление контроллера задаёт линию из [slot_height] секций. Стена находится в двух клетках слева от этого направления.")
+		if(hangar)
+			. += span_notice("Для ангара нужен свободный пол [slot_width]×[slot_height] на верхней палубе. Положение площадки показывает разметка.")
+		else
+			. += span_notice("Направление контроллера задаёт линию из [slot_height] секций. Стена находится в двух клетках слева от этого направления.")
 
 /obj/machinery/computer/stationtrauma_dock_controller/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -177,20 +201,23 @@
 	var/facing = slot ? slot.dir : dir
 	var/dock_width = slot ? slot.width : slot_width
 	var/dock_height = slot ? slot.height : slot_height
+	var/is_hangar = slot ? slot.hangar : hangar
 	switch(action)
 		if("Показать площадку")
-			show_layout(user, anchor, facing, dock_width, dock_height)
+			show_layout(user, anchor, facing, dock_width, dock_height, is_hangar)
 		if("Проверить площадку")
 			var/datum/stationtrauma_overmap_site/space/site = slot_site(slot)
 			if(slot && (slot.active_berth || site?.docking_owner || site?.shuttle_order))
 				to_chat(user, span_notice(dock_status(slot)))
 				return
-			var/problem = stationtrauma_standard_dock_problem(anchor, facing, dock_width, dock_height, slot)
-			to_chat(user, problem ? span_warning(problem) : span_notice("Площадка и коридор свободны, все секции стены на месте."))
+			var/datum/stationtrauma_overmap/space/host = is_hangar ? stationtrauma_carrier_at(src) : null
+			var/problem = stationtrauma_standard_dock_problem(anchor, facing, dock_width, dock_height, slot, host, hangar = is_hangar)
+			var/ready_message = is_hangar ? "Посадочная площадка свободна." : "Площадка и коридор свободны, все секции стены на месте."
+			to_chat(user, problem ? span_warning(problem) : span_notice(ready_message))
 		if("Повернуть контроллер")
 			if(!site_id && !slot)
 				setDir(turn(dir, -90))
-				show_layout(user, proposed_anchor(), dir, slot_width, slot_height)
+				show_layout(user, proposed_anchor(), dir, slot_width, slot_height, hangar)
 		if("Зарегистрировать причал")
 			var/problem = publish_slot()
 			to_chat(user, problem ? span_warning(problem) : span_notice("Причал зарегистрирован и виден на навигационных консолях сектора."))
@@ -265,9 +292,13 @@
 		return "[slot.station_name] зарезервирован.[retirement]"
 	return "[slot.station_name] свободен.[retirement]"
 
+/** A hangar controller sits just beyond its footprint. Walled berths leave room for the gangway and wall. */
+/obj/machinery/computer/stationtrauma_dock_controller/proc/anchor_distance()
+	return slot_width + (hangar ? 0 : 3)
+
 /obj/machinery/computer/stationtrauma_dock_controller/proc/proposed_anchor()
 	var/list/rotation = stationtrauma_port_rotation(dir)
-	var/distance = slot_width + 3
+	var/distance = anchor_distance()
 	return locate(x - distance * rotation[1], y - distance * rotation[2], z)
 
 /** Validate and publish a new physical destination. Returns a visible reason on failure. */
@@ -281,16 +312,18 @@
 	if(!sector?.ready)
 		return "Сектор ещё не готов к регистрации причалов."
 	var/turf/anchor = proposed_anchor()
-	var/problem = stationtrauma_standard_dock_problem(anchor, dir, slot_width, slot_height, host = host)
+	var/problem = stationtrauma_standard_dock_problem(anchor, dir, slot_width, slot_height, host = host, hangar = hangar)
 	if(problem)
 		return problem
-	var/id = "runtime_[lowertext(dock_class)]_[anchor.x]_[anchor.y]_[anchor.z]"
+	var/slot_kind = hangar ? "hangar" : lowertext(dock_class)
+	var/id = "runtime_[slot_kind]_[anchor.x]_[anchor.y]_[anchor.z]"
 	if(sector.sites[id])
 		return "На этой площадке уже зарегистрирован причал."
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = new(anchor)
 	slot.width = slot_width
 	slot.height = slot_height
 	slot.dock_class = dock_class
+	slot.hangar = hangar
 	slot.accepted_ship_class = accepted_ship_class
 	slot.setDir(dir)
 	slot.site_id = id
@@ -319,10 +352,10 @@
 	owned_slot = slot
 	return null
 
-/obj/machinery/computer/stationtrauma_dock_controller/proc/show_layout(mob/user, turf/anchor, facing, dock_width, dock_height)
+/obj/machinery/computer/stationtrauma_dock_controller/proc/show_layout(mob/user, turf/anchor, facing, dock_width, dock_height, hangar)
 	if(!user.client || !COOLDOWN_FINISHED(src, preview_cooldown))
 		return
-	var/list/tiles = stationtrauma_standard_dock_tiles(anchor, facing, dock_width, dock_height)
+	var/list/tiles = stationtrauma_standard_dock_tiles(anchor, facing, dock_width, dock_height, hangar)
 	if(!length(tiles))
 		to_chat(user, span_warning("Разметка выходит за границы палубы."))
 		return
@@ -339,20 +372,24 @@
 		images += marker
 	user.client.images += images
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(stationtrauma_hide_dock_layout), WEAKREF(user.client), images), 12 SECONDS, TIMER_CLIENT_TIME)
-	to_chat(user, span_notice("Зелёным показана площадка [dock_width]×[dock_height], синим — полоса трапа, красным — клетки секций стены. Монтажный комплект сам выставит направление на этих клетках."))
+	if(hangar)
+		to_chat(user, span_notice("Зелёным показана посадочная площадка [dock_width]×[dock_height]."))
+	else
+		to_chat(user, span_notice("Зелёным показана площадка [dock_width]×[dock_height], синим — полоса трапа, красным — клетки секций стены. Монтажный комплект сам выставит направление на этих клетках."))
 
 /proc/stationtrauma_hide_dock_layout(datum/weakref/viewer_ref, list/images)
 	var/client/viewer = viewer_ref.resolve()
 	viewer?.images -= images
 
-/** Map each turf in the slot, clearance strip, wall and walkway to its column from the vacuum corner. */
-/proc/stationtrauma_standard_dock_tiles(turf/anchor, facing, dock_width, dock_height)
+/** Map each turf to its column, including the gangway strip, wall and walkway of a walled berth. */
+/proc/stationtrauma_standard_dock_tiles(turf/anchor, facing, dock_width, dock_height, hangar = FALSE)
 	if(!anchor || !(facing in GLOB.cardinals))
 		return null
 	var/list/rotation = stationtrauma_port_rotation(facing)
 	var/list/tiles = list()
+	var/last_column = hangar ? dock_width - 1 : dock_width + 2
 	for(var/row in 0 to dock_height - 1)
-		for(var/column in 0 to dock_width + 2)
+		for(var/column in 0 to last_column)
 			var/turf/tile = locate(anchor.x + column * rotation[1] - row * rotation[2], anchor.y + column * rotation[2] + row * rotation[1], anchor.z)
 			if(!tile || tile.x <= TRANSITIONEDGE || tile.y <= TRANSITIONEDGE || tile.x >= world.maxx - TRANSITIONEDGE || tile.y >= world.maxy - TRANSITIONEDGE)
 				return null
@@ -373,18 +410,23 @@
 	return turn(facing, 90)
 
 /** Verify the complete installation at commissioning and before a runtime berth is reserved. */
-/proc/stationtrauma_standard_dock_problem(turf/anchor, facing, dock_width, dock_height, obj/docking_port/stationary/stationtrauma_space_station/standard/current_slot, datum/stationtrauma_overmap/space/host)
+/proc/stationtrauma_standard_dock_problem(turf/anchor, facing, dock_width, dock_height, obj/docking_port/stationary/stationtrauma_space_station/standard/current_slot, datum/stationtrauma_overmap/space/host, hangar = FALSE)
 	host ||= current_slot?.host
-	var/list/tiles = stationtrauma_standard_dock_tiles(anchor, facing, dock_width, dock_height)
+	if(current_slot)
+		hangar = current_slot.hangar
+	var/list/tiles = stationtrauma_standard_dock_tiles(anchor, facing, dock_width, dock_height, hangar)
 	if(!length(tiles) || (host ? QDELETED(host.vessel) || !host.vessel.contains_deck(anchor.z) : !is_station_level(anchor.z)))
 		return "Причал должен целиком помещаться у станции или носителя вдали от края карты."
+	if(hangar && !stationtrauma_hangar_top_level(anchor, host))
+		return "Ангар можно разместить только на верхней палубе."
 	var/turf/last = tiles[length(tiles)]
 	for(var/obj/docking_port/stationary/other in SSshuttle.stationary_docking_ports)
 		if(other == current_slot || other == current_slot?.active_berth || other.z != anchor.z || QDELETED(other) || (host && (other == host.flight_berth || other == host.vessel.get_docked())))
 			continue
 		var/list/bounds = other.return_coords()
-		if(istype(other, /obj/docking_port/stationary/stationtrauma_space_station/standard))
-			var/list/rotation = stationtrauma_port_rotation(other.dir)
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/other_slot = other
+		if(istype(other_slot) && !other_slot.hangar)
+			var/list/rotation = stationtrauma_port_rotation(other_slot.dir)
 			bounds[3] += 3 * rotation[1]
 			bounds[4] += 3 * rotation[2]
 		if(max(min(anchor.x, last.x), min(bounds[1], bounds[3])) <= min(max(anchor.x, last.x), max(bounds[1], bounds[3])) \
@@ -392,6 +434,10 @@
 			return "Разметка пересекает другой причал."
 	var/wall_direction = turn(facing, 90)
 	for(var/turf/tile as anything in tiles)
+		if(hangar)
+			if(!isfloorturf(tile) || !stationtrauma_standard_dock_clear_space(tile, host))
+				return "Для посадочной площадки нужен свободный пол на ([tile.x], [tile.y])."
+			continue
 		var/column = tiles[tile]
 		if(host && column > dock_width && stationtrauma_carrier_at(tile) != host)
 			return "Стена и коридор причала должны находиться на одном носителе."
@@ -457,7 +503,8 @@
 	if(QDELETED(host) || stationtrauma_carrier_at(controller) != host || controller.z != z)
 		return FALSE
 	var/list/rotation = stationtrauma_port_rotation(dir)
-	return controller.x == x + (width + 3) * rotation[1] && controller.y == y + (width + 3) * rotation[2]
+	var/distance = controller.anchor_distance()
+	return controller.x == x + distance * rotation[1] && controller.y == y + distance * rotation[2]
 
 /obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/prepare_berth(obj/docking_port/mobile/stationtrauma_space/ship)
 	if(!accepts(ship) || active_berth || stationtrauma_standard_dock_problem(get_turf(src), dir, width, height, src))
