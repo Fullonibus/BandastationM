@@ -43,6 +43,20 @@
 	var/tripped = FALSE
 	/// Actual watts delivered last interval, also used by the grid feedback controller.
 	var/generated_power = 0
+	/// A mapped running generator starts once its template's cable network exists.
+	var/start_on_connection = FALSE
+
+/obj/machinery/power/port_gen/pacman/ship/Initialize(mapload)
+	if(mapload && active && anchored)
+		start_on_connection = TRUE
+		active = FALSE
+	return ..()
+
+/obj/machinery/power/port_gen/pacman/ship/connect_to_network()
+	. = ..()
+	if(. && start_on_connection)
+		start_on_connection = FALSE
+		TogglePower()
 
 /** The profile is fixed; calling PACMAN's construction hook would reinterpret this board as switchable. */
 /obj/machinery/power/port_gen/pacman/ship/on_construction(mob/user)

@@ -1,10 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/power/shuttle_engine/propulsion,
+/obj/machinery/power/shuttle_engine/propulsion/argos,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/argos/exterior)
 "ab" = (
-/obj/machinery/power/shuttle_engine/propulsion,
+/obj/machinery/power/shuttle_engine/propulsion/argos,
 /turf/open/floor/plating/airless,
 /area/shuttle/stationtrauma_space/argos/exterior)
 "ac" = (
@@ -63,10 +63,10 @@
 /area/shuttle/stationtrauma_space/argos/engineering/power)
 "ag" = (
 /obj/structure/cable,
-/obj/machinery/power/port_gen/pacman/pre_loaded{
+/obj/machinery/power/port_gen/pacman/ship{
 	anchored = 1;
 	active = 1;
-	power_output = 4
+	sheets = 30
 	},
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
@@ -1016,7 +1016,6 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/bridge)
 "cU" = (
-/obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
@@ -1237,6 +1236,11 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/power)
+"dv" = (
+/obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/argos/engineering/power)
 "tI" = (
 /turf/template_noop,
 /area/template_noop)
@@ -1310,7 +1314,7 @@ ae
 aO
 aC
 du
-ag
+dv
 aa
 "}
 (4,1,1) = {"
