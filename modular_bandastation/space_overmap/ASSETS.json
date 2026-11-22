@@ -3,6 +3,14 @@
 	"scope": "Non-audio maps, imported icons and generated previews introduced or modified by space-overmap modules. Embedded code and existing referenced assets retain their original notices.",
 	"assets": [
 		{
+			"path": "modular_bandastation/space_overmap/icons/ship_hatch.dmi",
+			"sha256": "8cc9fea11d84f00199253b8d529ffb1bbb7324f4a5debf91f6294f817e826397",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors (art direction and original pixel artwork)"],
+			"source": null,
+			"changes": "Original ship-side docking hatch in the station steel palette, with sliding leaves, a divided viewport, and fixed-facing service overlays."
+		},
+		{
 			"path": "modular_bandastation/space_overmap/icons/dock_wall.dmi",
 			"sha256": "8f5d47723de0d6d5b75eb894f892697c9b22f96d28f24b53c8ee5136295b7265",
 			"license": "CC-BY-SA-3.0",
