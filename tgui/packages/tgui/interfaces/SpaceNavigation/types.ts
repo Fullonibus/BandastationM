@@ -106,6 +106,8 @@ export type NavigationData = Position & {
     canRequest: BooleanLike;
     canCancel: BooleanLike;
     expiresIn: number | null;
+    dockName: string | null;
+    automatic: BooleanLike;
   };
   can_request_ship_dock: BooleanLike;
   dockable_contacts: number[];

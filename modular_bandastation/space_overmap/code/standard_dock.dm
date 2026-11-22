@@ -9,7 +9,7 @@
 	area_type = /area/space
 	/// Display label of this slot's standard.
 	var/dock_class = "S"
-	/// Only hulls certified for this class can use the slot.
+	/// Largest standard hull class admitted by the slot.
 	var/accepted_ship_class = ST_SHIP_SMALL
 	/// The technical berth exists only for the current approach or occupant.
 	var/obj/docking_port/stationary/stationtrauma_space_site/standard/active_berth
@@ -41,9 +41,10 @@
 
 /** Cheap compatibility check for navigation displays. Obstructions are checked on demand. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/accepts(obj/docking_port/mobile/stationtrauma_space/ship)
-	if(host_ship_id && (QDELETED(host) || host.sector?.sites[site_id] != carrier_site))
+	if(QDELETED(ship) || (host_ship_id && (QDELETED(host) || host.sector?.sites[site_id] != carrier_site)))
 		return FALSE
-	return !QDELETED(ship) && ship.ship_class == accepted_ship_class && ship.width > 0 && ship.height > 0 \
+	var/compatible_class = ship.ship_class == accepted_ship_class || (ship.ship_class == ST_SHIP_SMALL && accepted_ship_class == ST_SHIP_MEDIUM)
+	return compatible_class && ship.width > 0 && ship.height > 0 \
 		&& min(ship.width, ship.height) <= width && max(ship.width, ship.height) <= height \
 		&& (dir in GLOB.cardinals) && (ship.dir in GLOB.cardinals)
 
@@ -254,7 +255,7 @@
 		|| z != slot.z || !slot.contains_projection(slot.return_coords(), return_coords()))
 		return FALSE
 	var/datum/stationtrauma_overmap/space/navigation = arriving.overmap
-	var/datum/stationtrauma_overmap_site/space/site = navigation?.sites[navigation.selected_destination]
+	var/datum/stationtrauma_overmap_site/space/site = navigation?.selected_docking_site()
 	if(QDELETED(site) || site.berth != slot || site.docking_owner != navigation || navigation.control_revision != order_revision || !arriving.permits_docking(site))
 		return FALSE
 	var/list/hull = slot.project_hull(arriving, get_turf(src), dir)

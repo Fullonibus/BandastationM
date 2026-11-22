@@ -51,7 +51,7 @@
 	if(orbital_only || !overmap?.relocating || overmap.docking_relocation \
 		|| (overmap.carrier_relocation && overmap.carrier_relocation.root.vessel != src))
 		return DOCKING_BLOCKED
-	var/datum/stationtrauma_overmap_site/space/site = overmap.sites[overmap.selected_destination]
+	var/datum/stationtrauma_overmap_site/space/site = overmap.selected_docking_site()
 	// A ship pair's own anchor is the first hull's flush berth; a seam anchor never receives a hull.
 	var/pair_berth = overmap.ship_docking && new_dock == overmap.ship_docking.anchor
 	var/obj/docking_port/stationary/selected_berth = site?.berth

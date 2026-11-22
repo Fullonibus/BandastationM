@@ -90,6 +90,8 @@
 	slot.carrier_site = site
 	carrier_docks |= slot
 	sector.sites[site.id] = site
+	var/datum/stationtrauma_overmap_sector/space/home = sector
+	home.register_docking_berth(site, "traffic:carrier:[vessel.shuttle_id]", vessel.name)
 	return TRUE
 
 /** Unpublish without deleting the site: a runtime marker or a departing guest may still own it. */
@@ -97,7 +99,7 @@
 	var/datum/stationtrauma_overmap_site/space/site = carrier_site
 	var/datum/stationtrauma_overmap_sector/space/old_sector = host?.sector
 	host?.carrier_docks.Remove(src)
-	old_sector?.clear_station_docking_site(site)
+	old_sector?.unregister_docking_berth(site)
 	if(site && old_sector?.sites[site.id] == site)
 		old_sector.sites -= site.id
 	if(site)
@@ -123,6 +125,10 @@
 			continue
 		site.pos_x = pos_x
 		site.pos_y = pos_y
+		if(site.docking_target)
+			site.docking_target.pos_x = pos_x
+			site.docking_target.pos_y = pos_y
+			site.docking_target.name = vessel.name
 		var/datum/stationtrauma_overmap/space/guest = site.docking_owner
 		if(QDELETED(guest) || guest.carrier_host() != src)
 			continue
@@ -141,7 +147,9 @@
 /datum/stationtrauma_overmap/space/proc/can_use_carrier_site(datum/stationtrauma_overmap_site/space/site)
 	var/datum/stationtrauma_overmap/space/owner = site?.host
 	var/obj/docking_port/stationary/stationtrauma_space_station/slot = site?.berth
-	if(QDELETED(owner) || owner.sector != sector || !istype(slot) || slot.host != owner)
+	if(QDELETED(owner) || QDELETED(owner.vessel) || owner.sector != sector)
+		return FALSE
+	if(!istype(site, /datum/stationtrauma_overmap_site/space/docking_target) && (!istype(slot) || slot.host != owner))
 		return FALSE
 	if(src in owner.carrier_tree())
 		return TRUE
@@ -208,7 +216,9 @@
 		if(!member.is_operational() || member.sector != sector || target.ships[member.vessel.shuttle_id])
 			return FALSE
 		for(var/obj/docking_port/stationary/stationtrauma_space_station/slot as anything in member.carrier_docks)
-			if(QDELETED(slot.carrier_site) || sector.sites[slot.site_id] != slot.carrier_site || target.sites[slot.site_id])
+			var/datum/stationtrauma_overmap_site/space/docking_target/destination = slot.carrier_site?.docking_target
+			if(QDELETED(slot.carrier_site) || sector.sites[slot.site_id] != slot.carrier_site || target.sites[slot.site_id] \
+				|| QDELETED(destination) || sector.sites[destination.id] != destination || target.sites[destination.id])
 				return FALSE
 	return TRUE
 
@@ -219,11 +229,15 @@
 	var/datum/stationtrauma_overmap_sector/space/origin = sector
 	var/list/assembly = carrier_tree()
 	var/list/berths = list()
+	var/list/destinations = list()
 	for(var/datum/stationtrauma_overmap/space/member as anything in assembly)
 		for(var/obj/docking_port/stationary/stationtrauma_space_station/slot as anything in member.carrier_docks)
 			berths += slot.carrier_site
-			origin.clear_station_docking_site(slot.carrier_site)
+			destinations |= slot.carrier_site.docking_target
 			origin.sites -= slot.site_id
+	for(var/datum/stationtrauma_overmap_site/space/docking_target/destination as anything in destinations)
+		origin.clear_station_docking_site(destination)
+		origin.sites -= destination.id
 	for(var/datum/stationtrauma_overmap/space/member as anything in assembly)
 		origin.unregister(member)
 	var/success = TRUE
@@ -236,15 +250,16 @@
 			if(member.sector == target)
 				target.unregister(member)
 			origin.register(member.vessel.shuttle_id, member)
-	for(var/datum/stationtrauma_overmap_site/space/site as anything in berths)
-		var/datum/stationtrauma_overmap_sector/space/owner = success ? target : origin
+	var/datum/stationtrauma_overmap_sector/space/owner = success ? target : origin
+	for(var/datum/stationtrauma_overmap_site/space/site as anything in berths + destinations)
 		owner.sites[site.id] = site
 	if(!success)
 		return FALSE
 	for(var/datum/stationtrauma_overmap/space/member as anything in assembly)
 		member.ship_observations.Cut()
 		member.last_ping = null
-		member.selected_destination = member.docked?.id
-		member.prepared_site = member.docked
+		var/datum/stationtrauma_overmap_site/space/destination = member.docked?.docking_target || member.docked
+		member.selected_destination = destination?.id
+		member.prepared_site = destination
 		member.clear_encounters()
 	return TRUE

@@ -109,8 +109,8 @@
 
 /** Send a pilot request and approve it through the command console physically on the carrier. */
 /datum/unit_test/overmap_carrier/proc/approve_guest(stale_token)
-	TEST_ASSERT(navigation.select_site(site.id), "A detected carrier berth must be selectable")
-	TEST_ASSERT(navigation.request_station_docking(site.id), "A pilot must be able to request the carrier berth")
+	TEST_ASSERT(navigation.select_site(site.docking_target.id), "A detected carrier berth must be selectable")
+	TEST_ASSERT(navigation.request_station_docking(site.docking_target.id), "A pilot must be able to request the carrier berth")
 	var/datum/stationtrauma_station_docking_request/request = navigation.get_station_docking_request()
 	TEST_ASSERT_NOTNULL(request, "The non-station sector must own the pilot's request")
 	// Standing crew recover from the ordinary native takeoff stun before operating the console again.
@@ -119,9 +119,9 @@
 	TEST_ASSERT(traffic.can_operate(operator), "The powered carrier console must accept its recovered command operator")
 	TEST_ASSERT_EQUAL(traffic.traffic_sector(), host_navigation.sector, "Carrier traffic must resolve its own live sector")
 	if(!isnull(stale_token))
-		TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, stale_token, TRUE), "A console action retained from the previous sector must not approve the new request")
-		TEST_ASSERT(!request.approved && !site.docking_owner, "The stale response must leave the replacement request pending and its berth unreserved")
-	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE), "The carrier's controller must approve its own berth")
+		TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, stale_token, TRUE, site.id), "A console action retained from the previous sector must not approve the new request")
+		TEST_ASSERT(!request.assigned_berth && !site.docking_owner, "The stale response must leave the replacement request pending and its berth unreserved")
+	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE, site.id), "The carrier's controller must approve its own berth")
 	return navigation.has_station_clearance(site)
 
 /** Let native index pairing determine the expected transformed coordinate, without assuming an anchor convention. */
@@ -149,9 +149,9 @@
 /** Detection, command clearance and native transport preserve a moored guest through rotation and independent release. */
 /datum/unit_test/overmap_carrier/round_trip/Run()
 	TEST_ASSERT(!navigation.knows_site(site), "A mapped carrier ID must not reveal its berth before detection")
-	TEST_ASSERT(!navigation.select_site(site.id), "A forged unknown carrier destination must not be selectable")
-	navigation.selected_destination = site.id
-	TEST_ASSERT(!navigation.request_station_docking(site.id), "A forged destination ID must not bypass carrier detection")
+	TEST_ASSERT(!navigation.select_site(site.docking_target.id), "A forged unknown carrier destination must not be selectable")
+	navigation.selected_destination = site.docking_target.id
+	TEST_ASSERT(!navigation.request_station_docking(site.docking_target.id), "A forged destination ID must not bypass carrier detection")
 	navigation.selected_destination = null
 	host_navigation.pos_x = 12
 	host_navigation.pos_y = 16
@@ -166,7 +166,7 @@
 	TEST_ASSERT_EQUAL(remembered_position[1], 12, "A hosted destination must use its last observed easting")
 	TEST_ASSERT_EQUAL(remembered_position[2], 16, "A hosted destination must use its last observed northing")
 	TEST_ASSERT_EQUAL(navigation.distance_to(site), 20, "Distance must not disclose unobserved live carrier movement")
-	TEST_ASSERT(navigation.select_site(site.id), "A remembered live contact must remain selectable")
+	TEST_ASSERT(navigation.select_site(site.docking_target.id), "A remembered live contact must remain selectable")
 	TEST_ASSERT_EQUAL(navigation.ordered_course, delta_to_angle(12, 16), "Selection must aim at the recorded contact instead of the live carrier position")
 	var/obj/machinery/computer/stationtrauma_space_navigation/helm = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(ship))
 	helm.vessel = ship
@@ -180,7 +180,7 @@
 	TEST_ASSERT(navigation.cancel_station_docking(), "The pilot must be able to cancel the unused distant-carrier approval")
 	observation["seen"] = world.time - 2 MINUTES
 	TEST_ASSERT(!navigation.knows_site(site), "A charted berth must become unavailable when its host observation expires")
-	TEST_ASSERT(!navigation.request_station_docking(site.id), "A still-selected expired contact must not accept a docking request")
+	TEST_ASSERT(!navigation.request_station_docking(site.docking_target.id), "A still-selected expired contact must not accept a docking request")
 	helm_data = helm.ui_data(null)
 	TEST_ASSERT_NULL(helm_data["landing"], "An expired selection must hide its destination metadata")
 	TEST_ASSERT_NULL(helm_data["eta"], "An expired selection must hide the destination ETA")
@@ -296,16 +296,24 @@
 	foreign_site.berth = foreign_berth
 	foreign_site.discovered = TRUE
 	carrier_sector.sites[foreign_site.id] = foreign_site
-	TEST_ASSERT(navigation.select_site(foreign_site.id), "The independent foreign berth must be selectable for this scope check")
-	TEST_ASSERT(navigation.request_station_docking(foreign_site.id), "The pilot must submit a genuine request for the foreign berth")
+	carrier_sector.register_docking_berth(foreign_site, "traffic:foreign", "Foreign installation")
+	TEST_ASSERT(navigation.select_site(foreign_site.docking_target.id), "The independent foreign berth must be selectable for this scope check")
+	TEST_ASSERT(navigation.request_station_docking(foreign_site.docking_target.id), "The pilot must submit a genuine request for the foreign berth")
 	var/datum/stationtrauma_station_docking_request/request = navigation.get_station_docking_request()
 	TEST_ASSERT_NOTNULL(request, "The foreign request must exist in the same live sector")
 	var/list/data = traffic.ui_data(operator)
 	TEST_ASSERT_EQUAL(length(data["docks"]), 1, "The carrier console must list only its own berth")
 	TEST_ASSERT_EQUAL(length(data["requests"]), 0, "The carrier console must hide requests addressed to foreign berths")
-	TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE), "A forged console response must not approve a foreign berth")
+	TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE, site.id), "A forged console response must not approve a foreign berth")
 	TEST_ASSERT_NULL(foreign_site.docking_owner, "A rejected foreign response must not reserve that berth")
 	TEST_ASSERT(navigation.cancel_station_docking(), "The unrelated pilot request must remain independently cancellable")
+
+	navigation.observe_ships(navigation.sensor_range)
+	TEST_ASSERT(navigation.select_site(site.docking_target.id), "The pilot can select the detected carrier")
+	TEST_ASSERT(navigation.request_station_docking(site.docking_target.id), "The carrier console must receive a request for its own target")
+	request = navigation.get_station_docking_request()
+	TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE, foreign_site.id), "The carrier dispatcher must not assign a foreign berth to its own request")
+	TEST_ASSERT(!request.assigned_berth && !site.docking_owner && !foreign_site.docking_owner, "The rejected assignment must leave the request and both berths untouched")
 
 /** A charged native drive transfers the carrier's moored tree and its destination to the next real sector registry. */
 /datum/unit_test/overmap_carrier/sector_transfer
@@ -325,6 +333,7 @@
 	TEST_ASSERT(approve_guest(), "The transfer fixture must grant the first real docking request")
 	var/datum/stationtrauma_station_docking_request/origin_request = navigation.get_station_docking_request()
 	var/origin_token = origin_request.token
+	var/datum/stationtrauma_overmap_site/space/docking_target/origin_target = site.docking_target
 	TEST_ASSERT(navigation.dock(instant = TRUE), "The transfer fixture must start with a genuinely moored guest")
 	var/deadline = world.time + 5 SECONDS
 	UNTIL(!host_navigation.carrier_busy() || world.time >= deadline)
@@ -354,6 +363,9 @@
 	TEST_ASSERT_NULL(carrier_sector.ships[ship.shuttle_id], "The old sector must release the carried child")
 	TEST_ASSERT_NULL(carrier_sector.sites[site.id], "The old chart must release the moving berth")
 	TEST_ASSERT_EQUAL(destination_sector.sites[site.id], site, "The carried berth must retain its identity in the new sector")
+	TEST_ASSERT_NULL(carrier_sector.sites[origin_target.id], "The old chart must release the carrier destination")
+	TEST_ASSERT_EQUAL(destination_sector.sites[origin_target.id], origin_target, "The carrier destination must transfer with its berths")
+	TEST_ASSERT_EQUAL(site.docking_target, origin_target, "The carried berth must remain attached to the same carrier destination")
 	TEST_ASSERT_EQUAL(destination_sector.ships[ship.shuttle_id], navigation, "The child's independent registration must survive transfer")
 	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "A sector transfer must retain physical berth occupancy")
 	TEST_ASSERT_EQUAL(get_turf(host_ship), physical_host, "A virtual sector jump must leave the host's physical hull in place")

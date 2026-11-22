@@ -50,25 +50,36 @@ function Navigation({ data }: { data: NavigationData }) {
   let dockValue: string | number | null = data.selected;
   let dockDisabled = !data.can_dock;
   let dockTooltip = data.landing ? 'Посадка' : 'Стыковка';
+  let clearanceStatus = '';
   if (focusedContact !== null) {
     dockAction = 'ship_dock';
     dockValue = focusedContact;
     dockDisabled = !contact || !data.dockable_contacts.includes(contact.id);
     dockTooltip = `Запрос стыковки К${focusedContact}`;
   } else if (stationDocking?.state === 'approved') {
-    dockTooltip = 'Начать стыковку';
+    const { dockName } = stationDocking;
+    dockTooltip = dockName
+      ? `Начать стыковку с «${dockName}»`
+      : 'Начать стыковку';
+    clearanceStatus = dockName
+      ? `Назначен причал «${dockName}»`
+      : 'Стыковка разрешена';
   } else if (stationDocking) {
     const pending = stationDocking.state === 'pending';
     dockAction = 'request_station_dock';
     dockDisabled = pending || !stationDocking.canRequest;
     dockTooltip = pending
-      ? 'Запрос передан'
-      : 'Запросить разрешение на стыковку';
+      ? stationDocking.automatic
+        ? 'Автоматика подбирает причал'
+        : 'Ожидается назначение причала'
+      : 'Запросить стыковку с выбранным объектом';
+    if (pending) {
+      clearanceStatus = dockTooltip;
+    }
   }
-  const clearanceStatus =
-    stationDocking && stationDocking.state !== 'none'
-      ? `${stationDocking.state === 'approved' ? 'Стыковка разрешена' : 'Запрос передан'}${stationDocking.expiresIn !== null ? ` (${Math.ceil(stationDocking.expiresIn)} с)` : ''}`
-      : null;
+  if (clearanceStatus && typeof stationDocking?.expiresIn === 'number') {
+    clearanceStatus += ` (${Math.ceil(stationDocking.expiresIn)} с)`;
+  }
   const distance = (value: number) => distanceLabel(value, data.au_scale);
   const reverse =
     data.vx * Math.sin((data.course * Math.PI) / 180) +
@@ -572,7 +583,7 @@ function Navigation({ data }: { data: NavigationData }) {
             <section className="SpaceNavigation__docking" aria-label="Стыковка">
               <Button
                 fluid
-                aria-label="Стыковка или посадка"
+                aria-label={dockTooltip}
                 tooltip={dockTooltip}
                 disabled={dockDisabled}
                 selected={!!clearanceStatus}
