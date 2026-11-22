@@ -23,4 +23,185 @@
   .NoticeBox--type--info {
     --noticebox-background: var(--color-primary);
   }
+
+  .TradeHub {
+    display: flex;
+    flex-direction: column;
+
+    button, input, select {
+      min-height: max(28px, 2rem);
+      min-width: 0;
+      font: inherit;
+      color: var(--color-text);
+      border: 1px solid var(--color-primary);
+      border-radius: 2px;
+    }
+
+    button {
+      padding: 0.25rem 0.6rem;
+      background: var(--color-primary);
+      cursor: pointer;
+
+      &:hover:not(:disabled, [aria-disabled='true']) {
+        background: var(--color-secondary);
+      }
+
+      &:disabled, &[aria-disabled='true'] {
+        color: var(--color-label);
+        background: var(--color-base);
+        cursor: default;
+      }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--trade-hub-phosphor);
+      outline-offset: 1px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.25rem 0.45rem;
+      background: var(--color-base);
+    }
+
+    small {
+      display: block;
+      color: var(--color-label);
+      font-size: 0.95rem;
+      font-weight: normal;
+    }
+  }
+
+  .TradeHub__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-primary);
+
+    [role='tablist'] {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    [role='tab'][aria-selected='true'] {
+      box-shadow: inset 0 -3px var(--trade-hub-phosphor);
+      font-weight: bold;
+    }
+
+    strong {
+      color: var(--color-good);
+    }
+  }
+
+  .TradeHub__screen {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .TradeHub__filters {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+
+    label {
+      display: grid;
+      flex: 1 1 9rem;
+      gap: 0.15rem;
+      min-width: 0;
+    }
+
+    label:first-child {
+      flex-grow: 2;
+    }
+  }
+
+  .TradeHub__table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+
+    th, td {
+      padding: 0.4rem;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+
+    thead {
+      color: var(--color-label);
+      border-bottom: 1px solid var(--color-primary);
+    }
+
+    tbody:nth-of-type(odd) {
+      background: var(--candystripe-odd);
+    }
+
+    td:last-child {
+      width: 8.5rem;
+    }
+  }
+
+  #trade-panel-buy .TradeHub__table {
+    :is(th, td):nth-child(2) {
+      width: 4.5rem;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    :is(th, td):nth-child(3) {
+      width: 6.5rem;
+      text-align: right;
+      overflow-wrap: normal;
+    }
+
+    td:nth-child(3) {
+      white-space: nowrap;
+    }
+  }
+
+  .TradeHub__commodity {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    img {
+      object-fit: contain;
+      image-rendering: pixelated;
+    }
+  }
+
+  .TradeHub__unavailable {
+    padding: 0.35rem 0.6rem;
+    color: var(--color-bad);
+    border-bottom: 1px solid var(--color-primary);
+  }
+
+  .TradeHub__table summary {
+    color: var(--color-label);
+    cursor: pointer;
+  }
+
+  .TradeHub__reason {
+    margin-top: 0.25rem;
+    color: var(--color-label);
+  }
+
+  .TradeHub__receipt {
+    padding: 0.4rem 0.6rem;
+    background: var(--color-base);
+  }
+
+  .TradeHub__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
