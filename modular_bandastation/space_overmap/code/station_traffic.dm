@@ -54,7 +54,7 @@
 
 /// A physical berth is assignable only while it belongs to this sector's registry.
 /datum/stationtrauma_overmap_sector/space/proc/is_station_berth(datum/stationtrauma_overmap_site/space/site)
-	return !QDELETED(site) && sites[site.id] == site && site.physical_docking && !QDELETED(site.berth) \
+	return !QDELETED(site) && sites[site.id] == site && site.physical_docking && !site.pad_parent && !QDELETED(site.berth) \
 		&& istype(site.berth, /obj/docking_port/stationary/stationtrauma_space_station)
 
 /// Resolve the requested assignment against the live registry and reserve it before either console can act again.

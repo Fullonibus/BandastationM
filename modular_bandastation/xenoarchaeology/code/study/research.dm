@@ -97,6 +97,7 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 		if(istype(core))
 			var/core_points = core.research_paid ? 0 : core.research_points
 			if(!core.research_paid)
+				roll_breakout(core, "core", xenoarch_core_band(core))
 				xenoarch_record_study(core.energy_kind)
 				core.journal_record?.log_observation(user, src, "Ядро каталогизировано на сканирующей площадке.")
 				SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_FIND_CATALOGUED, core, user, src)
@@ -114,6 +115,7 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 		var/points = 0
 		if(istype(artefact))
 			if(!paid)
+				roll_breakout(artefact, "field", artefact.origin_band)
 				points = artefact.research_points
 				artefact.research_paid = TRUE
 				xenoarch_record_study(artefact.energy_kind)

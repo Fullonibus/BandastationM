@@ -123,6 +123,57 @@
 	space = null
 	return ..()
 
+/// An S/M hull moors at a free corner pad of a ruin through the ordinary docking order, leaving the ruin itself free.
+/datum/unit_test/overmap_docking/ruin_pads
+	/// The two corner pad slots, cleared before the fixture deletes the hull.
+	var/list/slots = list()
+
+/datum/unit_test/overmap_docking/ruin_pads/Destroy()
+	for(var/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad/slot as anything in slots)
+		slot.clear_berth()
+	slots.Cut()
+	return ..()
+
+/datum/unit_test/overmap_docking/ruin_pads/Run()
+	var/turf/corner = space.bottom_left_turfs[1]
+	var/datum/stationtrauma_overmap_site/space/ruin = allocate(/datum/stationtrauma_overmap_site/space)
+	ruin.id = "unit_test_ruin"
+	ruin.name = "Unit test ruin"
+	ruin.pos_x = navigation.pos_x
+	ruin.pos_y = navigation.pos_y
+	navigation.sites[ruin.id] = ruin
+	for(var/index in 1 to 2)
+		var/datum/stationtrauma_overmap_site/space/pad = allocate(/datum/stationtrauma_overmap_site/space)
+		pad.id = "[ruin.id]:pad[index]"
+		pad.name = ruin.name
+		pad.discovered = TRUE
+		pad.physical_docking = TRUE
+		pad.pad_parent = ruin
+		LAZYADD(ruin.pads, pad)
+		navigation.sites[pad.id] = pad
+		// The fixture hull is tiny, so the pads shrink to fit the reservation while staying open space.
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad/slot = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad, locate(corner.x + 2 + index * 4, corner.y + 1, corner.z))
+		slot.width = 3
+		slot.height = 4
+		slots += slot
+		pad.berth = slot
+	var/datum/stationtrauma_overmap_site/space/taken = ruin.pads[1]
+	var/datum/stationtrauma_overmap_site/space/free = ruin.pads[2]
+	// Another hull already holds the first pad.
+	taken.docking_owner = allocate(/datum)
+	navigation.selected_destination = ruin.id
+	navigation.prepared_site = ruin
+	TEST_ASSERT_EQUAL(navigation.selected_docking_site(), free, "The ruin must offer its free corner pad, not the taken one or the seam")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "An S/M hull must moor at the ruin's free corner pad")
+	TEST_ASSERT_EQUAL(navigation.docked, free, "The hull must be docked at the pad it took")
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad/free_slot = free.berth
+	TEST_ASSERT(free_slot.active_berth && ship.get_docked() == free_slot.active_berth, "The hull must physically stand on the pad")
+	TEST_ASSERT_NULL(ruin.docking_owner, "Mooring at a pad must leave the ruin free for another hull")
+	var/obj/machinery/computer/stationtrauma_space_navigation/console = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(ship))
+	console.vessel = ship
+	TEST_ASSERT_EQUAL(console.ui_data(null)["docked"], ruin.id, "The helm must read a pad mooring as docked at the ruin")
+	taken.docking_owner = null
+
 /// An emergency engine stop during native relocation keeps the committed arrival and blocks racing helm orders.
 /datum/unit_test/overmap_docking/engine_stop
 	/// Set once the stop ran inside preflight.

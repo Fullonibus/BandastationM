@@ -92,6 +92,10 @@
 	var/camp_height
 	/// Reserved ruin rectangles excluded from terrain and flora placement.
 	var/list/ruin_bounds = list()
+	/// Relative rectangles of the landing pads inside the camp, as west, south, east, north; kept bare for the hulls.
+	var/list/landing_pads = list()
+	/// Flora grows this many times thicker around the landing clearing than in the same biome elsewhere.
+	var/camp_flora_multiplier = 2
 	/// Default walkable ground type for this environment profile.
 	var/turf/open/floor_type = /turf/open/misc/asteroid/airless
 	/// Research source type placed on accessible surface terrain.
@@ -138,6 +142,15 @@
 /** Whether relative generator coordinates lie inside the reserved base camp. */
 /datum/map_generator/expedition_barren/proc/in_camp(x, y)
 	return x >= camp_x && x < camp_x + camp_width && y >= camp_y && y < camp_y + camp_height
+
+/** Whether camp ground at relative coordinates is left wild: everything but the landing pads, a tile around them and the open row out. */
+/datum/map_generator/expedition_barren/proc/camp_wild(x, y)
+	if(!in_camp(x, y) || y == camp_y + round(camp_height / 2))
+		return FALSE
+	for(var/list/rect as anything in landing_pads)
+		if(x >= rect[1] - 1 && x <= rect[3] + 1 && y >= rect[2] - 1 && y <= rect[4] + 1)
+			return FALSE
+	return TRUE
 
 /** Whether relative coordinates are reserved for a camp, access corridor or ruin. */
 /datum/map_generator/expedition_barren/proc/is_reserved(x, y)
@@ -210,6 +223,9 @@
 			// Rock around the tunnel system keeps the mountain mineable.
 			if(edge > 1 || ((mountain || whole_surface) && cave_grid[width * (y - 1) + x] != "1"))
 				terrain = rock_type
+		// The camp keeps its ground but grows the local flora right up to the pads, so no hull lands in a bare clearing.
+		else if(!cave_level && camp_wild(x, y))
+			biome = biome_at(x, y, FALSE)
 		var/turf/generated = tile.ChangeTurf(terrain, floor_type, CHANGETURF_IGNORE_AIR)
 		if(ismineralturf(generated))
 			prepare_rock(generated)
@@ -404,7 +420,10 @@
 				near_camp += tile
 			else
 				wild += tile
+		var/base_flora = biome.flora_density
+		biome.flora_density = min(100, base_flora * camp_flora_multiplier)
 		biome.populate_turfs(near_camp, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = FALSE)
+		biome.flora_density = base_flora
 		biome.populate_turfs(wild, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = FALSE)
 		wild_by_biome[biome] = wild
 	biome_turfs = null

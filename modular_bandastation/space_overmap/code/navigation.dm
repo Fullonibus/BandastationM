@@ -412,7 +412,7 @@
 	docked = null
 	update_parallax()
 	var/datum/stationtrauma_overmap_site/space/selected = sites[selected_destination]
-	var/left_selected_dock = selected == old_dock || (selected && selected == old_dock.docking_target)
+	var/left_selected_dock = selected == old_dock || (selected && (selected == old_dock.docking_target || selected == old_dock.pad_parent))
 	var/orphaned_dock = old_dock.failed && !old_dock.host && sites[old_dock.id] != old_dock && !old_dock.docking_owner
 	// Casting off must not become a new arrival order while the automatic flight opens the distance.
 	if(left_selected_dock)
@@ -469,12 +469,29 @@
 	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
 	if(istype(site, /datum/stationtrauma_overmap_site/space/docking_target))
 		return assigned_station_berth(site)
-	return site
+	return free_pad(site) || site
+
+/** The pad this hull holds at a ruin or planet, else the first free pad it fits; null keeps the site's own berth or seam. */
+/datum/stationtrauma_overmap/space/proc/free_pad(datum/stationtrauma_overmap_site/space/site)
+	if(!length(site?.pads) || !vessel.permits_docking(site.pads[1]))
+		return null
+	for(var/datum/stationtrauma_overmap_site/space/pad as anything in site.pads)
+		if(pad.docking_owner == src)
+			return pad
+	for(var/datum/stationtrauma_overmap_site/space/pad as anything in site.pads)
+		if(pad.docking_owner || pad.failed)
+			continue
+		if(pad.awaits_map())
+			return pad
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = pad.berth
+		if(istype(slot) ? (!slot.active_berth && slot.accepts(vessel)) : (pad.berth && !pad.berth.get_docked()))
+			return pad
+	return null
 
 /** Revalidate the selected site, berth ownership, proximity and helm order revision. */
 /datum/stationtrauma_overmap/space/proc/can_dock(datum/stationtrauma_overmap_site/space/site, revision)
 	var/datum/stationtrauma_overmap_site/space/selected = sites[selected_destination]
-	if(!selected || (site != selected && site?.docking_target != selected) || !carrier_arrival_ready(site) || carrier_busy())
+	if(!selected || (site != selected && site?.docking_target != selected && site?.pad_parent != selected) || !carrier_arrival_ready(site) || carrier_busy())
 		return FALSE
 	if(site?.landing && (!vessel.engines_running || engine_fraction() <= 0))
 		return FALSE
@@ -534,7 +551,12 @@
 		if((!slot || target_berth) && ((site.physical_docking && instant) || approach(site, revision)))
 			if(!slot)
 				target_berth = site.berth
-			ready = physical_docking ? relocate(target_berth, before_takeoff) : connection.connect(target_berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
+				// A corner pad exists only once its ruin has loaded during the approach.
+				if(istype(target_berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+					slot = target_berth
+					standard_berth = slot.prepare_berth(vessel)
+					target_berth = standard_berth
+			ready = physical_docking ? (target_berth && relocate(target_berth, before_takeoff)) : connection.connect(target_berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
 	catch(var/exception/failure)
 		stack_trace("Space prototype docking failed: [failure]")
 	if(QDELETED(src))
@@ -568,6 +590,8 @@
 	visited_sites[site.id] = TRUE
 	if(!QDELETED(site.docking_target))
 		visited_sites[site.docking_target.id] = TRUE
+	if(!QDELETED(site.pad_parent))
+		visited_sites[site.pad_parent.id] = TRUE
 	pos_x = site.pos_x
 	pos_y = site.pos_y
 	status = (site.landing || hangar) ? "Посадка: [site.name]" : "Стыковка: [site.name]"

@@ -53,6 +53,8 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 		site.needs_scan = TRUE
 		site.map_loader = CALLBACK(src, PROC_REF(load_ruin_site), site, index, key, template)
 		sites[site.id] = site
+		// Four corner pads moor S and M hulls on the ruin's own level once it loads; capital hulls keep the seam.
+		add_pads(site, 4)
 	return TRUE
 
 /** Load one charted ruin on its own level, berthing the approach right beside it, level with its entrance airlock. */
@@ -89,10 +91,34 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 	site.ruin_id = placed.id
 	// The seam lands crews on the column just outside the ruin, level with that airlock.
 	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 1, approach_y, origin.z))
+	// Every border loops onto the level itself, so a hull moored in a corner has no edge to fly off.
+	for(var/side in GLOB.cardinals)
+		stationtrauma_set_edge(level.z_value, side, level.z_value)
+	place_ruin_pads(site, origin, placed)
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(site.berth))
 	marker.site_id = site.id
 	marker.name = site.name
 	return TRUE
+
+/** Put the ruin's corner pads in the four corners of its level, just inside the looping borders, clear of the ruin itself. */
+/datum/stationtrauma_overmap_sector/space/proc/place_ruin_pads(datum/stationtrauma_overmap_site/space/site, turf/origin, datum/map_template/ruin/placed)
+	var/margin = TRANSITIONEDGE + 3
+	var/far_x = world.maxx - margin - ST_STANDARD_M_WIDTH + 1
+	var/far_y = world.maxy - margin - ST_STANDARD_M_HEIGHT + 1
+	var/list/corners = list(list(margin, margin), list(far_x, margin), list(margin, far_y), list(far_x, far_y))
+	for(var/index in 1 to length(site.pads))
+		var/datum/stationtrauma_overmap_site/space/pad = site.pads[index]
+		var/list/corner = corners[index]
+		pad.ruin_id = site.ruin_id
+		pad.entrance = site.entrance
+		// A ruin sprawling into a corner leaves that pad out.
+		if(corner[1] <= origin.x + placed.width && corner[1] + ST_STANDARD_M_WIDTH >= origin.x \
+			&& corner[2] <= origin.y + placed.height && corner[2] + ST_STANDARD_M_HEIGHT >= origin.y)
+			pad.failed = TRUE
+			continue
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad/slot = new(locate(corner[1], corner[2], origin.z))
+		slot.name = "[site.name]: стоянка [index]"
+		pad.berth = slot
 
 /**
  * Maybe leave a partly filled oxygen or tritium canister on free built floor among `turfs`.

@@ -126,12 +126,28 @@
 	budget.allowance = 25
 	generator.budget = budget
 	// The clearing fits every hull allowed to land, with a margin of open ground around it; the rest is terrain.
-	var/list/extents = landing_extents()
+	var/list/dims = landing_dims()
 	var/margin = 5
 	generator.camp_x = 5
 	generator.camp_y = 5
-	generator.camp_width = extents[1] + extents[2] + margin * 2
-	generator.camp_height = extents[3] + extents[4] + margin * 2
+	// Each pad stands upright; a hull lands in whichever orientation fits it.
+	var/hull_width = dims[1]
+	var/hull_height = dims[2]
+	var/limit = round(generator.width / 2) - 1 - generator.camp_x
+	// A second clearing beside the first, or above it, when the camp quadrant holds both; otherwise one.
+	var/list/offsets = list(list(0, 0))
+	if(length(pads))
+		if(hull_width * 2 + margin * 3 <= limit && hull_height + margin * 2 <= limit)
+			offsets += list(list(hull_width + margin, 0))
+		else if(hull_width + margin * 2 <= limit && hull_height * 2 + margin * 3 <= limit)
+			offsets += list(list(0, hull_height + margin))
+	var/list/last = offsets[length(offsets)]
+	generator.camp_width = hull_width + margin * 2 + last[1]
+	generator.camp_height = hull_height + margin * 2 + last[2]
+	for(var/list/offset as anything in offsets)
+		var/pad_x = generator.camp_x + margin + offset[1]
+		var/pad_y = generator.camp_y + margin + offset[2]
+		generator.landing_pads += list(list(pad_x, pad_y, pad_x + hull_width - 1, pad_y + hull_height - 1))
 	// Ruins keep out of the camp's quadrant, so the clearing must stay inside it.
 	if(generator.camp_x + generator.camp_width > round(generator.width / 2) - 1 || generator.camp_y + generator.camp_height > round(generator.width / 2) - 1)
 		CRASH("Landing hulls do not fit the expedition camp quadrant")
@@ -164,14 +180,19 @@
 	if(generator.light_alpha)
 		surface.set_base_lighting(generator.sky_color, generator.light_alpha)
 	generator.generate_terrain(turfs, surface)
-	// Native berths face north, so the hull rectangle starts dwidth and dheight below the port.
-	var/obj/docking_port/stationary/stationtrauma_space_surface/pad = new(locate(bottom.x + generator.camp_x - 1 + margin + extents[1], bottom.y + generator.camp_y - 1 + margin + extents[3], bottom.z))
-	pad.dwidth = extents[1]
-	pad.width = extents[1] + extents[2]
-	pad.dheight = extents[3]
-	pad.height = extents[3] + extents[4]
-	pad.name = "Посадочная площадка экспедиции"
-	berth = pad
+	var/list/ports = list()
+	for(var/list/rect as anything in generator.landing_pads)
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/planet_pad/pad = new(locate(bottom.x + rect[1] - 1, bottom.y + rect[2] - 1, bottom.z))
+		pad.width = hull_width
+		pad.height = hull_height
+		if(length(ports))
+			pad.name = "Посадочная площадка экспедиции [length(ports) + 1]"
+		ports += pad
+	berth = ports[1]
+	// Without room for a second clearing the extra pad shares the first, and only one hull lands at a time.
+	for(var/index in 1 to length(pads))
+		var/datum/stationtrauma_overmap_site/space/pad_site = pads[index]
+		pad_site.berth = index < length(ports) ? ports[index + 1] : ports[1]
 	budget.yield()
 	if(!load_ruins(ruins, bottom, surface, budget))
 		return FALSE
@@ -209,11 +230,12 @@
 	return TRUE
 
 /**
- * Native berth extents fitting every hull allowed to land here: list(dwidth, width - dwidth, dheight, height - dheight).
+ * Pad size fitting every hull allowed to land here in some orientation: list(longest short side, longest long side).
  * Without such hulls the surface berth type's own size applies.
  */
-/datum/stationtrauma_overmap_site/space/planet/proc/landing_extents()
-	var/list/extents
+/datum/stationtrauma_overmap_site/space/planet/proc/landing_dims()
+	var/short_side = 0
+	var/long_side = 0
 	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
 		var/datum/stationtrauma_overmap_sector/sector = SSstationtrauma_space_voyage.sectors[sector_id]
 		for(var/ship_id in sector.ships)
@@ -221,16 +243,12 @@
 			if(!istype(navigation) || QDELETED(navigation.vessel) || !navigation.vessel.permits_docking(src))
 				continue
 			var/obj/docking_port/mobile/stationtrauma_space/vessel = navigation.vessel
-			var/list/hull = list(vessel.dwidth, vessel.width - vessel.dwidth, vessel.dheight, vessel.height - vessel.dheight)
-			if(!extents)
-				extents = hull
-				continue
-			for(var/index in 1 to 4)
-				extents[index] = max(extents[index], hull[index])
-	if(extents)
-		return extents
+			short_side = max(short_side, min(vessel.width, vessel.height))
+			long_side = max(long_side, max(vessel.width, vessel.height))
+	if(short_side)
+		return list(short_side, long_side)
 	var/obj/docking_port/stationary/stationtrauma_space_surface/pad = /obj/docking_port/stationary/stationtrauma_space_surface
-	return list(initial(pad.dwidth), initial(pad.width) - initial(pad.dwidth), initial(pad.dheight), initial(pad.height) - initial(pad.dheight))
+	return list(initial(pad.width), initial(pad.height))
 
 /// Gas string of each expedition planet level, by z; null elsewhere.
 GLOBAL_LIST_EMPTY(stationtrauma_planet_air)

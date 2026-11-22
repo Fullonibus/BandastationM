@@ -13,6 +13,10 @@
 	var/accepted_ship_class = ST_SHIP_SMALL
 	/// Land directly on a solid pad without a wall or gangway.
 	var/hangar = FALSE
+	/// Moor anywhere inside the slot over open space, like a hangar without its deck, shutters or glow.
+	var/open_space = FALSE
+	/// An open slot that also takes natural ground, for landing clearings on a planet.
+	var/ground = FALSE
 	/// The technical berth exists only for the current approach or occupant.
 	var/obj/docking_port/stationary/stationtrauma_space_site/standard/active_berth
 
@@ -41,6 +45,31 @@
 	dock_class = "Ангар"
 	accepted_ship_class = ST_SHIP_MEDIUM
 	hangar = TRUE
+
+/// Corner pad of a ruin's own level: S and M hulls moor over open space, the crew crosses to the ruin on foot.
+/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad
+	name = "Стоянка у объекта"
+	station_name = "Стоянка у объекта"
+	shuttle_id = "overmap_ruin_pad"
+	site_id = "overmap_ruin_pad"
+	width = ST_STANDARD_M_WIDTH
+	height = ST_STANDARD_M_HEIGHT
+	dock_class = "M"
+	accepted_ship_class = ST_SHIP_MEDIUM
+	open_space = TRUE
+
+/// Landing clearing on a planet: S and M hulls set down on bare ground in whichever orientation fits.
+/obj/docking_port/stationary/stationtrauma_space_station/standard/planet_pad
+	name = "Посадочная площадка экспедиции"
+	station_name = "Посадочная площадка экспедиции"
+	shuttle_id = "overmap_planet_pad"
+	site_id = "overmap_planet_pad"
+	width = ST_STANDARD_M_WIDTH
+	height = ST_STANDARD_M_HEIGHT
+	dock_class = "M"
+	accepted_ship_class = ST_SHIP_MEDIUM
+	open_space = TRUE
+	ground = TRUE
 
 /obj/docking_port/stationary/stationtrauma_space_station/standard_s/trade_outpost
 	auto_approve_docking = TRUE
@@ -73,7 +102,7 @@
 	var/list/slot = return_turfs()
 	if(length(slot) != width * height)
 		return null
-	if(hangar)
+	if(hangar || open_space)
 		return fit_hangar_berth(ship, slot)
 	var/list/rotation = stationtrauma_port_rotation(dir)
 	var/wall_direction = turn(dir, 90)
@@ -199,7 +228,7 @@
 		if(!ship.has_docking_layer(source[index]))
 			continue
 		var/turf/tile = target[index]
-		if((hangar && !isfloorturf(tile)) || !stationtrauma_standard_dock_clear_space(tile, host))
+		if((hangar && !isfloorturf(tile)) || !stationtrauma_standard_dock_clear_space(tile, host, ground))
 			return null
 		projected[tile] = TRUE
 	return projected
@@ -215,8 +244,8 @@
 		&& (length(carrier.owned_z_levels) <= 1 || anchor.z == max(carrier.owned_z_levels))
 
 /** Solid ground and ordinary space can support a pad; transit edges cannot. */
-/proc/stationtrauma_standard_dock_surface(turf/tile)
-	if(!tile || tile.density || !(isspaceturf(tile) || isfloorturf(tile)))
+/proc/stationtrauma_standard_dock_surface(turf/tile, allow_ground = FALSE)
+	if(!tile || tile.density || !(isspaceturf(tile) || isfloorturf(tile) || (allow_ground && isopenturf(tile) && !isgroundlessturf(tile))))
 		return FALSE
 	if(isspaceturf(tile))
 		var/turf/open/space/space_tile = tile
@@ -225,8 +254,8 @@
 	return TRUE
 
 /** Keep fixtures, loose objects and unrelated ships out of the hull and gangway. */
-/proc/stationtrauma_standard_dock_clear_space(turf/tile, datum/stationtrauma_overmap/space/host)
-	if(!stationtrauma_standard_dock_surface(tile))
+/proc/stationtrauma_standard_dock_clear_space(turf/tile, datum/stationtrauma_overmap/space/host, allow_ground = FALSE)
+	if(!stationtrauma_standard_dock_surface(tile, allow_ground))
 		return FALSE
 	var/obj/docking_port/mobile/owner = SSshuttle.get_containing_shuttle(tile)
 	if((owner && owner != host?.vessel) || (host && isfloorturf(tile) && owner != host.vessel))
@@ -306,7 +335,7 @@
 
 /** Recheck every reserved route before native movement commits. */
 /obj/docking_port/stationary/stationtrauma_space_site/standard/proc/route_clear(obj/docking_port/mobile/stationtrauma_space/arriving)
-	if(arriving != ship || QDELETED(slot) || slot.active_berth != src || !slot.accepts(arriving) || (!slot.hangar && !length(routes)) \
+	if(arriving != ship || QDELETED(slot) || slot.active_berth != src || !slot.accepts(arriving) || (!slot.hangar && !slot.open_space && !length(routes)) \
 		|| width != arriving.width || height != arriving.height || dwidth != arriving.dwidth || dheight != arriving.dheight \
 		|| z != slot.z || !slot.contains_projection(slot.return_coords(), return_coords()))
 		return FALSE
@@ -317,7 +346,7 @@
 	var/list/hull = slot.project_hull(arriving, get_turf(src), dir)
 	if(!length(hull))
 		return FALSE
-	if(slot.hangar)
+	if(slot.hangar || slot.open_space)
 		return TRUE
 	var/wall_direction = turn(slot.dir, 90)
 	var/ship_rotation = dir2angle(arriving.dir) - dir2angle(dir)

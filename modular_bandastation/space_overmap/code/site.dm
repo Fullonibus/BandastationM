@@ -20,10 +20,20 @@
 	var/approach_scene = "ruin"
 	/// Outer airlock of a loaded ruin that the docking pinpointer leads to beyond the seam; null without one.
 	var/turf/entrance
+	/// Corner pads of a ruin: S and M hulls moor on its own level there, several at once; capital hulls keep the seam.
+	var/list/datum/stationtrauma_overmap_site/space/pads
+	/// The ruin this hidden corner pad belongs to; the chart and crew only ever see the ruin.
+	var/datum/stationtrauma_overmap_site/space/pad_parent
 
 /datum/stationtrauma_overmap_site/space/Destroy()
 	QDEL_NULL(shuttle_order)
 	docking_owner = null
+	if(pad_parent)
+		LAZYREMOVE(pad_parent.pads, src)
+		pad_parent = null
+	for(var/datum/stationtrauma_overmap_site/space/pad as anything in pads)
+		pad.pad_parent = null
+	pads = null
 	docking_target = null
 	host = null
 	// The loader callback holds the owning sector, which deletes its sites.
@@ -38,7 +48,7 @@
 
 /** Whether docking may begin before the berth exists because the approach loads the destination. */
 /datum/stationtrauma_overmap_site/space/proc/awaits_map()
-	return !!map_loader
+	return pad_parent ? pad_parent.awaits_map() : !!map_loader
 
 /**
  * Load the charted destination once, beside live gameplay.
@@ -48,6 +58,16 @@
  * runtime from a single loaded atom's Initialize into a failed destination.
  */
 /datum/stationtrauma_overmap_site/space/proc/load_map()
+	// A pad waits for its ruin to load, so approaches holding the pad see the same loading and failure.
+	if(pad_parent)
+		if(loading_map)
+			return
+		loading_map = TRUE
+		pad_parent.load_map()
+		UNTIL(QDELETED(pad_parent) || !pad_parent.loading_map)
+		failed = failed || QDELETED(pad_parent) || pad_parent.failed || QDELETED(berth)
+		loading_map = FALSE
+		return
 	if(!map_loader || loading_map)
 		return
 	loading_map = TRUE
@@ -65,7 +85,7 @@
 	for(var/list/record as anything in records)
 		var/datum/stationtrauma_overmap_site/space/site = sites[record["id"]]
 		var/is_docking_target = istype(site, /datum/stationtrauma_overmap_site/space/docking_target)
-		if((helm && site.docking_target) || (!helm && is_docking_target))
+		if((helm && site.docking_target) || (!helm && is_docking_target) || site.pad_parent)
 			continue
 		var/sos = length(site.distress_callsigns()) > 0
 		// A distress point exists on the chart only while someone transmits there.
@@ -85,6 +105,9 @@
 
 /** Crew-facing name: space objects stay unidentified; planets and stations are charted. */
 /datum/stationtrauma_overmap/space/proc/site_label(datum/stationtrauma_overmap_site/space/site)
+	// A corner pad reads as its ruin, unidentified until the ruin is.
+	if(site.pad_parent)
+		return site_label(site.pad_parent)
 	var/list/distress = site.distress_callsigns()
 	if(length(distress))
 		return "SOS · [jointext(distress, "; ")]"
@@ -115,3 +138,29 @@
 			found++
 	navigation_notice("Сканирование завершено: новых точек [found]. Дальность [reach * ST_SPACE_AU_SCALE] а.е.")
 	return TRUE
+
+/**
+ * Chart `count` hidden pads of `site`, each its own berth reservation, so several hulls can stand at one destination.
+ *
+ * The approach loads the parent; its loader gives every pad a berth. Landing pads descend, the others moor.
+ */
+/datum/stationtrauma_overmap_sector/space/proc/add_pads(datum/stationtrauma_overmap_site/space/site, count)
+	for(var/index in 1 to count)
+		var/datum/stationtrauma_overmap_site/space/pad = new
+		pad.id = "[site.id]:pad[index]"
+		pad.name = site.name
+		pad.pos_x = site.pos_x
+		pad.pos_y = site.pos_y
+		pad.discovered = TRUE
+		pad.landing = site.landing
+		pad.physical_docking = !site.landing
+		pad.pad_parent = site
+		LAZYADD(site.pads, pad)
+		sites[pad.id] = pad
+
+/** Withdraw and delete the hidden pads of `site`. */
+/datum/stationtrauma_overmap_sector/space/proc/remove_pads(datum/stationtrauma_overmap_site/space/site)
+	for(var/datum/stationtrauma_overmap_site/space/pad as anything in site.pads?.Copy())
+		if(sites[pad.id] == pad)
+			sites -= pad.id
+		qdel(pad)

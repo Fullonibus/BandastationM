@@ -114,7 +114,7 @@
 		"helm" = map.helm_engaged, "autopilot" = map.autopilot,
 		"preparing" = map.preparing, "planning" = map.planning,
 		"relocating" = map.relocating, "landed" = !!map.docked?.landing,
-		"selected" = target?.docking_target?.id || target?.id, "docked" = map.docked?.docking_target?.id || map.docked?.id,
+		"selected" = target?.docking_target?.id || target?.id, "docked" = map.docked?.docking_target?.id || map.docked?.pad_parent?.id || map.docked?.id,
 		"coupled" = !!map.ship_docking,
 		"docking_request" = map.ship_docking_request_data(),
 		"station_docking" = map.station_docking_data(target),
@@ -140,7 +140,7 @@
 	var/datum/stationtrauma_ship_docking/pair = map.ship_docking
 	var/datum/stationtrauma_overmap/space/peer = pair ? (pair.first == map ? pair.second : pair.first) : null
 	if(map.approach_started && (!QDELETED(approach_site) || !QDELETED(peer)))
-		var/datum/stationtrauma_overmap_site/space/planet/approach_planet = approach_site
+		var/datum/stationtrauma_overmap_site/space/planet/approach_planet = approach_site?.pad_parent || approach_site
 		data["approach"] = list(
 			"elapsed" = (world.time - map.approach_started) / (1 SECONDS),
 			"duration" = map.approach_duration / (1 SECONDS),
@@ -215,7 +215,7 @@
 			map.command_course(map.ordered_course)
 			return map.sail()
 		if("autopilot")
-			if(map.preparing || map.ship_docking || map.planning || map.throttle <= 0 || map.docked?.id == map.selected_destination || map.docked?.docking_target?.id == map.selected_destination)
+			if(map.preparing || map.ship_docking || map.planning || map.throttle <= 0 || map.docked?.id == map.selected_destination || map.docked?.docking_target?.id == map.selected_destination || map.docked?.pad_parent?.id == map.selected_destination)
 				return FALSE
 			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap, engage_autopilot))
 		if("dock")

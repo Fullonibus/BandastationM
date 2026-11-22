@@ -58,6 +58,7 @@
 #include "code\dig\strange_rock.dm"
 #include "code\dig\tools.dm"
 #include "code\study\analyser.dm"
+#include "code\study\breakout.dm"
 #include "code\study\labeler.dm"
 #include "code\study\research.dm"
 #include "code\study\scanpad.dm"
