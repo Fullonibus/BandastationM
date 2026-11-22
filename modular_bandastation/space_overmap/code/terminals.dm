@@ -62,7 +62,7 @@
 		var/list/dock = list(
 			"id" = dock_id,
 			"name" = site.name,
-			"dock_class" = is_standard ? slot.dock_class : null,
+			"dock_class" = is_standard ? (slot.hangar ? "M" : slot.dock_class) : null,
 			"status" = site.shuttle_order_dock_status(),
 			"ship" = moored?.name || order?.offer["name"] || site.docking_owner?.vessel?.name,
 			"seconds_left" = order ? ceil(max(0, order.delivery_at - world.time) / (1 SECONDS)) : null,

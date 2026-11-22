@@ -340,6 +340,7 @@
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot
 	if(istype(old_dock.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
 		slot = old_dock.berth
+	var/launching = old_dock.landing || slot?.hangar
 	var/revision = control_revision
 	if(!instant)
 		var/duration = old_dock.landing ? ST_SPACE_TAKEOFF_TIME : ST_SPACE_MOORING_TIME
@@ -347,14 +348,14 @@
 		if(length(slot?.active_berth?.gangways))
 			delay -= ST_STANDARD_DOCK_RETRACTION_LEAD
 		begin_approach(old_dock, duration, departing = TRUE)
-		status = old_dock.landing ? "Взлёт: [old_dock.name]" : "Расстыковка: [old_dock.name]"
+		status = launching ? "Взлёт: [old_dock.name]" : "Расстыковка: [old_dock.name]"
 		while(world.time - approach_started < delay)
 			sleep(1 SECONDS)
 			if(QDELETED(src))
 				return FALSE
 			if(QDELETED(old_dock) || docked != old_dock || revision != control_revision || !propulsion_available())
 				end_approach()
-				stop(old_dock.landing ? "Взлёт прерван" : "Расстыковка прервана")
+				stop(launching ? "Взлёт прерван" : "Расстыковка прервана")
 				return FALSE
 	// The manoeuvre lasts until the helm takes over, so the hull keeps moving through gangway retraction, relocation and seam teardown.
 	var/obj/docking_port/stationary/stationtrauma_space_site/standard/standard_berth = slot?.active_berth
@@ -399,6 +400,8 @@
 		end_approach()
 		stop("Расстыковка прервана")
 		return FALSE
+	if(!QDELETED(slot) && slot.hangar)
+		slot.show_hangar_glow()
 	slot?.clear_berth()
 	preparing = TRUE
 	connection.disconnect_cooperatively(new /datum/stationtrauma_work_budget)
@@ -445,6 +448,8 @@
 		return FALSE
 	if(!instant)
 		play_departure_effects(site.landing)
+	if(!QDELETED(slot) && slot.hangar)
+		slot.play_hangar_shutters()
 	return TRUE
 
 /** The approach must still own the berth and have propulsion at each commit point. */
@@ -507,7 +512,11 @@
 	// Reserve before native movement or seam construction can yield to another ship.
 	site.docking_owner = src
 	clear_encounters()
-	stop("Стыковка: [site_label(site)]")
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot
+	if(istype(site.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+		slot = site.berth
+	var/hangar = slot?.hangar
+	stop(hangar ? "Посадка: [site_label(site)]" : "Стыковка: [site_label(site)]")
 	var/revision = control_revision
 	preparing = TRUE
 	var/datum/stationtrauma_work_budget/budget = new
@@ -515,12 +524,9 @@
 	var/physical_docking = site.landing || site.physical_docking
 	var/obj/docking_port/stationary/target_berth = site.berth
 	var/datum/callback/before_takeoff
-	if(controlled)
-		before_takeoff = CALLBACK(src, PROC_REF(commit_station_arrival), site, revision, station_authorized)
-	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot
+	if(controlled || hangar)
+		before_takeoff = CALLBACK(src, PROC_REF(commit_physical_arrival), site, revision, controlled, station_authorized)
 	var/obj/docking_port/stationary/stationtrauma_space_site/standard/standard_berth
-	if(istype(site.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
-		slot = site.berth
 	try
 		if(slot)
 			standard_berth = slot.prepare_berth(vessel)
@@ -549,7 +555,9 @@
 	if(!ready)
 		if(revision == control_revision && !site.failed)
 			if(clearance_lost)
-				status = "Стыковка отменена: нет действующего разрешения"
+				status = hangar ? "Посадка отменена: нет действующего разрешения" : "Стыковка отменена: нет действующего разрешения"
+			else if(hangar)
+				status = "Посадка в ангар отменена: площадка занята или перекрыта"
 			else
 				status = site.landing ? "Посадка прервана" : slot ? "Стыковка [slot.dock_class] отменена: нет свободного пути для трапа" : "Стыковка не выполнена: переход перекрыт"
 		return FALSE
@@ -562,21 +570,30 @@
 		visited_sites[site.docking_target.id] = TRUE
 	pos_x = site.pos_x
 	pos_y = site.pos_y
-	status = site.landing ? "Посадка: [site.name]" : "Стыковка: [site.name]"
-	if(standard_berth)
-		var/deployed = standard_berth.deploy_gangways()
-		if(deployed < length(standard_berth.routes))
-			status = deployed ? "Корабль пришвартован, часть проходов перекрыта" : "Корабль пришвартован, проходы перекрыты"
-	play_maneuver_audio(target_berth)
+	status = (site.landing || hangar) ? "Посадка: [site.name]" : "Стыковка: [site.name]"
+	if(hangar)
+		if(!QDELETED(slot))
+			slot.show_hangar_glow(src)
+	else
+		if(standard_berth)
+			var/deployed = standard_berth.deploy_gangways()
+			if(deployed < length(standard_berth.routes))
+				status = deployed ? "Корабль пришвартован, часть проходов перекрыта" : "Корабль пришвартован, проходы перекрыты"
+		play_maneuver_audio(target_berth)
 	refresh_engine_audio()
 	update_parallax()
 	return TRUE
 
-/** Transfer clearance to the physical approach only after the native preflight. */
-/datum/stationtrauma_overmap/space/proc/commit_station_arrival(datum/stationtrauma_overmap_site/space/site, revision, station_authorized)
-	if(QDELETED(src) || !station_clearance_required(site) || site.docking_owner != src || !can_dock(site, revision))
+/** Verify the approach after native preflight before consuming clearance and opening hangar shutters. */
+/datum/stationtrauma_overmap/space/proc/commit_physical_arrival(datum/stationtrauma_overmap_site/space/site, revision, controlled, station_authorized)
+	if(QDELETED(src) || QDELETED(site) || site.docking_owner != src || !can_dock(site, revision))
 		return FALSE
-	return station_authorized || consume_station_clearance(site)
+	if(controlled && (!station_clearance_required(site) || (!station_authorized && !consume_station_clearance(site))))
+		return FALSE
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
+	if(istype(slot) && slot.hangar)
+		slot.play_hangar_shutters(vessel)
+	return TRUE
 
 /datum/stationtrauma_overmap/space/update_parallax()
 	var/background = parallax_background()

@@ -264,10 +264,16 @@
 	// A rescue at a distress beacon stops alongside at once; a non-zero length keeps the console's approach clock finite.
 	var/duration = length(site.distress_callsigns()) ? 1 SECONDS : site.landing ? ST_SPACE_LANDING_TIME : site.physical_docking ? ST_SPACE_MOORING_TIME : ST_SPACE_APPROACH_TIME
 	begin_approach(site, duration)
-	status = site.landing ? "Посадка: [site.name]" : "Сближение: [site_label(site)]"
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
+	var/illuminate_pad = istype(slot) && slot.hangar
+	status = (site.landing || illuminate_pad) ? "Посадка: [site.name]" : "Сближение: [site_label(site)]"
 	if(site.awaits_map() && !site.loading_map)
 		INVOKE_ASYNC(site, TYPE_PROC_REF(/datum/stationtrauma_overmap_site/space, load_map))
 	while(world.time - approach_started < approach_duration || site.loading_map)
+		if(illuminate_pad && world.time - approach_started >= approach_duration - 2 SECONDS)
+			illuminate_pad = FALSE
+			if(!QDELETED(slot) && !QDELETED(slot.active_berth) && can_dock(site, revision) && vessel.check_dock(slot.active_berth, TRUE))
+				slot.show_hangar_glow()
 		shake_crew()
 		sleep(1 SECONDS)
 		if(QDELETED(src) || QDELETED(site) || (controlled && site.docking_owner != src))
@@ -279,3 +285,58 @@
 		status = site.landing ? "Посадка отменена: поверхность не картографирована" : "Стыковка отменена: объект не обнаружен"
 		return FALSE
 	return can_dock(site, revision)
+
+
+/** Play the shutters at the pad and let the approaching crew hear them across Z-levels. */
+/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/play_hangar_shutters(obj/docking_port/mobile/stationtrauma_space/arriving)
+	var/clip = 'modular_bandastation/aesthetics/blastdoor/sound/blastdoor.ogg'
+	var/list/bounds = return_coords()
+	var/turf/pad_center = locate(round((bounds[1] + bounds[3]) / 2), round((bounds[2] + bounds[4]) / 2), z)
+	var/hearing_range = round(max(width, height) / 2)
+	playsound(pad_center, clip, 50, FALSE, extrarange = hearing_range, pressure_affected = FALSE)
+	if(!QDELETED(arriving) && arriving.z != z)
+		playsound(arriving, clip, 25, FALSE, extrarange = hearing_range, pressure_affected = FALSE)
+
+/** Tint only the exposed pad, including the open floor left around an irregular hull. */
+/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/show_hangar_glow(datum/stationtrauma_overmap/space/arriving)
+	var/list/covered_areas = list()
+	if(arriving)
+		for(var/datum/stationtrauma_overmap/space/member as anything in arriving.carrier_tree())
+			covered_areas |= member.vessel.shuttle_areas
+	var/list/carrier_areas = host?.vessel?.shuttle_areas
+	for(var/turf/tile as anything in return_turfs())
+		var/obj/effect/temp_visual/stationtrauma_hangar_glow/previous_glow = locate() in tile
+		if(previous_glow)
+			qdel(previous_glow)
+		var/area/pad_area = get_area(tile)
+		if(!isfloorturf(tile) || (pad_area in covered_areas) || (istype(pad_area, /area/shuttle) && !carrier_areas?[pad_area]))
+			continue
+		new /obj/effect/temp_visual/stationtrauma_hangar_glow(tile)
+
+/** Tint this tile's lighting even under bright hangar lamps, without casting light onto adjacent cells. */
+/obj/effect/temp_visual/stationtrauma_hangar_glow
+	icon = 'icons/effects/alphacolors.dmi'
+	icon_state = "white"
+	color = COLOR_BLUE_LIGHT
+	alpha = 104
+	plane = LIGHTING_PLANE
+	layer = LIGHTING_ABOVE_ALL
+	blocks_emissive = EMISSIVE_BLOCK_NONE
+	duration = 4 SECONDS
+	randomdir = FALSE
+
+/obj/effect/temp_visual/stationtrauma_hangar_glow/Initialize(mapload)
+	. = ..()
+	SET_PLANE_IMPLICIT(src, LIGHTING_PLANE)
+	var/static/list/clear_signals = list(COMSIG_TURF_CHANGE, COMSIG_TURF_AREA_CHANGED)
+	RegisterSignals(loc, clear_signals, PROC_REF(remove_glow))
+	animate(src, alpha = 0, time = duration, easing = SINE_EASING | EASE_IN)
+
+/** A new hull layer or area on this tile immediately hides the pad effect. */
+/obj/effect/temp_visual/stationtrauma_hangar_glow/proc/remove_glow(turf/source)
+	SIGNAL_HANDLER
+	qdel(src)
+
+/obj/effect/temp_visual/stationtrauma_hangar_glow/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
+	qdel(src)
+	return FALSE
