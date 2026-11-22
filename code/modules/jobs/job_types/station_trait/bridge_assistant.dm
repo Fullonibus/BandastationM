@@ -37,13 +37,37 @@
 	human_authority = JOB_AUTHORITY_NON_HUMANS_ALLOWED
 	tgui_icon = FA_ICON_BUILDING_SHIELD
 
+/datum/job/bridge_assistant/New()
+	. = ..()
+	alternate_titles += list(JOB_BRIDGE_ASSISTANT_RU)
+	var/list/map_changes = get_bridge_assistant_map_changes()
+	if(!map_changes?["standard_role"])
+		return
+	required_donator_level = BASIC_DONATOR_LEVEL
+	donor_unlock_trait = null
+	job_flags &= ~(JOB_HIDE_WHEN_EMPTY|JOB_LATEJOIN_ONLY)
+	if(isnum(map_changes["spawn_positions"]))
+		spawn_positions = map_changes["spawn_positions"]
+	if(isnum(map_changes["total_positions"]))
+		total_positions = map_changes["total_positions"]
+
+/// Read the configured default map before SSjob and SSstation initialize ahead of SSmapping.
+/proc/get_bridge_assistant_map_changes()
+	var/datum/map_config/active_map = SSmapping.current_map
+	if(active_map.defaulted && config.defaultmap && !config.defaultmap.defaulted)
+		active_map = config.defaultmap
+	return active_map.job_changes?[JOB_BRIDGE_ASSISTANT]
+
 /datum/job/bridge_assistant/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
 	var/mob/living/carbon/bridgie = spawned
 	if(istype(bridgie))
 		bridgie.gain_trauma(/datum/brain_trauma/special/axedoration)
 
+/// Use standard mapped spawn points for the regular role and bridge seating for the premium role.
 /datum/job/bridge_assistant/get_roundstart_spawn_point()
+	if(!required_donator_level)
+		return ..()
 	if(length(GLOB.jobspawn_overrides[title]))
 		return pick(GLOB.jobspawn_overrides[title])
 	var/list/chair_turfs = list()
@@ -64,6 +88,11 @@
 	if(length(possible_turfs))
 		return pick(possible_turfs) //if none, just pick a random turf in the bridge
 	return ..() //if the bridge has no turfs, spawn on the arrivals shuttle
+
+/// Roundstart spawn point for the regular Bridge Assistant role.
+/obj/effect/landmark/start/bridge_assistant
+	name = JOB_BRIDGE_ASSISTANT
+	icon_state = JOB_CAPTAIN
 
 /datum/outfit/job/bridge_assistant
 	name = "Bridge Assistant"

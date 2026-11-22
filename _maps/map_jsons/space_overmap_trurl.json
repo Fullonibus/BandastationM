@@ -42,6 +42,11 @@
 		"Magistrate": {
 			"spawn_positions": 1
 		},
+		"Bridge Assistant": {
+			"standard_role": true,
+			"spawn_positions": 2,
+			"total_positions": 2
+		},
 		"Explorer": {
 			"total_positions": 3,
 			"spawn_positions": 3
