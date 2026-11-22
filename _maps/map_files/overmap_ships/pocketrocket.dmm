@@ -9,11 +9,6 @@
 	},
 /turf/open/floor/carpet/green,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"ab" = (
-/obj/structure/cable,
-/obj/machinery/telecomms/allinone/ship,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "ac" = (
 /obj/structure/cable,
 /obj/machinery/light,
@@ -63,6 +58,13 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"ah" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "ai" = (
 /obj/machinery/power/shuttle_engine/propulsion/standard{
 	dir = 8
@@ -78,14 +80,6 @@
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/plasma{
 	dir = 8
 	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"ak" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "al" = (
@@ -117,6 +111,11 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"an" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/telecomms/allinone/ship,
+/turf/open/floor/wood,
+/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
 "ao" = (
 /obj/structure/closet/emcloset/anchored,
 /obj/effect/turf_decal/stripes/line,
@@ -241,6 +240,13 @@
 /obj/item/stack/sheet/mineral/plasma/thirty,
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+"aC" = (
+/obj/machinery/airalarm/directional/north,
+/obj/machinery/stationtrauma_bluespace_drive{
+	charges = 2
+	},
+/turf/open/floor/wood,
+/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
 "aF" = (
 /obj/machinery/button/door{
 	id = "shutterspocket";
@@ -297,19 +303,6 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
-"eV" = (
-/obj/structure/cable,
-/obj/machinery/light,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/power/apc/auto_name/directional/south,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "eW" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/public/glass{
@@ -444,17 +437,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"tc" = (
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/wood,
-/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"tw" = (
-/obj/effect/spawner/structure/window/reinforced/shuttle,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "shutterspocket"
-	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/cargo)
 "us" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/command{
@@ -662,10 +644,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
-"XD" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/turf/open/floor/wood,
-/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
 "ZQ" = (
 /obj/machinery/button/door{
 	id = "pocketdoor";
@@ -719,7 +697,7 @@ bU
 ax
 au
 ar
-ak
+ah
 wH
 ap
 af
@@ -729,7 +707,7 @@ wH
 bi
 bU
 ay
-ab
+av
 as
 al
 wH
@@ -788,7 +766,7 @@ nc
 (9,1,1) = {"
 bi
 KI
-XD
+an
 aa
 ad
 BZ
@@ -800,7 +778,7 @@ bi
 (10,1,1) = {"
 bi
 hS
-tc
+aC
 WU
 uS
 BZ

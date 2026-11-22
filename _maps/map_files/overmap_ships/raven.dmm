@@ -1,17 +1,15 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
 	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "ab" = (
 /turf/open/space/basic,
 /area/space/stationtrauma_space_home)
@@ -35,18 +33,17 @@
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/combustion)
 "ag" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "ah" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/structure/window/reinforced/plasma,
@@ -62,28 +59,23 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/combustion)
+"aj" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/engineering)
 "ak" = (
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/engineering)
 "al" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Emergency Shutle Engineering";
-	req_access = list();
-	req_one_access = list()
+/obj/machinery/door/airlock/stationtrauma_docking/ship{
+	dir = 8
 	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/door/firedoor{
-	ignore_alarms = 1
-	},
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/storage)
+/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
 "am" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/combustion)
@@ -97,25 +89,20 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
+"ap" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/firealarm/directional/east,
+/obj/structure/closet/crate/specimen,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "aq" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Emergency Shutle Engineering";
-	req_access = list();
-	req_one_access = list()
+/obj/machinery/door/airlock/stationtrauma_docking/ship{
+	dir = 4
 	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/door/firedoor{
-	ignore_alarms = 1
-	},
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/engine_control)
+/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
 "ar" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/power/apc/auto_name/directional/east,
@@ -136,6 +123,16 @@
 /obj/effect/turf_decal/stripes/full,
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/combustion)
+"au" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/structure/chair/comfy/shuttle/tactical{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "av" = (
 /obj/machinery/button/door/directional/north{
 	id = "raven_core_shutters";
@@ -149,25 +146,16 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/combustion)
-"ax" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
+"aw" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
+/obj/structure/chair/comfy/shuttle/tactical{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "ay" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 6
@@ -197,25 +185,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/engine_control)
-"aA" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
+"aB" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
+/obj/structure/chair/comfy/shuttle/tactical{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/engine_control)
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "aC" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -277,12 +256,25 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/engines)
 "aJ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
+/obj/machinery/door/airlock/engineering{
+	name = "Emergency Shutle Engineering";
+	req_access = list();
+	req_one_access = list()
 	},
-/obj/structure/rack/gunrack,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/door/firedoor{
+	ignore_alarms = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/storage)
 "aK" = (
 /turf/open/floor/plating/airless,
 /area/shuttle/stationtrauma_space/raven/engines)
@@ -363,22 +355,32 @@
 /obj/structure/cable/layer1,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
-"aU" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/highsecurity,
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "raven_core_shutters"
+"aV" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
 	},
-/obj/structure/cable/layer1,
+/obj/structure/chair/comfy/shuttle/tactical{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
+"aW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
+"aX" = (
+/obj/effect/turf_decal/stripes/corner,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/power)
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "aY" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
@@ -386,17 +388,36 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/power)
-"bc" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Cockpit";
-	req_access = list();
-	req_one_access = list()
+"aZ" = (
+/obj/structure/table/reinforced,
+/obj/item/field_collector{
+	pixel_x = -5;
+	pixel_y = 9
 	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/bridge)
+/obj/item/field_collector{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/item/field_collector{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
+"ba" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
+"bb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/obj/machinery/status_display/evac/directional/north,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "bd" = (
 /obj/effect/turf_decal/raven/one,
 /obj/structure/cable,
@@ -427,6 +448,26 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
+"bh" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Emergency Shutle Engineering";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/door/firedoor{
+	ignore_alarms = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/engine_control)
 "bi" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
@@ -443,6 +484,111 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
+"bk" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+"bl" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
+"bm" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+"bn" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/highsecurity,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "raven_core_shutters"
+	},
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/power)
+"bo" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/engine_control)
+"bp" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/obj/docking_port/mobile/stationtrauma_space{
+	area_type = /area/shuttle/stationtrauma_space/raven;
+	name = "Raven";
+	ship_class = "medium";
+	shuttle_id = "stationtrauma_space_raven"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
 "bq" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/west,
@@ -499,6 +645,24 @@
 /obj/structure/window/reinforced/plasma/spawner/directional/south,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/engineering)
+"by" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering{
+	name = "Emergency Shutle Engineering";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
 "bA" = (
 /obj/machinery/power/shuttle_engine/large/standard,
 /turf/open/floor/engine,
@@ -557,6 +721,18 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/combustion)
+"bJ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
 "bK" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -606,6 +782,26 @@
 /obj/effect/turf_decal/stripes/full,
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/combustion)
+"bR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
 "bS" = (
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/engines)
@@ -659,6 +855,37 @@
 /obj/machinery/power/port_gen/pacman/pre_loaded,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/engineering)
+"cc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external/ruin{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
+"cd" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
 "ce" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
@@ -709,19 +936,69 @@
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/engines)
 "cl" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/door/airlock/security/glass{
+	name = "Holding Area";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
-/obj/machinery/light/directional/north,
-/obj/machinery/status_display/evac/directional/north,
-/obj/structure/rack/gunrack,
-/turf/open/floor/mineral/plastitanium/red,
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/brig)
 "cm" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/l3closet/expedition,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
+"cn" = (
+/obj/machinery/door/airlock/medical/glass{
+	name = "Escape Shuttle Infirmary";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/raven/medbay)
+"co" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Cockpit";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
+"cp" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Cockpit";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "cq" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -729,6 +1006,35 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/engine_control)
+"cr" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Cockpit";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/bridge)
+"cs" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Cockpit";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/bridge)
 "ct" = (
 /obj/machinery/power/smes/engineering,
 /obj/structure/cable,
@@ -762,22 +1068,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
-"cB" = (
-/obj/structure/table/reinforced,
-/obj/item/field_collector{
-	pixel_x = -5;
-	pixel_y = 9
-	},
-/obj/item/field_collector{
-	pixel_x = 1;
-	pixel_y = 2
-	},
-/obj/item/field_collector{
-	pixel_x = 7;
-	pixel_y = -6
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "cD" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/airalarm/directional/east,
@@ -806,23 +1096,6 @@
 "cH" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/power)
-"cJ" = (
-/obj/effect/turf_decal/delivery/white,
-/obj/structure/cable,
-/obj/machinery/door/airlock/engineering{
-	name = "Emergency Shutle Engineering";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
 "cP" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
@@ -928,23 +1201,6 @@
 "gz" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/bridge)
-"gF" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Holding Area";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/autoname,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/brig)
 "gI" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
@@ -1040,16 +1296,6 @@
 "gX" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 2
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
-"gY" = (
-/obj/effect/turf_decal/stripes/corner,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/structure/chair/comfy/shuttle/tactical{
-	dir = 8
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/stationtrauma_space/raven/brig)
@@ -1152,17 +1398,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
-"ib" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Cockpit";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/autoname,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
 "iq" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/computer/stationtrauma_space_navigation,
@@ -1240,39 +1475,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
-"iS" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Cockpit";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/autoname,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/bridge)
-"iV" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Cockpit";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/autoname,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
 "jb" = (
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
@@ -1399,16 +1601,6 @@
 "kd" = (
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/raven/medbay)
-"kf" = (
-/obj/machinery/door/airlock/medical/glass{
-	name = "Escape Shuttle Infirmary";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/autoname,
-/turf/open/floor/iron,
-/area/shuttle/stationtrauma_space/raven/medbay)
 "kh" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
@@ -1528,14 +1720,6 @@
 	dir = 5
 	},
 /area/shuttle/stationtrauma_space/raven/medbay)
-"kz" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/firealarm/directional/east,
-/obj/structure/chair/comfy/shuttle/tactical{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
 "kB" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 4
@@ -1657,25 +1841,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
-"mc" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/fans/tiny,
-/obj/docking_port/mobile/stationtrauma_space{
-	area_type = /area/shuttle/stationtrauma_space/raven;
-	name = "Raven";
-	ship_class = "medium";
-	shuttle_id = "stationtrauma_space_raven"
-	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
 "md" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/closet/l3closet/expedition,
@@ -1689,20 +1854,6 @@
 /obj/item/clothing/mask/gas,
 /obj/item/tank/internals/emergency_oxygen{
 	pixel_x = 3
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"mf" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"mg" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
@@ -1737,21 +1888,6 @@
 "mj" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/closet/crate/specimen,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"mk" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"ml" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
 "mm" = (
@@ -1790,50 +1926,6 @@
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"mq" = (
-/obj/machinery/door/airlock/stationtrauma_docking/ship{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
-"mr" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
-"ms" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/obj/machinery/light/directional/north,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
-"mt" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
 "mu" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -1860,50 +1952,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"my" = (
-/obj/machinery/door/airlock/external/ruin{
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
-"mz" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/obj/machinery/light/directional/north,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
-"mA" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
-"mB" = (
-/obj/machinery/door/airlock/stationtrauma_docking/ship{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
 "mC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -1916,15 +1964,6 @@
 /obj/structure/closet/crate/specimen,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"mD" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/obj/structure/chair/comfy/shuttle/tactical{
-	dir = 4
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "mE" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
@@ -2162,14 +2201,14 @@ ab
 bu
 bw
 aL
-mq
+al
 aL
 ab
 be
 bi
-mc
+bp
 bi
-aa
+bk
 bi
 bi
 ab
@@ -2189,8 +2228,8 @@ bu
 bD
 de
 aR
-mr
-dA
+bJ
+aR
 ce
 dA
 bO
@@ -2214,15 +2253,15 @@ ab
 bu
 bD
 mI
-mD
+aW
 bD
-ms
+bR
 aR
 mi
 ci
 dA
 bi
-ax
+bm
 bi
 gs
 ey
@@ -2239,11 +2278,11 @@ ab
 ab
 ab
 bD
-aJ
+ba
 fE
 fJ
 bw
-mt
+aa
 mn
 mj
 me
@@ -2266,10 +2305,10 @@ gy
 gy
 gz
 bD
-cl
-cB
+bb
+aZ
 mE
-gF
+cl
 mu
 gI
 gI
@@ -2279,7 +2318,7 @@ gJ
 gK
 gL
 gM
-al
+aJ
 gO
 gP
 br
@@ -2295,12 +2334,12 @@ bj
 gz
 cE
 gX
-gY
+aX
 bw
 mu
 mo
-mk
-mf
+aB
+au
 md
 hd
 he
@@ -2374,9 +2413,9 @@ hT
 mS
 hW
 bd
-bc
+cr
 mK
-ib
+co
 gn
 mw
 cH
@@ -2406,12 +2445,12 @@ mL
 iw
 iy
 iz
-cJ
+by
 bB
 bE
 aT
 cv
-aU
+bn
 aO
 NP
 at
@@ -2428,9 +2467,9 @@ iO
 mU
 iQ
 iR
-iS
+cs
 mM
-iV
+cp
 mC
 mw
 cH
@@ -2515,8 +2554,8 @@ jP
 jR
 mu
 mo
-ml
-mg
+aV
+aw
 md
 hd
 jW
@@ -2525,7 +2564,7 @@ as
 jZ
 bW
 kb
-ae
+aj
 ck
 bY
 ab
@@ -2539,7 +2578,7 @@ jj
 kc
 mO
 kd
-kf
+cn
 mu
 kh
 kh
@@ -2549,7 +2588,7 @@ kj
 kk
 kl
 km
-aq
+bh
 ko
 kp
 ae
@@ -2567,11 +2606,11 @@ kq
 kd
 kd
 jR
-my
+ag
 mp
 mj
 mh
-kz
+ap
 ce
 az
 kB
@@ -2594,13 +2633,13 @@ jj
 kJ
 cY
 jj
-mz
+cc
 kW
 mm
 kP
 dA
 kQ
-aA
+bo
 jE
 jE
 jF
@@ -2621,8 +2660,8 @@ kH
 jj
 mH
 kW
-mA
-dA
+cd
+kW
 ce
 dA
 cm
@@ -2648,14 +2687,14 @@ ab
 kH
 jR
 lt
-mB
+aq
 lt
 ab
 lv
 kQ
-ag
+bl
 kQ
-ag
+bl
 kQ
 bi
 ab
