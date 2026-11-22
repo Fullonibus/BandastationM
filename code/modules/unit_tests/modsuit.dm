@@ -30,3 +30,16 @@
 	var/obj/item/mod/module/storage/storage = locate() in dummy.back
 	TEST_ASSERT_NOTNULL(storage, "Admin outfit MODsuit did not have a storage module.")
 	TEST_ASSERT(length(storage.contents) > 0, "Admin outfit's storage module was empty.")
+
+/** A queued movement callback must leave a severed tether alone when its anchor changes levels. */
+/datum/unit_test/mod_tether_cross_z/Run()
+	var/mob/living/carbon/human/consistent/wearer = allocate(/mob/living/carbon/human/consistent)
+	var/obj/item/tether_anchor/anchor = allocate(/obj/item/tether_anchor)
+	anchor.attack_hand_secondary(wearer, list())
+	TEST_ASSERT(HAS_TRAIT_FROM(wearer, TRAIT_TETHER_ATTACHED, REF(anchor)), "The wearer must start attached to the anchor.")
+
+	var/turf/destination = SSmapping.get_station_center()
+	TEST_ASSERT_NOTEQUAL(wearer.z, destination.z, "The test room and destination must be on separate levels.")
+	anchor.abstract_move(destination)
+	TEST_ASSERT_EQUAL(anchor.loc, destination, "The anchor must finish moving to the other level.")
+	TEST_ASSERT(!HAS_TRAIT_FROM(wearer, TRAIT_TETHER_ATTACHED, REF(anchor)) && !HAS_TRAIT_FROM(anchor, TRAIT_TETHER_ATTACHED, REF(anchor)), "Both ends of the tether must be released.")
