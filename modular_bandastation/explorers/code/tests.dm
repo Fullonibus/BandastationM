@@ -95,6 +95,12 @@
 
 /datum/unit_test/explorers_outfits/Run()
 	var/obj/structure/closet/secure_closet/expedition/leader/leader_locker = allocate(/obj/structure/closet/secure_closet/expedition/leader)
+	var/list/role_lockers = list(
+		/datum/job/explorer/leader = allocate(/obj/structure/closet/secure_closet/expedition_blades),
+		/datum/job/explorer/pilot = allocate(/obj/structure/closet/secure_closet/expedition/pilot),
+		/datum/job/explorer/medic = allocate(/obj/structure/closet/secure_closet/expedition/medic),
+		/datum/job/explorer/engineer = allocate(/obj/structure/closet/secure_closet/expedition/engineer),
+	)
 	var/obj/structure/closet/secure_closet/laboratory = allocate(/obj/structure/closet/secure_closet)
 	laboratory.req_access = list(ACCESS_RESEARCH)
 	var/obj/machinery/computer/stationtrauma_dispatch/dispatch = allocate(/obj/machinery/computer/stationtrauma_dispatch)
@@ -108,6 +114,9 @@
 		crew.dress_up_as_job(job, consistent = TRUE)
 		var/is_leader = job_path == /datum/job/explorer/leader
 		TEST_ASSERT_EQUAL(leader_locker.allowed(crew), is_leader, "[job.title] has incorrect access to the corps leader's locker.")
+		for(var/role_path in role_lockers)
+			var/obj/structure/closet/secure_closet/role_locker = role_lockers[role_path]
+			TEST_ASSERT_EQUAL(role_locker.allowed(crew), is_leader || job_path == role_path, "[job.title] has incorrect access to [role_locker.type].")
 		TEST_ASSERT(!laboratory.allowed(crew), "[job.title] gained access to scientific laboratories.")
 		TEST_ASSERT(dispatch.allowed(crew), "[job.title] cannot request its expedition ship without a command ID.")
 		var/obj/item/radio/headset/headset = crew.get_item_by_slot(ITEM_SLOT_EAR_RIGHT)
@@ -256,11 +265,11 @@
 /datum/unit_test/explorers_machete
 
 /datum/unit_test/explorers_machete/Run()
-	var/obj/structure/closet/secure_closet/expedition/locker = allocate(/obj/structure/closet/secure_closet/expedition, run_loc_floor_top_right)
+	var/obj/structure/closet/secure_closet/expedition_blades/locker = allocate(/obj/structure/closet/secure_closet/expedition_blades, run_loc_floor_top_right)
 	locker.locked = FALSE
-	TEST_ASSERT(locker.open(special_effects = FALSE), "The explorer locker could not open.")
+	TEST_ASSERT(locker.open(special_effects = FALSE), "The blade locker could not open.")
 	var/obj/item/hatchet/expedition_machete/blade = locate() in locker.loc
-	TEST_ASSERT(blade, "The explorer locker did not supply a machete.")
+	TEST_ASSERT(blade, "The blade locker did not supply a machete.")
 	var/mob/living/carbon/human/crew = allocate(/mob/living/carbon/human/consistent)
 	var/obj/item/clothing/under/expedition/uniform = allocate(/obj/item/clothing/under/expedition)
 	TEST_ASSERT(crew.equip_to_slot_if_possible(uniform, ITEM_SLOT_ICLOTHING), "The uniform could not be equipped.")
@@ -336,7 +345,7 @@
 		storage_holder.atom_storage.attempt_remove(blade, crew.loc)
 		TEST_ASSERT_EQUAL(sheath.worn_icon_state, "holster_machete", "the [key] sheath still shows a drawn blade")
 
-/// Each role locker opens with its kit for the corps, and the leader's is closed to plain explorers.
+/// Each role locker holds its kit, only the plain one opens for a plain explorer, and only the leader's holds a machete.
 /datum/unit_test/expedition_role_lockers
 
 /datum/unit_test/expedition_role_lockers/Run()
@@ -353,12 +362,12 @@
 	explorer.put_in_active_hand(card)
 	for(var/locker_type in kits)
 		var/obj/structure/closet/secure_closet/locker = allocate(locker_type, run_loc_floor_top_right)
-		TEST_ASSERT_EQUAL(locker.allowed(explorer), locker_type != /obj/structure/closet/secure_closet/expedition/leader, "[locker_type] has the wrong access")
+		TEST_ASSERT_EQUAL(locker.allowed(explorer), locker_type == /obj/structure/closet/secure_closet/expedition, "[locker_type] has the wrong access")
 		locker.locked = FALSE
 		TEST_ASSERT(locker.open(special_effects = FALSE), "[locker_type] does not open")
 		TEST_ASSERT(locate(kits[locker_type]) in locker.loc, "[locker_type] lacks [kits[locker_type]]")
 		TEST_ASSERT(locate(/obj/item/binoculars) in locker.loc, "[locker_type] lacks the common kit")
-		TEST_ASSERT(locate(/obj/item/hatchet/expedition_machete) in locker.loc, "[locker_type] lacks a machete")
+		TEST_ASSERT_EQUAL(!!(locate(/obj/item/hatchet/expedition_machete) in locker.loc), locker_type == /obj/structure/closet/secure_closet/expedition/leader, "[locker_type] has the wrong machete stock")
 		for(var/obj/item/thing in locker.loc)
 			qdel(thing)
 

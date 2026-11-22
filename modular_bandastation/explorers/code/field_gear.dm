@@ -2,14 +2,13 @@
 // leader's machete.
 
 // ===== Role lockers =====
-// Only what the outfit and the wardrobe do not already give: field tools, a blade and the role's own kit.
+// Only what the outfit and the wardrobe do not already give: field tools and the role's own kit.
+// The leader hands out the corps machetes from the blade locker in their office.
 
 /obj/structure/closet/secure_closet/expedition
 	name = "шкафчик исследователя"
 	icon_state = "mining"
 	req_access = list(ACCESS_EXPLORER)
-	/// The blade this locker holds.
-	var/machete_type = /obj/item/hatchet/expedition_machete
 
 /obj/structure/closet/secure_closet/expedition/PopulateContents()
 	. = ..()
@@ -19,13 +18,11 @@
 		/obj/item/binoculars = 1,
 		/obj/item/stack/marker_beacon/ten = 1,
 	), src)
-	new machete_type(src)
 
 /obj/structure/closet/secure_closet/expedition/leader
 	name = "шкафчик главы экспедиционного корпуса"
 	icon_state = "qm"
 	req_access = list(ACCESS_EXPEDITION_LEADER)
-	machete_type = /obj/item/hatchet/expedition_machete/deluxe
 
 /obj/structure/closet/secure_closet/expedition/leader/PopulateContents()
 	. = ..()
@@ -34,10 +31,23 @@
 		/obj/item/tape/random = 1,
 		/obj/item/assembly/flash/handheld = 1,
 		/obj/item/encryptionkey/expedition = 2,
+		/obj/item/hatchet/expedition_machete/deluxe = 1,
+		/obj/item/clothing/accessory/expedition_sheath = 1,
 	), src)
+
+/// Machetes for the rest of the corps, one per slot; the leader hands them out.
+/obj/structure/closet/secure_closet/expedition_blades
+	name = "шкафчик мачете экспедиционного корпуса"
+	icon_state = "armory"
+	req_access = list(ACCESS_EXPEDITION_LEADER)
+
+/obj/structure/closet/secure_closet/expedition_blades/PopulateContents()
+	..()
+	generate_items_inside(list(/obj/item/hatchet/expedition_machete = 6), src)
 
 /obj/structure/closet/secure_closet/expedition/pilot
 	name = "шкафчик пилота экспедиционного корпуса"
+	req_access = list(ACCESS_EXPEDITION_PILOT)
 
 /obj/structure/closet/secure_closet/expedition/pilot/PopulateContents()
 	. = ..()
@@ -46,6 +56,7 @@
 /obj/structure/closet/secure_closet/expedition/medic
 	name = "шкафчик полевого медика"
 	icon_state = "med"
+	req_access = list(ACCESS_EXPEDITION_MEDIC)
 
 /obj/structure/closet/secure_closet/expedition/medic/PopulateContents()
 	. = ..()
@@ -57,6 +68,7 @@
 /obj/structure/closet/secure_closet/expedition/engineer
 	name = "шкафчик полевого инженера"
 	icon_state = "eng"
+	req_access = list(ACCESS_EXPEDITION_ENGINEER)
 
 /obj/structure/closet/secure_closet/expedition/engineer/PopulateContents()
 	. = ..()

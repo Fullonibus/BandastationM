@@ -161,6 +161,9 @@
 /// Access to Explorer's closets
 #define ACCESS_EXPLORER "explorer"
 #define ACCESS_EXPEDITION_LEADER "expedition_leader"
+#define ACCESS_EXPEDITION_PILOT "expedition_pilot"
+#define ACCESS_EXPEDITION_MEDIC "expedition_medic"
+#define ACCESS_EXPEDITION_ENGINEER "expedition_engineer"
 // BANDASTATION ADD - END
 
 /// - - - AWAY MISSIONS - - -
@@ -328,6 +331,9 @@
 	ACCESS_EVA, \
 	ACCESS_EXTERNAL_AIRLOCKS, \
 	ACCESS_EXPLORER, \
+	ACCESS_EXPEDITION_ENGINEER, \
+	ACCESS_EXPEDITION_MEDIC, \
+	ACCESS_EXPEDITION_PILOT, \
 	ACCESS_GATEWAY, \
 	ACCESS_GENETICS, \
 	ACCESS_HYDROPONICS, \
@@ -554,7 +560,7 @@
 )
 /// Independent expedition corps facilities and its head's office and armoury.
 #define REGION_EXPEDITION "Expeditionary Corps"
-#define REGION_ACCESS_EXPEDITION list(ACCESS_EXPLORER, ACCESS_EXPEDITION_LEADER)
+#define REGION_ACCESS_EXPEDITION list(ACCESS_EXPLORER, ACCESS_EXPEDITION_LEADER, ACCESS_EXPEDITION_PILOT, ACCESS_EXPEDITION_MEDIC, ACCESS_EXPEDITION_ENGINEER)
 /// Name for the Command region.
 #define REGION_COMMAND "Command"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all command regional accesses that are overseen by the Captain.
