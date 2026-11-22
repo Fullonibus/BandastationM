@@ -2,14 +2,12 @@
 /datum/droid_relay_profile
 	/// Role name shown to the operator and potential guest pilots.
 	var/role_name = "Оператор дроидов"
-	/// Printed bodies this relay can manufacture and deploy.
-	var/mob/living/basic/relay_droid/droid_type = /mob/living/basic/relay_droid
+	/// Printed body types this role can deploy.
+	var/list/droid_types = list(/mob/living/basic/relay_droid)
 	/// Simultaneously active bodies, including bodies in transit.
 	var/deployment_limit = 4
 	/// Number of stored bodies the relay can physically hold.
 	var/storage_limit = 8
-	/// Fabricator cost in sheets of iron.
-	var/iron_sheets = 3
 
 /obj/machinery/overmap_droid_relay
 	name = "реле управления дроидами"
@@ -28,6 +26,8 @@
 	var/mob/living/basic/relay_operator/operator
 	/// Active bodies and pending transports. Stored bodies are inside chassis items.
 	var/list/mob/living/basic/relay_droid/droids = list()
+	/// Explicitly marked bodies, keyed by weak reference with their name at identification.
+	var/list/datum/weakref/hostile_targets = list()
 	/// Optional peripherals, resolved again before use.
 	var/datum/weakref/board_ref
 	/// Optional fabricator.
@@ -63,6 +63,8 @@
 
 /obj/machinery/overmap_droid_relay/Destroy()
 	clear_camera()
+	for(var/datum/weakref/reference as anything in hostile_targets.Copy())
+		unmark_hostile(reference)
 	for(var/mob/living/basic/relay_droid/unit as anything in droids.Copy())
 		unit.clear_order()
 		remove_unit(unit)
@@ -111,18 +113,22 @@
 	var/obj/docking_port/mobile/stationtrauma_space/ship = SSshuttle.get_containing_shuttle(src)
 	return istype(ship) && ship.is_in_shuttle_bounds(src) && ship.shuttle_areas[get_area(src)] ? ship : null
 
-/// Devices have a physical connection only on the same hull or beside a grounded relay.
-/obj/machinery/overmap_droid_relay/proc/valid_link(obj/machinery/device)
+/// Devices need a continuous pipe connection on the same hull or on the ground.
+/obj/machinery/overmap_droid_relay/proc/valid_link(obj/machinery/device, list/conduit_devices)
 	if(QDELETED(device) || !isturf(device.loc) || !isturf(loc) || !device.anchored)
+		return FALSE
+	if(isnull(conduit_devices))
+		conduit_devices = relay_conduit_devices(src)
+	if(!(device in conduit_devices))
 		return FALSE
 	var/obj/docking_port/mobile/stationtrauma_space/ship = linked_ship()
 	if(ship)
 		return aboard_ship(device, ship)
-	return !SSshuttle.get_containing_shuttle(device) && in_range(src, device)
+	return !SSshuttle.get_containing_shuttle(device)
 
 /// Attaches a supported device to this relay.
-/obj/machinery/overmap_droid_relay/proc/link_device(obj/machinery/device)
-	if(!valid_link(device))
+/obj/machinery/overmap_droid_relay/proc/link_device(obj/machinery/device, list/conduit_devices)
+	if(!valid_link(device, conduit_devices))
 		return FALSE
 	if(istype(device, /obj/machinery/computer/stationtrauma_space_navigation/relay_board))
 		var/obj/machinery/computer/stationtrauma_space_navigation/relay_board/board = device
@@ -139,16 +145,28 @@
 		return FALSE
 	return TRUE
 
-/// Initial wiring for the scenario shuttle's known hardware.
+/// Discover connected machinery, preserving the player's selection while it remains reachable.
+/obj/machinery/overmap_droid_relay/proc/refresh_device_links()
+	var/list/devices = relay_conduit_devices(src)
+	if(!valid_link(board_ref?.resolve(), devices))
+		board_ref = null
+	if(!valid_link(fabricator_ref?.resolve(), devices))
+		fabricator_ref = null
+	transport_refs.Cut()
+	for(var/obj/machinery/device as anything in devices)
+		if(istype(device, /obj/machinery/relay_resource_storage))
+			continue
+		if((board_ref && istype(device, /obj/machinery/computer/stationtrauma_space_navigation/relay_board)) \
+			|| (fabricator_ref && istype(device, /obj/machinery/relay_fabricator)))
+			continue
+		link_device(device, devices)
+	return devices
+
+/// Discover machinery and pair the scenario shuttle's portable beacons.
 /obj/machinery/overmap_droid_relay/proc/connect_peripherals()
+	refresh_device_links()
 	var/obj/docking_port/mobile/stationtrauma_space/ship = linked_ship()
 	for(var/area/ship_area as anything in ship?.shuttle_areas)
-		for(var/obj/machinery/computer/stationtrauma_space_navigation/relay_board/board in ship_area)
-			link_device(board)
-		for(var/obj/machinery/relay_fabricator/fabricator in ship_area)
-			link_device(fabricator)
-		for(var/obj/machinery/relay_transport/transport in ship_area)
-			link_device(transport)
 		for(var/obj/item/relay_beacon/beacon in ship_area)
 			if(ship.is_in_shuttle_bounds(beacon) && !beacon.relay_ref?.resolve())
 				beacon.bind(src)
@@ -166,7 +184,7 @@
 /obj/machinery/overmap_droid_relay/item_interaction(mob/living/user, obj/item/item, list/modifiers)
 	if(istype(item, /obj/item/relay_chassis))
 		var/obj/item/relay_chassis/chassis = item
-		if(chassis.droid_type != profile.droid_type || chassis.stored_unit || !has_storage_space())
+		if(!(chassis.droid_type in profile.droid_types) || chassis.stored_unit || !has_storage_space())
 			balloon_alert(user, "нет места или корпус несовместим")
 			return ITEM_INTERACT_BLOCKING
 		if(user.transferItemToLoc(chassis, src))
@@ -203,7 +221,7 @@
 
 /// Consume a compatible printed chassis and track its living independent body.
 /obj/machinery/overmap_droid_relay/proc/launch(obj/item/relay_chassis/chassis, turf/destination, obj/machinery/relay_transport/transport, datum/stationtrauma_overmap_site/space/site)
-	if(QDELETED(chassis) || chassis.loc != src || chassis.droid_type != profile.droid_type || length(droids) >= profile.deployment_limit || !destination)
+	if(QDELETED(chassis) || chassis.loc != src || !(chassis.droid_type in profile.droid_types) || length(droids) >= profile.deployment_limit || !destination)
 		return FALSE
 	var/mob/living/basic/relay_droid/unit = chassis.stored_unit
 	if(unit && (QDELETED(unit) || unit.stat == DEAD || unit.loc != chassis))
@@ -235,7 +253,7 @@
 /// Stop counting a unit as active.
 /obj/machinery/overmap_droid_relay/proc/remove_unit(mob/living/basic/relay_droid/unit)
 	if(viewing == unit)
-		viewing = null
+		clear_camera()
 	selected_units -= unit
 	if(controlled == unit)
 		release_control(unit)
@@ -265,8 +283,8 @@
 			var/datum/element/ssd/ssd = SSdcs.GetElement(list(/datum/element/ssd), init_element = FALSE)
 			ssd?.handle_detach(operator)
 
-/// Return from manual control. Called before a controlled body is destroyed.
-/obj/machinery/overmap_droid_relay/proc/release_control(mob/living/basic/relay_droid/unit)
+/// Return from manual control. Voluntary return can keep a live body's tactical view.
+/obj/machinery/overmap_droid_relay/proc/release_control(mob/living/basic/relay_droid/unit, keep_camera = FALSE)
 	if(controlled != unit)
 		return
 	controlled = null
@@ -283,6 +301,8 @@
 		var/datum/element/ssd/ssd = SSdcs.GetElement(list(/datum/element/ssd), init_element = FALSE)
 		ssd?.handle_detach(unit)
 	unit.ai_controller?.reset_ai_status()
+	if(keep_camera)
+		set_camera(unit)
 
 /// Recruit a guest without authorizing them to operate the relay.
 /obj/machinery/overmap_droid_relay/proc/offer_droid(mob/actor, mob/living/basic/relay_droid/unit)

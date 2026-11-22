@@ -79,8 +79,9 @@
 /mob/living/basic/relay_droid/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/dextrous, hands_count = 1)
+	AddElement(/datum/element/relay_attackers)
 	AddComponent(/datum/component/basic_inhands)
-	RegisterSignal(src, COMSIG_MOB_AI_MOVEMENT_FAILED, PROC_REF(on_order_path_failed))
+	RegisterSignal(src, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_relay_attacked))
 	GRANT_ACTION(/datum/action/innate/relay_hivemind)
 	GRANT_ACTION(/datum/action/innate/relay_return)
 
@@ -113,7 +114,7 @@
 
 /// Whether the deployed body can execute directives from the relay.
 /mob/living/basic/relay_droid/proc/can_receive_relay_order()
-	return !QDELETED(src) && !client && !key && !mind && !polling && !in_transit && ai_controller && stat == STABLE && isturf(loc)
+	return !QDELETED(src) && !client && !key && !mind && !polling && !in_transit && !detonating && ai_controller && stat == STABLE && isturf(loc)
 
 /// Check whether this droid can see and damage the target of an autonomous attack.
 /mob/living/basic/relay_droid/proc/can_attack_relay_target(atom/target)
@@ -122,14 +123,9 @@
 	var/datum/targeting_strategy/strategy = GET_TARGETING_STRATEGY(/datum/targeting_strategy/basic/relay_droid)
 	return strategy?.is_valid_target(src, target, ai_controller.max_target_distance, ai_controller) || FALSE
 
-/mob/living/basic/relay_droid/proc/on_order_path_failed()
-	SIGNAL_HANDLER
-	// The pet attack subtree retries its movement leaf even after the pathfinder gives up.
-	if(order == "attack" && ai_controller?.able_to_run)
-		ai_controller.clear_blackboard_key(BB_CURRENT_PET_TARGET)
-
 /// Clear both the order and any running path.
 /mob/living/basic/relay_droid/proc/clear_order()
+	clear_combat_intent()
 	order = "hold"
 	patrol_first = null
 	patrol_second = null
@@ -161,15 +157,15 @@
 		if("attack")
 			if(!can_attack_relay_target(target))
 				return FALSE
-			subtree_type = /datum/bt_node/subtree/pet_command/attack
+			clear_order()
+			start_combat_order(target)
+			return TRUE
 		else
 			return FALSE
 	clear_order()
-	order = command
 	patrol_first = first
 	patrol_second = command == "patrol" ? target : null
-	ai_controller.set_blackboard_key(BB_CURRENT_PET_TARGET, first || target)
-	ai_controller.set_behavior_tree_override(SUBPLAN_ID_PET_COMMAND, subtree_type)
+	set_relay_order(command, first || target, subtree_type)
 	return TRUE
 
 /// Give occupants a visible countdown and commit to destroying only this body.
@@ -205,19 +201,25 @@
 	override_id = SUBPLAN_ID_PET_COMMAND
 
 /datum/bt_node/subtree/relay_order/tick(datum/ai_controller/controller, seconds_per_tick)
-	if(!override_node)
-		return BT_FAILURE
 	var/mob/living/basic/relay_droid/unit = controller.pawn
 	if(!unit.can_receive_relay_order())
-		if(override_node.has_active_descendants())
+		if(override_node?.has_active_descendants())
 			controller.cancel_current_plan()
 		return BT_FAILURE
-	var/atom/target = controller.blackboard[BB_CURRENT_PET_TARGET]
-	if(QDELETED(target) || (unit.order == "attack" && !unit.can_attack_relay_target(target)))
-		unit.clear_order()
+	unit.update_combat_order()
+	if(!override_node)
 		return BT_FAILURE
-	. = ..()
-	if(. == BT_FAILURE || (. == BT_SUCCESS && unit.order == "move"))
+	// A replaced subtree starts next tick; its decorators see this tick as cancelled.
+	if(controller.cancelled_during_tick)
+		return BT_RUNNING
+	var/atom/target = controller.blackboard[BB_CURRENT_PET_TARGET]
+	if(QDELETED(target))
+		. = BT_FAILURE
+	else
+		. = ..()
+	if(unit.combat_priority && . != BT_RUNNING)
+		unit.finish_engagement(. == BT_FAILURE)
+	else if(. == BT_FAILURE || (. == BT_SUCCESS && unit.order == "move"))
 		unit.clear_order()
 
 /datum/bt_node/subtree/relay_patrol/New()
@@ -304,4 +306,4 @@
 /datum/action/innate/relay_return/Activate()
 	var/mob/living/basic/relay_droid/unit = owner
 	var/obj/machinery/overmap_droid_relay/relay = unit.relay_ref?.resolve()
-	relay?.release_control(unit)
+	relay?.release_control(unit, keep_camera = TRUE)

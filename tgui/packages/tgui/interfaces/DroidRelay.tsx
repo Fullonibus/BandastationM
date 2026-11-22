@@ -18,7 +18,11 @@ type Unit = Option & {
 
 type Data = {
   units: Unit[];
-  stock: { id: string; guest: number; prepared: number }[];
+  stock: (Option & {
+    guest: number;
+    prepared: number;
+    portrait: string | null;
+  })[];
   limit: number;
   storageLimit: number;
   transports: Option[];
@@ -28,9 +32,9 @@ type Data = {
   watching: number;
   armedClick: string | null;
   patrolFirst: number;
+  hostileTargets: Option[];
   computer: number;
-  factory: number | null;
-  cost: number;
+  fabricator: number;
 };
 
 const statusLabels: Record<string, string> = {
@@ -78,6 +82,7 @@ function RelayButton({
 export function DroidRelay() {
   const { act, data } = useBackend<Data>();
   const [page, setPage] = useState<'squad' | 'deployment'>('squad');
+  const [hostileListOpen, setHostileListOpen] = useState(false);
   const [transportId, setTransport] = useState('');
   const [mode, setMode] = useState('random');
   const [beaconId, setBeacon] = useState('');
@@ -95,6 +100,7 @@ export function DroidRelay() {
   const watching = !!data.watching;
   const chooseDrop = !!transport && mode === 'aimed';
   const dropArmed = data.armedClick === 'drop';
+  const markArmed = data.armedClick === 'mark_hostile';
   const slots = Math.max(0, data.limit - data.units.length);
   const launchCount = Math.min(prepared, slots);
   const launchAdvice = !slots
@@ -112,11 +118,13 @@ export function DroidRelay() {
               : '';
   const clickAdvice = dropArmed
     ? 'Нажмите на свободную площадку в игровом окне.'
-    : data.patrolFirst
-      ? 'Выберите вторую точку патруля.'
-      : data.armedClick === 'patrol'
-        ? 'Выберите первую точку патруля.'
-        : 'Укажите цель в игровом окне.';
+    : markArmed
+      ? 'Нажмите ЛКМ по видимой цели. ПКМ отменяет выбор.'
+      : data.patrolFirst
+        ? 'Выберите вторую точку патруля.'
+        : data.armedClick === 'patrol'
+          ? 'Выберите первую точку патруля.'
+          : 'Укажите цель в игровом окне.';
 
   return (
     <Window width={420} height={496}>
@@ -142,6 +150,18 @@ export function DroidRelay() {
             </RelayButton>
           </nav>
           <div className="DroidRelay__tools">
+            <RelayButton
+              icon="industry"
+              className="DroidRelay__productionLink"
+              disabled={!data.fabricator}
+              aria-label="Производство дроидов"
+              title={
+                data.fabricator
+                  ? 'Производство дроидов'
+                  : 'Фабрикатор не подключён'
+              }
+              onClick={() => act('fabricator')}
+            />
             <RelayButton
               icon="comment"
               tone="transparent"
@@ -260,6 +280,53 @@ export function DroidRelay() {
             )}
           </Section>
 
+          <Section>
+            <div className="DroidRelay__hostileActions">
+              <RelayButton
+                tone="transparent"
+                icon={hostileListOpen ? 'chevron-down' : 'chevron-right'}
+                aria-expanded={hostileListOpen}
+                aria-controls="relay-hostile-list"
+                onClick={() => setHostileListOpen(!hostileListOpen)}
+              >
+                Враждебные цели · {data.hostileTargets.length}
+              </RelayButton>
+              <RelayButton
+                icon="flag"
+                disabled={!watching}
+                title={watching ? undefined : 'Откройте камеру дроида'}
+                aria-pressed={markArmed}
+                onClick={() => act(markArmed ? 'cancel_order' : 'mark_hostile')}
+              >
+                Отметить врага
+              </RelayButton>
+            </div>
+            <div id="relay-hostile-list" hidden={!hostileListOpen}>
+              {data.hostileTargets.length ? (
+                <ul className="DroidRelay__hostiles">
+                  {data.hostileTargets.map((target) => (
+                    <li key={target.id}>
+                      <span>{target.name}</span>
+                      <RelayButton
+                        tone="transparent"
+                        aria-label={`Снять отметку с цели ${target.name}`}
+                        onClick={() => act('unmark_hostile', { id: target.id })}
+                      >
+                        Снять
+                      </RelayButton>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>
+                  {watching
+                    ? 'Отметок нет.'
+                    : 'Откройте камеру дроида, чтобы отметить цель.'}
+                </p>
+              )}
+            </div>
+          </Section>
+
           <Section
             title={
               selected.length
@@ -350,13 +417,7 @@ export function DroidRelay() {
           <Section
             title={`Корпуса · ${data.stock.length}/${data.storageLimit}`}
           >
-            {!data.stock.length && (
-              <p>
-                {data.factory !== null
-                  ? 'Запас пуст. Напечатайте первый корпус.'
-                  : 'В реле нет готовых корпусов.'}
-              </p>
-            )}
+            {!data.stock.length && <p>В реле нет готовых корпусов.</p>}
             <div className="DroidRelay__stock">
               {data.stock.map((entry, index) => (
                 <label className="DroidRelay__stockItem" key={entry.id}>
@@ -365,30 +426,21 @@ export function DroidRelay() {
                     checked={!!entry.prepared}
                     onChange={() => act('prepare', { chassis: entry.id })}
                   />
+                  {entry.portrait && (
+                    <img
+                      alt=""
+                      src={`data:image/png;base64,${entry.portrait}`}
+                      width={24}
+                      height={24}
+                    />
+                  )}
                   <span>
-                    Корпус {index + 1}
+                    {entry.name} {index + 1}
                     {entry.guest ? ' · игрок' : ''}
                   </span>
                 </label>
               ))}
             </div>
-            {data.factory !== null && (
-              <div className="DroidRelay__row DroidRelay__row--spaced">
-                <RelayButton
-                  icon="print"
-                  disabled={
-                    data.factory < data.cost ||
-                    data.stock.length >= data.storageLimit
-                  }
-                  onClick={() => act('print')}
-                >
-                  Напечатать корпус
-                </RelayButton>
-                <span>
-                  Железо: {data.factory} лист. · {data.cost} на корпус
-                </span>
-              </div>
-            )}
           </Section>
 
           <Section title="Маршрут высадки">
