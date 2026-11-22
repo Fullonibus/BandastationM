@@ -230,7 +230,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/stationtrauma_space/bubble/maintenance/aft)
 "ia" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 10
 	},

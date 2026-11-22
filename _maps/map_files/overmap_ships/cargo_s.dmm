@@ -256,6 +256,7 @@
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/cargo_s)
 "EZ" = (
+/obj/machinery/holopad/ship,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/cargo_s/bridge)
 "Fu" = (

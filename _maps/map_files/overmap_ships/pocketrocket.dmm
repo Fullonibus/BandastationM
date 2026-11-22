@@ -25,7 +25,7 @@
 	dir = 9
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /turf/open/floor/carpet/black,
 /area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "ad" = (

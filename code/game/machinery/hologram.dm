@@ -59,6 +59,8 @@ Possible to do for anyone motivated enough:
 	var/last_request = 0
 	/// Change to change how far the AI can move away from the holopad before deactivating
 	var/holo_range = 5
+	/// Eye assigned to the caller when this pad answers a holocall.
+	var/holocall_eye_type = /mob/eye/camera/remote/holo
 	/// Array of /datum/holocalls that are calling US. this is only filled for holopads answering calls from another holopad
 	var/list/holo_calls
 	/// Currently outgoing holocall, cannot call any other holopads unless this is null.
@@ -124,7 +126,7 @@ Possible to do for anyone motivated enough:
 	. = ..()
 	var/obj/item/circuitboard/machine/holopad/board = circuit
 	board.secure = TRUE
-	board.build_path = /obj/machinery/holopad/secure
+	board.build_path = board.secure_build_path
 
 /obj/machinery/holopad/tutorial
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF

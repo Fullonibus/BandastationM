@@ -156,7 +156,7 @@
 	hologram = answering_holopad.activate_holo(user)
 	hologram.HC = src
 
-	eye = new(get_turf(answering_holopad), answering_holopad)
+	eye = new answering_holopad.holocall_eye_type(get_turf(answering_holopad), answering_holopad)
 	eye.assign_user(user)
 
 	hangup = new(eye, src)

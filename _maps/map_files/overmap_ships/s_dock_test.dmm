@@ -44,6 +44,7 @@
 /turf/open/floor/engine/hull/air,
 /area/shuttle/stationtrauma_space)
 "ai" = (
+/obj/machinery/holopad/ship,
 /obj/machinery/light/directional/south,
 /turf/open/floor/engine/hull/air,
 /area/shuttle/stationtrauma_space)

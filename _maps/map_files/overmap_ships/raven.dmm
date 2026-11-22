@@ -1170,7 +1170,7 @@
 /area/shuttle/stationtrauma_space/raven/bridge)
 "is" = (
 /obj/effect/turf_decal/raven/five,
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
