@@ -46,6 +46,18 @@
 	requires_power = FALSE
 	vacuum_by_design = TRUE
 
+/** Argos's uprated bluespace drive fits a standard single-tile engine mount. */
+/obj/machinery/power/shuttle_engine/propulsion/argos
+	name = "усиленный блюспейс-двигатель «Аргоса»"
+	desc = "Корабельный двигатель с удвоенной тягой."
+	engine_power = 2
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/argos
+
+/** Rebuilds the uprated engine when its original board is installed in a new frame. */
+/obj/item/circuitboard/machine/engine/propulsion/argos
+	name = /obj/machinery/power/shuttle_engine/propulsion/argos::name
+	build_path = /obj/machinery/power/shuttle_engine/propulsion/argos
+
 /** Argos helm board preserves the restricted console preset through rebuilding. */
 /obj/item/circuitboard/computer/stationtrauma_space_navigation/argos
 	build_path = /obj/machinery/computer/stationtrauma_space_navigation/argos

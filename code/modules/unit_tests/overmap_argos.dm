@@ -94,13 +94,23 @@
 	TEST_ASSERT_EQUAL(length(helms), 1, "The actual bridge needs one navigation console")
 	var/obj/machinery/computer/stationtrauma_space_navigation/helm = helms[1]
 	TEST_ASSERT_EQUAL(helm.vessel, ship, "Sector attachment must bind the mapped helm to Argos")
+	var/turf/seat_tile = locate(template.loaded_min_x + 2, template.loaded_min_y + 19, ship.z)
+	var/obj/structure/chair/pilot_seat = locate() in seat_tile
+	TEST_ASSERT_NOTNULL(pilot_seat, "The bridge needs its mapped pilot seat")
+	var/mob/living/carbon/human/consistent/pilot = allocate(/mob/living/carbon/human/consistent, get_step(seat_tile, SOUTH))
+	TEST_ASSERT(pilot.Move(seat_tile, NORTH), "The pilot must be able to walk from the bridge aisle onto the seat")
+	TEST_ASSERT(pilot_seat.user_buckle_mob(pilot, pilot) && pilot.Adjacent(helm), "The pilot must be able to buckle in within reach of the helm")
+	qdel(pilot)
 	TEST_ASSERT_EQUAL(length(terminals), 1, "The actual bridge needs one jump terminal")
 	var/obj/machinery/computer/stationtrauma_bluespace/terminal = terminals[1]
 	TEST_ASSERT_EQUAL(terminal.navigation(), navigation, "The mapped jump terminal must resolve its real containing hull")
 	TEST_ASSERT_EQUAL(length(ship.engine_list), 8, "Native linkup must register all eight mapped propulsion engines")
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in ship.engine_list)
+		TEST_ASSERT(istype(engine, /obj/machinery/power/shuttle_engine/propulsion/argos), "Every mapped nozzle must use the Argos bluespace drive")
 		TEST_ASSERT_EQUAL(engine.connected_ship, ship, "Each actual propulsion engine must register with Argos")
-	TEST_ASSERT(navigation.set_engines_running(TRUE) && navigation.engine_fraction() > 0, "Mapped propulsion must deliver thrust through the real engine controls")
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "The mapped Argos engines must respond to the real engine controls")
+	TEST_ASSERT(ship.hull_mass > 0, "Thrust must be measured against the loaded hull mass")
+	TEST_ASSERT_EQUAL(navigation.thrust_ratio(), 16 / ship.hull_mass, "Eight Argos nozzles must deliver sixteen units of thrust to the loaded hull")
 	navigation.set_engines_running(FALSE)
 	TEST_ASSERT_NOTNULL(navigation.jump_drive(), "The mapped charged drive must bind to the loaded hull and have power")
 	TEST_ASSERT_EQUAL(length(transponders), 1, "The actual bridge needs one transponder")
@@ -117,13 +127,14 @@
 	var/previous_output = smes.powernet.newavail
 	smes.process(1)
 	TEST_ASSERT(smes.powernet.newavail > previous_output, "The mapped SMES must actually supply its output network")
-	TEST_ASSERT_EQUAL(length(generators), 2, "Both mapped PACMAN sources must initialize")
-	for(var/obj/machinery/power/port_gen/pacman/generator as anything in generators)
-		TEST_ASSERT_EQUAL(generator.powernet, smes.terminal.powernet, "A mapped PACMAN must feed the SMES input network")
-		TEST_ASSERT(generator.anchored && generator.active && generator.HasFuel(), "The mapped PACMAN must be secured, running and have usable fuel")
-		var/previous_input = generator.powernet.newavail
-		generator.process()
-		TEST_ASSERT(generator.powernet.newavail > previous_input, "The real mapped PACMAN must supply energy to the SMES input network")
+	TEST_ASSERT_EQUAL(length(generators), 1, "Argos must load a single generator")
+	var/obj/machinery/power/port_gen/pacman/ship/generator = generators[1]
+	TEST_ASSERT(istype(generator), "Argos needs the ship plasma generator")
+	TEST_ASSERT_EQUAL(generator.powernet, smes.terminal.powernet, "The generator must feed the SMES input network")
+	TEST_ASSERT(generator.auto_mode && generator.anchored && generator.active && generator.HasFuel(), "The ship generator must start fueled and running in automatic mode")
+	var/previous_input = smes.terminal.powernet.newavail
+	generator.process(1)
+	TEST_ASSERT(smes.terminal.powernet.newavail > previous_input, "The ship generator must deliver energy to the real SMES input network")
 	for(var/area/compartment as anything in ship.shuttle_areas)
 		if(!compartment.requires_power)
 			continue

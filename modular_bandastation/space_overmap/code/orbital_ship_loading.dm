@@ -57,11 +57,17 @@
 		place_on_top = should_place_on_top,
 		new_z = TRUE,
 	)
-	if(!parsed?.bounds)
+	var/list/bounds = parsed?.bounds
+	if(!bounds)
 		discard_loaded_ship()
 		return null
+	// ChangeTurf inherits the empty level's baseturf. Restore the deck material before turf and mapping-helper initialization.
+	for(var/turf/tile as anything in block(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ], bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
+		if(tile.baseturfs == /turf/baseturf_bottom)
+			tile.baseturfs = initial(tile.baseturfs)
+		CHECK_TICK
 	require_area_resort()
-	initTemplateBounds(parsed.bounds)
+	initTemplateBounds(bounds)
 	for(var/z_level in loaded_levels)
 		smooth_zlevel(z_level)
 	log_game("Overmap ship [name] loaded on [depth] managed decks starting at [loaded_min_x],[loaded_min_y],[first_level.z_value]")
