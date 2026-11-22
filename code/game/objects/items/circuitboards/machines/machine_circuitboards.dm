@@ -531,15 +531,13 @@
 	build_path = /obj/machinery/holopad
 	req_components = list(/datum/stock_part/capacitor = 1)
 	needs_anchored = FALSE //wew lad
+	/// Model this board builds when its secure mode is enabled.
+	var/secure_build_path = /obj/machinery/holopad/secure
 	var/secure = FALSE
 
 /obj/item/circuitboard/machine/holopad/multitool_act(mob/living/user, obj/item/tool)
-	if(secure)
-		build_path = /obj/machinery/holopad
-		secure = FALSE
-	else
-		build_path = /obj/machinery/holopad/secure
-		secure = TRUE
+	secure = !secure
+	build_path = secure ? secure_build_path : initial(build_path)
 	to_chat(user, span_notice("You [secure? "en" : "dis"]able the security on [src]"))
 	return TRUE
 

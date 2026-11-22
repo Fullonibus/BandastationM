@@ -999,7 +999,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/shuttle/stationtrauma_space/argos/cabin)
 "cR" = (
-/obj/machinery/holopad/secure,
+/obj/machinery/holopad/secure/ship,
 /turf/open/floor/carpet/royalblack,
 /area/shuttle/stationtrauma_space/argos/cabin)
 "cS" = (

@@ -565,7 +565,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/stationtrauma_space/glimpse/cargo)
 "nz" = (
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /turf/open/floor/carpet/royalblue,
 /area/shuttle/stationtrauma_space/glimpse/bridge)
 "nC" = (

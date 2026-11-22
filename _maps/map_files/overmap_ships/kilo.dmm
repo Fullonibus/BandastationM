@@ -383,7 +383,7 @@
 /area/shuttle/stationtrauma_space/kilo/engineering/engine)
 "kf" = (
 /obj/item/stack/rods,
-/obj/machinery/holopad,
+/obj/machinery/holopad/ship,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},

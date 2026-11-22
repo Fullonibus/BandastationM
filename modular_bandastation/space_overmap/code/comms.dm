@@ -13,6 +13,31 @@
 		return
 	return ..()
 
+/** A shipboard projector supplies the caller's view of the compartment. */
+/obj/machinery/holopad/ship
+	desc = "Голопад со встроенной оптикой. После ответа звонящий видит отсек вокруг своей голограммы."
+	circuit = /obj/item/circuitboard/machine/holopad/ship
+	holocall_eye_type = /mob/eye/camera/remote/holo/ship
+
+/** Shipboard projector for compartments where the crew must accept incoming calls. */
+/obj/machinery/holopad/secure/ship
+	desc = "Голопад со встроенной оптикой. Экипаж должен принять вызов, прежде чем звонящий увидит отсек вокруг своей голограммы."
+	circuit = /obj/item/circuitboard/machine/holopad/ship
+	holocall_eye_type = /mob/eye/camera/remote/holo/ship
+
+/** The projector keeps its onboard optics when rebuilt in either security mode. */
+/obj/item/circuitboard/machine/holopad/ship
+	build_path = /obj/machinery/holopad/ship
+	secure_build_path = /obj/machinery/holopad/secure/ship
+
+/** View the deck from the hologram using ordinary line of sight. */
+/mob/eye/camera/remote/holo/ship
+	use_visibility = FALSE
+
+/mob/eye/camera/remote/holo/ship/update_remote_sight(mob/living/user)
+	. = ..()
+	user.set_sight(NONE)
+
 /**
  * On an overmap map a call to another level reaches only command posts in the same sector.
  *

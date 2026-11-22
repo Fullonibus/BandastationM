@@ -82,6 +82,7 @@
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/droid_relay)
 "sY" = (
+/obj/machinery/holopad/ship,
 /obj/machinery/light/directional/west{
 	brightness = 5;
 	bulb_colour = "#b8d1ff"

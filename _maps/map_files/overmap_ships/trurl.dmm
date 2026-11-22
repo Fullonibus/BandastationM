@@ -6043,7 +6043,7 @@
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/trurl/admin)
 "sj" = (
-/obj/machinery/holopad/secure,
+/obj/machinery/holopad/secure/ship,
 /obj/effect/turf_decal/tile/dark_blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/trurl/control)
@@ -8211,7 +8211,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/obj/machinery/holopad/secure,
+/obj/machinery/holopad/secure/ship,
 /turf/open/floor/wood/large,
 /area/shuttle/stationtrauma_space/trurl/cabin/soo)
 "yX" = (
@@ -10412,7 +10412,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
 	},
-/obj/machinery/holopad/secure,
+/obj/machinery/holopad/secure/ship,
 /turf/open/floor/iron/dark/diagonal,
 /area/shuttle/stationtrauma_space/trurl/conference_room)
 "Fw" = (
@@ -13916,7 +13916,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/trurl/hallway)
 "PF" = (
-/obj/machinery/holopad/secure,
+/obj/machinery/holopad/secure/ship,
 /turf/open/floor/carpet/black,
 /area/shuttle/stationtrauma_space/trurl/cabin/captain)
 "PG" = (
@@ -14240,7 +14240,7 @@
 /turf/open/floor/wood/large,
 /area/shuttle/stationtrauma_space/trurl/srt)
 "QW" = (
-/obj/machinery/holopad/secure,
+/obj/machinery/holopad/secure/ship,
 /turf/open/floor/iron/smooth,
 /area/shuttle/stationtrauma_space/trurl/briefing)
 "QX" = (
