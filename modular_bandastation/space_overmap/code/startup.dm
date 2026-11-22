@@ -55,7 +55,6 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 			if(!ship)
 				log_mapping("Failed to load expedition ship [map_path]")
 				return SS_INIT_FAILURE
-			ship.dispatchable = !!ship_config["dispatchable"]
 			if(ship_config["starts_docked"])
 				ship.starting_dock = station_id
 				ship.overmap_x = 1000

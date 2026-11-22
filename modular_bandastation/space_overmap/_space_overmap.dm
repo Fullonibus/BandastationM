@@ -7,7 +7,7 @@
 /// Percent chance that a planet ruin holds a fuel cache; planets already offer ore and supply crates.
 #define ST_FUEL_CACHE_PLANET_CHANCE 25
 /// Flight of a called ship to its station berth.
-#define ST_SPACE_DISPATCH_TIME (2 MINUTES)
+#define ST_SHUTTLE_DELIVERY_TIME (5 MINUTES)
 /// Parallax loop speed multiplier through bluespace flight.
 #define ST_SPACE_JUMP_PARALLAX_RUSH 8
 /// Reach of the star's corona from the system centre, in virtual sector units; the nearest rolled objects lie past 500.

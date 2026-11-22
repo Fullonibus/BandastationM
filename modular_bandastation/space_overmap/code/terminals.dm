@@ -5,133 +5,92 @@
 
 /datum/design/board/shuttle/stationtrauma_dispatch
 	name = "Плата терминала вызова кораблей"
-	desc = "Плата для вызова кораблей к зарегистрированному станционному причалу."
+	desc = "Плата для заказа кораблей к станционным причалам."
 	build_path = /obj/item/circuitboard/computer/stationtrauma_dispatch
 
-/** Station terminal calling an idle registered ship to its assigned berth. */
+/** Station terminal for ordering a hull to a compatible berth. */
 /obj/machinery/computer/stationtrauma_dispatch
 	name = "терминал вызова кораблей"
-	desc = "Диспетчерская связь с кораблями, обслуживающими причал."
+	desc = "Принимает заказы на корабли и показывает состояние станционных причалов."
 	icon_screen = "shuttle"
 	circuit = /obj/item/circuitboard/computer/stationtrauma_dispatch
 	req_one_access = list(ACCESS_COMMAND, ACCESS_EXPLORER)
-	/// Stable sector destination ID associated with this station berth.
+	/// Optional mapped berth shown first in the list.
 	var/site_id
 
-/** Rebuilt terminals bind to the nearest registered station berth on their own deck. */
-/obj/machinery/computer/stationtrauma_dispatch/proc/dispatch_site()
-	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-	if(site_id)
-		return sector?.sites[site_id]
-	var/datum/stationtrauma_overmap_site/space/nearest
-	var/distance = INFINITY
-	for(var/id in sector?.sites)
-		var/datum/stationtrauma_overmap_site/space/site = sector.sites[id]
-		if(!site.physical_docking || QDELETED(site.berth) || site.berth.z != z)
-			continue
-		var/range = (x - site.berth.x) ** 2 + (y - site.berth.y) ** 2
-		if(range < distance)
-			nearest = site
-			distance = range
-	return nearest
+/obj/machinery/computer/stationtrauma_dispatch/proc/can_operate(mob/user)
+	return !QDELETED(src) && !QDELETED(user) && anchored && is_operational && !panel_open && is_station_level(z) \
+		&& !istype(get_area(src), /area/shuttle) && can_interact(user) && allowed(user)
 
 /obj/machinery/computer/stationtrauma_dispatch/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	if(!can_interact(user) || !allowed(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+	if(!can_operate(user))
 		return
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "StationShuttleDispatch", name)
+		ui.open()
+
+/obj/machinery/computer/stationtrauma_dispatch/ui_status(mob/user, datum/ui_state/state)
+	if(!can_operate(user))
+		return UI_CLOSE
+	return ..()
+
+/obj/machinery/computer/stationtrauma_dispatch/ui_data(mob/user)
 	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-	var/datum/stationtrauma_overmap_site/space/site = dispatch_site()
-	if(QDELETED(site) || site.berth?.z != z)
-		return
-	// The dialog sleeps, so only IDs survive it; the ship and berth are resolved again afterwards.
-	var/requested_site_id = site.id
-	var/list/choices = list()
-	for(var/id in sector.ships)
-		var/datum/stationtrauma_overmap/space/listed = sector.ships[id]
-		if(listed.vessel.dispatchable)
-			choices["Борт [length(choices) + 1]: [listed.vessel.name]"] = id
-	if(!length(choices))
-		to_chat(user, span_notice("В системе нет кораблей, доступных для вызова."))
-		return
-	var/choice = tgui_input_list(user, "Вызвать корабль к причалу", name, choices, timeout = 30 SECONDS)
-	if(!choice || QDELETED(src) || !can_interact(user) || !allowed(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)))
-		return
-	sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-	site = dispatch_site()
-	var/datum/stationtrauma_overmap/space/map = sector ? sector.ships[choices[choice]] : null
-	if(QDELETED(map) || QDELETED(site) || site.id != requested_site_id || site.berth?.z != z)
-		return
-	if(map.docked == site)
-		to_chat(user, span_notice("Корабль уже у причала."))
-		return
-	if(!map.dispatch_to(site))
-		to_chat(user, span_warning("Корабль не может принять вызов: занят, движется или причал недоступен."))
-		return
-	to_chat(user, span_notice("Вызов принят. Ожидаемое прибытие через две минуты."))
-
-/** Check an idle callable ship and an available compatible native station berth. */
-/datum/stationtrauma_overmap/space/proc/can_dispatch(datum/stationtrauma_overmap_site/space/site)
-	// Station delivery is independent of the crew's main-engine switch.
-	if(!(is_operational() && vessel.dispatchable && knows_site(site) && !site.failed && site.physical_docking && vessel.permits_docking(site) \
-		&& !preparing && !planning && !relocating && !arrival_pending && !docked && !ship_docking && !helm_engaged && speed <= ST_NAV_STOPPED_SPEED \
-		&& (!site.docking_owner || site.docking_owner == src) && !QDELETED(site.berth)))
-		return FALSE
-	if(istype(site.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+	if(!can_operate(user) || !sector?.ready)
+		return list("available" = FALSE)
+	var/datum/bank_account/department/account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	var/list/catalog = sector.shuttle_offers()
+	var/list/offers = list()
+	for(var/offer_id in catalog)
+		var/list/offer = catalog[offer_id]
+		offers += list(list("id" = offer_id, "name" = offer["name"], "ship_class" = offer["class"] == ST_SHIP_SMALL ? "S" : "M", "price" = sector.shuttle_price(offer_id, offer)))
+	var/list/docks = list()
+	for(var/dock_id in sector.sites)
+		var/datum/stationtrauma_overmap_site/space/site = sector.sites[dock_id]
+		if(!sector.is_shuttle_order_dock(site))
+			continue
+		var/list/compatible_offers = list()
+		for(var/offer_id in catalog)
+			if(site.fits_shuttle_offer(catalog[offer_id]))
+				compatible_offers += offer_id
 		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
-		return slot.accepts(vessel) && !slot.active_berth
-	return vessel.check_dock(site.berth, TRUE)
+		var/is_standard = istype(slot)
+		var/obj/docking_port/mobile/moored = is_standard ? slot.active_berth?.get_docked() : site.berth.get_docked()
+		var/datum/stationtrauma_shuttle_order/order = site.shuttle_order
+		var/list/dock = list(
+			"id" = dock_id,
+			"name" = site.name,
+			"dock_class" = is_standard ? slot.dock_class : null,
+			"status" = site.shuttle_order_dock_status(),
+			"ship" = moored?.name || order?.offer["name"] || site.docking_owner?.vessel?.name,
+			"seconds_left" = order ? ceil(max(0, order.delivery_at - world.time) / (1 SECONDS)) : null,
+			"compatible_offers" = compatible_offers,
+		)
+		if(dock_id == site_id)
+			docks.Insert(1, list(dock))
+		else
+			docks += list(dock)
+	return list("available" = TRUE, "balance" = account?.account_balance, "delivery_seconds" = ST_SHUTTLE_DELIVERY_TIME / (1 SECONDS), "offers" = offers, "docks" = docks)
 
-/** Reserve a station berth and schedule delivery of a callable idle hull. */
-/datum/stationtrauma_overmap/space/proc/dispatch_to(datum/stationtrauma_overmap_site/space/site)
-	if(!can_dispatch(site))
+/obj/machinery/computer/stationtrauma_dispatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	if(action != "order" || !can_operate(ui.user))
 		return FALSE
-	stop("Вызов к причалу: [site.name]")
-	if(!select_site(site.id))
+	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
+	if(!sector?.ready)
 		return FALSE
-	cancel_station_docking()
-	site.docking_owner = src
-	dispatch_target = site
-	preparing = TRUE
-	dispatch_timer = addtimer(CALLBACK(src, PROC_REF(finish_dispatch), control_revision), ST_SPACE_DISPATCH_TIME, TIMER_STOPPABLE)
+	var/error = sector.order_shuttle(ui.user, params["offer_id"], params["dock_id"], params["expected_price"])
+	var/message = error || "Заказ принят. Причал зарезервирован до прибытия корабля."
+	to_chat(ui.user, error ? span_warning(message) : span_notice(message))
+	var/request_id = params["request_id"]
+	if(IS_FINITE(request_id))
+		ui.send_update(list("order_result" = list("id" = request_id, "message" = message, "failed" = !!error)))
 	return TRUE
 
-/** Cancel station delivery and release its unoccupied berth reservation. */
-/datum/stationtrauma_overmap/space/proc/cancel_dispatch()
-	if(dispatch_timer)
-		deltimer(dispatch_timer)
-		dispatch_timer = null
-	if(dispatch_target)
-		if(dispatch_target.docking_owner == src && docked != dispatch_target)
-			dispatch_target.docking_owner = null
-		dispatch_target = null
-		preparing = FALSE
-
-/** Revalidate the delivery order before docking; restore virtual position on failure. */
-/datum/stationtrauma_overmap/space/proc/finish_dispatch(revision)
-	if(!dispatch_target)
-		return FALSE
-	var/datum/stationtrauma_overmap_site/space/site = dispatch_target
-	dispatch_timer = null
-	dispatch_target = null
-	preparing = FALSE
-	if(revision != control_revision || !can_dispatch(site) || site.docking_owner != src)
-		if(!QDELETED(site) && site.docking_owner == src)
-			site.docking_owner = null
-		stop("Вызов к причалу отменён")
-		return FALSE
-	var/old_x = pos_x
-	var/old_y = pos_y
-	clear_encounters()
-	pos_x = encounter_x = site.pos_x
-	pos_y = encounter_y = site.pos_y
-	if(dock(instant = TRUE, station_authorized = TRUE))
-		return TRUE
-	if(!QDELETED(src))
-		if(!QDELETED(site) && site.docking_owner == src && docked != site)
-			site.docking_owner = null
-		pos_x = encounter_x = old_x
-		pos_y = encounter_y = old_y
-	return FALSE
 
 /** Buildable inter-sector jump terminal board. */
 /obj/item/circuitboard/computer/stationtrauma_bluespace

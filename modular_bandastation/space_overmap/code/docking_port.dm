@@ -15,8 +15,6 @@
 	var/starting_dock
 	/// Mapped starting sector ID.
 	var/overmap_sector = "epsilon_eridani"
-	/// Whether a station terminal may call this idle ship to its berth.
-	var/dispatchable = FALSE
 	/// Crew main-engine switch; propulsion requires this and intact engines.
 	var/engines_running = FALSE
 	/// Mapped fusion core powering the grid and feeding the converters; ordinary ships keep their existing propulsion model.

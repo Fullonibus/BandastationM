@@ -134,7 +134,7 @@
 /// Requests follow the selected destination, including while the vessel is approaching it.
 /datum/stationtrauma_overmap/space/proc/can_request_station_docking(datum/stationtrauma_overmap_site/space/site)
 	if(!station_clearance_required(site) || !knows_site(site) || site.failed || QDELETED(vessel) || vessel.overmap != src || sector.ships[vessel.shuttle_id] != src \
-		|| site.id != selected_destination || docked || preparing || relocating || ship_docking || jump_target || dispatch_target || !vessel.permits_docking(site))
+		|| site.id != selected_destination || docked || preparing || relocating || ship_docking || jump_target || site.shuttle_order || !vessel.permits_docking(site))
 		return FALSE
 	if(site.host && (site.host in carrier_tree()))
 		return FALSE

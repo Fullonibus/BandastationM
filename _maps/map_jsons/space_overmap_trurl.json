@@ -52,10 +52,6 @@
 		"station_id": "cyberiad",
 		"ships": [
 			{
-				"template": "_maps/map_files/overmap_ships/raven.dmm",
-				"dispatchable": true
-			},
-			{
 				"template": "_maps/map_files/overmap_ships/pocketrocket.dmm"
 			},
 			{

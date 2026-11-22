@@ -106,12 +106,19 @@
 	overmap_y = 80;
 	preferred_direction = 4
 	},
-/obj/machinery/power/shuttle_engine/propulsion/standard{
-	dir = 8
+/obj/machinery/door/airlock/external{
+	dir = 8;
+	req_access = list();
+	req_one_access = list()
 	},
-/turf/open/floor/plating/airless,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/cargo)
 "ao" = (
+/obj/structure/closet/emcloset/anchored,
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -125,7 +132,13 @@
 /obj/machinery/firealarm{
 	pixel_y = 25
 	},
-/obj/structure/closet/emcloset/anchored,
+/obj/machinery/door/airlock/maintenance{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
 "aq" = (
@@ -681,11 +694,11 @@ bi
 bi
 bi
 bi
-am
 ai
-bi
-bi
-bi
+ai
+wH
+am
+wH
 bi
 "}
 (2,1,1) = {"
@@ -696,7 +709,7 @@ bU
 aj
 aj
 wH
-tw
+nc
 wH
 KO
 "}
