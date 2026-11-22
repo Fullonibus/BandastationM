@@ -88,7 +88,8 @@
 /datum/component/tether/proc/check_tether(atom/source, new_loc)
 	SIGNAL_HANDLER
 
-	if (check_snap(is_moving = TRUE))
+	check_snap(is_moving = TRUE)
+	if (QDELETED(src))
 		return
 
 	if (!isturf(new_loc))
@@ -240,6 +241,10 @@
 
 /datum/component/tether/proc/check_snap(atom/movable/source, atom/old_loc, dir, forced, list/old_locs, is_moving = FALSE)
 	SIGNAL_HANDLER
+
+	// The beam can delete this tether before its queued movement callback runs.
+	if (QDELETED(src))
+		return
 
 	var/atom/atom_target = parent
 	// Something broke us out, snap the tether
