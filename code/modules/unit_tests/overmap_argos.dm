@@ -230,11 +230,33 @@
 	TEST_ASSERT(!gangway.busy, "The real Argos gangway must finish its arrival operation")
 	TEST_ASSERT(gangway.open_passage(), "The real Argos gangway must open using its mapped atmosphere and the station fixture atmosphere")
 	TEST_ASSERT(!gangway.ship.density && !gangway.wall.density, "Both actual Argos passage endpoints must be physically open")
-	TEST_ASSERT(navigation.depart(instant = TRUE), "The actual Argos must depart through native relocation: [navigation.status]")
+	station_area.requires_power = TRUE
+	station_area.power_environ = FALSE
+	station_area.power_change()
+	TEST_ASSERT(!wall.hasPower() && gangway.ship.hasPower(), "Only the station end of the open gangway must lose power")
+	var/obj/item/hatch_obstruction = allocate(/obj/item, get_turf(gangway.ship))
+	TEST_ASSERT(!navigation.depart(instant = TRUE), "Argos must stay docked while its hatch is blocked")
+	TEST_ASSERT(navigation.docked == dock_site && !wall.density, "A blocked ship hatch must leave the unpowered wall open")
+	qdel(hatch_obstruction)
+	RegisterSignal(wall, COMSIG_AIRLOCK_CLOSE, PROC_REF(stop_during_wall_closure))
+	var/departed = navigation.depart(instant = TRUE)
+	UnregisterSignal(wall, COMSIG_AIRLOCK_CLOSE)
+	TEST_ASSERT(!departed && navigation.docked == dock_site && wall.density, "Argos must stay moored if the departure is stopped during wall closure")
+	deadline = world.time + 5 SECONDS
+	UNTIL((!gangway.busy && !gangway.ship.density) || world.time >= deadline)
+	TEST_ASSERT(!gangway.busy && !gangway.ship.density && wall.density && !wall.hasPower(), "The cancelled departure must reopen a way back aboard while the wall remains sealed")
+	TEST_ASSERT(!gangway.open_passage() && !gangway.ship.density, "Requesting the full passage during the outage must leave the return hatch open")
+	TEST_ASSERT(navigation.depart(instant = TRUE), "Argos must depart through native relocation even when the dock wall has lost power: [navigation.status]")
+	TEST_ASSERT(wall.density && !wall.operating && !wall.hasPower(), "Departure must leave the unpowered wall closed")
 	TEST_ASSERT_EQUAL(get_turf(ship), flight_anchor, "Departure must return the actual Argos hull to its original flight anchor")
 	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "Argos must physically occupy its retained flight berth after departure")
 	TEST_ASSERT(isspaceturf(bridge), "Argos departure must retract the actual gangway back to space")
 	navigation.stop()
+
+/** Interrupt a real departure after the wall has drawn its backup power. */
+/datum/unit_test/overmap_argos/proc/stop_during_wall_closure()
+	SIGNAL_HANDLER
+	ship.overmap.stop()
 
 /** The native loader sheds work across ticks, so clear its footprint before Destroy. */
 /datum/unit_test/overmap_argos/proc/discard_test_ship()
