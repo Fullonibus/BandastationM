@@ -10,3 +10,5 @@ https://github.com/shiptest-ss13/Shiptest/tree/e7f9a983a2d65f836d5a7ff90e5780e69
 `icons/anomalies.dmi` — состояния chronograph, heartbeat, melter, phantom, plasmasoul, pulsar, sparkler, static, transfusion, veins, tesla из [icons/effects/anomalies.dmi](https://github.com/shiptest-ss13/Shiptest/blob/e7f9a983a2d65f836d5a7ff90e5780e694bf9f90/icons/effects/anomalies.dmi) без изменений пикселей.
 
 Звуки и иконки ядер — штатные TG.
+
+Новые анимированные ореолы в `icons/auras.dmi` нарисованы для BandaStation. Лицензия CC BY-SA 3.0.

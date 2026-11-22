@@ -3,6 +3,14 @@
 	"scope": "Non-audio maps, imported icons and generated previews introduced or modified by space-overmap modules. Embedded code and existing referenced assets retain their original notices.",
 	"assets": [
 		{
+			"path": "modular_bandastation/space_overmap/icons/nozzle_flame.dmi",
+			"sha256": "1c016fd528a5f6a95821ac9cb7d218cb882aa3ff628679904e73756f7b24b70a",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors"],
+			"source": null,
+			"changes": "Original animated three-stage nozzle flame based on the contributor's sketch."
+		},
+		{
 			"path": "modular_bandastation/space_overmap/icons/ship_hatch.dmi",
 			"sha256": "8cc9fea11d84f00199253b8d529ffb1bbb7324f4a5debf91f6294f817e826397",
 			"license": "CC-BY-SA-3.0",

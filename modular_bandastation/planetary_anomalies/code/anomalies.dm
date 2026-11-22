@@ -3,7 +3,7 @@
  *
  * Ten living anomalies of Shiptest (shiptest-ss13/Shiptest `code/game/objects/effects/anomalies`), moved
  * onto our TG anomaly: each pulses on its own cooldown over its reach, and the solid ones answer a touch.
- * They glow in their own colour, give off their own particles, send a ring out with each slow pulse and
+ * They glow in their own colour, send a ring out with each slow pulse and
  * drift about, never further than ANOMALY_LEASH from where they appeared. On planets they never die;
  * neutralizing one still yields its core.
  */
@@ -15,10 +15,6 @@
 	var/effect_range = 3
 	/// Time between its pulses.
 	var/pulse_delay = 5 SECONDS
-	/// Particles it gives off.
-	var/particles_type
-	/// Their colour, if not their own.
-	var/particles_color
 	/// Where it appeared; it drifts no further than ANOMALY_LEASH from here.
 	var/turf/home
 	/// Corps journal protocol, opened when it is first read off the station.
@@ -32,15 +28,18 @@
 /obj/effect/anomaly/pulsing/Initialize(mapload, new_lifespan, drops_core)
 	. = ..()
 	home = get_turf(src)
-	if(particles_type)
-		particles = new particles_type
-		if(particles_color)
-			particles.color = particles_color
+	var/aura_icon = 'modular_bandastation/planetary_anomalies/icons/auras.dmi'
+	if(!icon_exists(aura_icon, initial(icon_state)))
+		return
+	var/mutable_appearance/aura = mutable_appearance(aura_icon, initial(icon_state))
+	aura.pixel_x = -8
+	aura.pixel_y = -8
+	aura.color = light_color
+	add_overlay(aura)
 
 /obj/effect/anomaly/pulsing/Destroy()
 	home = null
 	journal_record = null
-	QDEL_NULL(particles)
 	return ..()
 
 /// Writes a fact to its protocol, opening one first; only off the station, where the corps works.
@@ -121,8 +120,6 @@
 	pulse_delay = 1 SECONDS
 	light_range = 6
 	light_color = LIGHT_COLOR_LIGHT_CYAN
-	particles_type = /particles/grav_field_float
-	particles_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/effect/anomaly/pulsing/chronograph/pulse()
 	for(var/mob/living/victim in orange(effect_range, src))
@@ -145,8 +142,6 @@
 	anomaly_core = /obj/item/assembly/signaler/anomaly/planetary/heartbeat
 	pulse_delay = 6 SECONDS
 	light_color = LIGHT_COLOR_GREEN
-	particles_type = /particles/embers
-	particles_color = LIGHT_COLOR_GREEN
 	/// Pulses since the last scorch.
 	var/beats = 0
 
@@ -183,7 +178,6 @@
 	effect_range = 2
 	pulse_delay = 10 SECONDS
 	light_color = "#7cfc00"
-	particles_type = /particles/acid
 
 /obj/effect/anomaly/pulsing/melter/pulse()
 	for(var/mob/living/carbon/victim in range(effect_range, src))
@@ -203,7 +197,6 @@
 	pulse_delay = 2 SECONDS
 	move_chance = 25
 	light_color = "#9aa0c8"
-	particles_type = /particles/echo
 
 /obj/effect/anomaly/pulsing/phantom/pulse()
 	for(var/mob/living/carbon/victim in range(effect_range, src))
@@ -226,8 +219,6 @@
 	anomaly_core = /obj/item/assembly/signaler/anomaly/planetary/plasmasoul
 	pulse_delay = 6 SECONDS
 	light_color = LIGHT_COLOR_PURPLE
-	particles_type = /particles/smoke/steam
-	particles_color = "#c070ff"
 	COOLDOWN_DECLARE(vent_cooldown)
 
 /obj/effect/anomaly/pulsing/plasmasoul/pulse()
@@ -263,8 +254,6 @@
 	effect_range = 4
 	pulse_delay = 15 SECONDS
 	light_color = LIGHT_COLOR_BLUE
-	particles_type = /particles/grav_field_up
-	particles_color = LIGHT_COLOR_BLUE
 
 /obj/effect/anomaly/pulsing/pulsar/pulse()
 	var/turf/spot = random_spot(effect_range / 2)
@@ -286,8 +275,6 @@
 	effect_range = 4
 	pulse_delay = 1 SECONDS
 	light_color = "#fff27a"
-	particles_type = /particles/embers
-	particles_color = "#fff27a"
 	COOLDOWN_DECLARE(zap_cooldown)
 
 /obj/effect/anomaly/pulsing/sparkler/pulse()
@@ -344,8 +331,6 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 	effect_range = 4
 	pulse_delay = 4 SECONDS
 	light_color = "#c8c8c8"
-	particles_type = /particles/echo
-	particles_color = "#c8c8c8"
 	verb_say = "умоляет"
 	verb_ask = "просит"
 	verb_exclaim = "кричит"
@@ -436,8 +421,6 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 	density = TRUE
 	anomaly_core = /obj/item/assembly/signaler/anomaly/planetary/transfusion
 	light_color = LIGHT_COLOR_BLOOD_MAGIC
-	particles_type = /particles/droplets
-	particles_color = LIGHT_COLOR_BLOOD_MAGIC
 	/// Blood it holds.
 	var/blood_stored = 0
 	/// Blood it can hold before it throws it up.
@@ -488,8 +471,6 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 	anomaly_core = /obj/item/assembly/signaler/anomaly/planetary/veins
 	pulse_delay = 4 SECONDS
 	light_color = "#a020f0"
-	particles_type = /particles/droplets
-	particles_color = "#8b0000"
 
 /obj/effect/anomaly/pulsing/veins/pulse()
 	for(var/mob/living/carbon/victim in range(effect_range, src))
