@@ -1,5 +1,6 @@
 /** A single known commodity keeps unrelated purchase and acceptance fixtures independent of weighted selection. */
 /obj/machinery/trade_hub_core/industrial/trade_hub_test
+	high_demand_chance = 0
 	batch_credit_target = 400
 	demand_multipliers = list("Сырьё" = 1)
 	request_types = list(/datum/trade_hub_request/industrial_iron)
@@ -14,6 +15,7 @@
 
 /** The history fixture retains production selection while isolating other groups and their active goods. */
 /obj/machinery/trade_hub_core/industrial/trade_hub_test/history
+	requests_per_group = 1
 	request_types = list(
 		/datum/trade_hub_request/industrial_iron,
 		/datum/trade_hub_request/industrial_power_tools,
@@ -23,14 +25,17 @@
 
 /** Only the commodity choice is fixed; production industrial pricing and its target remain in effect. */
 /obj/machinery/trade_hub_core/industrial/trade_hub_credit_test
+	high_demand_chance = 0
 	request_types = list(/datum/trade_hub_request/industrial_iron)
 
 /** A fixed glass selection exposes the medical profile's premium through an actual delivery. */
 /obj/machinery/trade_hub_core/medical/trade_hub_credit_test
+	high_demand_chance = 0
 	request_types = list(/datum/trade_hub_request/medical_glass)
 
 /** A fixed component selection exposes the larger corporate batch through an actual delivery. */
 /obj/machinery/trade_hub_core/corporate/trade_hub_credit_test
+	high_demand_chance = 0
 	request_types = list(/datum/trade_hub_request/corporate_bluespace_bins)
 
 /** Shared real machinery fixture; restores the economic globals even after an assertion returns. */
@@ -108,12 +113,24 @@
 	if(!(pack in original_pack_flags))
 		original_pack_flags[pack] = pack.order_flags
 
-/** Read one offer through the real terminal's server-side UI data. */
-/datum/unit_test/trade_hub/proc/find_offer(obj/machinery/computer/trade_hub/terminal, pack_id)
+/** Allocate a working terminal linked to the specified core. */
+/datum/unit_test/trade_hub/proc/create_terminal(obj/machinery/trade_hub_core/hub)
+	var/obj/machinery/computer/trade_hub/terminal = allocate(/obj/machinery/computer/trade_hub, get_step(get_turf(output_pad), NORTH))
+	terminal.hub_id = hub.hub_id
+	return terminal
+
+/** Supply the real UI action with its operator and an interactive session. */
+/datum/unit_test/trade_hub/proc/create_session(mob/user, obj/machinery/computer/trade_hub/terminal)
+	var/datum/tgui/ui = allocate(/datum/tgui, user, terminal, "TradeHub")
+	ui.status = UI_INTERACTIVE
+	return ui
+
+/** Read one catalogue entry through the terminal visible to the crew. */
+/datum/unit_test/trade_hub/proc/find_entry(obj/machinery/computer/trade_hub/terminal, entry_id, section = "offers")
 	var/list/data = terminal.ui_data(null)
-	for(var/list/offer as anything in data["offers"])
-		if(offer["id"] == "[pack_id]")
-			return offer
+	for(var/list/entry as anything in data[section])
+		if(entry["id"] == "[entry_id]")
+			return entry
 	return null
 
 /** Create an exact batch with owned stacks below their split limit, or individual real items. */
@@ -140,7 +157,14 @@
 	cargo_account.account_balance = price * 2
 	core.stock[pack_type] = 1
 
-	TEST_ASSERT(core.buy("[pack_type]"), "The last stocked unit could not be purchased.")
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
+	terminal.req_access = list()
+	var/mob/living/carbon/human/consistent/buyer = allocate(/mob/living/carbon/human/consistent)
+	var/datum/tgui/ui = create_session(buyer, terminal)
+	TEST_ASSERT(terminal.ui_act("buy", list("id" = "[pack_type]"), ui), "The purchase did not update the terminal.")
+	var/list/receipt = terminal.ui_data(buyer)["receipt"]
+	TEST_ASSERT(receipt?["success"] && receipt["action"] == "buy" && receipt["id"] == "[pack_type]", "The buyer did not receive a receipt for the selected pack.")
+	TEST_ASSERT(findtext(receipt["message"], "[price]"), "The receipt did not state the purchase price.")
 	TEST_ASSERT_EQUAL(core.stock[pack_type], 0, "Purchasing the last unit did not exhaust local stock.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, price, "The purchase did not debit exactly its quoted price.")
 	var/list/crates = list()
@@ -173,7 +197,25 @@
 	var/datum/supply_pack/pack = SSshuttle.supply_packs[pack_type]
 	var/price = pack.get_cost()
 	cargo_account.account_balance = price
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
+	var/mob/living/carbon/human/consistent/operator = allocate(/mob/living/carbon/human/consistent)
+	var/access_reason = terminal.ui_data(operator)["terminal_reason"]
+	TEST_ASSERT(access_reason, "The terminal did not explain missing cargo access.")
+	var/obj/item/card/id/advanced/card = allocate(/obj/item/card/id/advanced)
+	card.set_access(list(ACCESS_CARGO), FORCE_ADD_ALL)
+	TEST_ASSERT(operator.put_in_active_hand(card), "Could not hold the cargo ID.")
+	TEST_ASSERT_NULL(terminal.ui_data(operator)["terminal_reason"], "Presenting valid cargo access did not clear the denial.")
+	terminal.set_panel_open(TRUE)
+	var/terminal_reason = terminal.ui_data(operator)["terminal_reason"]
+	TEST_ASSERT(terminal_reason && terminal_reason != access_reason, "An open terminal reported the same problem as missing credentials.")
+	terminal.set_panel_open(FALSE)
+	input_pad.set_panel_open(TRUE)
+	var/list/pad_state = terminal.ui_data(operator)
+	TEST_ASSERT(pad_state["input_reason"] && !pad_state["output_reason"], "An unavailable input pad did not leave the output independently usable.")
+	input_pad.set_panel_open(FALSE)
 	var/obj/item/coin/blocker = allocate(/obj/item/coin, get_turf(output_pad))
+	var/obstruction_reason = terminal.ui_data(operator)["output_reason"]
+	TEST_ASSERT(obstruction_reason, "The terminal did not report the obstructed output pad.")
 	TEST_ASSERT(!core.buy("[pack_type]"), "An item on the output pad did not block purchase.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, price, "An item-blocked purchase charged cargo.")
 	TEST_ASSERT_EQUAL(core.stock[pack_type], 3, "An item-blocked purchase consumed stock.")
@@ -192,6 +234,8 @@
 	var/turf/output_tile = get_turf(output_pad)
 	output_pad.forceMove(unpowered_tile)
 	output_pad.power_change()
+	var/pad_reason = terminal.ui_data(operator)["output_reason"]
+	TEST_ASSERT(pad_reason && pad_reason != obstruction_reason, "The unpowered output pad was reported as obstructed.")
 	TEST_ASSERT(!core.buy("[pack_type]"), "An unpowered output pad issued a purchase.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, price, "An unpowered output pad charged cargo.")
 	TEST_ASSERT_EQUAL(core.stock[pack_type], 3, "An unpowered output pad consumed stock.")
@@ -199,10 +243,86 @@
 	output_pad.power_change()
 	core.forceMove(unpowered_tile)
 	core.power_change()
+	var/core_reason = terminal.ui_data(operator)["terminal_reason"]
+	TEST_ASSERT(core_reason && core_reason != terminal_reason && core_reason != access_reason, "An unpowered core did not have its own denial reason.")
 	TEST_ASSERT(!core.buy("[pack_type]"), "An unpowered core issued a purchase.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, price, "An unpowered core charged cargo.")
 	TEST_ASSERT_EQUAL(core.stock[pack_type], 3, "An unpowered core consumed stock.")
 	TEST_ASSERT_NULL(locate(/obj/structure/closet/crate) in output_tile, "A denied purchase issued a crate.")
+
+/** Two operators sharing one screen must each see the result of their own latest submission. */
+/datum/unit_test/trade_hub/terminal_receipts/Run()
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
+	terminal.req_access = list()
+	var/mob/living/carbon/human/consistent/supplier = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/consistent/colleague = allocate(/mob/living/carbon/human/consistent)
+	var/datum/tgui/supplier_ui = create_session(supplier, terminal)
+	var/datum/tgui/colleague_ui = create_session(colleague, terminal)
+	var/iron_id = "[/datum/trade_hub_request/industrial_iron]"
+	var/crate_id = "[/datum/trade_hub_request/crates]"
+	TEST_ASSERT(terminal.ui_act("accept", list("id" = iron_id), supplier_ui), "An unsuccessful delivery did not request a UI update.")
+	var/list/failure = terminal.ui_data(supplier)["receipt"]
+	TEST_ASSERT(failure && !failure["success"] && failure["message"] && failure["id"] == iron_id, "The empty delivery did not return a failure to its operator.")
+	TEST_ASSERT_NULL(terminal.ui_data(colleague)["receipt"], "An operator saw someone else's receipt.")
+	terminal.ui_act("accept", list("id" = crate_id), colleague_ui)
+	allocate(/obj/item/stack/sheet/iron, get_turf(input_pad), 1, FALSE)
+	terminal.ui_act("accept", list("id" = iron_id), supplier_ui)
+	var/list/success = terminal.ui_data(supplier)["receipt"]
+	TEST_ASSERT(success?["success"] && success["action"] == "accept" && success["id"] == iron_id, "The delivered iron did not replace the operator's failure receipt.")
+	TEST_ASSERT(success["sequence"] > failure["sequence"], "The next submission did not advance the receipt sequence.")
+	terminal.ui_close(supplier)
+	TEST_ASSERT_NULL(terminal.ui_data(supplier)["receipt"], "Closing a terminal left its last receipt visible on reopening.")
+	var/list/other_receipt = terminal.ui_data(colleague)["receipt"]
+	TEST_ASSERT_EQUAL(other_receipt?["id"], crate_id, "Another operator's submission or closure discarded the colleague's receipt.")
+
+/** A certified core handed over at the corporate terminal closes its contract and pays the quoted credits. */
+/datum/unit_test/trade_hub/contract_delivery
+	/// Remove only this test's registration from the live board even on an assertion failure.
+	var/contract_id
+
+/datum/unit_test/trade_hub/contract_delivery/Destroy()
+	if(contract_id)
+		GLOB.expedition_contracts.contracts -= contract_id
+	return ..()
+
+/datum/unit_test/trade_hub/contract_delivery/Run()
+	TEST_ASSERT_NOTNULL(cargo_account, "Cargo account was unavailable.")
+	cargo_account.account_balance = 1000
+	var/obj/machinery/trade_hub_core/corporate/hub = allocate(/obj/machinery/trade_hub_core/corporate)
+	hub.hub_id = "contract_[REF(src)]"
+	input_pad.hub_id = hub.hub_id
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(hub)
+	terminal.req_access = list()
+	var/mob/living/carbon/human/consistent/carrier = allocate(/mob/living/carbon/human/consistent)
+	var/datum/tgui/ui = create_session(carrier, terminal)
+
+	// Begin at the certified handover with a repeat customer to isolate delivery from first-contract tech unlocks.
+	var/datum/expedition_contract/containment/contract = allocate(/datum/expedition_contract/containment)
+	contract.customer = allocate(/datum/expedition_customer/tsf)
+	contract.customer.rewarded = TRUE
+	var/datum/expedition_contract_step/deliver/handover = new
+	handover.contract = contract
+	contract.steps += handover
+	contract_id = "unit_test_[REF(contract)]"
+	contract.id = contract_id
+	GLOB.expedition_contracts.contracts[contract_id] = contract
+	var/obj/structure/closet/crate/specimen/crate = allocate(/obj/structure/closet/crate/specimen, get_turf(input_pad))
+	var/obj/item/assembly/signaler/anomaly/planetary/chrono/find = allocate(/obj/item/assembly/signaler/anomaly/planetary/chrono, crate)
+	contract.bind(find, handover)
+	TEST_ASSERT(contract.accept(carrier), "The contract did not enter its delivery step.")
+	var/list/quote = find_entry(terminal, contract_id, "contracts")
+	TEST_ASSERT(quote?["credits"] > 0, "The corporate terminal did not quote a payout for the certified core.")
+
+	TEST_ASSERT(terminal.ui_act("deliver_contract", list("id" = contract_id), ui), "The contract action did not update the terminal.")
+	var/list/receipt = terminal.ui_data(carrier)["receipt"]
+	TEST_ASSERT(receipt?["success"] && receipt["action"] == "deliver_contract" && receipt["id"] == contract_id, "The carrier did not receive the completed contract's receipt.")
+	TEST_ASSERT(QDELETED(find), "The paid contract left the certified find inside the crate.")
+	TEST_ASSERT_NULL(find_entry(terminal, contract_id, "contracts"), "The fulfilled contract was still listed for handover.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, 1000 + quote["credits"], "The corporate delivery did not credit the quoted reward.")
+	terminal.ui_act("deliver_contract", list("id" = contract_id), ui)
+	receipt = terminal.ui_data(carrier)["receipt"]
+	TEST_ASSERT(!receipt["success"], "Submitting the completed contract produced another success receipt.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, 1000 + quote["credits"], "A repeated contract delivery paid twice.")
 
 /** Acceptance pays only for the current batch, preserving excess, wrong goods and a closed crate's contents. */
 /datum/unit_test/trade_hub/accept_exact_goods
@@ -267,6 +387,9 @@
 	var/deadline = world.time + request.restock_delay + 2 SECONDS
 	UNTIL(world.time >= deadline)
 	TEST_ASSERT_EQUAL(core.stock[/datum/supply_pack/engineering/tools], 8, "The timer replenished an unpowered core.")
+	var/list/quote = find_entry(create_terminal(core), request_type, "requests")
+	TEST_ASSERT(quote?["restock_pending"] && quote["waiting_for_power"], "The terminal did not show a due replenishment waiting for power.")
+	TEST_ASSERT_EQUAL(quote["ready_in"], 0, "An overdue replenishment displayed a continuing countdown.")
 	core.forceMove(core_tile)
 	core.power_change()
 	deadline = world.time + 5 SECONDS
@@ -327,7 +450,8 @@
 			corporate = hub
 		var/list/request_groups = list()
 		var/list/request_items = list()
-		for(var/request_type in hub.requests)
+		TEST_ASSERT_NOTNULL(hub.requests[/datum/trade_hub_request/crates], "[hub.type] did not offer standing crate returns.")
+		for(var/request_type in hub.requests - /datum/trade_hub_request/crates)
 			var/datum/trade_hub_request/request = hub.requests[request_type]
 			request_groups[request.group] = (request_groups[request.group] || 0) + 1
 			TEST_ASSERT(request_groups[request.group] <= hub.requests_per_group, "[hub.type] exceeded its active demand limit for [request.group].")
@@ -428,16 +552,15 @@
 	remember_pack_flags(pack)
 	pack.order_flags &= ~ORDER_SPECIAL_ENABLED
 	core.ensure_catalog()
-	var/obj/machinery/computer/trade_hub/terminal = allocate(/obj/machinery/computer/trade_hub, get_step(get_turf(output_pad), NORTH))
-	terminal.hub_id = core.hub_id
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
 	var/price = pack.get_cost()
 	cargo_account.account_balance = price * 3
 	var/stock_before = core.stock[pack.id]
-	TEST_ASSERT_NULL(find_offer(terminal, pack.id), "A locked SPECIAL pack was displayed.")
+	TEST_ASSERT_NULL(find_entry(terminal, pack.id), "A locked SPECIAL pack was displayed.")
 	TEST_ASSERT(!core.buy("[pack.id]"), "A hostile direct ID purchased a locked SPECIAL pack.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, price * 3, "A locked SPECIAL purchase changed the balance.")
 	pack.order_flags |= ORDER_SPECIAL_ENABLED
-	TEST_ASSERT_NOTNULL(find_offer(terminal, pack.id), "A late SPECIAL unlock was absent from terminal offers.")
+	TEST_ASSERT_NOTNULL(find_entry(terminal, pack.id), "A late SPECIAL unlock was absent from terminal offers.")
 	TEST_ASSERT(core.buy("[pack.id]"), "A late SPECIAL unlock remained unavailable for purchase.")
 	TEST_ASSERT_EQUAL(core.stock[pack.id], stock_before - 1, "The late unlock purchase did not consume its seeded stock.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, price * 2, "The late unlock purchase did not charge once.")
@@ -445,14 +568,14 @@
 	TEST_ASSERT_NOTNULL(crate, "The unlocked SPECIAL pack did not produce a crate.")
 	crate.forceMove(get_step(get_turf(output_pad), SOUTH))
 	pack.order_flags &= ~ORDER_SPECIAL_ENABLED
-	TEST_ASSERT_NULL(find_offer(terminal, pack.id), "A disabled SPECIAL pack remained displayed.")
+	TEST_ASSERT_NULL(find_entry(terminal, pack.id), "A disabled SPECIAL pack remained displayed.")
 	TEST_ASSERT(!core.buy("[pack.id]"), "A direct ID bypassed a SPECIAL pack's later relock.")
 	TEST_ASSERT_EQUAL(core.stock[pack.id], stock_before - 1, "Relocking or reading the catalogue recreated local stock.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, price * 2, "A later relocked purchase changed the balance.")
 	// The same still-stocked offer must also reject each unsupported flag at the real purchase boundary.
 	for(var/forbidden_flag in list(ORDER_INVISIBLE, ORDER_EMAG_ONLY, ORDER_CONTRABAND, ORDER_GOODY, ORDER_POD_ONLY, ORDER_ADMIN_SPAWNED))
 		pack.order_flags = ORDER_SPECIAL | ORDER_SPECIAL_ENABLED | forbidden_flag
-		TEST_ASSERT_NULL(find_offer(terminal, pack.id), "An unsupported flag [forbidden_flag] remained visible.")
+		TEST_ASSERT_NULL(find_entry(terminal, pack.id), "An unsupported flag [forbidden_flag] remained visible.")
 		TEST_ASSERT(!core.buy("[pack.id]"), "A direct ID bypassed unsupported flag [forbidden_flag].")
 		TEST_ASSERT_EQUAL(core.stock[pack.id], stock_before - 1, "Unsupported flag [forbidden_flag] consumed stock.")
 		TEST_ASSERT_EQUAL(cargo_account.account_balance, price * 2, "Unsupported flag [forbidden_flag] charged cargo.")
@@ -486,13 +609,8 @@
 	var/obj/item/stack/sheet/iron/next_batch = allocate(/obj/item/stack/sheet/iron, get_turf(input_pad), 20, FALSE)
 	TEST_ASSERT(!core.accept("[request_type]"), "The exhausted request accepted goods during its renewal cooldown.")
 	TEST_ASSERT_EQUAL(next_batch.amount, 20, "The cooldown consumed goods before demand renewed.")
-	var/obj/machinery/computer/trade_hub/terminal = allocate(/obj/machinery/computer/trade_hub, get_step(get_turf(output_pad), NORTH))
-	terminal.hub_id = core.hub_id
-	var/list/data = terminal.ui_data(null)
-	var/list/request_data
-	for(var/list/entry as anything in data["requests"])
-		if(entry["id"] == "[request_type]")
-			request_data = entry
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
+	var/list/request_data = find_entry(terminal, request_type, "requests")
 	TEST_ASSERT_NOTNULL(request_data, "The exhausted request disappeared from the terminal.")
 	TEST_ASSERT(request_data["renew_in"] > 0, "The terminal did not expose the renewal cooldown.")
 	var/deadline = world.time + request.renewal_delay + 5 SECONDS
@@ -512,6 +630,65 @@
 	TEST_ASSERT(core.accept("[replacement.type]"), "The replacement demand did not accept its real commodity.")
 	TEST_ASSERT_EQUAL(replacement.remaining, 2, "The first batch did not consume the replacement's fresh quota.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, 2550, "The replacement batch was not paid exactly once.")
+
+/** The terminal and the cargo account must quote and pay the same premium over this hub's ordinary price. */
+/datum/unit_test/trade_hub/high_demand/Run()
+	TEST_ASSERT_NOTNULL(cargo_account, "Cargo account was unavailable.")
+	cargo_account.account_balance = 1000
+	var/obj/machinery/trade_hub_core/industrial/trade_hub_credit_test/hub = allocate(/obj/machinery/trade_hub_core/industrial/trade_hub_credit_test)
+	hub.hub_id = "premium_[REF(src)]"
+	input_pad.hub_id = hub.hub_id
+	var/request_type = /datum/trade_hub_request/industrial_iron
+	var/datum/trade_hub_request/ordinary = hub.requests[request_type]
+	var/ordinary_price = ordinary.unit_reward
+	TEST_ASSERT(!ordinary.high_demand, "The ordinary industrial quote was marked as high demand.")
+	hub.high_demand_chance = 100
+	var/datum/trade_hub_request/premium = hub.replace_request(ordinary.group, ordinary)
+	TEST_ASSERT_NOTNULL(premium, "Rotation did not produce the new iron quote.")
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(hub)
+	var/list/quote = find_entry(terminal, request_type, "requests")
+	TEST_ASSERT_NOTNULL(quote, "The premium quote was missing from the terminal.")
+	TEST_ASSERT(quote["highDemand"], "The terminal did not identify the high-demand quote.")
+	TEST_ASSERT_EQUAL(quote["regular_unit_reward"], ordinary_price, "The comparison price did not include this hub's category multiplier.")
+	TEST_ASSERT_EQUAL(quote["unit_reward"], ordinary_price * 1.5, "The quoted price did not include exactly the high-demand bonus.")
+	allocate(/obj/item/stack/sheet/iron, get_turf(input_pad), 2, FALSE)
+	TEST_ASSERT(hub.accept("[request_type]"), "The high-demand request rejected a partial iron delivery.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, 1000 + 2 * quote["unit_reward"], "Cargo was not paid the premium quoted for both sheets.")
+
+/** Returning opened empty crates pays immediately on every delivery without replenishing stock. */
+/datum/unit_test/trade_hub/standing_crate_returns/Run()
+	TEST_ASSERT_NOTNULL(cargo_account, "Cargo account was unavailable.")
+	cargo_account.account_balance = 1000
+	var/request_type = /datum/trade_hub_request/crates
+	var/datum/trade_hub_request/request = core.requests[request_type]
+	TEST_ASSERT_NOTNULL(request, "The terminal had no standing request for empty crates.")
+	var/turf/input_tile = get_turf(input_pad)
+	var/obj/structure/closet/crate/crate = allocate(/obj/structure/closet/crate, input_tile)
+	TEST_ASSERT(!core.accept("[request_type]"), "A closed crate was accepted before its contents could be inspected.")
+	crate.open(force = TRUE, special_effects = FALSE)
+	var/obj/item/coin/contents = allocate(/obj/item/coin, crate)
+	TEST_ASSERT(!core.accept("[request_type]"), "An open crate containing cargo was accepted.")
+	TEST_ASSERT_EQUAL(contents.loc, crate, "A rejected crate lost its contents.")
+	contents.forceMove(get_turf(output_pad))
+	TEST_ASSERT(core.accept("[request_type]"), "The hub rejected the emptied crate.")
+	TEST_ASSERT(QDELETED(crate), "The hub paid for an empty crate without consuming it.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, 1000 + CARGO_CRATE_VALUE / 5, "Returning one crate did not pay its recycling price.")
+	TEST_ASSERT(!core.accept("[request_type]"), "Submitting an empty pad claimed the crate payment twice.")
+
+	var/obj/structure/closet/crate/second = allocate(/obj/structure/closet/crate, input_tile)
+	second.open(force = TRUE, special_effects = FALSE)
+	second.set_anchored(TRUE)
+	TEST_ASSERT(!core.accept("[request_type]"), "An anchored crate was accepted.")
+	second.set_anchored(FALSE)
+	second.flags_1 |= HOLOGRAM_1
+	TEST_ASSERT(!core.accept("[request_type]"), "A holographic crate was accepted.")
+	second.flags_1 &= ~HOLOGRAM_1
+	TEST_ASSERT(core.accept("[request_type]"), "Returning one crate prevented an immediate second delivery.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, 1000 + 2 * (CARGO_CRATE_VALUE / 5), "The hub did not pay for exactly two empty crates.")
+	TEST_ASSERT_EQUAL(core.requests[request_type], request, "Returning crates replaced the standing request.")
+	TEST_ASSERT_NULL(request.remaining, "Returning crates created a finite demand quota.")
+	TEST_ASSERT_NULL(request.restock_timer, "Returning crates scheduled an inventory replenishment.")
+	TEST_ASSERT_EQUAL(core.stock[/datum/supply_pack/engineering/tools], 3, "Returning crates replenished local stock.")
 
 /** Different profile prices must change quantities while real batches pay approximately their target credits. */
 /datum/unit_test/trade_hub/batch_credit_targets
@@ -535,7 +712,7 @@
 	for(var/obj/machinery/trade_hub_core/hub as anything in targets)
 		hub.hub_id = "credits_[REF(hub)]"
 		input_pad.hub_id = hub.hub_id
-		var/request_type = hub.requests[1]
+		var/request_type = hub.request_types[1]
 		var/datum/trade_hub_request/request = hub.requests[request_type]
 		TEST_ASSERT_NOTNULL(request, "The credit-target supplier had no selected demand.")
 		var/balance_before = cargo_account.account_balance
@@ -553,7 +730,8 @@
 /datum/unit_test/trade_hub/rotation_history/Run()
 	TEST_ASSERT_NOTNULL(cargo_account, "Cargo account was unavailable.")
 	var/obj/machinery/trade_hub_core/industrial/trade_hub_test/history/hub = allocate(/obj/machinery/trade_hub_core/industrial/trade_hub_test/history)
-	var/request_type = hub.requests[1]
+	var/list/quotas = hub.requests - /datum/trade_hub_request/crates
+	var/request_type = quotas[1]
 	var/datum/trade_hub_request/request = hub.requests[request_type]
 	TEST_ASSERT_NOTNULL(request, "The history fixture had no initial demand.")
 	var/list/recent_types = list(request.type)
@@ -566,7 +744,7 @@
 		TEST_ASSERT(QDELETED(previous), "Replacing a demand retained its old owned datum.")
 		TEST_ASSERT(request.item_type != previous_item_type, "Rotation immediately repeated the same commodity.")
 		TEST_ASSERT(!(request.type in recent_types), "Rotation repeated one of the last two choices despite fresh alternatives.")
-		TEST_ASSERT_EQUAL(length(hub.requests), 1, "Rotation accumulated multiple active demands for one group.")
+		TEST_ASSERT_EQUAL(length(hub.requests), 2, "Rotation changed the number of requests beside standing crate returns.")
 		recent_types += request.type
 		if(length(recent_types) > 2)
 			recent_types.Cut(1, 2)
@@ -580,30 +758,33 @@
 	TEST_ASSERT_NOTNULL(cargo_account, "Cargo account was unavailable.")
 	cargo_account.account_balance = 1000
 	var/obj/machinery/trade_hub_core/medical/medical = allocate(/obj/machinery/trade_hub_core/medical)
-	TEST_ASSERT_EQUAL(length(medical.requests), 4, "The two-group medical hub did not open two quotas per group.")
+	var/list/medical_quotas = medical.requests - /datum/trade_hub_request/crates
+	TEST_ASSERT_EQUAL(length(medical_quotas), 6, "The two-group medical hub did not open three quotas per group.")
 	var/list/medical_groups = list()
 	var/list/medical_items = list()
-	for(var/request_type in medical.requests)
+	for(var/request_type in medical_quotas)
 		var/datum/trade_hub_request/request = medical.requests[request_type]
 		medical_groups[request.group] = (medical_groups[request.group] || 0) + 1
 		TEST_ASSERT(!(request.item_type in medical_items), "The medical hub opened duplicate simultaneous commodities.")
 		medical_items[request.item_type] = TRUE
-	TEST_ASSERT_EQUAL(medical_groups["Медоборудование"], 2, "The medical equipment group did not have two independent quotas.")
-	TEST_ASSERT_EQUAL(medical_groups["Медикаменты"], 2, "The medication group did not have two independent quotas.")
+	TEST_ASSERT_EQUAL(medical_groups["Медоборудование"], 3, "The medical equipment group did not have three independent quotas.")
+	TEST_ASSERT_EQUAL(medical_groups["Медикаменты"], 3, "The medication group did not have three independent quotas.")
 	var/obj/machinery/trade_hub_core/service/hub = allocate(/obj/machinery/trade_hub_core/service)
 	hub.hub_id = "parallel_[REF(src)]"
 	input_pad.hub_id = hub.hub_id
 	hub.ensure_catalog()
-	TEST_ASSERT_EQUAL(length(hub.requests), 3, "The one-group service hub did not open three independent quotas.")
-	var/partial_type = hub.requests[1]
-	var/untouched_type = hub.requests[2]
-	var/rotating_type = hub.requests[3]
+	var/list/quotas = hub.requests - /datum/trade_hub_request/crates
+	TEST_ASSERT_EQUAL(length(quotas), 4, "The one-group service hub did not open four independent quotas.")
+	var/partial_type = quotas[1]
+	var/untouched_type = quotas[2]
+	var/rotating_type = quotas[3]
+	var/list/siblings = quotas - rotating_type
 	var/datum/trade_hub_request/partial = hub.requests[partial_type]
 	var/datum/trade_hub_request/untouched = hub.requests[untouched_type]
 	var/datum/trade_hub_request/rotating = hub.requests[rotating_type]
 	TEST_ASSERT(partial.item_type != untouched.item_type && partial.item_type != rotating.item_type && untouched.item_type != rotating.item_type, "The service hub opened duplicate simultaneous commodities.")
 	TEST_ASSERT_NULL(hub.replace_request(partial.group), "Creating another quota bypassed the per-group limit.")
-	TEST_ASSERT_EQUAL(length(hub.requests), 3, "A rejected fourth quota changed the active request count.")
+	TEST_ASSERT_EQUAL(length(hub.requests), 5, "Rejecting an extra quota changed the number of requests.")
 	TEST_ASSERT(partial.batch_size > 1, "The service fixture could not offer an incomplete batch.")
 	var/partial_remaining = partial.remaining - 1
 	var/untouched_remaining = untouched.remaining
@@ -639,19 +820,18 @@
 		deadline = expired.renew_at + 5 SECONDS
 		UNTIL(QDELETED(expired) || world.time >= deadline)
 		TEST_ASSERT(QDELETED(expired), "The exhausted parallel quota did not rotate through its real timer.")
-		TEST_ASSERT_EQUAL(length(hub.requests), 3, "Rotating one slot changed the number of parallel quotas.")
+		TEST_ASSERT_EQUAL(length(hub.requests), 5, "Rotating one slot changed the number of requests.")
 		TEST_ASSERT_NULL(hub.requests[expired_type], "An expired parallel request remained addressable.")
-		rotating = null
-		for(var/request_type in hub.requests)
-			var/datum/trade_hub_request/candidate = hub.requests[request_type]
-			if(candidate != partial && candidate != untouched)
-				rotating = candidate
-		TEST_ASSERT_NOTNULL(rotating, "Rotating a quota failed to install its independent replacement.")
-		TEST_ASSERT(rotating.item_type != expired_item && rotating.item_type != partial.item_type && rotating.item_type != untouched.item_type, "Rotation reused the expired or another active commodity.")
+		var/list/replacements = hub.requests - siblings - /datum/trade_hub_request/crates
+		TEST_ASSERT_EQUAL(length(replacements), 1, "Rotation did not install exactly one independent replacement.")
+		rotating = hub.requests[replacements[1]]
+		TEST_ASSERT(rotating.item_type != expired_item, "Rotation reused the expired commodity.")
+		for(var/sibling_type in siblings)
+			var/datum/trade_hub_request/sibling = siblings[sibling_type]
+			TEST_ASSERT_EQUAL(hub.requests[sibling_type], sibling, "Rotation replaced another active request.")
+			TEST_ASSERT(rotating.item_type != sibling.item_type, "Rotation reused another active commodity.")
 		if(rotation == 2)
-			TEST_ASSERT_EQUAL(rotating.item_type, first_expired_item, "History fallback did not choose the sole unused commodity from the four-item pool.")
-		TEST_ASSERT_EQUAL(hub.requests[partial_type], partial, "Rotating a quota overwrote the partially supplied sibling.")
-		TEST_ASSERT_EQUAL(hub.requests[untouched_type], untouched, "Rotating a quota overwrote the untouched sibling.")
+			TEST_ASSERT_EQUAL(rotating.item_type, first_expired_item, "History fallback did not choose the sole unused commodity from the five-item pool.")
 		TEST_ASSERT_EQUAL(partial.delivered, 1, "Rotation reset or advanced another quota's partial progress.")
 		TEST_ASSERT_EQUAL(partial.remaining, partial_remaining, "Rotation changed another quota's remaining demand.")
 		TEST_ASSERT_EQUAL(partial.ready_at, 0, "Rotation scheduled a sibling's incomplete batch.")
@@ -691,6 +871,9 @@
 	deadline = request.renew_at + 1 SECONDS
 	UNTIL(world.time >= deadline)
 	TEST_ASSERT_EQUAL(core.requests[request_type], request, "An unpowered core rotated its expired demand.")
+	var/list/quote = find_entry(create_terminal(core), request_type, "requests")
+	TEST_ASSERT(quote?["renewal_pending"] && quote["waiting_for_power"], "The terminal did not show a due rotation waiting for power.")
+	TEST_ASSERT_EQUAL(quote["renew_in"], 0, "An overdue rotation displayed a continuing countdown.")
 	TEST_ASSERT_EQUAL(core.stock[/datum/supply_pack/engineering/tools], 2, "The final batch did not replenish exactly once before rotation.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, 1400, "Waiting without power changed the delivery payment.")
 	core.forceMove(core_tile)

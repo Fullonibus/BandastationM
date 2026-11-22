@@ -40,7 +40,7 @@
 		return "Контракт не ожидает сдачи."
 	var/obj/machinery/trade_hub_pad/pad = core.get_pad(/obj/machinery/trade_hub_pad/input)
 	if(!pad)
-		return "Площадка приёма недоступна."
+		return core.get_input_reason()
 	for(var/obj/structure/closet/crate/crate in get_turf(pad))
 		if(crate.opened)
 			continue
@@ -54,7 +54,6 @@
 			// The order closes and lets go of the find before it leaves, so its loss does not roll the order back.
 			steps[current].add_progress(core)
 			qdel(find)
-			core.status = "Контракт [customer.name] принят: [name]. Начислено [paid] кредитов."
 			playsound(core, 'sound/machines/ping.ogg', 40, TRUE)
 			return null
 	return "На площадке нет закрытого ящика с находкой по этому контракту."
@@ -82,15 +81,22 @@
 	. = ..()
 	if(. || action != "deliver_contract")
 		return
-	if(!is_operational || panel_open || !allowed(usr) || !can_interact(usr))
-		return FALSE
+	var/mob/user = ui.user
+	var/id = istext(params["id"]) ? params["id"] : null
 	var/obj/machinery/trade_hub_core/corporate/core = get_core()
-	var/datum/expedition_contract/contract = istext(params["id"]) && GLOB.expedition_contracts.contracts[params["id"]]
-	if(!istype(core) || !core.is_operational || core.panel_open || core.busy || !contract)
-		return FALSE
+	var/reason = get_trade_reason(user, core)
+	if(reason || !can_interact(user))
+		return transaction_result(user, action, id, FALSE, reason || "Не удаётся воспользоваться терминалом.")
+	if(!istype(core))
+		return transaction_result(user, action, id, FALSE, "Контракты принимает только корпоративный узел.")
+	var/datum/expedition_contract/contract = id ? GLOB.expedition_contracts.contracts[id] : null
+	if(!contract)
+		return transaction_result(user, action, id, FALSE, "Контракт не найден.")
+	if(contract.credits() > 0 && !SSeconomy.get_dep_account(ACCOUNT_CAR))
+		return transaction_result(user, action, id, FALSE, "Счёт карго недоступен.")
 	core.busy = TRUE
-	var/failure = contract.deliver_at(core, usr)
+	var/failure = contract.deliver_at(core, user)
 	core.busy = FALSE
 	if(failure)
-		core.status = failure
-	return TRUE
+		return transaction_result(user, action, id, FALSE, failure)
+	return transaction_result(user, action, id, TRUE, "Контракт [contract.customer.name] принят: [contract.name]. Начислено [contract.credits()] кредитов.")

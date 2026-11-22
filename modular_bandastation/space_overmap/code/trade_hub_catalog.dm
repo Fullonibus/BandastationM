@@ -1,19 +1,25 @@
-/** Renewable local demand. One completed batch schedules one group-specific replenishment. */
+/** Local demand and the price paid for each delivered unit. */
 /datum/trade_hub_request
 	/// Terminal description of the accepted commodity.
 	var/name
-	/// Only real items of this type may be consumed.
+	/// Type of goods accepted from the input pad.
 	var/item_type
 	/// First-frame item preview generated once without instantiating the requested goods.
 	var/icon_base64
 	/// Commodity units calculated from this hub's credit target.
 	var/batch_size
-	/// Complete batches accepted before this request enters its renewal cooldown; prototype balance value.
+	/// Number of batches in a rotating quota. Zero means the request is permanent and has no batches.
 	var/batches_per_quota = 3
-	/// Credits paid per accepted unit after the hub's category multiplier.
+	/// Final credits paid per accepted unit throughout this request.
 	var/unit_reward = 20
 	/// Unmodified unit price stored before applying the hub's category multiplier.
 	var/base_unit_reward
+	/// Ordinary unit price at this hub, before any high-demand premium.
+	var/regular_unit_reward
+	/// Whether the hub pays a premium for this quota.
+	var/high_demand = FALSE
+	/// Nominal high-demand premium, before rounding the price to a whole credit.
+	var/const/premium_percent = 50
 	/// Category used for independent price and selection-frequency modifiers.
 	var/category = "Оборудование"
 	/// Relative selection weight within the replenishment group's pool.
@@ -28,7 +34,7 @@
 	var/restock_delay = 30 SECONDS
 	/// Delay after the exhausted quota's final replenishment before a fresh quota; prototype balance value.
 	var/renewal_delay = 2 MINUTES
-	/// Units still accepted in the current quota, including the current partial batch.
+	/// Units still accepted in the current quota. Null for a permanent request.
 	var/remaining
 	/// Units accepted for the current batch.
 	var/delivered = 0
@@ -41,16 +47,21 @@
 	/// Cancellable renewal callback owned by this request.
 	var/renewal_timer
 
-/** Freeze this quota's price and choose the nearest whole-item batch to its credit target. */
-/datum/trade_hub_request/New(target_credits = 1000, multiplier = 1)
+/** Price a new request using the ordinary local rate to determine the size of a rotating batch. */
+/datum/trade_hub_request/New(target_credits = 1000, multiplier = 1, is_high_demand = FALSE)
 	. = ..()
 	base_unit_reward = unit_reward
 	price_multiplier = multiplier
-	unit_reward = max(1, round(base_unit_reward * multiplier + 0.5))
-	batch_size = max(1, round(target_credits / unit_reward + 0.5))
-	remaining = batch_size * batches_per_quota
-	if(ispath(item_type, /obj/item))
-		var/obj/item/display = item_type
+	regular_unit_reward = max(1, round(base_unit_reward * multiplier + 0.5))
+	unit_reward = regular_unit_reward
+	if(batches_per_quota)
+		high_demand = is_high_demand
+		if(high_demand)
+			unit_reward = round(regular_unit_reward * (1 + premium_percent / 100) + 0.5)
+		batch_size = max(1, round(target_credits / regular_unit_reward + 0.5))
+		remaining = batch_size * batches_per_quota
+	if(ispath(item_type, /obj))
+		var/obj/display = item_type
 		icon_base64 = icon2base64(icon(initial(display.icon), icon_state = initial(display.icon_state), frame = 1))
 
 /datum/trade_hub_request/Destroy()
@@ -61,6 +72,15 @@
 		deltimer(renewal_timer)
 		renewal_timer = null
 	return ..()
+
+/** Every hub continuously buys back empty freight crates. */
+/datum/trade_hub_request/crates
+	name = "Пустые грузовые ящики"
+	item_type = /obj/structure/closet/crate
+	unit_reward = CARGO_CRATE_VALUE / 5
+	category = "Тара"
+	batches_per_quota = 0
+	restock_amount = 0
 
 /** Industrial iron shipments replenish tools. */
 /datum/trade_hub_request/industrial_iron
@@ -198,6 +218,30 @@
 	selection_weight = 0.5
 	group = "Корпоративные проекты"
 	restock_amount = 1
+
+/** Solid plasma sheets supply industrial cutting tools. */
+/datum/trade_hub_request/industrial_plasma
+	name = "Листы плазмы"
+	item_type = /obj/item/stack/sheet/mineral/plasma
+	unit_reward = 40
+	category = "Сырьё"
+	group = "Инструменты"
+
+/** Refined gold supplies electrical contacts. */
+/datum/trade_hub_request/industrial_gold
+	name = "Золотые слитки"
+	item_type = /obj/item/stack/sheet/mineral/gold
+	unit_reward = 60
+	category = "Сырьё"
+	group = "Электроника"
+
+/** Uranium sheets support emergency supply production. */
+/datum/trade_hub_request/industrial_uranium
+	name = "Урановые листы"
+	item_type = /obj/item/stack/sheet/mineral/uranium
+	unit_reward = 60
+	category = "Сырьё"
+	group = "Аварийное снабжение"
 
 /** Industrial silver stocks support toolmaking. */
 /datum/trade_hub_request/industrial_silver
@@ -498,6 +542,14 @@
 	category = "Продукция"
 	group = "Сервисное снабжение"
 
+/** Baked muffins replenish service supplies. */
+/datum/trade_hub_request/service_muffins
+	name = "Маффины"
+	item_type = /obj/item/food/muffin
+	unit_reward = 60
+	category = "Продукция"
+	group = "Сервисное снабжение"
+
 /** Researched AI electronics support corporate projects. */
 /datum/trade_hub_request/corporate_ai_boards
 	name = "Платы ядра ИИ"
@@ -544,14 +596,17 @@
 	groups = list(/datum/supply_pack/engineering/tools = "Инструменты", /datum/supply_pack/engineering/power = "Электроника")
 	request_types = list(
 		/datum/trade_hub_request/industrial_iron,
+		/datum/trade_hub_request/industrial_plasma,
 		/datum/trade_hub_request/industrial_silver,
 		/datum/trade_hub_request/industrial_plasteel,
 		/datum/trade_hub_request/industrial_power_tools,
 		/datum/trade_hub_request/industrial_glass,
+		/datum/trade_hub_request/industrial_gold,
 		/datum/trade_hub_request/industrial_cable,
 		/datum/trade_hub_request/industrial_smes_boards,
 		/datum/trade_hub_request/industrial_multitools,
 		/datum/trade_hub_request/industrial_extra,
+		/datum/trade_hub_request/industrial_uranium,
 		/datum/trade_hub_request/industrial_reinforced_glass,
 		/datum/trade_hub_request/industrial_titanium,
 		/datum/trade_hub_request/industrial_power_drills,
@@ -561,7 +616,7 @@
 /obj/machinery/trade_hub_core/medical
 	name = "Медицинский торговый узел"
 	specialization = "Медицина"
-	requests_per_group = 2
+	requests_per_group = 3
 	demand_multipliers = list("Сырьё" = 3, "Продукция" = 1.5)
 	demand_weights = list("Сырьё" = 0.1)
 	catalogue_groups = list("Medical" = "Медоборудование")
@@ -606,7 +661,7 @@
 /obj/machinery/trade_hub_core/research
 	name = "Научный торговый узел"
 	specialization = "Наука и экспедиции"
-	requests_per_group = 2
+	requests_per_group = 3
 	demand_multipliers = list("Компоненты" = 1.25, "Оборудование" = 1.1)
 	demand_weights = list("Компоненты" = 2)
 	default_stock = 2
@@ -626,7 +681,7 @@
 /obj/machinery/trade_hub_core/security
 	name = "Охранный торговый узел"
 	specialization = "Служба безопасности"
-	requests_per_group = 2
+	requests_per_group = 3
 	demand_multipliers = list("Компоненты" = 1.1, "Оборудование" = 1.2)
 	default_stock = 2
 	catalogue_groups = list("Security" = "Снаряжение охраны", "Armory" = "Оружейные поставки", "Requisitions" = "Оружейные поставки")
@@ -645,7 +700,7 @@
 /obj/machinery/trade_hub_core/service
 	name = "Сервисный торговый узел"
 	specialization = "Сервис и снабжение"
-	requests_per_group = 3
+	requests_per_group = 4
 	demand_multipliers = list("Продукция" = 1.1)
 	catalogue_groups = list(
 		"Service" = "Сервисное снабжение",
@@ -659,13 +714,14 @@
 		/datum/trade_hub_request/service_burgers,
 		/datum/trade_hub_request/service_donuts,
 		/datum/trade_hub_request/service_pretzels,
+		/datum/trade_hub_request/service_muffins,
 	)
 
 /** Corporate hub supplies only existing station project packs with their normal unlocks. */
 /obj/machinery/trade_hub_core/corporate
 	name = "Торговый узел корпоративных товаров"
 	specialization = "Корпоративные товары"
-	requests_per_group = 3
+	requests_per_group = 4
 	default_stock = 1
 	batch_credit_target = 2000
 	request_types = list(
