@@ -1,3 +1,9 @@
+/// Close an unpowered dock wall using the ship connected to its gangway.
+#define ST_DOCK_CLOSE_ON_SHIP_POWER 3
+
+/// Match the energy used by a normal airlock closing animation.
+#define ST_DOCK_WALL_CLOSE_ENERGY (50 JOULES)
+
 /** A docking endpoint only opens along the axis of a commissioned passage. */
 /obj/machinery/door/airlock/stationtrauma_docking
 	name = "стыковочный шлюз"
@@ -28,6 +34,26 @@
 
 /obj/machinery/door/airlock/stationtrauma_docking/wall/ui_interact(mob/user, datum/tgui/ui)
 	return FALSE
+
+/obj/machinery/door/airlock/stationtrauma_docking/wall/try_to_force_door_shut(force_type = DEFAULT_DOOR_CHECKS)
+	if(force_type != ST_DOCK_CLOSE_ON_SHIP_POWER)
+		return ..()
+	if(QDELETED(gangway) || gangway.wall != src || !gangway.busy || gangway.breached || !(machine_stat & NOPOWER))
+		return FALSE
+	if((remaining_main_outage() && remaining_backup_outage()) || wires.is_cut(WIRE_BOLTS) || !..(DEFAULT_DOOR_CHECKS))
+		return FALSE
+
+	// Native close has already checked for mechanical locks and obstructions.
+	var/obj/machinery/door/airlock/stationtrauma_docking/ship/ship_endpoint = gangway.ship
+	if(QDELETED(ship_endpoint) || ship_endpoint.gangway != gangway || !ship_endpoint.density || ship_endpoint.operating || !ship_endpoint.hasPower())
+		return FALSE
+	return ship_endpoint.use_energy(ST_DOCK_WALL_CLOSE_ENERGY, force = FALSE)
+
+/obj/machinery/door/airlock/stationtrauma_docking/wall/animation_effects(animation, force_type = DEFAULT_DOOR_CHECKS)
+	if(force_type == ST_DOCK_CLOSE_ON_SHIP_POWER)
+		// The ship already paid for this closing cycle.
+		return ..(animation, BYPASS_DOOR_CHECKS)
+	return ..()
 
 /** Explain the same outward direction used by the docking validator and installation kit. */
 /obj/machinery/door/airlock/stationtrauma_docking/examine(mob/user)
@@ -288,13 +314,19 @@
 		RegisterSignals(seal, watched_signals, PROC_REF(on_breach))
 	return TRUE
 
-/** Fill the closed corridor with air drawn from its two ends and open the two interlocked doors. */
-/datum/stationtrauma_dock_gangway/proc/open_passage()
+/**
+ * Equalize the corridor and open the interlocked doors.
+ * After a cancelled departure, reopen the ship hatch if the closed wall has lost its area power.
+ */
+/datum/stationtrauma_dock_gangway/proc/open_passage(recover_ship_access = FALSE)
 	if(busy || breached || QDELETED(ship) || QDELETED(wall))
+		return FALSE
+	var/wall_unpowered = wall.density && (wall.machine_stat & NOPOWER)
+	if(wall_unpowered && !recover_ship_access)
 		return FALSE
 	if(!ship.density && !wall.density && !ship.operating && !wall.operating)
 		return TRUE
-	if(ship.operating || wall.operating || (ship.density && wall.density && !equalize_pressure()))
+	if(ship.operating || wall.operating || (ship.density && wall.density && !equalize_pressure(ship_only = wall_unpowered)))
 		return FALSE
 	busy = TRUE
 	var/opened = TRUE
@@ -302,7 +334,7 @@
 		if(breached || QDELETED(endpoint))
 			opened = FALSE
 			break
-		if(!endpoint.density)
+		if(!endpoint.density || (wall_unpowered && endpoint == wall))
 			continue
 		if(!endpoint_pressure_matches(endpoint))
 			opened = FALSE
@@ -329,17 +361,23 @@
 	var/outside_pressure = outside.air.return_pressure()
 	return abs(inside_pressure - outside_pressure) <= ONE_ATMOSPHERE * 0.1 && min(inside_pressure, outside_pressure) > HAZARD_LOW_PRESSURE && max(inside_pressure, outside_pressure) < HAZARD_HIGH_PRESSURE
 
-/** Draw on the air already in the doorway and its adjacent compartments without spawning gas. */
-/datum/stationtrauma_dock_gangway/proc/equalize_pressure()
+/** Draw on the air in the passage and its connected compartments, excluding the sealed dock side during recovery. */
+/datum/stationtrauma_dock_gangway/proc/equalize_pressure(ship_only = FALSE)
 	var/turf/open/floor/ship_inside = get_step(ship, REVERSE_DIR(ship.dir))
-	var/turf/open/floor/wall_inside = get_step(wall, REVERSE_DIR(wall.dir))
-	if(!isfloorturf(ship_inside) || !isfloorturf(wall_inside) || !ship_inside.air || !wall_inside.air)
+	if(!isfloorturf(ship_inside) || !ship_inside.air)
 		return FALSE
 	var/ship_pressure = ship_inside.air.return_pressure()
-	var/wall_pressure = wall_inside.air.return_pressure()
-	if(abs(ship_pressure - wall_pressure) > ONE_ATMOSPHERE * 0.1 || min(ship_pressure, wall_pressure) <= HAZARD_LOW_PRESSURE || max(ship_pressure, wall_pressure) >= HAZARD_HIGH_PRESSURE)
+	if(ship_pressure <= HAZARD_LOW_PRESSURE || ship_pressure >= HAZARD_HIGH_PRESSURE)
 		return FALSE
-	var/list/turf/open/floor/volume_tiles = floors + list(get_turf(ship), get_turf(wall), ship_inside, wall_inside)
+	var/list/turf/open/floor/volume_tiles = floors + list(get_turf(ship), ship_inside)
+	if(!ship_only)
+		var/turf/open/floor/wall_inside = get_step(wall, REVERSE_DIR(wall.dir))
+		if(!isfloorturf(wall_inside) || !wall_inside.air)
+			return FALSE
+		var/wall_pressure = wall_inside.air.return_pressure()
+		if(abs(ship_pressure - wall_pressure) > ONE_ATMOSPHERE * 0.1 || wall_pressure <= HAZARD_LOW_PRESSURE || wall_pressure >= HAZARD_HIGH_PRESSURE)
+			return FALSE
+		volume_tiles += list(get_turf(wall), wall_inside)
 	var/datum/gas_mixture/total_air = new
 	var/total_volume = 0
 	for(var/turf/open/floor/tile as anything in volume_tiles)
@@ -364,7 +402,7 @@
 	if(QDELETED(src) || busy)
 		return FALSE
 	busy = TRUE
-	var/closed = close_endpoints()
+	var/closed = close_endpoints(use_ship_power = TRUE)
 	if(QDELETED(src))
 		return FALSE
 	if(!closed)
@@ -405,7 +443,7 @@
 	if(breached)
 		INVOKE_ASYNC(src, PROC_REF(seal_breach))
 	else
-		INVOKE_ASYNC(src, PROC_REF(open_passage))
+		INVOKE_ASYNC(src, PROC_REF(open_passage), TRUE)
 
 /** A bridge can fold only while its surviving endpoints are closed and interlocked. */
 /datum/stationtrauma_dock_gangway/proc/can_fold_for_departure()
@@ -428,12 +466,16 @@
 	remove_passage()
 	busy = FALSE
 
-/datum/stationtrauma_dock_gangway/proc/close_endpoints()
+/** Close both ends before retracting the passage or sealing a breach. Ship power is available to the wall only during departure. */
+/datum/stationtrauma_dock_gangway/proc/close_endpoints(use_ship_power = FALSE)
 	var/closed = TRUE
 	for(var/obj/machinery/door/airlock/stationtrauma_docking/endpoint as anything in list(ship, wall))
 		if(QDELETED(endpoint))
 			continue
-		if(endpoint.operating || (!endpoint.density && (!endpoint.safe || !clear_tile(get_turf(endpoint), endpoint) || !endpoint.close())))
+		var/close_mode = DEFAULT_DOOR_CHECKS
+		if(use_ship_power && endpoint == wall && (endpoint.machine_stat & NOPOWER))
+			close_mode = ST_DOCK_CLOSE_ON_SHIP_POWER
+		if(endpoint.operating || (!endpoint.density && (!endpoint.safe || !clear_tile(get_turf(endpoint), endpoint) || !endpoint.close(close_mode))))
 			closed = FALSE
 	return closed
 
@@ -493,3 +535,6 @@
 				surface.restore(revealed)
 				qdel(surface)
 	floors.Cut()
+
+#undef ST_DOCK_CLOSE_ON_SHIP_POWER
+#undef ST_DOCK_WALL_CLOSE_ENERGY
