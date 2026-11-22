@@ -17,6 +17,10 @@
 /** The outward direction points from the dock wall into the slot. */
 /obj/machinery/door/airlock/stationtrauma_docking/wall
 	name = "секция стыковочной стены"
+	icon = 'modular_bandastation/space_overmap/icons/dock_wall.dmi'
+	icon_state = "closed"
+	overlays_file = 'modular_bandastation/space_overmap/icons/dock_wall.dmi'
+	generate_map_preview = FALSE
 
 /obj/machinery/door/airlock/stationtrauma_docking/wall/ui_interact(mob/user, datum/tgui/ui)
 	return FALSE
@@ -34,12 +38,10 @@
 			outward_direction = "на восток"
 		if(WEST)
 			outward_direction = "на запад"
-	. += span_notice("Стрелка смотрит [outward_direction], наружу к месту стыковки. Герметичное помещение должно находиться с противоположной стороны.")
+	. += span_notice("Стыковочная сторона направлена [outward_direction]. Герметичное помещение должно находиться с противоположной стороны.")
 
-/** Keep the endpoint recognizable while showing which side faces the docking passage. */
 /obj/machinery/door/airlock/stationtrauma_docking/update_overlays()
 	. = ..()
-	. += mutable_appearance('icons/testing/turf_analysis.dmi', "red_arrow")
 	if(airlock_state != AIRLOCK_CLOSED)
 		return
 	// The interlock owns opening. Keep its closed indicator independent of the mechanical bolts.
