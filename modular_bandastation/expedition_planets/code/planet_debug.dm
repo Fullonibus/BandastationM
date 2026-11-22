@@ -164,9 +164,12 @@ ADMIN_VERB(stationtrauma_planet_system, R_DEBUG, "Overmap - Планеты си�
 /datum/stationtrauma_overmap_sector/space/proc/debug_can_replace_planet(datum/stationtrauma_overmap_site/space/planet/planet)
 	if(!ready || !istype(planet) || QDELETED(planet) || sites[planet.id] != planet || planet.visited || planet.berth || planet.loading_map || planet.failed || !planet.generator || planet.docking_owner)
 		return FALSE
+	for(var/datum/stationtrauma_overmap_site/space/pad as anything in planet.pads)
+		if(pad.docking_owner || pad.loading_map)
+			return FALSE
 	for(var/ship_id in ships)
 		var/datum/stationtrauma_overmap/space/navigation = ships[ship_id]
-		if(navigation.docked == planet || navigation.approach_site == planet \
+		if(navigation.docked == planet || navigation.approach_site == planet || navigation.docked?.pad_parent == planet || navigation.approach_site?.pad_parent == planet \
 			|| (navigation.selected_destination == planet.id && (navigation.helm_engaged || navigation.planning || navigation.preparing || navigation.relocating || navigation.arrival_pending)))
 			return FALSE
 	return TRUE
@@ -191,7 +194,9 @@ ADMIN_VERB(stationtrauma_planet_system, R_DEBUG, "Overmap - Планеты си�
 	planet.pos_x = previous.pos_x
 	planet.pos_y = previous.pos_y
 	planet.discovered = previous.discovered
+	remove_pads(previous)
 	sites[planet.id] = planet
+	add_pads(planet, 1)
 	for(var/ship_id in ships)
 		var/datum/stationtrauma_overmap/space/navigation = ships[ship_id]
 		if(navigation.prepared_site == previous)

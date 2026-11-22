@@ -197,7 +197,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
 		if(revision != expected)
 			return
 		linked_edges += list(edge)
-		set_edge(edge[1], edge[2], edge[3])
+		stationtrauma_set_edge(edge[1], edge[2], edge[3])
 
 /** Restore the plain borders of every edge this seam led round. */
 /datum/stationtrauma_map_connection/proc/unlink_edges()
@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
 	linked_edges = null
 	// shortcut: synchronous so a quick re-dock cannot race the clearing; spread it over ticks if undocking ever shows in profiles.
 	for(var/list/edge as anything in edges)
-		set_edge(edge[1], edge[2], null)
+		stationtrauma_set_edge(edge[1], edge[2], null)
 
 /**
  * Point the border band of one side of a level at the opposite side of `target_z`, with the native border mirage, as cross-linked space does.
@@ -214,8 +214,9 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
  * * z - Level whose border changes
  * * side - Cardinal side of that level
  * * target_z - Receiving level, or null for a plain border
+ * * mirage - Whether the border shows the receiving side
  */
-/datum/stationtrauma_map_connection/proc/set_edge(z, side, target_z)
+/proc/stationtrauma_set_edge(z, side, target_z, mirage = TRUE)
 	var/inner_max_x = world.maxx - TRANSITIONEDGE
 	var/inner_max_y = world.maxy - TRANSITIONEDGE
 	var/list/band
@@ -243,7 +244,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
 		tile.destination_x = target_z ? (arrival_x || tile.x) : null
 		tile.destination_y = target_z ? (arrival_y || tile.y) : null
 		tile.destination_z = target_z
-		if(innermost && target_z)
+		if(innermost && target_z && mirage)
 			tile.AddElement(/datum/element/mirage_border, locate(tile.destination_x, tile.destination_y, target_z), side, range)
 
 /**

@@ -38,7 +38,13 @@
 		sector.unregister(navigation)
 	for(var/site_id in sector?.sites)
 		var/datum/stationtrauma_overmap_site/space/planet/planet = sector.sites[site_id]
+		// Extra landing pads share the planet's surface and berths.
+		if(!istype(planet))
+			continue
 		QDEL_NULL(planet.generator)
+		for(var/datum/stationtrauma_overmap_site/space/pad as anything in planet.pads)
+			if(pad.berth && pad.berth != planet.berth)
+				qdel(pad.berth, force = TRUE)
 		if(planet.berth && planet.berth != bay)
 			qdel(planet.berth, force = TRUE)
 	QDEL_NULL(sector)
@@ -86,6 +92,16 @@
 	planet.load_map()
 	TEST_ASSERT(!planet.failed && !planet.loading_map && !planet.awaits_map() && planet.berth, "The replacement must still build a real surface through the normal first-landing path.")
 	TEST_ASSERT(SSmapping.level_trait(planet.berth.z, ZTRAIT_DOWN) && SSmapping.level_trait(planet.berth.z - 1, ZTRAIT_UP), "The chosen cave system must have real connected native levels.")
+	TEST_ASSERT_EQUAL(length(planet.pads), 1, "The planet must chart one extra landing pad")
+	var/datum/stationtrauma_overmap_site/space/extra_pad = planet.pads[1]
+	TEST_ASSERT(extra_pad.berth && extra_pad.berth != planet.berth && extra_pad.berth.z == planet.berth.z, "The camp must clear a second landing pad beside the first")
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/planet_pad/second_slot = extra_pad.berth
+	TEST_ASSERT(second_slot.prepare_berth(ship), "A hull must fit on the bare ground of the second pad")
+	second_slot.clear_berth()
+	var/flora = 0
+	for(var/obj/structure/flora/plant in range(8, planet.berth))
+		flora++
+	TEST_ASSERT(flora, "Flora must grow right up to the landing pads")
 	// A ruin floor stripped to the bottom must leave the planet's ground, not open space, on the surface and in the caves.
 	for(var/z_level in list(planet.berth.z, planet.berth.z - 1))
 		var/turf/stripped = locate(planet.berth.x, planet.berth.y, z_level)

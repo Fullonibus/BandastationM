@@ -283,6 +283,8 @@
 		planet.pos_x = positions[index][1]
 		planet.pos_y = positions[index][2]
 		sites[planet.id] = planet
+		// A second clearing beside the first lets two S or M hulls stand on the surface at once.
+		add_pads(planet, 1)
 	if(!load_ruin_sector())
 		return null
 	build_encounters()

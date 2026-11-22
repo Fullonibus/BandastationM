@@ -173,7 +173,7 @@
 /datum/stationtrauma_overmap/space/proc/parallax_planet()
 	if(!vessel || jump_phase >= HYPERSPACE_LAUNCH)
 		return null
-	var/datum/stationtrauma_overmap_site/space/planet/approaching = approach_site
+	var/datum/stationtrauma_overmap_site/space/planet/approaching = approach_site?.pad_parent || approach_site
 	if(istype(approaching) && !approaching.failed)
 		if(approach_departing || vessel.z != approaching.berth?.z)
 			return approaching.parallax_layer

@@ -83,6 +83,10 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 		if(QDELETED(station?.berth) || !is_station_level(station.berth.z) || station.berth.get_docked())
 			log_mapping("Overmap station site [station_id] requires a free mapped station berth")
 			return SS_INIT_FAILURE
+		// Each station deck loops onto itself without the border mirage, which would show the far side's buildings at every edge.
+		for(var/z_level in SSmapping.levels_by_trait(ZTRAIT_STATION))
+			for(var/side in GLOB.cardinals)
+				stationtrauma_set_edge(z_level, side, z_level, mirage = FALSE)
 	for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
 		var/datum/stationtrauma_overmap_sector/space/sector = sectors[vessel.overmap_sector]
 		if(!sector?.ready)
