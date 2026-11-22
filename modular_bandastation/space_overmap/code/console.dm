@@ -84,6 +84,7 @@
 	var/datum/stationtrauma_overmap_site/space/target = map.sites[map.selected_destination]
 	if(!map.knows_site(target))
 		target = null
+	var/datum/stationtrauma_overmap_site/space/dock_target = map.selected_docking_site()
 	var/distance = target ? map.distance_to(target) : 0
 	var/list/data = list(
 		"vessel_name" = vessel.name,
@@ -113,7 +114,7 @@
 		"helm" = map.helm_engaged, "autopilot" = map.autopilot,
 		"preparing" = map.preparing, "planning" = map.planning,
 		"relocating" = map.relocating, "landed" = !!map.docked?.landing,
-		"selected" = map.selected_destination, "docked" = map.docked?.id,
+		"selected" = target?.docking_target?.id || target?.id, "docked" = map.docked?.docking_target?.id || map.docked?.id,
 		"coupled" = !!map.ship_docking,
 		"docking_request" = map.ship_docking_request_data(),
 		"station_docking" = map.station_docking_data(target),
@@ -123,8 +124,8 @@
 		"eta" = target && map.get_target_speed() > 0 ? max(0, distance - map.radius - target.radius) / map.get_target_speed() : null,
 		"scan_ready" = !map.preparing && !map.relocating && map.is_operational() && world.time >= map.next_scan && !panel_open && !(machine_stat & (NOPOWER|BROKEN)),
 		"can_dock" = !map.preparing && !map.docked && !map.helm_engaged && map.speed <= ST_NAV_STOPPED_SPEED \
-			&& (!map.station_clearance_required(target) || map.has_station_clearance(target)) && map.can_dock(target, map.control_revision),
-		"routes" = map.known_sites(), "path" = map.autopilot_path,
+			&& (!map.station_clearance_required(dock_target) || map.has_station_clearance(dock_target)) && map.can_dock(dock_target, map.control_revision),
+		"routes" = map.known_sites(helm = TRUE), "path" = map.autopilot_path,
 		"zones" = map.encounter_data(), "terrain" = map.terrain_data(),
 		"ship_contacts" = map.ship_echo_data(),
 		"encounter" = map.encounter_status, "sensor_range" = map.sensor_range,
@@ -194,7 +195,12 @@
 		if("emergency_brake")
 			return map.command_emergency_brake()
 		if("select")
-			return istext(value) && map.select_site(value)
+			if(!istext(value))
+				return FALSE
+			var/datum/stationtrauma_overmap_site/space/site = map.sites[value]
+			if(!istype(site, /datum/stationtrauma_overmap_site/space/docking_target) && map.station_clearance_required(site))
+				return FALSE
+			return map.select_site(value)
 		if("turn", "throttle")
 			var/number = value
 			if(!IS_FINITE(number) || !vessel.engines_running || map.ship_docking)
@@ -209,14 +215,14 @@
 			map.command_course(map.ordered_course)
 			return map.sail()
 		if("autopilot")
-			if(map.preparing || map.ship_docking || map.planning || map.throttle <= 0 || map.docked?.id == map.selected_destination)
+			if(map.preparing || map.ship_docking || map.planning || map.throttle <= 0 || map.docked?.id == map.selected_destination || map.docked?.docking_target?.id == map.selected_destination)
 				return FALSE
 			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap, engage_autopilot))
 		if("dock")
 			if(!isnull(value) && (!istext(value) || value != map.selected_destination))
 				return FALSE
 			var/datum/stationtrauma_overmap_site/space/target = map.sites[map.selected_destination]
-			if(map.station_clearance_required(target) && (isnull(value) || !map.has_station_clearance(target)))
+			if(map.station_clearance_required(target) && (isnull(value) || !map.assigned_station_berth(target)))
 				return FALSE
 			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap/space, dock))
 		else

@@ -112,7 +112,7 @@
 	if(site.docking_owner == src)
 		site.docking_owner = null
 	docked = null
-	if(sites[selected_destination] == site)
+	if(selected_destination == site.id || (site.docking_target && selected_destination == site.docking_target.id))
 		selected_destination = null
 		prepared_site = null
 	stop("Причал станции освобождён для эвакуационного шаттла")

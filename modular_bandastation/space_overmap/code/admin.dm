@@ -51,8 +51,8 @@ ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместит�
 	pos_x = encounter_x = site.pos_x
 	pos_y = encounter_y = site.pos_y
 	discover_site(site)
-	selected_destination = site.id
-	prepared_site = site
+	prepared_site = site.docking_target || site
+	selected_destination = prepared_site.id
 	trip_distance = travelled = 0
 	update_parallax()
 	return TRUE

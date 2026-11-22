@@ -37,6 +37,10 @@
 	var/obj/docking_port/stationary/stationtrauma_space_station/berth = site.berth
 	return !berth.host_ship_id && is_station_level(berth.z)
 
+/// Resolve the installation served by this console independently of any user-supplied IDs.
+/obj/machinery/computer/stationtrauma_station_traffic/proc/traffic_destination(datum/stationtrauma_overmap_sector/space/sector, datum/stationtrauma_overmap/space/host)
+	return sector.sites[host ? "traffic:carrier:[host.vessel.shuttle_id]" : "traffic:station"]
+
 /obj/machinery/computer/stationtrauma_station_traffic/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 	if(!can_operate(user))
@@ -59,30 +63,37 @@
 	var/datum/stationtrauma_overmap_sector/space/sector = traffic_sector()
 	if(QDELETED(sector))
 		return list()
+	var/datum/stationtrauma_overmap_site/space/docking_target/target = traffic_destination(sector, host)
 	var/list/requests = list()
 	var/list/approvals = list()
 	for(var/ship_id in sector.station_docking_requests)
 		var/datum/stationtrauma_station_docking_request/request = sector.station_docking_requests[ship_id]
-		if(QDELETED(request) || !request.is_current() || !controls_berth(sector, request.site, host))
+		if(QDELETED(request) || request.target != target || !request.is_current())
 			continue
-		if(request.approved)
-			approvals[request.site] = request
+		var/datum/stationtrauma_overmap_site/space/assigned_berth = request.assigned_berth
+		var/list/compatible_docks = list()
+		if(assigned_berth)
+			approvals[assigned_berth] = request
+		else
+			for(var/datum/stationtrauma_overmap_site/space/site as anything in target.berths)
+				if(controls_berth(sector, site, host) && request.can_assign(site))
+					compatible_docks += site.id
 		requests += list(list(
 			"ship_id" = ship_id,
 			"token" = request.token,
 			"ship" = request.requester.vessel.name,
-			"dock_id" = request.site.id,
-			"dock" = request.site.name,
-			"approved" = request.approved,
+			"ship_class" = request.requester.vessel.ship_class,
+			"dock_id" = assigned_berth?.id,
+			"dock" = assigned_berth?.name,
+			"approved" = !!assigned_berth,
 			"seconds_left" = ceil((request.expires_at - world.time) / (1 SECONDS)),
+			"compatible_docks" = compatible_docks,
 		))
 	var/list/docks = list()
-	for(var/site_id in sector.sites)
-		var/datum/stationtrauma_overmap_site/space/site = sector.sites[site_id]
-		if(!controls_berth(sector, site, host))
-			continue
-		docks += list(dock_data(site, approvals[site]))
-	return list("sector" = sector.name, "docks" = docks, "requests" = requests)
+	for(var/datum/stationtrauma_overmap_site/space/site as anything in target?.berths)
+		if(controls_berth(sector, site, host))
+			docks += list(dock_data(site, approvals[site]))
+	return list("sector" = sector.name, "target" = target?.name || host?.vessel?.name, "docks" = docks, "requests" = requests)
 
 /obj/machinery/computer/stationtrauma_station_traffic/proc/dock_data(datum/stationtrauma_overmap_site/space/site, datum/stationtrauma_station_docking_request/approval)
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
@@ -110,10 +121,7 @@
 /proc/stationtrauma_berth_unavailable(obj/docking_port/stationary/berth)
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/runtime_slot = berth
 	if(istype(runtime_slot))
-		return runtime_slot.retiring || !runtime_slot.controller_valid() || runtime_slot.host?.carrier_busy()
-	var/obj/docking_port/stationary/stationtrauma_space_station/port = berth
-	if(istype(port) && port.host?.carrier_busy())
-		return TRUE
+		return runtime_slot.retiring || !runtime_slot.controller_valid()
 	if(SSshuttle.emergency?.mode != SHUTTLE_CALL)
 		return FALSE
 	for(var/obj/docking_port/stationary/native_berth in berth.loc)
@@ -127,20 +135,23 @@
 		return
 	if(!(action in list("approve", "deny")))
 		return FALSE
-	return respond_to_request(ui.user, params["ship_id"], params["token"], action == "approve")
+	return respond_to_request(ui.user, params["ship_id"], params["token"], action == "approve", params["dock_id"])
 
 /** Authorize and submit an operator's response to the exact request shown at this console. */
-/obj/machinery/computer/stationtrauma_station_traffic/proc/respond_to_request(mob/user, ship_id, token, approve)
-	if(!can_operate(user) || !istext(ship_id) || !istext(token))
+/obj/machinery/computer/stationtrauma_station_traffic/proc/respond_to_request(mob/user, ship_id, token, approve, dock_id)
+	if(!can_operate(user) || !istext(ship_id) || !istext(token) || (approve && !istext(dock_id)))
 		return FALSE
 	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
 	var/datum/stationtrauma_overmap_sector/space/sector = traffic_sector()
 	if(QDELETED(sector))
 		return FALSE
+	var/datum/stationtrauma_overmap_site/space/docking_target/target = traffic_destination(sector, host)
 	var/datum/stationtrauma_station_docking_request/request = sector.station_docking_requests[ship_id]
-	if(QDELETED(request) || !controls_berth(sector, request.site, host))
+	if(QDELETED(target) || target.automatic || QDELETED(request) || request.target != target)
 		return FALSE
-	if(!sector.respond_station_docking(ship_id, token, approve))
+	if(approve && !controls_berth(sector, sector.sites[dock_id], host))
+		return FALSE
+	if(!sector.respond_station_docking(ship_id, token, approve, dock_id))
 		to_chat(user, span_warning("Заявка или причал изменились. Проверьте актуальный статус."))
 		return FALSE
 	return TRUE

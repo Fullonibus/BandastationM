@@ -76,10 +76,12 @@
 			listen()
 		return
 	var/datum/stationtrauma_overmap_site/space/target = sites[selected_destination]
-	if(target?.host && !knows_site(target))
+	if(selected_destination && (QDELETED(target) || (target.host && !knows_site(target))))
 		selected_destination = null
 		prepared_site = null
-		stop("Контакт с носителем потерян")
+		cancel_station_docking()
+		if(autopilot || !QDELETED(target))
+			stop(QDELETED(target) ? "Точка назначения недоступна" : "Контакт с носителем потерян")
 	advance()
 	sync_carrier()
 	// Drag or the emergency thrusters ended an unpowered drift.
@@ -406,7 +408,8 @@
 		old_dock.docking_owner = null
 	docked = null
 	update_parallax()
-	var/left_selected_dock = sites[selected_destination] == old_dock
+	var/datum/stationtrauma_overmap_site/space/selected = sites[selected_destination]
+	var/left_selected_dock = selected == old_dock || (selected && selected == old_dock.docking_target)
 	var/orphaned_dock = old_dock.failed && !old_dock.host && sites[old_dock.id] != old_dock && !old_dock.docking_owner
 	// Casting off must not become a new arrival order while the automatic flight opens the distance.
 	if(left_selected_dock)
@@ -456,15 +459,23 @@
 		stop("Точка назначения достигнута: [site_label(site)]")
 	arrival_pending = FALSE
 
+/** Resolve the berth for the selected object, keeping that object selected throughout docking. */
+/datum/stationtrauma_overmap/space/proc/selected_docking_site()
+	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
+	if(istype(site, /datum/stationtrauma_overmap_site/space/docking_target))
+		return assigned_station_berth(site)
+	return site
+
 /** Revalidate the selected site, berth ownership, proximity and helm order revision. */
 /datum/stationtrauma_overmap/space/proc/can_dock(datum/stationtrauma_overmap_site/space/site, revision)
-	if(!carrier_arrival_ready(site) || carrier_busy())
+	var/datum/stationtrauma_overmap_site/space/selected = sites[selected_destination]
+	if(!selected || (site != selected && site?.docking_target != selected) || !carrier_arrival_ready(site) || carrier_busy())
 		return FALSE
 	if(site?.landing && (!vessel.engines_running || engine_fraction() <= 0))
 		return FALSE
 	if(site?.host && sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2) > radius + site.radius + ST_NAV_APPROACH + 5)
 		return FALSE
-	if(!is_operational() || ship_docking || !knows_site(site) || (QDELETED(site.berth) && !site.awaits_map()) || site.failed || !vessel.permits_docking(site) || site.shuttle_order || (site.docking_owner && site.docking_owner != src) || revision != control_revision || helm_engaged || site != sites[selected_destination] || distance_to(site) > radius + site.radius + ST_NAV_APPROACH + 5)
+	if(!is_operational() || ship_docking || !knows_site(site) || (QDELETED(site.berth) && !site.awaits_map()) || site.failed || !vessel.permits_docking(site) || site.shuttle_order || (site.docking_owner && site.docking_owner != src) || revision != control_revision || helm_engaged || distance_to(site) > radius + site.radius + ST_NAV_APPROACH + 5)
 		return FALSE
 	// Loaded berths are sized for the prototype hull; the approach revalidates them once they exist.
 	if(site.awaits_map())
@@ -485,7 +496,7 @@
  * * station_authorized - Trusted round-start placement or station-initiated delivery.
  */
 /datum/stationtrauma_overmap/space/proc/dock(instant = FALSE, station_authorized = FALSE)
-	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
+	var/datum/stationtrauma_overmap_site/space/site = selected_docking_site()
 	if(preparing || docked || helm_engaged || speed > ST_NAV_STOPPED_SPEED || !can_dock(site, control_revision))
 		return FALSE
 	var/controlled = station_clearance_required(site)
@@ -547,6 +558,8 @@
 		carrier_heading_offset = WRAP(course - site.host.course, 0, 360)
 		site.host.sync_carrier()
 	visited_sites[site.id] = TRUE
+	if(!QDELETED(site.docking_target))
+		visited_sites[site.docking_target.id] = TRUE
 	pos_x = site.pos_x
 	pos_y = site.pos_y
 	status = site.landing ? "Посадка: [site.name]" : "Стыковка: [site.name]"

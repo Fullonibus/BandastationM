@@ -314,6 +314,8 @@
 		site.pos_y = 0
 		site.berth = slot
 		sector.sites[id] = site
+		var/datum/stationtrauma_overmap_site/space/docking_target/station = sector.sites["traffic:station"]
+		sector.register_docking_berth(site, "traffic:station", station?.name || "Станция")
 	owned_slot = slot
 	return null
 
@@ -430,7 +432,7 @@
 		deltimer(retire_timer)
 		var/datum/stationtrauma_overmap_sector/space/sector = host?.sector || published_sector
 		unregister_carrier_dock()
-		sector?.clear_station_docking_site(published_site)
+		sector?.unregister_docking_berth(published_site)
 		if(sector && sector.sites[site_id] == published_site)
 			sector.sites -= site_id
 		QDEL_NULL(published_site)

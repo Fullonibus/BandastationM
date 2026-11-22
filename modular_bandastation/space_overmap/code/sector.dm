@@ -175,6 +175,7 @@
 			"Корпоративный узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_corporate.dmm',
 		)
 		var/list/trade_levels = list()
+		var/list/trade_names = list()
 		for(var/outpost_name in trade_maps)
 			var/datum/map_template/stationtrauma_space/outpost = new(trade_maps[outpost_name], outpost_name)
 			var/datum/space_level/trade_level = outpost.load_new_z()
@@ -183,6 +184,7 @@
 				log_mapping("Failed to load Epsilon Eridani trade outpost [outpost_name]")
 				return FALSE
 			trade_levels += trade_level.z_value
+			trade_names["[trade_level.z_value]"] = outpost_name
 		// The map loader connects the cable nets after machine initialization.
 		for(var/obj/machinery/power/solar_control/controller as anything in SSmachines.get_machines_by_type(/obj/machinery/power/solar_control))
 			if(!(controller.z in trade_levels))
@@ -190,6 +192,12 @@
 			controller.search_for_connected()
 			controller.set_panels(SSsun.azimuth)
 		taken_positions = list()
+		var/station_site_id = SSmapping.current_map.space_overmap?["station_id"]
+		var/obj/docking_port/stationary/stationtrauma_space_station/main_berth
+		for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
+			if(station_site_id && port.site_id == station_site_id)
+				main_berth = port
+				break
 		for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
 			if(port.host_ship_id)
 				continue
@@ -201,6 +209,13 @@
 			site.physical_docking = TRUE
 			site.berth = port
 			sites[site.id] = site
+			var/outpost_name = trade_names["[port.z]"]
+			if(outpost_name)
+				register_docking_berth(site, "traffic:outpost:[port.z]", outpost_name)
+			else if(is_station_level(port.z))
+				register_docking_berth(site, "traffic:station", main_berth?.station_name || "Станция")
+			else
+				register_docking_berth(site, "traffic:site:[port.site_id]", site.name)
 			taken_positions += list(list(site.pos_x, site.pos_y))
 		if(!length(sites))
 			return FALSE

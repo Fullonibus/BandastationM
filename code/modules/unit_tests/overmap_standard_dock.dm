@@ -337,8 +337,13 @@
 	var/previous_station_cache
 	/// Foreign berth owned by the fixture, even if an assertion fails.
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard_s/remote_berth
+	/// Second local slot selectable by the dispatcher.
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard_m/alternate_berth
 
 /datum/unit_test/overmap_standard_dock/station_clearance/Destroy()
+	if(alternate_berth)
+		qdel(alternate_berth, force = TRUE)
+		alternate_berth = null
 	if(remote_berth)
 		qdel(remote_berth, force = TRUE)
 		remote_berth = null
@@ -365,7 +370,17 @@
 	navigation.sites -= site.id
 	TEST_ASSERT(home.register(ship.shuttle_id, navigation), "The hull must be a member of the station sector")
 	home.sites[site.id] = site
-	TEST_ASSERT(navigation.select_site(site.id), "The registered berth must be selectable")
+	home.register_docking_berth(site, "traffic:station", "Test station")
+	var/target_id = site.docking_target.id
+	alternate_berth = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard_m, locate(16, 4, bay.z))
+	var/datum/stationtrauma_overmap_site/space/alternate_site = allocate(/datum/stationtrauma_overmap_site/space)
+	alternate_site.id = "unit_test_alternate_berth"
+	alternate_site.name = "Alternate M berth"
+	alternate_site.physical_docking = TRUE
+	alternate_site.berth = alternate_berth
+	home.sites[alternate_site.id] = alternate_site
+	home.register_docking_berth(alternate_site, target_id, "Test station")
+	TEST_ASSERT(navigation.select_site(target_id), "The registered berth must be selectable")
 	var/turf/flight_position = get_turf(ship)
 	TEST_ASSERT(!navigation.dock(instant = TRUE), "Station docking must refuse an uncleared pilot even with the approach timer skipped")
 	TEST_ASSERT_EQUAL(get_turf(ship), flight_position, "An uncleared request must leave the hull on its flight level")
@@ -378,14 +393,14 @@
 	traffic_floor.change_area(get_area(traffic_floor), get_area(corridor))
 	var/obj/machinery/computer/stationtrauma_station_traffic/traffic = allocate(/obj/machinery/computer/stationtrauma_station_traffic, traffic_floor)
 	var/mob/living/carbon/human/consistent/operator = allocate(/mob/living/carbon/human/consistent, corridor)
-	TEST_ASSERT(!helm.navigation_command("request_station_dock", "different_berth"), "A stale pilot command must not request a different berth")
-	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "The pilot must be able to request the selected berth")
-	TEST_ASSERT(!helm.navigation_command("request_station_dock", site.id), "A duplicate request must not replace a pending request")
+	TEST_ASSERT(!helm.navigation_command("request_station_dock", site.id), "A stale pilot command must reject a private berth ID")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", target_id), "The pilot must be able to request the selected station")
+	TEST_ASSERT(!helm.navigation_command("request_station_dock", target_id), "A duplicate request must not replace a pending request")
 	var/datum/stationtrauma_station_docking_request/request = home.station_docking_requests[ship.shuttle_id]
 	TEST_ASSERT_NOTNULL(request, "The station must see the request from the pilot")
 	TEST_ASSERT_NULL(site.docking_owner, "A pending request must not reserve the berth")
 	var/stale_token = request.token
-	TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, stale_token, TRUE), "An operator without command access must not approve a request")
+	TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, stale_token, TRUE, site.id), "An operator without command access must not approve a request")
 	var/obj/item/card/id/advanced/command_card = allocate(/obj/item/card/id/advanced)
 	command_card.set_access(list(ACCESS_COMMAND), FORCE_ADD_ALL)
 	TEST_ASSERT(operator.put_in_active_hand(command_card), "The operator must be able to present a command card")
@@ -393,9 +408,14 @@
 	TEST_ASSERT(traffic.can_interact(operator), "The adjacent operator must be able to use the computer")
 	TEST_ASSERT(traffic.can_operate(operator), "The powered station computer must accept the operator")
 	TEST_ASSERT_EQUAL(traffic.traffic_sector(), home, "The command computer must resolve the live station sector")
-	TEST_ASSERT(request.is_current(), "The request must belong to the active ship and selected berth")
+	TEST_ASSERT(request.is_current(), "The request must belong to the active ship and selected station")
 	var/list/traffic_data = traffic.ui_data(operator)
-	TEST_ASSERT_EQUAL(length(traffic_data["requests"]), 1, "The command console must display the pending request")
+	var/list/requests = traffic_data["requests"]
+	TEST_ASSERT_EQUAL(length(requests), 1, "The command console must display the pending request")
+	var/list/pending = requests[1]
+	var/list/compatible = pending["compatible_docks"]
+	TEST_ASSERT(length(compatible) == 2 && (site.id in compatible) && (alternate_site.id in compatible), "A small ship must be offered both local compatible berths")
+	TEST_ASSERT_NULL(pending["dock_id"], "The pilot request must arrive without a selected dock")
 	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, stale_token, FALSE), "The dispatcher must be able to deny a pending request")
 
 	// A different fixed installation can register a berth in the same sector.
@@ -406,42 +426,52 @@
 	remote_site.physical_docking = TRUE
 	remote_site.berth = remote_berth
 	home.sites[remote_site.id] = remote_site
+	home.register_docking_berth(remote_site, "traffic:remote", "Remote installation")
+	var/remote_target_id = remote_site.docking_target.id
 	TEST_ASSERT(!is_station_level(remote_berth.z), "The foreign berth must be outside the station levels")
-	TEST_ASSERT(navigation.select_site(remote_site.id), "The pilot must be able to select a berth at the other installation")
-	TEST_ASSERT(helm.navigation_command("request_station_dock", remote_site.id), "The pilot must be able to request the foreign berth")
+	TEST_ASSERT(navigation.select_site(remote_target_id), "The pilot must be able to select a berth at the other installation")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", remote_target_id), "The pilot must be able to request the foreign berth")
 	var/datum/stationtrauma_station_docking_request/remote_request = home.station_docking_requests[ship.shuttle_id]
 	TEST_ASSERT(remote_request?.is_current(), "The foreign request must be valid even though this console cannot manage it")
 	var/list/local_data = traffic.ui_data(operator)
 	var/foreign_denied = traffic.respond_to_request(operator, ship.shuttle_id, remote_request.token, FALSE)
 	TEST_ASSERT(!foreign_denied, "The station console must not be able to deny the other installation's request")
-	TEST_ASSERT_EQUAL(length(local_data["docks"]), 1, "The station console must only list its own berth")
+	TEST_ASSERT_EQUAL(length(local_data["docks"]), 2, "The station console must only list its own berths")
 	TEST_ASSERT_EQUAL(length(local_data["requests"]), 0, "The station console must hide the other installation's request")
-	TEST_ASSERT(helm.navigation_command("cancel_station_dock", remote_site.id), "The pilot must still be able to cancel the foreign request")
-	TEST_ASSERT(navigation.select_site(site.id), "The pilot must be able to target the station again")
-	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "The pilot can send a new request after denial")
+	TEST_ASSERT(helm.navigation_command("cancel_station_dock", remote_target_id), "The pilot must still be able to cancel the foreign request")
+	TEST_ASSERT(navigation.select_site(target_id), "The pilot must be able to target the station again")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", target_id), "The pilot can send a new request after denial")
 	request = home.station_docking_requests[ship.shuttle_id]
-	TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, stale_token, TRUE), "A stale dispatcher action must not approve a replacement")
-	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE), "The dispatcher must be able to approve the current request")
+	TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, stale_token, TRUE, site.id), "A stale dispatcher action must not approve a replacement")
+	TEST_ASSERT(!traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE, remote_site.id), "The station console must reject a berth from another installation")
+	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE, alternate_site.id), "The dispatcher must be able to assign either compatible berth")
+	TEST_ASSERT_EQUAL(navigation.selected_docking_site(), alternate_site, "The assigned M berth must resolve as the pilot's docking site")
+	TEST_ASSERT_NULL(site.docking_owner, "The other berth must stay free")
+	TEST_ASSERT(helm.navigation_command("cancel_station_dock", target_id), "The pilot must be able to release the alternate assignment")
+	TEST_ASSERT_NULL(alternate_site.docking_owner, "Cancellation must release the exact assigned berth")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", target_id), "The pilot must be able to request again after releasing the assignment")
+	request = home.station_docking_requests[ship.shuttle_id]
+	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE, site.id), "The dispatcher must be able to assign the S berth to the new request")
 	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "Approval must reserve the selected berth for that ship")
 	ship.preflight_action = CALLBACK(home, TYPE_PROC_REF(/datum/stationtrauma_overmap_sector/space/home, respond_station_docking), ship.shuttle_id, request.token, FALSE)
 	TEST_ASSERT(!navigation.dock(instant = TRUE), "Revocation during native preflight must cancel the physical approach")
 	TEST_ASSERT_EQUAL(get_turf(ship), flight_position, "A revoked ship must remain on its flight level")
 	TEST_ASSERT_NULL(site.docking_owner, "Revocation must release the reservation")
-	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "The pilot can request again after revocation")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", target_id), "The pilot can request again after revocation")
 	request = home.station_docking_requests[ship.shuttle_id]
-	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE), "The dispatcher must be able to issue a fresh grant")
-	TEST_ASSERT(helm.navigation_command("dock", site.id), "The pilot must be able to begin the timed approach")
+	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE, site.id), "The dispatcher must be able to issue a fresh grant")
+	TEST_ASSERT(helm.navigation_command("dock", target_id), "The pilot must be able to begin the timed approach")
 	var/cancel_deadline = world.time + 5 SECONDS
 	UNTIL(navigation.approach_started || world.time >= cancel_deadline)
 	TEST_ASSERT(navigation.approach_started, "The pilot must be in the timed approach before cancelling")
-	TEST_ASSERT(helm.navigation_command("cancel_station_dock", site.id), "The pilot must be able to relinquish clearance during the approach")
+	TEST_ASSERT(helm.navigation_command("cancel_station_dock", target_id), "The pilot must be able to relinquish clearance during the approach")
 	UNTIL(!navigation.preparing || world.time >= cancel_deadline)
 	TEST_ASSERT(!navigation.preparing && !navigation.docked, "The cancelled approach must stop without waiting out the approach timer")
 	TEST_ASSERT_NULL(site.docking_owner, "Pilot cancellation must release the reservation")
-	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "The pilot can request again after cancelling")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", target_id), "The pilot can request again after cancelling")
 	request = home.station_docking_requests[ship.shuttle_id]
-	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE), "The dispatcher must be able to grant clearance after the pilot cancels")
-	TEST_ASSERT(helm.navigation_command("dock", site.id), "The pilot must be able to start the approved maneuver")
+	TEST_ASSERT(traffic.respond_to_request(operator, ship.shuttle_id, request.token, TRUE, site.id), "The dispatcher must be able to grant clearance after the pilot cancels")
+	TEST_ASSERT(helm.navigation_command("dock", target_id), "The pilot must be able to start the approved maneuver")
 	var/deadline = world.time + 30 SECONDS
 	UNTIL(navigation.docked == site || world.time >= deadline)
 	TEST_ASSERT_EQUAL(navigation.docked, site, "The approved pilot command must complete the native docking maneuver")
@@ -455,8 +485,13 @@
 	var/obj/docking_port/mobile/stationtrauma_space/unit_test_docking/second_ship
 	/// The second pilot's real sector navigation.
 	var/datum/stationtrauma_overmap/space/second_navigation
+	/// Larger free slot in the same endpoint, used only for the assignment tests.
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard_m/medium_bay
 
 /datum/unit_test/overmap_standard_dock/automatic_clearance/Destroy()
+	if(medium_bay)
+		qdel(medium_bay, force = TRUE)
+		medium_bay = null
 	QDEL_NULL(second_navigation)
 	if(second_ship)
 		qdel(second_ship, force = TRUE)
@@ -469,6 +504,18 @@
 	TEST_ASSERT(home.register(ship.shuttle_id, navigation), "The first pilot must join the station sector")
 	home.sites[site.id] = site
 	bay.auto_approve_docking = TRUE
+	medium_bay = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard_m, locate(16, 4, bay.z))
+	medium_bay.auto_approve_docking = TRUE
+	var/datum/stationtrauma_overmap_site/space/medium_site = allocate(/datum/stationtrauma_overmap_site/space)
+	medium_site.id = "unit_test_public_medium_berth"
+	medium_site.name = "Public M berth"
+	medium_site.physical_docking = TRUE
+	medium_site.berth = medium_bay
+	home.sites[medium_site.id] = medium_site
+	var/target_id = "traffic:public_fixture"
+	// Register M first to test that an available S is preferred regardless of registration order.
+	home.register_docking_berth(medium_site, target_id, "Test trading post")
+	home.register_docking_berth(site, target_id, "Test trading post")
 
 	var/turf/second_origin = locate(12, 4, ship.z)
 	var/turf/second_corner = locate(13, 6, ship.z)
@@ -491,35 +538,39 @@
 	helm.vessel = ship
 	var/obj/machinery/computer/stationtrauma_space_navigation/second_helm = allocate(/obj/machinery/computer/stationtrauma_space_navigation, second_origin)
 	second_helm.vessel = second_ship
-	TEST_ASSERT(navigation.select_site(site.id) && second_navigation.select_site(site.id), "Both pilots must be able to select the same dock")
+	TEST_ASSERT(navigation.select_site(target_id) && second_navigation.select_site(target_id), "Both pilots must be able to select the same dock")
 
-	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "A free public dock must accept the first request")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", target_id), "A free public dock must accept the first request")
 	TEST_ASSERT(!navigation.has_station_clearance(site), "A public dock must wait before granting clearance")
-	TEST_ASSERT(helm.navigation_command("cancel_station_dock", site.id), "The first pilot must be able to cancel during the delay")
-	TEST_ASSERT(second_helm.navigation_command("request_station_dock", site.id), "The second pilot must be able to request a free dock")
+	TEST_ASSERT(helm.navigation_command("cancel_station_dock", target_id), "The first pilot must be able to cancel during the delay")
+	TEST_ASSERT(second_helm.navigation_command("request_station_dock", target_id), "The second pilot must be able to request a free dock")
 	var/deadline = world.time + 8 SECONDS
 	UNTIL(second_navigation.has_station_clearance(site) || world.time >= deadline)
-	TEST_ASSERT(second_navigation.has_station_clearance(site), "The automatic response must reserve the dock for the second pilot")
+	TEST_ASSERT(second_navigation.has_station_clearance(site), "The automatic response must prefer the free S berth to the earlier registered M berth")
 	TEST_ASSERT_NULL(navigation.get_station_docking_request(), "A cancelled request must not be restored by its timer")
 
-	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "A request can be submitted while another pilot holds clearance")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", target_id), "A request can be submitted while another pilot holds clearance")
 	deadline = world.time + 8 SECONDS
-	UNTIL(!navigation.get_station_docking_request() || world.time >= deadline)
-	TEST_ASSERT_NULL(navigation.get_station_docking_request(), "The automatic response must refuse a reserved dock")
-	TEST_ASSERT(second_navigation.has_station_clearance(site), "A competing request must not revoke the existing clearance")
-	TEST_ASSERT(second_helm.navigation_command("cancel_station_dock", site.id), "The second pilot must be able to release the clearance")
+	UNTIL(navigation.has_station_clearance(medium_site) || world.time >= deadline)
+	TEST_ASSERT_EQUAL(medium_site.docking_owner, navigation, "Automatic assignment must fall back to M when S is reserved")
+	TEST_ASSERT_EQUAL(site.docking_owner, second_navigation, "The competing request must leave the existing S reservation intact")
+	TEST_ASSERT(helm.navigation_command("cancel_station_dock", target_id), "The first pilot must be able to release the M assignment")
+	TEST_ASSERT(second_helm.navigation_command("cancel_station_dock", target_id), "The second pilot must be able to release the S assignment")
 
-	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "The first pilot must be able to retry after a refusal")
+	TEST_ASSERT(helm.navigation_command("request_station_dock", target_id), "The first pilot must be able to request again")
 	var/requested_at = world.time
 	deadline = requested_at + 8 SECONDS
 	UNTIL(navigation.has_station_clearance(site) || world.time >= deadline)
 	TEST_ASSERT(navigation.has_station_clearance(site), "The retry must grant clearance without a dispatcher")
 	TEST_ASSERT(world.time >= requested_at + 3 SECONDS, "The automatic response must wait at least three seconds")
 	TEST_ASSERT(navigation.dock(instant = TRUE), "Automatic clearance must permit the real docking maneuver")
-	TEST_ASSERT(second_helm.navigation_command("request_station_dock", site.id), "A request can be submitted to an occupied dock")
+	// Reserve the other berth for an approach to exercise the no-capacity response.
+	medium_site.docking_owner = navigation
+	TEST_ASSERT(second_helm.navigation_command("request_station_dock", target_id), "A request can be submitted while both berths are taken")
 	deadline = world.time + 8 SECONDS
 	UNTIL(!second_navigation.get_station_docking_request() || world.time >= deadline)
-	TEST_ASSERT_NULL(second_navigation.get_station_docking_request(), "A moored hull must block automatic clearance")
+	TEST_ASSERT_NULL(second_navigation.get_station_docking_request(), "Automatic clearance must refuse when neither berth is free")
+	medium_site.docking_owner = null
 	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "A refused request must leave the moored hull in control")
 
 /// A newly built controller must publish a real slot without claiming another controller's envelope.
@@ -683,9 +734,6 @@
 	navigation.pos_x = medium_site.pos_x
 	navigation.pos_y = medium_site.pos_y
 	TEST_ASSERT(navigation.select_site(medium_id), "The runtime M berth must be selectable")
-	ship.ship_class = "small"
-	TEST_ASSERT(!navigation.dock(instant = TRUE, station_authorized = TRUE), "A small-class ship must not use a medium-only slot")
-	ship.ship_class = "medium"
 	var/area/hull_area = get_area(flight_anchor)
 	var/turf/extension = locate(ship.x + 19, ship.y + 1, ship.z)
 	extension = extension.ChangeTurf(/turf/open/floor/plating)
@@ -744,3 +792,29 @@
 	TEST_ASSERT(isspaceturf(first_bridge) && isspaceturf(second_bridge), "Departure must retract both gangways to vacuum")
 	QDEL_NULL(first_controller)
 	TEST_ASSERT_NULL(home_sector.sites[medium_id], "Removing the empty M controller must unpublish its destination")
+
+/// A small hull must move into a larger standard slot and join its wall without resizing.
+/datum/unit_test/overmap_standard_dock/small_in_medium/Run()
+	TEST_ASSERT_NOTNULL(site, "The real dock fixture must finish setup")
+	var/level = bay.z
+	var/anchor_x = max(bay.x + 12, TRANSITIONEDGE + 1)
+	var/anchor_y = TRANSITIONEDGE + 1
+	TEST_ASSERT(anchor_x + 21 < world.maxx - TRANSITIONEDGE && anchor_y + 24 < world.maxy - TRANSITIONEDGE, "The test map must fit the M berth inside its transition border")
+	var/turf/anchor = locate(anchor_x, anchor_y, level)
+	var/area/station_area = get_area(locate(bay.x + 9, bay.y, level))
+	prepare_vacuum(anchor, locate(anchor_x + 21, anchor_y + 24, level), get_area(bay))
+	qdel(bay, force = TRUE)
+	bay = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard_m, anchor)
+	site.berth = bay
+	var/turf/wall_tile = locate(anchor_x + bay.width + 1, anchor_y + hatch_y, level)
+	for(var/turf/tile as anything in list(wall_tile, get_step(wall_tile, EAST)))
+		tile = tile.ChangeTurf(/turf/open/floor/plating)
+		tile.change_area(get_area(tile), station_area)
+	var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall = allocate(/obj/machinery/door/airlock/stationtrauma_docking/wall, wall_tile)
+	wall.setDir(WEST)
+	station_objects += wall
+	TEST_ASSERT(navigation.select_site(site.id), "The mapped M berth must be selectable")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "A small hull must physically dock at the M berth. Status: [navigation.status]")
+	TEST_ASSERT_EQUAL(ship.get_docked(), bay.active_berth, "Native movement must finish at the technical M berth")
+	TEST_ASSERT_EQUAL(ship.width, hull_width, "The native berth must keep the small hull's width")
+	TEST_ASSERT_EQUAL(hatch.gangway?.wall, wall, "The small hull must deploy a gangway to the M wall")
