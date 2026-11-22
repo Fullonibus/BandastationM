@@ -662,6 +662,18 @@
 	TEST_ASSERT_EQUAL(slot.height, 25, "A runtime M slot must reserve 25 tiles of length")
 	TEST_ASSERT_EQUAL(slot.dock_class, "M", "The runtime slot must advertise M")
 	TEST_ASSERT_EQUAL(slot.accepted_ship_class, "medium", "The runtime slot must accept the medium ship class")
+
+	var/turf/repair_tile = get_turf(last_segment)
+	qdel(last_segment)
+	var/mob/living/carbon/human/builder = allocate(/mob/living/carbon/human/consistent, get_step(repair_tile, WEST))
+	var/obj/item/stationtrauma_docking_kit/wall/repair_kit = allocate(/obj/item/stationtrauma_docking_kit/wall)
+	TEST_ASSERT(builder.put_in_active_hand(repair_kit), "The builder must hold the wall kit")
+	TEST_ASSERT_EQUAL(repair_kit.interact_with_atom(repair_tile, builder, list()), ITEM_INTERACT_SUCCESS, "The wall kit must mount from the dock side")
+	qdel(builder)
+	var/obj/machinery/door/airlock/stationtrauma_docking/wall/replacement = locate() in repair_tile
+	TEST_ASSERT_NOTNULL(replacement, "Installation must replace the missing wall section")
+	station_objects += replacement
+	TEST_ASSERT_EQUAL(replacement.dir, WEST, "The repaired M wall must face the slot regardless of where the builder stood")
 	var/datum/stationtrauma_overmap_site/space/medium_site = slot.published_site
 	TEST_ASSERT_NOTNULL(medium_site, "The M dock must publish a navigation destination")
 	var/medium_id = medium_site.id

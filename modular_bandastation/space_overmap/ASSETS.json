@@ -3,6 +3,14 @@
 	"scope": "Non-audio maps, imported icons and generated previews introduced or modified by space-overmap modules. Embedded code and existing referenced assets retain their original notices.",
 	"assets": [
 		{
+			"path": "modular_bandastation/space_overmap/icons/dock_wall.dmi",
+			"sha256": "8f5d47723de0d6d5b75eb894f892697c9b22f96d28f24b53c8ee5136295b7265",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors (art direction and original pixel artwork)"],
+			"source": null,
+			"changes": "Original four-direction docking fender with retracting sections and service overlays, using the station wall and plating palette."
+		},
+		{
 			"path": "modular_bandastation/space_overmap/icons/planets.dmi",
 			"sha256": "714840d77b7ad11205f47fba502a44420479d7d47b4e51c7fd52da6232971667",
 			"license": "CC-BY-SA-3.0",
@@ -56,7 +64,7 @@
 		},
 		{
 			"path": "icons/obj/fluff/map_previews.dmi",
-			"sha256": "6843402040d2e4744c84b668d34c464f27d8ca82b6c7472a29f3b9d9e41de16e",
+			"sha256": "5654c345a96cc28f31299215ca832d217aeb7e800f229dda381dcfc0177f6812",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["TG, BandaStation and Primera contributors"],
 			"source": {
@@ -67,7 +75,7 @@
 				"sha256": "884340c242ae79ac1147268b8611f4d13b8d712de38c9b271297d5ecbf5edc4f",
 				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md"
 			},
-			"changes": "Native auto-generated map preview sheet; includes the Cyberiad Overmap profile and docking airlock with the existing public airlock and turf_analysis red_arrow sprites. The trade terminal uses a preview in its own 32x48 DMI.",
+			"changes": "Native auto-generated map preview sheet; includes the Cyberiad Overmap profile and docking airlock with the existing public airlock sprite. The trade terminal uses a preview in its own 32x48 DMI.",
 			"byte_identical": false
 		},
 		{

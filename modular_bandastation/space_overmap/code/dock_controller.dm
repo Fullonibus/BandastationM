@@ -17,10 +17,10 @@
 	desc = "Сканирует и регистрирует построенный стыковочный слот M."
 	build_path = /obj/item/circuitboard/computer/stationtrauma_dock_controller/medium
 
-/** A prefabricated endpoint installs facing away from the builder. */
+/** A prefabricated endpoint installed on a free floor tile. */
 /obj/item/stationtrauma_docking_kit
 	name = "монтажный комплект стыковочного шлюза"
-	desc = "Установите на соседний пол, стоя со стороны герметичного помещения. Стрелка установленного шлюза будет смотреть от вас, наружу к месту стыковки."
+	desc = "Установите на соседний пол, стоя со стороны герметичного помещения. Шлюз будет направлен от вас наружу, к месту стыковки."
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "flatpack"
 	/// The finished docking endpoint this kit installs.
@@ -28,6 +28,7 @@
 
 /obj/item/stationtrauma_docking_kit/wall
 	name = "монтажный комплект секции стыковочной стены"
+	desc = "Если пол повреждён, сначала восстановите его. Примените комплект к свободной клетке стены. Разметка причала задаст направление секции. При монтаже без разметки встаньте со стороны герметичного коридора."
 	endpoint_type = /obj/machinery/door/airlock/stationtrauma_docking/wall
 
 /obj/item/stationtrauma_docking_kit/ship
@@ -38,12 +39,15 @@
 	if(!isturf(interacting_with) || user.combat_mode)
 		return NONE
 	var/turf/tile = interacting_with
-	var/facing = get_dir(user, tile)
-	if(!can_install(tile, user) || !(facing in GLOB.cardinals))
-		balloon_alert(user, "нужен свободный пол перед вами")
+	if(!can_install(tile, user))
+		balloon_alert(user, "нужна свободная клетка пола рядом")
+		return ITEM_INTERACT_BLOCKING
+	var/facing = installation_direction(tile, user)
+	if(!(facing in GLOB.cardinals))
+		balloon_alert(user, "здесь не установить шлюз")
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert(user, "устанавливаю шлюз…")
-	if(!do_after(user, 2 SECONDS, target = tile) || !can_install(tile, user) || facing != get_dir(user, tile))
+	if(!do_after(user, 2 SECONDS, target = tile) || !can_install(tile, user) || facing != installation_direction(tile, user))
 		return ITEM_INTERACT_BLOCKING
 	var/obj/machinery/door/airlock/stationtrauma_docking/endpoint = new endpoint_type(tile)
 	endpoint.setDir(facing)
@@ -52,11 +56,37 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/stationtrauma_docking_kit/proc/can_install(turf/tile, mob/living/user)
-	return !QDELETED(src) && !QDELETED(user) && loc == user && user.Adjacent(tile) && isfloorturf(tile) \
+	return !QDELETED(src) && !QDELETED(user) && loc == user && get_turf(user) != tile && user.Adjacent(tile) && isfloorturf(tile) \
 		&& !tile.is_blocked_turf() && !(locate(/obj/machinery/door) in tile)
 
-/obj/item/stationtrauma_docking_kit/wall/can_install(turf/tile, mob/living/user)
-	return (is_station_level(tile.z) || stationtrauma_carrier_at(tile)) && ..()
+/** Endpoints built without a dock layout face away from the builder. */
+/obj/item/stationtrauma_docking_kit/proc/installation_direction(turf/tile, mob/living/user)
+	return get_dir(user, tile)
+
+/obj/item/stationtrauma_docking_kit/wall/installation_direction(turf/tile, mob/living/user)
+	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(tile)
+	for(var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot in SSshuttle.stationary_docking_ports)
+		if(QDELETED(slot) || slot.z != tile.z || slot.host != host || (slot.host_ship_id && !host))
+			continue
+		var/facing = stationtrauma_standard_dock_wall_direction(tile, get_turf(slot), slot.dir, slot.width, slot.height)
+		if(facing)
+			return facing
+
+	if(!host && !is_station_level(tile.z))
+		return NONE
+
+	// A prepared dock, such as Cyberiad's M dock, has only a controller until commissioning.
+	var/draft_facing
+	for(var/obj/machinery/computer/stationtrauma_dock_controller/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/stationtrauma_dock_controller))
+		if(QDELETED(controller) || !controller.anchored || controller.z != tile.z || controller.site_id || controller.owned_slot)
+			continue
+		var/facing = stationtrauma_standard_dock_wall_direction(tile, controller.proposed_anchor(), controller.dir, controller.slot_width, controller.slot_height)
+		if(!facing || stationtrauma_carrier_at(controller) != host)
+			continue
+		if(draft_facing && draft_facing != facing)
+			return ..()
+		draft_facing = facing
+	return draft_facing || ..()
 
 /datum/design/stationtrauma_docking_kit
 	abstract_type = /datum/design/stationtrauma_docking_kit
@@ -307,7 +337,7 @@
 		images += marker
 	user.client.images += images
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(stationtrauma_hide_dock_layout), WEAKREF(user.client), images), 12 SECONDS, TIMER_CLIENT_TIME)
-	to_chat(user, span_notice("Зелёным показана площадка [dock_width]×[dock_height], синим — полоса трапа, красным — линия секций. Разметка видна при осмотре площадки."))
+	to_chat(user, span_notice("Зелёным показана площадка [dock_width]×[dock_height], синим — полоса трапа, красным — клетки секций стены. Монтажный комплект сам выставит направление на этих клетках."))
 
 /proc/stationtrauma_hide_dock_layout(datum/weakref/viewer_ref, list/images)
 	var/client/viewer = viewer_ref.resolve()
@@ -326,6 +356,19 @@
 				return null
 			tiles[tile] = column
 	return tiles
+
+/** Recover the outward direction of a single wall cell without building the full dock preview. */
+/proc/stationtrauma_standard_dock_wall_direction(turf/tile, turf/anchor, facing, dock_width, dock_height)
+	if(!anchor || tile.z != anchor.z || !(facing in GLOB.cardinals))
+		return NONE
+	var/list/rotation = stationtrauma_port_rotation(facing)
+	var/offset_x = tile.x - anchor.x
+	var/offset_y = tile.y - anchor.y
+	var/column = offset_x * rotation[1] + offset_y * rotation[2]
+	var/row = offset_y * rotation[1] - offset_x * rotation[2]
+	if(column != dock_width + 1 || row < 0 || row >= dock_height)
+		return NONE
+	return turn(facing, 90)
 
 /** Verify the complete installation at commissioning and before a runtime berth is reserved. */
 /proc/stationtrauma_standard_dock_problem(turf/anchor, facing, dock_width, dock_height, obj/docking_port/stationary/stationtrauma_space_station/standard/current_slot, datum/stationtrauma_overmap/space/host)
@@ -355,7 +398,11 @@
 				return "Площадка или полоса трапа перекрыта на ([tile.x], [tile.y])."
 		else if(column == dock_width + 1)
 			var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall = locate() in tile
-			if(!isfloorturf(tile) || QDELETED(wall) || !wall.anchored || wall.dir != wall_direction || !wall.density || wall.operating || wall.gangway)
+			if(!isfloorturf(tile))
+				return "Восстановите пол под секцией стены на ([tile.x], [tile.y])."
+			if(QDELETED(wall))
+				return "Восстановите секцию стены на ([tile.x], [tile.y]) монтажным комплектом."
+			if(!wall.anchored || wall.dir != wall_direction || !wall.density || wall.operating || wall.gangway)
 				return "На ([tile.x], [tile.y]) нужна закрытая секция стены, направленная к площадке."
 			if(!wall.hasPower() || tile.is_blocked_turf(exclude_mobs = TRUE, ignore_atoms = list(wall)))
 				return "Секция стены на ([tile.x], [tile.y]) обесточена или перекрыта."

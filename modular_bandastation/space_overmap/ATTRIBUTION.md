@@ -96,12 +96,13 @@ BandaStation и Primera, а также [спрайт компактного яд
 ресурсах. Существующие TG-руины подключаются по исходным шаблонам без копирования
 графики и изменения их лицензий.
 
-[ASSETS.json](ASSETS.json) перечисляет 93 неаудиоресурса: две карты локаций,
+[ASSETS.json](ASSETS.json) перечисляет 94 неаудиоресурса: две карты локаций,
 семь карт аванпостов, тестовый зал,
 78 деталей рельефа планет (их источники указаны в
 [expedition_planets/ATTRIBUTION.md](../expedition_planets/ATTRIBUTION.md)),
 `icons/obj/fluff/map_previews.dmi`, `icons/fusion_core.dmi`, `icons/compact_core.dmi`,
-`icons/planets.dmi` и `icons/trade_terminal.dmi`.
+`icons/planets.dmi`, `icons/trade_terminal.dmi` и `icons/dock_wall.dmi`.
+Секции стыковочной стены нарисованы для BandaStation в палитре станционных стен и настила (CC BY-SA 3.0). На иллюстрации в руководстве также использованы штатные спрайты стен и пола.
 Реестр содержит permalink, коммиты и SHA-256
 исходников и локальных файлов.
 Превью карт создаётся штатным генератором и сохраняет авторство исходных карт и
