@@ -16,6 +16,10 @@
 	var/list/passages = list()
 	/// Environment adapters specialize eligibility.
 	var/passage_type = /datum/component/stationtrauma_map_passage
+	/// Destination level of the first deck, recorded while preparing.
+	var/site_level
+	/// Level, side and receiving level of every border led round the open seam, so closing clears exactly those.
+	var/list/linked_edges
 
 /// Every live connection, for resolving what a viewer sees through an open seam.
 GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
@@ -57,6 +61,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
 /datum/stationtrauma_map_connection/proc/disconnect()
 	active = FALSE
 	revision++
+	unlink_edges()
 	var/list/old_passages = passages
 	passages = list()
 	QDEL_LIST(old_passages)
@@ -65,6 +70,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
 /datum/stationtrauma_map_connection/proc/disconnect_cooperatively(datum/stationtrauma_work_budget/budget)
 	active = FALSE
 	revision++
+	unlink_edges()
 	var/list/old_passages = passages
 	passages = list()
 	for(var/datum/component/stationtrauma_map_passage/passage as anything in old_passages)
@@ -129,8 +135,12 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
 	var/extent = horizontal ? world.maxy : world.maxx
 	if(site_edge <= TRANSITIONEDGE + 1 || site_edge >= axis_limit - TRANSITIONEDGE)
 		return FALSE
+	site_level = berth.z
 	for(var/deck in 0 to decks - 1)
 		for(var/column in 1 to extent)
+			// The border bands at both ends of the seam lead round the map instead.
+			if(column <= TRANSITIONEDGE + 1 || column >= extent - TRANSITIONEDGE)
+				continue
 			budget.yield()
 			if(QDELETED(src) || QDELETED(vessel) || QDELETED(berth) || prepared_revision != revision)
 				return FALSE
@@ -161,7 +171,80 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
 	active = TRUE
 	for(var/datum/component/stationtrauma_map_passage/passage as anything in passages)
 		passage.show_mirage()
+	INVOKE_ASYNC(src, PROC_REF(link_edges), revision)
 	return TRUE
+
+/**
+ * Leave no border round the open seam: the sides along it loop on their own level, and flying off the far side
+ * of the destination arrives at the far side of the hull, and back. The far sides beyond the seam stay plain; nobody reaches them.
+ */
+/datum/stationtrauma_map_connection/proc/link_edges(expected)
+	var/datum/stationtrauma_work_budget/budget = new
+	var/list/plan = list()
+	for(var/deck in 0 to decks - 1)
+		var/ship_z = vessel.z + deck
+		var/site_z = site_level + deck
+		for(var/side in list(turn(direction, 90), turn(direction, -90)))
+			plan += list(list(ship_z, side, ship_z), list(site_z, side, site_z))
+		plan += list(list(site_z, direction, ship_z), list(ship_z, REVERSE_DIR(direction), site_z))
+	linked_edges = list()
+	for(var/list/edge as anything in plan)
+		// A border already leading somewhere (native cross-linked space, a looping open-space level) is not ours to change.
+		var/turf/open/probe = get_edge_target_turf(locate(round(world.maxx / 2), round(world.maxy / 2), edge[1]), edge[2])
+		if(istype(probe) && probe.destination_z)
+			continue
+		budget.yield()
+		if(revision != expected)
+			return
+		linked_edges += list(edge)
+		set_edge(edge[1], edge[2], edge[3])
+
+/** Restore the plain borders of every edge this seam led round. */
+/datum/stationtrauma_map_connection/proc/unlink_edges()
+	var/list/edges = linked_edges
+	linked_edges = null
+	// shortcut: synchronous so a quick re-dock cannot race the clearing; spread it over ticks if undocking ever shows in profiles.
+	for(var/list/edge as anything in edges)
+		set_edge(edge[1], edge[2], null)
+
+/**
+ * Point the border band of one side of a level at the opposite side of `target_z`, with the native border mirage, as cross-linked space does.
+ *
+ * Arguments:
+ * * z - Level whose border changes
+ * * side - Cardinal side of that level
+ * * target_z - Receiving level, or null for a plain border
+ */
+/datum/stationtrauma_map_connection/proc/set_edge(z, side, target_z)
+	var/inner_max_x = world.maxx - TRANSITIONEDGE
+	var/inner_max_y = world.maxy - TRANSITIONEDGE
+	var/list/band
+	var/arrival_x = 0
+	var/arrival_y = 0
+	switch(side)
+		if(NORTH)
+			band = block(1, inner_max_y, z, world.maxx, world.maxy, z)
+			arrival_y = TRANSITIONEDGE + 2
+		if(SOUTH)
+			band = block(1, 1, z, world.maxx, 1 + TRANSITIONEDGE, z)
+			arrival_y = inner_max_y - 1
+		if(EAST)
+			band = block(inner_max_x, 1 + TRANSITIONEDGE, z, world.maxx, inner_max_y, z)
+			arrival_x = TRANSITIONEDGE + 2
+		if(WEST)
+			band = block(1, 1 + TRANSITIONEDGE, z, 1 + TRANSITIONEDGE, inner_max_y, z)
+			arrival_x = inner_max_x - 1
+	var/range = (maxviewdist() - 1) / 2
+	for(var/turf/open/tile in band)
+		// The mirage sits on the innermost row of the band, facing out.
+		var/innermost = side == NORTH ? tile.y == inner_max_y : side == SOUTH ? tile.y == 1 + TRANSITIONEDGE : side == EAST ? tile.x == inner_max_x : tile.x == 1 + TRANSITIONEDGE
+		if(innermost && tile.destination_z)
+			tile.RemoveElement(/datum/element/mirage_border)
+		tile.destination_x = target_z ? (arrival_x || tile.x) : null
+		tile.destination_y = target_z ? (arrival_y || tile.y) : null
+		tile.destination_z = target_z
+		if(innermost && target_z)
+			tile.AddElement(/datum/element/mirage_border, locate(tile.destination_x, tile.destination_y, target_z), side, range)
 
 /**
  * The turf on the viewer's level where `target`, seen through an open seam, appears; null when it is not seen through one.
@@ -202,3 +285,13 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
 
 /mob/living/throw_item(atom/target)
 	return ..(stationtrauma_seam_image_turf(src, target) || target)
+
+/// Turfs carry VIS_INHERIT_ID, so a click on any far tile in the mirage lands on this invisible holder at the seam. Hand it to the tile under the cursor on the viewer's own level instead.
+/atom/movable/mirage_holder/Click(location, control, params)
+	var/list/modifiers = params2list(params)
+	var/turf/origin = get_turf(usr.client?.eye || usr)
+	if(!origin || !LAZYACCESS(modifiers, SCREEN_LOC))
+		return
+	var/turf/clicked = parse_caught_click_modifiers(modifiers, origin, usr.client)
+	if(clicked)
+		usr.ClickOn(clicked, list2params(modifiers))
