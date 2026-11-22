@@ -5,71 +5,53 @@
 	/// Gas receiver supplying this nozzle, without retaining a dismantled machine.
 	var/datum/weakref/combustion_feed
 	/// Exhaust plume shown while the nozzle delivers commanded thrust.
-	var/obj/effect/abstract/particle_holder/exhaust
+	var/mutable_appearance/exhaust
 	/// Plume colours from the nozzle outward; bluespace drives by default.
 	var/list/exhaust_gradient = list("#FFFFFF", "#9FF4FF", "#2F8CFF")
 	/// Last feed palette, so changing converters refreshes an already firing plume.
 	var/list/last_exhaust_gradient
-	/// Whether the plume shows the green tritium afterburner.
-	var/exhaust_boosted = FALSE
 	/// Engineer's switch on the engine console; a switched-off nozzle gives no thrust and takes no gas.
 	var/crew_enabled = TRUE
 
 /obj/machinery/power/shuttle_engine/Destroy(force)
-	QDEL_NULL(exhaust)
+	exhaust = null
 	return ..()
 
 /**
- * Start or stop the exhaust plume, only on a change of state.
+ * Display a looping flame at the outlet, scaled to the nozzle width.
  *
  * Arguments:
- * * active - Whether the nozzle is producing thrust
+ * * thrust - Fraction of full thrust currently delivered
  * * boosted - Whether the supplying fusion core is in overdrive
- * * gradient - Palette supplied by the converter; ordinary engines use their default
+ * * gradient - Core, middle and rim colours supplied by the converter
  */
-/obj/machinery/power/shuttle_engine/proc/set_exhaust(active, boosted = FALSE, list/gradient)
-	boosted = active && boosted
-	gradient ||= exhaust_gradient
-	if(!!exhaust == !!active && exhaust_boosted == boosted && (!active || last_exhaust_gradient == gradient))
+/obj/machinery/power/shuttle_engine/proc/set_exhaust(thrust, boosted = FALSE, list/gradient)
+	if(thrust <= 0)
+		if(exhaust)
+			cut_overlay(exhaust)
+			exhaust = null
+			last_exhaust_gradient = null
+			set_light(0)
 		return
-	exhaust_boosted = boosted
-	last_exhaust_gradient = active ? gradient : null
-	QDEL_NULL(exhaust)
-	if(!active)
-		set_light(0)
-		return
-	var/static/list/afterburner_gradient = list("#FFFFFF", "#C9FFB8", "#2BD23C")
-	if(boosted)
-		gradient = afterburner_gradient
-	exhaust = new(src, /particles/ship_exhaust)
-	var/list/offset = dir2offset(dir)
-	// Emit across the whole outer edge of the real footprint, including rotated large nozzles.
-	var/edge_x = (bound_width - ICON_SIZE_X) / 2 + offset[1] * bound_width / 2
-	var/edge_y = (bound_height - ICON_SIZE_Y) / 2 + offset[2] * bound_height / 2
-	var/spread_x = offset[1] ? 0 : bound_width / 2 - 6
-	var/spread_y = offset[2] ? 0 : bound_height / 2 - 6
-	exhaust.particles.position = generator(GEN_BOX, list(edge_x - spread_x, edge_y - spread_y, 0), list(edge_x + spread_x, edge_y + spread_y, 0), UNIFORM_RAND)
-	exhaust.particles.velocity = list(offset[1] * 6, offset[2] * 6)
-	exhaust.particles.gradient = gradient
-	set_light(2, 1, gradient[2])
 
-/** Flame jet and fading tail behind a firing nozzle. */
-/particles/ship_exhaust
-	icon = 'icons/effects/particles/bonfire.dmi'
-	icon_state = "bonfire"
-	width = 192
-	height = 192
-	count = 300
-	spawning = 8
-	lifespan = 0.8 SECONDS
-	fade = 0.5 SECONDS
-	grow = 0.08
-	color = 0
-	color_change = 0.12
-	friction = 0.05
-	drift = generator(GEN_VECTOR, list(-0.6, -0.6), list(0.6, 0.6), NORMAL_RAND)
-	scale = generator(GEN_VECTOR, list(0.9, 0.9), list(1.5, 1.5), NORMAL_RAND)
-	spin = generator(GEN_NUM, -20, 20)
+	var/static/list/afterburner_gradient = list("#FFFFFF", "#C9FFB8", "#2BD23C")
+	gradient = boosted ? afterburner_gradient : (gradient || exhaust_gradient)
+	var/flame_state = "[clamp(CEILING(thrust * 3, 1), 1, 3)]"
+	if(exhaust && exhaust.icon_state == flame_state && exhaust.dir == dir && last_exhaust_gradient == gradient)
+		return
+	if(exhaust)
+		cut_overlay(exhaust)
+	last_exhaust_gradient = gradient
+	exhaust = make_mutable_appearance_directional(mutable_appearance('modular_bandastation/space_overmap/icons/nozzle_flame.dmi', flame_state), dir)
+	// The sprite starts at the near edge of the tile immediately outside the nozzle.
+	var/list/offset = dir2offset(dir)
+	exhaust.pixel_x = (bound_width - ICON_SIZE_X + offset[1] * (bound_width + ICON_SIZE_X)) / 2
+	exhaust.pixel_y = (bound_height - ICON_SIZE_Y + offset[2] * (bound_height + ICON_SIZE_Y)) / 2
+	exhaust.transform = matrix().Scale(offset[1] ? 1 : bound_width / ICON_SIZE_X, offset[2] ? 1 : bound_height / ICON_SIZE_Y)
+	// The sprite's RGB channels mask the hot core, middle flame and outer rim.
+	exhaust.color = gradient
+	add_overlay(exhaust)
+	set_light(2, 1, gradient[2])
 
 /** Standard small nozzle; the converter determines its working fluid and delivered thrust. */
 /obj/machinery/power/shuttle_engine/propulsion/standard

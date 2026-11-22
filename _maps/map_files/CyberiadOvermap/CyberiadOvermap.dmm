@@ -1476,6 +1476,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/expedition/office)
 "aeU" = (
+/obj/machinery/photocopier/prebuilt,
 /obj/machinery/requests_console/directional/north,
 /obj/effect/mapping_helpers/requests_console/information,
 /obj/effect/mapping_helpers/requests_console/assistance,
@@ -1490,7 +1491,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/spawner/directional/east,
-/obj/machinery/photocopier/prebuilt,
+/obj/structure/closet/secure_closet/expedition_blades,
 /obj/effect/turf_decal/trimline/purple/line{
 	dir = 5
 	},

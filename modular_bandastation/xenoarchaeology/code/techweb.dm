@@ -81,7 +81,7 @@
 	return length(kinds) >= required
 
 /datum/experiment/xenoarch_analysis/check_progress()
-	return list(EXPERIMENT_PROG_INT("Изучено видов энергии", length(kinds), required))
+	return EXPERIMENT_PROG_INT("Изучено видов энергии", length(kinds), required)
 
 /// The same, for five kinds: what Anomalous Energy asks for.
 /datum/experiment/xenoarch_analysis/five

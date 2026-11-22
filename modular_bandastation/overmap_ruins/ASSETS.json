@@ -567,22 +567,6 @@
 			"byte_identical": false
 		},
 		{
-			"path": "_maps/map_files/overmap_ruins/planet/sierra_trash_heap.dmm",
-			"sha256": "df7bd3ce1ce8ed4eb3046447fa00c8c3c48e56b83c5e67d8596bf625f8db0f56",
-			"license": "CC-BY-SA-3.0",
-			"authors": ["SierraBay and Baystation contributors"],
-			"source": {
-				"repository": "SierraBay/SierraBay12",
-				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
-				"path": "maps/random_ruins/exoplanet_ruins/trash_heap/trash_heap.dmm",
-				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/trash_heap/trash_heap.dmm",
-				"sha256": "30114d82d82320879ebba8e1bcbe7cddc1c0b3a86789ee75d79b80f7d270bec1",
-				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
-			},
-			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
-			"byte_identical": false
-		},
-		{
 			"path": "_maps/map_files/overmap_ruins/space/celadon_fueldepot.dmm",
 			"sha256": "3ba161d8c9577bf2304ce8ba973d82f3485e52b33d9b0fe217920bbb181cc0c4",
 			"license": "CC-BY-SA-3.0",

@@ -7,7 +7,7 @@
 	generator_type = /datum/map_generator/expedition_barren/frozen
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/frozen
 	biome = "Хвойные леса, снежные поляны, редкие скалы и ледяные озёра"
-	atmosphere = "Кислород и азот, 62 кПа"
+	has_atmosphere = TRUE
 	surface_temperature = 180
 
 /** Seeded snow forest with scattered rock, as the native forested ice moon surface, and reduced ore availability. */

@@ -7,9 +7,8 @@
 	generator_type = /datum/map_generator/expedition_barren/lush
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lush
 	biome = "Джунгли, травянистые равнины, топкие низины и озёра"
-	atmosphere = "Кислород и азот, 101 кПа"
+	has_atmosphere = TRUE
 	surface_temperature = T20C
-	breathable = TRUE
 
 /** Seeded jungle terrain with flora and wildlife excluded from reserved paths and ruins. */
 /datum/map_generator/expedition_barren/lush
@@ -71,7 +70,7 @@
 		"modular_bandastation/expedition_planets/maps/features/celadon_jungle_anomaly_11.dmm" = 1,
 		"modular_bandastation/expedition_planets/maps/features/celadon_jungle_anomaly_12.dmm" = 1,
 	)
-	feature_count = 8
+	feature_count = 12
 	// Jungle caves also get the springs, overgrown dens and glowing pools of Celadon's jungle caves.
 	cave_feature_maps = list(
 		"modular_bandastation/expedition_planets/maps/features/celadon_junglecave_1.dmm" = 1,

@@ -63,7 +63,7 @@
 	var/list/chosen = list()
 	if(length(large))
 		chosen += pick(large)
-	for(var/index in 1 to min(rand(1, 4), length(small)))
+	for(var/index in 1 to min(rand(2, 5), length(small)))
 		chosen += pick_n_take(small)
 	var/list/placements = list()
 	if(length(huge))

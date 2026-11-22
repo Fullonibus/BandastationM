@@ -1,4 +1,4 @@
-/// The corps vending machine: free spare clothes, carrying gear and the field kit. Stock is sized for a full corps of seven.
+/// The corps vending machine: free spare clothes, carrying gear and the field kit. Sheaths are stocked for the corps except the leader, whose own is in their locker.
 /obj/machinery/vending/wardrobe/expedition_wardrobe
 	name = "ExpeDrobe"
 	desc = "Автомат с полевой одеждой и снаряжением экспедиционного корпуса Нанотрейзен."
@@ -15,8 +15,8 @@
 		/obj/item/clothing/gloves/color/black/expedition = 4,
 		/obj/item/clothing/suit/toggle/expedition = 4,
 		/obj/item/clothing/accessory/expedition_webbing = 7,
-		/obj/item/clothing/accessory/expedition_sheath = 7,
-		/obj/item/storage/belt/expedition_sheath = 7,
+		/obj/item/clothing/accessory/expedition_sheath = 6,
+		/obj/item/storage/belt/expedition_sheath = 6,
 		/obj/item/clothing/head/helmet/expedition_pilot = 2,
 		/obj/item/field_detector = 5,
 		/obj/item/field_collector = 2,

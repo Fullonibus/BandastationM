@@ -19,6 +19,9 @@
 	TEST_ASSERT_EQUAL(length(planet.modifier_log), 0, "An empty selection must not roll random traits.")
 	TEST_ASSERT_EQUAL(planet.modifier_level, 3, "Diagnostics must retain the selected level.")
 	TEST_ASSERT_NOTNULL(untouched.apply_modifiers(0), "Omitting the selection must preserve ordinary random generation.")
+	var/datum/map_generator/expedition_barren/frozen/guaranteed = allocate(/datum/map_generator/expedition_barren/frozen, 123)
+	TEST_ASSERT_NOTNULL(guaranteed.apply_modifiers(0, null, list(/datum/expedition_planet_modifier/anomaly_zone, /datum/expedition_planet_modifier/horde)), "Sector guarantees must still chart a planet.")
+	TEST_ASSERT(guaranteed.anomaly_fields && guaranteed.fauna_multiplier >= 3 && guaranteed.pack_spacing == 10 && guaranteed.pack_bonus == 2, "Sector guarantees must apply outside an empty danger budget.")
 
 /// Replacements retain sector identity and idle ship selections, but cannot rewrite a used destination.
 /datum/unit_test/overmap_docking/planet_debug_replace
@@ -83,6 +86,20 @@
 	planet.load_map()
 	TEST_ASSERT(!planet.failed && !planet.loading_map && !planet.awaits_map() && planet.berth, "The replacement must still build a real surface through the normal first-landing path.")
 	TEST_ASSERT(SSmapping.level_trait(planet.berth.z, ZTRAIT_DOWN) && SSmapping.level_trait(planet.berth.z - 1, ZTRAIT_UP), "The chosen cave system must have real connected native levels.")
+	// A ruin floor stripped to the bottom must leave the planet's ground, not open space, on the surface and in the caves.
+	for(var/z_level in list(planet.berth.z, planet.berth.z - 1))
+		var/turf/stripped = locate(planet.berth.x, planet.berth.y, z_level)
+		stripped = stripped.ChangeTurf(/turf/open/floor/plating, /turf/baseturf_bottom)
+		stripped = stripped.ScrapeAway()
+		TEST_ASSERT_EQUAL(stripped.type, /turf/open/misc/asteroid/snow, "Stripped plating on planet level [z_level] did not leave the frozen ground.")
+		var/turf/open/ground = stripped
+		TEST_ASSERT_EQUAL(ground.initial_gas_mix, planet.gas_mix, "Changed ground on planet level [z_level] took its type's air instead of the planet's.")
+	// A ruin garrison stays alive in the planet's cold, whatever air it rolled.
+	var/mob/living/basic/trooper/pirate/melee/garrison = allocate(/mob/living/basic/trooper/pirate/melee, get_turf(planet.berth))
+	garrison.bodytemperature = planet.surface_temperature
+	SEND_SIGNAL(garrison, COMSIG_LIVING_LIFE, 2, 1)
+	SEND_SIGNAL(garrison, COMSIG_LIVING_HANDLE_BREATHING, 2)
+	TEST_ASSERT_EQUAL(garrison.health, garrison.maxHealth, "A mob placed on the planet was hurt by its climate.")
 	TEST_ASSERT_NULL(planet.generator, "Finished generation must release its generator while retaining diagnostics.")
 	var/report = planet.debug_report()
 	TEST_ASSERT(findtext(report, "seed: 123") && findtext(report, "128 × 128") && findtext(report, "Пещерная система"), "The report must describe the actual generated configuration after generator cleanup.")
