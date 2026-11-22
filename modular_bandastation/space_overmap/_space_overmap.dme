@@ -10,6 +10,7 @@
 #include "code/carrier.dm"
 #include "code/carrier_movement.dm"
 #include "code/terminals.dm"
+#include "code/shuttle_orders.dm"
 #include "code/station_traffic.dm"
 #include "code/station_traffic_console.dm"
 #include "code/transponder.dm"

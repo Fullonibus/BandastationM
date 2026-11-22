@@ -2,6 +2,8 @@
 /datum/stationtrauma_overmap_site/space
 	/// Navigation instance currently reserving or occupying this site.
 	var/datum/stationtrauma_overmap/space/docking_owner
+	/// Reservation held from purchase until the hull can begin docking.
+	var/datum/stationtrauma_shuttle_order/shuttle_order
 	/// Whether this destination requires a surface landing.
 	var/landing = FALSE
 	/// Whether arrival moves the physical hull into the native station berth.
@@ -20,6 +22,7 @@
 	var/turf/entrance
 
 /datum/stationtrauma_overmap_site/space/Destroy()
+	QDEL_NULL(shuttle_order)
 	docking_owner = null
 	host = null
 	// The loader callback holds the owning sector, which deletes its sites.

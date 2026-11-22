@@ -182,7 +182,7 @@
 			show_layout(user, anchor, facing, dock_width, dock_height)
 		if("Проверить площадку")
 			var/datum/stationtrauma_overmap_site/space/site = slot_site(slot)
-			if(slot && (slot.active_berth || site?.docking_owner))
+			if(slot && (slot.active_berth || site?.docking_owner || site?.shuttle_order))
 				to_chat(user, span_notice(dock_status(slot)))
 				return
 			var/problem = stationtrauma_standard_dock_problem(anchor, facing, dock_width, dock_height, slot)
@@ -261,7 +261,7 @@
 	var/obj/docking_port/mobile/moored = slot.active_berth?.get_docked()
 	if(moored)
 		return "[slot.station_name] занят кораблём «[moored.name]».[retirement]"
-	if(site?.docking_owner || slot.active_berth)
+	if(site?.docking_owner || site?.shuttle_order || slot.active_berth)
 		return "[slot.station_name] зарезервирован.[retirement]"
 	return "[slot.station_name] свободен.[retirement]"
 

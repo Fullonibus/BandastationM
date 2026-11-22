@@ -11,10 +11,6 @@
 	var/datum/stationtrauma_overmap_site/space/docked
 	/// Manual lateral thrust order, retained until release or an explicit propulsion command.
 	var/maneuver_direction = NONE
-	/// Stoppable completion timer for the current station call.
-	var/dispatch_timer
-	/// Site reserved by the pending station delivery.
-	var/datum/stationtrauma_overmap_site/space/dispatch_target
 	/// Emergency manoeuvring thrusters are braking; they need ship power, not the main engines.
 	var/emergency_braking = FALSE
 
@@ -40,7 +36,6 @@
 	QDEL_NULL(ship_docking)
 	QDEL_NULL(interior_audio)
 	QDEL_NULL(engine_sound)
-	cancel_dispatch()
 	cancel_station_docking()
 	clear_construction_site()
 	cancel_jump()
@@ -209,7 +204,6 @@
 		return sail()
 
 /datum/stationtrauma_overmap/space/stop(reason = "Корабль остановлен")
-	cancel_dispatch()
 	cancel_jump()
 	throttle = 0
 	maneuver_direction = NONE
@@ -470,7 +464,7 @@
 		return FALSE
 	if(site?.host && sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2) > radius + site.radius + ST_NAV_APPROACH + 5)
 		return FALSE
-	if(!is_operational() || ship_docking || !knows_site(site) || (QDELETED(site.berth) && !site.awaits_map()) || site.failed || !vessel.permits_docking(site) || (site.docking_owner && site.docking_owner != src) || revision != control_revision || helm_engaged || site != sites[selected_destination] || distance_to(site) > radius + site.radius + ST_NAV_APPROACH + 5)
+	if(!is_operational() || ship_docking || !knows_site(site) || (QDELETED(site.berth) && !site.awaits_map()) || site.failed || !vessel.permits_docking(site) || site.shuttle_order || (site.docking_owner && site.docking_owner != src) || revision != control_revision || helm_engaged || site != sites[selected_destination] || distance_to(site) > radius + site.radius + ST_NAV_APPROACH + 5)
 		return FALSE
 	// Loaded berths are sized for the prototype hull; the approach revalidates them once they exist.
 	if(site.awaits_map())

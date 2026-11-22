@@ -166,7 +166,7 @@ ADMIN_VERB(stationtrauma_planet_system, R_DEBUG, "Overmap - Планеты си�
 		return FALSE
 	for(var/ship_id in ships)
 		var/datum/stationtrauma_overmap/space/navigation = ships[ship_id]
-		if(navigation.docked == planet || navigation.approach_site == planet || navigation.dispatch_target == planet \
+		if(navigation.docked == planet || navigation.approach_site == planet \
 			|| (navigation.selected_destination == planet.id && (navigation.helm_engaged || navigation.planning || navigation.preparing || navigation.relocating || navigation.arrival_pending)))
 			return FALSE
 	return TRUE

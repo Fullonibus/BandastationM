@@ -164,7 +164,7 @@
 		return istext(value) && value == map.selected_destination && map.cancel_station_docking()
 	if(map.relocating || map.approach_started)
 		return FALSE
-	if((map.jump_target || map.dispatch_target) && action != "stop")
+	if(map.jump_target && action != "stop")
 		return FALSE
 	map.advance()
 	switch(action)

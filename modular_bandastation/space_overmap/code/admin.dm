@@ -58,37 +58,48 @@ ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместит�
 	return TRUE
 
 ADMIN_VERB(stationtrauma_overmap_skip_wait, R_DEBUG, "Overmap - Завершить прыжок или вызов", "Мгновенно завершить идущий блюспейс-прыжок или вызов корабля к причалу.", ADMIN_CATEGORY_DEBUG)
-	// The dialog sleeps, so only IDs survive it; the ship is looked up again afterwards.
-	var/list/ships = list()
+	// The dialog sleeps, so resolve the selected ship or exact order again after it.
+	var/list/choices = list()
 	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
 		var/datum/stationtrauma_overmap_sector/space/listed_sector = SSstationtrauma_space_voyage.sectors[sector_id]
 		for(var/id in listed_sector.ships)
 			var/datum/stationtrauma_overmap/space/listed = listed_sector.ships[id]
-			if(listed.jump_timer || listed.dispatch_timer)
-				ships["[listed.vessel.name] ([id]): [listed.jump_timer ? "прыжок" : "вызов к причалу"]"] = list(sector_id, id)
-	if(!length(ships))
+			if(listed.jump_timer)
+				choices["[listed.vessel.name] ([id]): прыжок"] = list("sector" = sector_id, "ship" = id)
+		for(var/id in listed_sector.sites)
+			var/datum/stationtrauma_overmap_site/space/site = listed_sector.sites[id]
+			var/datum/stationtrauma_shuttle_order/order = site.shuttle_order
+			if(order?.delivery_timer)
+				choices["[site.name] ([id]): доставка"] = list("order" = WEAKREF(order))
+
+	if(!length(choices))
 		to_chat(user, span_notice("Нет кораблей в прыжке или в пути к причалу."), confidential = TRUE)
 		return
-	var/choice = tgui_input_list(user, "Корабль", "Завершить ожидание", ships)
+	var/choice = tgui_input_list(user, "Корабль", "Завершить ожидание", choices)
 	if(!choice || !check_rights_for(user, R_DEBUG))
 		return
-	var/list/ship_ids = ships[choice]
-	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors[ship_ids[1]]
-	var/datum/stationtrauma_overmap/space/navigation = sector ? sector.ships[ship_ids[2]] : null
-	if(QDELETED(navigation))
+	var/list/selection = choices[choice]
+	var/datum/weakref/order_ref = selection["order"]
+	if(order_ref)
+		var/datum/stationtrauma_shuttle_order/order = order_ref.resolve()
+		if(!order?.delivery_timer)
+			return
+		log_admin("[key_name(user)] skipped the delivery wait to [order.site.id]")
+		var/done = order.deliver()
+		to_chat(user, done ? span_notice("Корабль доставлен.") : span_warning("Доставка не состоялась."), confidential = TRUE)
 		return
-	log_admin("[key_name(user)] skipped the jump or delivery wait of [navigation.vessel.shuttle_id]")
+	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors[selection["sector"]]
+	var/datum/stationtrauma_overmap/space/navigation = sector?.ships[selection["ship"]]
+	if(QDELETED(navigation) || !navigation.jump_timer)
+		return
+	log_admin("[key_name(user)] skipped the jump wait of [navigation.vessel.shuttle_id]")
 	var/done = navigation.debug_skip_wait()
 	to_chat(user, done ? span_notice("Ожидание завершено.") : span_warning("Не завершено: [navigation?.status]"), confidential = TRUE)
 
-/** Debug: complete a pending jump or station delivery at once, through its normal completion and checks. */
+/** Debug: complete a pending jump at once through its normal completion checks. */
 /datum/stationtrauma_overmap/space/proc/debug_skip_wait()
-	if(jump_timer)
-		deltimer(jump_timer)
-		jump_timer = null
-		return finish_jump(jump_target, control_revision)
-	if(dispatch_timer)
-		deltimer(dispatch_timer)
-		dispatch_timer = null
-		return finish_dispatch(control_revision)
-	return FALSE
+	if(!jump_timer)
+		return FALSE
+	deltimer(jump_timer)
+	jump_timer = null
+	return finish_jump(jump_target, control_revision)

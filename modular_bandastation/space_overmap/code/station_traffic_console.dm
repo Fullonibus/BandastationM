@@ -88,7 +88,7 @@
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
 	var/is_standard = istype(slot)
 	var/obj/docking_port/mobile/moored = is_standard ? slot.active_berth?.get_docked() : site.berth.get_docked()
-	var/closed = site.failed || unavailable_berth(site.berth)
+	var/closed = site.failed || stationtrauma_berth_unavailable(site.berth)
 	var/status = "free"
 	var/ship_name
 	if(moored)
@@ -97,9 +97,9 @@
 	else if(approval && site.docking_owner == approval.requester && !(is_standard && slot.active_berth) && site.docking_owner.approach_site != site)
 		status = "approved"
 		ship_name = approval.requester.vessel.name
-	else if(site.docking_owner || (is_standard && slot.active_berth))
+	else if(site.docking_owner || site.shuttle_order || (is_standard && slot.active_berth))
 		status = "reserved"
-		ship_name = site.docking_owner?.vessel?.name
+		ship_name = site.shuttle_order?.offer["name"] || site.docking_owner?.vessel?.name
 		if(!ship_name && is_standard)
 			ship_name = slot.active_berth?.ship?.name
 	else if(closed)
@@ -107,7 +107,7 @@
 	return list("id" = site.id, "name" = site.name, "dock_class" = is_standard ? slot.dock_class : null, "status" = status, "ship" = ship_name)
 
 /** Read current admission without attempting a ship-specific approach or scanning the landing footprint. */
-/obj/machinery/computer/stationtrauma_station_traffic/proc/unavailable_berth(obj/docking_port/stationary/berth)
+/proc/stationtrauma_berth_unavailable(obj/docking_port/stationary/berth)
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/runtime_slot = berth
 	if(istype(runtime_slot))
 		return runtime_slot.retiring || !runtime_slot.controller_valid() || runtime_slot.host?.carrier_busy()

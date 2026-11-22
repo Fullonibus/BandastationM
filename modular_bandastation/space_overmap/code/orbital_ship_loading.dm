@@ -9,6 +9,8 @@
 	/// Native centered footprint captured before loading can yield or expand the world.
 	var/loaded_min_x
 	var/loaded_min_y
+	/// Ordered single-deck hulls can reuse a cleaned staging level after a rejected arrival.
+	var/reuse_dispatch_level = FALSE
 
 /datum/map_template/stationtrauma_space/ship/Destroy()
 	loaded_levels?.Cut()
@@ -40,7 +42,12 @@
 		if(deck < depth)
 			traits[ZTRAIT_UP] = TRUE
 		var/level_name = depth == 1 ? name : "[name] — палуба [deck]"
-		var/datum/space_level/level = SSmapping.add_new_zlevel(level_name, traits, contain_turfs = FALSE)
+		var/datum/space_level/level
+		if(reuse_dispatch_level && depth == 1 && SSstationtrauma_space_voyage.dispatch_staging_level)
+			level = SSmapping.get_level(SSstationtrauma_space_voyage.dispatch_staging_level)
+			SSstationtrauma_space_voyage.dispatch_staging_level = null
+		else
+			level = SSmapping.add_new_zlevel(level_name, traits, contain_turfs = FALSE)
 		loaded_levels += level.z_value
 		if(!first_level)
 			first_level = level
@@ -118,6 +125,16 @@
 		budget.yield()
 		if(!QDELETED(debris))
 			qdel(debris, force = TRUE)
+	if(reuse_dispatch_level && length(levels) == 1)
+		var/staging_z = levels[1]
+		// Sector attachment adopts the vacuum outside the map footprint too.
+		for(var/turf/open/space/tile in block(locate(1, 1, staging_z), locate(world.maxx, world.maxy, staging_z)))
+			budget.yield()
+			var/area/old_area = get_area(tile)
+			if(istype(old_area, /area/space/stationtrauma_space_home))
+				areas |= old_area
+				tile.change_area(old_area, exterior)
+		SSstationtrauma_space_voyage.dispatch_staging_level = staging_z
 	for(var/area/old_area as anything in areas)
 		if(old_area != exterior && !QDELETED(old_area) && !old_area.has_contained_turfs())
 			qdel(old_area)
@@ -125,8 +142,9 @@
 	require_area_resort()
 
 /** Keep loading and optional midround sector attachment inside the same rejected-template cleanup boundary. */
-/proc/load_stationtrauma_space_ship(map_path, attach_to_sector = FALSE)
+/proc/load_stationtrauma_space_ship(map_path, attach_to_sector = FALSE, datum/callback/place_ship)
 	var/datum/map_template/stationtrauma_space/ship/template = new(map_path, "Overmap ship")
+	template.reuse_dispatch_level = !!place_ship
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 	try
 		vessel = template.load_ship()
@@ -142,10 +160,16 @@
 				if((slot.z in vessel.owned_z_levels) && slot.host_ship_id && slot.host_ship_id != vessel.shuttle_id)
 					valid_hosts = FALSE
 					break
-			if(!valid_hosts || !sector?.ready || !sector.attach(vessel))
+			if(!valid_hosts || !sector?.ready || !sector.attach(vessel, defer_starting_dock = !!place_ship))
 				log_mapping("Could not attach overmap ship [map_path]: unavailable sector, conflicting carrier IDs or invalid hull")
 				vessel = null
+			else if(place_ship && !place_ship.Invoke(vessel))
+				if(!(vessel.z in template.loaded_levels))
+					template.reuse_dispatch_level = FALSE
+				vessel = null
 	catch(var/exception/failure)
+		if(vessel && !(vessel.z in template.loaded_levels))
+			template.reuse_dispatch_level = FALSE
 		template.discard_loaded_ship()
 		qdel(template)
 		throw failure
@@ -155,8 +179,10 @@
 	return vessel
 
 /datum/controller/subsystem/stationtrauma_space_voyage
-	/// Only one admin template load may allocate decks and register its mapped IDs at a time.
+	/// Only one midround template load may allocate decks and register its mapped IDs at a time.
 	var/loading_ship_template = FALSE
+	/// Empty, cleaned flight level available for the next one-deck delivery.
+	var/dispatch_staging_level
 
 /** Server-owned ship files offered alongside the ordinary lazy templates. */
 /datum/controller/subsystem/stationtrauma_space_voyage/proc/ship_template_choices()
