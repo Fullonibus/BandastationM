@@ -13,6 +13,10 @@
 /** The outward direction points from the hull toward a compatible dock. */
 /obj/machinery/door/airlock/stationtrauma_docking/ship
 	name = "корабельный стыковочный шлюз"
+	icon = 'modular_bandastation/space_overmap/icons/ship_hatch.dmi'
+	icon_state = "closed"
+	overlays_file = 'modular_bandastation/space_overmap/icons/ship_hatch.dmi'
+	generate_map_preview = FALSE
 
 /** The outward direction points from the dock wall into the slot. */
 /obj/machinery/door/airlock/stationtrauma_docking/wall
