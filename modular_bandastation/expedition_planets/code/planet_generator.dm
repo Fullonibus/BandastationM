@@ -108,7 +108,7 @@
 		"modular_bandastation/expedition_planets/maps/features/celadon_moon_crater6.dmm" = 1,
 	)
 	/// Surface features placed on each planet when free space allows.
-	var/feature_count = 6
+	var/feature_count = 10
 	/// Cave-level feature maps with pick weights; the default set of shacks, bunkers, wells and mushroom groves suits every profile.
 	var/list/cave_feature_maps = list(
 		"modular_bandastation/expedition_planets/maps/features/celadon_junglecave_2.dmm" = 1,
@@ -119,9 +119,11 @@
 		"modular_bandastation/expedition_planets/maps/features/celadon_junglecave_10.dmm" = 1,
 	)
 	/// Cave features placed on each cave level when free space allows.
-	var/cave_feature_count = 6
+	var/cave_feature_count = 10
 	/// Research sources placed in each cave level's open pockets.
-	var/cave_source_count = 2
+	var/cave_source_count = 3
+	/// Cave biomes breed this many times the fauna of the same biome on the surface; pockets are small and far apart.
+	var/cave_fauna_multiplier = 2
 	/// Turfs covered by placed features; flora and fauna never start on them.
 	var/list/feature_turfs
 	/// Work slice shared by every generation step of this surface.
@@ -364,7 +366,10 @@
 	var/list/cave_turfs = block(bottom, locate(bottom.x + width - 1, bottom.y + width - 1, bottom.z))
 	generate_terrain(cave_turfs, caves_area)
 	place_features(bottom, caves_area, cave_feature_maps, cave_feature_count)
+	for(var/datum/biome/biome as anything in biome_turfs)
+		biome.fauna_density *= cave_fauna_multiplier
 	populate_biomes()
+	place_nests(bottom)
 	// Research sources wait in open pockets away from the connectors and features.
 	var/list/pockets = list()
 	for(var/turf/open/tile in cave_turfs)
@@ -431,6 +436,9 @@
 				var/x = patch ? patch[1] + rand(-modifier.nest_cluster, modifier.nest_cluster) : rand(4, width - 3)
 				var/y = patch ? patch[2] + rand(-modifier.nest_cluster, modifier.nest_cluster) : rand(4, width - 3)
 				if(x < 4 || y < 4 || x > width - 3 || y > width - 3 || is_reserved(x, y) || (x < camp_x + camp_width + fauna_clearance && y < camp_y + camp_height + fauna_clearance))
+					continue
+				// Underground, the clearing beneath a ladder or drop must stay free to arrive in.
+				if(cave_level && in_clearing(x, y))
 					continue
 				var/turf/open/misc/tile = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
 				if(!istype(tile) || tile.is_blocked_turf())

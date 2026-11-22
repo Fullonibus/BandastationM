@@ -238,11 +238,31 @@
 	var/list/profiles = shuffle(list(/datum/stationtrauma_overmap_site/space/planet, /datum/stationtrauma_overmap_site/space/planet/frozen, /datum/stationtrauma_overmap_site/space/planet/frozen/plain, /datum/stationtrauma_overmap_site/space/planet/arid, /datum/stationtrauma_overmap_site/space/planet/lush, /datum/stationtrauma_overmap_site/space/planet/lava, /datum/stationtrauma_overmap_site/space/planet/dead))
 	var/static/list/planet_letters = list("b", "c", "d", "e", "f")
 	var/first_seed = rand(1, 1000001 - length(positions))
+	// Planets farther from the arrival point roll stronger dangers and rewards.
+	var/list/levels = list()
+	for(var/index in 1 to length(positions))
+		levels += sqrt((positions[index][1] - entry_x) ** 2 + (positions[index][2] - entry_y) ** 2) / 500
+	// Whatever the rolls, the two farthest worlds with wildlife hold anomaly fields and dangerous fauna; the farther one is overrun.
+	var/overrun
+	var/infested
+	for(var/index in 1 to length(positions))
+		var/datum/stationtrauma_overmap_site/space/planet/profile = profiles[index]
+		var/datum/map_generator/expedition_barren/generator_type = initial(profile.generator_type)
+		if(!initial(generator_type.wildlife))
+			continue
+		if(!overrun || levels[index] > levels[overrun])
+			infested = overrun
+			overrun = index
+		else if(!infested || levels[index] > levels[infested])
+			infested = index
 	for(var/index in 1 to length(positions))
 		var/profile = profiles[index]
-		// Planets farther from the arrival point roll stronger dangers and rewards.
-		var/modifier_level = sqrt((positions[index][1] - entry_x) ** 2 + (positions[index][2] - entry_y) ** 2) / 500
-		var/datum/stationtrauma_overmap_site/space/planet/planet = create_stationtrauma_planet(seed = first_seed + index - 1, planet_id = "planet_[index]", planet_name = "[name] [planet_letters[index]]", planet_type = profile, modifier_level = modifier_level)
+		var/list/required
+		if(index == overrun)
+			required = list(/datum/expedition_planet_modifier/anomaly_zone, /datum/expedition_planet_modifier/horde)
+		else if(index == infested)
+			required = list(/datum/expedition_planet_modifier/anomaly_zone, /datum/expedition_planet_modifier/predators)
+		var/datum/stationtrauma_overmap_site/space/planet/planet = create_stationtrauma_planet(seed = first_seed + index - 1, planet_id = "planet_[index]", planet_name = "[name] [planet_letters[index]]", planet_type = profile, modifier_level = levels[index], required_modifiers = required)
 		if(!planet)
 			return FALSE
 		planet.pos_x = positions[index][1]

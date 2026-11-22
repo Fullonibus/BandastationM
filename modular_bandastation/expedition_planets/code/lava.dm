@@ -9,7 +9,7 @@
 	generator_type = /datum/map_generator/expedition_barren/lava
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lava
 	biome = "Базальтовые равнины, пепельные заросли и лавовые озёра"
-	atmosphere = "Углекислый газ и азот, 114 кПа; кислорода нет"
+	has_atmosphere = TRUE
 	surface_temperature = 380
 	ruin_biome = "lava"
 

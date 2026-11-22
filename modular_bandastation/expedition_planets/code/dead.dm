@@ -6,7 +6,7 @@
 	generator_type = /datum/map_generator/expedition_barren/dead
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/dead
 	biome = "Выжженные равнины, ржавые свалки и радиоактивные воронки"
-	atmosphere = "Азот и углекислый газ, 74 кПа; кислорода нет"
+	has_atmosphere = TRUE
 	surface_temperature = 278
 	// Ordinary wrecks and outposts of lifeless worlds stand here beside the waste ruins.
 	ruin_biome = "barren"

@@ -144,12 +144,6 @@
 	name = "Expedition-Surface Sierra transshipment"
 	suffix = "sierra_transshipment.dmm"
 
-/** Expedition-only ruin template for Expedition-Surface Sierra trash_heap. */
-/datum/map_template/ruin/expedition/sierra_trash_heap
-	id = "sierra_trash_heap"
-	name = "Expedition-Surface Sierra trash_heap"
-	suffix = "sierra_trash_heap.dmm"
-
 // CeladonSS13/Shiptest contributors; adapted layouts: CC BY-SA 3.0; see source links in each DMM.
 // https://github.com/CeladonSS13/Shiptest/tree/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins
 /** Expedition-only ruin template for Expedition-Surface Celadon botany. */

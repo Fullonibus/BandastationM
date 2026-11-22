@@ -51,6 +51,10 @@
 	var/craters = FALSE
 	/// Weighted robots this modifier sends in packs among the wildlife.
 	var/list/guardian_types
+	/// Least distance between fauna packs this modifier sets; zero keeps the generator's.
+	var/pack_spacing = 0
+	/// Extra members this modifier adds to every fauna pack that is not a solitary encounter.
+	var/pack_bonus = 0
 
 /** Whether this modifier means anything for the generator's environment profile. */
 /datum/expedition_planet_modifier/proc/can_apply(datum/map_generator/expedition_barren/generator)
@@ -91,6 +95,20 @@
 	fauna_multiplier = 2
 
 /datum/expedition_planet_modifier/predators/can_apply(datum/map_generator/expedition_barren/generator)
+	return generator.wildlife
+
+/// Danger: the wild teems; three times the profile fauna in larger packs set closer together. Sectors force it on one far planet.
+/datum/expedition_planet_modifier/horde
+	name = "Орда"
+	survey_name = "Агрессивная фауна"
+	group = "fauna"
+	cost = 2
+	probability = 5
+	fauna_multiplier = 3
+	pack_spacing = 10
+	pack_bonus = 2
+
+/datum/expedition_planet_modifier/horde/can_apply(datum/map_generator/expedition_barren/generator)
 	return generator.wildlife
 
 /// Free: a third of the profile fauna; only on profiles with wildlife.
@@ -317,13 +335,18 @@
  * duplicate or mutually exclusive selections return null before changing the generator.
  * Returns survey lines; full modifier names are retained in modifier_log.
  */
-/datum/map_generator/expedition_barren/proc/apply_modifiers(level, list/selected_types = null)
+/datum/map_generator/expedition_barren/proc/apply_modifiers(level, list/selected_types = null, list/required_types = null)
 	if(!isnull(selected_types) && !islist(selected_types))
 		return null
 	var/list/offered = list()
+	var/list/required = list()
 	var/list/used_groups = list()
 	for(var/datum/expedition_planet_modifier/modifier as anything in expedition_planet_modifiers())
-		if(isnull(selected_types))
+		if(modifier.type in required_types)
+			// A sector guarantee is applied first and outside the budget; a profile it means nothing to goes without.
+			if(modifier.can_apply(src))
+				required += modifier
+		else if(isnull(selected_types))
 			if(prob(modifier.probability) && modifier.can_apply(src))
 				offered += modifier
 		else if(modifier.type in selected_types)
@@ -337,9 +360,10 @@
 	danger_level = level
 	var/list/budget = list(PLANET_MODIFIER_DANGER = level / 2, PLANET_MODIFIER_REWARD = level / 2)
 	var/list/names = list()
-	while(length(offered))
-		var/datum/expedition_planet_modifier/modifier = pick_n_take(offered)
-		if((modifier.group in used_groups) || (isnull(selected_types) && modifier.cost > budget[modifier.category]))
+	while(length(required) || length(offered))
+		var/forced = length(required)
+		var/datum/expedition_planet_modifier/modifier = pick_n_take(forced ? required : offered)
+		if((modifier.group in used_groups) || (!forced && isnull(selected_types) && modifier.cost > budget[modifier.category]))
 			continue
 		budget[modifier.category] -= modifier.cost
 		used_groups += modifier.group
@@ -354,6 +378,9 @@
 		anomaly_fields ||= modifier.anomaly_fields
 		if(modifier.guardian_types)
 			guardian_types = modifier.guardian_types
+		if(modifier.pack_spacing)
+			pack_spacing = modifier.pack_spacing
+		pack_bonus += modifier.pack_bonus
 		if(modifier.hive)
 			hive_variant = pick(hive_variants)
 		else if(modifier.nest_type)

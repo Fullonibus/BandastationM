@@ -1,8 +1,6 @@
 // Hives, lairs and fauna packs; grouped packs follow CrystallEdge's demiplane mob modifiers, no donor code is copied.
 // https://github.com/crystallpunk-14/crystall-punk-14/blob/5b6108377e40235c768be3ac6ffadb37a085f441/Resources/Prototypes/_CP14/Procedural/Demiplane/Modifiers/Danger/mobs.yml
 
-/// Least distance in turfs between the anchors of two fauna packs.
-#define EXPEDITION_PACK_SPACING 24
 /// Percent chance per turf that robotic guardians anchor a pack on a lifeless biome.
 #define EXPEDITION_GUARDIAN_DENSITY 0.1
 /// Footprint of a grown hive in turfs: width, then height.
@@ -11,6 +9,10 @@
 /datum/map_generator/expedition_barren
 	/// Smallest and largest ambient group; profiles with heavy mining fauna use solitary encounters.
 	var/list/fauna_pack_size = list(1, 2)
+	/// Least distance in turfs between the anchors of two fauna packs.
+	var/pack_spacing = 14
+	/// Extra members of every ambient group that is not a solitary encounter.
+	var/pack_bonus = 0
 	/// Danger level the modifiers were rolled at; a stronger level breeds a larger hive garrison.
 	var/danger_level = 0
 	/// Hive layouts this profile offers the xenomorph hive modifier: a key of [/datum/map_generator/expedition_barren/proc/hive_template] or "grown".
@@ -229,7 +231,7 @@
 				continue
 			var/near = FALSE
 			for(var/turf/anchor as anything in anchors)
-				if(get_dist(anchor, tile) < EXPEDITION_PACK_SPACING)
+				if(get_dist(anchor, tile) < pack_spacing)
 					near = TRUE
 					break
 			if(near)
@@ -248,7 +250,7 @@
 				var/datum/map_generator/expedition_barren/dead/dead_profile = src
 				pack_size = dead_profile.next_zombie_pack_size(tile, length(ground))
 			else
-				pack_size = solitary ? 1 : rand(fauna_pack_size[1], fauna_pack_size[2])
+				pack_size = solitary ? 1 : rand(fauna_pack_size[1], fauna_pack_size[2]) + pack_bonus
 			if(!pack_size)
 				continue
 			for(var/index in 1 to pack_size)
@@ -257,6 +259,5 @@
 				var/mob/living/member = new kind(pick_n_take(ground))
 				member.add_expedition_help()
 
-#undef EXPEDITION_PACK_SPACING
 #undef EXPEDITION_GUARDIAN_DENSITY
 #undef EXPEDITION_GROWN_HIVE_SIZE

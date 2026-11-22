@@ -8,7 +8,7 @@
 	generator_type = /datum/map_generator/expedition_barren/arid
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/arid
 	biome = "Песчаные равнины, сухие русла и каменистые пустоши"
-	atmosphere = "Азот и углекислый газ, 114 кПа; кислорода нет"
+	has_atmosphere = TRUE
 	surface_temperature = 330
 
 /** Seeded desert terrain using a local oxygen-free planetary atmosphere. */

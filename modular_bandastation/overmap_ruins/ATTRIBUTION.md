@@ -103,7 +103,6 @@ DMI скопирован побайтово; бочки отходов испо�
 | `_maps/map_files/overmap_ruins/planet/sierra_spider_nest.dmm` | [maps/random_ruins/exoplanet_ruins/spider_nest/spider_nest.dmm](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/spider_nest/spider_nest.dmm) |
 | `_maps/map_files/overmap_ruins/planet/sierra_tar_anomaly.dmm` | [maps/random_ruins/exoplanet_ruins/tar_anomaly/tar_anomaly.dmm](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/tar_anomaly/tar_anomaly.dmm) |
 | `_maps/map_files/overmap_ruins/planet/sierra_transshipment.dmm` | [maps/random_ruins/exoplanet_ruins/transshipment/transshipment.dmm](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/transshipment/transshipment.dmm) |
-| `_maps/map_files/overmap_ruins/planet/sierra_trash_heap.dmm` | [maps/random_ruins/exoplanet_ruins/trash_heap/trash_heap.dmm](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/trash_heap/trash_heap.dmm) |
 
 Сохранены исходные планировки. Несовместимые сущности, area, трубы, механизмы,
 обитатели и добыча адаптированы к местным типам; добавлены местные исследовательские

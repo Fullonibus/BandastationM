@@ -28,12 +28,16 @@
 	var/parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet
 	/// Crew-facing summary of the surface environment.
 	var/biome = "Безжизненные равнины, базальтовые поля и рудные горы"
-	/// Crew-facing gas and pressure summary from the environment profile.
+	/// Crew-facing gas and pressure summary, rolled when charted.
 	var/atmosphere = "Вакуум, 0 кПа"
-	/// Ambient surface temperature in kelvin.
+	/// Ambient surface temperature in kelvin, set by the environment profile.
 	var/surface_temperature = TCMB
-	/// Whether the environment profile supports unprotected human breathing.
+	/// Whether the profile has an atmosphere at all; which gases it holds is rolled per planet, not fixed by the profile.
+	var/has_atmosphere = FALSE
+	/// Whether the rolled atmosphere supports unprotected human breathing.
 	var/breathable = FALSE
+	/// Gas string every natural turf of this planet's levels breathes, whatever its own type defines.
+	var/gas_mix = AIRLESS_ATMOS
 	/// Survey lines of the modifiers rolled for this planet.
 	var/list/modifier_names = list()
 	/// Names of the modifiers rolled for this planet, for admin logs.
@@ -51,8 +55,9 @@
  * Modifiers are rolled here so orbital surveys report them before anyone lands.
  * `modifier_level` sets the planet modifier budgets; sectors derive it from the distance to their arrival point.
  * Optional selected_modifiers selects exact compatible traits for admin generation; null preserves random rolls.
+ * Optional required_modifiers are applied on top of the random rolls, outside the budget, wherever the profile allows them.
  */
-/proc/create_stationtrauma_planet(seed = rand(1, 1000000), planet_id = "moon", planet_name = "Каменистая экзопланета", planet_type = /datum/stationtrauma_overmap_site/space/planet, modifier_level = 1, list/selected_modifiers = null)
+/proc/create_stationtrauma_planet(seed = rand(1, 1000000), planet_id = "moon", planet_name = "Каменистая экзопланета", planet_type = /datum/stationtrauma_overmap_site/space/planet, modifier_level = 1, list/selected_modifiers = null, list/required_modifiers = null)
 	if(!ispath(planet_type, /datum/stationtrauma_overmap_site/space/planet))
 		CRASH("Invalid expedition planet profile [planet_type]")
 	var/datum/stationtrauma_overmap_site/space/planet/site = new planet_type
@@ -60,19 +65,44 @@
 	site.name = planet_name
 	site.seed = seed
 	site.modifier_level = modifier_level
+	site.roll_atmosphere()
 	site.generator = new site.generator_type(seed)
 	// A large town or complex widens the surface around it; the template itself is chosen when the surface is built.
 	if(prob(site.generator.large_ruin_chance))
 		site.generator.width = site.generator.large_surface_width
 		site.generator.large_slot = TRUE
 	site.surface_width = site.generator.width
-	site.modifier_names = site.generator.apply_modifiers(modifier_level, selected_modifiers)
+	site.modifier_names = site.generator.apply_modifiers(modifier_level, selected_modifiers, required_modifiers)
 	if(isnull(site.modifier_names))
 		QDEL_NULL(site.generator)
 		qdel(site)
 		return null
 	site.modifier_log = site.generator.modifier_log.Copy()
 	return site
+
+/**
+ * Pick this planet's air from its seed: oxygen is as likely on a frozen or arid world as on a lush one.
+ * The profile only says whether there is an atmosphere and how hot it is.
+ */
+/datum/stationtrauma_overmap_site/space/planet/proc/roll_atmosphere()
+	if(!has_atmosphere)
+		return
+	// Gases with moles per tile, survey name and breathability; the first is the oxygen one, rolled for half of the planets.
+	var/static/list/compositions = list(
+		list(list(GAS_O2 = 22, GAS_N2 = 82), "Кислород и азот", TRUE),
+		list(list(GAS_N2 = 82, GAS_CO2 = 22), "Азот и углекислый газ; кислорода нет", FALSE),
+		list(list(GAS_CO2 = 60, GAS_N2 = 30), "Углекислый газ и азот; кислорода нет", FALSE),
+	)
+	var/list/composition = compositions[seed % 2 ? 1 : 2 + round(seed / 2) % 2]
+	var/list/gases = composition[1]
+	var/list/parts = list()
+	var/moles = 0
+	for(var/gas in gases)
+		parts += "[gas]=[gases[gas]]"
+		moles += gases[gas]
+	gas_mix = "[jointext(parts, ";")];TEMP=[surface_temperature]"
+	breathable = composition[3]
+	atmosphere = "[composition[2]], [round(moles * R_IDEAL_GAS_EQUATION * surface_temperature / CELL_VOLUME)] кПа"
 
 /datum/stationtrauma_overmap_site/space/planet/awaits_map()
 	return !!generator
@@ -105,16 +135,20 @@
 	// Ruins keep out of the camp's quadrant, so the clearing must stay inside it.
 	if(generator.camp_x + generator.camp_width > round(generator.width / 2) - 1 || generator.camp_y + generator.camp_height > round(generator.width / 2) - 1)
 		CRASH("Landing hulls do not fit the expedition camp quadrant")
-	var/list/traits = ZTRAITS_AWAY
+	// Whatever is stripped down to the bottom (ruin plating, scraped ground) shows this planet's ground, not space.
+	var/list/traits = ZTRAITS_AWAY + list(ZTRAIT_BASETURF = generator.floor_type)
 	// The storm trait also drives weather sounds, so the endless storm keeps it.
 	if(generator.storms || generator.endless_storm)
 		traits[generator.storm_trait] = TRUE
 	var/datum/space_level/caves
 	// Multi-z links adjacent z values, so the cave level is created immediately below the surface.
 	if(generator.underground)
-		caves = SSmapping.add_new_zlevel("[name]: пещеры", ZTRAITS_AWAY + list(ZTRAIT_UP = TRUE))
+		caves = SSmapping.add_new_zlevel("[name]: пещеры", ZTRAITS_AWAY + list(ZTRAIT_UP = TRUE, ZTRAIT_BASETURF = generator.floor_type))
 		traits[ZTRAIT_DOWN] = TRUE
 	var/datum/space_level/level = SSmapping.add_new_zlevel(name, traits)
+	stationtrauma_planet_level_air(level.z_value, gas_mix)
+	if(caves)
+		stationtrauma_planet_level_air(caves.z_value, gas_mix)
 	generator.origin_x = round((world.maxx - generator.width) / 2) + 1
 	generator.origin_y = round((world.maxy - generator.width) / 2) + 1
 	var/list/ruins = prepare_ruins(generator)
@@ -197,3 +231,40 @@
 		return extents
 	var/obj/docking_port/stationary/stationtrauma_space_surface/pad = /obj/docking_port/stationary/stationtrauma_space_surface
 	return list(initial(pad.dwidth), initial(pad.width) - initial(pad.dwidth), initial(pad.dheight), initial(pad.height) - initial(pad.dheight))
+
+/// Gas string of each expedition planet level, by z; null elsewhere.
+GLOBAL_LIST_EMPTY(stationtrauma_planet_air)
+
+/** Mark a level as part of an expedition planet breathing `gas_mix`. */
+/proc/stationtrauma_planet_level_air(z, gas_mix)
+	if(length(GLOB.stationtrauma_planet_air) < z)
+		GLOB.stationtrauma_planet_air.len = z
+	GLOB.stationtrauma_planet_air[z] = gas_mix
+
+/** The gas string of the expedition planet level `z` lies on, or null. */
+/proc/stationtrauma_planet_air(z)
+	return z && z <= length(GLOB.stationtrauma_planet_air) ? GLOB.stationtrauma_planet_air[z] : null
+
+// Natural ground breathes the planet's own air, whatever its type brought from elsewhere: snow from a feature map
+// on a warm world must not be an endless cold source, and digging or blasting keeps the planet's air.
+// Built floors keep their own air, so sealed ruin rooms stay as they were mapped.
+/turf/open/Initialize(mapload)
+	if(planetary_atmos || istype(src, /turf/open/misc))
+		var/planet_air = stationtrauma_planet_air(z)
+		if(planet_air)
+			initial_gas_mix = planet_air
+			planetary_atmos = TRUE
+	return ..()
+
+// Everything living on a planet is at home in its air and climate, ruin garrisons and nest spawn included.
+/mob/living/basic/apply_atmos_requirements(mapload)
+	var/turf/here = get_turf(src)
+	if(here && stationtrauma_planet_air(here.z))
+		return
+	return ..()
+
+/mob/living/basic/apply_temperature_requirements(mapload)
+	var/turf/here = get_turf(src)
+	if(here && stationtrauma_planet_air(here.z))
+		return
+	return ..()
