@@ -12,6 +12,7 @@
 /obj/machinery/computer/stationtrauma_dispatch
 	name = "терминал вызова кораблей"
 	desc = "Принимает заказы на корабли и показывает состояние станционных причалов."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/stationtrauma_dispatch")
 	icon_screen = "shuttle"
 	circuit = /obj/item/circuitboard/computer/stationtrauma_dispatch
 	req_one_access = list(ACCESS_COMMAND, ACCESS_EXPLORER)
@@ -96,6 +97,7 @@
 /obj/machinery/computer/stationtrauma_bluespace
 	name = "терминал блюспейс-переходов"
 	desc = "Расчёт межзвёздного маршрута и управление блюспейс-приводом."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/stationtrauma_dispatch")
 	icon_screen = "shuttle"
 	circuit = /obj/item/circuitboard/computer/stationtrauma_bluespace
 	use_power = NO_POWER_USE

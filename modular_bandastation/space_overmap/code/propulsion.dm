@@ -573,6 +573,7 @@
 /obj/machinery/computer/stationtrauma_engine_console
 	name = "пульт двигателей"
 	desc = "Список сопел корабля по номерам: размер, техническое состояние и тяга. Каждое сопло можно отключить и включить."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/stationtrauma_engine_console")
 	icon_screen = "shuttle"
 	icon_keyboard = "atmos_key"
 	circuit = /obj/item/circuitboard/computer/stationtrauma_engine_console

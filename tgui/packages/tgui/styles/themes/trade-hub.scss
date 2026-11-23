@@ -96,6 +96,16 @@
     }
   }
 
+  .TradeHub__payment {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    select {
+      width: auto;
+    }
+  }
+
   .TradeHub__screen {
     position: relative;
     flex: 1;

@@ -92,8 +92,10 @@
 	return !!(pack.crate_type || pack.storage_override)
 
 /** Read live unlock flags both when presenting an offer and when committing a purchase. */
-/obj/machinery/trade_hub_core/proc/can_trade_pack(datum/supply_pack/pack)
-	return supports_pack(pack) && (!(pack.order_flags & ORDER_SPECIAL) || (pack.order_flags & ORDER_SPECIAL_ENABLED))
+/obj/machinery/trade_hub_core/proc/can_trade_pack(datum/supply_pack/pack, list/personal_access)
+	if(!supports_pack(pack) || ((pack.order_flags & ORDER_SPECIAL) && !(pack.order_flags & ORDER_SPECIAL_ENABLED)))
+		return FALSE
+	return isnull(personal_access) || !pack.access_view || (pack.access_view in personal_access)
 
 /** Import runtime-generated IDs only after the owning cargo registry is ready. */
 /obj/machinery/trade_hub_core/proc/ensure_catalog()
@@ -261,8 +263,50 @@
 		result["message"] = message
 	return success
 
-/** Buy one locally stocked supply pack using the cargo account. */
-/obj/machinery/trade_hub_core/proc/buy(pack_id, mob/user, list/result)
+/** Snapshot the buyer's ID access once per catalogue or purchase check. Chameleon IDs bypass access_view on personal cargo orders. */
+/proc/trade_hub_cash_access(mob/living/buyer)
+	var/obj/item/card/id/card = istype(buyer) ? buyer.get_idcard(TRUE) : null
+	if(istype(card, /obj/item/card/id/advanced/chameleon))
+		return null
+	return card ? card.GetAccess() : list()
+
+/** Only real banknotes and credit holochips held in the active hand are cash tender. */
+/proc/trade_hub_cash_in_hand(mob/user)
+	RETURN_TYPE(/obj/item)
+	var/obj/item/tender = user?.get_active_held_item()
+	if(QDELETED(tender) || tender.loc != user || (tender.flags_1 & HOLOGRAM_1) || (tender.item_flags & ABSTRACT))
+		return null
+	if(istype(tender, /obj/item/holochip))
+		return tender
+	var/obj/item/stack/spacecash/bills = astype(tender)
+	if(bills && !bills.is_cyborg && bills.value > 0)
+		return bills
+	return null
+
+/** Hand over change or proceeds, preserving the payout at the counter if the operator has left. */
+/proc/trade_hub_give_cash(mob/user, turf/counter, amount)
+	var/obj/item/holochip/chip = new(counter, amount)
+	if(!QDELETED(user) && user.Adjacent(counter))
+		user.put_in_hands(chip)
+
+/** Consume the minimum number of notes, or the exact amount from a holochip. */
+/proc/trade_hub_charge_cash(obj/item/tender, price, mob/user, turf/counter)
+	if(!tender || tender != trade_hub_cash_in_hand(user) || tender.get_item_credit_value() < price)
+		return FALSE
+	var/obj/item/holochip/chip = astype(tender)
+	if(chip)
+		return chip.spend(price) == price
+	var/obj/item/stack/spacecash/bills = tender
+	var/count = ceil(price / bills.value)
+	var/change = count * bills.value - price
+	if(!bills.use(count))
+		return FALSE
+	if(change > 0)
+		trade_hub_give_cash(user, counter, change)
+	return TRUE
+
+/** Buy from the shared stock. Cash is collected only once the order is ready to issue. */
+/obj/machinery/trade_hub_core/proc/buy(pack_id, mob/user, list/result, obj/machinery/computer/trade_hub/terminal, cash = FALSE)
 	var/reason = get_trade_reason()
 	if(reason)
 		return trade_result(result, FALSE, reason)
@@ -270,21 +314,31 @@
 		return trade_result(result, FALSE, "Товар не найден.")
 	var/pack_type = text2path(pack_id) || pack_id
 	var/datum/supply_pack/pack = SSshuttle.supply_packs[pack_type]
-	if(!(pack_type in stock) || stock[pack_type] <= 0 || !can_trade_pack(pack))
+	if(!(pack_type in stock) || stock[pack_type] <= 0 || !can_trade_pack(pack, cash ? trade_hub_cash_access(user) : null))
 		return trade_result(result, FALSE, "Этот товар отсутствует в запасах узла.")
 	reason = get_output_reason()
 	if(reason)
 		return trade_result(result, FALSE, reason)
 	var/obj/machinery/trade_hub_pad/pad = get_pad(/obj/machinery/trade_hub_pad/output)
 	var/turf/delivery_tile = get_turf(pad)
-	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	var/turf/counter = get_turf(terminal)
+	var/datum/bank_account/account
+	var/obj/item/tender
 	var/price = pack.get_cost()
-	if(!account || !isnum(price) || price <= 0)
+	if(!isnum(price) || price <= 0)
 		return trade_result(result, FALSE, "Не удалось выставить счёт за товар.")
-	if(!account.has_money(price))
-		return trade_result(result, FALSE, "В бюджете карго недостаточно средств.")
+	if(cash)
+		if(QDELETED(terminal) || terminal.cash_operator_reason(user))
+			return trade_result(result, FALSE, "Нет доступа к личной покупке этого товара.")
+		tender = trade_hub_cash_in_hand(user)
+		if(!tender || tender.get_item_credit_value() < price)
+			return trade_result(result, FALSE, "В активной руке недостаточно наличных.")
+	else
+		account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+		if(!account || !account.has_money(price))
+			return trade_result(result, FALSE, "В бюджете карго недостаточно средств.")
 	busy = TRUE
-	if(!account.adjust_money(-price, "Торговый узел [hub_id]: [pack.name]"))
+	if(!cash && !account.adjust_money(-price, "Торговый узел [hub_id]: [pack.name]"))
 		busy = FALSE
 		return trade_result(result, FALSE, "Не удалось списать оплату из бюджета карго.")
 	stock[pack_type]--
@@ -303,30 +357,42 @@
 			shipment = null
 			break
 		shipment = shipment.loc
-	var/success = !QDELETED(shipment) && shipment.loc == staging && !QDELETED(src) && is_operational && !panel_open && can_trade_pack(pack) && get_pad(/obj/machinery/trade_hub_pad/output) == pad && get_turf(pad) == delivery_tile && !get_output_reason()
+	var/success = !QDELETED(shipment) && shipment.loc == staging && !QDELETED(src) && is_operational && !panel_open && can_trade_pack(pack, cash ? trade_hub_cash_access(user) : null) && get_pad(/obj/machinery/trade_hub_pad/output) == pad && get_turf(pad) == delivery_tile && !get_output_reason()
+	var/cash_charged = FALSE
+	if(success && (cash || terminal))
+		success = !QDELETED(terminal) && terminal.get_core() == src && !terminal.panel_open && terminal.can_interact(user)
+		if(success)
+			success = cash ? !terminal.cash_operator_reason(user) : terminal.allowed(user)
+	if(success && cash)
+		cash_charged = trade_hub_charge_cash(tender, price, user, counter)
+		success = cash_charged
 	if(success)
 		shipment.forceMove(delivery_tile)
 		success = !QDELETED(shipment) && shipment.loc == delivery_tile
 	var/message
 	if(success)
-		message = "Выдан [pack.name]. Списано [price] кредитов."
-		investigate_log("Trade hub [hub_id] issued [pack_type] for [price] credits from cargo.", INVESTIGATE_CARGO)
+		var/source = cash ? "personal cash" : "the cargo budget"
+		message = "Выдан [pack.name]. Оплачено [cash ? "наличными" : "из бюджета карго"]: [price] кр."
+		investigate_log("Trade hub [hub_id] issued [pack_type] to [key_name(user)] for [price] credits from [source].", INVESTIGATE_CARGO)
 		if(pack.order_flags & ORDER_DANGEROUS)
-			message_admins("\A [pack.name] purchased at trade hub [hub_id] by [user ? ADMIN_LOOKUPFLW(user) : "server"] using the cargo budget.")
+			message_admins("\A [pack.name] purchased at trade hub [hub_id] by [user ? ADMIN_LOOKUPFLW(user) : "server"] using [source].")
 	else
 		if(!QDELETED(shipment))
 			qdel(shipment)
-		account.adjust_money(price, "Торговый узел [hub_id]: возврат за невыданный товар")
+		if(cash_charged)
+			trade_hub_give_cash(user, counter, price)
+		else if(account)
+			account.adjust_money(price, "Торговый узел [hub_id]: возврат за невыданный товар")
 		if(!QDELETED(src))
 			stock[pack_type] = min(capacity, stock[pack_type] + 1)
-		message = "Выдача отменена. Оплата возвращена."
+		message = (cash && !cash_charged) ? "Выдача отменена. Наличные остались у вас." : "Выдача отменена. Оплата возвращена."
 	qdel(staging)
 	qdel(order)
 	busy = FALSE
 	return trade_result(result, success, message)
 
 /** Consume only the requested items offered on this hub's input pad. */
-/obj/machinery/trade_hub_core/proc/accept(request_id, list/result)
+/obj/machinery/trade_hub_core/proc/accept(request_id, list/result, mob/user, obj/machinery/computer/trade_hub/cash_terminal)
 	var/reason = get_trade_reason()
 	if(reason)
 		return trade_result(result, FALSE, reason)
@@ -341,17 +407,27 @@
 	if(reason)
 		return trade_result(result, FALSE, reason)
 	var/obj/machinery/trade_hub_pad/pad = get_pad(/obj/machinery/trade_hub_pad/input)
-	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_CAR)
-	if(!account)
-		return trade_result(result, FALSE, "Счёт карго недоступен.")
+	var/datum/bank_account/account
+	var/turf/counter
+	if(cash_terminal)
+		if(QDELETED(cash_terminal) || cash_terminal.cash_operator_reason(user))
+			return trade_result(result, FALSE, "Для выплаты подойдите к терминалу.")
+		counter = get_turf(cash_terminal)
+	else
+		account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+		if(!account)
+			return trade_result(result, FALSE, "Счёт карго недоступен.")
 	busy = TRUE
 	var/accepted = request.take_goods(get_turf(pad))
 	var/message
 	if(accepted)
 		var/payment = accepted * request.unit_reward
-		account.adjust_money(payment, "Торговый узел [hub_id]: [request.name]")
-		message = "Принято [accepted] ед. товара. Начислено [payment] кредитов."
-		investigate_log("Trade hub [hub_id] accepted [accepted] units of [request.item_type] for [payment] credits, [isnull(request.remaining) ? "unlimited" : request.remaining] demand remaining.", INVESTIGATE_CARGO)
+		if(cash_terminal)
+			trade_hub_give_cash(user, counter, payment)
+		else
+			account.adjust_money(payment, "Торговый узел [hub_id]: [request.name]")
+		message = "Принято [accepted] ед. товара. [cash_terminal ? "Выдан голочип на [payment] кр." : "В бюджет карго начислено [payment] кр."]"
+		investigate_log("Trade hub [hub_id] accepted [accepted] units of [request.item_type] for [payment] credits to [cash_terminal ? "operator [key_name(user)]" : "cargo"], [isnull(request.remaining) ? "unlimited" : request.remaining] demand remaining.", INVESTIGATE_CARGO)
 		if(!isnull(request.batch_size) && request.delivered == request.batch_size)
 			request.ready_at = world.time + request.restock_delay
 			request.restock_timer = addtimer(CALLBACK(src, PROC_REF(complete_restock), request), request.restock_delay, TIMER_STOPPABLE)
@@ -464,7 +540,7 @@
 /** Local cargo terminal; all transaction permissions and amounts are checked on the server. */
 /obj/machinery/computer/trade_hub
 	name = "терминал грузов торгового узла"
-	desc = "Покупка местных запасов и сдача товаров по заявкам узла. Расчёты через бюджет карго."
+	desc = "Покупка местных запасов и сдача товаров по заявкам узла. Принимает личные наличные и проводит расчёты через бюджет карго."
 	icon = 'modular_bandastation/space_overmap/icons/trade_terminal.dmi'
 	icon_state = MAP_SWITCH("terminal", "terminal_map")
 	icon_screen = "terminal_screen"
@@ -500,13 +576,24 @@
 	core_ref = WEAKREF(core)
 	return core
 
-/obj/machinery/computer/trade_hub/proc/get_trade_reason(mob/user, obj/machinery/trade_hub_core/core)
+/** Cash changes hands in person even when a remote operator can view the terminal. */
+/obj/machinery/computer/trade_hub/proc/cash_operator_reason(mob/user)
+	if(!isliving(user) || !user.can_hold_items() || !Adjacent(user))
+		return "Для расчёта наличными подойдите к терминалу."
+	return null
+
+/** Return the common machinery and selected payment method's denial at the point of action. */
+/obj/machinery/computer/trade_hub/proc/get_trade_reason(mob/user, obj/machinery/trade_hub_core/core, cash = FALSE)
 	if(!core)
 		return "Нет связи с ядром. Проверьте подключение терминала."
 	var/reason = trade_hub_machine_reason(src, "Терминал")
 	if(reason)
 		return reason
-	if(!allowed(user))
+	if(cash)
+		reason = cash_operator_reason(user)
+		if(reason)
+			return reason
+	else if(!allowed(user))
 		return "Нужен доступ карго. Проверьте ID-карту."
 	return core.get_trade_reason()
 
@@ -535,7 +622,10 @@
 /obj/machinery/computer/trade_hub/ui_data(mob/user)
 	var/obj/machinery/trade_hub_core/core = get_core()
 	var/catalogue_ready = core?.ensure_catalog()
+	var/cargo_access = allowed(user)
 	var/terminal_reason = get_trade_reason(user, core)
+	var/cash_reason = get_trade_reason(user, core, cash = TRUE)
+	var/obj/item/tender = trade_hub_cash_in_hand(user)
 	var/input_reason = core ? core.get_input_reason() : "Нет связи с площадкой приёма."
 	var/output_reason = core ? core.get_output_reason() : "Нет связи с площадкой выдачи."
 	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -548,7 +638,10 @@
 		"input_reason" = input_reason,
 		"output_reason" = output_reason,
 		"receipt" = LAZYACCESS(receipts, user),
-		"balance" = account?.account_balance || 0,
+		"cargo_access" = cargo_access,
+		"cash_reason" = cash_reason,
+		"cash_balance" = tender?.get_item_credit_value() || 0,
+		"balance" = cargo_access ? (account?.account_balance || 0) : 0,
 		"status" = core?.status,
 		"input_ready" = !input_reason,
 		"output_ready" = !output_reason,
@@ -557,14 +650,16 @@
 	)
 	if(!catalogue_ready)
 		return data
+	var/list/personal_access = trade_hub_cash_access(user)
 	for(var/pack_type in core.stock)
 		var/datum/supply_pack/pack = SSshuttle.supply_packs[pack_type]
-		if(!core.can_trade_pack(pack))
+		var/cash_allowed = core.can_trade_pack(pack, personal_access)
+		if(!cash_allowed && !(cargo_access && core.can_trade_pack(pack)))
 			continue
 		data["offers"] += list(list(
 			"id" = "[pack_type]", "name" = pack.name, "description" = pack.desc,
 			"group" = core.groups[pack_type], "price" = pack.get_cost(),
-			"stock" = core.stock[pack_type], "capacity" = core.capacity,
+			"stock" = core.stock[pack_type], "capacity" = core.capacity, "cash_allowed" = cash_allowed,
 		))
 	for(var/request_type in core.requests)
 		var/datum/trade_hub_request/request = core.requests[request_type]
@@ -594,11 +689,15 @@
 	var/mob/user = ui.user
 	var/id = istext(params["id"]) ? params["id"] : null
 	var/obj/machinery/trade_hub_core/core = get_core()
-	var/reason = get_trade_reason(user, core)
+	var/payment = params["payment"]
+	if(!isnull(payment) && payment != "cash" && payment != "cargo")
+		return transaction_result(user, action, id, FALSE, "Неизвестный способ расчёта.")
+	var/cash = payment == "cash"
+	var/reason = get_trade_reason(user, core, cash)
 	if(reason || !can_interact(user))
 		return transaction_result(user, action, id, FALSE, reason || "Не удаётся воспользоваться терминалом.")
 	var/list/result = list()
-	var/success = action == "buy" ? core.buy(id, user, result) : core.accept(id, result)
+	var/success = action == "buy" ? core.buy(id, user, result, src, cash) : core.accept(id, result, user, cash ? src : null)
 	if(QDELETED(ui) || ui.closing)
 		return TRUE
 	return transaction_result(user, action, id, success, result["message"])

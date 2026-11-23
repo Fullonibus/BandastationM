@@ -28,6 +28,9 @@ type Data = {
   connected: BooleanLike;
   operational: BooleanLike;
   balance: number;
+  cargo_access: BooleanLike;
+  cash_balance: number;
+  cash_reason: string | null;
   status: string | null;
   receipt?: Receipt | null;
   terminal_reason: string | null;
@@ -43,6 +46,7 @@ type Data = {
     price: number;
     stock: number;
     capacity: number;
+    cash_allowed: BooleanLike;
   }[];
   requests: {
     id: string;
@@ -85,7 +89,18 @@ type TradeRequest = Data['requests'][number];
 
 export function TradeHub() {
   const { act, data } = useBackend<Data>();
-  const { offers = [], requests = [], contracts = [], receipt } = data;
+  const { requests = [], contracts = [] } = data;
+  const [payment, setPayment] = useState<'cash' | 'cargo'>(
+    data.cargo_access ? 'cargo' : 'cash',
+  );
+  const cash = payment === 'cash';
+  const balance = cash ? data.cash_balance : data.balance;
+  const offers = (data.offers || []).filter(
+    (offer) => !cash || offer.cash_allowed,
+  );
+  const [dismissedSequence, setDismissedSequence] = useState<number>();
+  const receipt =
+    data.receipt?.sequence === dismissedSequence ? null : data.receipt;
   const [tab, setTab] = useState<Tab>('buy');
   const [searchText, setSearchText] = useState('');
   const [group, setGroup] = useState('');
@@ -104,7 +119,7 @@ export function TradeHub() {
       button,
       focused: document.activeElement === button,
     };
-    act(action, { id });
+    act(action, { id, payment });
   };
   function selectTab(next: Tab) {
     if (next !== tab) lastAction.current = null;
@@ -124,15 +139,12 @@ export function TradeHub() {
         filtered.some((offer) => offer.id === receipt.id)
       : (receipt.action === 'accept' &&
           requests.some((request) => request.id === receipt.id)) ||
-        (receipt.action === 'deliver_contract' &&
+        (!cash &&
+          receipt.action === 'deliver_contract' &&
           contracts.some((contract) => contract.id === receipt.id)));
   const terminalReason =
-    data.terminal_reason ||
-    (!data.connected
-      ? 'Нет связи с узлом.'
-      : !data.operational
-        ? 'Терминал недоступен.'
-        : null);
+    (cash ? data.cash_reason : data.terminal_reason) ||
+    (!data.connected ? 'Нет связи с узлом.' : null);
   const outputReason =
     data.output_reason ||
     (!data.output_ready ? 'Площадка выдачи недоступна.' : null);
@@ -216,7 +228,28 @@ export function TradeHub() {
               </button>
             ))}
           </div>
-          <strong>Бюджет карго: {formatMoney(data.balance)} кр.</strong>
+          <label className="TradeHub__payment">
+            Расчёт
+            <select
+              value={payment}
+              onChange={(event) => {
+                lastAction.current = null;
+                setDismissedSequence(data.receipt?.sequence);
+                setGroup('');
+                setPayment(
+                  event.currentTarget.value === 'cargo' ? 'cargo' : 'cash',
+                );
+              }}
+            >
+              <option value="cash">Личные наличные</option>
+              <option value="cargo" disabled={!data.cargo_access}>
+                Бюджет карго{data.cargo_access ? '' : ' · нужен доступ'}
+              </option>
+            </select>
+          </label>
+          <strong>
+            {cash ? 'В руке' : 'Бюджет'}: {formatMoney(balance)} кр.
+          </strong>
         </div>
         {sharedReason && (
           <div id="trade-unavailable" className="TradeHub__unavailable">
@@ -261,8 +294,10 @@ export function TradeHub() {
                     }
                   >
                     <Box mb={1}>
-                      Один заказ — один ящик на площадке выдачи. Оплата из
-                      бюджета карго.
+                      Заказ появится на площадке выдачи.{' '}
+                      {cash
+                        ? 'Возьмите купюры или голочип в активную руку. Сдача с купюр выдаётся голочипом.'
+                        : 'Стоимость заказа спишется из бюджета карго.'}
                     </Box>
                     <div className="TradeHub__filters">
                       <label>
@@ -314,7 +349,8 @@ export function TradeHub() {
                     ) : (
                       <OffersTable
                         offers={filtered}
-                        balance={data.balance}
+                        balance={balance}
+                        cash={cash}
                         reason={sharedReason}
                         submitTrade={submitTrade}
                         receipt={receipt}
@@ -323,17 +359,21 @@ export function TradeHub() {
                   </Section>
                 ) : (
                   <>
-                    <ContractsTable
-                      contracts={contracts}
-                      reason={sharedReason}
-                      submitTrade={submitTrade}
-                      receipt={receipt}
-                    />
+                    {!cash && (
+                      <ContractsTable
+                        contracts={contracts}
+                        reason={sharedReason}
+                        submitTrade={submitTrade}
+                        receipt={receipt}
+                      />
+                    )}
                     <Section title="Местные потребности">
                       <Box mb={1}>
-                        Положите товар на площадку приёма отдельно или в
-                        открытом ящике. Излишки останутся на месте. Выплата
-                        поступит в бюджет карго.
+                        Положите товар на общую площадку приёма отдельно или в
+                        открытом ящике. Излишки останутся на месте.{' '}
+                        {cash
+                          ? 'Голочип получит тот, кто нажмёт «Сдать груз». Если руки заняты, он упадёт у ног.'
+                          : 'Выплата поступит в бюджет карго.'}
                       </Box>
                       <Box color="label" mb={1}>
                         У сменных заявок есть квота. Когда она исчерпана, узел
@@ -501,10 +541,15 @@ type TradeListProps = {
 function OffersTable({
   offers,
   balance,
+  cash,
   reason,
   receipt,
   submitTrade,
-}: TradeListProps & { offers: Data['offers']; balance: number }) {
+}: TradeListProps & {
+  offers: Data['offers'];
+  balance: number;
+  cash: boolean;
+}) {
   return (
     <TradeTable
       name="Предложения узла"
@@ -534,7 +579,9 @@ function OffersTable({
                   offer.stock <= 0
                     ? 'Товара нет в наличии.'
                     : balance < offer.price
-                      ? 'В бюджете карго недостаточно средств.'
+                      ? cash
+                        ? 'В активной руке недостаточно наличных.'
+                        : 'В бюджете карго недостаточно средств.'
                       : null
                 }
               />

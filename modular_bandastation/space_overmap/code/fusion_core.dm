@@ -524,6 +524,7 @@
 /obj/machinery/computer/stationtrauma_fusion_monitor
 	name = "пульт управления ядром"
 	desc = "Управление термоядерным ядром корабля: пуск, мощность, впрыск трития, аварийная блокировка и электросеть."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/vaultcontroller")
 	icon_screen = "power"
 	icon_keyboard = "power_key"
 	circuit = /obj/item/circuitboard/computer/stationtrauma_fusion_monitor
