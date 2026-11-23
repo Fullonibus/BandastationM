@@ -4,6 +4,8 @@
 	/// Physical hull controlled by this navigation instance or console.
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 	/// Flight-level space area with a stationary parallax background.
+	/// Last star scroll sent to the viewing areas.
+	var/published_parallax_direction = NONE
 	var/area/space/stationtrauma_space_home/exterior
 	/// Physical seam used for traversal between hull and destination; its gates show the far side.
 	var/datum/stationtrauma_map_connection/connection
@@ -23,6 +25,9 @@
 	return ..()
 
 /datum/stationtrauma_overmap/space/Destroy()
+	QDEL_NULL(planet_flight)
+	QDEL_NULL(planet_ascent)
+	QDEL_NULL(planet_hover)
 	release_carrier_docks()
 	if(docked?.docking_owner == src)
 		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = docked.berth
@@ -343,13 +348,13 @@
 	var/launching = old_dock.landing || slot?.hangar
 	var/revision = control_revision
 	if(!instant)
-		var/duration = old_dock.landing ? ST_SPACE_TAKEOFF_TIME : ST_SPACE_MOORING_TIME
+		var/duration = old_dock.landing ? ST_SPACE_DEPARTURE_DELAY + ST_PLANET_ASCENT_LENGTH : ST_SPACE_MOORING_TIME
 		var/delay = ST_SPACE_DEPARTURE_DELAY
 		if(length(slot?.active_berth?.gangways))
 			delay -= ST_STANDARD_DOCK_RETRACTION_LEAD
 		begin_approach(old_dock, duration, departing = TRUE)
 		status = launching ? "Взлёт: [old_dock.name]" : "Расстыковка: [old_dock.name]"
-		while(world.time - approach_started < delay)
+		while(world.time - approach_started < delay || planet_ascent?.ground_jobs)
 			sleep(1 SECONDS)
 			if(QDELETED(src))
 				return FALSE
@@ -506,9 +511,9 @@
 		return FALSE
 	if(site?.landing && (!vessel.engines_running || engine_fraction() <= 0))
 		return FALSE
-	if(site?.host && sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2) > radius + site.radius + ST_NAV_APPROACH + 5)
+	if(site?.host && sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2) > ST_SPACE_DOCK_RANGE)
 		return FALSE
-	if(!is_operational() || ship_docking || !knows_site(site) || (QDELETED(site.berth) && !site.awaits_map()) || site.failed || !vessel.permits_docking(site) || site.shuttle_order || (site.docking_owner && site.docking_owner != src) || revision != control_revision || helm_engaged || distance_to(site) > radius + site.radius + ST_NAV_APPROACH + 5)
+	if(!is_operational() || ship_docking || !knows_site(site) || (QDELETED(site.berth) && !site.awaits_map()) || site.failed || !vessel.permits_docking(site) || site.shuttle_order || (site.docking_owner && site.docking_owner != src) || revision != control_revision || helm_engaged || distance_to(site) > ST_SPACE_DOCK_RANGE)
 		return FALSE
 	// Loaded berths are sized for the prototype hull; the approach revalidates them once they exist.
 	if(site.awaits_map())
@@ -559,15 +564,23 @@
 		if(slot)
 			standard_berth = slot.prepare_berth(vessel)
 			target_berth = standard_berth
-		if((!slot || target_berth) && ((site.physical_docking && instant) || approach(site, revision)))
-			if(!slot)
-				target_berth = site.berth
-				// A pad exists only once its destination has loaded during the approach.
-				if(istype(target_berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
-					slot = target_berth
+		var/approached = (!slot || target_berth) && ((site.physical_docking && instant) || approach(site, revision))
+		if(!slot && !QDELETED(site))
+			target_berth = site.berth
+			// The planet's clearing only becomes available once its first approach loads it.
+			if(istype(target_berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+				slot = target_berth
+				if(slot.active_berth?.ship == vessel)
+					standard_berth = slot.active_berth
+				else if(approached)
 					standard_berth = slot.prepare_berth(vessel)
-					target_berth = standard_berth
-			ready = physical_docking ? (target_berth && relocate(target_berth, before_takeoff)) : connection.connect(target_berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
+				target_berth = standard_berth
+		if(approached && target_berth)
+			connection.direction = !physical_docking && site.ruin_id ? REVERSE_DIR(target_berth.dir) : WEST
+			if(physical_docking)
+				ready = relocate(target_berth, before_takeoff)
+			else
+				ready = connection.connect(target_berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
 	catch(var/exception/failure)
 		stack_trace("Space prototype docking failed: [failure]")
 	if(QDELETED(src))
@@ -634,7 +647,8 @@
 
 /datum/stationtrauma_overmap/space/update_parallax()
 	var/background = parallax_background()
-	var/planet = parallax_planet()
+	update_planet_hover()
+	var/planet = parallax_planet() == /atom/movable/screen/parallax_layer/expedition_planet/station ? /atom/movable/screen/parallax_layer/expedition_planet/station : null
 	var/moored = docked || (ship_docking && !helm_engaged)
 	if(!moored && (approach_site?.landing || approach_site?.physical_docking))
 		var/obj/docking_port/stationary/physical_berth = vessel.get_docked()
@@ -644,20 +658,23 @@
 	var/direction = !moored && moving ? vessel.preferred_direction : NONE
 	// Bluespace flight streaks the stars past the hull.
 	var/rush = jump_phase == HYPERSPACE_LAUNCH ? ST_SPACE_JUMP_PARALLAX_RUSH : 1
-	var/motion_changed = direction != parallax_direction || rush != parallax_rush
+	// Keep real drift and star scrolling independent while the planet supplies the motion.
+	parallax_direction = direction
+	var/visual_direction = (planet_hover || planet_flight || planet_ascent) ? NONE : direction
+	var/motion_changed = visual_direction != published_parallax_direction || rush != parallax_rush
 	if(!motion_changed && background == space_background && planet == space_planet)
 		return
 	space_background = background
 	space_planet = planet
-	parallax_direction = direction
+	published_parallax_direction = visual_direction
 	parallax_rush = rush
 	for(var/area/ship_area as anything in vessel.shuttle_areas)
 		ship_area.set_space_parallax_background(background, planet)
 		if(motion_changed)
 			ship_area.parallax_rush = rush
 			// Viewers restart their loop only on a direction change, so a new speed in the same direction passes through a stop.
-			if(ship_area.parallax_movedir == direction)
+			if(ship_area.parallax_movedir == visual_direction)
 				ship_area.set_parallax_movedir(NONE)
-			ship_area.set_parallax_movedir(direction)
+			ship_area.set_parallax_movedir(visual_direction)
 	exterior?.set_space_parallax_background(background, planet)
 	exterior?.set_parallax_movedir(NONE)

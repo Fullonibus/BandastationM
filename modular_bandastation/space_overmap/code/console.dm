@@ -130,7 +130,7 @@
 		"routes" = map.known_sites(helm = TRUE), "path" = map.autopilot_path,
 		"zones" = map.encounter_data(), "terrain" = map.terrain_data(),
 		"ship_contacts" = map.ship_echo_data(),
-		"encounter" = map.encounter_status, "sensor_range" = map.sensor_range,
+		"encounter" = map.encounter_status, "sensor_range" = map.sensor_range, "dock_range" = ST_SPACE_DOCK_RANGE,
 		"interference" = round(map.interference, 0.05),
 		"scan_age" = isnull(map.last_ping) ? null : (world.time - map.last_ping) / (1 SECONDS),
 		"approach" = null,
@@ -150,8 +150,20 @@
 			"site" = !QDELETED(approach_site) ? map.site_label(approach_site) : peer.vessel?.name || "Корабль",
 			"scene" = istype(approach_planet) ? "planet" : approach_site?.approach_scene || "station",
 			"biome" = istype(approach_planet) ? approach_planet.ruin_biome : null,
-			"loading" = !!approach_site?.loading_map,
+			"loading" = !!(approach_site?.loading_map || (istype(approach_planet) && approach_planet.loading_map)),
 		)
+		if(istype(approach_planet) && map.planet_flight)
+			var/touchdown = map.planet_flight.descent?.touchdown_time
+			var/liftoff = map.planet_ascent?.liftoff
+			data["approach"]["planet_timing"] = list(
+				"orbit_duration" = map.planet_flight.orbit_duration / (1 SECONDS),
+				"descent_start" = touchdown ? (touchdown - ST_PLANET_DESCENT_TIME - map.approach_started) / (1 SECONDS) : null,
+				"entry_start" = touchdown ? (touchdown - LANDING_ENTRY_LEAD - map.approach_started) / (1 SECONDS) : null,
+				"entry_end" = touchdown ? (touchdown - LANDING_ENTRY_END - map.approach_started) / (1 SECONDS) : null,
+				"liftoff" = liftoff ? (liftoff - map.approach_started) / (1 SECONDS) : null,
+				"ascent_cloud" = liftoff ? (liftoff + ST_PLANET_ASCENT_CLOUD - map.approach_started) / (1 SECONDS) : null,
+				"ascent_orbit" = liftoff ? (liftoff + ST_PLANET_ASCENT_ORBIT - map.approach_started) / (1 SECONDS) : null,
+			)
 	if(istype(target, /datum/stationtrauma_overmap_site/space/planet) && map.knows_site(target))
 		var/datum/stationtrauma_overmap_site/space/planet/planet = target
 		data["planet"] = planet.survey_data()

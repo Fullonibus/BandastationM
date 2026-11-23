@@ -49,42 +49,98 @@ export function pointOnPath(path: SVGPathElement | null, progress: number) {
   };
 }
 
-/** Planetary descent plot: the hull follows its approach to the landing site. */
+const fraction = (seconds: number, start: number, end: number) =>
+  Math.min(1, Math.max(0, (seconds - start) / Math.max(end - start, 0.001)));
+
+export function descentPlot(approach: Props['approach'], seconds: number) {
+  const timing = approach.planet_timing;
+  if (approach.departing) {
+    if (timing?.liftoff == null) {
+      return {
+        flown: 1,
+        heat: 0,
+        phase: 'ПОДГОТОВКА К ВЗЛЁТУ',
+        countdown: false,
+      };
+    }
+    const progress = fraction(seconds, timing.liftoff, approach.duration);
+    const phase =
+      timing.ascent_cloud != null && seconds < timing.ascent_cloud
+        ? 'НАБОР ВЫСОТЫ'
+        : timing.ascent_orbit != null && seconds < timing.ascent_orbit
+          ? 'ПРОХОД АТМОСФЕРЫ'
+          : progress < 1
+            ? 'ВЫХОД НА ОРБИТУ'
+            : 'ОРБИТА';
+    return { flown: 1 - progress, heat: 0, phase, countdown: true };
+  }
+
+  const orbitDuration = timing?.orbit_duration || approach.duration;
+  const orbitFraction = (time: number) => {
+    const ratio = time / orbitDuration;
+    const extra = Math.max(0, ratio - 1);
+    return 0.22 * Math.min(1, ratio) + (0.055 * extra) / (extra + 0.3125);
+  };
+  if (
+    timing?.descent_start == null ||
+    timing.entry_start == null ||
+    timing.entry_end == null
+  ) {
+    return {
+      flown: orbitFraction(seconds),
+      heat: 0,
+      phase: 'СБЛИЖЕНИЕ',
+      countdown: false,
+    };
+  }
+  if (seconds < timing.entry_start) {
+    const start = orbitFraction(timing.descent_start);
+    const progress = fraction(
+      seconds,
+      timing.descent_start,
+      timing.entry_start,
+    );
+    return {
+      flown: start + (0.3 - start) * progress,
+      heat: 0,
+      phase: 'СХОД С ОРБИТЫ',
+      countdown: true,
+    };
+  }
+  if (seconds < timing.entry_end) {
+    const progress = fraction(seconds, timing.entry_start, timing.entry_end);
+    return {
+      flown: 0.3 + progress * 0.37,
+      heat: Math.sin(progress * Math.PI),
+      phase: 'ВХОД В АТМОСФЕРУ',
+      countdown: true,
+    };
+  }
+  const progress = fraction(seconds, timing.entry_end, approach.duration);
+  return {
+    flown: 0.67 + progress * 0.33,
+    heat: 0,
+    phase: progress < 1 ? 'ЗАХОД НА ТОЧКУ ВЫСАДКИ' : 'КАСАНИЕ',
+    countdown: true,
+  };
+}
+
+/** Planetary plot follows the phase times published by the flight scene. */
 export function Descent({ approach }: Props) {
   const path = useRef<SVGPathElement>(null);
   const seconds = useApproachClock(approach.elapsed, approach.duration);
-  const progress = Math.min(1, seconds / approach.duration);
-  const departing = !!approach.departing;
-  // An ascent flies the descent path backwards, nose first.
-  const flown = departing ? 1 - progress : progress;
-  const entry = flown > 0.25 && flown < 0.75;
+  const { flown, heat, phase, countdown } = descentPlot(approach, seconds);
   const point = pointOnPath(path.current, flown) || {
     x: 575,
     y: 45,
     angle: 180,
   };
-  const ship = departing ? { ...point, angle: point.angle + 180 } : point;
+  const ship = approach.departing
+    ? { ...point, angle: point.angle + 180 }
+    : point;
   const colour = (approach.biome && BIOME_COLOURS[approach.biome]) || '#8b8f8c';
-  const phase = departing
-    ? progress < 0.25
-      ? 'ОТРЫВ ОТ ПОВЕРХНОСТИ'
-      : progress < 0.75
-        ? 'ПРОХОД АТМОСФЕРЫ'
-        : progress < 1
-          ? 'ВЫХОД НА ОРБИТУ'
-          : 'ОРБИТА'
-    : progress < 0.25
-      ? 'СХОД С ОРБИТЫ'
-      : progress < 0.75
-        ? 'ВХОД В АТМОСФЕРУ'
-        : progress < 1
-          ? 'ЗАХОД НА ТОЧКУ ВЫСАДКИ'
-          : approach.loading
-            ? 'ОЖИДАНИЕ КАРТЫ ПОВЕРХНОСТИ'
-            : 'КАСАНИЕ';
-  const title = departing ? 'ВЗЛЁТ' : 'ПОСАДКА';
+  const title = approach.departing ? 'ВЗЛЁТ' : 'ПОСАДКА';
   const left = Math.max(0, Math.ceil(approach.duration - seconds));
-  const heat = entry ? Math.sin(((flown - 0.25) / 0.5) * Math.PI) : 0;
 
   return (
     <>
@@ -93,8 +149,9 @@ export function Descent({ approach }: Props) {
           {title} · {approach.site}
         </span>
         <span>
-          {phase} · T−{Math.floor(left / 60)}:
-          {String(left % 60).padStart(2, '0')}
+          {phase}
+          {countdown &&
+            ` · T−${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}`}
         </span>
       </div>
       <svg

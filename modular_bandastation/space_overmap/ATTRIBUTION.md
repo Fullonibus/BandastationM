@@ -6,6 +6,10 @@
 [overmap_ships/ATTRIBUTION.md](../overmap_ships/ATTRIBUTION.md), руины — в
 [overmap_ruins/ATTRIBUTION.md](../overmap_ruins/ATTRIBUTION.md).
 
+## Посадка и взлёт на планетах
+
+Виды с борта и с поверхности, анимации, спрайты и звуковые эффекты взяты из Voidcrew. Автор Jackriip и участники Voidcrew. Код адаптирован под навигацию, освещение, профили планет и перемещение шаттлов Primera по AGPL-3.0. Файлы DMI и OGG перенесены без изменений по CC BY-SA 3.0. Пути и контрольные суммы указаны в `ASSETS.json`. [Voidcrew PR #588](https://github.com/voidcrew/Voidcrew/pull/588) · [Лицензия исходной ревизии](https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license).
+
 ## Лицензии и авторы
 
 Исходный код и адаптации используют GNU AGPL v3; полный текст уже находится в
@@ -105,7 +109,7 @@ BandaStation и Primera, а также [спрайт компактного яд
 ресурсах. Существующие TG-руины подключаются по исходным шаблонам без копирования
 графики и изменения их лицензий.
 
-[ASSETS.json](ASSETS.json) перечисляет 95 неаудиоресурсов: две карты локаций,
+[ASSETS.json](ASSETS.json) перечисляет неаудиоресурсы экспедиции: две карты локаций,
 семь карт аванпостов, тестовый зал,
 78 деталей рельефа планет (их источники указаны в
 [expedition_planets/ATTRIBUTION.md](../expedition_planets/ATTRIBUTION.md)),
@@ -187,7 +191,7 @@ float32 сведена в моно PCM16; частота 48 кГц и длите
 Ранее добавленные `sound/ship_engine_starts.ogg`, `sound/ship_engine_processing.ogg`,
 `sound/ship_engine_stops.ogg`, `sound/ship_interior_ambience.ogg` и
 `sound/ship_landing.ogg` удалены: их точный источник и условия распространения не
-подтверждены. Реестр `ASSETS.json` остаётся реестром неаудиоресурсов.
+подтверждены. В `ASSETS.json` отдельно перечислены звуки посадки и взлёта, перенесённые из Voidcrew.
 
 ## Границы записи
 

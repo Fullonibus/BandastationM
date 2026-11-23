@@ -11,6 +11,8 @@
 	var/approach_duration = 0
 	/// Whether the current approach leaves its site instead of arriving.
 	var/approach_departing = FALSE
+	/// Visuals owned by this planetary manoeuvre.
+	var/datum/stationtrauma_planet_flight/planet_flight
 
 /** Retained native berth marking the hull position on its stationary flight level. */
 /obj/docking_port/stationary/stationtrauma_space_flight
@@ -157,7 +159,10 @@
 /** Relocate the hull and its latejoin turfs through native shuttle movement. */
 /datum/stationtrauma_overmap/space/proc/relocate(obj/docking_port/stationary/target, datum/callback/before_takeoff)
 	if(length(carrier_docks))
-		return relocate_carrier(target, before_takeoff)
+		. = relocate_carrier(target, before_takeoff)
+		if(.)
+			planet_flight?.moved(target)
+		return
 	if(!QDELETED(vessel))
 		vessel.initialize_docking_layers()
 	// A ship pair moves only between the first hull's own berth and its flush berth beside the peer.
@@ -192,21 +197,28 @@
 	for(var/turf/original as anything in crew_spawns)
 		SSjob.latejoin_trackers -= original
 		SSjob.latejoin_trackers |= crew_spawns[original]
+	planet_flight?.moved(target)
 	// The crew sees the new level's background at once, not after the seam teardown that may still yield.
 	update_parallax()
 	return TRUE
 
 /** Lock the helm and publish the manoeuvre timer for the pilot plot. */
 /datum/stationtrauma_overmap/space/proc/begin_approach(datum/stationtrauma_overmap_site/space/site, duration, departing = FALSE)
+	QDEL_NULL(planet_flight)
 	approach_started = world.time
 	approach_site = site
 	approach_duration = duration
 	approach_departing = departing
+	var/datum/stationtrauma_overmap_site/space/planet/planet = site?.pad_parent || site
+	if(site?.landing && istype(planet))
+		planet_flight = new(src, site, planet, departing)
+		planet_flight.update()
 	update_parallax()
 	refresh_engine_audio()
 
 /** Unlock the helm after an approach or departure, whatever its outcome. */
 /datum/stationtrauma_overmap/space/proc/end_approach()
+	QDEL_NULL(planet_flight)
 	approach_started = 0
 	approach_site = null
 	approach_duration = 0
@@ -235,6 +247,14 @@
 /datum/stationtrauma_overmap/space/proc/entry_heat()
 	if(!approach_started || !approach_site?.landing || approach_duration <= 0)
 		return 0
+	if(planet_flight)
+		var/touchdown = planet_flight.descent?.touchdown_time
+		if(!touchdown || approach_departing)
+			return 0
+		var/remaining = touchdown - world.time
+		if(remaining >= LANDING_ENTRY_LEAD || remaining <= LANDING_ENTRY_END)
+			return 0
+		return sin(180 * (LANDING_ENTRY_LEAD - remaining) / (LANDING_ENTRY_LEAD - LANDING_ENTRY_END))
 	var/progress = (world.time - approach_started) / approach_duration
 	if(progress <= 0.25 || progress >= 0.75)
 		return 0
@@ -257,7 +277,7 @@
 /**
  * Hold the hull on its approach, loading an uncharted destination meanwhile; returns whether docking may proceed.
  *
- * Planetary descents last longer, and crew aboard feel atmospheric entry through their middle; the shake is purely visual.
+ * The planetary sequence waits in orbit for the loaded map and its pictures, then runs through atmospheric entry.
  */
 /datum/stationtrauma_overmap/space/proc/approach(datum/stationtrauma_overmap_site/space/site, revision)
 	var/controlled = station_clearance_required(site)
@@ -269,7 +289,15 @@
 	status = (site.landing || illuminate_pad) ? "Посадка: [site.name]" : "Сближение: [site_label(site)]"
 	if(site.awaits_map() && !site.loading_map)
 		INVOKE_ASYNC(site, TYPE_PROC_REF(/datum/stationtrauma_overmap_site/space, load_map))
-	while(world.time - approach_started < approach_duration || site.loading_map)
+	while(TRUE)
+		if(planet_flight)
+			if(planet_flight.update())
+				if(planet_flight.failed && !site.failed)
+					status = "Посадка отменена: площадка перекрыта"
+					return FALSE
+				break
+		else if(world.time - approach_started >= approach_duration && !site.loading_map)
+			break
 		if(illuminate_pad && world.time - approach_started >= approach_duration - 2 SECONDS)
 			illuminate_pad = FALSE
 			if(!QDELETED(slot) && !QDELETED(slot.active_berth) && can_dock(site, revision) && vessel.check_dock(slot.active_berth, TRUE))

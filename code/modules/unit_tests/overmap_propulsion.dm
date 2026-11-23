@@ -204,6 +204,26 @@
 /datum/unit_test/overmap_standard_dock/nozzles/large
 	nozzle_type = /obj/machinery/power/shuttle_engine/large/standard
 
+/// A heavy nozzle must follow the hull footprint through docking and the reverse turn.
+/datum/unit_test/overmap_docking/nozzle_rotation/Run()
+	var/turf/mount = get_step(ship, NORTH)
+	var/obj/machinery/power/shuttle_engine/large/standard/nozzle = allocate(/obj/machinery/power/shuttle_engine/large/standard, mount)
+	nozzle.anchored = TRUE
+	nozzle.setDir(SOUTH)
+	var/list/original_footprint = nozzle.locs.Copy()
+	for(var/side in list(EAST, WEST))
+		bay.setDir(side)
+		TEST_ASSERT(navigation.relocate(bay), "The ship must physically dock sideways")
+		TEST_ASSERT_EQUAL(ship.dir, side, "The berth must still rotate the hull")
+		TEST_ASSERT_EQUAL(nozzle.dir, REVERSE_DIR(side), "The nozzle must turn with the hull")
+		TEST_ASSERT(!length(nozzle.locs - ship.return_turfs()), "The sideways nozzle must stay on the hull")
+		TEST_ASSERT(navigation.relocate(navigation.flight_berth), "The ship must physically return to its north-facing berth")
+		TEST_ASSERT_EQUAL(ship.dir, NORTH, "The flight berth must turn the hull back north")
+		TEST_ASSERT_EQUAL(nozzle.dir, SOUTH, "The nozzle must face aft again")
+		TEST_ASSERT_EQUAL(nozzle.loc, mount, "The nozzle must return to its original mount")
+		TEST_ASSERT(!length(nozzle.locs ^ original_footprint), "The nozzle must cover exactly its original tiles")
+		TEST_ASSERT(!nozzle.pixel_x && !nozzle.pixel_y, "The nozzle sprite must return to the original mount without an offset")
+
 /// A three-by-three nozzle must bind beyond its full footprint and remain limited by its converter.
 /datum/unit_test/overmap_standard_dock/nozzles/huge
 	nozzle_type = /obj/machinery/power/shuttle_engine/huge/standard

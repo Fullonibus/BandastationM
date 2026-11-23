@@ -108,6 +108,7 @@
     "scan_age": 14,
     "interference": 0,
     "sensor_range": 1400,
+    "dock_range": 150,
     "can_dock": false,
     "routes": [
       {

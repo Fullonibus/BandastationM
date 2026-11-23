@@ -418,6 +418,8 @@
 	var/datum/stationtrauma_carrier_movement/movement = overmap?.carrier_relocation
 	if(movement?.root.vessel == src)
 		movement.after_takeoff()
+	if(overmap?.planet_flight?.departing)
+		overmap.planet_flight.moved(layers?.target)
 
 /** Retain one native move, independent ownership and the existing movement callback contract. */
 /datum/stationtrauma_overmap/space/proc/relocate_carrier(obj/docking_port/stationary/target, datum/callback/before_takeoff)

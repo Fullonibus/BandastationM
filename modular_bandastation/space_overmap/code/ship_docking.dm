@@ -19,7 +19,7 @@
 /** Check two available hulls for common sector, proximity and low relative speed. */
 /datum/stationtrauma_overmap/space/proc/can_join_ship(datum/stationtrauma_overmap/space/other)
 	return !QDELETED(other) && other != src && available_for_ship_docking() && other.available_for_ship_docking() && other.sector == sector \
-		&& (pos_x - other.pos_x) ** 2 + (pos_y - other.pos_y) ** 2 <= (radius + other.radius + ST_NAV_APPROACH) ** 2 \
+		&& (pos_x - other.pos_x) ** 2 + (pos_y - other.pos_y) ** 2 <= ST_SPACE_DOCK_RANGE ** 2 \
 		&& (velocity_x - other.velocity_x) ** 2 + (velocity_y - other.velocity_y) ** 2 <= ST_SPACE_DOCK_SPEED ** 2
 
 /** Crew-local contact numbers that currently pass the same check as a docking request. */

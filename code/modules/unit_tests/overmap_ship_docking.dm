@@ -91,6 +91,12 @@
 	return ..()
 
 /datum/unit_test/overmap_docking/committed_ship_docking/Run()
+	var/starting_x = host_navigation.pos_x
+	host_navigation.pos_x = navigation.pos_x + 150
+	TEST_ASSERT(navigation.can_join_ship(host_navigation), "A stationary peer on the helm ring must be in docking range")
+	host_navigation.pos_x++
+	TEST_ASSERT(!navigation.can_join_ship(host_navigation), "A peer past the helm ring must be out of range")
+	host_navigation.pos_x = starting_x
 	var/host_z = host_ship.z
 	RegisterSignal(ship, COMSIG_ATOM_AFTER_SHUTTLE_MOVE, PROC_REF(stop_after_native_move))
 	var/datum/stationtrauma_ship_docking/link = allocate(/datum/stationtrauma_ship_docking, navigation, host_navigation)

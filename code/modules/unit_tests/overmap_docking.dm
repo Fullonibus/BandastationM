@@ -4,6 +4,13 @@
 	height = 3
 	/// One-shot callback run inside the real native preflight, after its yield.
 	var/datum/callback/preflight_action
+	/// The ascent had already started when native cleanup first gained a chance to yield.
+	var/launched_before_cleanup = FALSE
+
+/obj/docking_port/mobile/stationtrauma_space/unit_test_docking/cleanup_runway(obj/docking_port/stationary/new_dock, list/old_turfs, list/new_turfs, list/areas_to_move, list/underlying_areas, list/moved_atoms, rotation, movement_direction, area/fallback_area, list/shuttle_depths)
+	if(overmap?.planet_flight?.departing)
+		launched_before_cleanup = !!overmap.planet_ascent?.liftoff
+	return ..()
 
 /obj/docking_port/mobile/stationtrauma_space/unit_test_docking/preflight_check(list/old_turfs, list/new_turfs, list/areas_to_move, list/underlying_areas, rotation)
 	. = ..()
@@ -541,3 +548,127 @@
 	observer.forceMove(console_turf.z == 1 ? locate(console_turf.x, console_turf.y, 2) : locate(console_turf.x, console_turf.y, 1))
 	observer_window.process_status()
 	TEST_ASSERT_EQUAL(observer_window.status, UI_CLOSE, "An observer on a different deck should not keep a helm window open")
+
+/// Exercise one landing and launch at a cardinally rotated berth through native movement.
+/datum/unit_test/overmap_docking/planet_flight_picture/Run()
+	var/datum/landing_view_piece/sample = allocate(/datum/landing_view_piece)
+	sample.scale.mark(0, 1).mark(10, 1).mark(11, 2)
+	sample.sample_animation(0)
+	var/list/frames = sample.animation_steps
+	TEST_ASSERT_EQUAL(length(frames), 1, "A still interval should be stored as one hold")
+	var/list/frame = frames[1]
+	TEST_ASSERT_EQUAL(frame[3], 10, "Sharing keyframes must preserve the full hold before motion")
+	sample.sample_animation(0)
+	TEST_ASSERT(sample.animation_steps == frames, "Every image started in the same tick must reuse the sampled frames")
+	sample.sample_animation(11)
+	TEST_ASSERT_EQUAL(sample.animation_start[1], 2, "An image starting later must start at the current scale")
+
+	var/turf/corner = space.bottom_left_turfs[1]
+	for(var/turf/tile as anything in block(locate(corner.x + 8, corner.y + 1, corner.z), locate(corner.x + 16, corner.y + 8, corner.z)))
+		tile.ChangeTurf(/turf/open/floor/plating)
+	var/list/berth_tiles = ship.return_ordered_turfs(bay.x, bay.y, bay.z, bay.dir)
+	var/turf/marked_ground = berth_tiles[1]
+	var/ground_tint = "#6c85a2"
+	marked_ground.color = ground_tint
+	site.landing = TRUE
+	var/datum/stationtrauma_overmap_site/space/planet/lava/planet = allocate(/datum/stationtrauma_overmap_site/space/planet/lava)
+	site.pad_parent = planet
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "The fixture needs main propulsion to land")
+	navigation.pos_x = site.pos_x + 150
+	TEST_ASSERT(navigation.can_dock(site, navigation.control_revision), "A landing must be available on the helm ring")
+	navigation.pos_x++
+	TEST_ASSERT(!navigation.can_dock(site, navigation.control_revision), "A landing past the helm ring must be out of range")
+	navigation.pos_x = site.pos_x
+
+	// A generated planet supplies a clearing, then fits a separate native port for the ship.
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/planet_pad/clearing = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard/planet_pad, locate(corner.x + 9, corner.y + 2, corner.z))
+	clearing.width = 7
+	clearing.height = 7
+	site.berth = null
+	site.loading_map = TRUE
+	navigation.begin_approach(site, 2 MINUTES)
+	var/datum/stationtrauma_planet_flight/flight = navigation.planet_flight
+	TEST_ASSERT_NOTNULL(navigation.planet_hover, "The disk must already be visible when the map is still loading")
+	TEST_ASSERT(!flight.descent && !navigation.entry_heat(), "Atmospheric entry must wait for the terrain")
+	var/initial_scale = navigation.planet_hover.size.at(navigation.planet_hover.size.end_time())
+	TEST_ASSERT(initial_scale < 0.7, "First generation must keep the opening zoom small")
+	navigation.approach_started -= 2 MINUTES
+	flight.next_zoom = 0
+	TEST_ASSERT(!flight.update(), "Passing the estimated load time cannot start atmosphere against an unbuilt planet")
+	TEST_ASSERT(navigation.planet_hover.size.at(navigation.planet_hover.size.end_time()) > initial_scale, "The orbit must continue to zoom during a late generation")
+	site.berth = clearing
+	site.loading_map = FALSE
+	flight.update()
+	TEST_ASSERT_NOTNULL(clearing.active_berth, "The first approach must fit the real ship into the generated clearing")
+	TEST_ASSERT_EQUAL(flight.berth, clearing.active_berth, "The picture must use the physical port under the ship")
+	navigation.end_approach()
+	clearing.clear_berth()
+	site.berth = bay
+
+	navigation.begin_approach(site, 2 MINUTES)
+	var/datum/landing_animation/descent = navigation.planet_flight?.descent
+	TEST_ASSERT_NOTNULL(descent?.inside_view, "A planetary descent must use the full inside view")
+	TEST_ASSERT_EQUAL(descent.inside_view.palette.heat, "#ff8a3c", "A lava planet must use the imported volcanic palette")
+	descent.start(12 SECONDS, navigation.take_planet_hover())
+	descent.show_shadow()
+	descent.show_proxies()
+	var/obj/effect/abstract/landing_proxy/cancelled = descent.proxy
+	TEST_ASSERT_NOTNULL(cancelled, "A descent must have a proxy visible from the ground")
+	TEST_ASSERT_NOTNULL(descent.shadow, "A descent must cast a blurred shadow on the berth")
+	TEST_ASSERT(!cancelled.density && cancelled.mouse_opacity == MOUSE_OPACITY_TRANSPARENT, "The picture cannot obstruct or intercept gameplay")
+	var/datum/landing_view/descent/cancelled_view = descent.inside_view
+	navigation.end_approach()
+	TEST_ASSERT(QDELETED(cancelled) && cancelled_view.ended, "Cancelling must clear the ground picture and fade the crew's view")
+	var/deadline = world.time + 3 SECONDS
+	UNTIL(QDELETED(cancelled_view) || world.time >= deadline)
+	TEST_ASSERT(QDELETED(cancelled_view), "A cancelled descent must release its view after fading")
+
+	navigation.begin_approach(site, 2 MINUTES)
+	descent = navigation.planet_flight?.descent
+	TEST_ASSERT_NOTNULL(descent, "A second approach needs its own scene")
+	deadline = world.time + 8 SECONDS
+	UNTIL(!descent.inside_view.ground_jobs || world.time >= deadline)
+	TEST_ASSERT(!descent.inside_view.ground_jobs, "Atmospheric entry must have its complete view ready")
+	navigation.approach_started -= 14 SECONDS
+	TEST_ASSERT(!navigation.planet_flight.update() && descent.touchdown_time > world.time, "Readiness must start the atmospheric sequence before allowing the move")
+	TEST_ASSERT(!navigation.entry_heat(), "The hull must stay calm before the entry sparks")
+	var/touchdown = descent.touchdown_time
+	descent.touchdown_time = world.time + 12 SECONDS
+	TEST_ASSERT(navigation.entry_heat() > 0, "The hull shakes in the donor's entry interval")
+	descent.touchdown_time = touchdown
+	descent.show_proxies()
+	TEST_ASSERT(navigation.dock(instant = TRUE), "The pictures must permit the same native landing")
+	TEST_ASSERT_EQUAL(ship.get_docked(), bay, "The real hull must land at the photographed berth")
+	TEST_ASSERT(descent.frozen && descent.landed && QDELETED(descent.inside_view), "Touchdown must hand the view over to the real world")
+	deadline = world.time + 4 SECONDS
+	UNTIL(QDELETED(descent) || world.time >= deadline)
+	TEST_ASSERT(QDELETED(descent), "The landing proxy must finish fading after touchdown")
+
+	navigation.begin_approach(site, 1 MINUTES, departing = TRUE)
+	var/datum/landing_view/ascent/ascent = navigation.planet_ascent
+	TEST_ASSERT_NOTNULL(ascent, "Ascent must prepare the real terrain beside the hull")
+	var/turf/covered = ascent.berth_turfs[1]
+	TEST_ASSERT(isfloorturf(covered) && ship.docking_surfaces[covered], "The rotated berth must conceal real ground beneath the hull")
+	deadline = world.time + 8 SECONDS
+	UNTIL(!ascent.ground_jobs || world.time >= deadline)
+	TEST_ASSERT(!ascent.ground_jobs, "The full launch picture must be ready while the hull is still on the ground")
+	TEST_ASSERT(navigation.relocate(navigation.flight_berth), "The real hull must be able to depart the photographed berth")
+	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "The native departure must reach the flight berth")
+	TEST_ASSERT(ship.launched_before_cleanup, "The new view must attach before native docking cleanup can expose a frame of empty space")
+	TEST_ASSERT(ascent.liftoff && length(ascent.close.parts), "The ascent must switch to the original ground in the move tick")
+	var/turf/revealed = locate(covered.x, covered.y, covered.z)
+	TEST_ASSERT_EQUAL(revealed.color, ground_tint, "The original ground beneath the hull must now be exposed")
+	var/found_under_hull = FALSE
+	for(var/list/part as anything in ascent.close.parts)
+		var/mutable_appearance/group = part[1]
+		for(var/mutable_appearance/tile_picture as anything in group.overlays)
+			if(tile_picture.color == ground_tint)
+				found_under_hull = TRUE
+	TEST_ASSERT(found_under_hull, "The close-up picture must contain the exact tile that the hull concealed")
+	navigation.end_approach()
+	TEST_ASSERT(!QDELETED(ascent) && isnull(navigation.planet_flight), "Completing the manoeuvre must allow the ascent to finish playing")
+	ascent.finish()
+	deadline = world.time + 3 SECONDS
+	UNTIL(QDELETED(ascent) || world.time >= deadline)
+	TEST_ASSERT(QDELETED(ascent), "Ascent must release its flight pictures after the animation")
+	TEST_ASSERT(isnull(navigation.planet_ascent), "The completed animation must clear its navigation reference")
