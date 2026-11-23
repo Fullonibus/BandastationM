@@ -5,6 +5,18 @@
 	ambientsounds = list(null)
 	ambient_buzz = null
 
+/obj/machinery/power/apc/check_access_list(list/access_list)
+	return ..() || has_ship_engineering_access(access_list, ACCESS_ENGINE_EQUIP)
+
+/obj/machinery/airalarm/check_access_list(list/access_list)
+	return ..() || has_ship_engineering_access(access_list, ACCESS_ATMOS_EQUIP)
+
+/// Recognize ship engineers on standard equipment and preserve access configured for special equipment.
+/obj/machinery/proc/has_ship_engineering_access(list/access_list, default_access)
+	return length(access_list) && ((ACCESS_EXPEDITION_ENGINEER in access_list) || (ACCESS_ENGINEERING in access_list)) \
+		&& istype(get_area(src), /area/shuttle/stationtrauma_space) \
+		&& length(req_access) == 1 && req_access[1] == default_access && !length(req_one_access)
+
 /** Mapped expedition area: Открытый космос. */
 /area/space/stationtrauma_space_home
 	name = "Открытый космос"

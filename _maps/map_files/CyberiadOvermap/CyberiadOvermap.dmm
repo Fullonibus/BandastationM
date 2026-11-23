@@ -1279,7 +1279,9 @@
 /area/station/expedition/storage)
 "aer" = (
 /obj/structure/table/reinforced,
-/obj/machinery/fax/heads/captain{
+/obj/machinery/fax{
+	fax_name = "Экспедиционный корпус";
+	name = "факс экспедиционного корпуса";
 	pixel_y = 9;
 	pixel_x = -4
 	},

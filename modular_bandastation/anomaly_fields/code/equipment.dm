@@ -168,6 +168,7 @@
 	desc = "Плотный мешочек на десять болтов. В руке достаёт болт для броска; Alt+ПКМ переключает сбор болтов под ногами."
 	icon = 'modular_bandastation/anomaly_fields/icons/equipment.dmi'
 	icon_state = "bolt_bag"
+	worn_icon_state = "satchel"
 	inhand_icon_state = "satchel"
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'

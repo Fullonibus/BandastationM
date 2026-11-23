@@ -100,7 +100,7 @@
  * * min_volume - minimum volume the sound can reach at max_range.
  */
 /mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/sound_to_use, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE, wait = FALSE, datum/preference/numeric/volume/volume_preference = null, min_volume = 5) // BANDASTATION EDIT: Add wait arg
-	if(!client || HAS_TRAIT(src, TRAIT_DEAF))
+	if(!client || HAS_TRAIT(src, TRAIT_DEAF) || (isturf(turf_source) && isnewplayer(src)))
 		return
 
 	if(!sound_to_use)

@@ -483,7 +483,7 @@
 	else if(machine_stat & (BROKEN|MAINT))
 		balloon_alert(user, "ничего не произошло!")
 	else
-		if(allowed(usr) && !wires.is_cut(WIRE_IDSCAN) && ((!malfhack && !remote_control_user) || (malfhack && (malfai == user || (user in malfai.connected_robots)))))
+		if(allowed(user) && !wires.is_cut(WIRE_IDSCAN) && ((!malfhack && !remote_control_user) || (malfhack && (malfai == user || (user in malfai.connected_robots)))))
 			locked = !locked
 			balloon_alert(user, locked ? "заблокирован" : "разблокирован")
 			update_appearance()
