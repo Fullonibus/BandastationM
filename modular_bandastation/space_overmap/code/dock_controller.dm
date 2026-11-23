@@ -85,10 +85,10 @@
 	if(!host && !is_station_level(tile.z))
 		return NONE
 
-	// A prepared dock, such as Cyberiad's M dock, has only a controller until commissioning.
+	// An unregistered layout can still guide placement of the wall sections.
 	var/draft_facing
 	for(var/obj/machinery/computer/stationtrauma_dock_controller/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/stationtrauma_dock_controller))
-		if(QDELETED(controller) || controller.hangar || !controller.anchored || controller.z != tile.z || controller.site_id || controller.owned_slot)
+		if(QDELETED(controller) || controller.hangar || !controller.anchored || controller.z != tile.z || controller.owned_slot)
 			continue
 		var/facing = stationtrauma_standard_dock_wall_direction(tile, controller.proposed_anchor(), controller.dir, controller.slot_width, controller.slot_height)
 		if(!facing || stationtrauma_carrier_at(controller) != host)
@@ -132,8 +132,14 @@
 	var/slot_width = ST_STANDARD_S_WIDTH
 	/// Length of the hull area, parallel to the wall.
 	var/slot_height = ST_STANDARD_S_HEIGHT
-	/// Optional existing mapped destination. The controller never owns this berth.
+	/// Stable ID for a dock commissioned when its map or carrier loads.
 	var/site_id
+	/// Number of tiles along the dock from its first row to the controller.
+	var/row_offset = 0
+	/// Position of a stationary dock on the sector chart.
+	var/overmap_x = 1000
+	/// Position of a stationary dock on the north-south axis of the sector chart.
+	var/overmap_y = 0
 	/// Runtime berth commissioned by this controller.
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/owned_slot
 	/// Optional display name chosen before publishing a runtime berth.
@@ -166,9 +172,9 @@
 
 /obj/machinery/computer/stationtrauma_dock_controller/examine(mob/user)
 	. = ..()
-	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = find_slot()
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = owned_slot
 	. += span_notice(dock_status(slot))
-	if(!slot && !site_id)
+	if(!slot)
 		if(hangar)
 			. += span_notice("Для ангара нужен свободный пол [slot_width]×[slot_height] на верхней палубе. Положение площадки показывает разметка.")
 		else
@@ -178,25 +184,27 @@
 	. = ..()
 	if(!can_interact(user) || panel_open)
 		return
-	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = find_slot()
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = owned_slot
 	var/turf/controller_turf = get_turf(src)
 	var/controller_direction = dir
 	var/configured_site_id = site_id
 	var/list/actions = list("Показать площадку", "Проверить площадку")
-	if(!site_id && !slot)
-		actions += list("Повернуть контроллер", "Зарегистрировать причал")
-	else if(slot && slot == owned_slot && !owned_slot.retiring)
+	if(!slot)
+		if(!site_id)
+			actions += "Повернуть контроллер"
+		actions += "Зарегистрировать причал"
+	else if(!slot.retiring)
 		actions += "Снять причал с регистрации"
 	if(can_name_dock(user, slot))
 		actions += "Название причала"
 	var/action = tgui_input_list(user, dock_status(slot), name, actions)
-	if(!action || QDELETED(src) || !can_interact(user) || panel_open)
+	if(!action || QDELETED(src) || QDELETED(user) || !can_interact(user) || panel_open)
+		return
+	if(get_turf(src) != controller_turf || dir != controller_direction || site_id != configured_site_id || owned_slot != slot)
 		return
 	if(action == "Название причала")
-		if(get_turf(src) == controller_turf && dir == controller_direction && site_id == configured_site_id)
-			name_dock(user, slot)
+		name_dock(user, slot)
 		return
-	slot = find_slot()
 	var/turf/anchor = slot ? get_turf(slot) : proposed_anchor()
 	var/facing = slot ? slot.dir : dir
 	var/dock_width = slot ? slot.width : slot_width
@@ -206,66 +214,52 @@
 		if("Показать площадку")
 			show_layout(user, anchor, facing, dock_width, dock_height, is_hangar)
 		if("Проверить площадку")
-			var/datum/stationtrauma_overmap_site/space/site = slot_site(slot)
+			var/datum/stationtrauma_overmap_site/space/site = slot?.published_site
 			if(slot && (slot.active_berth || site?.docking_owner || site?.shuttle_order))
 				to_chat(user, span_notice(dock_status(slot)))
 				return
-			var/datum/stationtrauma_overmap/space/host = is_hangar ? stationtrauma_carrier_at(src) : null
-			var/problem = stationtrauma_standard_dock_problem(anchor, facing, dock_width, dock_height, slot, host, hangar = is_hangar)
+			var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
+			var/datum/stationtrauma_overmap_sector/space/sector = host?.sector || SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
+			var/mapped_outpost = site_id && !host && sector?.trade_outpost_names?["[z]"]
+			var/problem = stationtrauma_standard_dock_problem(anchor, facing, dock_width, dock_height, slot, host, hangar = is_hangar, outpost = mapped_outpost)
 			var/ready_message = is_hangar ? "Посадочная площадка свободна." : "Площадка и коридор свободны, все секции стены на месте."
 			to_chat(user, problem ? span_warning(problem) : span_notice(ready_message))
 		if("Повернуть контроллер")
-			if(!site_id && !slot)
+			if(!slot && !site_id)
 				setDir(turn(dir, -90))
 				show_layout(user, proposed_anchor(), dir, slot_width, slot_height, hangar)
 		if("Зарегистрировать причал")
 			var/problem = publish_slot()
 			to_chat(user, problem ? span_warning(problem) : span_notice("Причал зарегистрирован и виден на навигационных консолях сектора."))
 		if("Снять причал с регистрации")
-			if(slot && slot == owned_slot && !owned_slot.retiring)
-				owned_slot.retire()
+			if(!QDELETED(slot) && !slot.retiring)
+				slot.retire()
 				to_chat(user, span_notice("Новые заходы закрыты. Причал будет снят с регистрации, когда освободится."))
 
-/** Resolve the machine-owned berth or the mapped destination named by this controller. */
-/obj/machinery/computer/stationtrauma_dock_controller/proc/find_slot()
-	if(!QDELETED(owned_slot))
-		return owned_slot
-	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
-	var/datum/stationtrauma_overmap_sector/space/sector = host ? host.sector : SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-	var/datum/stationtrauma_overmap_site/space/site = sector?.sites[site_id]
-	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site?.berth
-	return istype(slot) && site.host == host ? slot : null
-
-/obj/machinery/computer/stationtrauma_dock_controller/proc/slot_site(obj/docking_port/stationary/stationtrauma_space_station/standard/slot)
-	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
-	var/datum/stationtrauma_overmap_sector/space/sector = host ? host.sector : SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-	var/datum/stationtrauma_overmap_site/space/site = sector?.sites[slot?.site_id]
-	return !QDELETED(site) && site.berth == slot && site.host == host ? site : null
-
-/// Naming is available on this controller's draft, active runtime berth or explicitly linked mapped berth.
-/obj/machinery/computer/stationtrauma_dock_controller/proc/can_name_dock(mob/user, obj/docking_port/stationary/stationtrauma_space_station/standard/slot)
-	if(QDELETED(src) || QDELETED(user) || !can_interact(user) || panel_open || !anchored || !is_operational || find_slot() != slot)
+/// Name the prepared layout or the active dock owned by this controller.
+/obj/machinery/computer/stationtrauma_dock_controller/proc/can_name_dock(mob/user, obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot)
+	if(QDELETED(src) || QDELETED(user) || !can_interact(user) || panel_open || !anchored || !is_operational || owned_slot != slot)
 		return FALSE
 	if(!slot)
-		return !site_id
-	if(QDELETED(slot) || slot.z != z || (slot == owned_slot && owned_slot.retiring))
+		return TRUE
+	if(QDELETED(slot) || slot.z != z || slot.retiring)
 		return FALSE
-	var/datum/stationtrauma_overmap_site/space/site = slot_site(slot)
+	var/datum/stationtrauma_overmap_site/space/site = slot?.published_site
 	return !QDELETED(site) && site.berth == slot
 
 /// Keep the navigation ID and reservations intact while changing the visible name.
-/obj/machinery/computer/stationtrauma_dock_controller/proc/name_dock(mob/user, obj/docking_port/stationary/stationtrauma_space_station/standard/slot)
+/obj/machinery/computer/stationtrauma_dock_controller/proc/name_dock(mob/user, obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot)
 	if(!can_name_dock(user, slot))
 		return
 	var/turf/controller_turf = get_turf(src)
 	var/controller_direction = dir
 	var/configured_site_id = site_id
-	var/datum/stationtrauma_overmap_site/space/site = slot ? slot_site(slot) : null
+	var/datum/stationtrauma_overmap_site/space/site = slot ? slot.published_site : null
 	var/old_name = slot ? slot.station_name : dock_name
 	var/input_name = tgui_input_text(user, "Введите название причала.", "Название причала", old_name, max_length = MAX_NAME_LEN, encode = FALSE)
 	if(!istext(input_name) || !input_name || !can_name_dock(user, slot) || get_turf(src) != controller_turf || dir != controller_direction || site_id != configured_site_id)
 		return
-	if(slot ? (slot_site(slot) != site || slot.station_name != old_name) : dock_name != old_name)
+	if(slot ? (slot.published_site != site || slot.station_name != old_name) : dock_name != old_name)
 		return
 	var/new_name = trim(input_name)
 	var/static/regex/invalid_name_characters = regex(@"[<>&\x00-\x1f\x7f-\x9f\u200b-\u200f\u2028-\u202e\u2060-\u206f\ufeff]")
@@ -274,17 +268,14 @@
 		return
 	if(slot)
 		slot.station_name = slot.name = site.name = new_name
-	if(!site_id)
-		dock_name = new_name
+	dock_name = new_name
 	to_chat(user, span_notice("Название причала: «[new_name]»."))
 
-/obj/machinery/computer/stationtrauma_dock_controller/proc/dock_status(obj/docking_port/stationary/stationtrauma_space_station/standard/slot)
+/obj/machinery/computer/stationtrauma_dock_controller/proc/dock_status(obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot)
 	if(!slot)
-		if(site_id)
-			return "Связанный причал не найден."
 		return dock_name ? "Причал «[dock_name]» ещё не зарегистрирован." : "Площадка ещё не зарегистрирована."
-	var/datum/stationtrauma_overmap_site/space/site = slot_site(slot)
-	var/retirement = slot == owned_slot && owned_slot.retiring ? " Приём новых кораблей закрыт." : ""
+	var/datum/stationtrauma_overmap_site/space/site = slot?.published_site
+	var/retirement = slot.retiring ? " Приём новых кораблей закрыт." : ""
 	var/obj/docking_port/mobile/moored = slot.active_berth?.get_docked()
 	if(moored)
 		return "[slot.station_name] занят кораблём «[moored.name]».[retirement]"
@@ -299,24 +290,32 @@
 /obj/machinery/computer/stationtrauma_dock_controller/proc/proposed_anchor()
 	var/list/rotation = stationtrauma_port_rotation(dir)
 	var/distance = anchor_distance()
-	return locate(x - distance * rotation[1], y - distance * rotation[2], z)
+	return locate(x - distance * rotation[1] + row_offset * rotation[2], y - distance * rotation[2] - row_offset * rotation[1], z)
 
 /** Validate and publish a new physical destination. Returns a visible reason on failure. */
-/obj/machinery/computer/stationtrauma_dock_controller/proc/publish_slot()
-	if(site_id || !QDELETED(owned_slot) || !anchored || !is_operational || panel_open || !(dir in GLOB.cardinals))
+/obj/machinery/computer/stationtrauma_dock_controller/proc/publish_slot(initializing = FALSE)
+	if(!QDELETED(owned_slot) || !anchored || (!initializing && !is_operational) || panel_open || !(dir in GLOB.cardinals))
 		return "Контроллер уже связан с причалом или не готов к регистрации."
 	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
 	if(host && (host.preparing || host.relocating || host.approach_started || host.jump_target || host.ship_docking || host.carrier_busy()))
 		return "Дождитесь завершения манёвра носителя."
 	var/datum/stationtrauma_overmap_sector/space/sector = host ? host.sector : SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-	if(!sector?.ready)
+	if(QDELETED(sector) || (!initializing && !sector.ready))
 		return "Сектор ещё не готов к регистрации причалов."
+	var/outpost_name = host || !site_id ? null : sector.trade_outpost_names?["[z]"]
 	var/turf/anchor = proposed_anchor()
-	var/problem = stationtrauma_standard_dock_problem(anchor, dir, slot_width, slot_height, host = host, hangar = hangar)
-	if(problem)
-		return problem
+	if(!anchor || row_offset < 0 || row_offset >= slot_height)
+		return "Неверное положение контроллера причала."
+	if(site_id)
+		// Established mapped docks remain visible during repairs. Approach checks the actual route.
+		if((host ? !host.vessel.contains_deck(z) : !(is_station_level(z) || outpost_name)) || !length(stationtrauma_standard_dock_tiles(anchor, dir, slot_width, slot_height, hangar)) || (hangar && !stationtrauma_hangar_top_level(anchor, host)))
+			return "Разметка причала выходит за границы палубы."
+	else
+		var/problem = stationtrauma_standard_dock_problem(anchor, dir, slot_width, slot_height, host = host, hangar = hangar)
+		if(problem)
+			return problem
 	var/slot_kind = hangar ? "hangar" : lowertext(dock_class)
-	var/id = "runtime_[slot_kind]_[anchor.x]_[anchor.y]_[anchor.z]"
+	var/id = site_id || "runtime_[slot_kind]_[anchor.x]_[anchor.y]_[anchor.z]"
 	if(sector.sites[id])
 		return "На этой площадке уже зарегистрирован причал."
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = new(anchor)
@@ -327,6 +326,8 @@
 	slot.accepted_ship_class = accepted_ship_class
 	slot.setDir(dir)
 	slot.site_id = id
+	slot.configured = !!site_id
+	slot.auto_approve_docking = !!outpost_name
 	slot.station_name = slot.name = dock_name || "Причал [dock_class] ([anchor.x], [anchor.y], [anchor.z])"
 	slot.controller_ref = WEAKREF(src)
 	slot.controller_origin = get_turf(src)
@@ -343,12 +344,15 @@
 		site.id = id
 		site.name = slot.station_name
 		site.physical_docking = TRUE
-		site.pos_x = 1000
-		site.pos_y = 0
+		site.pos_x = overmap_x
+		site.pos_y = overmap_y
 		site.berth = slot
 		sector.sites[id] = site
-		var/datum/stationtrauma_overmap_site/space/docking_target/station = sector.sites["traffic:station"]
-		sector.register_docking_berth(site, "traffic:station", station?.name || "Станция")
+		if(outpost_name)
+			sector.register_docking_berth(site, "traffic:outpost:[z]", outpost_name)
+		else
+			var/datum/stationtrauma_overmap_site/space/docking_target/station = sector.sites["traffic:station"]
+			sector.register_docking_berth(site, "traffic:station", station?.name || "Станция")
 	owned_slot = slot
 	return null
 
@@ -410,12 +414,12 @@
 	return turn(facing, 90)
 
 /** Verify the complete installation at commissioning and before a runtime berth is reserved. */
-/proc/stationtrauma_standard_dock_problem(turf/anchor, facing, dock_width, dock_height, obj/docking_port/stationary/stationtrauma_space_station/standard/current_slot, datum/stationtrauma_overmap/space/host, hangar = FALSE)
+/proc/stationtrauma_standard_dock_problem(turf/anchor, facing, dock_width, dock_height, obj/docking_port/stationary/stationtrauma_space_station/standard/current_slot, datum/stationtrauma_overmap/space/host, hangar = FALSE, outpost = FALSE)
 	host ||= current_slot?.host
 	if(current_slot)
 		hangar = current_slot.hangar
 	var/list/tiles = stationtrauma_standard_dock_tiles(anchor, facing, dock_width, dock_height, hangar)
-	if(!length(tiles) || (host ? QDELETED(host.vessel) || !host.vessel.contains_deck(anchor.z) : !is_station_level(anchor.z)))
+	if(!length(tiles) || (host ? QDELETED(host.vessel) || !host.vessel.contains_deck(anchor.z) : !(is_station_level(anchor.z) || outpost)))
 		return "Причал должен целиком помещаться у станции или носителя вдали от края карты."
 	if(hangar && !stationtrauma_hangar_top_level(anchor, host))
 		return "Ангар можно разместить только на верхней палубе."
@@ -460,6 +464,8 @@
 
 /** A constructed berth owns its registry entry until the controller retires it and it becomes idle. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/runtime
+	/// Uses the route checks of a fixed map layout instead of requiring a fully clear envelope.
+	var/configured = FALSE
 	/// Controller that commissioned this slot.
 	var/datum/weakref/controller_ref
 	/// A displaced controller must be returned to its original position before accepting ships.
@@ -502,12 +508,12 @@
 		return get_turf(controller) == controller_origin && !stationtrauma_carrier_at(controller)
 	if(QDELETED(host) || stationtrauma_carrier_at(controller) != host || controller.z != z)
 		return FALSE
-	var/list/rotation = stationtrauma_port_rotation(dir)
-	var/distance = controller.anchor_distance()
-	return controller.x == x + distance * rotation[1] && controller.y == y + distance * rotation[2]
+	return controller.proposed_anchor() == get_turf(src)
 
 /obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/prepare_berth(obj/docking_port/mobile/stationtrauma_space/ship)
-	if(!accepts(ship) || active_berth || stationtrauma_standard_dock_problem(get_turf(src), dir, width, height, src))
+	if(!accepts(ship) || active_berth)
+		return null
+	if(!configured && stationtrauma_standard_dock_problem(get_turf(src), dir, width, height, src))
 		return null
 	return ..()
 

@@ -33,23 +33,26 @@
 	TEST_ASSERT_EQUAL(length(host_ship.owned_z_levels), 2, "The loader must retain both managed template levels")
 	var/min_x = round((world.maxx - 11) / 2) + 1
 	var/min_y = round((world.maxy - 15) / 2) + 1
+	var/obj/machinery/computer/stationtrauma_dock_controller/controller
 	var/mobile_count = 0
 	for(var/deck in host_ship.owned_z_levels)
 		for(var/turf/tile as anything in block(locate(min_x, min_y, deck), locate(min_x + 10, min_y + 14, deck)))
 			loaded_turfs += tile
 			for(var/obj/docking_port/mobile/loaded_ship in tile)
 				mobile_count++
-			for(var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot in tile)
-				bay = slot
+			for(var/obj/machinery/computer/stationtrauma_dock_controller/mapped_controller in tile)
+				controller = mapped_controller
 			for(var/obj/machinery/computer/stationtrauma_space_navigation/console in tile)
 				upper_helm = console
 			for(var/obj/machinery/computer/stationtrauma_station_traffic/console in tile)
 				traffic = console
 	TEST_ASSERT_EQUAL(mobile_count, 1, "Two template decks must create exactly one native mobile port")
-	TEST_ASSERT_NOTNULL(bay, "The upper deck must contain its mapped standard S berth")
+	TEST_ASSERT_NOTNULL(controller, "The upper deck must contain its mapped dock controller")
 	TEST_ASSERT_NOTNULL(upper_helm, "The upper deck must contain the mapped navigation console")
 	TEST_ASSERT_NOTNULL(traffic, "The upper deck must contain the mapped command console")
 	TEST_ASSERT(carrier_sector.attach(host_ship), "The real sector attachment must register the complete multi-deck hull")
+	bay = controller.owned_slot
+	TEST_ASSERT_NOTNULL(bay, "The upper deck controller must own a standard S berth after attaching")
 	host_navigation = host_ship.overmap
 	STOP_PROCESSING(SSfastprocess, host_navigation)
 	empty_hull_air(host_ship)

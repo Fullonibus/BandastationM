@@ -98,30 +98,6 @@
 	},
 /turf/open/floor/plating,
 /area/stationtrauma_trade_outpost/industrial)
-"av" = (
-/obj/docking_port/stationary/stationtrauma_space_station/standard_m/trade_outpost{
-	dir = 1;
-	name = "Промышленный узел (M)";
-	overmap_x = -1300;
-	overmap_y = 550;
-	shuttle_id = "trade_industrial_m";
-	site_id = "trade_industrial_m";
-	station_name = "Промышленный узел (M)"
-	},
-/turf/open/space/basic,
-/area/space)
-"aw" = (
-/obj/docking_port/stationary/stationtrauma_space_station/standard_s/trade_outpost{
-	dir = 2;
-	name = "Промышленный узел (S)";
-	overmap_x = -1300;
-	overmap_y = 550;
-	shuttle_id = "trade_industrial_s";
-	site_id = "trade_industrial_s";
-	station_name = "Промышленный узел (S)"
-	},
-/turf/open/space/basic,
-/area/space)
 "ax" = (
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
@@ -139,6 +115,28 @@
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/space)
+"aB" = (
+/obj/machinery/computer/stationtrauma_dock_controller/medium{
+	dir = 1;
+	dock_name = "Промышленный узел (M)";
+	site_id = "trade_industrial_m";
+	row_offset = 8;
+	overmap_x = -1300;
+	overmap_y = 550
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_trade_outpost/industrial)
+"aC" = (
+/obj/machinery/computer/stationtrauma_dock_controller{
+	dir = 2;
+	dock_name = "Промышленный узел (S)";
+	site_id = "trade_industrial_s";
+	row_offset = 1;
+	overmap_x = -1300;
+	overmap_y = 550
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_trade_outpost/industrial)
 
 (1,1,1) = {"
 aa
@@ -170,7 +168,7 @@ aa
 aa
 aa
 aa
-av
+aa
 aa
 aa
 aa
@@ -976,7 +974,7 @@ ac
 ae
 ac
 ac
-ac
+aB
 ac
 ad
 ad
@@ -1373,7 +1371,7 @@ aa
 aa
 ad
 ad
-ac
+aC
 ac
 ac
 ac
@@ -1742,7 +1740,7 @@ aa
 aa
 aa
 aa
-aw
+aa
 aa
 aa
 aa

@@ -1354,7 +1354,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/trade_outpost_industrial.dmm",
-			"sha256": "e775fa934f33aec6237801a5a40a5cc173baacca7631cb3f14c1242b2b92df33",
+			"sha256": "cb72335aaaa1f044dbc0e3b67060d59c748e25b3cffc1af46229a0b3f88a7a7a",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
 			"source": null,
@@ -1362,7 +1362,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/trade_outpost_medical.dmm",
-			"sha256": "cfddbebc9ac2c90f1e80af70b3da0e75104b0a688fb0121049cb20794bbd15d5",
+			"sha256": "35af10cebc887f32596071de70ccef8647037f6b40e22b4fd3263770ce443139",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
 			"source": null,
@@ -1370,7 +1370,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/trade_outpost_agricultural.dmm",
-			"sha256": "d4f143e12cac5d52ec325844c111db21326e0a1160cbb8fd47463638aecfaaed",
+			"sha256": "317868814d52c590dfdaadd826d388c6b82ccdc0dca67c778d530a521e1421b8",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
 			"source": null,
@@ -1378,7 +1378,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/trade_outpost_research.dmm",
-			"sha256": "7a82bec119deb71895557686a65acf10d20ff70a307e4702cbd19e32940d0552",
+			"sha256": "e2c643cc53abf798349a92922e058cd847285dd7be088742c04a22653e62eaeb",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
 			"source": null,
@@ -1386,7 +1386,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/trade_outpost_security.dmm",
-			"sha256": "841c0b885554f2e30f3922256579df63cfa40f42bd6125c6ff7fc0094eb358f7",
+			"sha256": "480024fae1325f95278ed3ece2d0755cc7b770866141a76eaafa650c71fe346b",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
 			"source": null,
@@ -1394,7 +1394,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/trade_outpost_service.dmm",
-			"sha256": "859100e0098837f3349dbe05cd74c19e31b47dcef4680dd2e77de28fddff25e2",
+			"sha256": "8cd2b69c4b347928af1be8b36052d010c532f77493dad7ae2e2893bf045e2b01",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
 			"source": null,
@@ -1402,7 +1402,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/trade_outpost_corporate.dmm",
-			"sha256": "842193051d1ee81a091349e4d578e6ae60cbf13f0401c1d43b4d952473f7d210",
+			"sha256": "e3b76c6d1ce6089423df75fbf405fe9e8a3ddcf1e6c566e54ca11df026492e66",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
 			"source": null,

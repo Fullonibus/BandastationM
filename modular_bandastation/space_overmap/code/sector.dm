@@ -158,13 +158,15 @@
 	navigation.update_parallax()
 	return TRUE
 
+/datum/stationtrauma_overmap_sector/space
+	/// Display names of the trade outpost's traffic target, keyed by its loaded Z-level.
+	var/list/trade_outpost_names
+
 /** Physical destinations belong to the sector and are loaded exactly once. */
 /datum/stationtrauma_overmap_sector/space/proc/load_locations()
 	if(ready || length(sites))
 		return ready
 	if(istype(src, /datum/stationtrauma_overmap_sector/space/home))
-		if(!(locate(/obj/docking_port/stationary/stationtrauma_space_station) in SSshuttle.stationary_docking_ports))
-			return FALSE
 		var/static/list/trade_maps = list(
 			"Промышленный узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_industrial.dmm',
 			"Медицинский узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_medical.dmm',
@@ -175,7 +177,7 @@
 			"Корпоративный узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_corporate.dmm',
 		)
 		var/list/trade_levels = list()
-		var/list/trade_names = list()
+		trade_outpost_names = list()
 		for(var/outpost_name in trade_maps)
 			var/datum/map_template/stationtrauma_space/outpost = new(trade_maps[outpost_name], outpost_name)
 			var/datum/space_level/trade_level = outpost.load_new_z()
@@ -184,7 +186,7 @@
 				log_mapping("Failed to load Epsilon Eridani trade outpost [outpost_name]")
 				return FALSE
 			trade_levels += trade_level.z_value
-			trade_names["[trade_level.z_value]"] = outpost_name
+			trade_outpost_names["[trade_level.z_value]"] = outpost_name
 		// The map loader connects the cable nets after machine initialization.
 		for(var/obj/machinery/power/solar_control/controller as anything in SSmachines.get_machines_by_type(/obj/machinery/power/solar_control))
 			if(!(controller.z in trade_levels))
@@ -199,7 +201,7 @@
 				main_berth = port
 				break
 		for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
-			if(port.host_ship_id)
+			if(port.host_ship_id || istype(port, /obj/docking_port/stationary/stationtrauma_space_station/standard))
 				continue
 			var/datum/stationtrauma_overmap_site/space/site = new
 			site.id = port.site_id
@@ -209,7 +211,7 @@
 			site.physical_docking = TRUE
 			site.berth = port
 			sites[site.id] = site
-			var/outpost_name = trade_names["[port.z]"]
+			var/outpost_name = trade_outpost_names["[port.z]"]
 			if(outpost_name)
 				register_docking_berth(site, "traffic:outpost:[port.z]", outpost_name)
 			else if(is_station_level(port.z))
@@ -217,6 +219,14 @@
 			else
 				register_docking_berth(site, "traffic:site:[port.site_id]", site.name)
 			taken_positions += list(list(site.pos_x, site.pos_y))
+		for(var/obj/machinery/computer/stationtrauma_dock_controller/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/stationtrauma_dock_controller))
+			if(!controller.site_id || istype(get_area(controller), /area/shuttle) || !(is_station_level(controller.z) || trade_outpost_names["[controller.z]"]))
+				continue
+			var/problem = controller.publish_slot(initializing = TRUE)
+			if(problem)
+				log_mapping("Could not register dock [controller.site_id] at [COORD(controller)]: [problem]")
+				continue
+			taken_positions += list(list(controller.overmap_x, controller.overmap_y))
 		if(!length(sites))
 			return FALSE
 		for(var/list/body as anything in celestial_bodies)

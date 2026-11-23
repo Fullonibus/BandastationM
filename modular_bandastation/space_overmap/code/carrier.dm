@@ -59,12 +59,17 @@
 						return TRUE
 	return FALSE
 
-/** Publish only the explicitly named bays; map loading must never turn them into fixed station destinations. */
+/** Register mapped controllers when the carrier and its sector are ready, before placing guests. */
 /datum/stationtrauma_overmap/space/proc/register_carrier_docks()
 	var/success = TRUE
-	for(var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot in SSshuttle.stationary_docking_ports)
-		if(slot.host_ship_id == vessel.shuttle_id && !register_carrier_dock(slot))
-			success = FALSE
+	for(var/area/ship_area as anything in vessel.shuttle_areas)
+		for(var/obj/machinery/computer/stationtrauma_dock_controller/controller in ship_area)
+			if(!controller.site_id || stationtrauma_carrier_at(controller) != src)
+				continue
+			var/problem = controller.publish_slot(initializing = TRUE)
+			if(problem)
+				log_mapping("Could not register carrier dock [controller.site_id] at [COORD(controller)]: [problem]")
+				success = FALSE
 	return success
 
 /** Commission one mapped or constructed bay without allocating another navigation instance. */
