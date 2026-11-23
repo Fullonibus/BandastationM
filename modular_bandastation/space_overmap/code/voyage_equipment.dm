@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_distress_beacons)
 			. += beacon.callsign
 
 /**
- * Handheld guide to the airlock of the destination a vessel holds through a remote seam.
+ * Handheld guide to the airlock of a moored vessel's destination.
  *
  * Aboard, it points at the seam exit level with the berth, since the seam keeps the crossing row; beyond the seam it points
  * at the entrance airlock itself, or at the berth when the destination has none.
@@ -112,7 +112,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_distress_beacons)
 /obj/item/pinpointer/stationtrauma_docking
 	name = "стыковочный пеленгатор"
 	desc = "Указывает путь к входному шлюзу объекта, у которого стоит корабль. На борту ведёт к точке выхода напротив шлюза."
-	/// Turf to head for on the holder's level; null without a seam-docked destination there.
+	/// Turf to head for on the holder's level.
 	var/turf/beacon
 
 /obj/item/pinpointer/stationtrauma_docking/Destroy()
@@ -122,7 +122,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_distress_beacons)
 /obj/item/pinpointer/stationtrauma_docking/scan_for_target()
 	beacon = stationtrauma_docking_beacon(get_turf(src))
 
-/// The turf on `here`'s level leading to the airlock of the destination a vessel holds through a remote seam, or null.
+/// The waypoint on `here`'s level for a vessel moored at a destination.
 /proc/stationtrauma_docking_beacon(turf/here)
 	if(!here)
 		return null
@@ -131,7 +131,13 @@ GLOBAL_LIST_EMPTY(stationtrauma_distress_beacons)
 		for(var/ship_id in sector.ships)
 			var/datum/stationtrauma_overmap/space/navigation = sector.ships[ship_id]
 			var/datum/stationtrauma_overmap_site/space/site = navigation?.docked
-			if(!istype(navigation) || !istype(site) || site.landing || site.physical_docking || QDELETED(site.berth) || !navigation.connection.active)
+			if(!istype(navigation) || !istype(site) || site.landing || QDELETED(site.berth))
+				continue
+			if(site.physical_docking)
+				if(site.pad_parent?.ruin_id && here.z == site.berth.z)
+					return site.entrance || get_turf(site.pad_parent.berth)
+				continue
+			if(!navigation.connection.active)
 				continue
 			if(here.z == site.berth.z)
 				return site.entrance || get_turf(site.berth)

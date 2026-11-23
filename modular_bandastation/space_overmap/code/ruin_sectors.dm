@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 		site.needs_scan = TRUE
 		site.map_loader = CALLBACK(src, PROC_REF(load_ruin_site), site, index, key, template)
 		sites[site.id] = site
-		// Four corner pads moor S and M hulls on the ruin's own level once it loads; capital hulls keep the seam.
+		// Reserve separate moorings around the ruin for standard hulls.
 		add_pads(site, 4)
 	return TRUE
 
@@ -75,6 +75,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 	var/right_edge = origin.x + placed.width - 1
 	stationtrauma_fuel_cache(block(origin, locate(right_edge, origin.y + placed.height - 1, origin.z)), ST_FUEL_CACHE_SPACE_CHANCE)
 	var/approach_y = origin.y + round(placed.height / 2)
+	var/approach_side = EAST
 	var/best_score = -INFINITY
 	for(var/turf/tile as anything in block(origin, locate(right_edge, origin.y + placed.height - 1, origin.z)))
 		for(var/obj/machinery/door/airlock/door in tile)
@@ -87,36 +88,69 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 					best_score = score
 					site.entrance = tile
 					approach_y = door.y
-				break
+					approach_side = direction
 	site.ruin_id = placed.id
 	// The seam lands crews on the column just outside the ruin, level with that airlock.
 	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 1, approach_y, origin.z))
-	// Every border loops onto the level itself, so a hull moored in a corner has no edge to fly off.
+	// Every border loops onto the ruin's level.
 	for(var/side in GLOB.cardinals)
 		stationtrauma_set_edge(level.z_value, side, level.z_value)
-	place_ruin_pads(site, origin, placed)
+	place_ruin_pads(site, origin, placed, approach_side)
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(site.berth))
 	marker.site_id = site.id
 	marker.name = site.name
 	return TRUE
 
-/** Put the ruin's corner pads in the four corners of its level, just inside the looping borders, clear of the ruin itself. */
-/datum/stationtrauma_overmap_sector/space/proc/place_ruin_pads(datum/stationtrauma_overmap_site/space/site, turf/origin, datum/map_template/ruin/placed)
+/** Put up to four independent moorings beside the ruin, starting at the entrance side. */
+/datum/stationtrauma_overmap_sector/space/proc/place_ruin_pads(datum/stationtrauma_overmap_site/space/site, turf/origin, datum/map_template/ruin/placed, entrance_side)
 	var/margin = TRANSITIONEDGE + 3
+	var/gap = 12
+	var/ruin_right = origin.x + placed.width - 1
+	var/ruin_top = origin.y + placed.height - 1
 	var/far_x = world.maxx - margin - ST_STANDARD_M_WIDTH + 1
 	var/far_y = world.maxy - margin - ST_STANDARD_M_HEIGHT + 1
-	var/list/corners = list(list(margin, margin), list(far_x, margin), list(margin, far_y), list(far_x, far_y))
+	var/centre_x = site.entrance?.x || round((origin.x + ruin_right) / 2)
+	var/centre_y = site.entrance?.y || round((origin.y + ruin_top) / 2)
+	var/list/candidates = list(
+		"[EAST]" = list(ruin_right + gap + 1, clamp(centre_y - round(ST_STANDARD_M_HEIGHT / 2), margin, far_y)),
+		"[WEST]" = list(origin.x - gap - ST_STANDARD_M_WIDTH, clamp(centre_y - round(ST_STANDARD_M_HEIGHT / 2), margin, far_y)),
+		"[NORTH]" = list(clamp(centre_x - round(ST_STANDARD_M_WIDTH / 2), margin, far_x), ruin_top + gap + 1),
+		"[SOUTH]" = list(clamp(centre_x - round(ST_STANDARD_M_WIDTH / 2), margin, far_x), origin.y - gap - ST_STANDARD_M_HEIGHT),
+	)
+	var/list/available = list()
+	for(var/side in list(entrance_side, turn(entrance_side, 90), turn(entrance_side, -90), REVERSE_DIR(entrance_side)))
+		var/list/point = candidates["[side]"]
+		var/along_x = side == NORTH || side == SOUTH
+		var/spacing = along_x ? ST_STANDARD_M_WIDTH : ST_STANDARD_M_HEIGHT
+		// Short ruins can leave two adjacent berths overlapping. Slide along the same face to clear the first.
+		for(var/offset in list(0, -spacing, spacing))
+			var/x = along_x ? clamp(point[1] + offset, margin, far_x) : point[1]
+			var/y = along_x ? point[2] : clamp(point[2] + offset, margin, far_y)
+			if(!ISINRANGE(x, margin, far_x) || !ISINRANGE(y, margin, far_y))
+				break
+			var/clear = TRUE
+			for(var/list/other as anything in available)
+				if(abs(other[1] - x) < ST_STANDARD_M_WIDTH && abs(other[2] - y) < ST_STANDARD_M_HEIGHT)
+					clear = FALSE
+					break
+			if(!clear)
+				continue
+			for(var/turf/tile as anything in block(x, y, origin.z, x + ST_STANDARD_M_WIDTH - 1, y + ST_STANDARD_M_HEIGHT - 1, origin.z))
+				if(!isspaceturf(tile) || tile.is_blocked_turf())
+					clear = FALSE
+					break
+			if(clear)
+				available += list(list(x, y))
+				break
 	for(var/index in 1 to length(site.pads))
 		var/datum/stationtrauma_overmap_site/space/pad = site.pads[index]
-		var/list/corner = corners[index]
 		pad.ruin_id = site.ruin_id
 		pad.entrance = site.entrance
-		// A ruin sprawling into a corner leaves that pad out.
-		if(corner[1] <= origin.x + placed.width && corner[1] + ST_STANDARD_M_WIDTH >= origin.x \
-			&& corner[2] <= origin.y + placed.height && corner[2] + ST_STANDARD_M_HEIGHT >= origin.y)
+		if(index > length(available))
 			pad.failed = TRUE
 			continue
-		var/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad/slot = new(locate(corner[1], corner[2], origin.z))
+		var/list/point = available[index]
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad/slot = new(locate(point[1], point[2], origin.z))
 		slot.name = "[site.name]: стоянка [index]"
 		pad.berth = slot
 
