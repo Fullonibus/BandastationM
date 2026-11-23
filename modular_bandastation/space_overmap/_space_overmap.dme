@@ -6,6 +6,7 @@
 #include "code/orbital_ship_loading.dm"
 #include "code/site.dm"
 #include "code/voyage_equipment.dm"
+#include "code/wall_lockers.dm"
 #include "code/station.dm"
 #include "code/carrier.dm"
 #include "code/carrier_movement.dm"

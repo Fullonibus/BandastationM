@@ -116,3 +116,51 @@
 	supply.insert(special_cargo, supply)
 	TEST_ASSERT_EQUAL(special_cargo.loc, supply, "The native supplypod insertion path did not move the permitted cargo into its holder.")
 // BANDASTATION ADDITION END
+
+/// Wall storage must remain passable after closing and respect its smaller capacity.
+/datum/unit_test/wall_locker
+	/// Adjacent tile temporarily replaced with a supporting wall.
+	var/turf/support
+	/// Original floor type.
+	var/original_support_type
+	/// Original floor's baseturf stack.
+	var/original_support_baseturfs
+
+/datum/unit_test/wall_locker/Destroy()
+	if(support && support.type != original_support_type)
+		support.ChangeTurf(original_support_type, original_support_baseturfs)
+	support = null
+	original_support_baseturfs = null
+	return ..()
+
+/datum/unit_test/wall_locker/Run()
+	var/turf/position = locate(run_loc_floor_bottom_left.x + 3, run_loc_floor_bottom_left.y + 3, run_loc_floor_bottom_left.z)
+	support = get_step(position, NORTH)
+	original_support_type = support.type
+	original_support_baseturfs = support.baseturfs
+	support = support.ChangeTurf(/turf/closed/wall)
+	var/obj/structure/closet/wall/locker = allocate(/obj/structure/closet/wall/botany/directional/north, position)
+	TEST_ASSERT(locker.find_and_mount_on_atom(), "The directional locker must attach to its wall")
+	TEST_ASSERT(!locker.density, "The closed wall locker must leave the tile passable")
+	TEST_ASSERT(locker.open(), "The wall locker must open")
+	TEST_ASSERT_EQUAL(locker.door_obj.dir, NORTH, "The animated door must follow the wall locker's direction")
+
+	var/mob/living/carbon/human/consistent/person = allocate(/mob/living/carbon/human/consistent, position)
+	var/mob/living/basic/mouse/mouse = allocate(/mob/living/basic/mouse, position)
+	TEST_ASSERT(locker.close(), "The wall locker must close while a person stands in front of it")
+	TEST_ASSERT_EQUAL(person.loc, position, "A human must stay outside the wall locker")
+	TEST_ASSERT_EQUAL(mouse.loc, locker, "A tiny creature must fit inside the wall locker")
+	TEST_ASSERT(!locker.density, "Closing the wall locker must leave the tile passable")
+	TEST_ASSERT(locker.open(), "Reopening the wall locker must release its contents")
+	mouse.forceMove(get_step(position, EAST))
+
+	for(var/index in 1 to locker.storage_capacity)
+		allocate(/obj/item/pen, position)
+	var/obj/item/pen/overflow = allocate(/obj/item/pen, get_step(position, EAST))
+	TEST_ASSERT(locker.close(), "The wall locker must accept an ordinary load")
+	TEST_ASSERT_EQUAL(length(locker.contents), 15, "The wall locker must hold fifteen items")
+	locker.insert(overflow)
+	TEST_ASSERT_EQUAL(overflow.loc, get_step(position, EAST), "The sixteenth item must remain outside")
+
+	support = support.ChangeTurf(original_support_type, original_support_baseturfs)
+	TEST_ASSERT(QDELETED(locker), "Removing the supporting wall must dislodge the locker")

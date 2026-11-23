@@ -311,8 +311,9 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		return
 	if(!door_obj)
 		door_obj = new
+	door_obj.setDir(dir)
 	if(closing && length(contents))
-		var/icon/mask_icon = icon(icon, has_closed_overlay ? "[icon_door || base_icon_state || initial(icon_state)]_door" : icon_state)
+		var/icon/mask_icon = icon(icon, has_closed_overlay ? "[icon_door || base_icon_state || initial(icon_state)]_door" : icon_state, dir)
 		// When closing, all of our contents are already in src - they've already disappeared from the world
 		// So to make the animation less jarring, we create a clone of everything in the closet to show in the animation
 		for(var/content in src)
@@ -618,7 +619,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	take_contents()
 	playsound(loc, close_sound, close_sound_volume, TRUE, -3)
 	opened = FALSE
-	set_density(TRUE)
+	set_density(!wall_mounted)
 	animate_door(TRUE)
 	update_appearance()
 	after_close(user)
@@ -1274,6 +1275,8 @@ GAME_VERB_SRC(/obj/structure/closet, verb_toggleopen, view(1), "Toggle Open", nu
 
 /obj/structure/closet/proc/locker_living(datum/source, mob/living/shover, mob/living/target, shove_flags, obj/item/weapon)
 	SIGNAL_HANDLER
+	if(wall_mounted)
+		return
 	if(!opened && (locked || welded)) //Yes this could be less code, no I don't care
 		return
 	if(!opened && ((shove_flags & SHOVE_KNOCKDOWN_BLOCKED) || !(shove_flags & SHOVE_BLOCKED)))

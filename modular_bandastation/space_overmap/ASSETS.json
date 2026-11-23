@@ -3,6 +3,22 @@
 	"scope": "Non-audio maps, imported icons and generated previews introduced or modified by space-overmap modules. Embedded code and existing referenced assets retain their original notices.",
 	"assets": [
 		{
+			"path": "modular_bandastation/space_overmap/icons/wallcloset.dmi",
+			"sha256": "70fa787e8b6d1f5cbe18ca8dbbc8e3e5228e697c8b842226a5781f85066d159c",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Aliceee2ch and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "779fd6d0889cc6e372b4a3355f9c385ea51de6da",
+				"path": "voidcrew/icons/obj/storage/wallcloset.dmi",
+				"url": "https://github.com/voidcrew/Voidcrew/pull/469",
+				"sha256": "d4020c0d52036f1a883cf225f56b2419f8b5964063d8cc422ee08c7edbb83616",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/779fd6d0889cc6e372b4a3355f9c385ea51de6da/README.md#license"
+			},
+			"changes": "Preserved all original frames and added named four-direction body states for the atmospherics, botany and janitor variants using existing cabinet bodies.",
+			"byte_identical": false
+		},
+		{
 			"path": "modular_bandastation/space_overmap/icons/nozzle_flame.dmi",
 			"sha256": "1c016fd528a5f6a95821ac9cb7d218cb882aa3ff628679904e73756f7b24b70a",
 			"license": "CC-BY-SA-3.0",
