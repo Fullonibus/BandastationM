@@ -4,7 +4,7 @@
  * Ten living anomalies of Shiptest (shiptest-ss13/Shiptest `code/game/objects/effects/anomalies`), moved
  * onto our TG anomaly: each pulses on its own cooldown over its reach, and the solid ones answer a touch.
  * They glow in their own colour, send a ring out with each slow pulse and
- * drift about, never further than ANOMALY_LEASH from where they appeared. On planets they never die;
+ * drift about within their leash around the spawn point. On planets they never die;
  * neutralizing one still yields its core.
  */
 /obj/effect/anomaly/pulsing
@@ -15,15 +15,14 @@
 	var/effect_range = 3
 	/// Time between its pulses.
 	var/pulse_delay = 5 SECONDS
-	/// Where it appeared; it drifts no further than ANOMALY_LEASH from here.
+	/// Where it appeared; it drifts no further than its leash from here.
 	var/turf/home
+	/// Maximum distance from the spawn point.
+	var/drift_radius = 5
 	/// Corps journal protocol, opened when it is first read off the station.
 	var/datum/expedition_record/xenoarch_find/journal_record
 	COOLDOWN_DECLARE(pulse_cooldown)
 	COOLDOWN_DECLARE(touch_cooldown)
-
-/// How far a living anomaly drifts from where it appeared.
-#define ANOMALY_LEASH 5
 
 /obj/effect/anomaly/pulsing/Initialize(mapload, new_lifespan, drops_core)
 	. = ..()
@@ -63,7 +62,7 @@
 
 /obj/effect/anomaly/pulsing/move_anomaly()
 	var/turf/next = get_step(src, pick(GLOB.alldirs))
-	if(next && (!home || get_dist(next, home) <= ANOMALY_LEASH))
+	if(next && (!home || get_dist(next, home) <= drift_radius))
 		Move(next, get_dir(src, next))
 
 /obj/effect/anomaly/pulsing/anomalyEffect(seconds_per_tick)
@@ -487,5 +486,3 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 		return
 	var/gibs = pick(/obj/effect/gibspawner/human, /obj/effect/gibspawner/xeno, /obj/effect/gibspawner/generic/animal)
 	new gibs(spot)
-
-#undef ANOMALY_LEASH

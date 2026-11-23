@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(planetary_anomaly_weights, list(
 ))
 
 /**
- * On a planet with the anomalous zone modifier, places one immortal, still living anomaly per danger band
+ * On a planet with the anomalous zone modifier, attempts one drifting anomaly per danger band
  * step on open ground away from the camp, ruins, dig sites, field clusters and each other. Returns how many.
  */
 /datum/map_generator/expedition_barren/proc/place_planetary_anomalies(list/turfs, area/surface, datum/stationtrauma_overmap_site/space/planet/planet, datum/stationtrauma_work_budget/budget)
@@ -49,10 +49,12 @@ GLOBAL_LIST_INIT(planetary_anomaly_weights, list(
 	var/band = XENOARCH_BAND_INDEX(xenoarch_band_for_level(planet.modifier_level))
 	. = 0
 	for(var/i in 1 to band)
-		var/turf/spot = find_planetary_anomaly_spot(turfs, surface, budget)
+		var/obj/effect/anomaly/pulsing/anomaly_type = pick_weight(GLOB.planetary_anomaly_weights[band])
+		// Some pulses can start at an offset before applying their own area of effect.
+		var/reach = initial(anomaly_type.drift_radius) + initial(anomaly_type.effect_range) * 2
+		var/turf/spot = find_planetary_anomaly_spot(turfs, surface, budget, reach)
 		if(!spot)
-			break
-		var/anomaly_type = pick_weight(GLOB.planetary_anomaly_weights[band])
+			continue
 		var/obj/effect/anomaly/anomaly = new anomaly_type(spot)
 		settle_planetary_anomaly(anomaly)
 		if(istype(anomaly, /obj/effect/anomaly/pulsing/tvstatic) && prob(25))
@@ -64,11 +66,11 @@ GLOBAL_LIST_INIT(planetary_anomaly_weights, list(
 		.++
 
 /// Open ground clear of reserved tiles and of fields, anomalies and dig sites nearby, or null.
-/datum/map_generator/expedition_barren/proc/find_planetary_anomaly_spot(list/turfs, area/surface, datum/stationtrauma_work_budget/budget)
+/datum/map_generator/expedition_barren/proc/find_planetary_anomaly_spot(list/turfs, area/surface, datum/stationtrauma_work_budget/budget, reach)
 	for(var/attempt in 1 to PLANETARY_ANOMALY_ATTEMPTS)
 		budget?.yield()
 		var/turf/candidate = pick(turfs)
-		if(!dig_site_ground_ok(candidate, surface) || !dig_site_clear(candidate, surface))
+		if(!dig_site_ground_ok(candidate, surface) || !anomaly_route_clear(candidate, reach))
 			continue
 		var/crowded = FALSE
 		for(var/atom/movable/thing in range(PLANETARY_ANOMALY_SPACING, candidate))

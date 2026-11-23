@@ -125,32 +125,17 @@
 	// Landings generate beside live gameplay; a quarter of each tick builds the surface within the descent.
 	budget.allowance = 25
 	generator.budget = budget
-	// The clearing fits every hull allowed to land, with a margin of open ground around it; the rest is terrain.
+	// The plan fits every allowed hull before reserving an actual z-level.
 	var/list/dims = landing_dims()
-	var/margin = 5
-	generator.camp_x = 5
-	generator.camp_y = 5
-	// Each pad stands upright; a hull lands in whichever orientation fits it.
 	var/hull_width = dims[1]
 	var/hull_height = dims[2]
-	var/limit = round(generator.width / 2) - 1 - generator.camp_x
-	// A second clearing beside the first, or above it, when the camp quadrant holds both; otherwise one.
-	var/list/offsets = list(list(0, 0))
-	if(length(pads))
-		if(hull_width * 2 + margin * 3 <= limit && hull_height + margin * 2 <= limit)
-			offsets += list(list(hull_width + margin, 0))
-		else if(hull_width + margin * 2 <= limit && hull_height * 2 + margin * 3 <= limit)
-			offsets += list(list(0, hull_height + margin))
-	var/list/last = offsets[length(offsets)]
-	generator.camp_width = hull_width + margin * 2 + last[1]
-	generator.camp_height = hull_height + margin * 2 + last[2]
-	for(var/list/offset as anything in offsets)
-		var/pad_x = generator.camp_x + margin + offset[1]
-		var/pad_y = generator.camp_y + margin + offset[2]
-		generator.landing_pads += list(list(pad_x, pad_y, pad_x + hull_width - 1, pad_y + hull_height - 1))
-	// Ruins keep out of the camp's quadrant, so the clearing must stay inside it.
-	if(generator.camp_x + generator.camp_width > round(generator.width / 2) - 1 || generator.camp_y + generator.camp_height > round(generator.width / 2) - 1)
-		CRASH("Landing hulls do not fit the expedition camp quadrant")
+	if(!generator.plan_surface(hull_width, hull_height, length(pads)))
+		return FALSE
+	var/list/ruins = prepare_ruins(generator)
+	if(!ruins)
+		return FALSE
+	if(generator.underground)
+		generator.reserve_cave_connectors()
 	// Whatever is stripped down to the bottom (ruin plating, scraped ground) shows this planet's ground, not space.
 	var/list/traits = ZTRAITS_AWAY + list(ZTRAIT_BASETURF = generator.floor_type)
 	// The storm trait also drives weather sounds, so the endless storm keeps it.
@@ -158,7 +143,7 @@
 		traits[generator.storm_trait] = TRUE
 	var/datum/space_level/caves
 	// Multi-z links adjacent z values, so the cave level is created immediately below the surface.
-	if(generator.underground)
+	if(length(generator.connector_points))
 		caves = SSmapping.add_new_zlevel("[name]: пещеры", ZTRAITS_AWAY + list(ZTRAIT_UP = TRUE, ZTRAIT_BASETURF = generator.floor_type))
 		traits[ZTRAIT_DOWN] = TRUE
 	var/datum/space_level/level = SSmapping.add_new_zlevel(name, traits)
@@ -167,9 +152,6 @@
 		stationtrauma_planet_level_air(caves.z_value, gas_mix)
 	generator.origin_x = round((world.maxx - generator.width) / 2) + 1
 	generator.origin_y = round((world.maxy - generator.width) / 2) + 1
-	var/list/ruins = prepare_ruins(generator)
-	if(!ruins)
-		return FALSE
 	var/turf/bottom = locate(generator.origin_x, generator.origin_y, level.z_value)
 	var/list/turfs = block(bottom, locate(bottom.x + generator.width - 1, bottom.y + generator.width - 1, bottom.z))
 	var/area/expedition_planet/barren/surface = new
@@ -189,10 +171,12 @@
 			pad.name = "Посадочная площадка экспедиции [length(ports) + 1]"
 		ports += pad
 	berth = ports[1]
-	// Without room for a second clearing the extra pad shares the first, and only one hull lands at a time.
 	for(var/index in 1 to length(pads))
 		var/datum/stationtrauma_overmap_site/space/pad_site = pads[index]
-		pad_site.berth = index < length(ports) ? ports[index + 1] : ports[1]
+		if(index < length(ports))
+			pad_site.berth = ports[index + 1]
+		else
+			pad_site.failed = TRUE
 	budget.yield()
 	if(!load_ruins(ruins, bottom, surface, budget))
 		return FALSE
@@ -201,8 +185,8 @@
 	generator.place_nests(bottom)
 	generator.place_megafauna(bottom)
 	generator.place_craters(bottom)
-	if(generator.populate_terrain(turfs, surface) != 3)
-		CRASH("Expedition planet [seed] lacks its research sources")
+	generator.populate_terrain(turfs, surface)
+	generator.place_ruin_patrols(ruins, bottom, surface)
 	generator.place_dig_sites(turfs, surface, src, budget)
 	generator.place_anomaly_fields(turfs, surface, src, budget)
 	generator.place_planetary_anomalies(turfs, surface, src, budget)
@@ -211,8 +195,7 @@
 	marker.name = name
 	budget.yield()
 	if(caves)
-		if(!generator.generate_underground(bottom, caves, surface, name))
-			CRASH("Expedition planet [seed] has no free surface for cave connectors")
+		generator.generate_underground(bottom, caves, src)
 		// Specimens resolve their site per level, so the caves carry the surface's site marker too.
 		var/obj/effect/landmark/stationtrauma_research_site/cave_marker = new(locate(bottom.x, bottom.y, caves.z_value))
 		cave_marker.site_id = id
@@ -230,12 +213,12 @@
 	return TRUE
 
 /**
- * Pad size fitting every hull allowed to land here in some orientation: list(longest short side, longest long side).
- * Without such hulls the surface berth type's own size applies.
+ * Fits an M hull even if the planet is generated before that ship is commissioned.
+ * The result is the longest short side and longest long side of the allowed hulls.
  */
 /datum/stationtrauma_overmap_site/space/planet/proc/landing_dims()
-	var/short_side = 0
-	var/long_side = 0
+	var/short_side = ST_STANDARD_M_WIDTH
+	var/long_side = ST_STANDARD_M_HEIGHT
 	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
 		var/datum/stationtrauma_overmap_sector/sector = SSstationtrauma_space_voyage.sectors[sector_id]
 		for(var/ship_id in sector.ships)
@@ -245,10 +228,7 @@
 			var/obj/docking_port/mobile/stationtrauma_space/vessel = navigation.vessel
 			short_side = max(short_side, min(vessel.width, vessel.height))
 			long_side = max(long_side, max(vessel.width, vessel.height))
-	if(short_side)
-		return list(short_side, long_side)
-	var/obj/docking_port/stationary/stationtrauma_space_surface/pad = /obj/docking_port/stationary/stationtrauma_space_surface
-	return list(initial(pad.width), initial(pad.height))
+	return list(short_side, long_side)
 
 /// Gas string of each expedition planet level, by z; null elsewhere.
 GLOBAL_LIST_EMPTY(stationtrauma_planet_air)

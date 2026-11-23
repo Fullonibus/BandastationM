@@ -25,6 +25,8 @@
 	id = "sierra_deserted_lab"
 	name = "Expedition-Surface Sierra deserted_lab"
 	suffix = "sierra_deserted_lab.dmm"
+	surface_entrances = list(list(0, 3))
+	surface_open_areas = list(list(1, 3, 1, 3))
 
 /** Expedition-only ruin template for Expedition-Surface Sierra drill_site. */
 /datum/map_template/ruin/expedition/sierra_drill_site

@@ -22,7 +22,7 @@
 	mountain_height = 0.75
 	mineral_chance = 6
 	craters = TRUE
-	large_ruin_chance = 100
+	large_ruin_chance = 40
 	large_ruin_biome = "dead"
 	/// One compass district shared by ambient zombie packs and plague pits on both levels.
 	var/zombie_region = NONE
