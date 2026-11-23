@@ -100243,7 +100243,7 @@
 	dir = 1;
 	dock_name = "Кибериада: причал S";
 	site_id = "cyberiad_s_dock";
-	row_offset = 12
+	row_offset = 11
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/ghetto/auxiliary)
@@ -136718,8 +136718,8 @@ ncb
 ceC
 uPA
 uPA
+pZA
 ace
-uPA
 uPA
 uPA
 uPA
