@@ -43,6 +43,7 @@
 	var/list/map_changes = get_bridge_assistant_map_changes()
 	if(!map_changes?["standard_role"])
 		return
+	department_for_prefs = /datum/job_department/captain
 	required_donator_level = BASIC_DONATOR_LEVEL
 	donor_unlock_trait = null
 	job_flags &= ~(JOB_HIDE_WHEN_EMPTY|JOB_LATEJOIN_ONLY)
