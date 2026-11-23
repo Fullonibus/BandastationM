@@ -312,6 +312,8 @@
 	TEST_ASSERT(contract.accept(carrier), "The contract did not enter its delivery step.")
 	var/list/quote = find_entry(terminal, contract_id, "contracts")
 	TEST_ASSERT(quote?["credits"] > 0, "The corporate terminal did not quote a payout for the certified core.")
+	terminal.ui_act("deliver_contract", list("id" = contract_id, "payment" = "cash"), ui)
+	TEST_ASSERT(!terminal.ui_data(carrier)["receipt"]["success"] && !QDELETED(find), "A private action handed over the corporate contract.")
 
 	TEST_ASSERT(terminal.ui_act("deliver_contract", list("id" = contract_id), ui), "The contract action did not update the terminal.")
 	var/list/receipt = terminal.ui_data(carrier)["receipt"]
@@ -556,6 +558,7 @@
 	var/price = pack.get_cost()
 	cargo_account.account_balance = price * 3
 	var/stock_before = core.stock[pack.id]
+	terminal.req_access = list() // This scenario inspects the cargo catalogue independently of personal ID access.
 	TEST_ASSERT_NULL(find_entry(terminal, pack.id), "A locked SPECIAL pack was displayed.")
 	TEST_ASSERT(!core.buy("[pack.id]"), "A hostile direct ID purchased a locked SPECIAL pack.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, price * 3, "A locked SPECIAL purchase changed the balance.")
@@ -928,3 +931,67 @@
 	TEST_ASSERT(parcel.giftwrapped, "Delivery lost the pack's gift wrapping.")
 	TEST_ASSERT_NOTNULL(locate(/obj/structure/closet/crate/mail) in parcel, "Delivery separated the gift crate from its parcel.")
 	TEST_ASSERT_NULL(locate(/obj/structure/closet/crate) in get_turf(output_pad), "Delivery also issued an unwrapped crate beside the parcel.")
+
+/** A visitor pays with banknotes, receives change and cannot charge cargo or order restricted goods. */
+/datum/unit_test/trade_hub/cash_purchase/Run()
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
+	var/mob/living/carbon/human/consistent/buyer = allocate(/mob/living/carbon/human/consistent, get_turf(input_pad))
+	var/datum/tgui/ui = create_session(buyer, terminal)
+	var/datum/supply_pack/pack = SSshuttle.supply_packs[/datum/supply_pack/engineering/conveyor]
+	var/obj/item/stack/spacecash/c10000/bills = allocate(/obj/item/stack/spacecash/c10000, get_turf(buyer), 2, FALSE)
+	TEST_ASSERT(buyer.put_in_active_hand(bills), "Could not equip the banknotes.")
+	var/balance = cargo_account.account_balance
+	terminal.ui_act("buy", list("id" = "[/datum/supply_pack/engineering/tools]", "payment" = "cash"), ui)
+	TEST_ASSERT(!terminal.ui_data(buyer)["receipt"]["success"], "Missing departmental access allowed a private order.")
+	terminal.ui_act("buy", list("id" = "[pack.id]", "payment" = "cargo"), ui)
+	TEST_ASSERT(!terminal.ui_data(buyer)["receipt"]["success"], "Missing cargo access allowed a budget order.")
+	TEST_ASSERT_EQUAL(bills.amount, 2, "A denied purchase consumed banknotes.")
+	var/stock = core.stock[pack.id]
+	var/list/purchase = list("id" = "[pack.id]", "payment" = "cash")
+	terminal.ui_act("buy", purchase, ui)
+	TEST_ASSERT(terminal.ui_data(buyer)["receipt"]["success"], "A visitor could not buy a public offer for banknotes.")
+	TEST_ASSERT_NOTNULL(locate(/obj/structure/closet/crate) in get_turf(output_pad), "The paid crate was not delivered.")
+	TEST_ASSERT_EQUAL(core.stock[pack.id], stock - 1, "The purchase did not consume one shared stock unit.")
+	TEST_ASSERT_EQUAL(bills.amount, 1, "The terminal did not preserve the unspent banknote.")
+	var/obj/item/holochip/change = locate() in buyer
+	TEST_ASSERT_EQUAL(change?.credits, bills.value - pack.get_cost(), "The buyer did not receive exact change.")
+	terminal.ui_act("buy", purchase, ui)
+	TEST_ASSERT_EQUAL(bills.amount, 1, "The occupied delivery pad consumed another banknote.")
+	TEST_ASSERT(buyer.dropItemToGround(change), "Could not free the other hand for a departmental ID.")
+	var/obj/item/card/id/advanced/card = allocate(/obj/item/card/id/advanced)
+	card.set_access(list(ACCESS_ENGINE_EQUIP, ACCESS_CARGO), FORCE_ADD_ALL)
+	TEST_ASSERT(buyer.put_in_inactive_hand(card), "Could not present the ID alongside the cash.")
+	var/obj/structure/closet/crate/delivery = locate() in get_turf(output_pad)
+	qdel(delivery)
+	var/datum/supply_pack/tools = SSshuttle.supply_packs[/datum/supply_pack/engineering/tools]
+	terminal.ui_act("buy", list("id" = "[tools.id]", "payment" = "cash"), ui)
+	TEST_ASSERT(terminal.ui_data(buyer)["receipt"]["success"], "An operator with the required ID could not privately buy a departmental pack.")
+	TEST_ASSERT(QDELETED(bills), "The second cash purchase did not consume the last banknote.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, balance, "A private purchase changed cargo's balance.")
+
+/** An operator selling a shared delivery receives exactly one cash payout, spendable at the same hub. */
+/datum/unit_test/trade_hub/cash_sale/Run()
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
+	var/mob/living/carbon/human/consistent/seller = allocate(/mob/living/carbon/human/consistent, get_turf(input_pad))
+	var/datum/tgui/ui = create_session(seller, terminal)
+	var/datum/trade_hub_request/request = core.requests[/datum/trade_hub_request/industrial_iron]
+	var/balance = cargo_account.account_balance
+	allocate(request.item_type, get_turf(input_pad), 3, FALSE)
+	var/list/params = list("id" = "[request.type]", "payment" = "cash")
+	terminal.ui_act("accept", params, ui)
+	TEST_ASSERT(terminal.ui_data(seller)["receipt"]["success"], "A visitor could not sell the shared delivery.")
+	var/obj/item/holochip/proceeds = seller.get_active_held_item()
+	TEST_ASSERT(istype(proceeds) && proceeds.credits == 3 * request.unit_reward, "The seller did not receive exact proceeds in hand.")
+	terminal.ui_act("accept", params, ui)
+	TEST_ASSERT(!terminal.ui_data(seller)["receipt"]["success"], "An empty pad paid twice.")
+	TEST_ASSERT_EQUAL(request.delivered, 3, "The cash delivery did not advance the shared quota.")
+	var/datum/supply_pack/pack = SSshuttle.supply_packs[/datum/supply_pack/engineering/conveyor]
+	var/list/purchase = list("id" = "[pack.id]", "payment" = "cash")
+	terminal.ui_act("buy", purchase, ui)
+	TEST_ASSERT(!terminal.ui_data(seller)["receipt"]["success"], "An underfunded holochip paid for a crate.")
+	TEST_ASSERT_EQUAL(proceeds.credits, 3 * request.unit_reward, "The denied purchase debited the holochip.")
+	var/obj/item/holochip/top_up = allocate(/obj/item/holochip, get_turf(seller), pack.get_cost() - proceeds.credits)
+	proceeds.item_interaction(seller, top_up)
+	terminal.ui_act("buy", purchase, ui)
+	TEST_ASSERT(terminal.ui_data(seller)["receipt"]["success"] && QDELETED(proceeds), "The exact holochip payment did not issue the crate and consume the chip.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, balance, "Private trading changed cargo's balance.")
