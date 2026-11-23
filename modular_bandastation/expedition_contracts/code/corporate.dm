@@ -63,7 +63,7 @@
 /obj/machinery/computer/trade_hub/ui_data(mob/user)
 	. = ..()
 	var/list/contracts = list()
-	if(istype(get_core(), /obj/machinery/trade_hub_core/corporate))
+	if(.["cargo_access"] && istype(get_core(), /obj/machinery/trade_hub_core/corporate))
 		for(var/id in GLOB.expedition_contracts.contracts)
 			var/datum/expedition_contract/contract = GLOB.expedition_contracts.contracts[id]
 			if(contract.state != EXPEDITION_CONTRACT_ACTIVE || !istype(contract.steps[contract.current], /datum/expedition_contract_step/deliver))
@@ -84,6 +84,8 @@
 	var/mob/user = ui.user
 	var/id = istext(params["id"]) ? params["id"] : null
 	var/obj/machinery/trade_hub_core/corporate/core = get_core()
+	if(!isnull(params["payment"]) && params["payment"] != "cargo")
+		return transaction_result(user, action, id, FALSE, "Контракты экспедиционного корпуса оплачиваются через бюджет карго.")
 	var/reason = get_trade_reason(user, core)
 	if(reason || !can_interact(user))
 		return transaction_result(user, action, id, FALSE, reason || "Не удаётся воспользоваться терминалом.")
