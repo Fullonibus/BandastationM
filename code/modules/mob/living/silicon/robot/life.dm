@@ -3,6 +3,9 @@
 		return
 
 	. = ..()
+	if(deployed && mainframe && !stationtrauma_comms_in_range(mainframe, src))
+		to_chat(src, span_warning("Connection to the AI core lost."))
+		undeploy()
 	handle_robot_hud_updates()
 	handle_robot_cell(seconds_per_tick)
 

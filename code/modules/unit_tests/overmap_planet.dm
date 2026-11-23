@@ -76,7 +76,9 @@
 	TEST_ASSERT(planet.name == "Original planet" && planet.pos_x == 777 && planet.pos_y == -888, "Names and orbital positions must remain unchanged.")
 	TEST_ASSERT_EQUAL(navigation.sites[planet.id], planet, "Registered ships must see the replacement through their shared geography.")
 	TEST_ASSERT_EQUAL(navigation.prepared_site, planet, "An idle selected destination must point to the replacement rather than a deleted chart.")
-	TEST_ASSERT(findtext(sector.debug_planet_overview(), "Ледяная экзопланета"), "The system overview must reflect the new profile immediately.")
+	var/list/overview = sector.debug_planet_overview()
+	var/list/chart = overview[1]
+	TEST_ASSERT_EQUAL(chart["profile_name"], "Снежная экзопланета", "The system overview must reflect the new profile immediately.")
 	navigation.helm_engaged = TRUE
 	TEST_ASSERT(!sector.debug_can_replace_planet(planet), "An actively navigated destination must be protected.")
 	navigation.helm_engaged = FALSE

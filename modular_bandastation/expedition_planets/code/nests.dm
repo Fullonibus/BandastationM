@@ -9,6 +9,8 @@
 /datum/map_generator/expedition_barren
 	/// Smallest and largest ambient group; profiles with heavy mining fauna use solitary encounters.
 	var/list/fauna_pack_size = list(1, 2)
+	/// Maximum number of ruin approaches with a patrol.
+	var/ruin_patrol_limit = 2
 	/// Least distance in turfs between the anchors of two fauna packs.
 	var/pack_spacing = 14
 	/// Extra members of every ambient group that is not a solitary encounter.
@@ -169,12 +171,10 @@
 /datum/map_generator/expedition_barren/proc/place_megafauna(turf/bottom)
 	if(!megafauna || !length(megafauna_types))
 		return null
-	var/camp_centre_x = camp_x + round(camp_width / 2)
-	var/camp_centre_y = camp_y + round(camp_height / 2)
 	for(var/attempt in 1 to 60)
 		var/x = rand(8, width - 8)
 		var/y = rand(8, width - 8)
-		if(is_reserved(x, y) || sqrt((x - camp_centre_x) ** 2 + (y - camp_centre_y) ** 2) < 40)
+		if(is_reserved(x, y) || in_camp_clearance(x, y, clearance = 40))
 			continue
 		var/turf/spot = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
 		if(length(standing_ground(spot, 3)) < 30)
@@ -242,22 +242,60 @@
 				kind = pick_weight(guardian_types)
 			else
 				kind = weighted ? pick_weight(kinds) : pick(kinds)
-			var/list/ground = standing_ground(tile, 2)
-			// Summoners and spellcasting ice fauna are encounters, never whole packs of ranged attackers.
-			var/solitary = ispath(kind, /mob/living/basic/mining/legion) || ispath(kind, /mob/living/basic/mining/ice_demon) || ispath(kind, /mob/living/basic/mining/ice_whelp)
-			var/pack_size
-			if(istype(src, /datum/map_generator/expedition_barren/dead) && ispath(kind, /mob/living/basic/zombie/rotten/expedition))
-				var/datum/map_generator/expedition_barren/dead/dead_profile = src
-				pack_size = dead_profile.next_zombie_pack_size(tile, length(ground))
-			else
-				pack_size = solitary ? 1 : rand(fauna_pack_size[1], fauna_pack_size[2]) + pack_bonus
-			if(!pack_size)
-				continue
-			for(var/index in 1 to pack_size)
-				if(!length(ground))
-					break
-				var/mob/living/member = new kind(pick_n_take(ground))
-				member.add_expedition_help()
+			spawn_fauna_pack(kind, tile, standing_ground(tile, 2))
+
+/** Choose the population used for a ruin approach. */
+/datum/map_generator/expedition_barren/proc/ruin_patrol_biome(x, y)
+	return biome_at(x, y, FALSE)
+
+/** Put local fauna around authored ruins, away from the camp and outside the ruins themselves. */
+/datum/map_generator/expedition_barren/proc/place_ruin_patrols(list/ruins, turf/bottom, area/surface)
+	if(!wildlife && !length(guardian_types))
+		return
+	var/placed = 0
+	for(var/list/ruin as anything in shuffle(ruins))
+		if(placed >= ruin_patrol_limit)
+			break
+		if(!prob(80 * fauna_multiplier))
+			continue
+		var/x = ruin[4]
+		var/y = ruin[5]
+		var/turf/approach = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
+		if(!approach || get_area(approach) != surface || approach.density || islava(approach) || isgroundlessturf(approach))
+			continue
+		var/datum/biome/biome = ruin_patrol_biome(x, y)
+		var/list/kinds = biome.fauna_density > 0 ? biome.fauna_types : null
+		var/kind
+		if(length(guardian_types) && (!length(kinds) || prob(40)))
+			kind = pick_weight(guardian_types)
+		else if(length(kinds))
+			kind = isnum(kinds[kinds[1]]) ? pick_weight(kinds) : pick(kinds)
+		if(!kind)
+			continue
+		var/list/ground = standing_ground(approach, 2)
+		for(var/turf/tile as anything in ground.Copy())
+			var/local_x = tile.x - bottom.x + 1
+			var/local_y = tile.y - bottom.y + 1
+			if(get_area(tile) != surface || LAZYACCESS(feature_turfs, tile) || in_camp_clearance(local_x, local_y))
+				ground -= tile
+		if(spawn_fauna_pack(kind, approach, ground))
+			placed++
+
+/** Spawn a biome pack on usable tiles, keeping heavy creatures solitary and honoring the dead planet's pack budget. */
+/datum/map_generator/expedition_barren/proc/spawn_fauna_pack(kind, turf/anchor, list/ground)
+	if(!length(ground))
+		return FALSE
+	var/solitary = ispath(kind, /mob/living/basic/mining/legion) || ispath(kind, /mob/living/basic/mining/ice_demon) || ispath(kind, /mob/living/basic/mining/ice_whelp)
+	var/pack_size
+	if(istype(src, /datum/map_generator/expedition_barren/dead) && ispath(kind, /mob/living/basic/zombie/rotten/expedition))
+		var/datum/map_generator/expedition_barren/dead/dead_profile = src
+		pack_size = dead_profile.next_zombie_pack_size(anchor, length(ground))
+	else
+		pack_size = solitary ? 1 : rand(fauna_pack_size[1], fauna_pack_size[2]) + pack_bonus
+	for(var/index in 1 to min(pack_size, length(ground)))
+		var/mob/living/member = new kind(pick_n_take(ground))
+		member.add_expedition_help()
+	return pack_size > 0
 
 #undef EXPEDITION_GUARDIAN_DENSITY
 #undef EXPEDITION_GROWN_HIVE_SIZE

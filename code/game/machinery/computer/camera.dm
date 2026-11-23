@@ -91,7 +91,7 @@
 	var/list/data = list()
 	data["network"] = network
 	data["mapRef"] = cam_screen.assigned_map
-	data["cameras"] = SScameras.get_available_cameras_data(network)
+	data["cameras"] = SScameras.get_available_cameras_data(network, viewer = src)
 	return data
 
 /obj/machinery/computer/security/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -100,8 +100,10 @@
 		return
 
 	if(action == "switch_camera")
-		active_camera?.on_stop_watching(src)
 		var/obj/machinery/camera/selected_camera = locate(params["camera"]) in SScameras.cameras
+		if(selected_camera && !stationtrauma_comms_in_range(src, selected_camera))
+			return FALSE
+		active_camera?.on_stop_watching(src)
 		active_camera = selected_camera
 		cam_screen.set_display(active_camera)
 
@@ -109,6 +111,8 @@
 			return TRUE
 
 		active_camera.on_start_watching(src)
+		if(SSmapping.current_map?.space_overmap)
+			begin_processing()
 		update_active_camera_screen()
 
 		return TRUE
@@ -124,9 +128,16 @@
 	SStgui.update_uis(src)
 // BANDASTATION ADDITION END: Bodycam
 
+/obj/machinery/computer/security/process()
+	if(!active_camera)
+		return PROCESS_KILL
+	if(!stationtrauma_comms_in_range(src, active_camera))
+		on_camera_disabled(active_camera)
+		return PROCESS_KILL
+
 /obj/machinery/computer/security/proc/update_active_camera_screen()
 	// Show static if can't use the camera
-	if(!active_camera?.can_use())
+	if(!active_camera?.can_use() || !stationtrauma_comms_in_range(src, active_camera))
 		cam_screen.show_camera_static()
 		return
 

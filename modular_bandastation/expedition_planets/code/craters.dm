@@ -22,7 +22,7 @@
 		for(var/attempt in 1 to 30)
 			var/x = rand(EXPEDITION_CRATER_RADIUS + 3, width - EXPEDITION_CRATER_RADIUS - 2)
 			var/y = rand(EXPEDITION_CRATER_RADIUS + 3, width - EXPEDITION_CRATER_RADIUS - 2)
-			if(is_reserved(x, y) || (x < camp_x + camp_width + fauna_clearance && y < camp_y + camp_height + fauna_clearance))
+			if(is_reserved(x, y) || in_camp_clearance(x, y))
 				continue
 			var/turf/open/misc/core = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
 			if(!istype(core) || LAZYACCESS(feature_turfs, core) || core.is_blocked_turf())

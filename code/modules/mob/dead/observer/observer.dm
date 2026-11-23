@@ -399,9 +399,7 @@ GAME_VERB_DESC(/mob/eye, ghost, "Ghost", "Relinquish your life and enter the lan
 
 	if(glide_size_override)
 		set_glide_size(glide_size_override)
-	if(NewLoc)
-		abstract_move(NewLoc)
-	else
+	if(!NewLoc)
 		var/turf/destination = get_turf(src)
 
 		if((direct & NORTH) && y < world.maxy)
@@ -416,7 +414,13 @@ GAME_VERB_DESC(/mob/eye, ghost, "Ghost", "Relinquish your life and enter the lan
 		else if((direct & WEST) && x > 1)
 			destination = get_step(destination, WEST)
 
-		abstract_move(destination)//Get out of closets and such as a ghost
+		NewLoc = destination
+
+	// Abstract movement bypasses turf Entered(), including the linked space borders.
+	var/turf/open/border = NewLoc
+	if(istype(border) && border.destination_z && SSmapping.current_map?.space_overmap)
+		NewLoc = locate(border.destination_x, border.destination_y, border.destination_z) || NewLoc
+	abstract_move(NewLoc)
 
 /mob/dead/observer/forceMove(atom/destination)
 	abstract_move(destination) // move like the wind

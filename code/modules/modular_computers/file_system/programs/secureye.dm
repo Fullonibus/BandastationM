@@ -129,7 +129,7 @@
 	data["network"] = network
 	data["mapRef"] = cam_screen.assigned_map
 	data["can_spy"] = !!spying
-	data["cameras"] = SScameras.get_available_cameras_data(network)
+	data["cameras"] = SScameras.get_available_cameras_data(network, viewer = computer)
 	return data
 
 /datum/computer_file/program/secureye/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
@@ -138,6 +138,9 @@
 		return
 	switch(action)
 		if("switch_camera")
+			var/obj/machinery/camera/selected_camera = locate(params["camera"]) in SScameras.cameras
+			if(selected_camera && !stationtrauma_comms_in_range(computer, selected_camera))
+				return FALSE
 			var/obj/machinery/camera/active_camera = camera_ref?.resolve()
 			if(!spying && active_camera)
 				active_camera.on_stop_watching(src)
@@ -145,7 +148,6 @@
 			if(!spying)
 				playsound(computer, SFX_TERMINAL_TYPE, 25, FALSE)
 
-			var/obj/machinery/camera/selected_camera = locate(params["camera"]) in SScameras.cameras
 			if(selected_camera)
 				camera_ref = WEAKREF(selected_camera)
 			else
@@ -168,6 +170,8 @@
 
 /datum/computer_file/program/secureye/proc/on_track_target(datum/trackable/source, mob/living/target)
 	SIGNAL_HANDLER
+	if(!stationtrauma_comms_in_range(computer, target))
+		return
 	var/target_turf = get_turf(target)
 	var/datum/camerachunk/target_camerachunk = SScameras.get_turf_camera_chunk(target_turf)
 	if(!target_camerachunk)
@@ -217,10 +221,16 @@
 	SStgui.update_uis(src)
 // BANDASTATION ADDITION END: Bodycam
 
+/datum/computer_file/program/secureye/process_tick(seconds_per_tick)
+	. = ..()
+	var/obj/machinery/camera/active_camera = camera_ref?.resolve()
+	if(active_camera && !stationtrauma_comms_in_range(computer, active_camera))
+		on_camera_disabled(active_camera)
+
 /datum/computer_file/program/secureye/proc/update_active_camera_screen()
 	var/obj/machinery/camera/active_camera = camera_ref?.resolve()
 	// Show static if can't use the camera
-	if(!active_camera?.can_use())
+	if(!active_camera?.can_use() || !stationtrauma_comms_in_range(computer, active_camera))
 		cam_screen.show_camera_static()
 		return
 

@@ -287,7 +287,10 @@
 	dir = 10
 	},
 /obj/machinery/airalarm/directional/north,
-/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/structure/closet/secure_closet/engineering_electrical{
+	req_access = list();
+	req_one_access = list("engine_equip", "expedition_engineer")
+	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/life_support)
 "aN" = (
@@ -814,7 +817,10 @@
 "bW" = (
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/closet/secure_closet/engineering_personal{
+	req_access = list();
+	req_one_access = list("engine_equip", "expedition_engineer")
+	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/engineering)
 "bX" = (

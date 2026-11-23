@@ -1964,7 +1964,9 @@
 /area/shuttle/stationtrauma_space/glimpse/bridge)
 "Qn" = (
 /obj/structure/closet/secure_closet/engineering_personal{
-	name = "ship engineer's locker"
+	name = "ship engineer's locker";
+	req_access = list();
+	req_one_access = list("engine_equip", "expedition_engineer")
 	},
 /obj/item/storage/backpack/industrial,
 /obj/item/clothing/head/utility/hardhat,

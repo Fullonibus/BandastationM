@@ -45,10 +45,14 @@
 	..()
 
 /atom/movable/screen/movable/pic_in_pic/ai/set_view_center(atom/target, do_refresh = TRUE)
+	if(target && !stationtrauma_comms_in_range(ai, target))
+		return
 	..()
 	aiEye.setLoc(get_turf(target))
 
 /atom/movable/screen/movable/pic_in_pic/ai/refresh_view()
+	if(center && !stationtrauma_comms_in_range(ai, center))
+		center = null
 	..()
 	aiEye.setLoc(get_turf(center))
 
@@ -151,6 +155,8 @@ GLOBAL_DATUM(ai_camera_room_landmark, /obj/effect/landmark/ai_multicam_room)
 		..()
 
 /mob/eye/camera/ai/pic_in_pic/setLoc(turf/destination, force_update = FALSE)
+	if(destination && !stationtrauma_comms_in_range(screen?.ai, destination))
+		return
 	if (destination)
 		abstract_move(destination)
 	else

@@ -46,7 +46,7 @@
 	accepted_ship_class = ST_SHIP_MEDIUM
 	hangar = TRUE
 
-/// Corner pad of a ruin's own level: S and M hulls moor over open space, the crew crosses to the ruin on foot.
+/// Open-space mooring beside a ruin, on its own level.
 /obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad
 	name = "Стоянка у объекта"
 	station_name = "Стоянка у объекта"

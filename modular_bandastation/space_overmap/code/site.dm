@@ -20,9 +20,9 @@
 	var/approach_scene = "ruin"
 	/// Outer airlock of a loaded ruin that the docking pinpointer leads to beyond the seam; null without one.
 	var/turf/entrance
-	/// Corner pads of a ruin: S and M hulls moor on its own level there, several at once; capital hulls keep the seam.
+	/// Reserved spots for separate hulls on the destination's own level.
 	var/list/datum/stationtrauma_overmap_site/space/pads
-	/// The ruin this hidden corner pad belongs to; the chart and crew only ever see the ruin.
+	/// The destination this hidden pad belongs to.
 	var/datum/stationtrauma_overmap_site/space/pad_parent
 
 /datum/stationtrauma_overmap_site/space/Destroy()
@@ -105,7 +105,7 @@
 
 /** Crew-facing name: space objects stay unidentified; planets and stations are charted. */
 /datum/stationtrauma_overmap/space/proc/site_label(datum/stationtrauma_overmap_site/space/site)
-	// A corner pad reads as its ruin, unidentified until the ruin is.
+	// A pad shares its parent's chart entry.
 	if(site.pad_parent)
 		return site_label(site.pad_parent)
 	var/list/distress = site.distress_callsigns()

@@ -5,6 +5,8 @@
 /** Celadon lunar plains: bare airless regolith. */
 /datum/biome/expedition/lunar
 	open_turf_type = /turf/open/misc/asteroid/airless
+	fauna_density = 1.5
+	fauna_types = list(/mob/living/basic/carp = 2)
 
 /** Celadon coarse lunar ground: airless basalt fields. */
 /datum/biome/expedition/lunar/rocky

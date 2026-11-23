@@ -528,15 +528,16 @@
 					to_chat(sender, span_notice("ERROR: Recipient has receiving disabled."))
 				continue
 
-			target_chat = find_chat_by_recipient(REF(target))
-
-			if(!istype(target_chat))
-				target_chat = create_chat(REF(target))
-
 		else
 			stack_trace("invalid target [target]")
 			continue
 
+		if(!stationtrauma_comms_in_range(computer, target_messenger.computer))
+			if(should_alert)
+				to_chat(sender, span_notice("ERROR: Recipient is out of messaging range."))
+			continue
+		if(!target_chat)
+			target_chat = find_chat_by_recipient(REF(target_messenger)) || create_chat(REF(target_messenger))
 		target_chats += target_chat
 		target_messengers += target_messenger
 
@@ -592,11 +593,20 @@
 			playsound(computer, 'sound/machines/terminal/terminal_error.ogg', 15, TRUE)
 		return FALSE
 
-	// used for logging
+	// Rigged messages enter here directly, without the regular chat selection.
 	var/list/stringified_targets = list()
-
-	for(var/datum/computer_file/program/messenger/messenger as anything in targets)
-		stringified_targets += get_messenger_name(messenger)
+	if(rigged)
+		var/list/datum/computer_file/program/messenger/local_targets = list()
+		for(var/datum/computer_file/program/messenger/messenger as anything in targets)
+			if(!stationtrauma_comms_in_range(computer, messenger.computer))
+				continue
+			local_targets += messenger
+			stringified_targets += get_messenger_name(messenger)
+		if(!length(local_targets))
+			if(sender)
+				to_chat(sender, span_notice("ERROR: No recipients in messaging range."))
+			return FALSE
+		targets = local_targets
 
 	var/sent_prob = 0
 	if(ishuman(source))

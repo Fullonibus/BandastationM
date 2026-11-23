@@ -74,7 +74,7 @@
 		if(HAS_SILICON_ACCESS(user))
 			locked = !locked
 			return
-		if(src.allowed(usr) && !wires.is_cut(WIRE_IDSCAN))
+		if(allowed(user) && !wires.is_cut(WIRE_IDSCAN))
 			locked = !locked
 			to_chat(user, span_notice("You [ locked ? "lock" : "unlock"] the air alarm interface."))
 			if(!locked)

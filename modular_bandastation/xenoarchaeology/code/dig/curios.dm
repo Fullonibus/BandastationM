@@ -22,6 +22,7 @@ GLOBAL_LIST_INIT(xenoarch_site_kind_climates, list(
 	/datum/stationtrauma_overmap_site/space/planet/frozen/plain = list(XENOARCH_SITE_HOUSE, XENOARCH_SITE_GARDEN),
 	/datum/stationtrauma_overmap_site/space/planet/arid = list(XENOARCH_SITE_TECHNICAL, XENOARCH_SITE_TEMPLE),
 	/datum/stationtrauma_overmap_site/space/planet/lush = list(XENOARCH_SITE_GARDEN, XENOARCH_SITE_ANIMAL),
+	/datum/stationtrauma_overmap_site/space/planet/forest = list(XENOARCH_SITE_GARDEN, XENOARCH_SITE_ANIMAL),
 	/datum/stationtrauma_overmap_site/space/planet/lava = list(XENOARCH_SITE_TEMPLE, XENOARCH_SITE_WAR),
 	/datum/stationtrauma_overmap_site/space/planet/dead = list(XENOARCH_SITE_HOUSE, XENOARCH_SITE_TECHNICAL),
 ))

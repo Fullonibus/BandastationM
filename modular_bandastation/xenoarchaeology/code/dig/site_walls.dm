@@ -36,6 +36,7 @@ GLOBAL_LIST_INIT(xenoarch_rock_tints, list(
 	dig_find = find_kind
 	mineral_type = null
 	mineral_amt = 0
+	scan_icon = 'modular_bandastation/xenoarchaeology/icons/dig_scan.dmi'
 	scan_state = "xenoarch_site"
 	if(dig_vein_overlay)
 		cut_overlay(dig_vein_overlay)
@@ -47,6 +48,7 @@ GLOBAL_LIST_INIT(xenoarch_rock_tints, list(
 /turf/closed/mineral/proc/clear_dig_site_wall()
 	dig_site_ref = null
 	dig_find = null
+	scan_icon = initial(scan_icon)
 	scan_state = ""
 	dig_tagged = FALSE
 	qdel(GetComponent(/datum/component/gps))
@@ -114,10 +116,3 @@ GLOBAL_LIST_INIT(xenoarch_rock_tints, list(
 	playsound(src, 'sound/machines/beep/twobeep.ogg', 40, TRUE)
 	to_chat(user, span_notice("Вы прикалываете голобирку к породе. Сканер показывает: <b>[kind_text]</b>."))
 	return ITEM_INTERACT_SUCCESS
-
-/// The mining scanner's pulse marks a site wall with its own sign rather than an ore's.
-/obj/effect/temp_visual/mining_overlay/Initialize(mapload)
-	. = ..()
-	var/turf/closed/mineral/rock = loc
-	if(istype(rock) && rock.dig_find)
-		icon = 'modular_bandastation/xenoarchaeology/icons/dig_scan.dmi'

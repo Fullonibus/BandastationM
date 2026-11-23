@@ -73,7 +73,7 @@
 	return ..()
 
 /obj/machinery/computer/camera_advanced/process()
-	if(!can_use(current_user) || (issilicon(current_user) && !HAS_SILICON_ACCESS(current_user)))
+	if(!can_use(current_user) || (issilicon(current_user) && !HAS_SILICON_ACCESS(current_user)) || !stationtrauma_comms_in_range(src, eyeobj))
 		unset_machine()
 		return PROCESS_KILL
 
@@ -164,17 +164,15 @@
 		to_chat(user, span_warning("The console is already in use!"))
 		return
 
-	if(eyeobj)
+	if(eyeobj && stationtrauma_comms_in_range(src, eyeobj))
 		give_eye_control(user)
 		eyeobj.setLoc(eyeobj.loc)
 		return
-	/* We're attempting to initialize the eye past this point */
-
-	if(!CreateEye())
-		to_chat(user, span_warning("\The [src] flashes a bunch of never-ending errors on the display. Something is really wrong."))
-		return
-
-	SEND_SIGNAL(src, COMSIG_ADVANCED_CAMERA_EYE_CREATED, eyeobj)
+	if(!eyeobj)
+		if(!CreateEye())
+			to_chat(user, span_warning("\The [src] flashes a bunch of never-ending errors on the display. Something is really wrong."))
+			return
+		SEND_SIGNAL(src, COMSIG_ADVANCED_CAMERA_EYE_CREATED, eyeobj)
 
 	var/camera_location
 	var/turf/myturf = get_turf(src)
@@ -190,14 +188,14 @@
 			camera_location = myturf
 		else
 			for(var/obj/machinery/camera/C as anything in SScameras.cameras)
-				if(!C.can_use() || consider_zlock && !(C.z in z_lock))
+				if(!C.can_use() || (consider_zlock && !(C.z in z_lock)) || !stationtrauma_comms_in_range(src, C))
 					continue
 				var/list/network_overlap = networks & C.network
 				if(length(network_overlap))
 					camera_location = get_turf(C)
 					break
 
-	if(camera_location)
+	if(camera_location && stationtrauma_comms_in_range(src, camera_location))
 		give_eye_control(user)
 		eyeobj.setLoc(camera_location, TRUE)
 	else
@@ -232,17 +230,17 @@
 	var/mob/eye/camera/remote/remote_eye = owner.remote_control
 	var/obj/machinery/computer/camera_advanced/origin = remote_eye.origin_ref.resolve()
 
-	var/list/cameras_by_tag = SScameras.get_available_camera_by_tag_list(origin.networks, origin.z_lock)
+	var/list/cameras_by_tag = SScameras.get_available_camera_by_tag_list(origin.networks, origin.z_lock, origin)
 
 	playsound(origin, 'sound/machines/terminal/terminal_prompt.ogg', 25, FALSE)
 	var/camera = tgui_input_list(usr, "Camera to view", "Cameras", cameras_by_tag)
-	if(isnull(camera))
+	if(isnull(camera) || QDELETED(origin) || QDELETED(remote_eye) || origin.current_user != owner)
 		return
 
 	playsound(src, SFX_TERMINAL_TYPE, 25, FALSE)
 
 	var/obj/machinery/camera/chosen_camera = cameras_by_tag[camera]
-	if(isnull(chosen_camera))
+	if(QDELETED(chosen_camera) || !stationtrauma_comms_in_range(origin, chosen_camera))
 		playsound(origin, 'sound/machines/terminal/terminal_prompt_deny.ogg', 25, FALSE)
 		return
 

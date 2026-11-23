@@ -2,8 +2,8 @@
  * # Dig sites
  *
  * A pass after the surface is populated, once per planet. Each site is a short run of mountain
- * wall facing open ground: the walls get a vein overlay and one find each, and two or three survey
- * stakes and a spoil heap go on the ground in front, so a site reads from across the map. Random
+ * wall facing open ground. Survey stakes and a spoil heap mark those sites, while a buried site lies
+ * in solid rock without surface signs. Both use the same scannable veins. Random
  * draws first, then an exhaustive scan, keeping off the camp, its corridors and ruins, and spacing
  * sites XENOARCH_SITE_SPACING apart. Adapted from Voidcrew PR #506 for our expedition generator.
  */
@@ -14,12 +14,14 @@
 #define DIG_SITE_CLEARANCE 4
 /// How far from its anchor tile a site's walls may run.
 #define DIG_SITE_REACH 3
+/// Maximum number of mineable walls on the route from open ground to a buried find.
+#define DIG_SITE_BURIED_REACH 6
 
 /**
  * Places the planet's dig sites on `surface`. Records go to `planet`, which owns them for the round.
  * Returns how many were placed.
  */
-/datum/map_generator/expedition_barren/proc/place_dig_sites(list/turfs, area/surface, datum/stationtrauma_overmap_site/space/planet/planet, datum/stationtrauma_work_budget/budget)
+/datum/map_generator/expedition_barren/proc/place_dig_sites(list/turfs, area/surface, datum/stationtrauma_overmap_site/space/planet/planet, datum/stationtrauma_work_budget/budget, surface_sites = XENOARCH_SITES_PER_PLANET, buried_sites = 1)
 	if(!length(turfs) || !planet)
 		return 0
 	var/band = xenoarch_band_for_level(planet.modifier_level)
@@ -28,34 +30,46 @@
 		var/datum/biome/biome = biomes[biome_type]
 		if(biome.fauna_density > 0)
 			fauna |= biome.fauna_types
-	planet.dig_sites = list()
+	planet.dig_sites ||= list()
+	var/initial_count = length(planet.dig_sites)
 	var/list/placed_at = list()
-	for(var/i in 1 to XENOARCH_SITES_PER_PLANET)
+	for(var/i in 1 to surface_sites)
 		var/datum/dig_site_record/site = new(band, xenoarch_pick_site_kind(planet.type))
 		site.ambush_fauna = fauna
 		var/list/spot = find_dig_site_spot(turfs, surface, site, placed_at, budget)
 		if(!spot)
+			qdel(site)
 			continue
 		build_dig_site(site, spot[1], spot[2])
 		planet.dig_sites += site
 		placed_at += spot[1]
-	if(length(placed_at) < XENOARCH_SITES_PER_PLANET)
-		log_world("[planet.name] dig site shortfall: [length(placed_at)]/[XENOARCH_SITES_PER_PLANET] sites placed.")
-	return length(placed_at)
+	for(var/i in 1 to buried_sites)
+		var/datum/dig_site_record/buried_site = new(band, xenoarch_pick_site_kind(planet.type))
+		buried_site.ambush_fauna = fauna
+		buried_site.large_left = 1
+		buried_site.small_left = prob(50)
+		var/list/buried_spot = find_dig_site_spot(turfs, surface, buried_site, placed_at, budget, buried = TRUE)
+		if(buried_spot)
+			build_dig_site(buried_site, null, buried_spot[2])
+			planet.dig_sites += buried_site
+			placed_at += buried_spot[1]
+		else
+			qdel(buried_site)
+	return length(planet.dig_sites) - initial_count
 
 /// Finds an anchor (the open tile a site is worked from) and its walls. Returns list(anchor, walls) or null.
-/datum/map_generator/expedition_barren/proc/find_dig_site_spot(list/turfs, area/surface, datum/dig_site_record/site, list/placed_at, datum/stationtrauma_work_budget/budget)
+/datum/map_generator/expedition_barren/proc/find_dig_site_spot(list/turfs, area/surface, datum/dig_site_record/site, list/placed_at, datum/stationtrauma_work_budget/budget, buried = FALSE)
 	var/needed = max(site.large_left + site.small_left, 1)
 	for(var/attempt in 1 to DIG_SITE_RANDOM_ATTEMPTS + length(turfs))
 		budget?.yield()
 		var/turf/candidate = attempt <= DIG_SITE_RANDOM_ATTEMPTS ? pick(turfs) : turfs[attempt - DIG_SITE_RANDOM_ATTEMPTS]
-		var/list/walls = dig_site_walls_at(candidate, surface, needed, placed_at)
+		var/list/walls = dig_site_walls_at(candidate, surface, needed, placed_at, buried)
 		if(walls)
 			return list(candidate, walls)
 	return null
 
 /// The walls a site anchored on `anchor` would use, or null if the spot is no good.
-/datum/map_generator/expedition_barren/proc/dig_site_walls_at(turf/anchor, area/surface, needed, list/placed_at)
+/datum/map_generator/expedition_barren/proc/dig_site_walls_at(turf/anchor, area/surface, needed, list/placed_at, buried)
 	if(!dig_site_ground_ok(anchor, surface))
 		return null
 	for(var/turf/taken as anything in placed_at)
@@ -63,7 +77,7 @@
 			return null
 	if(!dig_site_clear(anchor, surface))
 		return null
-	return collect_dig_site_walls(anchor, surface, needed)
+	return buried ? collect_buried_dig_site_walls(anchor, surface, needed) : collect_dig_site_walls(anchor, surface, needed)
 
 /// Open surface ground: not water, lava or chasm, nor reserved for the camp, its corridors or a ruin.
 /datum/map_generator/expedition_barren/proc/dig_site_ground_ok(turf/ground, area/surface)
@@ -75,11 +89,14 @@
 		return FALSE
 	return !ground.is_blocked_turf(exclude_mobs = TRUE)
 
-/// Plain surface rock that faces open ground and is not already a site wall, an ore vein or special rock.
+/// Mineable surface rock through which the crew can reach a find.
+/datum/map_generator/expedition_barren/proc/dig_site_mineable_rock(turf/closed/mineral/wall, area/surface)
+	return istype(wall) && wall.loc == surface \
+		&& !istype(wall, /turf/closed/mineral/gibtonite) && !istype(wall, /turf/closed/mineral/strong)
+
+/// Plain surface rock that faces open ground and is free to receive a find.
 /datum/map_generator/expedition_barren/proc/dig_site_wall_ok(turf/closed/mineral/wall, area/surface)
-	if(!istype(wall) || wall.dig_find || wall.loc != surface || wall.mineral_type)
-		return FALSE
-	if(istype(wall, /turf/closed/mineral/gibtonite) || istype(wall, /turf/closed/mineral/strong))
+	if(!dig_site_mineable_rock(wall, surface) || wall.dig_find || wall.mineral_type || wall.spawned_boulder)
 		return FALSE
 	for(var/direction in GLOB.cardinals)
 		if(dig_site_ground_ok(get_step(wall, direction), surface))
@@ -110,6 +127,40 @@
 				queue += next
 	return length(walls) >= needed ? walls : null
 
+/** Find buried walls along a short connected mining route. The route can turn and can pass through ore. */
+/datum/map_generator/expedition_barren/proc/collect_buried_dig_site_walls(turf/anchor, area/surface, needed)
+	var/list/turf/queue = list(anchor)
+	var/alist/depths = alist()
+	depths[anchor] = 0
+	var/list/walls = list()
+	for(var/index = 1; index <= length(queue); index++)
+		var/turf/here = queue[index]
+		var/depth = depths[here]
+		if(depth >= 2 && buried_dig_site_wall_ok(here, surface))
+			walls += here
+			if(length(walls) == needed)
+				return walls
+		if(depth >= DIG_SITE_BURIED_REACH)
+			continue
+		for(var/direction in GLOB.cardinals)
+			var/turf/closed/mineral/next = get_step(here, direction)
+			if(!dig_site_mineable_rock(next, surface) || !isnull(depths[next]))
+				continue
+			if(is_reserved(next.x - origin_x + 1, next.y - origin_y + 1))
+				continue
+			depths[next] = depth + 1
+			queue += next
+	return null
+
+/// A buried find has mineable rock on all four faces and no existing deposit.
+/datum/map_generator/expedition_barren/proc/buried_dig_site_wall_ok(turf/closed/mineral/wall, area/surface)
+	if(wall.dig_find || wall.mineral_type || wall.spawned_boulder)
+		return FALSE
+	for(var/direction in GLOB.cardinals)
+		if(!dig_site_mineable_rock(get_step(wall, direction), surface))
+			return FALSE
+	return TRUE
+
 /// Nothing within DIG_SITE_CLEARANCE is reserved ground or outside the surface.
 /datum/map_generator/expedition_barren/proc/dig_site_clear(turf/anchor, area/surface)
 	for(var/turf/near as anything in RANGE_TURFS(DIG_SITE_CLEARANCE, anchor))
@@ -118,8 +169,7 @@
 	return TRUE
 
 /**
- * Flags the walls and dresses the ground in front:
- * stakes at the ends of the face and a spoil heap a step back.
+ * Flags the walls. When there is an open anchor, place stakes and a spoil heap around it.
  */
 /datum/map_generator/expedition_barren/proc/build_dig_site(datum/dig_site_record/site, turf/anchor, list/walls)
 	var/list/kinds = list()
@@ -131,7 +181,8 @@
 	for(var/i in 1 to min(length(kinds), length(walls)))
 		var/turf/closed/mineral/wall = walls[i]
 		wall.make_dig_site_wall(site, kinds[i])
-	return dress_dig_site(site, anchor, walls)
+	if(anchor)
+		return dress_dig_site(site, anchor, walls)
 
 /// Places stakes and the spoil heap around a site. Returns the decorations placed.
 /proc/dress_dig_site(datum/dig_site_record/site, turf/anchor, list/walls)
@@ -257,3 +308,4 @@
 #undef DIG_SITE_RANDOM_ATTEMPTS
 #undef DIG_SITE_CLEARANCE
 #undef DIG_SITE_REACH
+#undef DIG_SITE_BURIED_REACH

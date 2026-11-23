@@ -469,7 +469,18 @@
 	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
 	if(istype(site, /datum/stationtrauma_overmap_site/space/docking_target))
 		return assigned_station_berth(site)
-	return free_pad(site) || site
+	if(site?.docking_owner == src)
+		return site
+	var/datum/stationtrauma_overmap_site/space/pad = free_pad(site)
+	if(pad)
+		return pad
+	// When a ruin's moorings are full, standard hulls wait for a berth on the ruin's level.
+	if(!site?.landing && length(site?.pads) && min(vessel.width, vessel.height) <= ST_STANDARD_M_WIDTH \
+		&& max(vessel.width, vessel.height) <= ST_STANDARD_M_HEIGHT && vessel.permits_docking(site.pads[1]))
+		return null
+	if(site?.landing && (site.docking_owner || site.berth?.get_docked()))
+		return null
+	return site
 
 /** The pad this hull holds at a ruin or planet, else the first free pad it fits; null keeps the site's own berth or seam. */
 /datum/stationtrauma_overmap/space/proc/free_pad(datum/stationtrauma_overmap_site/space/site)
@@ -551,7 +562,7 @@
 		if((!slot || target_berth) && ((site.physical_docking && instant) || approach(site, revision)))
 			if(!slot)
 				target_berth = site.berth
-				// A corner pad exists only once its ruin has loaded during the approach.
+				// A pad exists only once its destination has loaded during the approach.
 				if(istype(target_berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
 					slot = target_berth
 					standard_berth = slot.prepare_berth(vessel)
@@ -580,6 +591,8 @@
 				status = hangar ? "Посадка отменена: нет действующего разрешения" : "Стыковка отменена: нет действующего разрешения"
 			else if(hangar)
 				status = "Посадка в ангар отменена: площадка занята или перекрыта"
+			else if(site.landing && slot && !standard_berth)
+				status = "Посадка отменена: площадка перекрыта"
 			else
 				status = site.landing ? "Посадка прервана" : slot ? "Стыковка [slot.dock_class] отменена: нет свободного пути для трапа" : "Стыковка не выполнена: переход перекрыт"
 		return FALSE

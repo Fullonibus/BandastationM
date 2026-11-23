@@ -84,10 +84,11 @@ GLOBAL_LIST_INIT(anomaly_field_weights, list(
 
 /// Open ground clear of reserved tiles, dig sites and other clusters, or null.
 /datum/map_generator/expedition_barren/proc/find_field_cluster_centre(list/turfs, area/surface, list/centres, datum/stationtrauma_work_budget/budget)
+	var/reach = max(FIELD_BARRIER_RADIUS + 1, /obj/effect/anomaly/pulsing/sparkler::drift_radius + /obj/effect/anomaly/pulsing/sparkler::effect_range * 2)
 	for(var/attempt in 1 to FIELD_CLUSTER_ATTEMPTS)
 		budget?.yield()
 		var/turf/candidate = pick(turfs)
-		if(!dig_site_ground_ok(candidate, surface) || !dig_site_clear(candidate, surface))
+		if(!dig_site_ground_ok(candidate, surface) || !anomaly_route_clear(candidate, reach))
 			continue
 		var/too_close = FALSE
 		for(var/turf/taken as anything in centres)
@@ -98,6 +99,13 @@ GLOBAL_LIST_INIT(anomaly_field_weights, list(
 			continue
 		return candidate
 	return null
+
+/** Keep both hazards and their active range off landing clearings and all preserved approaches. */
+/datum/map_generator/expedition_barren/proc/anomaly_route_clear(turf/centre, reach)
+	for(var/turf/tile as anything in RANGE_TURFS(reach, centre))
+		if(is_reserved(tile.x - origin_x + 1, tile.y - origin_y + 1))
+			return FALSE
+	return TRUE
 
 /// Scatters `size` fields of one kind within `radius` of `centre` and grows up to `artefacts` artefacts in them, nearest the centre first.
 /datum/map_generator/expedition_barren/proc/build_field_cluster(turf/centre, area/surface, band, radius, size, artefacts)

@@ -3,10 +3,10 @@
 // Donor kudzu, gardens, capybaras, chicken flocks, ore veins, burrows, anomalies and terrain patches are omitted.
 /** Temperate breathable surface profile populated with jungle flora and wildlife. */
 /datum/stationtrauma_overmap_site/space/planet/lush
-	name = "Зелёная экзопланета"
+	name = "Экзопланета с джунглями"
 	generator_type = /datum/map_generator/expedition_barren/lush
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lush
-	biome = "Джунгли, травянистые равнины, топкие низины и озёра"
+	biome = "Густые джунгли, топкие низины и озёра"
 	has_atmosphere = TRUE
 	surface_temperature = T20C
 

@@ -8,14 +8,17 @@
 	name = "Вулканическая экзопланета"
 	generator_type = /datum/map_generator/expedition_barren/lava
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lava
-	biome = "Базальтовые равнины, пепельные заросли и лавовые озёра"
+	biome = "Базальтовые поля, пепельные заросли, лавовые озёра и скальные лабиринты"
 	has_atmosphere = TRUE
 	surface_temperature = 380
 	ruin_biome = "lava"
 
 /** Seeded volcanic terrain with volcanic ore walls. */
 /datum/map_generator/expedition_barren/lava
-	fauna_pack_size = list(1, 1)
+	fauna_pack_size = list(2, 3)
+	pack_spacing = 10
+	ruin_patrol_limit = 5
+	small_ruin_count = list(5, 8)
 	hole_type = /turf/open/openspace/expedition_lava
 	wildlife = TRUE
 	storm_trait = ZTRAIT_ASHSTORM
@@ -58,6 +61,22 @@
 		/obj/item/stack/ore/iron = 100,
 	)
 
+/datum/stationtrauma_overmap_site/space/planet/lava/load_ruins(list/placements, turf/origin, area/surface, datum/stationtrauma_work_budget/budget)
+	. = ..()
+	if(!.)
+		return
+	for(var/list/placement as anything in placements)
+		var/datum/map_template/ruin/expedition/sierra_excavation_site/excavation = placement[1]
+		if(!istype(excavation))
+			continue
+		var/turf/corner = locate(origin.x + placement[2] - 1, origin.y + placement[3] - 1, origin.z)
+		for(var/turf/tile as anything in excavation.get_affected_turfs(corner))
+			var/obj/structure/stationtrauma_research_source/mineral/expedition_fossil/fossil = locate() in tile
+			if(fossil)
+				fossil.AddComponent(/datum/component/gps, "Старые раскопки")
+				return
+		break
+
 /** Basalt ground carrying the volcanic profile atmosphere. */
 /turf/open/misc/asteroid/basalt/expedition_volcanic
 	initial_gas_mix = EXPEDITION_VOLCANIC_ATMOS
@@ -95,6 +114,11 @@
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/lava/smooth/expedition_volcanic
 
+/** A volcanic fault follows the native lavaland chasm mechanics. */
+/turf/open/chasm/lavaland/expedition_volcanic
+	initial_gas_mix = EXPEDITION_VOLCANIC_ATMOS
+	baseturfs = /turf/open/chasm/lavaland/expedition_volcanic
+
 #undef EXPEDITION_VOLCANIC_ATMOS
 
 /** Celadon basalt plain hunted by volcanic predators. */
@@ -113,7 +137,6 @@
 	)
 	fauna_density = 4
 	fauna_types = list(
-		/mob/living/basic/mining/goliath = 50,
 		/mob/living/basic/mining/watcher = 40,
 		/mob/living/basic/mining/legion = 30,
 		/mob/living/basic/mining/goldgrub = 10,
@@ -213,7 +236,6 @@
 	)
 	fauna_density = 4
 	fauna_types = list(
-		/mob/living/basic/mining/goliath = 50,
 		/mob/living/basic/mining/watcher = 40,
 		/mob/living/basic/mining/legion = 30,
 		/mob/living/basic/mining/goldgrub = 10,

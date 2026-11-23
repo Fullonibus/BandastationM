@@ -39,11 +39,8 @@
 	user.set_sight(NONE)
 
 /**
- * On an overmap map a call to another level reaches only command posts in the same sector.
- *
- * Those are hull holopads, the station bridge and the Central Command control room, which every sector reaches;
- * ruins and planets never answer. Another hull must also be a sensor contact of the calling hull.
- * The same level and the station's own decks keep the native network.
+ * Ship holopads can reach the station bridge across sectors. Central Command keeps its control room link.
+ * Calls between ships still require a sensor contact. The same level and the station's own decks keep the native network.
  */
 /obj/machinery/holopad/holocall_reachable(obj/machinery/holopad/pad, established = FALSE)
 	if(!SSmapping.current_map.space_overmap || pad.z == z || (is_station_level(z) && is_station_level(pad.z)))
@@ -51,7 +48,8 @@
 	if(is_centcom_level(pad.z))
 		return istype(get_area(pad), /area/centcom/central_command_areas/control)
 	var/obj/docking_port/mobile/stationtrauma_space/target = SSshuttle.get_containing_shuttle(pad)
-	if(!istype(target) && !(is_station_level(pad.z) && istype(get_area(pad), /area/station/command/bridge)))
+	var/target_is_bridge = is_station_level(pad.z) && istype(get_area(pad), /area/station/command/bridge)
+	if(!istype(target) && !target_is_bridge)
 		return FALSE
 	if(is_centcom_level(z))
 		return TRUE
@@ -60,7 +58,11 @@
 		if(ship == target)
 			return TRUE
 		return ship.overmap?.ship_in_sensor_contact(target.overmap, established)
-	return stationtrauma_comms_sector() == pad.stationtrauma_comms_sector()
+	if(istype(ship) && target_is_bridge)
+		return !!ship.overmap?.sector
+	if(istype(target) && is_station_level(z) && istype(get_area(src), /area/station/command/bridge))
+		return !!target.overmap?.sector
+	return stationtrauma_comms_sector(src) == stationtrauma_comms_sector(pad)
 
 /**
  * Whether another hull is inside sensor range now and was caught by a scan still shown on the plot.
@@ -76,21 +78,46 @@
 	return contact && world.time - contact["seen"] < ST_NAV_SHIP_MEMORY
 
 /**
- * Overmap sector this holopad transmits from.
- *
- * A hull between sectors returns itself, so it reaches only its own deck; a level outside the overmap returns null.
+ * Returns the overmap sector containing a communications endpoint.
+ * An unregistered hull uses its own identity until it has a sector.
  */
-/obj/machinery/holopad/proc/stationtrauma_comms_sector()
-	var/obj/docking_port/mobile/stationtrauma_space/ship = SSshuttle.get_containing_shuttle(src)
-	if(istype(ship))
-		return ship.overmap?.sector || ship
+/proc/stationtrauma_comms_sector(atom/endpoint)
+	var/turf/position = get_turf(endpoint)
+	if(!position)
+		return null
+	if(is_station_level(position.z))
+		return SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
+	if(istype(get_area(position), /area/shuttle/stationtrauma_space))
+		var/obj/docking_port/mobile/stationtrauma_space/ship = SSshuttle.get_containing_shuttle(position)
+		if(istype(ship))
+			return ship.overmap?.sector || ship
+	for(var/datum/stationtrauma_lost_space/loss as anything in GLOB.stationtrauma_lost_spaces)
+		if(loss.level?.z_value == position.z)
+			return SSstationtrauma_space_voyage.sectors[loss.sector_id]
 	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
-		var/datum/stationtrauma_overmap_sector/sector = SSstationtrauma_space_voyage.sectors[sector_id]
+		var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors[sector_id]
+		for(var/ship_id in sector.ships)
+			var/datum/stationtrauma_overmap/space/navigation = sector.ships[ship_id]
+			if(position.z in navigation.flight_levels)
+				return sector
 		for(var/site_id in sector.sites)
-			var/datum/stationtrauma_overmap_site/site = sector.sites[site_id]
-			if(!QDELETED(site.berth) && (site.berth.z == z || is_station_level(z) && is_station_level(site.berth.z)))
+			var/datum/stationtrauma_overmap_site/space/site = sector.sites[site_id]
+			if(!QDELETED(site.berth) && site.berth.z == position.z)
 				return sector
 	return null
+
+/** Checks system range for ordinary communications. Native station levels outside the plot belong to the home system. */
+/proc/stationtrauma_comms_in_range(atom/origin, atom/destination)
+	if(!SSmapping.current_map?.space_overmap)
+		return TRUE
+	var/turf/origin_turf = get_turf(origin)
+	var/turf/destination_turf = get_turf(destination)
+	if(!origin_turf || !destination_turf)
+		return FALSE
+	if(origin_turf.z == destination_turf.z)
+		return TRUE
+	var/datum/home = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
+	return (stationtrauma_comms_sector(origin_turf) || home) == (stationtrauma_comms_sector(destination_turf) || home)
 
 /** A call that drifted out of reach drops like a lost connection. */
 /datum/holocall/Check()

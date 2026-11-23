@@ -112,6 +112,9 @@ SUBSYSTEM_DEF(mapping)
 		if(!current_map || current_map.defaulted)
 			to_chat(world, span_boldannounce("Unable to load next or default map config, defaulting to [old_config.map_name]."))
 			current_map = old_config
+	// The name can be cached before the final map is selected. Set it before mapload prints any documents.
+	if(current_map.fluff_name && GLOB.station_name != current_map.fluff_name)
+		set_station_name(current_map.fluff_name)
 	plane_offset_to_true = list()
 	true_to_offset_planes = list()
 	plane_to_offset = list()

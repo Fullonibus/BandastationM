@@ -264,9 +264,9 @@ SUBSYSTEM_DEF(cameras)
 
 /// Returns list of available cameras, ready to use for UIs displaying list of them
 /// The format is: list("name" = "camera.c_tag", ref = REF(camera))
-/datum/controller/subsystem/cameras/proc/get_available_cameras_data(list/networks_available, list/z_levels_available)
+/datum/controller/subsystem/cameras/proc/get_available_cameras_data(list/networks_available, list/z_levels_available, atom/viewer)
 	var/list/available_cameras_data = list()
-	for(var/obj/machinery/camera/camera as anything in get_filtered_and_sorted_cameras(networks_available, z_levels_available))
+	for(var/obj/machinery/camera/camera as anything in get_filtered_and_sorted_cameras(networks_available, z_levels_available, viewer))
 		available_cameras_data += list(list(
 			name = camera.c_tag,
 			ref = REF(camera),
@@ -288,22 +288,22 @@ SUBSYSTEM_DEF(cameras)
  * Args:
  *  networks_available - List of networks that we use to see which cameras are visible to it.
  *  z_levels_available - List of z levels to filter camera by. If empty, all z levels are considered valid.
- *  sort_by_ctag - If the resulting list should be sorted by `c_tag`.
+ *  viewer - When specified, restrict results to cameras within its communications range.
  */
-/datum/controller/subsystem/cameras/proc/get_available_camera_by_tag_list(list/networks_available, list/z_levels_available)
+/datum/controller/subsystem/cameras/proc/get_available_camera_by_tag_list(list/networks_available, list/z_levels_available, atom/viewer)
 	var/list/available_cameras_by_tag = list()
-	for(var/obj/machinery/camera/camera as anything in get_filtered_and_sorted_cameras(networks_available, z_levels_available))
+	for(var/obj/machinery/camera/camera as anything in get_filtered_and_sorted_cameras(networks_available, z_levels_available, viewer))
 		available_cameras_by_tag["[camera.c_tag][camera.can_use() ? null : " (Deactivated)"]"] = camera
 
 	return available_cameras_by_tag
 
 /// Returns list of all cameras that passed `is_camera_available` filter and sorted by `cmp_camera_ctag_asc`
-/datum/controller/subsystem/cameras/proc/get_filtered_and_sorted_cameras(list/networks_available, list/z_levels_available)
+/datum/controller/subsystem/cameras/proc/get_filtered_and_sorted_cameras(list/networks_available, list/z_levels_available, atom/viewer)
 	PRIVATE_PROC(TRUE)
 
 	var/list/filtered_cameras = list()
 	for(var/obj/machinery/camera/camera as anything in cameras)
-		if(!is_camera_available(camera, networks_available, z_levels_available))
+		if(!is_camera_available(camera, networks_available, z_levels_available) || (viewer && !stationtrauma_comms_in_range(viewer, camera)))
 			continue
 
 		filtered_cameras += camera

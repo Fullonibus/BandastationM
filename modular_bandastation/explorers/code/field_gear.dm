@@ -67,7 +67,7 @@
 
 /obj/structure/closet/secure_closet/expedition/engineer
 	name = "шкафчик полевого инженера"
-	icon_state = "eng"
+	icon_state = "eng_secure"
 	req_access = list(ACCESS_EXPEDITION_ENGINEER)
 
 /obj/structure/closet/secure_closet/expedition/engineer/PopulateContents()

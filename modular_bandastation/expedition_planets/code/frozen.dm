@@ -3,7 +3,7 @@
 // Biomes adapted from Celadon's snow planet generator (see planet_generator.dm); donor ice rock, plasma lakes, ore veins, burrows and mines are omitted.
 /** Cold oxygen-bearing surface profile with snow, frozen lakes and ice core samples. */
 /datum/stationtrauma_overmap_site/space/planet/frozen
-	name = "Ледяная экзопланета"
+	name = "Снежная экзопланета"
 	generator_type = /datum/map_generator/expedition_barren/frozen
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/frozen
 	biome = "Хвойные леса, снежные поляны, редкие скалы и ледяные озёра"
@@ -184,7 +184,7 @@
 
 /** Open snow plain with rock scatter and plasma lakes, as the native ice moon surface. */
 /datum/stationtrauma_overmap_site/space/planet/frozen/plain
-	name = "Снежная экзопланета"
+	name = "Плазменная экзопланета"
 	generator_type = /datum/map_generator/expedition_barren/frozen/plain
 	biome = "Снежные равнины, каменистые россыпи и плазменные озёра"
 
