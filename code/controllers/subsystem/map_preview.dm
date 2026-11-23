@@ -33,6 +33,9 @@ SUBSYSTEM_DEF(map_previews)
 
 	var/filepath = "icons/obj/fluff/map_previews.dmi"
 	var/icon/holder = icon('icons/obj/fluff/map_previews_template.dmi')
+	// Computers without a dedicated preview still use their default icon state in map editors.
+	var/computer_state = /obj/machinery/computer::icon_state
+	holder.Insert(icon(/obj/machinery/computer::icon, computer_state), computer_state)
 
 	for(var/path in worklist)
 		var/obj/thingtospawn = new path(preview_turf)

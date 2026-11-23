@@ -2,6 +2,7 @@
 /obj/machinery/computer/stationtrauma_space_navigation
 	name = "навигационная консоль"
 	desc = "Орбитальная карта, управление тягой и стыковкой корабля."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/shuttle")
 	icon_screen = "shuttle"
 	icon_keyboard = "tech_key"
 	use_power = NO_POWER_USE

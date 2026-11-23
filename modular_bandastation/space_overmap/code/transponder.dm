@@ -34,6 +34,7 @@
 /obj/machinery/computer/stationtrauma_transponder
 	name = "консоль судового транспондера"
 	desc = "Управляет передачей судового позывного и принадлежности."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/communications")
 	icon_screen = "comm"
 	icon_keyboard = "tech_key"
 	circuit = /obj/item/circuitboard/computer/stationtrauma_transponder
