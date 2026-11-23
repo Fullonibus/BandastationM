@@ -158,6 +158,33 @@
 		qdel(item)
 		qdel(thrower)
 
+/// A shot at untouched vacuum outside the template fires, though the tile never initialized.
+/datum/unit_test/overmap_standard_dock/empty_space_shot
+
+/datum/unit_test/overmap_standard_dock/empty_space_shot/Run()
+	var/turf/origin = locate(ship.x + hull_width - 1, ship.y + 1, ship.z)
+	var/turf/space = get_step(origin, EAST)
+	// Beyond arm's reach, so the click is a shot rather than a swing.
+	var/turf/untouched = get_step(space, EAST)
+	TEST_ASSERT(istype(untouched, /turf/open/space/basic) && !(untouched.flags_1 & INITIALIZED_1), "The target must be untouched vacuum outside the template")
+	var/atom/movable/screen/click_catcher/catcher = allocate(/atom/movable/screen/click_catcher)
+	var/list/view_size = getviewsize()
+	for(var/turf/target as anything in list(untouched))
+		var/mob/living/carbon/human/consistent/shooter = allocate(/mob/living/carbon/human/consistent, origin)
+		var/obj/item/gun/energy/laser/gun = allocate(/obj/item/gun/energy/laser)
+		TEST_ASSERT(shooter.put_in_active_hand(gun), "The shooter must start with the gun in hand")
+		var/charge = gun.cell.charge
+		var/click_x = target.x - origin.x + round(view_size[1] / 2) + 1
+		var/click_y = target.y - origin.y + round(view_size[2] / 2) + 1
+		var/list/modifiers = list(LEFT_CLICK = 1, BUTTON = LEFT_CLICK, SCREEN_LOC = "[click_x]:16,[click_y]:16")
+		var/mob/old_usr = usr
+		usr = shooter
+		catcher.Click(null, null, list2params(modifiers))
+		usr = old_usr
+		TEST_ASSERT(gun.cell.charge < charge, "Clicking [target.type] with a gun must fire it")
+		qdel(gun)
+		qdel(shooter)
+
 /// A real enclosed cell behind the selected door keeps pressure stable across the opening animations.
 /datum/unit_test/overmap_standard_dock/proc/pressurize_endpoint(obj/machinery/door/airlock/stationtrauma_docking/endpoint)
 	var/closed = endpoint.close()

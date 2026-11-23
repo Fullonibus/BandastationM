@@ -83,7 +83,8 @@ GLOBAL_LIST_EMPTY(starlight)
 
 /turf/open/space/basic/Click(location, control, params)
 	// Untouched vacuum has map coordinates but never passes the default Click initialization check.
-	if(!(flags_1 & INITIALIZED_1) && usr?.throw_mode)
+	// Throws and shots only aim at the spot, so they go through; nothing else acts on the uninitialized tile.
+	if(!(flags_1 & INITIALIZED_1) && (usr?.throw_mode || isgun(usr?.get_active_held_item())))
 		usr.ClickOn(src, params)
 		return
 	return ..()
