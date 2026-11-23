@@ -113,6 +113,9 @@
 	return null
 
 /mob/eye/camera/remote/setLoc(turf/destination, force_update = FALSE)
+	var/obj/machinery/origin = origin_ref?.resolve()
+	if(destination && istype(origin, /obj/machinery/computer/camera_advanced) && !stationtrauma_comms_in_range(origin, destination))
+		return
 	. = ..()
 
 	var/client/user_client = GetViewerClient()

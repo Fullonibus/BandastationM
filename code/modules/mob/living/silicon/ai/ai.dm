@@ -537,7 +537,7 @@ GAME_VERB(/mob/living/silicon/ai, toggle_anchor, "Toggle Floor Bolts", "AI Comma
 
 
 /mob/living/silicon/ai/proc/switchCamera(obj/machinery/camera/C)
-	if(QDELETED(C))
+	if(QDELETED(C) || !stationtrauma_comms_in_range(src, C))
 		return FALSE
 
 	if(QDELETED(eyeobj))
@@ -619,7 +619,7 @@ GAME_VERB_PROC(/mob/living/silicon/ai, ai_network_change, "Jump To Network", "AI
 		var/list/tempnetwork = C.network
 		if(!camera_turf || !(is_station_level(camera_turf.z) || is_mining_level(camera_turf.z) || (CAMERANET_NETWORK_SS13 in tempnetwork)))
 			continue
-		if(!C.can_use())
+		if(!C.can_use() || !stationtrauma_comms_in_range(src, C))
 			continue
 		tempnetwork.Remove(CAMERANET_NETWORK_RD, CAMERANET_NETWORK_ORDNANCE, CAMERANET_NETWORK_PRISON)
 		if(length(tempnetwork))
@@ -636,7 +636,7 @@ GAME_VERB_PROC(/mob/living/silicon/ai, ai_network_change, "Jump To Network", "AI
 		network = old_network // If nothing is selected
 	else
 		for(var/obj/machinery/camera/C in SScameras.cameras)
-			if(!C.can_use())
+			if(!C.can_use() || !stationtrauma_comms_in_range(src, C))
 				continue
 			if(network in C.network)
 				U.eyeobj.setLoc(get_turf(C))
@@ -1031,7 +1031,7 @@ GAME_VERB_DESC(/mob/living/silicon/ai, deploy_to_shell, "Deploy to Shell", "Tran
 
 	for(var/borgie in GLOB.available_ai_shells)
 		var/mob/living/silicon/robot/R = borgie
-		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai || (R.connected_ai == src)))
+		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai || (R.connected_ai == src)) && stationtrauma_comms_in_range(src, R))
 			possible += R
 
 	if(!LAZYLEN(possible))
@@ -1041,9 +1041,10 @@ GAME_VERB_DESC(/mob/living/silicon/ai, deploy_to_shell, "Deploy to Shell", "Tran
 	if(!target || !(target in possible)) //If the AI is looking for a new shell, or its pre-selected shell is no longer valid
 		target = tgui_input_list(src, "Which body to control?", "Direct Control", sort_names(possible))
 
-	if(isnull(target))
+	if(incapacitated || control_disabled || QDELETED(target) || !target.shell || target.stat == DEAD || target.deployed || (target.connected_ai && target.connected_ai != src))
 		return
-	if (target.stat == DEAD || target.deployed || !(!target.connected_ai || (target.connected_ai == src)))
+	if(!stationtrauma_comms_in_range(src, target))
+		to_chat(src, span_warning("The AI shell is out of wireless range."))
 		return
 
 	else if(mind)
@@ -1125,7 +1126,7 @@ GAME_VERB_DESC(/mob/living/silicon/ai, deploy_to_shell, "Deploy to Shell", "Tran
 		REMOVE_TRAIT(src, TRAIT_INCAPACITATED, POWER_LACK_TRAIT)
 
 /mob/living/silicon/ai/proc/show_camera_list()
-	var/list/cameras = SScameras.get_available_camera_by_tag_list(network)
+	var/list/cameras = SScameras.get_available_camera_by_tag_list(network, viewer = src)
 	var/camera_tag = tgui_input_list(src, "Choose which camera you want to view", "Cameras", cameras)
 	if(isnull(camera_tag))
 		return

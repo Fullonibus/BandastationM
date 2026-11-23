@@ -12,6 +12,13 @@
 	if(isturf(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
 		view_core()
 
+	if(SSmapping.current_map?.space_overmap && client)
+		for(var/mob/eye/camera/ai/camera_eye as anything in all_eyes)
+			if(camera_eye.loc && !stationtrauma_comms_in_range(src, camera_eye))
+				cleanup_multicam_windows()
+				view_core()
+				break
+
 	// Handle power damage (oxy)
 	if (battery <= 0 && lacks_power())
 		to_chat(src, span_warning("Your backup battery's output drops below usable levels. It takes only a moment longer for your systems to fail, corrupted and unusable."))

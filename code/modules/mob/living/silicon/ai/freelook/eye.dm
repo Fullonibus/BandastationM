@@ -85,7 +85,7 @@
 /mob/eye/camera/ai/setLoc(destination, force_update = FALSE)
 	if(!ai)
 		return
-	if(!isturf(ai.loc))
+	if(!isturf(ai.loc) || (destination && !stationtrauma_comms_in_range(ai, destination)))
 		return
 
 	. = ..()

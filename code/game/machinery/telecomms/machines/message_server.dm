@@ -226,7 +226,7 @@ GLOBAL_VAR(preset_station_message_server_key)
 
 /datum/signal/subspace/messaging/tablet_message/broadcast()
 	for (var/datum/computer_file/program/messenger/app in data["targets"])
-		if(!QDELETED(app))
+		if(!QDELETED(app) && (!source || stationtrauma_comms_in_range(source, app.computer)))
 			app.receive_message(src)
 
 // Request Console signal datum

@@ -141,15 +141,18 @@
 			if(LAZYLEN(all_radios_of_our_frequency))
 				radios = all_radios_of_our_frequency.Copy()
 
+			var/obj/item/radio/transmitter = source
+			var/syndicate_transmission = frequency == FREQ_SYNDICATE || (istype(transmitter) && (transmitter.special_channels & RADIO_SPECIAL_SYNDIE))
 			for(var/obj/item/radio/subspace_radio in radios)
-				if(!subspace_radio.can_receive(frequency, signal_reaches_every_z_level))
+				var/syndicate_reception = syndicate_transmission || (subspace_radio.special_channels & RADIO_SPECIAL_SYNDIE)
+				if(!subspace_radio.can_receive(frequency, signal_reaches_every_z_level) || (syndicate_reception && !stationtrauma_comms_in_range(source, subspace_radio)))
 					radios -= subspace_radio
 
 			// Syndicate radios can hear all well-known radio channels
 			for(var/channel in GLOB.default_radio_channels)
 				if (GLOB.default_radio_channels[channel] == frequency)
 					for(var/obj/item/radio/syndicate_radios in GLOB.all_radios["[FREQ_SYNDICATE]"])
-						if(syndicate_radios.can_receive(FREQ_SYNDICATE, RADIO_NO_Z_LEVEL_RESTRICTION))
+						if(syndicate_radios.can_receive(FREQ_SYNDICATE, RADIO_NO_Z_LEVEL_RESTRICTION) && stationtrauma_comms_in_range(source, syndicate_radios))
 							radios |= syndicate_radios
 
 		if (TRANSMISSION_RADIO)
