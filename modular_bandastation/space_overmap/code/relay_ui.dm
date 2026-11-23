@@ -6,13 +6,11 @@ GLOBAL_DATUM_INIT(relay_ui_state, /datum/ui_state/relay_operator, new)
 /obj/machinery/overmap_droid_relay/ui_state(mob/user)
 	return GLOB.relay_ui_state
 
+/obj/machinery/overmap_droid_relay/ui_status(mob/user, datum/ui_state/state)
+	return can_operate(user) ? ..() : UI_CLOSE
+
 /obj/machinery/overmap_droid_relay/ui_interact(mob/user, datum/tgui/ui)
-	if(!can_operate(user))
-		return
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "DroidRelay", profile.role_name)
-		ui.open()
+	open_overmap_console(user, ui, "DroidRelay", profile?.role_name)
 
 /obj/machinery/overmap_droid_relay/ui_data(mob/user)
 	if(!can_operate(user))

@@ -53,8 +53,8 @@ GLOBAL_DATUM_INIT(relay_board_state, /datum/ui_state/default/relay_board, new)
 
 /obj/machinery/computer/stationtrauma_space_navigation/relay_board/ui_data(mob/user)
 	. = ..()
-	if(!vessel?.overmap || !can_interact(user))
-		return list()
+	if(!vessel?.overmap)
+		return
 	var/datum/stationtrauma_overmap/space/navigation = vessel.overmap
 	var/obj/machinery/computer/stationtrauma_transponder/device = transponder()
 	.["board"] = list("jumps" = navigation.jump_data(), "transponder" = device ? device.ui_data(user) : null)

@@ -111,9 +111,11 @@
 
 /datum/tgui_list_input/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
+	if(!ui && !closed)
 		ui = new(user, src, "ListInputWindow")
-		ui.open()
+		if(!ui.open())
+			qdel(ui)
+			closed = TRUE
 
 /datum/tgui_list_input/ui_close(mob/user)
 	. = ..()

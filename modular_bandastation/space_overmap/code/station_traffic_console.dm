@@ -17,11 +17,12 @@
 	req_access = list(ACCESS_COMMAND)
 	circuit = /obj/item/circuitboard/computer/stationtrauma_station_traffic
 
-/obj/machinery/computer/stationtrauma_station_traffic/proc/can_operate(mob/user)
+/obj/machinery/computer/stationtrauma_station_traffic/proc/can_operate(mob/user, allow_observer = FALSE)
 	if(QDELETED(src) || QDELETED(user) || !anchored || !is_operational || panel_open)
 		return FALSE
 	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
-	return (host || (!istype(get_area(src), /area/shuttle) && is_station_level(z))) && can_interact(user) && allowed(user)
+	return (host || (!istype(get_area(src), /area/shuttle) && is_station_level(z))) \
+		&& ((allow_observer && isobserver(user)) || (can_interact(user) && allowed(user)))
 
 /obj/machinery/computer/stationtrauma_station_traffic/proc/traffic_sector()
 	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
@@ -43,21 +44,18 @@
 
 /obj/machinery/computer/stationtrauma_station_traffic/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	if(!can_operate(user))
+	if(!ui && !can_operate(user, allow_observer = TRUE))
 		to_chat(user, span_warning("Для работы с ЦУП нужна закреплённая консоль на станции или носителе и доступ командования."))
 		return
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "StationTrafficControl", name)
-		ui.open()
+	open_overmap_console(user, ui, "StationTrafficControl")
 
 /obj/machinery/computer/stationtrauma_station_traffic/ui_status(mob/user, datum/ui_state/state)
-	if(!can_operate(user))
+	if(!can_operate(user, allow_observer = TRUE))
 		return UI_CLOSE
-	return ..()
+	return overmap_console_status(user, ..())
 
 /obj/machinery/computer/stationtrauma_station_traffic/ui_data(mob/user)
-	if(!can_operate(user))
+	if(!can_operate(user, allow_observer = TRUE))
 		return list()
 	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
 	var/datum/stationtrauma_overmap_sector/space/sector = traffic_sector()

@@ -57,12 +57,14 @@
 
 /obj/machinery/computer/stationtrauma_space_navigation/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	if(!vessel?.overmap || !can_interact(user))
-		return
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "SpaceNavigation", name)
-		ui.open()
+	open_overmap_console(user, ui, "SpaceNavigation")
+
+/obj/machinery/computer/stationtrauma_space_navigation/ui_status(mob/user, datum/ui_state/state)
+	if(QDELETED(vessel?.overmap) || (!isobserver(user) && !can_interact(user)))
+		return UI_CLOSE
+	if(state == GLOB.relay_board_state && istype(user, /mob/living/basic/relay_operator))
+		return ..()
+	return overmap_console_status(user, ..())
 
 /obj/machinery/computer/stationtrauma_space_navigation/ui_data(mob/user)
 	var/datum/stationtrauma_overmap/space/map = vessel?.overmap

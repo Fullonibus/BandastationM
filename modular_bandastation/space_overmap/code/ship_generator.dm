@@ -167,6 +167,12 @@
 	.["power_output"] = display_power(generated_power, convert = FALSE)
 	.["ready_to_boot"] = active || (anchored && powernet && HasFuel() && !panel_open && is_operational && !tripped)
 
+/obj/machinery/power/port_gen/pacman/ship/ui_interact(mob/user, datum/tgui/ui)
+	open_overmap_console(user, ui, "PortableGenerator")
+
+/obj/machinery/power/port_gen/pacman/ship/ui_status(mob/user, datum/ui_state/state)
+	return overmap_console_status(user, ..())
+
 /** Preserve native power/eject controls and validate ship settings independently of the frontend. */
 /obj/machinery/power/port_gen/pacman/ship/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	// The inherited PACMAN controls, including its emag limit, do not grant ship overload permission.

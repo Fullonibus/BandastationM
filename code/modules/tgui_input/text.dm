@@ -105,9 +105,11 @@
 
 /datum/tgui_input_text/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
+	if(!ui && !closed)
 		ui = new(user, src, "TextInputModal")
-		ui.open()
+		if(!ui.open())
+			qdel(ui)
+			closed = TRUE
 
 /datum/tgui_input_text/ui_close(mob/user)
 	. = ..()
