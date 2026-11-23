@@ -118,7 +118,7 @@
 /** Station console for inspecting a mapped standard dock or commissioning a new one. */
 /obj/machinery/computer/stationtrauma_dock_controller
 	name = "контроллер причала S"
-	desc = "Проверяет и регистрирует стыковочную площадку. При строительстве ставьте контроллер в двух клетках за крайней секцией стены."
+	desc = "Проверяет и регистрирует стыковочную площадку. Ставьте контроллер в двух клетках за стыковочной стеной. Офсет задаёт положение вдоль стены."
 	icon_screen = "shuttle"
 	icon_keyboard = "tech_key"
 	circuit = /obj/item/circuitboard/computer/stationtrauma_dock_controller
@@ -136,6 +136,8 @@
 	var/site_id
 	/// Number of tiles along the dock from its first row to the controller.
 	var/row_offset = 0
+	/// Distinguishes a changed or republished layout even when its geometry returns to the same values.
+	var/layout_revision = 0
 	/// Position of a stationary dock on the sector chart.
 	var/overmap_x = 1000
 	/// Position of a stationary dock on the north-south axis of the sector chart.
@@ -144,6 +146,8 @@
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/owned_slot
 	/// Optional display name chosen before publishing a runtime berth.
 	var/dock_name
+	/// Active floor overlays keyed by weak references to the clients who requested them.
+	var/list/preview_viewers
 	/// Debounces the client-only floor overlays.
 	COOLDOWN_DECLARE(preview_cooldown)
 
@@ -200,6 +204,7 @@
 	return berth
 
 /obj/machinery/computer/stationtrauma_dock_controller/Destroy()
+	clear_layout_previews()
 	if(!QDELETED(owned_slot))
 		owned_slot.retire()
 	owned_slot = null
@@ -218,61 +223,120 @@
 /obj/machinery/computer/stationtrauma_dock_controller/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 	if(!can_interact(user) || panel_open)
+		ui?.close()
 		return
-	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = owned_slot
 	if(istype(src, /obj/machinery/computer/stationtrauma_dock_controller/station))
-		to_chat(user, span_notice(dock_status(slot)))
+		to_chat(user, span_notice(dock_status(owned_slot)))
 		return
-	var/turf/controller_turf = get_turf(src)
-	var/controller_direction = dir
-	var/configured_site_id = site_id
-	var/list/actions = list("Показать площадку", "Проверить площадку")
-	if(!slot)
-		if(!site_id)
-			actions += "Повернуть контроллер"
-		actions += "Зарегистрировать причал"
-	else if(!slot.retiring)
-		actions += "Снять причал с регистрации"
-	if(can_name_dock(user, slot))
-		actions += "Название причала"
-	var/action = tgui_input_list(user, dock_status(slot), name, actions)
-	if(!action || QDELETED(src) || QDELETED(user) || !can_interact(user) || panel_open)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DockController", name)
+		ui.open()
+
+/obj/machinery/computer/stationtrauma_dock_controller/ui_status(mob/user, datum/ui_state/state)
+	if(panel_open || !can_interact(user))
+		return UI_CLOSE
+	return ..()
+
+/obj/machinery/computer/stationtrauma_dock_controller/ui_data(mob/user)
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = owned_slot
+	var/turf/anchor = slot ? get_turf(slot) : proposed_anchor()
+	return list(
+		"layout_key" = layout_key(),
+		"dock_name" = slot?.station_name || dock_name || name,
+		"dock_class" = slot?.dock_class || dock_class,
+		"status" = dock_status(slot),
+		"registered" = !!slot,
+		"retiring" = !!slot?.retiring,
+		"configured" = !!site_id,
+		"can_configure" = can_configure_layout(),
+		"can_register" = !slot && anchored && !!anchor && row_offset >= 0 && row_offset < slot_height,
+		"can_rename" = can_name_dock(user, slot),
+		"anchor" = anchor ? list(anchor.x, anchor.y, anchor.z) : null,
+		"facing" = slot?.dir || dir,
+		"width" = slot?.width || slot_width,
+		"height" = slot?.height || slot_height,
+		"hangar" = !!hangar,
+		"offset" = row_offset,
+	)
+
+/obj/machinery/computer/stationtrauma_dock_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
 		return
-	if(get_turf(src) != controller_turf || dir != controller_direction || site_id != configured_site_id || owned_slot != slot)
-		return
-	if(action == "Название причала")
-		name_dock(user, slot)
+	var/mob/user = ui.user
+	if(!islist(params) || !istext(params["layout_key"]) || !can_interact(user) || panel_open || istype(src, /obj/machinery/computer/stationtrauma_dock_controller/station))
+		return FALSE
+	if(params["layout_key"] != layout_key())
+		send_layout_report(ui, "Настройки изменились. Проверьте схему и повторите действие.", TRUE)
+		return TRUE
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = owned_slot
+	switch(action)
+		if("set_offset")
+			return configure_offset(params["value"])
+		if("rotate")
+			if(!can_configure_layout())
+				return FALSE
+			setDir(turn(dir, -90))
+			layout_revision++
+			clear_layout_previews()
+			show_layout(user, proposed_anchor(), dir, slot_width, slot_height, hangar)
+			return TRUE
+		if("rename")
+			name_dock(user, slot)
+			return TRUE
+		if("preview")
+			show_layout(user, slot ? get_turf(slot) : proposed_anchor(), slot?.dir || dir, slot?.width || slot_width, slot?.height || slot_height, hangar)
+			return TRUE
+		if("check")
+			check_layout(ui, slot)
+			return TRUE
+		if("register")
+			var/problem = publish_slot()
+			if(problem)
+				send_layout_report(ui, problem, TRUE)
+			return TRUE
+		if("retire")
+			if(QDELETED(slot) || slot.retiring)
+				return FALSE
+			slot.retire()
+			return TRUE
+	return FALSE
+
+/// Identify the layout the operator saw so an older window cannot change another layout or slot.
+/obj/machinery/computer/stationtrauma_dock_controller/proc/layout_key()
+	var/slot_ref = owned_slot ? REF(owned_slot) : ""
+	return "[layout_revision]:[REF(get_turf(src))]:[dir]:[row_offset]:[site_id]:[slot_ref]:[!!owned_slot?.retiring]"
+
+/obj/machinery/computer/stationtrauma_dock_controller/proc/can_configure_layout()
+	return !site_id && QDELETED(owned_slot) && anchored && is_operational && !panel_open
+
+/// A draft may shift along its edge by whole tiles. Published and mapped layouts keep their anchor.
+/obj/machinery/computer/stationtrauma_dock_controller/proc/configure_offset(value)
+	if(!can_configure_layout() || !IS_FINITE(value) || value != round(value) || value < 0 || value >= slot_height)
+		return FALSE
+	if(row_offset != value)
+		row_offset = value
+		layout_revision++
+		clear_layout_previews()
+	return TRUE
+
+/// Report to the operator who asked for a check, tied to the layout that was inspected.
+/obj/machinery/computer/stationtrauma_dock_controller/proc/send_layout_report(datum/tgui/ui, message, failed = FALSE)
+	ui.send_update(list("report" = list("layout_key" = layout_key(), "message" = message, "failed" = failed)))
+
+/obj/machinery/computer/stationtrauma_dock_controller/proc/check_layout(datum/tgui/ui, obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot)
+	var/datum/stationtrauma_overmap_site/space/site = slot?.published_site
+	if(slot && (slot.active_berth || site?.docking_owner || site?.shuttle_order))
+		send_layout_report(ui, dock_status(slot))
 		return
 	var/turf/anchor = slot ? get_turf(slot) : proposed_anchor()
-	var/facing = slot ? slot.dir : dir
-	var/dock_width = slot ? slot.width : slot_width
-	var/dock_height = slot ? slot.height : slot_height
-	var/is_hangar = slot ? slot.hangar : hangar
-	switch(action)
-		if("Показать площадку")
-			show_layout(user, anchor, facing, dock_width, dock_height, is_hangar)
-		if("Проверить площадку")
-			var/datum/stationtrauma_overmap_site/space/site = slot?.published_site
-			if(slot && (slot.active_berth || site?.docking_owner || site?.shuttle_order))
-				to_chat(user, span_notice(dock_status(slot)))
-				return
-			var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
-			var/datum/stationtrauma_overmap_sector/space/sector = host?.sector || SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-			var/mapped_outpost = site_id && !host && sector?.trade_outpost_names?["[z]"]
-			var/problem = stationtrauma_standard_dock_problem(anchor, facing, dock_width, dock_height, slot, host, hangar = is_hangar, outpost = mapped_outpost)
-			var/ready_message = is_hangar ? "Посадочная площадка свободна." : "Площадка и коридор свободны, все секции стены на месте."
-			to_chat(user, problem ? span_warning(problem) : span_notice(ready_message))
-		if("Повернуть контроллер")
-			if(!slot && !site_id)
-				setDir(turn(dir, -90))
-				show_layout(user, proposed_anchor(), dir, slot_width, slot_height, hangar)
-		if("Зарегистрировать причал")
-			var/problem = publish_slot()
-			to_chat(user, problem ? span_warning(problem) : span_notice("Причал зарегистрирован и виден на навигационных консолях сектора."))
-		if("Снять причал с регистрации")
-			if(!QDELETED(slot) && !slot.retiring)
-				slot.retire()
-				to_chat(user, span_notice("Новые заходы закрыты. Причал будет снят с регистрации, когда освободится."))
+	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
+	var/datum/stationtrauma_overmap_sector/space/sector = host?.sector || SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
+	var/mapped_outpost = site_id && !host && sector?.trade_outpost_names?["[z]"]
+	var/problem = stationtrauma_standard_dock_problem(anchor, slot?.dir || dir, slot?.width || slot_width, slot?.height || slot_height, slot, host, hangar = hangar, outpost = mapped_outpost)
+	var/ready_message = hangar ? "Посадочная площадка свободна." : "Площадка и коридор свободны, все секции стены на месте."
+	send_layout_report(ui, problem || ready_message, !!problem)
 
 /// Name the prepared layout or the active dock owned by this controller.
 /obj/machinery/computer/stationtrauma_dock_controller/proc/can_name_dock(mob/user, obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot)
@@ -289,13 +353,11 @@
 /obj/machinery/computer/stationtrauma_dock_controller/proc/name_dock(mob/user, obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot)
 	if(!can_name_dock(user, slot))
 		return
-	var/turf/controller_turf = get_turf(src)
-	var/controller_direction = dir
-	var/configured_site_id = site_id
+	var/previous_layout = layout_key()
 	var/datum/stationtrauma_overmap_site/space/site = slot ? slot.published_site : null
 	var/old_name = slot ? slot.station_name : dock_name
 	var/input_name = tgui_input_text(user, "Введите название причала.", "Название причала", old_name, max_length = MAX_NAME_LEN, encode = FALSE)
-	if(!istext(input_name) || !input_name || !can_name_dock(user, slot) || get_turf(src) != controller_turf || dir != controller_direction || site_id != configured_site_id)
+	if(!istext(input_name) || !input_name || !can_name_dock(user, slot) || layout_key() != previous_layout)
 		return
 	if(slot ? (slot.published_site != site || slot.station_name != old_name) : dock_name != old_name)
 		return
@@ -392,6 +454,7 @@
 			var/datum/stationtrauma_overmap_site/space/docking_target/station = sector.sites["traffic:station"]
 			sector.register_docking_berth(site, "traffic:station", station?.name || "Станция")
 	owned_slot = slot
+	layout_revision++
 	return null
 
 /obj/machinery/computer/stationtrauma_dock_controller/proc/show_layout(mob/user, turf/anchor, facing, dock_width, dock_height, hangar)
@@ -412,16 +475,30 @@
 		SET_PLANE(marker, ABOVE_GAME_PLANE, tile)
 		marker.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		images += marker
-	user.client.images += images
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(stationtrauma_hide_dock_layout), WEAKREF(user.client), images), 12 SECONDS, TIMER_CLIENT_TIME)
+	var/client/viewer = user.client
+	var/datum/weakref/viewer_ref = WEAKREF(viewer)
+	viewer.images -= preview_viewers?[viewer_ref]
+	LAZYSET(preview_viewers, viewer_ref, images)
+	viewer.images += images
+	addtimer(CALLBACK(src, PROC_REF(hide_layout_preview), viewer_ref, images), 12 SECONDS, TIMER_CLIENT_TIME)
 	if(hangar)
 		to_chat(user, span_notice("Зелёным показана посадочная площадка [dock_width]×[dock_height]."))
 	else
 		to_chat(user, span_notice("Зелёным показана площадка [dock_width]×[dock_height], синим — полоса трапа, красным — клетки секций стены. Монтажный комплект сам выставит направление на этих клетках."))
 
-/proc/stationtrauma_hide_dock_layout(datum/weakref/viewer_ref, list/images)
+/obj/machinery/computer/stationtrauma_dock_controller/proc/hide_layout_preview(datum/weakref/viewer_ref, list/images)
+	if(preview_viewers?[viewer_ref] != images)
+		return
 	var/client/viewer = viewer_ref.resolve()
 	viewer?.images -= images
+	LAZYREMOVE(preview_viewers, viewer_ref)
+
+/obj/machinery/computer/stationtrauma_dock_controller/proc/clear_layout_previews()
+	for(var/datum/weakref/viewer_ref as anything in preview_viewers)
+		var/client/viewer = viewer_ref.resolve()
+		viewer?.images -= preview_viewers[viewer_ref]
+	preview_viewers = null
+	COOLDOWN_RESET(src, preview_cooldown)
 
 /** Map each turf to its column, including the gangway strip, wall and walkway of a walled berth. */
 /proc/stationtrauma_standard_dock_tiles(turf/anchor, facing, dock_width, dock_height, hangar = FALSE)

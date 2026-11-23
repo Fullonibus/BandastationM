@@ -620,6 +620,17 @@
 	first_controller.setDir(NORTH)
 	second_controller = allocate(/obj/machinery/computer/stationtrauma_dock_controller, second_floor)
 	second_controller.setDir(NORTH)
+	var/initial_layout = second_controller.layout_key()
+	TEST_ASSERT(!second_controller.configure_offset(-1), "An offset cannot precede the first row")
+	TEST_ASSERT(!second_controller.configure_offset(second_controller.slot_height), "An offset cannot pass the last row")
+	TEST_ASSERT(!second_controller.configure_offset(1.5), "Offsets must use whole tiles")
+	TEST_ASSERT(!second_controller.configure_offset("1"), "An offset must arrive as a number")
+	second_controller.site_id = "mapped_test_dock"
+	TEST_ASSERT(!second_controller.configure_offset(1), "A mapped dock must retain its configured offset")
+	second_controller.site_id = null
+	TEST_ASSERT(second_controller.configure_offset(1), "A built controller must support shifting along the wall")
+	TEST_ASSERT(second_controller.layout_key() != initial_layout, "The previous layout key must stop accepting UI actions after the offset changes")
+	TEST_ASSERT_EQUAL(second_controller.proposed_anchor(), first_anchor, "The same angle and a one-tile offset must preserve the footprint")
 	first_controller.dock_name = "Причал Сигнал"
 	var/activation_error = first_controller.publish_slot()
 	TEST_ASSERT_NULL(activation_error, "A built controller must publish a complete free envelope")
@@ -639,6 +650,8 @@
 	TEST_ASSERT_NULL(home_sector.sites[first_id], "Removing an empty controller must unpublish its destination")
 	activation_error = second_controller.publish_slot()
 	TEST_ASSERT_NULL(activation_error, "The previously overlapping controller must succeed after the first is removed")
+	TEST_ASSERT_EQUAL(get_turf(second_controller.owned_slot), first_anchor, "Publication must use the player's offset")
+	TEST_ASSERT(!second_controller.configure_offset(0), "A registered controller must keep its offset until it retires")
 	var/datum/stationtrauma_overmap_site/space/second_site = second_controller.owned_slot?.published_site
 	TEST_ASSERT_NOTNULL(second_site, "The newly freed envelope must publish an actual destination")
 	var/second_id = second_site.id
