@@ -284,9 +284,6 @@ GLOBAL_LIST_EMPTY(stationtrauma_map_connections)
 			return image.base_ranged_item_interaction(user, tool, modifiers)
 	return ..()
 
-/mob/living/throw_item(atom/target)
-	return ..(stationtrauma_seam_image_turf(src, target) || target)
-
 /// Turfs carry VIS_INHERIT_ID, so a click on any far tile in the mirage lands on this invisible holder at the seam. Hand it to the tile under the cursor on the viewer's own level instead.
 /atom/movable/mirage_holder/Click(location, control, params)
 	var/list/modifiers = params2list(params)

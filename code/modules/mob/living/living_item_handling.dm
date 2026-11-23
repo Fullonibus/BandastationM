@@ -36,6 +36,7 @@
 	return TRUE
 
 /mob/living/throw_item(atom/target)
+	target = stationtrauma_seam_image_turf(src, target) || target
 	. = ..()
 	throw_mode_off(THROW_MODE_TOGGLE)
 	if(!HAS_TRAIT(src, TRAIT_CAN_THROW_ITEMS))

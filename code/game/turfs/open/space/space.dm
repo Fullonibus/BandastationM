@@ -81,6 +81,13 @@ GLOBAL_LIST_EMPTY(starlight)
 	//This is used to optimize the map loader
 	return
 
+/turf/open/space/basic/Click(location, control, params)
+	// Untouched vacuum has map coordinates but never passes the default Click initialization check.
+	if(!(flags_1 & INITIALIZED_1) && usr?.throw_mode)
+		usr.ClickOn(src, params)
+		return
+	return ..()
+
 /turf/open/space/Destroy()
 	GLOB.starlight -= src
 	return ..()
