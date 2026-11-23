@@ -32,7 +32,10 @@
 
 /obj/structure/closet/emcloset/PopulateContents()
 	..()
+	populate_emergency_supplies()
 
+/// The standard emergency supply roll for both floor and wall lockers.
+/obj/structure/closet/proc/populate_emergency_supplies()
 	if (prob(40))
 		new /obj/item/storage/toolbox/emergency(src)
 
