@@ -82,6 +82,7 @@ GLOBAL_VAR_INIT(stationtrauma_available_flight_z, 0)
 /obj/machinery/computer/stationtrauma_ship_core
 	name = "ядро корабля класса S"
 	desc = "Активирует завершённый строительный каркас шаттла класса S. После активации кораблём управляет навигационная консоль."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/stationtrauma_dispatch")
 	icon_screen = "shuttle"
 	use_power = NO_POWER_USE
 	circuit = /obj/item/circuitboard/computer/stationtrauma_ship_core

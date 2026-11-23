@@ -12,6 +12,7 @@
 /obj/machinery/computer/stationtrauma_station_traffic
 	name = "центр управления полётами"
 	desc = "Показывает состояние причалов станции или носителя и заявки на стыковку."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/communications")
 	icon_screen = "comm"
 	icon_keyboard = "tech_key"
 	req_access = list(ACCESS_COMMAND)

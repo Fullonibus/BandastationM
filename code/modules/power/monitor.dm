@@ -3,6 +3,7 @@
 /obj/machinery/computer/monitor
 	name = "power monitoring console"
 	desc = "It monitors power levels across the station."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/vaultcontroller")
 	icon_screen = "power"
 	icon_keyboard = "power_key"
 	light_color = LIGHT_COLOR_DIM_YELLOW
