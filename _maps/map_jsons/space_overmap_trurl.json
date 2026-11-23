@@ -3,7 +3,7 @@
 	"map_name": "Cyberiad Overmap + Trurl",
 	"map_path": "map_files/CyberiadOvermap",
 	"map_file": "CyberiadOvermap.dmm",
-	"fluff_name": "Кибериада: экспедиционные рейсы",
+	"fluff_name": "ИСН Кибериада",
 	"welcome_sound_override": "modular_bandastation/aesthetics_sounds/sound/welcome_sounds/welcome_cyberiad.ogg",
 	"main_floor": 2,
 	"give_players_hooks": 1,
