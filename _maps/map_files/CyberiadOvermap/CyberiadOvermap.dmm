@@ -8,16 +8,6 @@
 	shuttle_id = "emergency_home";
 	width = 32
 	},
-/obj/docking_port/stationary/stationtrauma_space_station{
-	dheight = 16;
-	dir = 1;
-	dwidth = 0;
-	height = 32;
-	name = "Кибериада";
-	site_id = "cyberiad";
-	station_name = "Кибериада";
-	width = 21
-	},
 /turf/open/space/openspace,
 /area/space)
 "aab" = (
@@ -100275,6 +100265,19 @@
 	dir = 8
 	},
 /area/station/hallway/secondary/entry)
+"aac" = (
+/obj/machinery/computer/stationtrauma_dock_controller/station{
+	dir = 1;
+	dock_name = "Кибериада";
+	site_id = "cyberiad";
+	slot_width = 21;
+	slot_height = 32;
+	berth_dheight = 16;
+	berth_offset_x = 4;
+	berth_offset_y = -4
+	},
+/turf/open/floor/iron/dark,
+/area/station/hallway/secondary/exit/departure_lounge)
 
 (1,1,1) = {"
 doz
@@ -221701,7 +221704,7 @@ sXs
 jua
 pZd
 xjo
-pZd
+aac
 dHi
 pZd
 ecx

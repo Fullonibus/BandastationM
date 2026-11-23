@@ -53,6 +53,14 @@
 		list("name" = "Лазис Ардакс", "x" = 1000, "y" = -240, "radius" = 22, "kind" = "lava", "orbit_x" = 0, "orbit_y" = 0),
 		list("name" = "Эгир", "x" = 1320, "y" = -400, "radius" = 7, "kind" = "moon", "orbit_x" = 1000, "orbit_y" = -240),
 	)
+	/// Fixed native berth created from the station's controller during sector loading.
+	var/obj/docking_port/stationary/stationtrauma_space_station/configured_station_berth
+
+/datum/stationtrauma_overmap_sector/space/home/Destroy()
+	. = ..()
+	if(!QDELETED(configured_station_berth))
+		qdel(configured_station_berth, force = TRUE)
+	configured_station_berth = null
 
 /** The sector retains each hull's static chart between visits, without retaining the hull itself. */
 /datum/stationtrauma_overmap_sector/space/register(id, datum/stationtrauma_overmap/space/navigation)
@@ -200,6 +208,18 @@
 			if(station_site_id && port.site_id == station_site_id)
 				main_berth = port
 				break
+		var/datum/stationtrauma_overmap_sector/space/home/home_sector = src
+		for(var/obj/machinery/computer/stationtrauma_dock_controller/station/controller as anything in SSmachines.get_machines_by_type(/obj/machinery/computer/stationtrauma_dock_controller/station))
+			if(!station_site_id || controller.site_id != station_site_id || !is_station_level(controller.z))
+				continue
+			if(main_berth)
+				log_mapping("Multiple definitions for station berth [station_site_id] at [COORD(controller)]")
+				return FALSE
+			main_berth = controller.create_station_berth()
+			if(!main_berth)
+				log_mapping("Invalid station berth [station_site_id] at [COORD(controller)]")
+				return FALSE
+			home_sector.configured_station_berth = main_berth
 		for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
 			if(port.host_ship_id || istype(port, /obj/docking_port/stationary/stationtrauma_space_station/standard))
 				continue
@@ -220,7 +240,7 @@
 				register_docking_berth(site, "traffic:site:[port.site_id]", site.name)
 			taken_positions += list(list(site.pos_x, site.pos_y))
 		for(var/obj/machinery/computer/stationtrauma_dock_controller/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/stationtrauma_dock_controller))
-			if(!controller.site_id || istype(get_area(controller), /area/shuttle) || !(is_station_level(controller.z) || trade_outpost_names["[controller.z]"]))
+			if(!controller.site_id || istype(controller, /obj/machinery/computer/stationtrauma_dock_controller/station) || istype(get_area(controller), /area/shuttle) || !(is_station_level(controller.z) || trade_outpost_names["[controller.z]"]))
 				continue
 			var/problem = controller.publish_slot(initializing = TRUE)
 			if(problem)

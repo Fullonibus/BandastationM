@@ -827,6 +827,13 @@
 		return
 	var/datum/stationtrauma_overmap_sector/space/home = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
 	TEST_ASSERT(home?.ready, "Cyberiad Overmap must start with a ready home sector")
+	var/datum/stationtrauma_overmap_site/space/station_site = home.sites["cyberiad"]
+	var/obj/docking_port/stationary/stationtrauma_space_station/service_berth = station_site?.berth
+	TEST_ASSERT(istype(service_berth), "The station controller must publish the native service berth before guests are placed")
+	var/obj/docking_port/stationary/evacuation = SSshuttle.getDock("emergency_home")
+	TEST_ASSERT_NOTNULL(evacuation, "The native evacuation port must remain present")
+	TEST_ASSERT_EQUAL(get_turf(service_berth), get_turf(evacuation), "The service and evacuation berths must still share the same anchor")
+	TEST_ASSERT(service_berth.width == 21 && service_berth.height == 32 && service_berth.dir == NORTH && service_berth.dwidth == 0 && service_berth.dheight == 16, "The service berth must preserve the original native docking geometry")
 	var/datum/stationtrauma_overmap_site/space/site = home.sites["cyberiad_m_dock"]
 	TEST_ASSERT_NOTNULL(site, "Cyberiad's prepared M dock must be available immediately after startup")
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/berth = site.berth

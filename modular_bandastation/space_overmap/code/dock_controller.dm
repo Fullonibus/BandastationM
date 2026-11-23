@@ -164,6 +164,41 @@
 	dock_class = "Ангар"
 	hangar = TRUE
 
+/// The home sector uses this controller's mapping settings for its fixed native berth.
+/obj/machinery/computer/stationtrauma_dock_controller/station
+	name = "контроллер общего станционного причала"
+	desc = "Задаёт положение и габариты общего причала для навигации и служебных рейсов."
+	/// Eastward offset to the fixed berth's anchor, in map tiles.
+	var/berth_offset_x = 0
+	/// Northward offset to the fixed berth's anchor, in map tiles.
+	var/berth_offset_y = 0
+	/// Number of rows behind the anchor in the fixed berth's native bounds.
+	var/berth_dheight = 0
+
+/obj/machinery/computer/stationtrauma_dock_controller/station/dock_status(obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot)
+	var/datum/stationtrauma_overmap_sector/space/home = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
+	var/datum/stationtrauma_overmap_site/space/site = home?.sites?[site_id]
+	return QDELETED(site?.berth) ? "Общий станционный причал ещё не зарегистрирован." : "Общий станционный причал «[site.name]» зарегистрирован."
+
+/// Create the fixed berth before the sector gathers its station destinations.
+/obj/machinery/computer/stationtrauma_dock_controller/station/proc/create_station_berth()
+	var/turf/anchor = locate(x + berth_offset_x, y + berth_offset_y, z)
+	if(!anchor || !(dir in GLOB.cardinals) || slot_width < 1 || slot_height < 1 || berth_dheight < 0 || berth_dheight >= slot_height)
+		return null
+	var/obj/docking_port/stationary/stationtrauma_space_station/berth = new(anchor)
+	berth.setDir(dir)
+	berth.width = slot_width
+	berth.height = slot_height
+	berth.dheight = berth_dheight
+	berth.site_id = site_id
+	berth.station_name = berth.name = dock_name || name
+	berth.overmap_x = overmap_x
+	berth.overmap_y = overmap_y
+	// Runtime ports do not apply the mapload protection in stationary Initialize().
+	for(var/turf/tile in berth.return_turfs())
+		tile.turf_flags |= NO_RUINS
+	return berth
+
 /obj/machinery/computer/stationtrauma_dock_controller/Destroy()
 	if(!QDELETED(owned_slot))
 		owned_slot.retire()
@@ -174,7 +209,7 @@
 	. = ..()
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = owned_slot
 	. += span_notice(dock_status(slot))
-	if(!slot)
+	if(!slot && !istype(src, /obj/machinery/computer/stationtrauma_dock_controller/station))
 		if(hangar)
 			. += span_notice("Для ангара нужен свободный пол [slot_width]×[slot_height] на верхней палубе. Положение площадки показывает разметка.")
 		else
@@ -185,6 +220,9 @@
 	if(!can_interact(user) || panel_open)
 		return
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = owned_slot
+	if(istype(src, /obj/machinery/computer/stationtrauma_dock_controller/station))
+		to_chat(user, span_notice(dock_status(slot)))
+		return
 	var/turf/controller_turf = get_turf(src)
 	var/controller_direction = dir
 	var/configured_site_id = site_id
