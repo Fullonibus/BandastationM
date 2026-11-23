@@ -1,0 +1,7 @@
+help: "Place a dock controller with site_id on the map. It creates the native overmap berth."
+/obj/docking_port/stationary/stationtrauma_space_station/standard:
+  banned: true
+/obj/docking_port/stationary/stationtrauma_space_station/standard_s:
+  banned: true
+/obj/docking_port/stationary/stationtrauma_space_station/standard_m:
+  banned: true

@@ -52,7 +52,7 @@
 	TEST_ASSERT(carrier_sector.register(host_ship.shuttle_id, host_navigation), "The carrier must register independently")
 	bay.site_id = "unit_test_carrier_slot"
 	bay.host_ship_id = host_ship.shuttle_id
-	host_navigation.register_carrier_docks()
+	TEST_ASSERT(host_navigation.register_carrier_dock(bay), "The synthetic carrier must register its test berth")
 	site = carrier_sector.sites[bay.site_id]
 	TEST_ASSERT_NOTNULL(site, "The mapped host ID must publish the carrier's standard berth")
 	TEST_ASSERT_EQUAL(bay.host, host_navigation, "The mapped slot must bind to the intended live carrier")

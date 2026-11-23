@@ -818,3 +818,32 @@
 	TEST_ASSERT_EQUAL(ship.get_docked(), bay.active_berth, "Native movement must finish at the technical M berth")
 	TEST_ASSERT_EQUAL(ship.width, hull_width, "The native berth must keep the small hull's width")
 	TEST_ASSERT_EQUAL(hatch.gangway?.wall, wall, "The small hull must deploy a gangway to the M wall")
+/// The prepared station M dock must be available when the live sector has finished loading.
+/datum/unit_test/overmap_controller_roundstart
+	test_flags = UNIT_TEST_MAP_TEST
+
+/datum/unit_test/overmap_controller_roundstart/Run()
+	if(SSmapping.current_map.space_overmap?["station_id"] != "cyberiad")
+		return
+	var/datum/stationtrauma_overmap_sector/space/home = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
+	TEST_ASSERT(home?.ready, "Cyberiad Overmap must start with a ready home sector")
+	var/datum/stationtrauma_overmap_site/space/site = home.sites["cyberiad_m_dock"]
+	TEST_ASSERT_NOTNULL(site, "Cyberiad's prepared M dock must be available immediately after startup")
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/berth = site.berth
+	TEST_ASSERT(istype(berth), "The destination must be a controller-owned native berth")
+	var/obj/machinery/computer/stationtrauma_dock_controller/medium/controller = berth.controller_ref?.resolve()
+	TEST_ASSERT(istype(controller) && controller.owned_slot == berth, "The mapped controller must own the only berth")
+	TEST_ASSERT_EQUAL(berth.x, 49, "The M berth must keep its existing X coordinate")
+	TEST_ASSERT_EQUAL(berth.y, 99, "The M berth must keep its existing Y coordinate")
+	var/datum/stationtrauma_overmap_site/space/industrial = home.sites["trade_industrial_m"]
+	TEST_ASSERT_NOTNULL(industrial, "The converted trade controller must publish the previous berth ID")
+	TEST_ASSERT(industrial.docking_target?.automatic, "The trade outpost must still handle docking requests automatically")
+	TEST_ASSERT_EQUAL(industrial.pos_x, -1300, "The trade outpost must retain its chart position")
+	TEST_ASSERT(berth.controller_valid(), "The mapped station controller must be ready for arrivals")
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/trade_berth = industrial.berth
+	TEST_ASSERT(istype(trade_berth) && trade_berth.controller_valid(), "The converted trade controller must accept arrivals with real power")
+	if(SSmapping.current_map.map_name == "Cyberiad Overmap + Trurl")
+		var/datum/stationtrauma_overmap_site/space/carrier_site = home.sites["trurl_m1"]
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/carrier_berth = carrier_site?.berth
+		TEST_ASSERT(istype(carrier_berth) && carrier_berth.controller_valid(), "Trurl's converted controller must operate on its own deck")
+		TEST_ASSERT_EQUAL(carrier_site.host?.vessel.shuttle_id, "overmap_trurl", "The mapped controller must belong to its carrier")

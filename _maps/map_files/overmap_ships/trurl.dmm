@@ -1769,16 +1769,6 @@
 "fF" = (
 /turf/open/floor/iron/white/side,
 /area/shuttle/stationtrauma_space/trurl/bar)
-"fH" = (
-/obj/docking_port/stationary/stationtrauma_space_station/standard_m{
-	name = "Трурль — причал M-1";
-	station_name = "Трурль — причал M-1";
-	site_id = "trurl_m1";
-	host_ship_id = "overmap_trurl";
-	dir = 2
-	},
-/turf/open/space/basic,
-/area/space)
 "fI" = (
 /obj/structure/chair/comfy/black{
 	dir = 4
@@ -17290,6 +17280,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/trurl/control)
+"ab" = (
+/obj/machinery/computer/stationtrauma_dock_controller/medium{
+	dir = 2;
+	dock_name = "Трурль — причал M-1";
+	site_id = "trurl_m1";
+	name = "Контроллер причала M Трурля"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/trurl/fore)
 
 (1,1,1) = {"
 Hh
@@ -30404,7 +30403,7 @@ Hh
 Hh
 Hh
 Ym
-rv
+ab
 Ie
 Ie
 Ie
@@ -33748,7 +33747,7 @@ Hh
 Hh
 Hh
 Hh
-fH
+Hh
 Hh
 Hh
 Hh

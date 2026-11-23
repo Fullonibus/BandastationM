@@ -24,15 +24,6 @@
 "e" = (
 /turf/open/floor/plating/airless,
 /area/shuttle/stationtrauma_space/unit_test_carrier_multideck/lower)
-"f" = (
-/obj/docking_port/stationary/stationtrauma_space_station/standard_s{
-	site_id = "unit_test_multideck_upper_s";
-	host_ship_id = "unit_test_multideck_carrier";
-	station_name = "Upper deck S berth";
-	dir = 1
-	},
-/turf/open/space/basic,
-/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
 "g" = (
 /turf/open/space/basic,
 /area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
@@ -55,6 +46,14 @@
 /area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
 "l" = (
 /obj/machinery/power/shuttle_engine,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
+"m" = (
+/obj/machinery/computer/stationtrauma_dock_controller{
+	dir = 1;
+	dock_name = "Upper deck S berth";
+	site_id = "unit_test_multideck_upper_s"
+	},
 /turf/open/floor/plating/airless,
 /area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
 
@@ -271,7 +270,7 @@ g
 g
 g
 g
-f
+g
 "}
 
 (2,1,2) = {"
@@ -451,5 +450,5 @@ i
 i
 i
 i
-i
+m
 "}

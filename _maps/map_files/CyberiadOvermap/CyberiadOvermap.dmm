@@ -29,15 +29,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
-"aac" = (
-/obj/docking_port/stationary/stationtrauma_space_station/standard_s{
-	dir = 1;
-	name = "Кибериада: причал S";
-	site_id = "cyberiad_s_dock";
-	station_name = "Кибериада: причал S"
-	},
-/turf/open/space/basic,
-/area/space)
 "aad" = (
 /obj/machinery/door/airlock/stationtrauma_docking/wall{
 	dir = 8
@@ -100116,16 +100107,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/robotics/lab)
-"abx" = (
-/obj/docking_port/stationary/stationtrauma_space_station/standard_s{
-	dir = 1;
-	name = "Кибериада: грузовой причал S";
-	shuttle_id = "cyberiad_cargo_s_dock";
-	site_id = "cyberiad_cargo_s_dock";
-	station_name = "Кибериада: грузовой причал S"
-	},
-/turf/open/space/basic,
-/area/space)
 "aby" = (
 /obj/machinery/door/airlock/stationtrauma_docking/wall{
 	dir = 8
@@ -100265,6 +100246,35 @@
 /obj/effect/landmark/start/bridge_assistant,
 /turf/open/floor/iron,
 /area/station/command/bridge)
+"ace" = (
+/obj/machinery/computer/stationtrauma_dock_controller{
+	dir = 1;
+	dock_name = "Кибериада: причал S";
+	site_id = "cyberiad_s_dock";
+	row_offset = 12
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/ghetto/auxiliary)
+"ach" = (
+/obj/machinery/computer/stationtrauma_dock_controller{
+	dir = 1;
+	dock_name = "Кибериада: грузовой причал S";
+	site_id = "cyberiad_cargo_s_dock";
+	row_offset = 10
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
+"aci" = (
+/obj/machinery/computer/stationtrauma_dock_controller/medium{
+	dir = 8;
+	dock_name = "Кибериада: M";
+	site_id = "cyberiad_m_dock"
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/white/corner{
+	dir = 8
+	},
+/area/station/hallway/secondary/entry)
 
 (1,1,1) = {"
 doz
@@ -115320,7 +115330,7 @@ doz
 doz
 doz
 doz
-abx
+doz
 rmU
 tlF
 hqK
@@ -117880,7 +117890,7 @@ tWQ
 tWQ
 oBo
 oBo
-oBo
+ach
 abW
 abQ
 abK
@@ -134145,7 +134155,7 @@ doz
 doz
 doz
 doz
-aac
+doz
 doz
 doz
 doz
@@ -136703,7 +136713,7 @@ ncb
 ceC
 uPA
 uPA
-pZA
+ace
 uPA
 uPA
 uPA
@@ -137474,7 +137484,7 @@ fNU
 xgd
 xgd
 scr
-aaA
+pZA
 uaJ
 dyM
 xrP
@@ -178273,7 +178283,7 @@ xFk
 jAy
 fZu
 wQY
-deO
+aci
 kYz
 qao
 gJs

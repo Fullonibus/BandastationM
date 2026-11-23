@@ -34,7 +34,7 @@
 	dock_class = "M"
 	accepted_ship_class = ST_SHIP_MEDIUM
 
-/** Mapped landing pad on the highest deck of its linked stack. */
+/** Landing pad on the highest deck of its linked stack. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/hangar
 	name = "Ангар"
 	station_name = "Ангар"
@@ -70,12 +70,6 @@
 	accepted_ship_class = ST_SHIP_MEDIUM
 	open_space = TRUE
 	ground = TRUE
-
-/obj/docking_port/stationary/stationtrauma_space_station/standard_s/trade_outpost
-	auto_approve_docking = TRUE
-
-/obj/docking_port/stationary/stationtrauma_space_station/standard_m/trade_outpost
-	auto_approve_docking = TRUE
 
 /obj/docking_port/stationary/stationtrauma_space_station/standard/Destroy(force)
 	if(force)
