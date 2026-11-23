@@ -171,7 +171,7 @@
 /obj/machinery/computer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
-	if(!issilicon(ui.user))
+	if(!. && !issilicon(ui.user))
 		play_ui_sound(action, params)
 
 /** Play control feedback after the shared UI checks; individual consoles may distinguish buttons from other controls. */

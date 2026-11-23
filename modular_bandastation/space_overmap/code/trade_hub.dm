@@ -527,10 +527,10 @@
 
 /obj/machinery/computer/trade_hub/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "TradeHub", name)
-		ui.open()
+	open_overmap_console(user, ui, "TradeHub")
+
+/obj/machinery/computer/trade_hub/ui_status(mob/user, datum/ui_state/state)
+	return overmap_console_status(user, ..())
 
 /obj/machinery/computer/trade_hub/ui_data(mob/user)
 	var/obj/machinery/trade_hub_core/core = get_core()

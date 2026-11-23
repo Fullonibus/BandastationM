@@ -581,10 +581,10 @@
 
 /obj/machinery/computer/stationtrauma_engine_console/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "StationTraumaEngines", name)
-		ui.open()
+	open_overmap_console(user, ui, "StationTraumaEngines")
+
+/obj/machinery/computer/stationtrauma_engine_console/ui_status(mob/user, datum/ui_state/state)
+	return overmap_console_status(user, ..())
 
 /obj/machinery/computer/stationtrauma_engine_console/ui_data(mob/user)
 	var/obj/docking_port/mobile/stationtrauma_space/ship = vessel()

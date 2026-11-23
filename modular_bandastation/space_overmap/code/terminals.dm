@@ -18,27 +18,22 @@
 	/// Optional mapped berth shown first in the list.
 	var/site_id
 
-/obj/machinery/computer/stationtrauma_dispatch/proc/can_operate(mob/user)
+/obj/machinery/computer/stationtrauma_dispatch/proc/can_operate(mob/user, allow_observer = FALSE)
 	return !QDELETED(src) && !QDELETED(user) && anchored && is_operational && !panel_open && is_station_level(z) \
-		&& !istype(get_area(src), /area/shuttle) && can_interact(user) && allowed(user)
+		&& !istype(get_area(src), /area/shuttle) && ((allow_observer && isobserver(user)) || (can_interact(user) && allowed(user)))
 
 /obj/machinery/computer/stationtrauma_dispatch/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	if(!can_operate(user))
-		return
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "StationShuttleDispatch", name)
-		ui.open()
+	open_overmap_console(user, ui, "StationShuttleDispatch")
 
 /obj/machinery/computer/stationtrauma_dispatch/ui_status(mob/user, datum/ui_state/state)
-	if(!can_operate(user))
+	if(!can_operate(user, allow_observer = TRUE))
 		return UI_CLOSE
-	return ..()
+	return overmap_console_status(user, ..())
 
 /obj/machinery/computer/stationtrauma_dispatch/ui_data(mob/user)
 	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-	if(!can_operate(user) || !sector?.ready)
+	if(!can_operate(user, allow_observer = TRUE) || !sector?.ready)
 		return list("available" = FALSE)
 	var/datum/bank_account/department/account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	var/list/catalog = sector.shuttle_offers()
@@ -127,7 +122,9 @@
 		for(var/list/route as anything in map.jump_data())
 			choices[route["name"]] = route["id"]
 	map = null
-	var/choice = tgui_input_list(user, "Система назначения", name, choices, timeout = 30 SECONDS)
+	var/datum/ui_state/overmap_console_prompt/prompt_state = new(src)
+	var/choice = tgui_input_list(user, "Система назначения", name, choices, timeout = 30 SECONDS, ui_state = prompt_state)
+	qdel(prompt_state)
 	if(QDELETED(src) || !can_interact(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)) || !(choice in choices))
 		return
 	map = navigation()

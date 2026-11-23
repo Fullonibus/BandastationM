@@ -418,10 +418,10 @@
 	return stationtrauma_fuel_gauges(list(parents[1]), list(/datum/gas/tritium = "Тритий"))
 
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "StationTraumaFusionCore", name)
-		ui.open()
+	open_overmap_console(user, ui, "StationTraumaFusionCore")
+
+/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/ui_status(mob/user, datum/ui_state/state)
+	return overmap_console_status(user, ..())
 
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/ui_data(mob/user)
 	var/list/batteries = list()
@@ -535,10 +535,10 @@
 
 /obj/machinery/computer/stationtrauma_fusion_monitor/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "StationTraumaFusionCore", name)
-		ui.open()
+	open_overmap_console(user, ui, "StationTraumaFusionCore")
+
+/obj/machinery/computer/stationtrauma_fusion_monitor/ui_status(mob/user, datum/ui_state/state)
+	return overmap_console_status(user, ..())
 
 /obj/machinery/computer/stationtrauma_fusion_monitor/ui_data(mob/user)
 	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/core = reactor()

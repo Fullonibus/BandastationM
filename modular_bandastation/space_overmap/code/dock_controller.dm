@@ -222,21 +222,16 @@
 
 /obj/machinery/computer/stationtrauma_dock_controller/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	if(!can_interact(user) || panel_open)
-		ui?.close()
-		return
 	if(istype(src, /obj/machinery/computer/stationtrauma_dock_controller/station))
-		to_chat(user, span_notice(dock_status(owned_slot)))
+		if(ui_status(user, ui_state(user)) >= UI_UPDATE)
+			to_chat(user, span_notice(dock_status(owned_slot)))
 		return
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "DockController", name)
-		ui.open()
+	open_overmap_console(user, ui, "DockController")
 
 /obj/machinery/computer/stationtrauma_dock_controller/ui_status(mob/user, datum/ui_state/state)
-	if(panel_open || !can_interact(user))
+	if(panel_open || (!isobserver(user) && !can_interact(user)))
 		return UI_CLOSE
-	return ..()
+	return overmap_console_status(user, ..())
 
 /obj/machinery/computer/stationtrauma_dock_controller/ui_data(mob/user)
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/slot = owned_slot
@@ -356,7 +351,9 @@
 	var/previous_layout = layout_key()
 	var/datum/stationtrauma_overmap_site/space/site = slot ? slot.published_site : null
 	var/old_name = slot ? slot.station_name : dock_name
-	var/input_name = tgui_input_text(user, "Введите название причала.", "Название причала", old_name, max_length = MAX_NAME_LEN, encode = FALSE)
+	var/datum/ui_state/overmap_console_prompt/prompt_state = new(src)
+	var/input_name = tgui_input_text(user, "Введите название причала.", "Название причала", old_name, max_length = MAX_NAME_LEN, encode = FALSE, ui_state = prompt_state)
+	qdel(prompt_state)
 	if(!istext(input_name) || !input_name || !can_name_dock(user, slot) || layout_key() != previous_layout)
 		return
 	if(slot ? (slot.published_site != site || slot.station_name != old_name) : dock_name != old_name)

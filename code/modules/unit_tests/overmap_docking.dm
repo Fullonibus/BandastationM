@@ -515,3 +515,29 @@
 	deadline = world.time + 5 SECONDS
 	UNTIL(traveller.z == remote_z || world.time >= deadline)
 	TEST_ASSERT_EQUAL(get_turf(traveller), locate(10, 32, remote_z), "The published seam must transport the traveller to the virtual site")
+
+/datum/unit_test/overmap_docking/console_sessions/Run()
+	var/turf/console_turf = get_turf(ship)
+	var/obj/machinery/computer/stationtrauma_space_navigation/console = allocate(/obj/machinery/computer/stationtrauma_space_navigation, console_turf)
+	console.vessel = ship
+	var/mob/living/carbon/human/consistent/pilot = allocate(/mob/living/carbon/human/consistent, get_step(console_turf, NORTH))
+	ADD_TRAIT(pilot, TRAIT_PRESERVE_UI_WITHOUT_CLIENT, TRAIT_SOURCE_UNIT_TESTS)
+	var/datum/tgui/pilot_window = allocate(/datum/tgui, pilot, console, "SpaceNavigation")
+	pilot_window.process_status()
+	TEST_ASSERT_EQUAL(pilot_window.status, UI_INTERACTIVE, "A pilot adjacent to the helm should be able to operate it")
+
+	pilot.forceMove(locate(console_turf.x, console_turf.y + 2, console_turf.z))
+	console.ui_interact(pilot, pilot_window)
+	TEST_ASSERT(pilot_window.closing, "Refreshing the helm after the pilot steps away should close the existing window")
+
+	var/mob/dead/observer/observer = allocate(/mob/dead/observer)
+	observer.mock_client = allocate(/datum/client_interface)
+	observer.forceMove(get_step(console_turf, NORTH))
+	var/datum/tgui/observer_window = allocate(/datum/tgui, observer, console, "SpaceNavigation")
+	observer_window.process_status()
+	TEST_ASSERT_EQUAL(observer_window.status, UI_UPDATE, "An observer nearby should receive helm updates without control")
+	TEST_ASSERT(console.ui_act("interface_click", list(), observer_window, observer_window.state), "The UI action should be consumed by the read-only check")
+
+	observer.forceMove(console_turf.z == 1 ? locate(console_turf.x, console_turf.y, 2) : locate(console_turf.x, console_turf.y, 1))
+	observer_window.process_status()
+	TEST_ASSERT_EQUAL(observer_window.status, UI_CLOSE, "An observer on a different deck should not keep a helm window open")

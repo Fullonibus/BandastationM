@@ -21,15 +21,10 @@ GLOBAL_DATUM_INIT(relay_fabricator_ui_state, /datum/ui_state/relay_fabricator, n
 	// The atom's default status requires hand reach even when the relay authorizes remote use.
 	if(state == GLOB.relay_fabricator_ui_state && istype(user, /mob/living/basic/relay_operator))
 		return state.can_use_topic(src, user)
-	return ..()
+	return overmap_console_status(user, ..())
 
 /obj/machinery/relay_fabricator/ui_interact(mob/user, datum/tgui/ui)
-	if(GLOB.relay_fabricator_ui_state.can_use_topic(src, user) < UI_UPDATE)
-		return
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "DroidFabricator", "Производство дроидов")
-		ui.open()
+	open_overmap_console(user, ui, "DroidFabricator", "Производство дроидов")
 
 /obj/machinery/relay_fabricator/ui_data(mob/user)
 	var/obj/machinery/overmap_droid_relay/relay
