@@ -47,4 +47,3 @@
 /// The size of the planet under a ship that is flying over it, and the size it comes up from and falls away to
 #define LANDING_HOVER_SIZE 0.6
 #define LANDING_HOVER_FAR 0.08
-

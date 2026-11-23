@@ -214,4 +214,3 @@
 	air.alpha.mark(liftoff + 4.6 SECONDS, 0)
 	air.alpha.mark(liftoff + 4.7 SECONDS, 235)
 	show(air)
-

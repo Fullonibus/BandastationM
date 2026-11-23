@@ -134,4 +134,3 @@
 		our_navigation.update_planet_hover(FALSE)
 	else
 		our_navigation.update_planet_hover()
-
