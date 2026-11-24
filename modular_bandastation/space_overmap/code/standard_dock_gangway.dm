@@ -4,6 +4,9 @@
 /// Match the energy used by a normal airlock closing animation.
 #define ST_DOCK_WALL_CLOSE_ENERGY (50 JOULES)
 
+/// Maximum pressure difference, in kPa, allowed across a docking endpoint.
+#define ST_DOCK_MAX_PRESSURE_DELTA 30
+
 /** A docking endpoint only opens along the axis of a commissioned passage. */
 /obj/machinery/door/airlock/stationtrauma_docking
 	name = "стыковочный шлюз"
@@ -326,7 +329,8 @@
 		return FALSE
 	if(!ship.density && !wall.density && !ship.operating && !wall.operating)
 		return TRUE
-	if(ship.operating || wall.operating || (ship.density && wall.density && !equalize_pressure(ship_only = wall_unpowered)))
+	var/both_endpoints_closed = ship.density && wall.density
+	if(ship.operating || wall.operating || (both_endpoints_closed && !equalize_pressure(ship_only = wall_unpowered)))
 		return FALSE
 	busy = TRUE
 	var/opened = TRUE
@@ -337,8 +341,11 @@
 		if(!endpoint.density || (wall_unpowered && endpoint == wall))
 			continue
 		if(!endpoint_pressure_matches(endpoint))
-			opened = FALSE
-			break
+			// Room air can restore ship pressure during the wall's opening animation.
+			var/recheck_pressure = endpoint == ship && both_endpoints_closed && !wall.density && !wall.operating
+			if(!recheck_pressure || !equalize_pressure() || !endpoint_pressure_matches(endpoint))
+				opened = FALSE
+				break
 		opening_endpoint = endpoint
 		opened = endpoint.open()
 		if(QDELETED(src))
@@ -359,7 +366,7 @@
 		return FALSE
 	var/inside_pressure = inside.air.return_pressure()
 	var/outside_pressure = outside.air.return_pressure()
-	return abs(inside_pressure - outside_pressure) <= ONE_ATMOSPHERE * 0.1 && min(inside_pressure, outside_pressure) > HAZARD_LOW_PRESSURE && max(inside_pressure, outside_pressure) < HAZARD_HIGH_PRESSURE
+	return abs(inside_pressure - outside_pressure) <= ST_DOCK_MAX_PRESSURE_DELTA && min(inside_pressure, outside_pressure) > HAZARD_LOW_PRESSURE && max(inside_pressure, outside_pressure) < HAZARD_HIGH_PRESSURE
 
 /** Draw on the air in the passage and its connected compartments, excluding the sealed dock side during recovery. */
 /datum/stationtrauma_dock_gangway/proc/equalize_pressure(ship_only = FALSE)
@@ -375,7 +382,7 @@
 		if(!isfloorturf(wall_inside) || !wall_inside.air)
 			return FALSE
 		var/wall_pressure = wall_inside.air.return_pressure()
-		if(abs(ship_pressure - wall_pressure) > ONE_ATMOSPHERE * 0.1 || wall_pressure <= HAZARD_LOW_PRESSURE || wall_pressure >= HAZARD_HIGH_PRESSURE)
+		if(abs(ship_pressure - wall_pressure) > ST_DOCK_MAX_PRESSURE_DELTA || wall_pressure <= HAZARD_LOW_PRESSURE || wall_pressure >= HAZARD_HIGH_PRESSURE)
 			return FALSE
 		volume_tiles += list(get_turf(wall), wall_inside)
 	var/datum/gas_mixture/total_air = new
@@ -538,3 +545,4 @@
 
 #undef ST_DOCK_CLOSE_ON_SHIP_POWER
 #undef ST_DOCK_WALL_CLOSE_ENERGY
+#undef ST_DOCK_MAX_PRESSURE_DELTA
