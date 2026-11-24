@@ -17,6 +17,13 @@
 	exhaust = null
 	return ..()
 
+/obj/machinery/power/shuttle_engine/shuttleRotate(rotation, params)
+	if((params & ROTATE_OFFSET) && (bound_width != ICON_SIZE_X || bound_height != ICON_SIZE_Y))
+		// The native rotation only recalculates multitile offsets when the bounds start at the anchor.
+		bound_x = 0
+		bound_y = 0
+	return ..()
+
 /**
  * Display a looping flame at the outlet, scaled to the nozzle width.
  *

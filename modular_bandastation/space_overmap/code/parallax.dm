@@ -171,17 +171,24 @@
 
 /** Show the nearest charted world in the existing approach band, including descent/ascent but not the surface. */
 /datum/stationtrauma_overmap/space/proc/parallax_planet()
+	var/datum/stationtrauma_overmap_site/space/site = parallax_site()
+	var/datum/stationtrauma_overmap_site/space/planet/planet = site
+	if(istype(planet))
+		return planet.parallax_layer
+	return site ? /atom/movable/screen/parallax_layer/expedition_planet/station : null
+
+/datum/stationtrauma_overmap/space/proc/parallax_site()
 	if(!vessel || jump_phase >= HYPERSPACE_LAUNCH)
 		return null
 	var/datum/stationtrauma_overmap_site/space/planet/approaching = approach_site?.pad_parent || approach_site
 	if(istype(approaching) && !approaching.failed)
 		if(approach_departing || vessel.z != approaching.berth?.z)
-			return approaching.parallax_layer
+			return approaching
 		return null
 	if(docked && vessel.z == docked.berth?.z && (docked.landing || docked.physical_docking))
 		return null
 	var/closest_distance = INFINITY
-	var/closest_layer
+	var/datum/stationtrauma_overmap_site/space/closest_site
 	for(var/id in sites)
 		var/datum/stationtrauma_overmap_site/space/site = sites[id]
 		var/datum/stationtrauma_overmap_site/space/planet/planet = site
@@ -196,8 +203,8 @@
 		var/distance = distance_to(site)
 		if(distance <= radius + site.radius + ST_NAV_APPROACH + 5 && distance < closest_distance)
 			closest_distance = distance
-			closest_layer = layer
-	return closest_layer
+			closest_site = site
+	return closest_site
 
 /** Choose the ship background from its dock or the current asteroid region. */
 /datum/stationtrauma_overmap/space/proc/parallax_background()

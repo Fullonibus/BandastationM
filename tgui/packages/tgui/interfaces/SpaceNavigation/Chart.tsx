@@ -494,13 +494,15 @@ export function Chart({
           style={{ color: '#c4e9d7' }}
         >
           <circle
-            r="24"
+            r={data.dock_range * scale}
             fill="none"
             stroke="#a6d4c3"
             strokeWidth=".5"
             strokeOpacity=".35"
             strokeDasharray="2 5"
-          />
+          >
+            <title>Дальность стыковки и посадки</title>
+          </circle>
           <g transform={`rotate(${data.course})`}>
             <ShipGlyph />
           </g>

@@ -227,6 +227,7 @@
 
 /** This is called after the final non-sleeping movement callback and before the first native copy. */
 /datum/stationtrauma_docking_layers/proc/capture()
+	root.overmap?.planet_flight?.before_move(target)
 	captured = TRUE
 	for(var/turf/source as anything in cells)
 		var/datum/stationtrauma_docking_layer_cell/cell = cells[source]

@@ -22,12 +22,21 @@
 #define ST_SPACE_DOCK_SPEED 0.5
 /// How long a ship-to-ship docking request waits for an answer.
 #define ST_SPACE_DOCK_REQUEST_TIME (30 SECONDS)
-/// Planetary descent duration; a first landing generates the surface meanwhile.
+/// Expected cold approach time for framing the planet during generation.
 #define ST_SPACE_LANDING_TIME (2 MINUTES)
 /// Approach to a space destination before its seam is built; a first visit loads the destination meanwhile.
 #define ST_SPACE_APPROACH_TIME (45 SECONDS)
-/// Planetary ascent, mostly flown on the ship's flight level.
-#define ST_SPACE_TAKEOFF_TIME (1 MINUTES)
+/// The original Voidcrew climb, played from the actual transfer.
+#define ST_PLANET_ASCENT_LENGTH (9 SECONDS)
+#define ST_PLANET_ASCENT_CLOUD (3.3 SECONDS)
+#define ST_PLANET_ASCENT_ORBIT (4.8 SECONDS)
+/// Keep the entry cues in step across the hull, ground and helm plot.
+#define ST_PLANET_DESCENT_SCALE 1.7
+#define ST_PLANET_DESCENT_TIME ((11 SECONDS) * ST_PLANET_DESCENT_SCALE)
+#define LANDING_ENTRY_LEAD ((9.2 SECONDS) * ST_PLANET_DESCENT_SCALE)
+#define LANDING_ENTRY_END ((5.6 SECONDS) * ST_PLANET_DESCENT_SCALE)
+/// Centre-to-centre docking range, matching the helm's ring at its default zoom.
+#define ST_SPACE_DOCK_RANGE 150
 /// Brief preparation at the old berth before casting off into flight space.
 #define ST_SPACE_DEPARTURE_DELAY (5 SECONDS)
 /// Mooring or casting off at a physical berth or another hull.

@@ -256,11 +256,7 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/engines)
 "aJ" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Emergency Shutle Engineering";
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/engineering,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
@@ -452,11 +448,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
 "bh" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Emergency Shutle Engineering";
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/engineering,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
@@ -488,11 +480,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
 "bk" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/external/ruin,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
@@ -502,11 +490,7 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
 "bl" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/external/ruin,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
@@ -516,11 +500,7 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
 "bm" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/external/ruin,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
 	},
@@ -553,11 +533,7 @@
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/power)
 "bo" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/external/ruin,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
 	},
@@ -573,11 +549,7 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/engine_control)
 "bp" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/external/ruin,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
@@ -651,11 +623,7 @@
 "by" = (
 /obj/effect/turf_decal/delivery/white,
 /obj/structure/cable,
-/obj/machinery/door/airlock/engineering{
-	name = "Emergency Shutle Engineering";
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/engineering,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
@@ -664,6 +632,7 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
 "bA" = (
@@ -796,11 +765,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/external/ruin,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/expedition/general,
 /turf/open/floor/plating,
@@ -872,10 +837,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
-/obj/machinery/door/airlock/external/ruin{
-	req_access = list();
-	req_one_access = list()
-	},
+/obj/machinery/door/airlock/external/ruin,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/expedition/general,
 /turf/open/floor/plating,
@@ -943,9 +905,7 @@
 /area/shuttle/stationtrauma_space/raven/engines)
 "cl" = (
 /obj/machinery/door/airlock/security/glass{
-	name = "Holding Area";
-	req_access = list();
-	req_one_access = list()
+	name = "Holding Area"
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -966,9 +926,7 @@
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
 "cn" = (
 /obj/machinery/door/airlock/medical/glass{
-	name = "Escape Shuttle Infirmary";
-	req_access = list();
-	req_one_access = list()
+	name = "Escape Shuttle Infirmary"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -977,9 +935,7 @@
 /area/shuttle/stationtrauma_space/raven/medbay)
 "co" = (
 /obj/machinery/door/airlock/command/glass{
-	name = "Cockpit";
-	req_access = list();
-	req_one_access = list()
+	name = "Cockpit"
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/door/firedoor,
@@ -989,9 +945,7 @@
 /area/shuttle/stationtrauma_space/raven/hallway)
 "cp" = (
 /obj/machinery/door/airlock/command/glass{
-	name = "Cockpit";
-	req_access = list();
-	req_one_access = list()
+	name = "Cockpit"
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -1014,9 +968,7 @@
 /area/shuttle/stationtrauma_space/raven/engine_control)
 "cr" = (
 /obj/machinery/door/airlock/command/glass{
-	name = "Cockpit";
-	req_access = list();
-	req_one_access = list()
+	name = "Cockpit"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -1026,9 +978,7 @@
 /area/shuttle/stationtrauma_space/raven/bridge)
 "cs" = (
 /obj/machinery/door/airlock/command/glass{
-	name = "Cockpit";
-	req_access = list();
-	req_one_access = list()
+	name = "Cockpit"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
@@ -1220,7 +1170,6 @@
 /area/shuttle/stationtrauma_space/raven/hallway)
 "gJ" = (
 /obj/machinery/door/airlock/public/glass{
-	name = "Emergency Shuttle Seating";
 	req_access = list();
 	req_one_access = list()
 	},
@@ -1632,7 +1581,6 @@
 "kj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/public/glass{
-	name = "Emergency Shuttle Seating";
 	req_access = list();
 	req_one_access = list()
 	},

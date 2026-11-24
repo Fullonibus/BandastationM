@@ -1439,6 +1439,166 @@
 			},
 			"changes": "States renamed to the ship core's operating states: idle from suspension_wrenched with its teal emitter recoloured dim violet, open from suspension_wrenched with suspension_panel composited, normal/quiet/overdrive/emergency from the five suspension_on frames with the cyan field light recoloured per state and new frame delays, plus emissive *_glow masks holding only the field light. The machine body pixels are unchanged.",
 			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/icons/landing_view.dmi",
+			"sha256": "b5b88a1936edf03ecd1d8d70d0316a751d5b2c28d98d340d01ffd92dd0fb68e0",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/icons/effects/landing_view.dmi",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/icons/effects/landing_view.dmi",
+				"sha256": "b5b88a1936edf03ecd1d8d70d0316a751d5b2c28d98d340d01ffd92dd0fb68e0",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/icons/landing_view_glow.dmi",
+			"sha256": "6d69a927f114b9ff87908e0077880ee374355839f9f2f9e838e65d05139e72af",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/icons/effects/landing_view_glow.dmi",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/icons/effects/landing_view_glow.dmi",
+				"sha256": "6d69a927f114b9ff87908e0077880ee374355839f9f2f9e838e65d05139e72af",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/sound/landing/approach.ogg",
+			"sha256": "ecee73f8b998f5f26642560ace6b186938cf417b3e2298154e71b75c9f940db4",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/sound/effects/landing/approach.ogg",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/sound/effects/landing/approach.ogg",
+				"sha256": "ecee73f8b998f5f26642560ace6b186938cf417b3e2298154e71b75c9f940db4",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/sound/landing/clouds.ogg",
+			"sha256": "b6a894ad1879cb09eac31bbf9b9681d9f552d368d590ca941d5fe4dd2d87af77",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/sound/effects/landing/clouds.ogg",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/sound/effects/landing/clouds.ogg",
+				"sha256": "b6a894ad1879cb09eac31bbf9b9681d9f552d368d590ca941d5fe4dd2d87af77",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/sound/landing/entry.ogg",
+			"sha256": "28940de27958bf84828718545720e2c190dfbd541683ba4a4105386792f1e37c",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/sound/effects/landing/entry.ogg",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/sound/effects/landing/entry.ogg",
+				"sha256": "28940de27958bf84828718545720e2c190dfbd541683ba4a4105386792f1e37c",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/sound/landing/launch.ogg",
+			"sha256": "2a2afa5974d431ea989db448f2f587c7e48c4960954050e273cd7bce9686edad",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/sound/effects/landing/launch.ogg",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/sound/effects/landing/launch.ogg",
+				"sha256": "2a2afa5974d431ea989db448f2f587c7e48c4960954050e273cd7bce9686edad",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/sound/landing/liftoff_outside.ogg",
+			"sha256": "c2a18f00f1d1e3836ea1f8ff0caedded016f790f3773c0356641de05c4813081",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/sound/effects/landing/liftoff_outside.ogg",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/sound/effects/landing/liftoff_outside.ogg",
+				"sha256": "c2a18f00f1d1e3836ea1f8ff0caedded016f790f3773c0356641de05c4813081",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/sound/landing/spool.ogg",
+			"sha256": "39d8b4669addc664e3a79fcbc9f02063477587a02ff14726d38793ecb41dfdab",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/sound/effects/landing/spool.ogg",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/sound/effects/landing/spool.ogg",
+				"sha256": "39d8b4669addc664e3a79fcbc9f02063477587a02ff14726d38793ecb41dfdab",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/sound/landing/thrusters.ogg",
+			"sha256": "458df2311913801601ce1eba87c2d1bd94ea540342c3dadb4b759c8a8195d799",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/sound/effects/landing/thrusters.ogg",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/sound/effects/landing/thrusters.ogg",
+				"sha256": "458df2311913801601ce1eba87c2d1bd94ea540342c3dadb4b759c8a8195d799",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/sound/landing/touchdown.ogg",
+			"sha256": "64fbc2c801846256fc19bd2d4e7a0c77c53d5078614357d55e9b1020b021860e",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Jackriip and Voidcrew contributors"],
+			"source": {
+				"repository": "voidcrew/Voidcrew",
+				"commit": "5e0a0d9dbfb307bed03c95301e80f53d3336f8b4",
+				"path": "voidcrew/sound/effects/landing/touchdown.ogg",
+				"url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/voidcrew/sound/effects/landing/touchdown.ogg",
+				"sha256": "64fbc2c801846256fc19bd2d4e7a0c77c53d5078614357d55e9b1020b021860e",
+				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/5e0a0d9dbfb307bed03c95301e80f53d3336f8b4/README.md#license"
+			},
+			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
+			"byte_identical": true
 		}
 	]
 }

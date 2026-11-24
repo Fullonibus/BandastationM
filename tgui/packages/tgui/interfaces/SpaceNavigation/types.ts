@@ -120,6 +120,7 @@ export type NavigationData = Position & {
   /** Sensor noise from 0 to 1, as near the star. */
   interference: number;
   sensor_range: number;
+  dock_range: number;
   can_dock: BooleanLike;
   routes: Site[];
   path: [number, number][];
@@ -146,6 +147,15 @@ export type NavigationData = Position & {
     scene: 'planet' | 'ruin' | 'cargo' | 'asteroids';
     biome: string | null;
     loading: BooleanLike;
+    planet_timing?: {
+      orbit_duration: number;
+      descent_start: number | null;
+      entry_start: number | null;
+      entry_end: number | null;
+      liftoff: number | null;
+      ascent_cloud: number | null;
+      ascent_orbit: number | null;
+    };
   } | null;
   compartments: Compartment[];
   /** Hull silhouette rows, north first: space outside, `#` wall, `!` breach, otherwise the compartment code. */

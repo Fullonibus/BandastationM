@@ -72,52 +72,80 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 		stack_trace("Expedition ruin [key] failed to load on z [level.z_value]")
 		return FALSE
 	stationtrauma_space_vacuum(level.z_value)
-	var/right_edge = origin.x + placed.width - 1
-	stationtrauma_fuel_cache(block(origin, locate(right_edge, origin.y + placed.height - 1, origin.z)), ST_FUEL_CACHE_SPACE_CHANCE)
-	var/approach_y = origin.y + round(placed.height / 2)
+	var/list/ruin_tiles = block(origin, locate(origin.x + placed.width - 1, origin.y + placed.height - 1, origin.z))
+	stationtrauma_fuel_cache(ruin_tiles, ST_FUEL_CACHE_SPACE_CHANCE)
+	var/left = INFINITY
+	var/bottom = INFINITY
+	var/right = 0
+	var/top = 0
+	var/list/obj/machinery/door/airlock/doors = list()
+	for(var/turf/tile as anything in ruin_tiles)
+		if(isspaceturf(tile) && !tile.is_blocked_turf())
+			continue
+		left = min(left, tile.x)
+		bottom = min(bottom, tile.y)
+		right = max(right, tile.x)
+		top = max(top, tile.y)
+		for(var/obj/machinery/door/airlock/door in tile)
+			doors += door
+	if(!right)
+		return FALSE
+
+	var/approach_x = round((left + right) / 2)
+	var/approach_y = round((bottom + top) / 2)
 	var/approach_side = EAST
 	var/best_score = -INFINITY
-	for(var/turf/tile as anything in block(origin, locate(right_edge, origin.y + placed.height - 1, origin.z)))
-		for(var/obj/machinery/door/airlock/door in tile)
-			for(var/direction in GLOB.cardinals)
-				if(!isspaceturf(get_step(door, direction)))
-					continue
-				// The seam opens east of the ruin: east-facing airlocks are straight across, others rank by how far east they stand.
-				var/score = door.x + (direction == EAST ? world.maxx : 0)
-				if(score > best_score)
-					best_score = score
-					site.entrance = tile
-					approach_y = door.y
-					approach_side = direction
+	for(var/obj/machinery/door/airlock/door as anything in doors)
+		for(var/direction in GLOB.cardinals)
+			var/turf/exit = get_step(door, direction)
+			// A door into a gap between two wings may face space without offering a clear approach.
+			while(isspaceturf(exit) && !exit.is_blocked_turf() && ISINRANGE(exit.x, left, right) && ISINRANGE(exit.y, bottom, top))
+				exit = get_step(exit, direction)
+			if(!isspaceturf(exit) || exit.is_blocked_turf())
+				continue
+			var/score = door.x + (direction == EAST ? world.maxx : 0)
+			if(score > best_score)
+				best_score = score
+				site.entrance = get_turf(door)
+				approach_x = door.x
+				approach_y = door.y
+				approach_side = direction
 	site.ruin_id = placed.id
-	// The seam lands crews on the column just outside the ruin, level with that airlock.
-	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 1, approach_y, origin.z))
+	switch(approach_side)
+		if(EAST)
+			approach_x = right + 1
+		if(WEST)
+			approach_x = left - 1
+		if(NORTH)
+			approach_y = top + 1
+		if(SOUTH)
+			approach_y = bottom - 1
+	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(approach_x, approach_y, origin.z))
+	site.berth.setDir(approach_side)
 	// Every border loops onto the ruin's level.
 	for(var/side in GLOB.cardinals)
 		stationtrauma_set_edge(level.z_value, side, level.z_value)
-	place_ruin_pads(site, origin, placed, approach_side)
+	place_ruin_pads(site, left, bottom, right, top, origin.z, approach_side)
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(site.berth))
 	marker.site_id = site.id
 	marker.name = site.name
 	return TRUE
 
-/** Put up to four independent moorings beside the ruin, starting at the entrance side. */
-/datum/stationtrauma_overmap_sector/space/proc/place_ruin_pads(datum/stationtrauma_overmap_site/space/site, turf/origin, datum/map_template/ruin/placed, entrance_side)
+/** Put independent moorings beside the occupied ruin, offering the closest candidates to its entrance first. */
+/datum/stationtrauma_overmap_sector/space/proc/place_ruin_pads(datum/stationtrauma_overmap_site/space/site, left, bottom, right, top, ruin_z, entrance_side)
 	var/margin = TRANSITIONEDGE + 3
 	var/gap = 12
-	var/ruin_right = origin.x + placed.width - 1
-	var/ruin_top = origin.y + placed.height - 1
 	var/far_x = world.maxx - margin - ST_STANDARD_M_WIDTH + 1
 	var/far_y = world.maxy - margin - ST_STANDARD_M_HEIGHT + 1
-	var/centre_x = site.entrance?.x || round((origin.x + ruin_right) / 2)
-	var/centre_y = site.entrance?.y || round((origin.y + ruin_top) / 2)
+	var/centre_x = site.entrance?.x || round((left + right) / 2)
+	var/centre_y = site.entrance?.y || round((bottom + top) / 2)
 	var/list/candidates = list(
-		"[EAST]" = list(ruin_right + gap + 1, clamp(centre_y - round(ST_STANDARD_M_HEIGHT / 2), margin, far_y)),
-		"[WEST]" = list(origin.x - gap - ST_STANDARD_M_WIDTH, clamp(centre_y - round(ST_STANDARD_M_HEIGHT / 2), margin, far_y)),
-		"[NORTH]" = list(clamp(centre_x - round(ST_STANDARD_M_WIDTH / 2), margin, far_x), ruin_top + gap + 1),
-		"[SOUTH]" = list(clamp(centre_x - round(ST_STANDARD_M_WIDTH / 2), margin, far_x), origin.y - gap - ST_STANDARD_M_HEIGHT),
+		"[EAST]" = list(right + gap + 1, clamp(centre_y - round(ST_STANDARD_M_HEIGHT / 2), margin, far_y)),
+		"[WEST]" = list(left - gap - ST_STANDARD_M_WIDTH, clamp(centre_y - round(ST_STANDARD_M_HEIGHT / 2), margin, far_y)),
+		"[NORTH]" = list(clamp(centre_x - round(ST_STANDARD_M_WIDTH / 2), margin, far_x), top + gap + 1),
+		"[SOUTH]" = list(clamp(centre_x - round(ST_STANDARD_M_WIDTH / 2), margin, far_x), bottom - gap - ST_STANDARD_M_HEIGHT),
 	)
-	var/list/available = list()
+	var/list/choices = list()
 	for(var/side in list(entrance_side, turn(entrance_side, 90), turn(entrance_side, -90), REVERSE_DIR(entrance_side)))
 		var/list/point = candidates["[side]"]
 		var/along_x = side == NORTH || side == SOUTH
@@ -128,19 +156,27 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 			var/y = along_x ? point[2] : clamp(point[2] + offset, margin, far_y)
 			if(!ISINRANGE(x, margin, far_x) || !ISINRANGE(y, margin, far_y))
 				break
-			var/clear = TRUE
-			for(var/list/other as anything in available)
-				if(abs(other[1] - x) < ST_STANDARD_M_WIDTH && abs(other[2] - y) < ST_STANDARD_M_HEIGHT)
-					clear = FALSE
-					break
-			if(!clear)
-				continue
-			for(var/turf/tile as anything in block(x, y, origin.z, x + ST_STANDARD_M_WIDTH - 1, y + ST_STANDARD_M_HEIGHT - 1, origin.z))
-				if(!isspaceturf(tile) || tile.is_blocked_turf())
-					clear = FALSE
-					break
-			if(clear)
-				available += list(list(x, y))
+			var/dx = x + (ST_STANDARD_M_WIDTH - 1) / 2 - centre_x
+			var/dy = y + (ST_STANDARD_M_HEIGHT - 1) / 2 - centre_y
+			choices += list(list(x, y, dx ** 2 + dy ** 2))
+	var/list/available = list()
+	for(var/list/point as anything in sortTim(choices, GLOBAL_PROC_REF(cmp_stationtrauma_ruin_pad_distance)))
+		var/x = point[1]
+		var/y = point[2]
+		var/clear = TRUE
+		for(var/list/other as anything in available)
+			if(abs(other[1] - x) < ST_STANDARD_M_WIDTH && abs(other[2] - y) < ST_STANDARD_M_HEIGHT)
+				clear = FALSE
+				break
+		if(!clear)
+			continue
+		for(var/turf/tile as anything in block(x, y, ruin_z, x + ST_STANDARD_M_WIDTH - 1, y + ST_STANDARD_M_HEIGHT - 1, ruin_z))
+			if(!isspaceturf(tile) || tile.is_blocked_turf())
+				clear = FALSE
+				break
+		if(clear)
+			available += list(point)
+			if(length(available) >= length(site.pads))
 				break
 	for(var/index in 1 to length(site.pads))
 		var/datum/stationtrauma_overmap_site/space/pad = site.pads[index]
@@ -150,9 +186,13 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 			pad.failed = TRUE
 			continue
 		var/list/point = available[index]
-		var/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad/slot = new(locate(point[1], point[2], origin.z))
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/ruin_pad/slot = new(locate(point[1], point[2], ruin_z))
 		slot.name = "[site.name]: стоянка [index]"
 		pad.berth = slot
+
+/// Compare mooring centers by their distance to the selected entrance.
+/proc/cmp_stationtrauma_ruin_pad_distance(list/first, list/second)
+	return first[3] - second[3]
 
 /**
  * Maybe leave a partly filled oxygen or tritium canister on free built floor among `turfs`.
